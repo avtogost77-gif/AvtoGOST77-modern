@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Удалённый отдел логистики по России — эксперты Москва и МО</title>
+  <meta name="description" content="Аутсорсинг логистики по всей России: 60 000 перевозчиков, гибкие тарифы и подача машины за 2 ч в Москве и МО. Экономьте время и бюджет." />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <!-- AOS scroll animations -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+  <link rel="icon" type="image/png" href="assets/img/favicon.png" />
+  <!-- Yandex.Metrika counter -->
+  <script type="text/javascript" >
+     (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+     m[i].l=1*new Date();
+     for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+     k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+     (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+     ym(103413788, "init", {
+          clickmap:true,
+          trackLinks:true,
+          accurateTrackBounce:true,
+          webvisor:true
+     });
+  </script>
+  <noscript><div><img src="https://mc.yandex.ru/watch/103413788" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+  <!-- /Yandex.Metrika counter -->
+</head>
+<body>
+  <!-- Sticky Guarantee Bar -->
+  <div class="sticky-bar">
+    <span>Гарантия: подача авто ≤ 2 ч или скидка 10 %</span>
+    <a href="#calc" class="btn btn-outline btn-sm">Оставить заявку</a>
+  </div>
+  <!-- Header -->
+  <header>
+    <div class="container navbar">
+      <a href="/" class="navbar-brand" aria-label="Авто Гост — логистика без забот" title="Авто Гост — логистика без забот">Авто&nbsp;Гост</a>
+      <button class="mobile-toggle" aria-label="Меню">☰</button>
+      <ul class="navbar-menu">
+        <li><a href="/">Главная</a></li>
+        <li>
+          <a href="services.html">Услуги ▾</a>
+          <div class="dropdown">
+            <a href="services.html#outsourcing">Аутсорсинг логистики</a>
+            <a href="services.html#ltl">Сборные грузы (LTL)</a>
+            <a href="services.html#t0-5">Грузовой транспорт 0-5 т</a>
+            <a href="services.html#t5-10">Грузовой транспорт 5-10 т</a>
+            <a href="services.html#t10-20">Грузовой транспорт 10-20 т</a>
+          </div>
+        </li>
+        <li><a href="about.html">О нас</a></li>
+        <li><a href="news.html">Новости</a></li>
+        <li><a href="contact.html">Контакты</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+      </ul>
+      <div class="navbar-social">
+        <a href="https://wa.me/79162720932" target="_blank" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+        <a href="https://t.me/avtogost77" target="_blank" aria-label="Telegram"><i class="bi bi-telegram"></i></a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <h1>Авто&nbsp;Гост — грузоперевозки по&nbsp;РФ, подача&nbsp;по&nbsp;Москве&nbsp;и&nbsp;МО&nbsp;до&nbsp;двух&nbsp;часов</h1>
+      <p>10&nbsp;лет опыта · 60&nbsp;000 проверенных перевозчиков · SLA 99,3&nbsp;% доставок вовремя</p>
+      <a href="contact.html" class="btn btn-primary">Получить&nbsp;расчёт</a>
+      <a href="services.html" class="btn btn-outline" style="margin-left:1rem;">Смотреть&nbsp;услуги</a>
+    </div>
+  </section>
+
+  <!-- Pain Points -->
+  <section class="pain" data-aos="fade-up">
+    <div class="container">
+      <h2>Какие проблемы мы решаем для МСБ</h2>
+      <p>Содержание логиста в штате дорого, а поиск надёжного перевозчика занимает время? Мы берём всё на себя, снижая ваши расходы и риски.</p>
+      <ul>
+        <li>Экономия до 30 % на логистических расходах.</li>
+        <li>Доступ к базе 60 000 проверенных перевозчиков.</li>
+        <li>Экстренная подача автомобиля в Москве и МО за 2–3 часа.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Calculator Section -->
+  <section data-aos="fade-up" id="calc">
+    <div class="container">
+      <h2>Быстрый расчёт стоимости</h2>
+      <form id="freight-calc-form" class="calc-form" style="max-width:600px;margin:auto">
+        <div style="display:flex;gap:1rem;flex-wrap:wrap">
+          <label style="flex:1 1 140px">Тип&nbsp;перевозки
+            <select name="type" required style="width:100%">
+              <option value="FTL">Отдельная машина (FTL)</option>
+              <option value="LTL">Сборный груз (LTL)</option>
+            </select>
+          </label>
+          <label style="flex:1 1 120px">Дистанция, км
+            <input type="number" name="distance" min="1" required placeholder="например 550" style="width:100%">
+          </label>
+          <label style="flex:1 1 120px" id="weight-label">Вес, кг (для LTL)
+            <input type="number" name="weight" min="1" placeholder="500" style="width:100%">
+          </label>
+        </div>
+        <button type="submit" class="btn btn-primary" style="margin-top:1rem">Рассчитать</button>
+      </form>
+      <p id="freight-calc-result" style="margin-top:1rem;font-weight:500"></p>
+    </div>
+  </section>
+
+  <!-- Lead capture modal -->
+  <div class="modal-overlay" id="lead-modal">
+    <div class="modal-box" data-aos="zoom-in">
+      <h3>Получить точное предложение</h3>
+      <form id="lead-form">
+        <input type="text" name="name" placeholder="Ваше имя" required style="width:100%;margin-bottom:.5rem;padding:.5rem">
+        <input type="tel" name="phone" placeholder="Телефон" required style="width:100%;margin-bottom:.5rem;padding:.5rem">
+        <input type="email" name="email" placeholder="Email (необязательно)" style="width:100%;margin-bottom:.5rem;padding:.5rem">
+        <input type="hidden" name="details" id="lead-details">
+        <button type="submit" class="btn btn-primary" style="width:100%;">Отправить заявку</button>
+      </form>
+      <p style="font-size:.75rem;margin-top:.75rem;">* Нажимая кнопку, вы соглашаетесь с обработкой персональных данных.</p>
+    </div>
+  </div>
+
+  <!-- Services Snapshot -->
+  <section>
+    <div class="container">
+      <h2>Наши услуги</h2>
+      <div class="services-grid">
+        <div data-aos="fade-up">
+          <i class="bi bi-briefcase"></i>
+          <h3>Аутсорсинг логистики</h3>
+          <p>Удалённый отдел без лишних затрат: мы планируем, бронируем и контролируем перевозки 24/7.</p>
+          <a href="services.html#outsourcing" class="btn btn-outline">Узнать больше</a>
+        </div>
+        <div data-aos="fade-up" data-aos-delay="100">
+          <i class="bi bi-box"></i>
+          <h3>Сборные грузы (LTL)</h3>
+          <p>Платите только за занятое место: доставка паллет по России с консолидацией в Москве.</p>
+          <a href="services.html#ltl" class="btn btn-outline">Подробнее</a>
+        </div>
+        <div data-aos="fade-up" data-aos-delay="200">
+          <i class="bi bi-truck"></i>
+          <h3>Грузовой транспорт 0–20 т</h3>
+          <p>Флот от Газели до фуры: оперативная подача авто в любой точке России.</p>
+          <a href="services.html#t0-5" class="btn btn-outline">Выбрать транспорт</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section style="background: var(--color-bg);">
+    <div class="container">
+      <h2>Как это работает</h2>
+      <ol>
+        <li>Вы оставляете заявку с маршрутом и объёмом груза.</li>
+        <li>Мы подбираем оптимальный транспорт и ставку.</li>
+        <li>Координируем перевозку и отправляем вам отчёт.</li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section>
+    <div class="container text-center">
+      <h2>Отзывы клиентов</h2>
+      <p>«Экстренно понадобилось отправить 3 паллеты из Москвы в Екатеринбург. Машина была подана через 2 часа, всё доставили вовремя. Рекомендуем!» — ИП «Ромашка»</p>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="hero" style="padding: 3rem 0;">
+    <div class="container">
+      <h2 style="color:#fff;">Внедрите удалённый отдел логистики уже сегодня</h2>
+      <a href="contact.html" class="btn btn-primary">Оставить заявку</a>
+    </div>
+  </section>
+  <!-- Live ticker -->
+  <div class="live-ticker"><span></span></div>
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-grid">
+      <div>
+        <h4>Меню</h4>
+        <a href="/">Главная</a><br/>
+        <a href="services.html">Услуги</a><br/>
+        <a href="about.html">О нас</a><br/>
+        <a href="news.html">Новости</a><br/>
+        <a href="contact.html">Контакты</a>
+      </div>
+      <div>
+        <h4>Услуги</h4>
+        <a href="services.html#outsourcing">Аутсорсинг логистики</a><br/>
+        <a href="services.html#ltl">Сборные грузы</a><br/>
+        <a href="services.html#t0-5">0–5 т</a><br/>
+        <a href="services.html#t5-10">5–10 т</a><br/>
+        <a href="services.html#t10-20">10–20 т</a>
+      </div>
+      <div>
+        <h4>Контакты</h4>
+        <p>Телефон: <a href="https://wa.me/79162720932" target="_blank">+7 916 272-09-32</a></p>
+        <p>Email: <a href="mailto:avtogost77@gmail.com">avtogost77@gmail.com</a></p>
+      </div>
+    </div>
+    <div class="container text-center mt-2">
+      © 2023 Авто&nbsp;Гост. Все права защищены.
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/benefit.js"></script>
+  <script src="assets/js/ticker.js"></script>
+  <script src="assets/js/sticky-bar.js"></script>
+  <script src="assets/js/calc.js"></script>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>AOS.init({ once:true, duration:600 });</script>
+</body>
+</html>
