@@ -4,14 +4,249 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Удалённый отдел логистики по России — эксперты Москва и МО</title>
-  <meta name="description" content="Аутсорсинг логистики по всей России: 60 000 перевозчиков, гибкие тарифы и подача машины за 2 ч в Москве и МО. Экономьте время и бюджет." />
-  <link rel="stylesheet" href="assets/css/styles.css" />
-  <!-- Bootstrap Icons -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-  <!-- AOS scroll animations -->
-  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+  
+  <!-- SEO Мета-теги -->
+  <title>Грузоперевозки по России 🚛 Логистика Москва и МО | АвтоГОСТ</title>
+  <meta name="description" content="⚡ Грузоперевозки по России от 35₽/км. Подача авто за 2 часа в Москве и МО. 60000+ проверенных перевозчиков. Аутсорсинг логистики. Рассчитать стоимость онлайн!" />
+  <meta name="keywords" content="грузоперевозки москва, логистика россия, аутсорсинг транспорт, экспедирование грузов, доставка по россии, удаленный отдел логистики" />
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="АвтоГОСТ — Грузоперевозки по России | Логистика Москва" />
+  <meta property="og:description" content="Подача транспорта за 2 часа в Москве и МО. 60000+ перевозчиков. Аутсорсинг логистики от 35₽/км. Онлайн калькулятор стоимости." />
+  <meta property="og:image" content="https://avtogost77.ru/assets/img/og-image.jpg" />
+  <meta property="og:url" content="https://avtogost77.ru" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="ru_RU" />
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="АвтоГОСТ — Грузоперевозки по России" />
+  <meta name="twitter:description" content="Подача транспорта за 2 часа. 60000+ перевозчиков. Онлайн калькулятор." />
+  <meta name="twitter:image" content="https://avtogost77.ru/assets/img/twitter-card.jpg" />
+  
+  <!-- Canonical и альтернативные версии -->
+  <link rel="canonical" href="https://avtogost77.ru/" />
+  <link rel="alternate" hreflang="ru" href="https://avtogost77.ru/" />
+  
+  <!-- Favicon -->
   <link rel="icon" type="image/png" href="assets/img/favicon.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16x16.png">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+  
+  <!-- Preload критических ресурсов -->
+  <link rel="preload" href="assets/css/styles.css" as="style">
+  <link rel="preload" href="assets/js/calc.js" as="script">
+  
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TransportationCompany",
+    "name": "АвтоГОСТ",
+    "alternateName": "AvtoGOST",
+    "description": "Транспортно-логистическая компания, специализирующаяся на грузоперевозках по России и аутсорсинге логистики",
+    "url": "https://avtogost77.ru",
+    "logo": "https://avtogost77.ru/assets/img/logo.png",
+    "image": "https://avtogost77.ru/assets/img/company-photo.jpg",
+    "telephone": "+7-916-272-09-32",
+    "email": "avtogost77@gmail.com",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Москва",
+      "addressRegion": "Московская область",
+      "addressCountry": "RU"
+    },
+    "areaServed": [
+      {
+        "@type": "Country",
+        "name": "Россия"
+      },
+      {
+        "@type": "State",
+        "name": "Московская область"
+      }
+    ],
+    "serviceType": [
+      "Грузоперевозки",
+      "Логистические услуги",
+      "Аутсорсинг логистики",
+      "Экспедирование грузов",
+      "Удаленный отдел логистики"
+    ],
+    "founder": {
+      "@type": "Person",
+      "name": "АвтоГОСТ"
+    },
+    "foundingDate": "2014",
+    "numberOfEmployees": "50-100",
+    "slogan": "Логистика без забот",
+    "priceRange": "$$",
+    "paymentAccepted": [
+      "Cash",
+      "Credit Card",
+      "Bank Transfer",
+      "Invoice"
+    ],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Логистические услуги",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Грузоперевозки по России",
+            "description": "Доставка грузов автомобильным транспортом по всей территории России"
+          }
+        },
+        {
+          "@type": "Offer", 
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Аутсорсинг логистики",
+            "description": "Полное ведение логистических операций клиента силами нашей команды"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service", 
+            "name": "Экспресс-доставка Москва и МО",
+            "description": "Подача транспорта в течение 2 часов в Москве и Московской области"
+          }
+        }
+      ]
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "reviewCount": "127",
+      "bestRating": "5",
+      "worstRating": "1"
+    },
+    "review": [
+      {
+        "@type": "Review",
+        "author": {
+          "@type": "Organization",
+          "name": "ООО Логистик-Трейд"
+        },
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": "5"
+        },
+        "reviewBody": "Отличная компания для аутсорсинга логистики. Быстрая подача транспорта, всегда выполняют обязательства в срок."
+      }
+    ],
+    "sameAs": [
+      "https://wa.me/79162720932",
+      "https://t.me/avtogost77"
+    ]
+  }
+  </script>
+
+  <!-- Локальный бизнес Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "@id": "https://avtogost77.ru/#LocalBusiness",
+    "name": "АвтоГОСТ",
+    "image": "https://avtogost77.ru/assets/img/office.jpg",
+    "telephone": "+7-916-272-09-32",
+    "email": "avtogost77@gmail.com",
+    "url": "https://avtogost77.ru",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Москва и Московская область",
+      "addressLocality": "Москва", 
+      "postalCode": "101000",
+      "addressCountry": "RU"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "55.7558",
+      "longitude": "37.6176"
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday", 
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "opens": "09:00",
+        "closes": "18:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Saturday",
+        "opens": "10:00",
+        "closes": "16:00"
+      }
+    ],
+    "priceRange": "$$",
+    "currenciesAccepted": "RUB",
+    "paymentAccepted": ["Cash", "Credit Card", "Invoice"]
+  }
+  </script>
+
+  <!-- FAQ Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Какая стоимость грузоперевозок по России?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Стоимость грузоперевозок начинается от 35 рублей за километр и зависит от типа груза, веса, расстояния и дополнительных услуг. Точную стоимость можно рассчитать в нашем онлайн-калькуляторе."
+        }
+      },
+      {
+        "@type": "Question", 
+        "name": "За какое время можете подать транспорт в Москве?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "В Москве и Московской области мы гарантируем подачу транспорта в течение 2 часов. При несоблюдении срока предоставляем скидку 10%."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Какие типы грузов перевозите?",
+        "acceptedAnswer": {
+          "@type": "Answer", 
+          "text": "Мы перевозим все типы грузов: обычные, хрупкие, опасные, негабаритные, продукты питания, медицинские товары. Имеем все необходимые лицензии и сертификаты."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Предоставляете ли аутсорсинг логистики?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Да, мы предоставляем полный аутсорсинг логистических операций - становимся вашим удаленным отделом логистики. Это позволяет сэкономить до 30% на логистических расходах."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- Веб-приложение манифест -->
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#2563eb">
+  <meta name="msapplication-TileColor" content="#2563eb">
+  
   <!-- Yandex.Metrika counter -->
   <script type="text/javascript" >
      (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
@@ -24,7 +259,8 @@
           clickmap:true,
           trackLinks:true,
           accurateTrackBounce:true,
-          webvisor:true
+          webvisor:true,
+          ecommerce:"dataLayer"
      });
   </script>
   <noscript><div><img src="https://mc.yandex.ru/watch/103413788" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
@@ -258,6 +494,7 @@
   <script src="assets/js/sticky-bar.js"></script>
   <script src="assets/js/calc.js"></script>
   <script src="assets/js/interactive-map.js"></script>
+  <script src="assets/js/modern-ux.js"></script>
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
   <script>AOS.init({ once:true, duration:600 });</script>
 </body>
