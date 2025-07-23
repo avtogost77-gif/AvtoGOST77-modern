@@ -136,4 +136,38 @@
     <priority>0.8</priority>
   </url>
 
+  <!-- Новые landing-страницы под ключевые запросы -->
+  <url>
+    <loc>https://avtogost77.ru/marketplace-delivery.html</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://avtogost77.ru/assets/img/marketplace-delivery.jpg</image:loc>
+      <image:caption>Доставка товаров на склады маркетплейсов</image:caption>
+    </image:image>
+  </url>
+  
+  <url>
+    <loc>https://avtogost77.ru/urgent-delivery.html</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://avtogost77.ru/assets/img/urgent-logistics.jpg</image:loc>
+      <image:caption>Экстренные грузоперевозки и спот-заявки</image:caption>
+    </image:image>
+  </url>
+  
+  <url>
+    <loc>https://avtogost77.ru/moscow-regions.html</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://avtogost77.ru/assets/img/moscow-regions.jpg</image:loc>
+      <image:caption>Межрегиональные грузоперевозки из Москвы</image:caption>
+    </image:image>
+  </url>
+
 </urlset>
