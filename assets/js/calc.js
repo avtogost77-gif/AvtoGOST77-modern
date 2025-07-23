@@ -148,9 +148,18 @@ class SmartLogisticsCalculator {
           </div>
 
           <button type="submit" class="btn btn-primary btn-lg calculate-btn">
-            <i class="bi bi-calculator"></i>
-            Рассчитать стоимость
+            <i class="bi bi-calculator"></i> Рассчитать стоимость
           </button>
+          
+          <div class="form-section" style="margin-top: 1rem;">
+            <label class="service-checkbox" style="justify-content: center;">
+              <input type="checkbox" name="consent" required checked>
+              <span class="checkmark"></span>
+              <div class="service-info">
+                <span class="service-name">Я согласен(а) с <a href="privacy.html" target="_blank" style="color: var(--color-primary); text-decoration: underline;">обработкой персональных данных</a></span>
+              </div>
+            </label>
+          </div>
         </form>
 
         <div id="calculation-result" class="calculation-result"></div>
