@@ -68,50 +68,88 @@
   <!-- Hero -->
   <section class="hero">
     <div class="container">
-      <h1>Авто&nbsp;Гост — грузоперевозки по&nbsp;РФ, подача&nbsp;по&nbsp;Москве&nbsp;и&nbsp;МО&nbsp;до&nbsp;двух&nbsp;часов</h1>
-      <p>10&nbsp;лет опыта · 60&nbsp;000 проверенных перевозчиков · SLA 99,3&nbsp;% доставок вовремя</p>
-      <a href="contact.html" class="btn btn-primary">Получить&nbsp;расчёт</a>
-      <a href="services.html" class="btn btn-outline" style="margin-left:1rem;">Смотреть&nbsp;услуги</a>
-    </div>
-  </section>
-
-  <!-- Pain Points -->
-  <section class="pain" data-aos="fade-up">
-    <div class="container">
-      <h2>Какие проблемы мы решаем для МСБ</h2>
-      <p>Содержание логиста в штате дорого, а поиск надёжного перевозчика занимает время? Мы берём всё на себя, снижая ваши расходы и риски.</p>
-      <ul>
-        <li>Экономия до 30 % на логистических расходах.</li>
-        <li>Доступ к базе 60 000 проверенных перевозчиков.</li>
-        <li>Экстренная подача автомобиля в Москве и МО за 2–3 часа.</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- Calculator Section -->
-  <section data-aos="fade-up" id="calc">
-    <div class="container">
-      <h2>Быстрый расчёт стоимости</h2>
-      <form id="freight-calc-form" class="calc-form" style="max-width:600px;margin:auto">
-        <div style="display:flex;gap:1rem;flex-wrap:wrap">
-          <label style="flex:1 1 140px">Тип&nbsp;перевозки
-            <select name="type" required style="width:100%">
-              <option value="FTL">Отдельная машина (FTL)</option>
-              <option value="LTL">Сборный груз (LTL)</option>
-            </select>
-          </label>
-          <label style="flex:1 1 120px">Дистанция, км
-            <input type="number" name="distance" min="1" required placeholder="например 550" style="width:100%">
-          </label>
-          <label style="flex:1 1 120px" id="weight-label">Вес, кг (для LTL)
-            <input type="number" name="weight" min="1" placeholder="500" style="width:100%">
-          </label>
+      <div class="hero-content">
+        <h1 class="animate-fade-in-up">Авто&nbsp;Гост — современная логистика по&nbsp;всей России</h1>
+        <p class="text-lg animate-fade-in-up" style="animation-delay: 0.2s;">
+          Технологичный подход к грузоперевозкам: умные алгоритмы, прозрачность процессов, гарантия качества
+        </p>
+        <div class="hero-actions animate-fade-in-up" style="animation-delay: 0.4s; margin-top: 2rem;">
+          <a href="#smart-calculator" class="btn btn-primary btn-lg">
+            <i class="bi bi-calculator"></i> Рассчитать доставку
+          </a>
+          <a href="services.html" class="btn btn-secondary btn-lg">
+            <i class="bi bi-truck"></i> Наши услуги
+          </a>
         </div>
-        <button type="submit" class="btn btn-primary" style="margin-top:1rem">Рассчитать</button>
-      </form>
-      <p id="freight-calc-result" style="margin-top:1rem;font-weight:500"></p>
+      </div>
+      
+      <div class="hero-stats animate-fade-in-up" style="animation-delay: 0.6s;">
+        <div class="hero-stat">
+          <span class="hero-stat-number">10+</span>
+          <span class="hero-stat-label">лет опыта</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-number">60K+</span>
+          <span class="hero-stat-label">перевозчиков</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-number">99.3%</span>
+          <span class="hero-stat-label">доставок вовремя</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-number">2ч</span>
+          <span class="hero-stat-label">подача в Москве</span>
+        </div>
+      </div>
     </div>
   </section>
+
+  <!-- Benefits Section -->
+  <section class="section reveal">
+    <div class="container">
+      <div class="text-center" style="margin-bottom: 4rem;">
+        <h2>🎯 Решаем задачи современного бизнеса</h2>
+        <p class="text-lg text-muted">Технологии и опыт для оптимизации ваших логистических процессов</p>
+      </div>
+      
+      <div class="grid grid-3">
+        <div class="card reveal">
+          <div class="benefit-icon">💰</div>
+          <h3>Экономия ресурсов</h3>
+          <p>Снижение затрат на логистику до 30% за счет оптимизации маршрутов и выбора лучших тарифов</p>
+          <ul style="margin-top: 1rem; padding-left: 1.5rem;">
+            <li>Автоматический поиск лучших предложений</li>
+            <li>Оптимизация загрузки транспорта</li>
+            <li>Прозрачная система ценообразования</li>
+          </ul>
+        </div>
+        
+        <div class="card reveal">
+          <div class="benefit-icon">🚀</div>
+          <h3>Скорость и надежность</h3>
+          <p>Экстренная подача транспорта и гарантированное выполнение обязательств</p>
+          <ul style="margin-top: 1rem; padding-left: 1.5rem;">
+            <li>Подача авто за 2 часа в Москве и МО</li>
+            <li>База из 60 000+ проверенных перевозчиков</li>
+            <li>SLA 99,3% выполнения в срок</li>
+          </ul>
+        </div>
+        
+        <div class="card reveal">
+          <div class="benefit-icon">🤖</div>
+          <h3>Умные технологии</h3>
+          <p>Цифровая платформа для полного контроля логистических процессов</p>
+          <ul style="margin-top: 1rem; padding-left: 1.5rem;">
+            <li>Онлайн-трекинг грузов в реальном времени</li>
+            <li>Автоматизация документооборота</li>
+            <li>Аналитика и отчетность</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Новый умный калькулятор будет автоматически вставлен через JavaScript -->
 
   <!-- Lead capture modal -->
   <div class="modal-overlay" id="lead-modal">
@@ -219,6 +257,7 @@
   <script src="assets/js/ticker.js"></script>
   <script src="assets/js/sticky-bar.js"></script>
   <script src="assets/js/calc.js"></script>
+  <script src="assets/js/interactive-map.js"></script>
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
   <script>AOS.init({ once:true, duration:600 });</script>
 </body>
