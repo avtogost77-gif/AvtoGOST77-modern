@@ -316,6 +316,9 @@
           <a href="services.html" class="btn btn-secondary btn-lg">
             <i class="bi bi-truck"></i> Наши услуги
           </a>
+          <button id="pwa-install-btn" class="btn btn-success btn-lg" style="display: none;">
+            <i class="bi bi-download"></i> Установить приложение
+          </button>
         </div>
       </div>
       
@@ -396,9 +399,9 @@
         <input type="tel" name="phone" placeholder="Телефон" required style="width:100%;margin-bottom:.5rem;padding:.5rem">
         <input type="email" name="email" placeholder="Email (необязательно)" style="width:100%;margin-bottom:.5rem;padding:.5rem">
         <input type="hidden" name="details" id="lead-details">
-        <label style="display:flex;align-items:center;margin:.75rem 0;font-size:.875rem;">
-          <input type="checkbox" name="consent" required checked style="margin-right:.5rem;">
-          Я согласен(а) с <a href="privacy.html" target="_blank" style="color:var(--color-primary);text-decoration:underline;">обработкой персональных данных</a>
+        <label class="consent-checkbox required">
+          <input type="checkbox" name="consent" required checked>
+          <span>Я согласен(а) с <a href="privacy.html" target="_blank">обработкой персональных данных</a> и <a href="privacy.html" target="_blank">Политикой конфиденциальности</a> в соответствии с 152-ФЗ</span>
         </label>
         <button type="submit" class="btn btn-primary" style="width:100%;">Отправить заявку</button>
       </form>
