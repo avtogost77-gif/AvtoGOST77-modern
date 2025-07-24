@@ -506,17 +506,7 @@ class SmartLogisticsCalculator {
               
 
               
-              <label class="service-checkbox modern-checkbox">
-                <input type="checkbox" name="services" value="insurance">
-                <span class="checkmark">
-                  <i class="check-icon">✓</i>
-                </span>
-                <div class="service-info">
-                  <span class="service-name">Страхование</span>
-                  <span class="service-description">Защита от повреждений</span>
-                  <span class="service-price">+3% от стоимости</span>
-                </div>
-              </label>
+
               
               <label class="service-checkbox modern-checkbox">
                 <input type="checkbox" name="services" value="express">
@@ -1010,11 +1000,7 @@ class SmartLogisticsCalculator {
       switch(service) {
 
 
-        case 'insurance': 
-          const insuranceCost = Math.round(basePrice * 0.03);
-          additionalCost += insuranceCost;
-          serviceDetails.push({ name: 'Страхование', cost: insuranceCost });
-          break;
+
         case 'express': 
           // Экспресс-доставка рассчитывается индивидуально
           serviceDetails.push({ name: 'Экспресс-доставка', cost: 'по договоренности' });
