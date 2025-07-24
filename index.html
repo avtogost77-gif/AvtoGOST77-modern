@@ -34,14 +34,28 @@
   <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16x16.png">
   
-  <!-- Styles -->
-  <link rel="stylesheet" href="assets/css/styles.css" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+  <!-- Critical CSS (inline for fastest loading) -->
+  <link rel="stylesheet" href="assets/css/critical.css">
   
-  <!-- Preload критических ресурсов -->
-  <link rel="preload" href="assets/css/styles.css" as="style">
+  <!-- Preload Critical Resources -->
+  <link rel="preload" href="assets/css/styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="assets/css/mobile.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <link rel="preload" href="assets/js/calc.js" as="script">
+  <link rel="preload" href="assets/js/performance.js" as="script">
+  <link rel="preload" href="assets/js/seo-optimizer.js" as="script">
+  
+  <!-- DNS Prefetch for external resources -->
+  <link rel="dns-prefetch" href="//fonts.googleapis.com">
+  <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
+  <link rel="dns-prefetch" href="//unpkg.com">
+  
+  <!-- Non-critical CSS (deferred loading) -->
+  <noscript>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/mobile.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
+  </noscript>
   
   <!-- Schema.org JSON-LD -->
   <script type="application/ld+json">
@@ -501,15 +515,53 @@
     </div>
   </footer>
 
+  <!-- Performance optimization loads first -->
+  <script src="assets/js/performance.js"></script>
+  <script src="assets/js/seo-optimizer.js"></script>
+  
+  <!-- Core functionality -->
   <script src="assets/js/main.js"></script>
-  <script src="assets/js/benefit.js"></script>
-  <script src="assets/js/ticker.js"></script>
-  <script src="assets/js/sticky-bar.js"></script>
   <script src="assets/js/calc.js"></script>
-  <!-- Карта временно отключена - API требует ключи -->
-  <!-- <script src="assets/js/interactive-map.js"></script> -->
-  <script src="assets/js/modern-ux.js"></script>
-  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-  <script>AOS.init({ once:true, duration:600 });</script>
+  <script src="assets/js/content-generator.js"></script>
+  
+  <!-- UI enhancements (deferred) -->
+  <script defer src="assets/js/benefit.js"></script>
+  <script defer src="assets/js/ticker.js"></script>
+  <script defer src="assets/js/sticky-bar.js"></script>
+  <script defer src="assets/js/modern-ux.js"></script>
+  
+  <!-- External libraries (deferred) -->
+  <script defer src="https://unpkg.com/aos@2.3.4/dist/aos.js" onload="AOS.init({ once:true, duration:600 });"></script>
+  
+  <!-- Load non-critical CSS after page load -->
+  <script>
+    window.addEventListener('load', function() {
+      // Load Bootstrap Icons
+      const iconCSS = document.createElement('link');
+      iconCSS.rel = 'stylesheet';
+      iconCSS.href = 'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css';
+      document.head.appendChild(iconCSS);
+      
+      // Load AOS CSS
+      const aosCSS = document.createElement('link');
+      aosCSS.rel = 'stylesheet';
+      aosCSS.href = 'https://unpkg.com/aos@2.3.4/dist/aos.css';
+      document.head.appendChild(aosCSS);
+      
+      // Load main CSS if not already loaded
+      if (!document.querySelector('link[href="assets/css/styles.css"]')) {
+        const mainCSS = document.createElement('link');
+        mainCSS.rel = 'stylesheet';
+        mainCSS.href = 'assets/css/styles.css';
+        document.head.appendChild(mainCSS);
+      }
+      
+      // Load mobile CSS
+      const mobileCSS = document.createElement('link');
+      mobileCSS.rel = 'stylesheet';
+      mobileCSS.href = 'assets/css/mobile.css';
+      document.head.appendChild(mobileCSS);
+    });
+  </script>
 </body>
 </html>
