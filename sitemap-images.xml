@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" 
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  
+  <!-- Главная страница с изображениями -->
+  <url>
+    <loc>https://avtogost77.ru/</loc>
+    <image:image>
+      <image:loc>https://avtogost77.ru/assets/img/hero-logistics.webp</image:loc>
+      <image:caption>АвтоГОСТ - современная логистика и грузоперевозки по России</image:caption>
+      <image:title>Логистические услуги АвтоГОСТ</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://avtogost77.ru/assets/img/logo.png</image:loc>
+      <image:caption>Логотип компании АвтоГОСТ</image:caption>
+      <image:title>АвтоГОСТ логотип</image:title>
+    </image:image>
+  </url>
+
+  <!-- Страница услуг -->
+  <url>
+    <loc>https://avtogost77.ru/services.html</loc>
+    <image:image>
+      <image:loc>https://avtogost77.ru/assets/img/services-overview.jpg</image:loc>
+      <image:caption>Полный спектр логистических услуг</image:caption>
+      <image:title>Услуги АвтоГОСТ</image:title>
+    </image:image>
+  </url>
+
+  <!-- О компании -->
+  <url>
+    <loc>https://avtogost77.ru/about.html</loc>
+    <image:image>
+      <image:loc>https://avtogost77.ru/assets/img/company-team.jpg</image:loc>
+      <image:caption>Команда профессионалов АвтоГОСТ</image:caption>
+      <image:title>Команда АвтоГОСТ</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://avtogost77.ru/assets/img/office.jpg</image:loc>
+      <image:caption>Офис компании АвтоГОСТ</image:caption>
+      <image:title>Офис АвтоГОСТ</image:title>
+    </image:image>
+  </url>
+
+  <!-- Контакты -->
+  <url>
+    <loc>https://avtogost77.ru/contact.html</loc>
+    <image:image>
+      <image:loc>https://avtogost77.ru/assets/img/contact-office.jpg</image:loc>
+      <image:caption>Контактный офис АвтоГОСТ</image:caption>
+      <image:title>Наш офис</image:title>
+    </image:image>
+  </url>
+
+  <!-- Доставка маркетплейсы -->
+  <url>
+    <loc>https://avtogost77.ru/marketplace-delivery.html</loc>
+    <image:image>
+      <image:loc>https://avtogost77.ru/assets/img/marketplace-delivery.jpg</image:loc>
+      <image:caption>Доставка товаров на маркетплейсы</image:caption>
+      <image:title>Доставка маркетплейсы</image:title>
+    </image:image>
+  </url>
+
+  <!-- Срочная доставка -->
+  <url>
+    <loc>https://avtogost77.ru/urgent-delivery.html</loc>
+    <image:image>
+      <image:loc>https://avtogost77.ru/assets/img/urgent-logistics.jpg</image:loc>
+      <image:caption>Срочная доставка и экспресс-логистика</image:caption>
+      <image:title>Срочная доставка</image:title>
+    </image:image>
+  </url>
+
+  <!-- Московский регион -->
+  <url>
+    <loc>https://avtogost77.ru/moscow-regions.html</loc>
+    <image:image>
+      <image:loc>https://avtogost77.ru/assets/img/moscow-regions.jpg</image:loc>
+      <image:caption>Доставка по Московскому региону</image:caption>
+      <image:title>Московский регион</image:title>
+    </image:image>
+  </url>
+
+  <!-- Иконки PWA -->
+  <url>
+    <loc>https://avtogost77.ru/manifest.json</loc>
+    <image:image>
+      <image:loc>https://avtogost77.ru/assets/img/icon-192x192.svg</image:loc>
+      <image:caption>Иконка PWA приложения АвтоГОСТ</image:caption>
+      <image:title>АвтоГОСТ PWA иконка</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://avtogost77.ru/assets/img/icon-512x512.svg</image:loc>
+      <image:caption>Большая иконка приложения АвтоГОСТ</image:caption>
+      <image:title>АвтоГОСТ иконка 512x512</image:title>
+    </image:image>
+  </url>
+
+</urlset>

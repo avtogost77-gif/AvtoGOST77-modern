@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" 
+        xmlns:news="http://www.google.com/schemas/sitemap-news/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  
+  <!-- Блог: Что делать если перевозчик подвел -->
+  <url>
+    <loc>https://avtogost77.ru/blog-1-carrier-failed.html</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <news:news>
+      <news:publication>
+        <news:name>АвтоГОСТ Блог</news:name>
+        <news:language>ru</news:language>
+      </news:publication>
+      <news:publication_date>2025-01-15</news:publication_date>
+      <news:title>Что делать, если перевозчик подвел: пошаговый план действий</news:title>
+      <news:keywords>перевозчик подвел, срыв доставки, логистические проблемы, план действий</news:keywords>
+    </news:news>
+    <image:image>
+      <image:loc>https://avtogost77.ru/assets/img/carrier-failed.jpg</image:loc>
+      <image:caption>Что делать если перевозчик подвел</image:caption>
+      <image:title>Проблемы с перевозчиком</image:title>
+    </image:image>
+  </url>
+
+  <!-- Блог: Доставка на Wildberries -->
+  <url>
+    <loc>https://avtogost77.ru/blog-2-wildberries-delivery.html</loc>
+    <lastmod>2025-01-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <news:news>
+      <news:publication>
+        <news:name>АвтоГОСТ Блог</news:name>
+        <news:language>ru</news:language>
+      </news:publication>
+      <news:publication_date>2025-01-14</news:publication_date>
+      <news:title>Доставка товаров на склады Wildberries: полное руководство 2025</news:title>
+      <news:keywords>wildberries доставка, склады wildberries, маркетплейс логистика</news:keywords>
+    </news:news>
+    <image:image>
+      <image:loc>https://avtogost77.ru/assets/img/wildberries-delivery.jpg</image:loc>
+      <image:caption>Доставка товаров на Wildberries</image:caption>
+      <image:title>Wildberries логистика</image:title>
+    </image:image>
+  </url>
+
+  <!-- Блог: Спот заявки -->
+  <url>
+    <loc>https://avtogost77.ru/blog-3-spot-orders.html</loc>
+    <lastmod>2025-01-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <news:news>
+      <news:publication>
+        <news:name>АвтоГОСТ Блог</news:name>
+        <news:language>ru</news:language>
+      </news:publication>
+      <news:publication_date>2025-01-13</news:publication_date>
+      <news:title>Спот-заявки в логистике: как найти транспорт за 2 часа</news:title>
+      <news:keywords>спот заявки, срочный транспорт, быстрая доставка, логистика</news:keywords>
+    </news:news>
+  </url>
+
+  <!-- Блог: Удаленный отдел логистики -->
+  <url>
+    <loc>https://avtogost77.ru/blog-4-remote-logistics.html</loc>
+    <lastmod>2025-01-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <news:news>
+      <news:publication>
+        <news:name>АвтоГОСТ Блог</news:name>
+        <news:language>ru</news:language>
+      </news:publication>
+      <news:publication_date>2025-01-12</news:publication_date>
+      <news:title>Удаленный отдел логистики: как сократить расходы на 40%</news:title>
+      <news:keywords>удаленная логистика, аутсорсинг логистики, экономия на логистике</news:keywords>
+    </news:news>
+  </url>
+
+  <!-- Страница новостей -->
+  <url>
+    <loc>https://avtogost77.ru/news.html</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <news:news>
+      <news:publication>
+        <news:name>АвтоГОСТ Новости</news:name>
+        <news:language>ru</news:language>
+      </news:publication>
+      <news:publication_date>2025-01-15</news:publication_date>
+      <news:title>Новости логистики и грузоперевозок от АвтоГОСТ</news:title>
+      <news:keywords>новости логистики, грузоперевозки новости, транспортные новости</news:keywords>
+    </news:news>
+  </url>
+
+</urlset>
