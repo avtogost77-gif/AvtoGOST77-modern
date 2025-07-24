@@ -42,9 +42,11 @@
   <!-- Critical CSS (inline for fastest loading) -->
   <link rel="stylesheet" href="assets/css/critical.css">
   
+  <!-- Main CSS - загружаем сразу для гарантии -->
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/mobile.css">
+  
   <!-- Preload Critical Resources -->
-  <link rel="preload" href="assets/css/styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <link rel="preload" href="assets/css/mobile.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <link rel="preload" href="assets/js/calc.js" as="script">
   <link rel="preload" href="assets/js/performance.js" as="script">
   <link rel="preload" href="assets/js/seo-optimizer.js" as="script">
@@ -630,7 +632,16 @@
       calcButtons.forEach(button => {
         button.addEventListener('click', function(e) {
           e.preventDefault();
-          openModal('lead-modal');
+          // Прокручиваем к калькулятору
+          const calculator = document.getElementById('smart-calculator');
+          if (calculator) {
+            calculator.scrollIntoView({ behavior: 'smooth' });
+            // Фокусируемся на первом поле через секунду
+            setTimeout(() => {
+              const firstInput = calculator.querySelector('input');
+              if (firstInput) firstInput.focus();
+            }, 1000);
+          }
         });
       });
     });
@@ -684,19 +695,7 @@
       aosCSS.href = 'https://unpkg.com/aos@2.3.4/dist/aos.css';
       document.head.appendChild(aosCSS);
       
-      // Load main CSS if not already loaded
-      if (!document.querySelector('link[href="assets/css/styles.css"]')) {
-        const mainCSS = document.createElement('link');
-        mainCSS.rel = 'stylesheet';
-        mainCSS.href = 'assets/css/styles.css';
-        document.head.appendChild(mainCSS);
-      }
-      
-      // Load mobile CSS
-      const mobileCSS = document.createElement('link');
-      mobileCSS.rel = 'stylesheet';
-      mobileCSS.href = 'assets/css/mobile.css';
-      document.head.appendChild(mobileCSS);
+      // CSS уже загружен в head, больше не нужно
     });
   </script>
 </body>
