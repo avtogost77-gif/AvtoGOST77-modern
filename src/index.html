@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- SEO мета-теги -->
+  <title>АвтоГОСТ — Пока вы создаете, мы доставляем | Логистика без забот</title>
+  <meta name="description" content="Инфраструктура вашего бизнеса. Занимайтесь делом — логистику доверьте нам. 60,000+ перевозчиков, подача за 2 часа, 99.3% вовремя.">
+  <meta name="keywords" content="грузоперевозки, логистика, аутсорсинг транспорта, доставка по России, подача транспорта">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="АвтоГОСТ — Пока вы создаете, мы доставляем">
+  <meta property="og:description" content="Инфраструктура вашего бизнеса. 60,000+ перевозчиков, подача за 2 часа, 99.3% вовремя.">
+  <meta property="og:image" content="/assets/img/hero-logistics.webp">
+  <meta property="og:url" content="https://avtogost77.ru">
+  <meta property="og:type" content="website">
+  
+  <!-- Безопасность -->
+  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  <meta http-equiv="X-Frame-Options" content="DENY">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  
+  <!-- Иконки -->
+  <link rel="icon" type="image/webp" href="/assets/img/favicon.webp">
+  <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+  
+  <!-- Предзагрузка критических ресурсов -->
+  <link rel="preload" href="/assets/img/hero-logistics.webp" as="image">
+  <link rel="preload" href="/assets/fonts/inter-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preconnect" href="https://api.openai.com">
+  
+  <!-- Критические стили для LCP -->
+  <style>
+    /* CRITICAL CSS для мгновенной загрузки */
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --secondary: #64748b;
+      --accent: #f59e0b;
+      --success: #10b981;
+      --success-dark: #059669;
+      --danger: #ef4444;
+      --warning: #f59e0b;
+      
+      /* Glassmorphism 2030 */
+      --glass-bg: rgba(255, 255, 255, 0.08);
+      --glass-border: rgba(255, 255, 255, 0.2);
+      --glass-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+      
+      /* Анимации будущего */
+      --spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+      --elastic: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      --anticipation: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      
+      /* Тактильные эффекты */
+      --haptic-light: 0 2px 8px rgba(0, 0, 0, 0.1);
+      --haptic-medium: 0 8px 32px rgba(0, 0, 0, 0.12);
+      --haptic-strong: 0 16px 64px rgba(0, 0, 0, 0.15);
+      --haptic-glow: 0 0 32px rgba(37, 99, 235, 0.3);
+    }
+    
+    /* Reset */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    /* Тактильная типографика */
+    body {
+      font-family: 'Inter Variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+      line-height: 1.6;
+      color: #0f172a;
+      background: #ffffff;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+    }
+    
+    /* Hero секция - эмоциональное вовлечение */
+    .hero-future {
+      min-height: 100vh;
+      background: 
+        linear-gradient(135deg, rgba(37, 99, 235, 0.08) 0%, rgba(16, 185, 129, 0.08) 100%),
+        url('/assets/img/hero-logistics.webp') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    /* Параллакс слои */
+    .hero-future::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: radial-gradient(ellipse at center, transparent 0%, rgba(0, 0, 0, 0.1) 100%);
+      z-index: 1;
+    }
+    
+    .hero-content {
+      position: relative;
+      z-index: 10;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      text-align: center;
+      color: white;
+    }
+    
+    /* Заголовок с кинетической типографикой */
+    .hero-title {
+      font-size: clamp(3rem, 7vw, 5rem);
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+      text-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+      background: linear-gradient(135deg, #ffffff 0%, #f1f5f9 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: heroTitleIn 1.2s var(--spring) both;
+    }
+    
+    .hero-accent {
+      background: linear-gradient(135deg, #f59e0b 0%, #10b981 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      display: inline-block;
+      animation: heroAccentGlow 2s ease-in-out infinite alternate;
+    }
+    
+    .hero-subtitle {
+      font-size: clamp(1.2rem, 3vw, 1.6rem);
+      font-weight: 400;
+      margin-bottom: 3rem;
+      opacity: 0.95;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+      animation: heroSubtitleIn 1.2s var(--spring) 0.3s both;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    /* CTA кнопка будущего с тактильным эффектом */
+    .cta-future {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1.25rem 2.5rem;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--success) 100%);
+      color: white;
+      text-decoration: none;
+      border-radius: 60px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 
+        var(--haptic-medium),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(20px);
+      transition: all 0.4s var(--spring);
+      animation: ctaIn 1.2s var(--spring) 0.6s both;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .cta-future::before {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%; right: 0; bottom: 0;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: left 0.6s ease;
+    }
+    
+    .cta-future:hover {
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: 
+        var(--haptic-strong),
+        var(--haptic-glow),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    }
+    
+    .cta-future:hover::before {
+      left: 100%;
+    }
+    
+    .cta-future:active {
+      transform: translateY(-2px) scale(1.01);
+      transition: all 0.1s ease;
+    }
+    
+    /* Социальные доказательства */
+    .social-proof {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      margin-top: 4rem;
+      animation: socialProofIn 1.2s var(--spring) 0.9s both;
+    }
+    
+    .proof-item {
+      text-align: center;
+      color: white;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 20px;
+      padding: 1.5rem 1rem;
+      min-width: 140px;
+      transition: all 0.3s var(--spring);
+    }
+    
+    .proof-item:hover {
+      transform: translateY(-8px);
+      background: rgba(255, 255, 255, 0.15);
+      box-shadow: var(--haptic-medium);
+    }
+    
+    .proof-number {
+      font-size: 2.5rem;
+      font-weight: 800;
+      display: block;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+      margin-bottom: 0.5rem;
+    }
+    
+    .proof-label {
+      font-size: 0.9rem;
+      opacity: 0.9;
+      font-weight: 500;
+    }
+    
+    /* Анимации */
+    @keyframes heroTitleIn {
+      from {
+        opacity: 0;
+        transform: translateY(60px) scale(0.9);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+    
+    @keyframes heroSubtitleIn {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 0.95;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes ctaIn {
+      from {
+        opacity: 0;
+        transform: translateY(40px) scale(0.9);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+    
+    @keyframes socialProofIn {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes heroAccentGlow {
+      from {
+        filter: brightness(1);
+      }
+      to {
+        filter: brightness(1.1);
+      }
+    }
+    
+    /* Индикатор прокрутки */
+    .scroll-indicator {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      color: rgba(255, 255, 255, 0.8);
+      animation: float 3s ease-in-out infinite;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .scroll-indicator:hover {
+      color: white;
+      transform: translateX(-50%) scale(1.1);
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(-10px); }
+    }
+    
+    /* Мобильная адаптация */
+    @media (max-width: 768px) {
+      .hero-content {
+        padding: 0 1rem;
+      }
+      
+      .social-proof {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: center;
+      }
+      
+      .proof-item {
+        width: 200px;
+      }
+      
+      .cta-future {
+        padding: 1rem 2rem;
+        font-size: 1rem;
+      }
+    }
+    
+    /* Предзагрузчик */
+    .preloader {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--success) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10000;
+      transition: opacity 0.5s ease, visibility 0.5s ease;
+    }
+    
+    .preloader.hidden {
+      opacity: 0;
+      visibility: hidden;
+    }
+    
+    .loader {
+      width: 60px;
+      height: 60px;
+      border: 4px solid rgba(255, 255, 255, 0.2);
+      border-top: 4px solid white;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+  
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LogisticsService",
+    "name": "АвтоГОСТ",
+    "description": "Инфраструктура бизнеса - грузоперевозки без забот",
+    "url": "https://avtogost77.ru",
+    "logo": "https://avtogost77.ru/assets/img/logo.png",
+    "areaServed": {
+      "@type": "Country",
+      "name": "Россия"
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Логистические услуги",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Грузоперевозки по России"
+          }
+        }
+      ]
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+7-916-272-09-32",
+      "contactType": "customer service"
+    }
+  }
+  </script>
+</head>
+
+<body>
+  <!-- Предзагрузчик -->
+  <div class="preloader" id="preloader">
+    <div class="loader"></div>
+  </div>
+
+  <!-- Hero секция - ЭТАП 1: AWARENESS -->
+  <section class="hero-future" id="hero">
+    <div class="hero-content">
+      <h1 class="hero-title">
+        Пока вы создаете —<br>
+        <span class="hero-accent">мы доставляем</span>
+      </h1>
+      
+      <p class="hero-subtitle">
+        Мы не логистическая компания — мы инфраструктура вашего бизнеса.<br>
+        Занимайтесь делом, логистику доверьте нам.
+      </p>
+      
+      <!-- ВОРОНКА: Главный CTA -->
+      <a href="#smart-calculator" class="cta-future" id="main-cta">
+        <span style="font-size: 1.2em;">🚀</span>
+        Узнать стоимость за 30 секунд
+      </a>
+      
+      <!-- ЭТАП 2: INTEREST - Социальные доказательства -->
+      <div class="social-proof">
+        <div class="proof-item" data-aos="fade-up" data-aos-delay="100">
+          <span class="proof-number">60K+</span>
+          <span class="proof-label">перевозчиков</span>
+        </div>
+        <div class="proof-item" data-aos="fade-up" data-aos-delay="200">
+          <span class="proof-number">2ч</span>
+          <span class="proof-label">подача в Москве</span>
+        </div>
+        <div class="proof-item" data-aos="fade-up" data-aos-delay="300">
+          <span class="proof-number">99.3%</span>
+          <span class="proof-label">вовремя</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="scroll-indicator" id="scroll-indicator">
+      <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">⬇</div>
+      <div style="font-size: 0.8rem;">Узнать больше</div>
+    </div>
+  </section>
+
+  <!-- Основной контент будет загружен динамически -->
+  <main id="main-content">
+    <!-- Калькулятор, услуги, и другие секции -->
+  </main>
+
+  <!-- Подключение модулей -->
+  <script type="module" src="/src/main.ts"></script>
+  
+  <!-- Inline скрипт для критических функций -->
+  <script>
+    // Предзагрузчик
+    window.addEventListener('load', function() {
+      const preloader = document.getElementById('preloader');
+      if (preloader) {
+        preloader.classList.add('hidden');
+        setTimeout(() => preloader.remove(), 500);
+      }
+    });
+    
+    // Плавная прокрутка
+    document.getElementById('main-cta')?.addEventListener('click', function(e) {
+      e.preventDefault();
+      const target = document.getElementById('smart-calculator');
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+    
+    document.getElementById('scroll-indicator')?.addEventListener('click', function() {
+      const target = document.getElementById('smart-calculator') || document.getElementById('main-content');
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+    
+    // Тактильная обратная связь для устройств с поддержкой
+    function addHapticFeedback(element) {
+      element.addEventListener('click', function() {
+        if ('vibrate' in navigator) {
+          navigator.vibrate(50); // Легкая вибрация 50мс
+        }
+      });
+    }
+    
+    // Добавляем тактильную обратную связь ко всем интерактивным элементам
+    document.addEventListener('DOMContentLoaded', function() {
+      const interactiveElements = document.querySelectorAll('.cta-future, .proof-item, button, [role="button"]');
+      interactiveElements.forEach(addHapticFeedback);
+    });
+  </script>
+
+  <!-- Web Font загрузка -->
+  <link rel="preload" href="/assets/fonts/inter-var.woff2" as="font" type="font/woff2" crossorigin>
+  <style>
+    @font-face {
+      font-family: 'Inter Variable';
+      src: url('/assets/fonts/inter-var.woff2') format('woff2');
+      font-weight: 100 900;
+      font-style: normal;
+      font-display: swap;
+    }
+  </style>
+</body>
+</html>
