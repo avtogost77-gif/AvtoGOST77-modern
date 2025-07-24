@@ -2471,3 +2471,177 @@ header {
     color: #000 !important;
   }
 }
+
+/* ===============================================
+   PWA УСТАНОВКА И УВЕДОМЛЕНИЯ
+   =============================================== */
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOut {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+#pwa-install-btn {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+#pwa-install-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(16, 185, 129, 0.3);
+}
+
+#pwa-install-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s;
+}
+
+#pwa-install-btn:hover::before {
+  left: 100%;
+}
+
+/* Адаптивность PWA кнопки */
+@media (max-width: 768px) {
+  #pwa-install-btn {
+    width: 100%;
+    margin-top: 1rem;
+  }
+  
+  .hero-actions {
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
+
+/* ===============================================
+   КАСТОМНЫЕ ЧЕКБОКСЫ СОГЛАСИЯ (152-ФЗ)
+   =============================================== */
+
+.consent-checkbox {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin: 16px 0;
+  font-size: 14px;
+  line-height: 1.4;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.consent-checkbox:hover {
+  background: rgba(37, 99, 235, 0.05);
+  border-radius: 8px;
+  padding: 8px;
+  margin: 8px -8px;
+}
+
+.consent-checkbox input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #d1d5db;
+  border-radius: 4px;
+  background: white;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.consent-checkbox input[type="checkbox"]:hover {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.consent-checkbox input[type="checkbox"]:checked {
+  background: #2563eb;
+  border-color: #2563eb;
+}
+
+.consent-checkbox input[type="checkbox"]:checked::after {
+  content: '✓';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.consent-checkbox input[type="checkbox"]:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+}
+
+.consent-checkbox input[type="checkbox"]:invalid {
+  border-color: #ef4444;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+.consent-checkbox a {
+  color: #2563eb;
+  text-decoration: underline;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.consent-checkbox a:hover {
+  color: #1d4ed8;
+  text-decoration: none;
+}
+
+/* Индикатор обязательности */
+.consent-checkbox.required::before {
+  content: '';
+  position: absolute;
+  left: -8px;
+  top: 0;
+  width: 3px;
+  height: 100%;
+  background: #ef4444;
+  border-radius: 2px;
+  opacity: 0.7;
+}
+
+/* Анимация валидации */
+.consent-checkbox.valid {
+  background: rgba(16, 185, 129, 0.05);
+  border-left: 3px solid #10b981;
+  padding-left: 12px;
+  border-radius: 4px;
+}
+
+.consent-checkbox.invalid {
+  background: rgba(239, 68, 68, 0.05);
+  border-left: 3px solid #ef4444;
+  padding-left: 12px;
+  border-radius: 4px;
+}

@@ -69,7 +69,10 @@
         <label>Email<br/><input type="email" name="email" required></label><br/>
         <label>Телефон<br/><input type="tel" name="phone" required></label><br/>
         <label>Сообщение<br/><textarea name="message" rows="5" required placeholder="Например: доставить 3 паллеты из Москвы в Казань 12 ноября"></textarea></label><br/>
-        <label><input type="checkbox" name="consent" required> Я согласен(а) с <a href="privacy.html" target="_blank">Политикой конфиденциальности</a></label><br/>
+        <label class="consent-checkbox required">
+          <input type="checkbox" name="consent" required>
+          <span>Я согласен(а) с <a href="privacy.html" target="_blank">обработкой персональных данных</a> и <a href="privacy.html" target="_blank">Политикой конфиденциальности</a> в соответствии с 152-ФЗ</span>
+        </label>
         <button type="submit" class="btn btn-primary">Отправить запрос</button>
       </form>
     </div>
