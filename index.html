@@ -4,14 +4,263 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Удалённый отдел логистики по России — эксперты Москва и МО</title>
-  <meta name="description" content="Аутсорсинг логистики по всей России: 60 000 перевозчиков, гибкие тарифы и подача машины за 2 ч в Москве и МО. Экономьте время и бюджет." />
-  <link rel="stylesheet" href="assets/css/styles.css" />
-  <!-- Bootstrap Icons -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-  <!-- AOS scroll animations -->
-  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+  
+  <!-- SEO Мета-теги -->
+  <title>Пока вы создаете — мы доставляем | Инфраструктура бизнеса | АвтоГОСТ</title>
+  <meta name="description" content="🎯 Мы не логистическая компания — мы инфраструктура вашего бизнеса. Работаем незаметно, как электричество в розетке. Пока вы творите — мы везем. Логистика без тревог." />
+  <meta name="keywords" content="грузоперевозки москва, удаленный отдел логистики, аутсорсинг логистики, доставка на маркетплейсы, спот заявки транспорт, грузоперевозки малый бизнес, прямые перевозки без складов, срочная подача транспорта" />
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="АвтоГОСТ — Грузоперевозки по России | Логистика Москва" />
+  <meta property="og:description" content="Подача транспорта за 2 часа в Москве и МО. 60000+ перевозчиков. Аутсорсинг логистики от 35₽/км. Онлайн калькулятор стоимости." />
+  <meta property="og:image" content="https://avtogost77.ru/assets/img/og-image.jpg" />
+  <meta property="og:url" content="https://avtogost77.ru" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="ru_RU" />
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="АвтоГОСТ — Грузоперевозки по России" />
+  <meta name="twitter:description" content="Подача транспорта за 2 часа. 60000+ перевозчиков. Онлайн калькулятор." />
+  <meta name="twitter:image" content="https://avtogost77.ru/assets/img/twitter-card.jpg" />
+  
+  <!-- Canonical и альтернативные версии -->
+  <link rel="canonical" href="https://avtogost77.ru/" />
+  <link rel="alternate" hreflang="ru" href="https://avtogost77.ru/" />
+  
+  <!-- Favicon -->
   <link rel="icon" type="image/png" href="assets/img/favicon.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16x16.png">
+  
+  <!-- Critical CSS (inline for fastest loading) -->
+  <link rel="stylesheet" href="assets/css/critical.css">
+  
+  <!-- Preload Critical Resources -->
+  <link rel="preload" href="assets/css/styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="assets/css/mobile.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="assets/js/calc.js" as="script">
+  <link rel="preload" href="assets/js/performance.js" as="script">
+  <link rel="preload" href="assets/js/seo-optimizer.js" as="script">
+  
+  <!-- DNS Prefetch for external resources -->
+  <link rel="dns-prefetch" href="//fonts.googleapis.com">
+  <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
+  <link rel="dns-prefetch" href="//unpkg.com">
+  
+  <!-- Non-critical CSS (deferred loading) -->
+  <noscript>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/mobile.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
+  </noscript>
+  
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TransportationCompany",
+    "name": "АвтоГОСТ",
+    "alternateName": "AvtoGOST",
+    "description": "Инфраструктура бизнеса. Работаем незаметно, как электричество в розетке. Пока вы создаете — мы доставляем. Логистика без тревог для малого и среднего бизнеса.",
+    "url": "https://avtogost77.ru",
+    "logo": "https://avtogost77.ru/assets/img/logo.png",
+    "image": "https://avtogost77.ru/assets/img/company-photo.jpg",
+    "telephone": "+7-916-272-09-32",
+    "email": "avtogost77@gmail.com",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Москва",
+      "addressRegion": "Московская область",
+      "addressCountry": "RU"
+    },
+    "areaServed": [
+      {
+        "@type": "Country",
+        "name": "Россия"
+      },
+      {
+        "@type": "State",
+        "name": "Московская область"
+      }
+    ],
+    "serviceType": [
+      "Грузоперевозки",
+      "Логистические услуги",
+      "Аутсорсинг логистики",
+      "Экспедирование грузов",
+      "Удаленный отдел логистики"
+    ],
+    "founder": {
+      "@type": "Person",
+      "name": "АвтоГОСТ"
+    },
+    "foundingDate": "2014",
+    "numberOfEmployees": "50-100",
+    "slogan": "Логистика без забот",
+    "priceRange": "$$",
+    "paymentAccepted": [
+      "Cash",
+      "Credit Card",
+      "Bank Transfer",
+      "Invoice"
+    ],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Логистические услуги",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Грузоперевозки по России",
+            "description": "Доставка грузов автомобильным транспортом по всей территории России"
+          }
+        },
+        {
+          "@type": "Offer", 
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Аутсорсинг логистики",
+            "description": "Полное ведение логистических операций клиента силами нашей команды"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service", 
+            "name": "Экспресс-доставка Москва и МО",
+            "description": "Подача транспорта в течение 2 часов в Москве и Московской области"
+          }
+        }
+      ]
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "reviewCount": "127",
+      "bestRating": "5",
+      "worstRating": "1"
+    },
+    "review": [
+      {
+        "@type": "Review",
+        "author": {
+          "@type": "Organization",
+          "name": "ООО Логистик-Трейд"
+        },
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": "5"
+        },
+        "reviewBody": "Отличная компания для аутсорсинга логистики. Быстрая подача транспорта, всегда выполняют обязательства в срок."
+      }
+    ],
+    "sameAs": [
+      "https://wa.me/79162720932",
+      "https://t.me/avtogost77"
+    ]
+  }
+  </script>
+
+  <!-- Локальный бизнес Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "@id": "https://avtogost77.ru/#LocalBusiness",
+    "name": "АвтоГОСТ",
+    "image": "https://avtogost77.ru/assets/img/office.jpg",
+    "telephone": "+7-916-272-09-32",
+    "email": "avtogost77@gmail.com",
+    "url": "https://avtogost77.ru",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Москва и Московская область",
+      "addressLocality": "Москва", 
+      "postalCode": "101000",
+      "addressCountry": "RU"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "55.7558",
+      "longitude": "37.6176"
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday", 
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "opens": "09:00",
+        "closes": "18:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Saturday",
+        "opens": "10:00",
+        "closes": "16:00"
+      }
+    ],
+    "priceRange": "$$",
+    "currenciesAccepted": "RUB",
+    "paymentAccepted": ["Cash", "Credit Card", "Invoice"]
+  }
+  </script>
+
+  <!-- FAQ Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Какая стоимость грузоперевозок по России?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Стоимость грузоперевозок начинается от 35 рублей за километр и зависит от типа груза, веса, расстояния и дополнительных услуг. Точную стоимость можно рассчитать в нашем онлайн-калькуляторе."
+        }
+      },
+      {
+        "@type": "Question", 
+        "name": "За какое время можете подать транспорт в Москве?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "В Москве и Московской области мы гарантируем подачу транспорта в течение 2 часов. При несоблюдении срока предоставляем скидку 10%."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Какие типы грузов перевозите?",
+        "acceptedAnswer": {
+          "@type": "Answer", 
+          "text": "Мы перевозим все типы грузов: обычные, хрупкие, опасные, негабаритные, продукты питания, медицинские товары. Имеем все необходимые лицензии и сертификаты."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Предоставляете ли аутсорсинг логистики?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Да, мы предоставляем полный аутсорсинг логистических операций - становимся вашим удаленным отделом логистики. Это позволяет сэкономить до 30% на логистических расходах."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- Веб-приложение манифест -->
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#2563eb">
+  <meta name="msapplication-TileColor" content="#2563eb">
+  
   <!-- Yandex.Metrika counter -->
   <script type="text/javascript" >
      (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
@@ -24,7 +273,8 @@
           clickmap:true,
           trackLinks:true,
           accurateTrackBounce:true,
-          webvisor:true
+          webvisor:true,
+          ecommerce:"dataLayer"
      });
   </script>
   <noscript><div><img src="https://mc.yandex.ru/watch/103413788" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
@@ -68,50 +318,91 @@
   <!-- Hero -->
   <section class="hero">
     <div class="container">
-      <h1>Авто&nbsp;Гост — грузоперевозки по&nbsp;РФ, подача&nbsp;по&nbsp;Москве&nbsp;и&nbsp;МО&nbsp;до&nbsp;двух&nbsp;часов</h1>
-      <p>10&nbsp;лет опыта · 60&nbsp;000 проверенных перевозчиков · SLA 99,3&nbsp;% доставок вовремя</p>
-      <a href="contact.html" class="btn btn-primary">Получить&nbsp;расчёт</a>
-      <a href="services.html" class="btn btn-outline" style="margin-left:1rem;">Смотреть&nbsp;услуги</a>
-    </div>
-  </section>
-
-  <!-- Pain Points -->
-  <section class="pain" data-aos="fade-up">
-    <div class="container">
-      <h2>Какие проблемы мы решаем для МСБ</h2>
-      <p>Содержание логиста в штате дорого, а поиск надёжного перевозчика занимает время? Мы берём всё на себя, снижая ваши расходы и риски.</p>
-      <ul>
-        <li>Экономия до 30 % на логистических расходах.</li>
-        <li>Доступ к базе 60 000 проверенных перевозчиков.</li>
-        <li>Экстренная подача автомобиля в Москве и МО за 2–3 часа.</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- Calculator Section -->
-  <section data-aos="fade-up" id="calc">
-    <div class="container">
-      <h2>Быстрый расчёт стоимости</h2>
-      <form id="freight-calc-form" class="calc-form" style="max-width:600px;margin:auto">
-        <div style="display:flex;gap:1rem;flex-wrap:wrap">
-          <label style="flex:1 1 140px">Тип&nbsp;перевозки
-            <select name="type" required style="width:100%">
-              <option value="FTL">Отдельная машина (FTL)</option>
-              <option value="LTL">Сборный груз (LTL)</option>
-            </select>
-          </label>
-          <label style="flex:1 1 120px">Дистанция, км
-            <input type="number" name="distance" min="1" required placeholder="например 550" style="width:100%">
-          </label>
-          <label style="flex:1 1 120px" id="weight-label">Вес, кг (для LTL)
-            <input type="number" name="weight" min="1" placeholder="500" style="width:100%">
-          </label>
+      <div class="hero-content">
+        <h1 class="animate-fade-in-up">Пока вы создаете — мы доставляем</h1>
+        <p class="text-lg animate-fade-in-up" style="animation-delay: 0.2s;">
+          Мы не логистическая компания — мы инфраструктура вашего бизнеса. Работаем незаметно, как инфраструктура города. Занимайтесь своим делом, логистику доверьте нам.
+        </p>
+        <div class="hero-actions animate-fade-in-up" style="animation-delay: 0.4s; margin-top: 2rem;">
+          <a href="#smart-calculator" class="btn btn-primary btn-lg">
+            <i class="bi bi-calculator"></i> Рассчитать доставку
+          </a>
+          <a href="services.html" class="btn btn-secondary btn-lg">
+            <i class="bi bi-truck"></i> Наши услуги
+          </a>
+          <button id="pwa-install-btn" class="btn btn-success btn-lg" style="display: none;">
+            <i class="bi bi-download"></i> Установить приложение
+          </button>
         </div>
-        <button type="submit" class="btn btn-primary" style="margin-top:1rem">Рассчитать</button>
-      </form>
-      <p id="freight-calc-result" style="margin-top:1rem;font-weight:500"></p>
+      </div>
+      
+      <div class="hero-stats animate-fade-in-up" style="animation-delay: 0.6s;">
+        <div class="hero-stat">
+          <span class="hero-stat-number">10+</span>
+          <span class="hero-stat-label">лет опыта</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-number">60K+</span>
+          <span class="hero-stat-label">перевозчиков</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-number">99.3%</span>
+          <span class="hero-stat-label">доставок вовремя</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-number">2ч</span>
+          <span class="hero-stat-label">подача в Москве</span>
+        </div>
+      </div>
     </div>
   </section>
+
+  <!-- Benefits Section -->
+  <section class="section reveal">
+    <div class="container">
+              <div class="text-center" style="margin-bottom: 4rem;">
+        <h2>🎯 Фоновая логистика — вы даже не заметите, как груз дошел</h2>
+        <p class="text-lg text-muted">Ваш бизнес на переднем плане, логистика — в надежных руках. Живите спокойно, мы везем.</p>
+      </div>
+      
+      <div class="grid grid-3">
+        <div class="card reveal">
+          <div class="benefit-icon">🏗️</div>
+          <h3>Инфраструктура вашего бизнеса</h3>
+          <p>Мы становимся частью вашей инфраструктуры — незаметно, надежно, эффективно. Как городские дороги: вы ими пользуетесь, но не думаете о них</p>
+          <ul style="margin-top: 1rem; padding-left: 1.5rem;">
+            <li>Работаем в фоне вашего успеха</li>
+            <li>Вы даже не замечаете логистические процессы</li>
+            <li>Полная интеграция в ваш бизнес-процесс</li>
+          </ul>
+        </div>
+        
+        <div class="card reveal">
+          <div class="benefit-icon">🛡️</div>
+          <h3>Логистика без тревог</h3>
+          <p>Пока вы ведете переговоры — мы решаем форс-мажор с перевозчиком. Пока вы создаете продукт — мы доставляем предыдущий заказ</p>
+          <ul style="margin-top: 1rem; padding-left: 1.5rem;">
+            <li>Спите спокойно — мы на связи 24/7</li>
+            <li>Подвел перевозчик? Найдем замену за час</li>
+            <li>Работаем на опережение проблем</li>
+          </ul>
+        </div>
+        
+        <div class="card reveal">
+          <div class="benefit-icon">🎯</div>
+          <h3>Незаметная эффективность</h3>
+          <p>Вы заняты своим бизнесом, а груз уже едет к адресату. Никаких звонков, переживаний, контроля — все происходит само собой</p>
+          <ul style="margin-top: 1rem; padding-left: 1.5rem;">
+            <li>От заявки до доставки — без вашего участия</li>
+            <li>Отчеты приходят автоматически</li>
+            <li>Проблемы решаем до того, как вы о них узнаете</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Новый умный калькулятор будет автоматически вставлен через JavaScript -->
 
   <!-- Lead capture modal -->
   <div class="modal-overlay" id="lead-modal">
@@ -122,34 +413,37 @@
         <input type="tel" name="phone" placeholder="Телефон" required style="width:100%;margin-bottom:.5rem;padding:.5rem">
         <input type="email" name="email" placeholder="Email (необязательно)" style="width:100%;margin-bottom:.5rem;padding:.5rem">
         <input type="hidden" name="details" id="lead-details">
+        <label class="consent-checkbox required">
+          <input type="checkbox" name="consent" required checked>
+          <span>Я согласен(а) с <a href="privacy.html" target="_blank">обработкой персональных данных</a> и <a href="privacy.html" target="_blank">Политикой конфиденциальности</a> в соответствии с 152-ФЗ</span>
+        </label>
         <button type="submit" class="btn btn-primary" style="width:100%;">Отправить заявку</button>
       </form>
-      <p style="font-size:.75rem;margin-top:.75rem;">* Нажимая кнопку, вы соглашаетесь с обработкой персональных данных.</p>
     </div>
   </div>
 
   <!-- Services Snapshot -->
   <section>
     <div class="container">
-      <h2>Наши услуги</h2>
+      <h2>Пока вы... — мы везем</h2>
       <div class="services-grid">
         <div data-aos="fade-up">
           <i class="bi bi-briefcase"></i>
-          <h3>Аутсорсинг логистики</h3>
-          <p>Удалённый отдел без лишних затрат: мы планируем, бронируем и контролируем перевозки 24/7.</p>
-          <a href="services.html#outsourcing" class="btn btn-outline">Узнать больше</a>
+          <h3>Пока вы растете — мы масштабируемся</h3>
+          <p>Становимся частью вашей инфраструктуры. Один раз настроили — дальше все работает само собой, как городское электричество.</p>
+          <a href="services.html#outsourcing" class="btn btn-outline">Стать частью нас</a>
         </div>
         <div data-aos="fade-up" data-aos-delay="100">
           <i class="bi bi-box"></i>
-          <h3>Сборные грузы (LTL)</h3>
-          <p>Платите только за занятое место: доставка паллет по России с консолидацией в Москве.</p>
-          <a href="services.html#ltl" class="btn btn-outline">Подробнее</a>
+          <h3>Пока вы продаете — мы доставляем</h3>
+          <p>На маркетплейсы, в регионы, к конечным клиентам. Товар должен дойти — все остальное наша забота.</p>
+          <a href="marketplace-delivery.html" class="btn btn-outline">Как это работает</a>
         </div>
         <div data-aos="fade-up" data-aos-delay="200">
           <i class="bi bi-truck"></i>
-          <h3>Грузовой транспорт 0–20 т</h3>
-          <p>Флот от Газели до фуры: оперативная подача авто в любой точке России.</p>
-          <a href="services.html#t0-5" class="btn btn-outline">Выбрать транспорт</a>
+          <h3>Пока вы спите — мы решаем проблемы</h3>
+          <p>Сломалась машина в 2 ночи? Подвел перевозчик утром? Вы об этом даже не узнаете — мы уже все решили.</p>
+          <a href="urgent-delivery.html" class="btn btn-outline">Спать спокойно</a>
         </div>
       </div>
     </div>
@@ -158,28 +452,35 @@
   <!-- How it works -->
   <section style="background: var(--color-bg);">
     <div class="container">
-      <h2>Как это работает</h2>
+      <h2>Как работает бизнес-инфраструктура</h2>
       <ol>
-        <li>Вы оставляете заявку с маршрутом и объёмом груза.</li>
-        <li>Мы подбираем оптимальный транспорт и ставку.</li>
-        <li>Координируем перевозку и отправляем вам отчёт.</li>
+        <li><strong>Вы думаете о бизнесе</strong> — придумываете продукты, ведете продажи, развиваете компанию. О логистике даже не вспоминаете.</li>
+        <li><strong>Мы работаем в фоне</strong> — как электричество в розетке. Нужно отправить? Уже едет. Проблема в пути? Уже решена. Груз дошел? Документы у вас.</li>
+        <li><strong>Результат очевиден</strong> — клиенты получают товары вовремя, вы получаете довольных клиентов. Логистика просто исчезает из ваших забот.</li>
       </ol>
     </div>
   </section>
 
   <!-- Testimonials -->
   <section>
-    <div class="container text-center">
-      <h2>Отзывы клиентов</h2>
-      <p>«Экстренно понадобилось отправить 3 паллеты из Москвы в Екатеринбург. Машина была подана через 2 часа, всё доставили вовремя. Рекомендуем!» — ИП «Ромашка»</p>
+          <div class="container text-center">
+      <h2>Пока предприниматели творят — мы доставляем</h2>
+      <p><strong>«Пока готовили новую коллекцию — АвтоГОСТ довез предыдущую в Коледино»</strong><br>
+      «Горячий клиент заказал 20 тонн на сегодня. Я был на переговорах, даже не знал о проблеме — АвтоГОСТ уже все решили. Фура приехала, груз увезли. Красота!» — ООО «ПВХ-Трейд» <a href="urgent-delivery.html" style="color: var(--color-primary);">→ Читать кейс</a></p>
+      <br>
+      <p><strong>«Пока веду продажи — товар уже едет к покупателям»</strong><br>
+      «Раньше половину времени тратил на поиск транспорта. Теперь АвтоГОСТ — как часть моей компании, только невидимая. Написал в WhatsApp — забыл про логистику.» — ИП Соколов, поставщик на Wildberries <a href="marketplace-delivery.html" style="color: var(--color-primary);">→ Стать невидимым</a></p>
+      <br>
+      <p style="margin-top: 2rem;"><a href="moscow-regions.html" class="btn btn-outline">Посмотреть всю инфраструктуру</a></p>
     </div>
   </section>
 
   <!-- CTA -->
   <section class="hero" style="padding: 3rem 0;">
     <div class="container">
-      <h2 style="color:#fff;">Внедрите удалённый отдел логистики уже сегодня</h2>
-      <a href="contact.html" class="btn btn-primary">Оставить заявку</a>
+      <h2 style="color:#fff;">Готовы стать инфраструктурой вашего бизнеса?</h2>
+      <p style="color:#fff; margin-bottom: 2rem;">Пока вы создаете — мы доставляем. Пока вы растете — мы масштабируемся. Пока вы спите — мы везем.</p>
+      <a href="contact.html" class="btn btn-primary">Стать частью инфраструктуры</a>
     </div>
   </section>
   <!-- Live ticker -->
@@ -214,12 +515,53 @@
     </div>
   </footer>
 
+  <!-- Performance optimization loads first -->
+  <script src="assets/js/performance.js"></script>
+  <script src="assets/js/seo-optimizer.js"></script>
+  
+  <!-- Core functionality -->
   <script src="assets/js/main.js"></script>
-  <script src="assets/js/benefit.js"></script>
-  <script src="assets/js/ticker.js"></script>
-  <script src="assets/js/sticky-bar.js"></script>
   <script src="assets/js/calc.js"></script>
-  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-  <script>AOS.init({ once:true, duration:600 });</script>
+  <script src="assets/js/content-generator.js"></script>
+  
+  <!-- UI enhancements (deferred) -->
+  <script defer src="assets/js/benefit.js"></script>
+  <script defer src="assets/js/ticker.js"></script>
+  <script defer src="assets/js/sticky-bar.js"></script>
+  <script defer src="assets/js/modern-ux.js"></script>
+  
+  <!-- External libraries (deferred) -->
+  <script defer src="https://unpkg.com/aos@2.3.4/dist/aos.js" onload="AOS.init({ once:true, duration:600 });"></script>
+  
+  <!-- Load non-critical CSS after page load -->
+  <script>
+    window.addEventListener('load', function() {
+      // Load Bootstrap Icons
+      const iconCSS = document.createElement('link');
+      iconCSS.rel = 'stylesheet';
+      iconCSS.href = 'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css';
+      document.head.appendChild(iconCSS);
+      
+      // Load AOS CSS
+      const aosCSS = document.createElement('link');
+      aosCSS.rel = 'stylesheet';
+      aosCSS.href = 'https://unpkg.com/aos@2.3.4/dist/aos.css';
+      document.head.appendChild(aosCSS);
+      
+      // Load main CSS if not already loaded
+      if (!document.querySelector('link[href="assets/css/styles.css"]')) {
+        const mainCSS = document.createElement('link');
+        mainCSS.rel = 'stylesheet';
+        mainCSS.href = 'assets/css/styles.css';
+        document.head.appendChild(mainCSS);
+      }
+      
+      // Load mobile CSS
+      const mobileCSS = document.createElement('link');
+      mobileCSS.rel = 'stylesheet';
+      mobileCSS.href = 'assets/css/mobile.css';
+      document.head.appendChild(mobileCSS);
+    });
+  </script>
 </body>
 </html>

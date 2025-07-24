@@ -1,0 +1,111 @@
+{
+  "name": "АвтоГОСТ — Грузоперевозки по России",
+  "short_name": "АвтоГОСТ",
+  "description": "Логистические услуги, грузоперевозки, аутсорсинг транспорта",
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#2563eb",
+  "background_color": "#f8fafc",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "ru",
+  "dir": "ltr",
+  "categories": ["business", "logistics", "transport"],
+  "icons": [
+    {
+      "src": "assets/img/icon-72x72.svg",
+      "sizes": "72x72",
+      "type": "image/svg+xml",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "assets/img/icon-96x96.svg", 
+      "sizes": "96x96",
+      "type": "image/svg+xml",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "assets/img/icon-128x128.svg",
+      "sizes": "128x128", 
+      "type": "image/svg+xml",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "assets/img/icon-144x144.svg",
+      "sizes": "144x144",
+      "type": "image/svg+xml",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "assets/img/icon-152x152.svg",
+      "sizes": "152x152",
+      "type": "image/svg+xml",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "assets/img/icon-192x192.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "assets/img/icon-384x384.svg",
+      "sizes": "384x384", 
+      "type": "image/svg+xml",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "assets/img/icon-512x512.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "maskable any"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Калькулятор стоимости",
+      "short_name": "Калькулятор", 
+      "description": "Рассчитать стоимость доставки",
+      "url": "/#smart-calculator",
+      "icons": [
+        {
+          "src": "assets/img/calc-icon.svg",
+          "sizes": "96x96",
+          "type": "image/svg+xml"
+        }
+      ]
+    },
+    {
+      "name": "Карта маршрутов",
+      "short_name": "Карта",
+      "description": "Интерактивная карта покрытия",
+      "url": "/#interactive-map",
+      "icons": [
+        {
+          "src": "assets/img/map-icon.svg", 
+          "sizes": "96x96",
+          "type": "image/svg+xml"
+        }
+      ]
+    },
+    {
+      "name": "Связаться с нами",
+      "short_name": "Контакты",
+      "description": "Телефон и мессенджеры",
+      "url": "/contact.html",
+      "icons": [
+        {
+          "src": "assets/img/contact-icon.svg",
+          "sizes": "96x96",
+          "type": "image/svg+xml"
+        }
+      ]
+    }
+  ],
+  "related_applications": [
+    {
+      "platform": "webapp",
+      "url": "https://avtogost77.ru"
+    }
+  ]
+}
