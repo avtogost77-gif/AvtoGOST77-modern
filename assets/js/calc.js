@@ -514,17 +514,7 @@ class SmartLogisticsCalculator {
                 </div>
               </label>
               
-              <label class="service-checkbox modern-checkbox">
-                <input type="checkbox" name="services" value="packing">
-                <span class="checkmark">
-                  <i class="check-icon">✓</i>
-                </span>
-                <div class="service-info">
-                  <span class="service-name">Упаковка</span>
-                  <span class="service-description">Профессиональная упаковка</span>
-                  <span class="service-price">+1000₽</span>
-                </div>
-              </label>
+
               
               <label class="service-checkbox modern-checkbox">
                 <input type="checkbox" name="services" value="insurance">
@@ -1032,10 +1022,7 @@ class SmartLogisticsCalculator {
           additionalCost += 1800; 
           serviceDetails.push({ name: 'Погрузка/разгрузка', cost: 1800 });
           break;
-        case 'packing': 
-          additionalCost += 1000; 
-          serviceDetails.push({ name: 'Упаковка', cost: 1000 });
-          break;
+
         case 'insurance': 
           const insuranceCost = Math.round(basePrice * 0.03);
           additionalCost += insuranceCost;
