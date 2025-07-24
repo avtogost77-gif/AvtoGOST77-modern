@@ -3,20 +3,30 @@
 // Кэширование, офлайн-режим, уведомления
 // ===============================================
 
-const CACHE_NAME = 'avtogost-v2.0.0';
-const STATIC_CACHE = 'static-v2.0.0';
-const DYNAMIC_CACHE = 'dynamic-v2.0.0';
-const IMAGE_CACHE = 'images-v2.0.0';
+const CACHE_NAME = 'avtogost-v2.1.0';
+const STATIC_CACHE = 'static-v2.1.0';
+const DYNAMIC_CACHE = 'dynamic-v2.1.0';
+const IMAGE_CACHE = 'images-v2.1.0';
 
 // Критические ресурсы для кэширования
 const CRITICAL_RESOURCES = [
   '/',
   '/index.html',
   '/assets/css/styles.css',
+  '/assets/css/critical.css',
+  '/assets/css/mobile.css',
   '/assets/js/calc.js',
   '/assets/js/modern-ux.js',
   '/assets/js/main.js',
-  '/manifest.json'
+  '/assets/js/performance.js',
+  '/manifest.json',
+  // Критические изображения
+  '/assets/img/favicon.png',
+  '/assets/img/favicon-16x16.png',
+  '/assets/img/favicon-32x32.png',
+  '/assets/img/apple-touch-icon.png',
+  '/assets/img/icon-192x192.svg',
+  '/assets/img/icon-512x512.svg'
 ];
 
 // Статические ресурсы
@@ -25,10 +35,21 @@ const STATIC_RESOURCES = [
   '/contact.html',
   '/about.html',
   '/faq.html',
+  '/news.html',
+  '/marketplace-delivery.html',
+  '/urgent-delivery.html',
+  '/moscow-regions.html',
   // '/assets/js/interactive-map.js', // Временно отключено
   '/assets/js/benefit.js',
   '/assets/js/ticker.js',
-  '/assets/js/sticky-bar.js'
+  '/assets/js/sticky-bar.js',
+  '/assets/js/seo-optimizer.js',
+  '/assets/js/content-generator.js',
+  // Важные изображения для SEO
+  '/assets/img/hero-logistics.webp',
+  '/assets/img/logo.png',
+  '/assets/img/og-image.jpg',
+  '/assets/img/twitter-card.jpg'
 ];
 
 // CDN ресурсы

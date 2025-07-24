@@ -27,8 +27,8 @@ class ModernUXEnhancer {
     // Skeleton для карты
     this.createSkeletonLoader('.map-canvas', 'map');
     
-    // Плавная загрузка изображений
-    this.setupLazyLoading();
+    // Плавная загрузка изображений (перенесено в performance.js)
+    // this.setupLazyLoading();
     
     // Progress indicators для форм
     this.setupFormProgress();

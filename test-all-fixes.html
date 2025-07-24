@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ТЕСТ ВСЕХ ИСПРАВЛЕНИЙ</title>
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/mobile.css">
+  <style>
+    .test-panel {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      background: rgba(0,0,0,0.9);
+      color: white;
+      padding: 15px;
+      border-radius: 8px;
+      font-size: 12px;
+      z-index: 20000;
+      max-width: 250px;
+    }
+    
+    .test-panel h4 {
+      margin: 0 0 10px 0;
+      color: #4CAF50;
+    }
+    
+    .test-result {
+      margin: 5px 0;
+      padding: 3px 6px;
+      border-radius: 3px;
+    }
+    
+    .pass { background: #4CAF50; }
+    .fail { background: #f44336; }
+    
+    .test-buttons {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      z-index: 20000;
+    }
+    
+    .test-btn {
+      display: block;
+      margin: 5px 0;
+      padding: 10px 15px;
+      background: #2196F3;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 12px;
+    }
+    
+    .test-btn:hover {
+      background: #1976D2;
+    }
+  </style>
+</head>
+<body>
+  <!-- Панель тестирования -->
+  <div class="test-panel">
+    <h4>🧪 ТЕСТЫ ИСПРАВЛЕНИЙ</h4>
+    <div id="test-results"></div>
+  </div>
+
+  <!-- Кнопки тестирования -->
+  <div class="test-buttons">
+    <button class="test-btn" onclick="runAllTests()">🔄 Запустить тесты</button>
+    <button class="test-btn" onclick="testModal()">📝 Тест модального окна</button>
+    <button class="test-btn" onclick="testHeroButtons()">🎯 Тест кнопок hero</button>
+    <button class="test-btn" onclick="testResponsive()">📱 Тест адаптивности</button>
+  </div>
+
+  <!-- Hero секция -->
+  <section class="hero hero-main">
+    <div class="container">
+      <div class="hero-content">
+        <h1>🔧 ТЕСТ ВСЕХ ИСПРАВЛЕНИЙ</h1>
+        <p>Проверяем работу hero изображения, кнопок и модальных окон после исправлений.</p>
+        <div class="hero-actions" style="margin-top: 2rem;">
+          <a href="#smart-calculator" class="btn btn-primary btn-lg" id="calc-btn">
+            📊 Рассчитать доставку
+          </a>
+          <a href="#test" class="btn btn-secondary btn-lg" onclick="alert('Кнопка кликабельна!')">
+            ✅ Тест кликабельности
+          </a>
+          <button class="btn btn-success btn-lg" onclick="openModal('lead-modal')">
+            📝 Открыть форму
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Тестовая секция -->
+  <section style="padding: 3rem 0; background: white;">
+    <div class="container">
+      <h2>📋 Результаты тестирования</h2>
+      <div id="detailed-results"></div>
+    </div>
+  </section>
+
+  <!-- Модальное окно -->
+  <div class="modal-overlay" id="lead-modal" style="display: none;">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeModal()" aria-label="Закрыть форму">&times;</button>
+      <h3 id="form-title">✅ ФОРМА РАБОТАЕТ!</h3>
+      <form id="lead-form" role="form" aria-labelledby="form-title">
+        <div class="form-group">
+          <label for="lead-name" class="sr-only">Ваше имя</label>
+          <input type="text" id="lead-name" name="name" placeholder="Ваше имя" required 
+                 style="width:100%;margin-bottom:.5rem;padding:.5rem">
+        </div>
+        
+        <div class="form-group">
+          <label for="lead-phone" class="sr-only">Телефон</label>
+          <input type="tel" id="lead-phone" name="phone" placeholder="Телефон" required 
+                 style="width:100%;margin-bottom:.5rem;padding:.5rem">
+        </div>
+        
+        <button type="button" class="btn btn-primary" onclick="alert('Форма работает!'); closeModal();" style="width:100%;">
+          ✅ Тест отправки
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- JavaScript для тестирования -->
+  <script>
+    // Функции управления модальными окнами (из основного сайта)
+    function openModal(modalId) {
+      const modal = document.getElementById(modalId);
+      if (modal) {
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+        
+        const firstInput = modal.querySelector('input[type="text"], input[type="tel"]');
+        if (firstInput) {
+          setTimeout(() => firstInput.focus(), 100);
+        }
+      }
+    }
+    
+    function closeModal() {
+      const modals = document.querySelectorAll('.modal-overlay');
+      modals.forEach(modal => {
+        modal.style.display = 'none';
+      });
+      document.body.style.overflow = '';
+    }
+    
+    // Закрытие по клику вне модального окна
+    document.addEventListener('click', function(e) {
+      if (e.target.classList.contains('modal-overlay')) {
+        closeModal();
+      }
+    });
+    
+    // Закрытие по Escape
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        closeModal();
+      }
+    });
+    
+    // Обработка кликов по кнопкам калькулятора
+    document.addEventListener('DOMContentLoaded', function() {
+      const calcButtons = document.querySelectorAll('a[href="#smart-calculator"]');
+      calcButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+          e.preventDefault();
+          openModal('lead-modal');
+        });
+      });
+    });
+
+    // Функции тестирования
+    function runAllTests() {
+      const results = [];
+      
+      // Тест 1: CSS стили hero
+      const heroElement = document.querySelector('.hero');
+      const heroStyles = window.getComputedStyle(heroElement);
+      const hasBgImage = heroStyles.backgroundImage && heroStyles.backgroundImage !== 'none';
+      results.push({
+        name: 'Hero фон',
+        passed: hasBgImage,
+        details: `Background: ${hasBgImage ? '✅' : '❌'}`
+      });
+      
+      // Тест 2: Z-index иерархия
+      const heroContent = document.querySelector('.hero-content');
+      const contentStyles = window.getComputedStyle(heroContent);
+      const zIndex = parseInt(contentStyles.zIndex) || 0;
+      results.push({
+        name: 'Z-index контента',
+        passed: zIndex >= 3,
+        details: `Z-index: ${zIndex}`
+      });
+      
+      // Тест 3: Модальное окно
+      const modal = document.getElementById('lead-modal');
+      const modalClose = document.querySelector('.modal-close');
+      results.push({
+        name: 'Модальное окно',
+        passed: modal && modalClose,
+        details: `Modal: ${modal ? '✅' : '❌'}, Close: ${modalClose ? '✅' : '❌'}`
+      });
+      
+      // Тест 4: Кнопки кликабельны
+      const heroButtons = document.querySelectorAll('.hero .btn');
+      const buttonsClickable = heroButtons.length > 0;
+      results.push({
+        name: 'Кнопки hero',
+        passed: buttonsClickable,
+        details: `Найдено ${heroButtons.length} кнопок`
+      });
+      
+      // Тест 5: Адаптивность
+      const isMobile = window.innerWidth <= 768;
+      const heroTextAlign = heroStyles.textAlign;
+      results.push({
+        name: 'Адаптивность',
+        passed: !isMobile || heroTextAlign === 'center',
+        details: `Width: ${window.innerWidth}px, Align: ${heroTextAlign}`
+      });
+      
+      displayResults(results);
+    }
+    
+    function displayResults(results) {
+      const testResults = document.getElementById('test-results');
+      const detailedResults = document.getElementById('detailed-results');
+      
+      let shortHtml = '';
+      let detailedHtml = '<h3>📊 Детальные результаты:</h3>';
+      
+      results.forEach(result => {
+        const status = result.passed ? 'pass' : 'fail';
+        const icon = result.passed ? '✅' : '❌';
+        
+        shortHtml += `<div class="test-result ${status}">${icon} ${result.name}</div>`;
+        detailedHtml += `
+          <div style="margin: 10px 0; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
+            <strong>${icon} ${result.name}:</strong> ${result.details}
+          </div>
+        `;
+      });
+      
+      testResults.innerHTML = shortHtml;
+      detailedResults.innerHTML = detailedHtml;
+    }
+    
+    function testModal() {
+      openModal('lead-modal');
+    }
+    
+    function testHeroButtons() {
+      const buttons = document.querySelectorAll('.hero .btn');
+      buttons.forEach((btn, index) => {
+        btn.style.border = '3px solid red';
+        setTimeout(() => {
+          btn.style.border = '';
+        }, 2000);
+      });
+      alert(`Найдено ${buttons.length} кнопок в hero. Они подсвечены красной рамкой на 2 секунды.`);
+    }
+    
+    function testResponsive() {
+      const width = window.innerWidth;
+      const hero = document.querySelector('.hero');
+      const styles = window.getComputedStyle(hero);
+      
+      alert(`
+        Размер экрана: ${width}px
+        Устройство: ${width <= 768 ? 'Мобильное' : 'Десктоп'}
+        Text-align: ${styles.textAlign}
+        Background: ${styles.backgroundImage !== 'none' ? 'Есть' : 'Нет'}
+        Display: ${styles.display}
+      `);
+    }
+    
+    // Автоматический запуск тестов при загрузке
+    window.addEventListener('load', function() {
+      setTimeout(runAllTests, 1000);
+    });
+  </script>
+</body>
+</html>

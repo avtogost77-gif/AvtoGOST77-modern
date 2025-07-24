@@ -147,9 +147,9 @@ class PerformanceOptimizer {
   setupCriticalResourceLoading() {
     // Предзагрузка критических ресурсов
     const criticalResources = [
-      { href: 'assets/css/critical.css', as: 'style' },
-      { href: 'assets/js/main.js', as: 'script' },
-      { href: 'manifest.json', as: 'manifest' }
+      { href: 'assets/css/critical.css', as: 'style' }
+      // main.js загружается defer, поэтому preload не нужен
+      // manifest.json не поддерживает preload
     ];
 
     criticalResources.forEach(resource => {

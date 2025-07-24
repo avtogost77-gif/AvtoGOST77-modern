@@ -407,11 +407,20 @@ header {
    =============================================== */
 
 .hero {
-  background: var(--gradient-hero);
+  /* Изображение как основа */
+  background: url('../img/hero-logistics.jpg') center/cover no-repeat;
+  background-image: url('../img/hero-logistics.webp'), url('../img/hero-logistics.jpg');
   color: white;
   padding: 120px 0 var(--spacing-2xl);
+  /* Отступ сверху для fixed header */
+  padding-top: calc(120px + 80px);
   position: relative;
   overflow: hidden;
+}
+
+/* Главная страница - hero без дополнительного отступа */
+.hero.hero-main {
+  padding-top: 120px;
 }
 
 .hero::before {
@@ -421,8 +430,10 @@ header {
   left: 0;
   right: 0;
   bottom: 0;
-  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
-  opacity: 0.3;
+  /* Красивый градиент поверх изображения */
+  background: var(--gradient-hero);
+  opacity: 0.25;
+  z-index: 1;
 }
 
 .hero-content {
@@ -1179,23 +1190,7 @@ header {
    АДАПТИВНОСТЬ
    =============================================== */
 
-@media (max-width: 768px) {
-  .navbar-menu {
-    display: none;
-  }
-  
-  .mobile-toggle {
-    display: block;
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    color: var(--neutral-700);
-    cursor: pointer;
-  }
-  
-  .hero {
-    padding: 100px 0 var(--spacing-xl);
-  }
+/* МОБИЛЬНЫЕ СТИЛИ ПЕРЕНЕСЕНЫ В mobile.css */
   
   .hero-stats {
     grid-template-columns: repeat(2, 1fr);
@@ -1894,25 +1889,7 @@ header {
   100% { transform: rotate(360deg); }
 }
 
-/* 📱 АДАПТИВНОСТЬ */
-@media (max-width: 768px) {
-  .route-inputs,
-  .cargo-params,
-  .additional-services {
-    grid-template-columns: 1fr;
-  }
-  
-  .cargo-types {
-    grid-template-columns: 1fr;
-  }
-  
-  .distance-success {
-    flex-direction: column;
-    text-align: center;
-  }
-  
-  .calculator-badges {
-    justify-content: center;
+/* МОБИЛЬНЫЕ СТИЛИ КАЛЬКУЛЯТОРА ПЕРЕНЕСЕНЫ В mobile.css */
   }
   
   .recommendation-content {
@@ -2303,23 +2280,7 @@ header {
   color: #78350f;
 }
 
-/* ===============================================
-   АДАПТИВНЫЕ СТИЛИ ДЛЯ РЕЗУЛЬТАТОВ
-   =============================================== */
-
-@media (max-width: 768px) {
-  .result-header {
-    flex-direction: column;
-    text-align: center;
-  }
-  
-  .detail-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .result-actions {
-    flex-direction: column;
-  }
+/* МОБИЛЬНЫЕ СТИЛИ РЕЗУЛЬТАТОВ ПЕРЕНЕСЕНЫ В mobile.css */
   
   .result-actions .btn {
     width: 100%;
@@ -2524,18 +2485,7 @@ header {
   left: 100%;
 }
 
-/* Адаптивность PWA кнопки */
-@media (max-width: 768px) {
-  #pwa-install-btn {
-    width: 100%;
-    margin-top: 1rem;
-  }
-  
-  .hero-actions {
-    flex-direction: column;
-    gap: 1rem;
-  }
-}
+/* МОБИЛЬНЫЕ СТИЛИ PWA ПЕРЕНЕСЕНЫ В mobile.css */
 
 /* ===============================================
    КАСТОМНЫЕ ЧЕКБОКСЫ СОГЛАСИЯ (152-ФЗ)
@@ -2644,4 +2594,138 @@ header {
   border-left: 3px solid #ef4444;
   padding-left: 12px;
   border-radius: 4px;
+}
+
+/* ===============================================
+   ПОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ
+   =============================================== */
+
+.privacy-policy {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 0;
+  line-height: 1.6;
+  color: var(--neutral-700);
+}
+
+.privacy-policy h1 {
+  color: var(--primary-600);
+  margin-bottom: 0.5rem;
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+.privacy-policy .last-updated {
+  color: var(--neutral-500);
+  font-style: italic;
+  margin-bottom: 2rem;
+  padding: 1rem;
+  background: var(--neutral-50);
+  border-radius: 8px;
+  border-left: 4px solid var(--primary-500);
+}
+
+.privacy-policy section {
+  margin-bottom: 2.5rem;
+}
+
+.privacy-policy h2 {
+  color: var(--primary-600);
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--primary-200);
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.privacy-policy ul {
+  margin: 1rem 0;
+  padding-left: 1.5rem;
+}
+
+.privacy-policy li {
+  margin-bottom: 0.5rem;
+}
+
+.privacy-policy .contact-block {
+  background: var(--primary-50);
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin-top: 1rem;
+  border: 1px solid var(--primary-200);
+}
+
+.privacy-policy .contact-block p {
+  margin: 0.5rem 0;
+}
+
+.privacy-policy .contact-block a {
+  color: var(--primary-600);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.privacy-policy .contact-block a:hover {
+  color: var(--primary-700);
+  text-decoration: underline;
+}
+
+.privacy-policy p {
+  margin-bottom: 1rem;
+}
+
+.privacy-policy strong {
+  color: var(--neutral-800);
+  font-weight: 600;
+}
+
+/* ===============================================
+   МОДАЛЬНЫЕ ОКНА
+   =============================================== */
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.modal-box {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  max-width: 500px;
+  width: 90%;
+  position: relative;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.modal-close {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 28px;
+  color: #999;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+  z-index: 10000;
+}
+
+.modal-close:hover {
+  color: #333;
+  background: rgba(0, 0, 0, 0.1);
 }

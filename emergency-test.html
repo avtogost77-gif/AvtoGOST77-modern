@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🚨 ЭКСТРЕННАЯ ПРОВЕРКА - 1 ЧАС ДО СДАЧИ</title>
+  <link rel="stylesheet" href="assets/css/critical.css">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/mobile.css">
+  <style>
+    .emergency-header {
+      background: #ff4444;
+      color: white;
+      padding: 10px;
+      text-align: center;
+      font-weight: bold;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 10000;
+    }
+    
+    .test-section {
+      margin-top: 60px;
+      padding: 20px;
+      border: 2px solid #ff4444;
+      margin: 80px 20px 20px 20px;
+      border-radius: 8px;
+    }
+    
+    .test-result {
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+    
+    .pass { background: #4CAF50; color: white; }
+    .fail { background: #f44336; color: white; }
+    .warning { background: #ff9800; color: white; }
+    
+    .emergency-hero {
+      min-height: 50vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      position: relative;
+      background: url('assets/img/hero-logistics.jpg') center/cover no-repeat;
+      background: url('assets/img/hero-logistics.webp') center/cover no-repeat;
+    }
+    
+    .emergency-hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      opacity: 0.6;
+      z-index: 1;
+    }
+    
+    .emergency-hero-content {
+      position: relative;
+      z-index: 2;
+    }
+  </style>
+</head>
+<body>
+  <div class="emergency-header">
+    🚨 ЭКСТРЕННАЯ ПРОВЕРКА - 1 ЧАС ДО СДАЧИ ПРОЕКТА
+  </div>
+
+  <!-- Тест Hero изображения -->
+  <div class="emergency-hero">
+    <div class="emergency-hero-content">
+      <h1>🖼️ ТЕСТ HERO ИЗОБРАЖЕНИЯ</h1>
+      <p>Если видите это на фоне изображения - HERO РАБОТАЕТ!</p>
+      <button onclick="testHero()" class="btn btn-primary">🔍 Проверить Hero</button>
+    </div>
+  </div>
+
+  <!-- Результаты тестов -->
+  <div class="test-section">
+    <h2>📊 РЕЗУЛЬТАТЫ ЭКСТРЕННЫХ ТЕСТОВ</h2>
+    <div id="test-results"></div>
+    <button onclick="runEmergencyTests()" class="btn btn-warning">🚨 ЗАПУСТИТЬ ВСЕ ТЕСТЫ</button>
+  </div>
+
+  <!-- Тест калькулятора -->
+  <div class="test-section">
+    <h2>🧮 ТЕСТ КАЛЬКУЛЯТОРА</h2>
+    <div id="calculator-container" style="max-width: 800px; margin: 0 auto;">
+      <div class="loading-calculator" style="text-align: center; padding: 3rem; color: #666;">
+        <i class="bi bi-hourglass-split" style="font-size: 2rem; margin-bottom: 1rem;"></i>
+        <p>Загружаем калькулятор...</p>
+      </div>
+    </div>
+    <button onclick="testCalculator()" class="btn btn-primary">🧮 Тестировать калькулятор</button>
+  </div>
+
+  <!-- JavaScript для экстренных тестов -->
+  <script>
+    function runEmergencyTests() {
+      const results = [];
+      
+      // Тест 1: CSS файлы загружены
+      const cssCount = document.styleSheets.length;
+      results.push({
+        name: 'CSS файлы',
+        status: cssCount >= 3 ? 'pass' : 'fail',
+        details: `Загружено ${cssCount} CSS файлов`
+      });
+      
+             // Тест 2: Hero изображение
+       const hero = document.querySelector('.emergency-hero');
+       const heroStyles = window.getComputedStyle(hero);
+       const hasBg = heroStyles.backgroundImage && heroStyles.backgroundImage !== 'none';
+       
+       // Проверяем opacity градиента
+       const heroBefore = window.getComputedStyle(hero, '::before');
+       const gradientOpacity = heroBefore.opacity || 'не найден';
+       
+       results.push({
+         name: 'Hero фон',
+         status: hasBg ? 'pass' : 'fail',
+         details: hasBg ? `Фон загружен, градиент opacity: ${gradientOpacity}` : 'Фон НЕ загружен'
+       });
+      
+      // Тест 3: Мобильные стили
+      const isMobile = window.innerWidth <= 768;
+      if (isMobile) {
+        const textAlign = heroStyles.textAlign;
+        results.push({
+          name: 'Мобильные стили',
+          status: textAlign === 'center' ? 'pass' : 'fail',
+          details: `Text-align: ${textAlign} (должен быть center на мобильных)`
+        });
+      }
+      
+      // Тест 4: Контейнер калькулятора
+      const calcContainer = document.getElementById('calculator-container');
+      results.push({
+        name: 'Контейнер калькулятора',
+        status: calcContainer ? 'pass' : 'fail',
+        details: calcContainer ? 'Контейнер найден' : 'Контейнер НЕ найден'
+      });
+      
+      // Тест 5: JavaScript ошибки
+      let jsErrors = 0;
+      window.addEventListener('error', () => jsErrors++);
+      results.push({
+        name: 'JavaScript ошибки',
+        status: jsErrors === 0 ? 'pass' : 'warning',
+        details: `Обнаружено ${jsErrors} ошибок`
+      });
+      
+      displayResults(results);
+    }
+    
+    function displayResults(results) {
+      const container = document.getElementById('test-results');
+      let html = '';
+      
+      results.forEach(result => {
+        const icon = result.status === 'pass' ? '✅' : result.status === 'fail' ? '❌' : '⚠️';
+        html += `
+          <div class="test-result ${result.status}">
+            ${icon} ${result.name}: ${result.details}
+          </div>
+        `;
+      });
+      
+      container.innerHTML = html;
+    }
+    
+    function testHero() {
+      const hero = document.querySelector('.emergency-hero');
+      const styles = window.getComputedStyle(hero);
+      const bgImage = styles.backgroundImage;
+      
+      alert(`
+        ТЕСТ HERO ИЗОБРАЖЕНИЯ:
+        
+        Фон: ${bgImage !== 'none' ? '✅ ЕСТЬ' : '❌ НЕТ'}
+        Ширина экрана: ${window.innerWidth}px
+        Устройство: ${window.innerWidth <= 768 ? 'Мобильное' : 'Десктоп'}
+        Background-image: ${bgImage}
+        
+        ${bgImage !== 'none' ? '🎉 HERO РАБОТАЕТ!' : '🚨 HERO НЕ РАБОТАЕТ!'}
+      `);
+    }
+    
+    function testCalculator() {
+      // Проверяем, инициализирован ли калькулятор
+      const calcForm = document.getElementById('smart-calc-form');
+      const calcInstance = window.calculatorInstance;
+      
+      alert(`
+        ТЕСТ КАЛЬКУЛЯТОРА:
+        
+        Форма калькулятора: ${calcForm ? '✅ НАЙДЕНА' : '❌ НЕ НАЙДЕНА'}
+        Экземпляр калькулятора: ${calcInstance ? '✅ СОЗДАН' : '❌ НЕ СОЗДАН'}
+        
+        ${calcForm && calcInstance ? '🎉 КАЛЬКУЛЯТОР РАБОТАЕТ!' : '🚨 КАЛЬКУЛЯТОР НЕ РАБОТАЕТ!'}
+      `);
+    }
+    
+    // Автоматический запуск при загрузке
+    window.addEventListener('load', function() {
+      setTimeout(runEmergencyTests, 1000);
+    });
+  </script>
+
+  <!-- Загружаем основные скрипты -->
+  <script src="assets/js/performance.js"></script>
+  <script src="assets/js/calc.js"></script>
+  <script>
+    // Принудительная инициализация калькулятора
+    document.addEventListener('DOMContentLoaded', function() {
+      try {
+        if (typeof SmartLogisticsCalculator !== 'undefined') {
+          window.calculatorInstance = new SmartLogisticsCalculator();
+          console.log('🚨 ЭКСТРЕННАЯ инициализация калькулятора');
+        } else {
+          console.error('🚨 SmartLogisticsCalculator НЕ НАЙДЕН!');
+        }
+      } catch (error) {
+        console.error('🚨 ОШИБКА инициализации калькулятора:', error);
+      }
+    });
+  </script>
+</body>
+</html>

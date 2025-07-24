@@ -371,6 +371,7 @@ class SmartLogisticsCalculator {
       if (this.config.animationsEnabled) {
         this.initMicroAnimations();
       }
+      console.log('🎉 Калькулятор полностью инициализирован!');
     } catch (error) {
       console.warn('Ошибка инициализации калькулятора:', error);
       // Показываем простую форму в случае ошибки
@@ -379,19 +380,27 @@ class SmartLogisticsCalculator {
   }
 
   showFallbackForm() {
-    const container = document.getElementById('calculator-container');
+    console.log('🚨 Показываем упрощенную форму калькулятора...');
+    const container = document.getElementById('calculator-container') || document.getElementById('smart-calculator');
     if (container) {
       container.innerHTML = `
-        <div class="calculator-error">
-          <h3>📞 Свяжитесь с нами для расчета</h3>
-          <p>Временные технические работы. Позвоните нам для точного расчета стоимости:</p>
-          <a href="tel:+74957777777" class="btn btn-primary">📞 +7 (495) 777-77-77</a>
+        <div class="calculator-error" style="text-align: center; padding: 2rem; background: #f8f9fa; border-radius: 8px;">
+          <h3 style="color: #333; margin-bottom: 1rem;">📞 Свяжитесь с нами для расчета</h3>
+          <p style="color: #666; margin-bottom: 1.5rem;">Временные технические работы. Позвоните нам для точного расчета стоимости:</p>
+          <a href="tel:+74957777777" class="btn btn-primary" style="display: inline-block; padding: 1rem 2rem; background: #007bff; color: white; text-decoration: none; border-radius: 5px;">📞 +7 (495) 777-77-77</a>
+          <br><br>
+          <a href="https://wa.me/79162720932" class="btn btn-success" style="display: inline-block; padding: 1rem 2rem; background: #28a745; color: white; text-decoration: none; border-radius: 5px; margin-top: 1rem;">💬 WhatsApp</a>
         </div>
       `;
+      console.log('✅ Упрощенная форма показана');
+    } else {
+      console.error('❌ Контейнер для упрощенной формы не найден!');
     }
   }
 
   createCalculatorUI() {
+    console.log('🚀 Создание UI калькулятора...');
+    
     const calculatorHTML = `
       <div class="smart-calculator card-neumorphic" data-aos="fade-up">
         <div class="calculator-header">
@@ -501,42 +510,12 @@ class SmartLogisticsCalculator {
               <span class="label-icon">🛠️</span>
               Дополнительные услуги
             </label>
-            <div class="additional-services grid-2">
-              <label class="service-checkbox modern-checkbox">
-                <input type="checkbox" name="services" value="loading">
-                <span class="checkmark">
-                  <i class="check-icon">✓</i>
-                </span>
-                <div class="service-info">
-                  <span class="service-name">Погрузка/разгрузка</span>
-                  <span class="service-description">Грузчики на обоих концах</span>
-                  <span class="service-price">+1800₽</span>
-                </div>
-              </label>
+            <div class="additional-services">
+
               
-              <label class="service-checkbox modern-checkbox">
-                <input type="checkbox" name="services" value="packing">
-                <span class="checkmark">
-                  <i class="check-icon">✓</i>
-                </span>
-                <div class="service-info">
-                  <span class="service-name">Упаковка</span>
-                  <span class="service-description">Профессиональная упаковка</span>
-                  <span class="service-price">+1000₽</span>
-                </div>
-              </label>
+
               
-              <label class="service-checkbox modern-checkbox">
-                <input type="checkbox" name="services" value="insurance">
-                <span class="checkmark">
-                  <i class="check-icon">✓</i>
-                </span>
-                <div class="service-info">
-                  <span class="service-name">Страхование</span>
-                  <span class="service-description">Защита от повреждений</span>
-                  <span class="service-price">+3% от стоимости</span>
-                </div>
-              </label>
+
               
               <label class="service-checkbox modern-checkbox">
                 <input type="checkbox" name="services" value="express">
@@ -545,8 +524,8 @@ class SmartLogisticsCalculator {
                 </span>
                 <div class="service-info">
                   <span class="service-name">Экспресс-доставка</span>
-                  <span class="service-description">Приоритетная подача</span>
-                  <span class="service-price">+50% к тарифу</span>
+                  <span class="service-description">Срочная подача, индивидуальный расчет</span>
+                  <span class="service-price">по договоренности</span>
                 </div>
               </label>
             </div>
@@ -586,10 +565,10 @@ class SmartLogisticsCalculator {
     `;
 
     // Найдем место для вставки калькулятора
-    let calcContainer = document.getElementById('smart-calculator');
+    let calcContainer = document.getElementById('calculator-container') || document.getElementById('smart-calculator');
     if (!calcContainer) {
       calcContainer = document.createElement('div');
-      calcContainer.id = 'smart-calculator';
+      calcContainer.id = 'calculator-container';
       calcContainer.className = 'section';
       
       // Вставим после hero секции
@@ -601,16 +580,20 @@ class SmartLogisticsCalculator {
       }
     }
 
-    calcContainer.innerHTML = `
-      <div class="container">
-        ${calculatorHTML}
-      </div>
-    `;
+    // Очищаем loading и вставляем калькулятор
+    console.log('✅ Контейнер найден:', calcContainer.id);
+    calcContainer.innerHTML = calculatorHTML;
+    console.log('✅ HTML калькулятора вставлен');
   }
 
   bindEvents() {
+    console.log('🔗 Привязка событий калькулятора...');
     const form = document.getElementById('smart-calc-form');
-    if (!form) return;
+    if (!form) {
+      console.error('❌ Форма калькулятора не найдена!');
+      return;
+    }
+    console.log('✅ Форма калькулятора найдена');
 
     // Обработка формы
     form.addEventListener('submit', (e) => this.handleCalculation(e));
@@ -1028,23 +1011,12 @@ class SmartLogisticsCalculator {
     
     services.forEach(service => {
       switch(service) {
-        case 'loading': 
-          additionalCost += 1800; 
-          serviceDetails.push({ name: 'Погрузка/разгрузка', cost: 1800 });
-          break;
-        case 'packing': 
-          additionalCost += 1000; 
-          serviceDetails.push({ name: 'Упаковка', cost: 1000 });
-          break;
-        case 'insurance': 
-          const insuranceCost = Math.round(basePrice * 0.03);
-          additionalCost += insuranceCost;
-          serviceDetails.push({ name: 'Страхование', cost: insuranceCost });
-          break;
+
+
+
         case 'express': 
-          const expressCost = Math.round(basePrice * 0.5);
-          basePrice *= 1.5;
-          serviceDetails.push({ name: 'Экспресс-доставка', cost: expressCost });
+          // Экспресс-доставка рассчитывается индивидуально
+          serviceDetails.push({ name: 'Экспресс-доставка', cost: 'по договоренности' });
           break;
       }
     });
@@ -1198,6 +1170,9 @@ class SmartLogisticsCalculator {
           <button class="btn btn-primary" onclick="this.openLeadModal()">
             📞 Заказать доставку
           </button>
+          <a href="https://t.me/father_bot" target="_blank" class="btn btn-telegram" style="background: #0088cc; color: white; text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem;">
+            💬 Написать в Telegram
+          </a>
           <button class="btn btn-secondary" onclick="this.saveCalculation()">
             💾 Сохранить расчет
           </button>

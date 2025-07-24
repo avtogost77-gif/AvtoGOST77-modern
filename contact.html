@@ -4,6 +4,8 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="yandex-verification" content="376fdf2ca69f9a1f" />
+  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
   <title>Контакты логистического аутсорсинга | Россия, офис Москва</title>
   <meta name="description" content="Задайте вопрос или получите расчёт: телефон, WhatsApp, Telegram, форма заявки. Работаем по России, подача авто в Москве за 2 ч." />
   <link rel="stylesheet" href="assets/css/styles.css" />
@@ -29,7 +31,22 @@
   </script>
   <noscript><div><img src="https://mc.yandex.ru/watch/103413788" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
   <!-- /Yandex.Metrika counter -->
-</head>
+  
+  <!-- Yandex.Metrika counter -->
+  <script type="text/javascript">
+      (function(m,e,t,r,i,k,a){
+          m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+          m[i].l=1*new Date();
+          for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+          k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+      })(window, document,'script','https://mc.yandex.ru/metrika/tag.js', 'ym');
+
+      ym(103413788, 'init', {webvisor:true, clickmap:true, accurateTrackBounce:true, trackLinks:true});
+  </script>
+  <noscript><div><img src="https://mc.yandex.ru/watch/103413788" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+  <!-- /Yandex.Metrika counter -->
+
+  </head>
 <body>
   <header>
     <div class="container navbar">
@@ -45,7 +62,7 @@
       </ul>
       <div class="navbar-social">
         <a href="https://wa.me/79162720932" target="_blank" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
-        <a href="https://t.me/avtogost77" target="_blank" aria-label="Telegram"><i class="bi bi-telegram"></i></a>
+        <a href="https://t.me/father_bot" target="_blank" aria-label="Telegram"><i class="bi bi-telegram"></i></a>
       </div>
     </div>
   </header>
@@ -61,7 +78,8 @@
       <h2>Контактная информация</h2>
       <p>Телефон: <a href="https://wa.me/79162720932" target="_blank">+7 916 272-09-32</a></p>
       <p>Email: <a href="mailto:avtogost77@gmail.com">avtogost77@gmail.com</a></p>
-      <p>WhatsApp / Telegram: <a href="https://t.me/avtogost77" target="_blank">@avtogost77</a></p>
+      <p><strong>WhatsApp (основной):</strong> <a href="https://wa.me/79162720932" target="_blank">+7 916 272-09-32</a></p>
+      <p>Telegram: <a href="https://t.me/father_bot" target="_blank">@father_bot</a></p>
 
       <h2 class="mt-2">Форма заявки</h2>
       <form id="contact-form" action="#" method="POST">
@@ -70,8 +88,8 @@
         <label>Телефон<br/><input type="tel" name="phone" required></label><br/>
         <label>Сообщение<br/><textarea name="message" rows="5" required placeholder="Например: доставить 3 паллеты из Москвы в Казань 12 ноября"></textarea></label><br/>
         <label class="consent-checkbox required">
-          <input type="checkbox" name="consent" required>
-          <span>Я согласен(а) с <a href="privacy.html" target="_blank">обработкой персональных данных</a> и <a href="privacy.html" target="_blank">Политикой конфиденциальности</a> в соответствии с 152-ФЗ</span>
+          <input type="checkbox" name="consent" checked>
+          <span>Я согласен(а) с <a href="privacy-policy.html" target="_blank">обработкой персональных данных</a> в соответствии с политикой конфиденциальности</span>
         </label>
         <button type="submit" class="btn btn-primary">Отправить запрос</button>
       </form>
@@ -79,9 +97,11 @@
   </section>
 
   <footer>
-    <div class="container text-center mt-2">© 2023 Авто&nbsp;Гост.</div>
+          <div class="container text-center mt-2">© 2023 Авто&nbsp;Гост. | <a href="privacy-policy.html">Политика конфиденциальности</a></div>
   </footer>
   <script src="assets/js/main.js"></script>
+  <script src="assets/js/form-handler.js"></script>
+  <script src="assets/js/metrika-events.js"></script>
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
   <script>AOS.init({ once:true, duration:600 });</script>
 </body>

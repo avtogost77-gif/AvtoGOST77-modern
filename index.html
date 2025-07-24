@@ -4,10 +4,15 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="yandex-verification" content="376fdf2ca69f9a1f" />
+  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+  <meta http-equiv="X-Frame-Options" content="DENY" />
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
   
   <!-- SEO Мета-теги -->
-  <title>Пока вы создаете — мы доставляем | Инфраструктура бизнеса | АвтоГОСТ</title>
-  <meta name="description" content="🎯 Мы не логистическая компания — мы инфраструктура вашего бизнеса. Работаем незаметно, как электричество в розетке. Пока вы творите — мы везем. Логистика без тревог." />
+  <title>Грузоперевозки Москва 2ч подача | АвтоГОСТ</title>
+  <meta name="description" content="Грузоперевозки по России от 35₽/км. Подача транспорта за 2 часа в Москве. 60K+ перевозчиков. Аутсорсинг логистики для бизнеса." />
   <meta name="keywords" content="грузоперевозки москва, удаленный отдел логистики, аутсорсинг логистики, доставка на маркетплейсы, спот заявки транспорт, грузоперевозки малый бизнес, прямые перевозки без складов, срочная подача транспорта" />
   
   <!-- Open Graph -->
@@ -37,9 +42,11 @@
   <!-- Critical CSS (inline for fastest loading) -->
   <link rel="stylesheet" href="assets/css/critical.css">
   
+  <!-- Main CSS - загружаем сразу для гарантии -->
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/mobile.css">
+  
   <!-- Preload Critical Resources -->
-  <link rel="preload" href="assets/css/styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <link rel="preload" href="assets/css/mobile.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <link rel="preload" href="assets/js/calc.js" as="script">
   <link rel="preload" href="assets/js/performance.js" as="script">
   <link rel="preload" href="assets/js/seo-optimizer.js" as="script">
@@ -160,7 +167,7 @@
     ],
     "sameAs": [
       "https://wa.me/79162720932",
-      "https://t.me/avtogost77"
+      "https://t.me/father_bot"
     ]
   }
   </script>
@@ -279,7 +286,22 @@
   </script>
   <noscript><div><img src="https://mc.yandex.ru/watch/103413788" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
   <!-- /Yandex.Metrika counter -->
-</head>
+  
+  <!-- Yandex.Metrika counter -->
+  <script type="text/javascript">
+      (function(m,e,t,r,i,k,a){
+          m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+          m[i].l=1*new Date();
+          for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+          k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+      })(window, document,'script','https://mc.yandex.ru/metrika/tag.js', 'ym');
+
+      ym(103413788, 'init', {webvisor:true, clickmap:true, accurateTrackBounce:true, trackLinks:true});
+  </script>
+  <noscript><div><img src="https://mc.yandex.ru/watch/103413788" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+  <!-- /Yandex.Metrika counter -->
+
+  </head>
 <body>
   <!-- Sticky Guarantee Bar -->
   <div class="sticky-bar">
@@ -291,7 +313,8 @@
     <div class="container navbar">
       <a href="/" class="navbar-brand" aria-label="Авто Гост — логистика без забот" title="Авто Гост — логистика без забот">Авто&nbsp;Гост</a>
       <button class="mobile-toggle" aria-label="Меню">☰</button>
-      <ul class="navbar-menu">
+      <nav role="navigation" aria-label="Основная навигация">
+        <ul class="navbar-menu">
         <li><a href="/">Главная</a></li>
         <li>
           <a href="services.html">Услуги ▾</a>
@@ -307,17 +330,35 @@
         <li><a href="news.html">Новости</a></li>
         <li><a href="contact.html">Контакты</a></li>
         <li><a href="faq.html">FAQ</a></li>
-      </ul>
+        </ul>
+      </nav>
       <div class="navbar-social">
         <a href="https://wa.me/79162720932" target="_blank" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
-        <a href="https://t.me/avtogost77" target="_blank" aria-label="Telegram"><i class="bi bi-telegram"></i></a>
+        <a href="https://t.me/father_bot" target="_blank" aria-label="Telegram"><i class="bi bi-telegram"></i></a>
       </div>
     </div>
   </header>
 
-  <!-- Hero -->
-  <section class="hero">
-    <div class="container">
+  <!-- Основной контент страницы -->
+  <main>
+    <!-- Hero -->
+    <section class="hero hero-main" style="
+      background: #1a1a1a url('/assets/img/hero-logistics.jpg') center/cover no-repeat !important;
+      min-height: 70vh !important;
+      position: relative !important;
+      display: flex !important;
+      align-items: center !important;
+      color: white !important;
+    ">
+    <!-- Принудительный градиент -->
+    <div style="
+      position: absolute !important;
+      top: 0 !important; left: 0 !important; right: 0 !important; bottom: 0 !important;
+      background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%) !important;
+      z-index: 1 !important;
+      pointer-events: none !important;
+    "></div>
+    <div class="container" style="position: relative !important; z-index: 2 !important;">
       <div class="hero-content">
         <h1 class="animate-fade-in-up">Пока вы создаете — мы доставляем</h1>
         <p class="text-lg animate-fade-in-up" style="animation-delay: 0.2s;">
@@ -402,20 +443,65 @@
     </div>
   </section>
 
-  <!-- Новый умный калькулятор будет автоматически вставлен через JavaScript -->
+  <!-- Умный калькулятор стоимости доставки -->
+  <section id="smart-calculator" class="section" style="background: var(--color-bg);">
+    <div class="container">
+      <h2 class="text-center">💰 Калькулятор стоимости доставки</h2>
+      <p class="text-center text-lg" style="margin-bottom: 3rem;">
+        Рассчитайте примерную стоимость доставки за 30 секунд. Без регистрации и звонков.
+      </p>
+      
+      <!-- Контейнер для калькулятора - будет заполнен через JavaScript -->
+      <div id="calculator-container" style="max-width: 800px; margin: 0 auto;">
+        <div class="loading-calculator" style="text-align: center; padding: 3rem; color: #666;">
+          <i class="bi bi-hourglass-split" style="font-size: 2rem; margin-bottom: 1rem;"></i>
+          <p>Загружаем калькулятор...</p>
+        </div>
+      </div>
+      
+      <div class="calculator-disclaimer" style="background: #fff3cd; border: 1px solid #ffeaa7; border-radius: 8px; padding: 1.5rem; margin-top: 2rem; text-align: center;">
+        <p style="margin: 0; color: #856404;">
+          <i class="bi bi-info-circle"></i> 
+          <strong>Важно:</strong> Расчет носит ориентировочный характер. 
+          Точная стоимость определяется после осмотра груза и уточнения деталей маршрута.
+        </p>
+      </div>
+    </div>
+  </section>
 
   <!-- Lead capture modal -->
-  <div class="modal-overlay" id="lead-modal">
+  <div class="modal-overlay" id="lead-modal" style="display: none;">
     <div class="modal-box" data-aos="zoom-in">
-      <h3>Получить точное предложение</h3>
-      <form id="lead-form">
-        <input type="text" name="name" placeholder="Ваше имя" required style="width:100%;margin-bottom:.5rem;padding:.5rem">
-        <input type="tel" name="phone" placeholder="Телефон" required style="width:100%;margin-bottom:.5rem;padding:.5rem">
-        <input type="email" name="email" placeholder="Email (необязательно)" style="width:100%;margin-bottom:.5rem;padding:.5rem">
+      <button class="modal-close" onclick="closeModal()" aria-label="Закрыть форму">&times;</button>
+      <h3 id="form-title">Получить точное предложение</h3>
+      <form id="lead-form" role="form" aria-labelledby="form-title">
+        <div class="form-group">
+          <label for="lead-name" class="sr-only">Ваше имя</label>
+          <input type="text" id="lead-name" name="name" placeholder="Ваше имя" required 
+                 aria-describedby="name-help" style="width:100%;margin-bottom:.5rem;padding:.5rem">
+          <div id="name-help" class="sr-only">Введите ваше полное имя для связи</div>
+        </div>
+        
+        <div class="form-group">
+          <label for="lead-phone" class="sr-only">Телефон</label>
+          <input type="tel" id="lead-phone" name="phone" placeholder="Телефон" required 
+                 aria-describedby="phone-help" style="width:100%;margin-bottom:.5rem;padding:.5rem">
+          <div id="phone-help" class="sr-only">Введите номер телефона в формате +7 (XXX) XXX-XX-XX</div>
+        </div>
+        
+        <div class="form-group">
+          <label for="lead-email" class="sr-only">Email (необязательно)</label>
+          <input type="email" id="lead-email" name="email" placeholder="Email (необязательно)" 
+                 aria-describedby="email-help" style="width:100%;margin-bottom:.5rem;padding:.5rem">
+          <div id="email-help" class="sr-only">Email для дублирования предложения (необязательно)</div>
+        </div>
+        
         <input type="hidden" name="details" id="lead-details">
+        
         <label class="consent-checkbox required">
-          <input type="checkbox" name="consent" required checked>
-          <span>Я согласен(а) с <a href="privacy.html" target="_blank">обработкой персональных данных</a> и <a href="privacy.html" target="_blank">Политикой конфиденциальности</a> в соответствии с 152-ФЗ</span>
+          <input type="checkbox" name="consent" checked aria-describedby="consent-help">
+          <span>Я согласен(а) с <a href="privacy-policy.html" target="_blank">обработкой персональных данных</a> в соответствии с политикой конфиденциальности</span>
+          <div id="consent-help" class="sr-only">Обязательное согласие на обработку персональных данных</div>
         </label>
         <button type="submit" class="btn btn-primary" style="width:100%;">Отправить заявку</button>
       </form>
@@ -442,7 +528,7 @@
         <div data-aos="fade-up" data-aos-delay="200">
           <i class="bi bi-truck"></i>
           <h3>Пока вы спите — мы решаем проблемы</h3>
-          <p>Сломалась машина в 2 ночи? Подвел перевозчик утром? Вы об этом даже не узнаете — мы уже все решили.</p>
+          <p>Перевозчик пропал в 23:00? К утру мы найдем замену. Изменились планы за час до загрузки? Перестроим маршрут. Вы об этом даже не узнаете — мы уже все решили.</p>
           <a href="urgent-delivery.html" class="btn btn-outline">Спать спокойно</a>
         </div>
       </div>
@@ -511,9 +597,130 @@
       </div>
     </div>
     <div class="container text-center mt-2">
-      © 2023 Авто&nbsp;Гост. Все права защищены.
+      © 2023 Авто&nbsp;Гост. | <a href="privacy-policy.html">Политика конфиденциальности</a>
     </div>
+  </main>
   </footer>
+
+  <!-- Modal Management -->
+  <script>
+    // Функции для управления модальными окнами
+    function openModal(modalId) {
+      const modal = document.getElementById(modalId);
+      if (modal) {
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden'; // Блокируем скролл
+        
+        // Focus на первый input
+        const firstInput = modal.querySelector('input[type="text"], input[type="tel"]');
+        if (firstInput) {
+          setTimeout(() => firstInput.focus(), 100);
+        }
+      }
+    }
+    
+    function closeModal() {
+      const modals = document.querySelectorAll('.modal-overlay');
+      modals.forEach(modal => {
+        modal.style.display = 'none';
+      });
+      document.body.style.overflow = ''; // Восстанавливаем скролл
+    }
+    
+    // Закрытие по клику вне модального окна
+    document.addEventListener('click', function(e) {
+      if (e.target.classList.contains('modal-overlay')) {
+        closeModal();
+      }
+    });
+    
+    // Закрытие по клавише Escape
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        closeModal();
+      }
+    });
+    
+    // Обработка кликов по кнопкам "Рассчитать доставку"
+    document.addEventListener('DOMContentLoaded', function() {
+      const calcButtons = document.querySelectorAll('a[href="#smart-calculator"]');
+      calcButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+          e.preventDefault();
+          // Прокручиваем к калькулятору
+          const calculator = document.getElementById('smart-calculator');
+          if (calculator) {
+            calculator.scrollIntoView({ behavior: 'smooth' });
+            // Фокусируемся на первом поле через секунду
+            setTimeout(() => {
+              const firstInput = calculator.querySelector('input');
+              if (firstInput) firstInput.focus();
+            }, 1000);
+          }
+        });
+      });
+    });
+  </script>
+
+  <!-- ПРИНУДИТЕЛЬНАЯ ЗАГРУЗКА HERO ИЗОБРАЖЕНИЯ -->
+  <script>
+    // Гарантированная загрузка hero изображения
+    document.addEventListener('DOMContentLoaded', function() {
+      const hero = document.querySelector('.hero-main');
+      if (hero) {
+        // Метод 1: Принудительный background
+        hero.style.cssText += `
+          background: #1a1a1a url('/assets/img/hero-logistics.jpg') center/cover no-repeat !important;
+          min-height: 70vh !important;
+        `;
+        
+        // Метод 2: Проверка через 1 секунду
+        setTimeout(() => {
+          const styles = window.getComputedStyle(hero);
+          if (!styles.backgroundImage.includes('hero-logistics')) {
+            console.log('🚨 Основной метод не сработал, применяем резервный...');
+            
+            // Резервный метод: создаем img элемент
+            const imgElement = document.createElement('div');
+            imgElement.style.cssText = `
+              position: absolute !important;
+              top: 0 !important; left: 0 !important; right: 0 !important; bottom: 0 !important;
+              background: url('/assets/img/hero-logistics.jpg') center/cover no-repeat !important;
+              z-index: -1 !important;
+            `;
+            hero.appendChild(imgElement);
+            
+            // Альтернативный метод: прямая вставка img
+            const img = new Image();
+            img.onload = function() {
+              hero.style.cssText += `
+                background-image: url('${img.src}') !important;
+                background-size: cover !important;
+                background-position: center !important;
+              `;
+              console.log('✅ Резервный метод сработал!');
+            };
+            img.src = '/assets/img/hero-logistics.jpg';
+          } else {
+            console.log('✅ Hero изображение загружено успешно!');
+          }
+        }, 1000);
+      }
+    });
+  </script>
+
+  <!-- Service Worker Registration -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function() {
+        navigator.serviceWorker.register('/sw.js').then(function(registration) {
+          console.log('SW registered: ', registration);
+        }).catch(function(registrationError) {
+          console.log('SW registration failed: ', registrationError);
+        });
+      });
+    }
+  </script>
 
   <!-- Performance optimization loads first -->
   <script src="assets/js/performance.js"></script>
@@ -523,6 +730,8 @@
   <script src="assets/js/main.js"></script>
   <script src="assets/js/calc.js"></script>
   <script src="assets/js/content-generator.js"></script>
+  <script src="assets/js/form-handler.js"></script>
+  <script src="assets/js/metrika-events.js"></script>
   
   <!-- UI enhancements (deferred) -->
   <script defer src="assets/js/benefit.js"></script>
@@ -548,19 +757,7 @@
       aosCSS.href = 'https://unpkg.com/aos@2.3.4/dist/aos.css';
       document.head.appendChild(aosCSS);
       
-      // Load main CSS if not already loaded
-      if (!document.querySelector('link[href="assets/css/styles.css"]')) {
-        const mainCSS = document.createElement('link');
-        mainCSS.rel = 'stylesheet';
-        mainCSS.href = 'assets/css/styles.css';
-        document.head.appendChild(mainCSS);
-      }
-      
-      // Load mobile CSS
-      const mobileCSS = document.createElement('link');
-      mobileCSS.rel = 'stylesheet';
-      mobileCSS.href = 'assets/css/mobile.css';
-      document.head.appendChild(mobileCSS);
+      // CSS уже загружен в head, больше не нужно
     });
   </script>
 </body>
