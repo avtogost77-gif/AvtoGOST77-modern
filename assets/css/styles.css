@@ -407,7 +407,16 @@ header {
    =============================================== */
 
 .hero {
+  /* Fallback для старых браузеров */
   background: var(--gradient-hero);
+  /* JPG fallback для браузеров без WebP */
+  background: 
+    linear-gradient(rgba(102, 126, 234, 0.8), rgba(118, 75, 162, 0.8)),
+    url('../img/hero-logistics.jpg') center/cover no-repeat;
+  /* WebP для современных браузеров */
+  background: 
+    linear-gradient(rgba(102, 126, 234, 0.8), rgba(118, 75, 162, 0.8)),
+    url('../img/hero-logistics.webp') center/cover no-repeat;
   color: white;
   padding: 120px 0 var(--spacing-2xl);
   position: relative;
