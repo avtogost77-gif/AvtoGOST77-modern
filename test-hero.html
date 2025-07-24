@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тест Hero Изображения</title>
+    <style>
+        body { margin: 0; padding: 0; }
+        
+        .hero {
+            /* Прямой путь к изображению */
+            background: url('assets/img/hero-logistics.webp') center/cover no-repeat;
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.8), rgba(118, 75, 162, 0.8));
+            z-index: 1;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: white;
+            padding: 2rem;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Пока вы создаете — мы доставляем</h1>
+            <p>Мы не логистическая компания — мы инфраструктура вашего бизнеса. Работаем незаметно, как инфраструктура города.</p>
+        </div>
+    </section>
+    
+    <div style="padding: 2rem; background: white;">
+        <h2>Тест изображения</h2>
+        <p>Если выше видно изображение с грузовиком и градиентом - все работает!</p>
+        <p>Если только градиент - проблема с путем к файлу.</p>
+        
+        <h3>Проверка файлов:</h3>
+        <img src="assets/img/hero-logistics.webp" alt="Hero WebP" style="max-width: 300px; display: block; margin: 1rem 0;">
+        <img src="assets/img/hero-logistics.jpg" alt="Hero JPG" style="max-width: 300px; display: block; margin: 1rem 0;">
+    </div>
+</body>
+</html>
