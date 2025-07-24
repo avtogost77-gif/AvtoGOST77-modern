@@ -105,6 +105,14 @@
   .hero {
     padding: 3rem 0;
     text-align: center;
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+  }
+  
+  .hero-content {
+    position: relative;
+    z-index: 2;
   }
   
   .hero h1 {
@@ -492,13 +500,32 @@
   }
   
   .hero {
-    background: none !important;
-    color: black !important;
+    /* Сохраняем фоновое изображение на мобильных */
+    background: url('../img/hero-logistics.jpg') center/cover no-repeat;
+    background: url('../img/hero-logistics.webp') center/cover no-repeat;
+    color: white;
+    position: relative;
+  }
+  
+  .hero::before {
+    background: var(--gradient-hero);
+    opacity: 0.6;
   }
   
   .btn {
-    border: 1px solid #ccc !important;
-    background: none !important;
-    color: black !important;
+    border: 1px solid #ccc;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    backdrop-filter: blur(10px);
+  }
+  
+  .btn-primary {
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+  }
+  
+  .btn-secondary {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.3);
   }
 }

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Тест Hero на Мобильных</title>
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/mobile.css">
+  <style>
+    /* Дополнительные стили для тестирования */
+    body {
+      margin: 0;
+      padding: 0;
+    }
+    
+    .debug-info {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      background: rgba(0,0,0,0.8);
+      color: white;
+      padding: 10px;
+      border-radius: 5px;
+      font-size: 12px;
+      z-index: 1000;
+    }
+    
+    .test-images {
+      padding: 20px;
+      background: white;
+    }
+    
+    .test-images img {
+      max-width: 200px;
+      margin: 10px;
+      border: 2px solid #ddd;
+    }
+  </style>
+</head>
+<body>
+  <!-- Debug информация -->
+  <div class="debug-info">
+    <div>Ширина: <span id="width"></span>px</div>
+    <div>Высота: <span id="height"></span>px</div>
+    <div>Устройство: <span id="device"></span></div>
+  </div>
+
+  <!-- Hero секция -->
+  <section class="hero hero-main">
+    <div class="container">
+      <div class="hero-content">
+        <h1 class="animate-fade-in-up">Тест Hero на Мобильных</h1>
+        <p class="text-lg animate-fade-in-up" style="animation-delay: 0.2s;">
+          Проверяем отображение фонового изображения на мобильных устройствах. 
+          Изображение должно быть видно с градиентом поверх него.
+        </p>
+        <div class="hero-actions animate-fade-in-up" style="animation-delay: 0.4s; margin-top: 2rem;">
+          <a href="#" class="btn btn-primary btn-lg">
+            Основная кнопка
+          </a>
+          <a href="#" class="btn btn-secondary btn-lg">
+            Вторичная кнопка
+          </a>
+        </div>
+      </div>
+      
+      <div class="hero-stats animate-fade-in-up" style="animation-delay: 0.6s;">
+        <div class="hero-stat">
+          <span class="hero-stat-number">10+</span>
+          <span class="hero-stat-label">лет опыта</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-number">60K+</span>
+          <span class="hero-stat-label">перевозчиков</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-number">99.3%</span>
+          <span class="hero-stat-label">доставок вовремя</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-number">2ч</span>
+          <span class="hero-stat-label">подача в Москве</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Тест изображений -->
+  <section class="test-images">
+    <h2>Проверка изображений:</h2>
+    <div>
+      <h3>WebP изображение:</h3>
+      <img src="assets/img/hero-logistics.webp" alt="Hero WebP" />
+      <p>Размер: ~106KB</p>
+    </div>
+    <div>
+      <h3>JPG изображение (fallback):</h3>
+      <img src="assets/img/hero-logistics.jpg" alt="Hero JPG" />
+      <p>Размер: ~252KB</p>
+    </div>
+    
+    <h3>CSS Background Test:</h3>
+    <div style="width: 200px; height: 100px; background: url('assets/img/hero-logistics.webp') center/cover no-repeat; border: 2px solid #ddd; margin: 10px 0;">
+    </div>
+    <p>Если видите изображение выше - CSS background работает</p>
+    
+    <h3>Информация о браузере:</h3>
+    <p id="user-agent"></p>
+    
+    <h3>Поддержка WebP:</h3>
+    <p id="webp-support"></p>
+  </section>
+
+  <script>
+    // Debug информация
+    function updateDebugInfo() {
+      document.getElementById('width').textContent = window.innerWidth;
+      document.getElementById('height').textContent = window.innerHeight;
+      
+      const width = window.innerWidth;
+      let device = 'Desktop';
+      if (width <= 480) device = 'Mobile (Small)';
+      else if (width <= 768) device = 'Mobile (Large)';
+      else if (width <= 1024) device = 'Tablet';
+      
+      document.getElementById('device').textContent = device;
+    }
+    
+    // Проверка поддержки WebP
+    function checkWebPSupport() {
+      const canvas = document.createElement('canvas');
+      canvas.width = 1;
+      canvas.height = 1;
+      const ctx = canvas.getContext('2d');
+      ctx.fillStyle = '#000';
+      ctx.fillRect(0, 0, 1, 1);
+      
+      const webpData = canvas.toDataURL('image/webp');
+      const isWebPSupported = webpData.indexOf('data:image/webp') === 0;
+      
+      document.getElementById('webp-support').textContent = isWebPSupported ? 
+        'Поддерживается ✅' : 'Не поддерживается ❌';
+    }
+    
+    // Информация о браузере
+    document.getElementById('user-agent').textContent = navigator.userAgent;
+    
+    // Обновляем информацию
+    updateDebugInfo();
+    checkWebPSupport();
+    
+    // Обновляем при изменении размера окна
+    window.addEventListener('resize', updateDebugInfo);
+    
+    // Логируем загрузку изображений
+    const heroSection = document.querySelector('.hero');
+    console.log('Hero section styles:', window.getComputedStyle(heroSection));
+    console.log('Background image:', window.getComputedStyle(heroSection).backgroundImage);
+  </script>
+</body>
+</html>
