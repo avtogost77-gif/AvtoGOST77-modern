@@ -126,7 +126,7 @@
     right: 0;
     bottom: 0;
     background: var(--gradient-hero);
-    opacity: 0.6;
+    opacity: 0.2;
     z-index: 2;
   }
   
@@ -138,12 +138,14 @@
   .hero h1 {
     font-size: 2.25rem;
     margin-bottom: 1rem;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.7);
   }
   
   .hero p {
     font-size: 1.125rem;
     margin-bottom: 1.5rem;
     padding: 0 1rem;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.6);
   }
   
   .hero-actions {

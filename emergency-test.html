@@ -113,15 +113,20 @@
         details: `Загружено ${cssCount} CSS файлов`
       });
       
-      // Тест 2: Hero изображение
-      const hero = document.querySelector('.emergency-hero');
-      const heroStyles = window.getComputedStyle(hero);
-      const hasBg = heroStyles.backgroundImage && heroStyles.backgroundImage !== 'none';
-      results.push({
-        name: 'Hero фон',
-        status: hasBg ? 'pass' : 'fail',
-        details: hasBg ? 'Фоновое изображение загружено' : 'Фон НЕ загружен'
-      });
+             // Тест 2: Hero изображение
+       const hero = document.querySelector('.emergency-hero');
+       const heroStyles = window.getComputedStyle(hero);
+       const hasBg = heroStyles.backgroundImage && heroStyles.backgroundImage !== 'none';
+       
+       // Проверяем opacity градиента
+       const heroBefore = window.getComputedStyle(hero, '::before');
+       const gradientOpacity = heroBefore.opacity || 'не найден';
+       
+       results.push({
+         name: 'Hero фон',
+         status: hasBg ? 'pass' : 'fail',
+         details: hasBg ? `Фон загружен, градиент opacity: ${gradientOpacity}` : 'Фон НЕ загружен'
+       });
       
       // Тест 3: Мобильные стили
       const isMobile = window.innerWidth <= 768;
