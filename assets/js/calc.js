@@ -364,11 +364,30 @@ class SmartLogisticsCalculator {
   }
 
   init() {
-    this.createCalculatorUI();
-    this.bindEvents();
-    this.initRealTimeCalculation();
-    if (this.config.animationsEnabled) {
-      this.initMicroAnimations();
+    try {
+      this.createCalculatorUI();
+      this.bindEvents();
+      this.initRealTimeCalculation();
+      if (this.config.animationsEnabled) {
+        this.initMicroAnimations();
+      }
+    } catch (error) {
+      console.warn('Ошибка инициализации калькулятора:', error);
+      // Показываем простую форму в случае ошибки
+      this.showFallbackForm();
+    }
+  }
+
+  showFallbackForm() {
+    const container = document.getElementById('calculator-container');
+    if (container) {
+      container.innerHTML = `
+        <div class="calculator-error">
+          <h3>📞 Свяжитесь с нами для расчета</h3>
+          <p>Временные технические работы. Позвоните нам для точного расчета стоимости:</p>
+          <a href="tel:+74957777777" class="btn btn-primary">📞 +7 (495) 777-77-77</a>
+        </div>
+      `;
     }
   }
 

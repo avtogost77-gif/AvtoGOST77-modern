@@ -25,7 +25,7 @@ const STATIC_RESOURCES = [
   '/contact.html',
   '/about.html',
   '/faq.html',
-  '/assets/js/interactive-map.js',
+  // '/assets/js/interactive-map.js', // Временно отключено
   '/assets/js/benefit.js',
   '/assets/js/ticker.js',
   '/assets/js/sticky-bar.js'
