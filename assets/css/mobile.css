@@ -104,8 +104,8 @@
 @media (max-width: 768px) {
   .hero {
     /* Фон и позиционирование */
-    background: url('../img/hero-logistics.jpg') center/cover no-repeat;
-    background: url('../img/hero-logistics.webp') center/cover no-repeat;
+    background: url('/assets/img/hero-logistics.jpg') center/cover no-repeat !important;
+    background-image: url('/assets/img/hero-logistics.webp'), url('/assets/img/hero-logistics.jpg') !important;
     color: white;
     position: relative;
     z-index: 1;

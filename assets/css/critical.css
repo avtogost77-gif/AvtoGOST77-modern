@@ -73,7 +73,7 @@ body {
 /* Hero Section */
 .hero {
   background: url('../img/hero-logistics.jpg') center/cover no-repeat;
-  background: url('../img/hero-logistics.webp') center/cover no-repeat;
+  background-image: url('../img/hero-logistics.webp'), url('../img/hero-logistics.jpg');
   color: white;
   padding: 4rem 0;
   /* Отступ сверху для fixed header */

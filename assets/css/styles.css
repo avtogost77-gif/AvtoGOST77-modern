@@ -409,7 +409,7 @@ header {
 .hero {
   /* Изображение как основа */
   background: url('../img/hero-logistics.jpg') center/cover no-repeat;
-  background: url('../img/hero-logistics.webp') center/cover no-repeat;
+  background-image: url('../img/hero-logistics.webp'), url('../img/hero-logistics.jpg');
   color: white;
   padding: 120px 0 var(--spacing-2xl);
   /* Отступ сверху для fixed header */
