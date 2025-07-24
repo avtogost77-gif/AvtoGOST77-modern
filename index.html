@@ -6,10 +6,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="yandex-verification" content="376fdf2ca69f9a1f" />
   <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+  <meta http-equiv="X-Frame-Options" content="DENY" />
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
   
   <!-- SEO Мета-теги -->
-  <title>Пока вы создаете — мы доставляем | Инфраструктура бизнеса | АвтоГОСТ</title>
-  <meta name="description" content="🎯 Мы не логистическая компания — мы инфраструктура вашего бизнеса. Работаем незаметно, как электричество в розетке. Пока вы творите — мы везем. Логистика без тревог." />
+  <title>Грузоперевозки Москва 2ч подача | АвтоГОСТ</title>
+  <meta name="description" content="Грузоперевозки по России от 35₽/км. Подача транспорта за 2 часа в Москве. 60K+ перевозчиков. Аутсорсинг логистики для бизнеса." />
   <meta name="keywords" content="грузоперевозки москва, удаленный отдел логистики, аутсорсинг логистики, доставка на маркетплейсы, спот заявки транспорт, грузоперевозки малый бизнес, прямые перевозки без складов, срочная подача транспорта" />
   
   <!-- Open Graph -->
@@ -308,7 +311,8 @@
     <div class="container navbar">
       <a href="/" class="navbar-brand" aria-label="Авто Гост — логистика без забот" title="Авто Гост — логистика без забот">Авто&nbsp;Гост</a>
       <button class="mobile-toggle" aria-label="Меню">☰</button>
-      <ul class="navbar-menu">
+      <nav role="navigation" aria-label="Основная навигация">
+        <ul class="navbar-menu">
         <li><a href="/">Главная</a></li>
         <li>
           <a href="services.html">Услуги ▾</a>
@@ -324,7 +328,8 @@
         <li><a href="news.html">Новости</a></li>
         <li><a href="contact.html">Контакты</a></li>
         <li><a href="faq.html">FAQ</a></li>
-      </ul>
+        </ul>
+      </nav>
       <div class="navbar-social">
         <a href="https://wa.me/79162720932" target="_blank" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
         <a href="https://t.me/father_bot" target="_blank" aria-label="Telegram"><i class="bi bi-telegram"></i></a>
@@ -332,8 +337,10 @@
     </div>
   </header>
 
-  <!-- Hero -->
-  <section class="hero hero-main">
+  <!-- Основной контент страницы -->
+  <main>
+    <!-- Hero -->
+    <section class="hero hero-main">
     <div class="container">
       <div class="hero-content">
         <h1 class="animate-fade-in-up">Пока вы создаете — мы доставляем</h1>
@@ -449,14 +456,34 @@
   <div class="modal-overlay" id="lead-modal">
     <div class="modal-box" data-aos="zoom-in">
       <h3>Получить точное предложение</h3>
-      <form id="lead-form">
-        <input type="text" name="name" placeholder="Ваше имя" required style="width:100%;margin-bottom:.5rem;padding:.5rem">
-        <input type="tel" name="phone" placeholder="Телефон" required style="width:100%;margin-bottom:.5rem;padding:.5rem">
-        <input type="email" name="email" placeholder="Email (необязательно)" style="width:100%;margin-bottom:.5rem;padding:.5rem">
+      <form id="lead-form" role="form" aria-labelledby="form-title">
+        <div class="form-group">
+          <label for="lead-name" class="sr-only">Ваше имя</label>
+          <input type="text" id="lead-name" name="name" placeholder="Ваше имя" required 
+                 aria-describedby="name-help" style="width:100%;margin-bottom:.5rem;padding:.5rem">
+          <div id="name-help" class="sr-only">Введите ваше полное имя для связи</div>
+        </div>
+        
+        <div class="form-group">
+          <label for="lead-phone" class="sr-only">Телефон</label>
+          <input type="tel" id="lead-phone" name="phone" placeholder="Телефон" required 
+                 aria-describedby="phone-help" style="width:100%;margin-bottom:.5rem;padding:.5rem">
+          <div id="phone-help" class="sr-only">Введите номер телефона в формате +7 (XXX) XXX-XX-XX</div>
+        </div>
+        
+        <div class="form-group">
+          <label for="lead-email" class="sr-only">Email (необязательно)</label>
+          <input type="email" id="lead-email" name="email" placeholder="Email (необязательно)" 
+                 aria-describedby="email-help" style="width:100%;margin-bottom:.5rem;padding:.5rem">
+          <div id="email-help" class="sr-only">Email для дублирования предложения (необязательно)</div>
+        </div>
+        
         <input type="hidden" name="details" id="lead-details">
+        
         <label class="consent-checkbox required">
-          <input type="checkbox" name="consent" checked>
+          <input type="checkbox" name="consent" checked aria-describedby="consent-help">
           <span>Я согласен(а) с <a href="privacy-policy.html" target="_blank">обработкой персональных данных</a> в соответствии с политикой конфиденциальности</span>
+          <div id="consent-help" class="sr-only">Обязательное согласие на обработку персональных данных</div>
         </label>
         <button type="submit" class="btn btn-primary" style="width:100%;">Отправить заявку</button>
       </form>
@@ -554,7 +581,21 @@
     <div class="container text-center mt-2">
       © 2023 Авто&nbsp;Гост. | <a href="privacy-policy.html">Политика конфиденциальности</a>
     </div>
+  </main>
   </footer>
+
+  <!-- Service Worker Registration -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function() {
+        navigator.serviceWorker.register('/sw.js').then(function(registration) {
+          console.log('SW registered: ', registration);
+        }).catch(function(registrationError) {
+          console.log('SW registration failed: ', registrationError);
+        });
+      });
+    }
+  </script>
 
   <!-- Performance optimization loads first -->
   <script src="assets/js/performance.js"></script>
