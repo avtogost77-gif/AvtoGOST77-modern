@@ -1190,25 +1190,7 @@ header {
    АДАПТИВНОСТЬ
    =============================================== */
 
-@media (max-width: 768px) {
-  .navbar-menu {
-    display: none;
-  }
-  
-  .mobile-toggle {
-    display: block;
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    color: var(--neutral-700);
-    cursor: pointer;
-  }
-  
-  .hero {
-    padding: 100px 0 var(--spacing-xl);
-    background: url('/assets/img/hero-logistics.jpg') center/cover no-repeat !important;
-    background-image: url('/assets/img/hero-logistics.webp'), url('/assets/img/hero-logistics.jpg') !important;
-  }
+/* МОБИЛЬНЫЕ СТИЛИ ПЕРЕНЕСЕНЫ В mobile.css */
   
   .hero-stats {
     grid-template-columns: repeat(2, 1fr);
@@ -1907,25 +1889,7 @@ header {
   100% { transform: rotate(360deg); }
 }
 
-/* 📱 АДАПТИВНОСТЬ */
-@media (max-width: 768px) {
-  .route-inputs,
-  .cargo-params,
-  .additional-services {
-    grid-template-columns: 1fr;
-  }
-  
-  .cargo-types {
-    grid-template-columns: 1fr;
-  }
-  
-  .distance-success {
-    flex-direction: column;
-    text-align: center;
-  }
-  
-  .calculator-badges {
-    justify-content: center;
+/* МОБИЛЬНЫЕ СТИЛИ КАЛЬКУЛЯТОРА ПЕРЕНЕСЕНЫ В mobile.css */
   }
   
   .recommendation-content {
@@ -2316,23 +2280,7 @@ header {
   color: #78350f;
 }
 
-/* ===============================================
-   АДАПТИВНЫЕ СТИЛИ ДЛЯ РЕЗУЛЬТАТОВ
-   =============================================== */
-
-@media (max-width: 768px) {
-  .result-header {
-    flex-direction: column;
-    text-align: center;
-  }
-  
-  .detail-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .result-actions {
-    flex-direction: column;
-  }
+/* МОБИЛЬНЫЕ СТИЛИ РЕЗУЛЬТАТОВ ПЕРЕНЕСЕНЫ В mobile.css */
   
   .result-actions .btn {
     width: 100%;
@@ -2537,18 +2485,7 @@ header {
   left: 100%;
 }
 
-/* Адаптивность PWA кнопки */
-@media (max-width: 768px) {
-  #pwa-install-btn {
-    width: 100%;
-    margin-top: 1rem;
-  }
-  
-  .hero-actions {
-    flex-direction: column;
-    gap: 1rem;
-  }
-}
+/* МОБИЛЬНЫЕ СТИЛИ PWA ПЕРЕНЕСЕНЫ В mobile.css */
 
 /* ===============================================
    КАСТОМНЫЕ ЧЕКБОКСЫ СОГЛАСИЯ (152-ФЗ)
