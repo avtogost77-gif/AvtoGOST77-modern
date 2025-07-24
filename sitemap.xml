@@ -159,7 +159,7 @@
     </image:image>
   </url>
   
-  <url>
+    <url>
     <loc>https://avtogost77.ru/moscow-regions.html</loc>
     <lastmod>2025-01-15</lastmod>
     <changefreq>weekly</changefreq>
@@ -170,4 +170,27 @@
     </image:image>
   </url>
 
-</urlset>
+  <!-- SEO статьи блога -->
+  <url>
+    <loc>https://avtogost77.ru/blog-1-carrier-failed.html</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://avtogost77.ru/assets/img/carrier-failed.jpg</image:loc>
+      <image:caption>Что делать если подвел перевозчик</image:caption>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://avtogost77.ru/blog-2-wildberries-delivery.html</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://avtogost77.ru/assets/img/wildberries-delivery.jpg</image:loc>
+      <image:caption>Доставка товара на склад Wildberries</image:caption>
+    </image:image>
+  </url>
+
+  </urlset>
