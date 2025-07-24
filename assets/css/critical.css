@@ -76,9 +76,16 @@ body {
   background: url('../img/hero-logistics.webp') center/cover no-repeat;
   color: white;
   padding: 4rem 0;
+  /* Отступ сверху для fixed header */
+  padding-top: calc(4rem + 80px);
   text-align: center;
   position: relative;
   overflow: hidden;
+}
+
+/* Главная страница - hero без дополнительного отступа */
+.hero.hero-main {
+  padding-top: 4rem;
 }
 
 .hero::before {
