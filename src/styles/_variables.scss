@@ -1,0 +1,264 @@
+/**
+ * Design System 2030 - Variables
+ * Цветовая палитра и токены дизайна будущего
+ */
+
+// ===== ЦВЕТА =====
+:root {
+  // Основная палитра
+  --primary: #2563eb;
+  --primary-light: #3b82f6;
+  --primary-dark: #1d4ed8;
+  --primary-50: #eff6ff;
+  --primary-100: #dbeafe;
+  --primary-500: #2563eb;
+  --primary-900: #1e3a8a;
+
+  // Вторичные цвета
+  --secondary: #64748b;
+  --secondary-light: #94a3b8;
+  --secondary-dark: #475569;
+
+  // Акцентные цвета
+  --accent: #f59e0b;
+  --accent-light: #fbbf24;
+  --accent-dark: #d97706;
+
+  // Семантические цвета
+  --success: #10b981;
+  --success-light: #34d399;
+  --success-dark: #059669;
+  
+  --danger: #ef4444;
+  --danger-light: #f87171;
+  --danger-dark: #dc2626;
+  
+  --warning: #f59e0b;
+  --warning-light: #fbbf24;
+  --warning-dark: #d97706;
+  
+  --info: #06b6d4;
+  --info-light: #22d3ee;
+  --info-dark: #0891b2;
+
+  // Нейтральные цвета
+  --gray-50: #f8fafc;
+  --gray-100: #f1f5f9;
+  --gray-200: #e2e8f0;
+  --gray-300: #cbd5e1;
+  --gray-400: #94a3b8;
+  --gray-500: #64748b;
+  --gray-600: #475569;
+  --gray-700: #334155;
+  --gray-800: #1e293b;
+  --gray-900: #0f172a;
+
+  // Фоны
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8fafc;
+  --bg-tertiary: #f1f5f9;
+  --bg-dark: #0f172a;
+
+  // Тексты
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-tertiary: #94a3b8;
+  --text-inverse: #ffffff;
+
+  // ===== GLASSMORPHISM 2030 =====
+  --glass-bg: rgba(255, 255, 255, 0.08);
+  --glass-bg-light: rgba(255, 255, 255, 0.12);
+  --glass-bg-dark: rgba(0, 0, 0, 0.08);
+  --glass-border: rgba(255, 255, 255, 0.2);
+  --glass-border-dark: rgba(255, 255, 255, 0.1);
+
+  // ===== ТЕНИ И ЭФФЕКТЫ =====
+  // Тактильные тени
+  --haptic-light: 0 2px 8px rgba(0, 0, 0, 0.1);
+  --haptic-medium: 0 8px 32px rgba(0, 0, 0, 0.12);
+  --haptic-strong: 0 16px 64px rgba(0, 0, 0, 0.15);
+  --haptic-glow: 0 0 32px rgba(37, 99, 235, 0.3);
+
+  // Glassmorphism тени
+  --glass-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+  --glass-shadow-light: 0 8px 32px rgba(0, 0, 0, 0.1);
+  --glass-shadow-strong: 0 40px 80px rgba(0, 0, 0, 0.2);
+
+  // Неоморфизм
+  --neomorph-light: #ffffff;
+  --neomorph-dark: #e6e6e6;
+  --neomorph-shadow-light: 8px 8px 16px #d1d1d1, -8px -8px 16px #ffffff;
+  --neomorph-shadow-inset: inset 8px 8px 16px #d1d1d1, inset -8px -8px 16px #ffffff;
+
+  // ===== АНИМАЦИИ =====
+  // Физические easing функции
+  --spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --elastic: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  --anticipation: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --overshoot: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+  // Длительности
+  --duration-instant: 0.1s;
+  --duration-fast: 0.2s;
+  --duration-normal: 0.3s;
+  --duration-slow: 0.5s;
+  --duration-slower: 0.8s;
+
+  // ===== ТИПОГРАФИКА =====
+  // Размеры шрифтов (fluid typography)
+  --font-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+  --font-sm: clamp(0.875rem, 0.8rem + 0.375vw, 1rem);
+  --font-base: clamp(1rem, 0.9rem + 0.5vw, 1.125rem);
+  --font-lg: clamp(1.125rem, 1rem + 0.625vw, 1.25rem);
+  --font-xl: clamp(1.25rem, 1.1rem + 0.75vw, 1.5rem);
+  --font-2xl: clamp(1.5rem, 1.3rem + 1vw, 2rem);
+  --font-3xl: clamp(1.875rem, 1.6rem + 1.375vw, 2.5rem);
+  --font-4xl: clamp(2.25rem, 1.9rem + 1.75vw, 3rem);
+  --font-5xl: clamp(3rem, 2.5rem + 2.5vw, 4rem);
+  --font-6xl: clamp(3.75rem, 3rem + 3.75vw, 5rem);
+
+  // Веса шрифтов
+  --font-light: 300;
+  --font-normal: 400;
+  --font-medium: 500;
+  --font-semibold: 600;
+  --font-bold: 700;
+  --font-extrabold: 800;
+  --font-black: 900;
+
+  // Высота строк
+  --leading-tight: 1.25;
+  --leading-snug: 1.375;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.625;
+  --leading-loose: 2;
+
+  // ===== SPACING =====
+  --space-0: 0;
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+  --space-32: 8rem;
+
+  // ===== BORDER RADIUS =====
+  --radius-none: 0;
+  --radius-sm: 0.125rem;
+  --radius-base: 0.25rem;
+  --radius-md: 0.375rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+  --radius-2xl: 1rem;
+  --radius-3xl: 1.5rem;
+  --radius-full: 9999px;
+
+  // Тактильные радиусы
+  --radius-tactile-sm: 12px;
+  --radius-tactile-md: 16px;
+  --radius-tactile-lg: 20px;
+  --radius-tactile-xl: 24px;
+
+  // ===== Z-INDEX =====
+  --z-dropdown: 1000;
+  --z-sticky: 1020;
+  --z-fixed: 1030;
+  --z-modal-backdrop: 1040;
+  --z-modal: 1050;
+  --z-popover: 1060;
+  --z-tooltip: 1070;
+  --z-toast: 1080;
+
+  // ===== BREAKPOINTS =====
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
+
+  // ===== КОНТЕЙНЕРЫ =====
+  --container-sm: 640px;
+  --container-md: 768px;
+  --container-lg: 1024px;
+  --container-xl: 1280px;
+  --container-2xl: 1536px;
+
+  // ===== FILTERS =====
+  --blur-sm: blur(4px);
+  --blur-base: blur(8px);
+  --blur-md: blur(12px);
+  --blur-lg: blur(16px);
+  --blur-xl: blur(24px);
+  --blur-2xl: blur(40px);
+
+  // Backdrop filters для glassmorphism
+  --backdrop-blur-sm: blur(4px) saturate(150%);
+  --backdrop-blur-base: blur(8px) saturate(180%);
+  --backdrop-blur-md: blur(12px) saturate(180%);
+  --backdrop-blur-lg: blur(16px) saturate(200%);
+  --backdrop-blur-xl: blur(24px) saturate(200%);
+  --backdrop-blur-2xl: blur(40px) saturate(180%);
+}
+
+// ===== SASS ПЕРЕМЕННЫЕ =====
+// Цвета для SASS функций
+$primary: #2563eb;
+$success: #10b981;
+$danger: #ef4444;
+$warning: #f59e0b;
+$info: #06b6d4;
+
+// Точки останова
+$breakpoints: (
+  'sm': 640px,
+  'md': 768px,
+  'lg': 1024px,
+  'xl': 1280px,
+  '2xl': 1536px
+);
+
+// Семейства шрифтов
+$font-families: (
+  'sans': ('Inter Variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif),
+  'mono': ('JetBrains Mono', 'Fira Code', 'Monaco', 'Menlo', monospace),
+  'serif': ('Charter', 'Georgia', serif)
+);
+
+// Grid system
+$grid-columns: 12;
+$grid-gutter: 1.5rem;
+
+// Container sizes
+$container-max-widths: (
+  'sm': 640px,
+  'md': 768px,
+  'lg': 1024px,
+  'xl': 1280px,
+  '2xl': 1536px
+);
+
+// Тактильные эффекты
+$haptic-effects: (
+  'light': (
+    'shadow': var(--haptic-light),
+    'transform': translateY(-2px),
+    'scale': 1.02
+  ),
+  'medium': (
+    'shadow': var(--haptic-medium),
+    'transform': translateY(-4px),
+    'scale': 1.03
+  ),
+  'strong': (
+    'shadow': var(--haptic-strong),
+    'transform': translateY(-6px),
+    'scale': 1.05
+  )
+);

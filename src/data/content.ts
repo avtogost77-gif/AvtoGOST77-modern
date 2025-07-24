@@ -17,9 +17,10 @@ export const BRAND_CORE = {
   
   // Контакты
   contact: {
-    phone: "+7-916-272-09-32",
+    phone: "+79162720932",
     whatsapp: "79162720932",
-    email: "info@avtogost77.ru"
+    telegram: "@avtogost77",
+    email: "avtogost77@gmail.com"
   }
 } as const;
 

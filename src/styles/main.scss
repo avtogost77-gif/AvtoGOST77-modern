@@ -1,0 +1,34 @@
+/**
+ * АвтоГОСТ Future 2030 - Main Styles
+ * Тактильное удовольствие для каждого касания
+ */
+
+// Импорт переменных и миксинов
+@import 'variables';
+@import 'mixins';
+
+// Базовые стили
+@import 'base/reset';
+@import 'base/typography';
+@import 'base/layout';
+
+// Компоненты
+@import 'components/buttons';
+@import 'components/forms';
+@import 'components/cards';
+@import 'components/calculator';
+@import 'components/modals';
+
+// Секции
+@import 'sections/hero';
+@import 'sections/features';
+@import 'sections/testimonials';
+
+// Утилиты
+@import 'utilities/animations';
+@import 'utilities/haptics';
+@import 'utilities/responsive';
+
+// Темы
+@import 'themes/glass-morphism';
+@import 'themes/neomorphism';

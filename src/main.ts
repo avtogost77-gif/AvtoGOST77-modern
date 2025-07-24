@@ -443,14 +443,20 @@ class AvtoGostApp {
             <div class="fallback-card">
               <h2>📞 Свяжитесь с нами для расчета</h2>
               <p>Временные технические работы. Позвоните нам для точного расчета стоимости:</p>
-              <div class="contact-buttons">
-                <a href="tel:+79162720932" class="tactile-button primary-button">
-                  📞 +7 (916) 272-09-32
-                </a>
-                <a href="https://wa.me/79162720932" class="tactile-button success-button">
-                  💬 WhatsApp
-                </a>
-              </div>
+                             <div class="contact-buttons">
+                 <a href="tel:+79162720932" class="tactile-button primary-button">
+                   📞 +7 (916) 272-09-32
+                 </a>
+                 <a href="https://wa.me/79162720932" class="tactile-button success-button">
+                   💬 WhatsApp
+                 </a>
+                 <a href="https://t.me/avtogost77" class="tactile-button info-button">
+                   📱 Telegram
+                 </a>
+                 <a href="mailto:avtogost77@gmail.com" class="tactile-button secondary-button">
+                   ✉️ Email
+                 </a>
+               </div>
             </div>
           </div>
         </section>
