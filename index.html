@@ -342,8 +342,23 @@
   <!-- Основной контент страницы -->
   <main>
     <!-- Hero -->
-    <section class="hero hero-main">
-    <div class="container">
+    <section class="hero hero-main" style="
+      background: #1a1a1a url('/assets/img/hero-logistics.jpg') center/cover no-repeat !important;
+      min-height: 70vh !important;
+      position: relative !important;
+      display: flex !important;
+      align-items: center !important;
+      color: white !important;
+    ">
+    <!-- Принудительный градиент -->
+    <div style="
+      position: absolute !important;
+      top: 0 !important; left: 0 !important; right: 0 !important; bottom: 0 !important;
+      background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%) !important;
+      z-index: 1 !important;
+      pointer-events: none !important;
+    "></div>
+    <div class="container" style="position: relative !important; z-index: 2 !important;">
       <div class="hero-content">
         <h1 class="animate-fade-in-up">Пока вы создаете — мы доставляем</h1>
         <p class="text-lg animate-fade-in-up" style="animation-delay: 0.2s;">
@@ -644,6 +659,53 @@
           }
         });
       });
+    });
+  </script>
+
+  <!-- ПРИНУДИТЕЛЬНАЯ ЗАГРУЗКА HERO ИЗОБРАЖЕНИЯ -->
+  <script>
+    // Гарантированная загрузка hero изображения
+    document.addEventListener('DOMContentLoaded', function() {
+      const hero = document.querySelector('.hero-main');
+      if (hero) {
+        // Метод 1: Принудительный background
+        hero.style.cssText += `
+          background: #1a1a1a url('/assets/img/hero-logistics.jpg') center/cover no-repeat !important;
+          min-height: 70vh !important;
+        `;
+        
+        // Метод 2: Проверка через 1 секунду
+        setTimeout(() => {
+          const styles = window.getComputedStyle(hero);
+          if (!styles.backgroundImage.includes('hero-logistics')) {
+            console.log('🚨 Основной метод не сработал, применяем резервный...');
+            
+            // Резервный метод: создаем img элемент
+            const imgElement = document.createElement('div');
+            imgElement.style.cssText = `
+              position: absolute !important;
+              top: 0 !important; left: 0 !important; right: 0 !important; bottom: 0 !important;
+              background: url('/assets/img/hero-logistics.jpg') center/cover no-repeat !important;
+              z-index: -1 !important;
+            `;
+            hero.appendChild(imgElement);
+            
+            // Альтернативный метод: прямая вставка img
+            const img = new Image();
+            img.onload = function() {
+              hero.style.cssText += `
+                background-image: url('${img.src}') !important;
+                background-size: cover !important;
+                background-position: center !important;
+              `;
+              console.log('✅ Резервный метод сработал!');
+            };
+            img.src = '/assets/img/hero-logistics.jpg';
+          } else {
+            console.log('✅ Hero изображение загружено успешно!');
+          }
+        }, 1000);
+      }
     });
   </script>
 
