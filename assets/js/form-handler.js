@@ -1,7 +1,14 @@
 // ===============================================
 // ОБРАБОТЧИК ФОРМ АВТОГОСТ
-// Простое перенаправление в WhatsApp с данными
+// Отправка лидов в Telegram через бота
 // ===============================================
+
+// Конфигурация Telegram бота
+const TELEGRAM_CONFIG = {
+  botToken: 'YOUR_BOT_TOKEN', // Замените на токен вашего бота
+  chatId: 'YOUR_CHAT_ID',     // Замените на ваш chat_id
+  apiUrl: 'https://api.telegram.org/bot'
+};
 
 document.addEventListener('DOMContentLoaded', function() {
   
@@ -19,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
   
 });
 
-function handleContactForm(e) {
+async function handleContactForm(e) {
   e.preventDefault();
   
   const formData = new FormData(e.target);
@@ -28,65 +35,93 @@ function handleContactForm(e) {
   const phone = formData.get('phone');
   const message = formData.get('message');
   
-  // Формируем сообщение для WhatsApp
-  const whatsappMessage = `🚛 ЗАЯВКА С САЙТА АВТОГОСТ
+  // Формируем сообщение для Telegram
+  const telegramMessage = `🚛 <b>ЗАЯВКА С САЙТА АВТОГОСТ</b>
 
-👤 Имя: ${name}
-📞 Телефон: ${phone}
-📧 Email: ${email}
+👤 <b>Имя:</b> ${name}
+📞 <b>Телефон:</b> ${phone}
+📧 <b>Email:</b> ${email}
 
-💬 Сообщение:
+💬 <b>Сообщение:</b>
 ${message}
 
----
-Отправлено с сайта avtogost77.ru`;
+🌐 <b>Источник:</b> avtogost77.ru/contact.html
+⏰ <b>Время:</b> ${new Date().toLocaleString('ru-RU')}`;
 
-  // Перенаправляем в WhatsApp
-  const whatsappUrl = `https://wa.me/79162720932?text=${encodeURIComponent(whatsappMessage)}`;
-  window.open(whatsappUrl, '_blank');
-  
-  // Показываем уведомление
-  showSuccessMessage('Перенаправляем в WhatsApp...');
+  // Отправляем в Telegram
+  try {
+    await sendToTelegram(telegramMessage);
+    showSuccessMessage('✅ Заявка отправлена! Свяжемся в течение 15 минут.');
+    e.target.reset(); // Очищаем форму
+  } catch (error) {
+    console.error('Ошибка отправки:', error);
+    showErrorMessage('❌ Ошибка отправки. Позвоните нам: +7 916 272-09-32');
+  }
 }
 
-function handleLeadForm(e) {
+async function handleLeadForm(e) {
   e.preventDefault();
   
   const formData = new FormData(e.target);
   const name = formData.get('name');
   const phone = formData.get('phone');
   const email = formData.get('email') || 'не указан';
-  const details = formData.get('details') || 'Заявка с сайта';
+  const details = formData.get('details') || 'Заявка с калькулятора';
   
-  // Формируем сообщение для WhatsApp
-  const whatsappMessage = `🧮 ЗАЯВКА ИЗ КАЛЬКУЛЯТОРА
+  // Формируем сообщение для Telegram
+  const telegramMessage = `🧮 <b>ЛИД ИЗ КАЛЬКУЛЯТОРА</b>
 
-👤 Имя: ${name}
-📞 Телефон: ${phone}
-📧 Email: ${email}
+👤 <b>Имя:</b> ${name}
+📞 <b>Телефон:</b> ${phone}
+📧 <b>Email:</b> ${email}
 
-📋 Детали:
+📋 <b>Детали расчета:</b>
 ${details}
 
----
-Отправлено с калькулятора avtogost77.ru`;
+🌐 <b>Источник:</b> avtogost77.ru (калькулятор)
+⏰ <b>Время:</b> ${new Date().toLocaleString('ru-RU')}`;
 
-  // Перенаправляем в WhatsApp
-  const whatsappUrl = `https://wa.me/79162720932?text=${encodeURIComponent(whatsappMessage)}`;
-  window.open(whatsappUrl, '_blank');
+  // Отправляем в Telegram
+  try {
+    await sendToTelegram(telegramMessage);
+    
+    // Закрываем модальное окно
+    const modal = document.getElementById('lead-modal');
+    if (modal) {
+      modal.style.display = 'none';
+    }
+    
+    showSuccessMessage('✅ Заявка отправлена! Свяжемся в течение 15 минут.');
+    e.target.reset(); // Очищаем форму
+  } catch (error) {
+    console.error('Ошибка отправки:', error);
+    showErrorMessage('❌ Ошибка отправки. Позвоните нам: +7 916 272-09-32');
+  }
+}
+
+async function sendToTelegram(message) {
+  const url = `${TELEGRAM_CONFIG.apiUrl}${TELEGRAM_CONFIG.botToken}/sendMessage`;
   
-  // Закрываем модальное окно
-  const modal = document.getElementById('lead-modal');
-  if (modal) {
-    modal.style.display = 'none';
+  const response = await fetch(url, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      chat_id: TELEGRAM_CONFIG.chatId,
+      text: message,
+      parse_mode: 'HTML'
+    })
+  });
+  
+  if (!response.ok) {
+    throw new Error(`HTTP error! status: ${response.status}`);
   }
   
-  // Показываем уведомление
-  showSuccessMessage('Перенаправляем в WhatsApp...');
+  return response.json();
 }
 
 function showSuccessMessage(message) {
-  // Создаем простое уведомление
   const notification = document.createElement('div');
   notification.style.cssText = `
     position: fixed;
@@ -99,17 +134,43 @@ function showSuccessMessage(message) {
     z-index: 10000;
     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     font-weight: 500;
+    max-width: 350px;
   `;
-  notification.textContent = message;
+  notification.innerHTML = message;
   
   document.body.appendChild(notification);
   
-  // Убираем через 3 секунды
   setTimeout(() => {
     if (notification.parentNode) {
       notification.parentNode.removeChild(notification);
     }
-  }, 3000);
+  }, 5000);
+}
+
+function showErrorMessage(message) {
+  const notification = document.createElement('div');
+  notification.style.cssText = `
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #dc3545;
+    color: white;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    z-index: 10000;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    font-weight: 500;
+    max-width: 350px;
+  `;
+  notification.innerHTML = message;
+  
+  document.body.appendChild(notification);
+  
+  setTimeout(() => {
+    if (notification.parentNode) {
+      notification.parentNode.removeChild(notification);
+    }
+  }, 7000);
 }
 
 // Функция для закрытия модального окна по клику вне его
@@ -129,3 +190,30 @@ document.addEventListener('keydown', function(e) {
     }
   }
 });
+
+// ===============================================
+// ИНСТРУКЦИЯ ПО НАСТРОЙКЕ TELEGRAM БОТА
+// ===============================================
+/*
+
+1. Создайте бота через @BotFather:
+   - Напишите /newbot
+   - Укажите имя: АвтоГост Форм Бот
+   - Укажите username: avtogost77_forms_bot
+   - Получите токен
+
+2. Узнайте свой chat_id:
+   - Напишите боту любое сообщение
+   - Откройте: https://api.telegram.org/bot<TOKEN>/getUpdates
+   - Найдите "chat":{"id":123456789}
+
+3. Замените в коде:
+   - YOUR_BOT_TOKEN на токен бота
+   - YOUR_CHAT_ID на ваш chat_id
+
+4. Для продакшена рекомендуется:
+   - Создать отдельный файл config.js
+   - Использовать переменные окружения
+   - Добавить валидацию и retry логику
+
+*/

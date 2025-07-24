@@ -1157,6 +1157,9 @@ class SmartLogisticsCalculator {
           <button class="btn btn-primary" onclick="this.openLeadModal()">
             📞 Заказать доставку
           </button>
+          <a href="https://t.me/father_bot" target="_blank" class="btn btn-telegram" style="background: #0088cc; color: white; text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem;">
+            💬 Написать в Telegram
+          </a>
           <button class="btn btn-secondary" onclick="this.saveCalculation()">
             💾 Сохранить расчет
           </button>
