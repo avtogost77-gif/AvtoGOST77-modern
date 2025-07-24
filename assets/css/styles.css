@@ -1206,6 +1206,8 @@ header {
   
   .hero {
     padding: 100px 0 var(--spacing-xl);
+    background: url('/assets/img/hero-logistics.jpg') center/cover no-repeat !important;
+    background-image: url('/assets/img/hero-logistics.webp'), url('/assets/img/hero-logistics.jpg') !important;
   }
   
   .hero-stats {

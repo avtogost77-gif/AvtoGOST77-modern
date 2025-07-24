@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🚨 ПРОСТОЙ ТЕСТ HERO</title>
+  <style>
+    body { margin: 0; padding: 0; }
+    
+    .hero-simple {
+      width: 100%;
+      height: 100vh;
+      background: red; /* Сначала красный, чтобы видеть блок */
+      background: url('/assets/img/hero-logistics.jpg') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 2rem;
+      text-align: center;
+    }
+    
+    .debug {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: black;
+      color: white;
+      padding: 10px;
+      font-size: 12px;
+      z-index: 1000;
+    }
+  </style>
+</head>
+<body>
+  <div class="debug" id="debug">
+    Загрузка...
+  </div>
+  
+  <div class="hero-simple" id="hero">
+    <div>
+      <h1>🚛 ПРОСТОЙ ТЕСТ</h1>
+      <p>Если видите красный фон - CSS загрузился, но изображение НЕТ</p>
+      <p>Если видите изображение грузовика - ВСЕ РАБОТАЕТ!</p>
+    </div>
+  </div>
+
+  <script>
+    function updateDebug() {
+      const hero = document.getElementById('hero');
+      const styles = window.getComputedStyle(hero);
+      const bgImage = styles.backgroundImage;
+      const bgColor = styles.backgroundColor;
+      
+      document.getElementById('debug').innerHTML = `
+        Ширина: ${window.innerWidth}px | 
+        Background: ${bgImage.includes('hero-logistics') ? '✅ ЕСТЬ' : '❌ НЕТ'} | 
+        Color: ${bgColor} | 
+        URL: ${window.location.href}
+      `;
+    }
+    
+    updateDebug();
+    window.addEventListener('resize', updateDebug);
+    
+    // Тест через 2 секунды
+    setTimeout(() => {
+      const hero = document.getElementById('hero');
+      const styles = window.getComputedStyle(hero);
+      console.log('Background Image:', styles.backgroundImage);
+      console.log('Background Color:', styles.backgroundColor);
+      
+      // Если изображения нет, попробуем другие пути
+      if (!styles.backgroundImage.includes('hero-logistics')) {
+        console.log('❌ Изображение не загрузилось, пробуем другие пути...');
+        
+        // Тест 1: Относительный путь
+        hero.style.background = "url('./assets/img/hero-logistics.jpg') center/cover no-repeat";
+        
+        setTimeout(() => {
+          const newStyles = window.getComputedStyle(hero);
+          if (!newStyles.backgroundImage.includes('hero-logistics')) {
+            console.log('❌ Относительный путь не работает, пробуем без слеша...');
+            
+            // Тест 2: Путь без начального слеша
+            hero.style.background = "url('assets/img/hero-logistics.jpg') center/cover no-repeat";
+          }
+        }, 1000);
+      }
+    }, 2000);
+  </script>
+</body>
+</html>
