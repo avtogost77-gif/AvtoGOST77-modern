@@ -501,18 +501,8 @@ class SmartLogisticsCalculator {
               <span class="label-icon">🛠️</span>
               Дополнительные услуги
             </label>
-            <div class="additional-services grid-2">
-              <label class="service-checkbox modern-checkbox">
-                <input type="checkbox" name="services" value="loading">
-                <span class="checkmark">
-                  <i class="check-icon">✓</i>
-                </span>
-                <div class="service-info">
-                  <span class="service-name">Погрузка/разгрузка</span>
-                  <span class="service-description">Грузчики на обоих концах</span>
-                  <span class="service-price">+1800₽</span>
-                </div>
-              </label>
+            <div class="additional-services">
+
               
 
               
@@ -535,8 +525,8 @@ class SmartLogisticsCalculator {
                 </span>
                 <div class="service-info">
                   <span class="service-name">Экспресс-доставка</span>
-                  <span class="service-description">Приоритетная подача</span>
-                  <span class="service-price">+50% к тарифу</span>
+                  <span class="service-description">Срочная подача, индивидуальный расчет</span>
+                  <span class="service-price">по договоренности</span>
                 </div>
               </label>
             </div>
@@ -1018,10 +1008,7 @@ class SmartLogisticsCalculator {
     
     services.forEach(service => {
       switch(service) {
-        case 'loading': 
-          additionalCost += 1800; 
-          serviceDetails.push({ name: 'Погрузка/разгрузка', cost: 1800 });
-          break;
+
 
         case 'insurance': 
           const insuranceCost = Math.round(basePrice * 0.03);
@@ -1029,9 +1016,8 @@ class SmartLogisticsCalculator {
           serviceDetails.push({ name: 'Страхование', cost: insuranceCost });
           break;
         case 'express': 
-          const expressCost = Math.round(basePrice * 0.5);
-          basePrice *= 1.5;
-          serviceDetails.push({ name: 'Экспресс-доставка', cost: expressCost });
+          // Экспресс-доставка рассчитывается индивидуально
+          serviceDetails.push({ name: 'Экспресс-доставка', cost: 'по договоренности' });
           break;
       }
     });
