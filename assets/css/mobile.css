@@ -103,6 +103,14 @@
 /* Hero секция для мобильных */
 @media (max-width: 768px) {
   .hero {
+    /* Фон и позиционирование */
+    background: url('../img/hero-logistics.jpg') center/cover no-repeat;
+    background: url('../img/hero-logistics.webp') center/cover no-repeat;
+    color: white;
+    position: relative;
+    z-index: 1;
+    
+    /* Layout */
     padding: 3rem 0;
     text-align: center;
     min-height: 60vh;
@@ -110,9 +118,21 @@
     align-items: center;
   }
   
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--gradient-hero);
+    opacity: 0.6;
+    z-index: 2;
+  }
+  
   .hero-content {
     position: relative;
-    z-index: 2;
+    z-index: 3;
   }
   
   .hero h1 {
@@ -131,6 +151,27 @@
     gap: 0.75rem;
     align-items: stretch;
     padding: 0 1rem;
+    position: relative;
+    z-index: 4;
+  }
+  
+  .hero .btn {
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    backdrop-filter: blur(10px);
+    position: relative;
+    z-index: 4;
+  }
+  
+  .hero .btn-primary {
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+  }
+  
+  .hero .btn-secondary {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.3);
   }
   
   .btn-lg {
@@ -490,47 +531,7 @@
   }
 }
 
-/* Мобильные стили для hero - ИСПРАВЛЕНИЕ */
-@media (max-width: 768px) {
-  .hero {
-    /* Сохраняем фоновое изображение на мобильных */
-    background: url('../img/hero-logistics.jpg') center/cover no-repeat !important;
-    background: url('../img/hero-logistics.webp') center/cover no-repeat !important;
-    color: white !important;
-    position: relative;
-  }
-  
-  .hero::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: var(--gradient-hero);
-    opacity: 0.6;
-    z-index: 1;
-  }
-  
-  .hero .btn {
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    background: rgba(255, 255, 255, 0.1);
-    color: white;
-    backdrop-filter: blur(10px);
-    position: relative;
-    z-index: 2;
-  }
-  
-  .hero .btn-primary {
-    background: var(--primary-color);
-    border-color: var(--primary-color);
-  }
-  
-  .hero .btn-secondary {
-    background: rgba(255, 255, 255, 0.2);
-    border-color: rgba(255, 255, 255, 0.3);
-  }
-}
+
 
 /* Print styles */
 @media print {

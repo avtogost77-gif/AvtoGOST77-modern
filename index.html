@@ -453,9 +453,10 @@
   </section>
 
   <!-- Lead capture modal -->
-  <div class="modal-overlay" id="lead-modal">
+  <div class="modal-overlay" id="lead-modal" style="display: none;">
     <div class="modal-box" data-aos="zoom-in">
-      <h3>Получить точное предложение</h3>
+      <button class="modal-close" onclick="closeModal()" aria-label="Закрыть форму">&times;</button>
+      <h3 id="form-title">Получить точное предложение</h3>
       <form id="lead-form" role="form" aria-labelledby="form-title">
         <div class="form-group">
           <label for="lead-name" class="sr-only">Ваше имя</label>
@@ -583,6 +584,57 @@
     </div>
   </main>
   </footer>
+
+  <!-- Modal Management -->
+  <script>
+    // Функции для управления модальными окнами
+    function openModal(modalId) {
+      const modal = document.getElementById(modalId);
+      if (modal) {
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden'; // Блокируем скролл
+        
+        // Focus на первый input
+        const firstInput = modal.querySelector('input[type="text"], input[type="tel"]');
+        if (firstInput) {
+          setTimeout(() => firstInput.focus(), 100);
+        }
+      }
+    }
+    
+    function closeModal() {
+      const modals = document.querySelectorAll('.modal-overlay');
+      modals.forEach(modal => {
+        modal.style.display = 'none';
+      });
+      document.body.style.overflow = ''; // Восстанавливаем скролл
+    }
+    
+    // Закрытие по клику вне модального окна
+    document.addEventListener('click', function(e) {
+      if (e.target.classList.contains('modal-overlay')) {
+        closeModal();
+      }
+    });
+    
+    // Закрытие по клавише Escape
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        closeModal();
+      }
+    });
+    
+    // Обработка кликов по кнопкам "Рассчитать доставку"
+    document.addEventListener('DOMContentLoaded', function() {
+      const calcButtons = document.querySelectorAll('a[href="#smart-calculator"]');
+      calcButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+          e.preventDefault();
+          openModal('lead-modal');
+        });
+      });
+    });
+  </script>
 
   <!-- Service Worker Registration -->
   <script>
