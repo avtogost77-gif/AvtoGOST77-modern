@@ -34,6 +34,13 @@ async function handleContactForm(e) {
   const email = formData.get('email');
   const phone = formData.get('phone');
   const message = formData.get('message');
+  const consent = formData.get('consent');
+  
+  // Проверяем согласие на обработку данных
+  if (!consent) {
+    showErrorMessage('❌ Необходимо согласие на обработку персональных данных');
+    return;
+  }
   
   // Формируем сообщение для Telegram
   const telegramMessage = `🚛 <b>ЗАЯВКА С САЙТА АВТОГОСТ</b>
@@ -67,6 +74,13 @@ async function handleLeadForm(e) {
   const phone = formData.get('phone');
   const email = formData.get('email') || 'не указан';
   const details = formData.get('details') || 'Заявка с калькулятора';
+  const consent = formData.get('consent');
+  
+  // Проверяем согласие на обработку данных
+  if (!consent) {
+    showErrorMessage('❌ Необходимо согласие на обработку персональных данных');
+    return;
+  }
   
   // Формируем сообщение для Telegram
   const telegramMessage = `🧮 <b>ЛИД ИЗ КАЛЬКУЛЯТОРА</b>

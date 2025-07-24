@@ -2645,3 +2645,86 @@ header {
   padding-left: 12px;
   border-radius: 4px;
 }
+
+/* ===============================================
+   ПОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ
+   =============================================== */
+
+.privacy-policy {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 0;
+  line-height: 1.6;
+  color: var(--neutral-700);
+}
+
+.privacy-policy h1 {
+  color: var(--primary-600);
+  margin-bottom: 0.5rem;
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+.privacy-policy .last-updated {
+  color: var(--neutral-500);
+  font-style: italic;
+  margin-bottom: 2rem;
+  padding: 1rem;
+  background: var(--neutral-50);
+  border-radius: 8px;
+  border-left: 4px solid var(--primary-500);
+}
+
+.privacy-policy section {
+  margin-bottom: 2.5rem;
+}
+
+.privacy-policy h2 {
+  color: var(--primary-600);
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--primary-200);
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.privacy-policy ul {
+  margin: 1rem 0;
+  padding-left: 1.5rem;
+}
+
+.privacy-policy li {
+  margin-bottom: 0.5rem;
+}
+
+.privacy-policy .contact-block {
+  background: var(--primary-50);
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin-top: 1rem;
+  border: 1px solid var(--primary-200);
+}
+
+.privacy-policy .contact-block p {
+  margin: 0.5rem 0;
+}
+
+.privacy-policy .contact-block a {
+  color: var(--primary-600);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.privacy-policy .contact-block a:hover {
+  color: var(--primary-700);
+  text-decoration: underline;
+}
+
+.privacy-policy p {
+  margin-bottom: 1rem;
+}
+
+.privacy-policy strong {
+  color: var(--neutral-800);
+  font-weight: 600;
+}
