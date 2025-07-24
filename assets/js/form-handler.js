@@ -5,8 +5,8 @@
 
 // Конфигурация Telegram бота
 const TELEGRAM_CONFIG = {
-  botToken: 'YOUR_BOT_TOKEN', // Замените на токен вашего бота
-  chatId: 'YOUR_CHAT_ID',     // Замените на ваш chat_id
+  botToken: '7999458907:AAHAnyTyvfteW1WNKpns8w35jl14f0wn5es',
+  chatId: '399711407',
   apiUrl: 'https://api.telegram.org/bot'
 };
 
