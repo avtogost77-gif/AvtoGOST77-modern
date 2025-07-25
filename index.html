@@ -73,10 +73,13 @@
   <link rel="icon" type="image/webp" href="assets/img/favicon.png">
   <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
   
-  <!-- Предзагрузка критических ресурсов -->
+    <!-- Предзагрузка критических ресурсов -->
   <link rel="preload" href="assets/img/hero-logistics.webp" as="image">
   <link rel="preconnect" href="https://api.openai.com">
-  
+
+  <!-- Основные стили -->
+  <link rel="stylesheet" href="assets/css/main.css">
+
   <!-- Критические стили для LCP -->
   <style>
     /* CRITICAL CSS для мгновенной загрузки */
@@ -128,7 +131,7 @@
     .hero-future {
       min-height: 100vh;
       background: 
-        #f0f0f0 
+        #ff0000 
         url('assets/img/hero-logistics.jpg') center/cover no-repeat;
       background-image: 
         url('assets/img/hero-logistics.webp'), 
@@ -140,6 +143,7 @@
       align-items: center;
       position: relative;
       overflow: hidden;
+      border: 5px solid blue;
     }
     
     /* Параллакс слои убраны для теста */
@@ -415,9 +419,6 @@
       100% { transform: rotate(360deg); }
     }
   </style>
-  
-  <!-- Дополнительные стили -->
-  <link rel="stylesheet" href="assets/css/main.css">
   
   <!-- Structured Data -->
   <script type="application/ld+json">
