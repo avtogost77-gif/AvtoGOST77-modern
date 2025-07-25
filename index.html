@@ -18,23 +18,27 @@
   
   <!-- Безопасность -->
   <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-  <meta http-equiv="X-Frame-Options" content="DENY">
+  <!-- X-Frame-Options должен устанавливаться сервером, не через meta -->
   <meta http-equiv="X-Content-Type-Options" content="nosniff">
   
   <!-- СОХРАНЕННАЯ АНАЛИТИКА -->
-  <!-- Яндекс.Метрика (ID: 103413788) -->
+  <!-- Яндекс.Метрика (ID: 103413788) с обработкой ошибок -->
   <script type="text/javascript">
-     (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-     m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
-     (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+     try {
+       (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+       m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+       (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
 
-     ym(103413788, "init", {
-          clickmap:true,
-          trackLinks:true,
-          accurateTrackBounce:true,
-          webvisor:true,
-          ecommerce:"dataLayer"
-     });
+       ym(103413788, "init", {
+            clickmap:true,
+            trackLinks:true,
+            accurateTrackBounce:true,
+            webvisor:true,
+            ecommerce:"dataLayer"
+       });
+     } catch(e) {
+       console.log('Яндекс.Метрика недоступна:', e);
+     }
   </script>
   <noscript><div><img src="https://mc.yandex.ru/watch/103413788" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 
