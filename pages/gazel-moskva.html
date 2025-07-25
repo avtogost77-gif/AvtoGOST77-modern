@@ -153,11 +153,13 @@
                     </div>
                     
                     <div class="input-group">
-                        <label>🚛 Тип кузова?</label>
-                        <div class="radio-group">
-                            <label><input type="radio" name="body_type" value="tent" checked> Тент (закрытый)</label>
-                            <label><input type="radio" name="body_type" value="open"> Борт (открытый)</label>
-                        </div>
+                        <label>📏 Длина будки?</label>
+                        <select id="gazel-length">
+                            <option value="4.2m">4.2м (стандарт) - 15м³</option>
+                            <option value="5m">5м (удлиненная) - 18м³</option>
+                            <option value="6m">6м (макси) - 22м³</option>
+                            <option value="open">Борт открытый - погрузка сверху</option>
+                        </select>
                     </div>
                 </div>
                 
@@ -187,66 +189,93 @@
             <div class="gazel-grid">
                 <div class="gazel-card popular">
                     <div class="gazel-image">🚐</div>
-                    <h3>Газель Тент (до 3т)</h3>
+                    <h3>Газель 4.2м (стандарт)</h3>
                     <div class="gazel-specs">
                         <div class="spec-item">
-                            <span class="spec-icon">⚖️</span>
-                            <span>До 1500 кг</span>
+                            <span class="spec-icon">📏</span>
+                            <span>4.2×2×1.8 м</span>
                         </div>
                         <div class="spec-item">
                             <span class="spec-icon">📦</span>
-                            <span>До 9 м³</span>
+                            <span>До 15 м³</span>
                         </div>
                         <div class="spec-item">
-                            <span class="spec-icon">📏</span>
-                            <span>3×2×1.8 м</span>
+                            <span class="spec-icon">⚖️</span>
+                            <span>До 1500 кг</span>
                         </div>
                     </div>
                     <div class="gazel-price">от 2500₽</div>
                     <div class="gazel-popular-badge">🔥 Самая популярная</div>
                     <p class="gazel-desc">
-                        Универсальная Газель для большинства задач. 
-                        Переезды, мебель, бытовая техника, коробки.
+                        Стандартная длина 4.2м. Подходит для 90% задач. 
+                        Переезды квартир, мебель, бытовая техника.
                     </p>
                     <button class="tactile-button primary-button">
-                        📞 Заказать тент
+                        📞 Заказать 4.2м
+                    </button>
+                </div>
+
+                <div class="gazel-card">
+                    <div class="gazel-image">🚛</div>
+                    <h3>Газель 5м (удлиненная)</h3>
+                    <div class="gazel-specs">
+                        <div class="spec-item">
+                            <span class="spec-icon">📏</span>
+                            <span>5×2×1.8 м</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-icon">📦</span>
+                            <span>До 18 м³</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-icon">⚖️</span>
+                            <span>До 1500 кг</span>
+                        </div>
+                    </div>
+                    <div class="gazel-price">от 2700₽</div>
+                    <p class="gazel-desc">
+                        Удлиненная будка для объемных грузов. 
+                        Большие переезды, длинная мебель, много коробок.
+                    </p>
+                    <button class="tactile-button outline-button">
+                        📞 Заказать 5м
                     </button>
                 </div>
 
                 <div class="gazel-card">
                     <div class="gazel-image">🚚</div>
-                    <h3>Газель Фургон</h3>
+                    <h3>Газель 6м (макси)</h3>
                     <div class="gazel-specs">
                         <div class="spec-item">
-                            <span class="spec-icon">⚖️</span>
-                            <span>До 1500 кг</span>
+                            <span class="spec-icon">📏</span>
+                            <span>6×2×1.8 м</span>
                         </div>
                         <div class="spec-item">
                             <span class="spec-icon">📦</span>
-                            <span>До 8 м³</span>
+                            <span>До 22 м³</span>
                         </div>
-                        <div class="spec-item">
-                            <span class="spec-icon">🌧️</span>
-                            <span>Защита от дождя</span>
-                        </div>
-                    </div>
-                    <div class="gazel-price">от 1700₽</div>
-                    <p class="gazel-desc">
-                        Закрытый кузов защищает груз от дождя и снега. 
-                        Идеально для ценных вещей и электроники.
-                    </p>
-                    <button class="tactile-button outline-button">
-                        📞 Заказать фургон
-                    </button>
-                </div>
-
-                <div class="gazel-card">
-                    <div class="gazel-image">🏗️</div>
-                    <h3>Газель с бортом</h3>
-                    <div class="gazel-specs">
                         <div class="spec-item">
                             <span class="spec-icon">⚖️</span>
                             <span>До 1500 кг</span>
+                        </div>
+                    </div>
+                    <div class="gazel-price">от 3000₽</div>
+                    <p class="gazel-desc">
+                        Максимальная длина до 6.8м. Для очень объемных грузов. 
+                        Офисные переезды, много мебели, легкие габаритные грузы.
+                    </p>
+                    <button class="tactile-button outline-button">
+                        📞 Заказать 6м
+                    </button>
+                </div>
+
+                <div class="gazel-card special">
+                    <div class="gazel-image">🏗️</div>
+                    <h3>Газель борт (открытая)</h3>
+                    <div class="gazel-specs">
+                        <div class="spec-item">
+                            <span class="spec-icon">📏</span>
+                            <span>4.2×2×0.4 м</span>
                         </div>
                         <div class="spec-item">
                             <span class="spec-icon">📐</span>
@@ -254,22 +283,51 @@
                         </div>
                         <div class="spec-item">
                             <span class="spec-icon">🎪</span>
-                            <span>Тент по желанию</span>
+                            <span>Тент опционально</span>
                         </div>
                     </div>
-                    <div class="gazel-price">от 1600₽</div>
+                    <div class="gazel-price">от 2600₽</div>
+                    <div class="gazel-special-badge">🏗️ Открытая</div>
                     <p class="gazel-desc">
-                        Открытый кузов с бортами. Можно накрыть тентом. 
-                        Стройматериалы, мешки, паллеты, негабаритные грузы.
+                        Открытая платформа с бортами. Для стройматериалов, 
+                        паллет, негабаритных грузов. Погрузка сверху и сбоку.
                     </p>
-                    <button class="tactile-button outline-button">
-                        📞 Заказать бортовую
+                    <button class="tactile-button success-button">
+                        🏗️ Заказать борт
+                    </button>
+                </div>
+
+                <div class="gazel-card rare">
+                    <div class="gazel-image">🚐</div>
+                    <h3>Газель 3м (база)</h3>
+                    <div class="gazel-specs">
+                        <div class="spec-item">
+                            <span class="spec-icon">📏</span>
+                            <span>3×2×1.8 м</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-icon">📦</span>
+                            <span>До 11 м³</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-icon">⚠️</span>
+                            <span>Редкая</span>
+                        </div>
+                    </div>
+                    <div class="gazel-price">по запросу</div>
+                    <div class="gazel-rare-badge">⚠️ Неликвид</div>
+                    <p class="gazel-desc">
+                        Короткая база 3м. Очень мало в парке, неликвидная. 
+                        Только для специфических задач.
+                    </p>
+                    <button class="tactile-button outline-button disabled">
+                        ⚠️ Редко доступна
                     </button>
                 </div>
 
                 <div class="gazel-card special">
                     <div class="gazel-image">❄️</div>
-                    <h3>Рефрижератор</h3>
+                    <h3>Рефрижератор 4.2м</h3>
                     <div class="gazel-specs">
                         <div class="spec-item">
                             <span class="spec-icon">🌡️</span>
@@ -277,7 +335,7 @@
                         </div>
                         <div class="spec-item">
                             <span class="spec-icon">📦</span>
-                            <span>До 8 м³</span>
+                            <span>До 13 м³</span>
                         </div>
                         <div class="spec-item">
                             <span class="spec-icon">🎯</span>
@@ -287,7 +345,7 @@
                     <div class="gazel-price">от 3500₽</div>
                     <div class="gazel-special-badge">❄️ Холодильная</div>
                     <p class="gazel-desc">
-                        Температурный контроль от -25°C до +25°C. 
+                        Температурный режим от -25°C до +25°C. 
                         Продукты, лекарства, цветы, мороженое.
                     </p>
                     <button class="tactile-button success-button">
@@ -439,34 +497,40 @@
                 <div class="tab-content active" id="within-mkad">
                     <div class="pricing-table">
                         <div class="pricing-row header">
-                            <div class="pricing-cell">Услуга</div>
-                            <div class="pricing-cell">Тент</div>
-                            <div class="pricing-cell">Фургон</div>
-                            <div class="pricing-cell">Борт</div>
+                            <div class="pricing-cell">Длина будки</div>
+                            <div class="pricing-cell">4.2м (стандарт)</div>
+                            <div class="pricing-cell">5м (удлиненная)</div>
+                            <div class="pricing-cell">6м (макси)</div>
                         </div>
                         <div class="pricing-row">
                             <div class="pricing-cell">Минимальный заказ (4+1 час)</div>
                             <div class="pricing-cell">2500₽</div>
                             <div class="pricing-cell">2700₽</div>
-                            <div class="pricing-cell">2600₽</div>
+                            <div class="pricing-cell">3000₽</div>
                         </div>
                         <div class="pricing-row">
                             <div class="pricing-cell">Каждый следующий час</div>
                             <div class="pricing-cell">500₽</div>
                             <div class="pricing-cell">540₽</div>
-                            <div class="pricing-cell">520₽</div>
+                            <div class="pricing-cell">600₽</div>
                         </div>
                         <div class="pricing-row">
                             <div class="pricing-cell">Квартирный переезд (1-2 комн)</div>
                             <div class="pricing-cell">3500₽</div>
                             <div class="pricing-cell">3700₽</div>
-                            <div class="pricing-cell">3600₽</div>
+                            <div class="pricing-cell">4000₽</div>
                         </div>
                         <div class="pricing-row">
                             <div class="pricing-cell">Квартирный переезд (3-4 комн)</div>
                             <div class="pricing-cell">5000₽</div>
-                            <div class="pricing-cell">5200₽</div>
-                            <div class="pricing-cell">5100₽</div>
+                            <div class="pricing-cell">5500₽</div>
+                            <div class="pricing-cell">6000₽</div>
+                        </div>
+                        <div class="pricing-row">
+                            <div class="pricing-cell">Газель борт (открытая)</div>
+                            <div class="pricing-cell">2600₽</div>
+                            <div class="pricing-cell">-</div>
+                            <div class="pricing-cell">-</div>
                         </div>
                     </div>
                 </div>
@@ -475,23 +539,23 @@
                     <div class="pricing-table">
                         <div class="pricing-row header">
                             <div class="pricing-cell">Расстояние</div>
-                            <div class="pricing-cell">Тент/Борт</div>
-                            <div class="pricing-cell">Фургон</div>
+                            <div class="pricing-cell">4.2м</div>
+                            <div class="pricing-cell">5м / 6м</div>
                         </div>
                         <div class="pricing-row">
                             <div class="pricing-cell">МКАД + 10 км</div>
                             <div class="pricing-cell">3000₽</div>
-                            <div class="pricing-cell">3200₽</div>
+                            <div class="pricing-cell">3300₽</div>
                         </div>
                         <div class="pricing-row">
                             <div class="pricing-cell">МКАД + 20 км</div>
                             <div class="pricing-cell">3500₽</div>
-                            <div class="pricing-cell">3700₽</div>
+                            <div class="pricing-cell">3800₽</div>
                         </div>
                         <div class="pricing-row">
                             <div class="pricing-cell">МКАД + 30 км</div>
                             <div class="pricing-cell">4000₽</div>
-                            <div class="pricing-cell">4200₽</div>
+                            <div class="pricing-cell">4400₽</div>
                         </div>
                         <div class="pricing-row">
                             <div class="pricing-cell">Каждый км сверх</div>
