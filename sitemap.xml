@@ -1,203 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9" 
-        xmlns:image="https://www.google.com/schemas/sitemap-image/1.1"
-        xmlns:news="https://www.google.com/schemas/sitemap-news/0.9">
-  
-  <!-- Главная страница - максимальный приоритет -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://avtogost77.ru/</loc>
-    <lastmod>2025-01-15</lastmod>
-    <changefreq>daily</changefreq>
+    <lastmod>2024-01-01</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-    <image:image>
-      <image:loc>https://avtogost77.ru/assets/img/hero-logistics.webp</image:loc>
-      <image:caption>АвтоГОСТ - современная логистика по России</image:caption>
-      <image:title>Грузоперевозки и логистика</image:title>
-    </image:image>
-  </url>
-
-  <!-- Услуги - высокий приоритет для конверсии -->
-  <url>
-    <loc>https://avtogost77.ru/services.html</loc>
-    <lastmod>2025-01-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-    <image:image>
-      <image:loc>https://avtogost77.ru/assets/img/services-overview.jpg</image:loc>
-      <image:caption>Полный спектр логистических услуг</image:caption>
-    </image:image>
-  </url>
-
-  <!-- Якорные ссылки на услуги для НЧ запросов -->
-  <url>
-    <loc>https://avtogost77.ru/services.html#outsourcing</loc>
-    <lastmod>2025-01-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://avtogost77.ru/services.html#ltl</loc>
-    <lastmod>2025-01-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://avtogost77.ru/services.html#express-moscow</loc>
-    <lastmod>2025-01-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <!-- Калькулятор - важная конверсионная страница -->
-  <url>
-    <loc>https://avtogost77.ru/#smart-calculator</loc>
-    <lastmod>2025-01-15</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <!-- Интерактивная карта -->
-  <url>
-    <loc>https://avtogost77.ru/#interactive-map</loc>
-    <lastmod>2025-01-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <!-- О компании -->
-  <url>
-    <loc>https://avtogost77.ru/about.html</loc>
-    <lastmod>2025-01-10</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-    <image:image>
-      <image:loc>https://avtogost77.ru/assets/img/company-team.jpg</image:loc>
-      <image:caption>Команда АвтоГОСТ</image:caption>
-    </image:image>
-  </url>
-
-  <!-- Новости и блог для контент-маркетинга -->
-  <url>
-    <loc>https://avtogost77.ru/news.html</loc>
-    <lastmod>2025-01-15</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <!-- Контакты - важно для локального SEO -->
-  <url>
-    <loc>https://avtogost77.ru/contact.html</loc>
-    <lastmod>2025-01-12</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <image:image>
-      <image:loc>https://avtogost77.ru/assets/img/contact-office.jpg</image:loc>
-      <image:caption>Офис АвтоГОСТ в Москве</image:caption>
-    </image:image>
-  </url>
-
-  <!-- FAQ - для long-tail запросов -->
-  <url>
-    <loc>https://avtogost77.ru/faq.html</loc>
-    <lastmod>2025-01-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-
-  <!-- Политика конфиденциальности -->
-  <url>
-    <loc>https://avtogost77.ru/privacy.html</loc>
-    <lastmod>2024-12-01</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
-  </url>
-
-  <!-- Дополнительные страницы для SEO -->
-  <url>
-    <loc>https://avtogost77.ru/gruzoperevozki-moskva</loc>
-    <lastmod>2025-01-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://avtogost77.ru/logistika-rossiya</loc>
-    <lastmod>2025-01-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://avtogost77.ru/autsorsing-logistiki</loc>
-    <lastmod>2025-01-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <!-- Новые landing-страницы под ключевые запросы -->
-  <url>
-    <loc>https://avtogost77.ru/marketplace-delivery.html</loc>
-    <lastmod>2025-01-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-    <image:image>
-      <image:loc>https://avtogost77.ru/assets/img/marketplace-delivery.jpg</image:loc>
-      <image:caption>Доставка товаров на склады маркетплейсов</image:caption>
-    </image:image>
   </url>
   
   <url>
-    <loc>https://avtogost77.ru/urgent-delivery.html</loc>
-    <lastmod>2025-01-15</lastmod>
+    <loc>https://avtogost77.ru/pages/gruzoperevozki-moskva.html</loc>
+    <lastmod>2024-01-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
-    <image:image>
-      <image:loc>https://avtogost77.ru/assets/img/urgent-logistics.jpg</image:loc>
-      <image:caption>Экстренные грузоперевозки и спот-заявки</image:caption>
-    </image:image>
   </url>
   
-    <url>
-    <loc>https://avtogost77.ru/moscow-regions.html</loc>
-    <lastmod>2025-01-15</lastmod>
+  <url>
+    <loc>https://avtogost77.ru/pages/gazel-moskva.html</loc>
+    <lastmod>2024-01-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
-    <image:image>
-      <image:loc>https://avtogost77.ru/assets/img/moscow-regions.jpg</image:loc>
-      <image:caption>Межрегиональные грузоперевозки из Москвы</image:caption>
-    </image:image>
   </url>
-
-  <!-- SEO статьи блога -->
+  
   <url>
-    <loc>https://avtogost77.ru/blog-1-carrier-failed.html</loc>
-    <lastmod>2025-01-15</lastmod>
-    <changefreq>monthly</changefreq>
+    <loc>https://avtogost77.ru/pages/gruzoperevozki-spb.html</loc>
+    <lastmod>2024-01-01</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
-    <image:image>
-      <image:loc>https://avtogost77.ru/assets/img/carrier-failed.jpg</image:loc>
-      <image:caption>Что делать если подвел перевозчик</image:caption>
-    </image:image>
   </url>
-
+  
   <url>
-    <loc>https://avtogost77.ru/blog-2-wildberries-delivery.html</loc>
-    <lastmod>2025-01-15</lastmod>
+    <loc>https://avtogost77.ru/pages/autsorsing-logistiki.html</loc>
+    <lastmod>2024-01-01</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <image:image>
-      <image:loc>https://avtogost77.ru/assets/img/wildberries-delivery.jpg</image:loc>
-      <image:caption>Доставка товара на склад Wildberries</image:caption>
-    </image:image>
+    <priority>0.7</priority>
   </url>
-
-  <url>
-    <loc>https://avtogost77.ru/privacy-policy.html</loc>
-    <lastmod>2024-12-15</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
-  </url>
-
-  </urlset>
+</urlset>

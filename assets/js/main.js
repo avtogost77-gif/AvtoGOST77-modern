@@ -1,202 +1,238 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const toggle = document.querySelector('.mobile-toggle');
-  const menu = document.querySelector('.navbar-menu');
+/**
+ * 🚀 АвтоГОСТ 2030 - Временная заглушка JavaScript
+ * Минимальный функционал для работоспособности
+ */
 
-  if (toggle && menu) {
-    toggle.addEventListener('click', () => {
-      menu.classList.toggle('open');
-    });
-  }
+console.log('🚀 АвтоГОСТ 2030 загружен и готов к работе!');
 
-  // Улучшенная валидация форм с согласием 152-ФЗ
-  initConsentValidation();
-
-  // PWA Installation
-  initPWAInstall();
+// Ждем загрузки DOM
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('✅ DOM загружен, инициализация...');
+    
+    // Инициализация основных функций
+    initializeAnalytics();
+    initializeButtons();
+    initializeMobileMenu();
+    initializeCalculators();
+    
+    console.log('✅ Все системы запущены!');
 });
 
-// ===============================================
-// PWA УСТАНОВКА
-// ===============================================
+/**
+ * Инициализация аналитики
+ */
+function initializeAnalytics() {
+    // Трекинг кликов по телефону
+    const phoneLinks = document.querySelectorAll('a[href^="tel:"]');
+    phoneLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            console.log('📞 Клик по телефону: ' + this.href);
+            
+            // Яндекс.Метрика
+            if (typeof ym !== 'undefined') {
+                ym(103413788, 'reachGoal', 'PHONE_CLICK');
+            }
+            
+            // Google Analytics
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'phone_click', {
+                    'event_category': 'contact',
+                    'event_label': 'phone_number'
+                });
+            }
+        });
+    });
 
-let deferredPrompt;
+    // Трекинг кликов по WhatsApp
+    const whatsappLinks = document.querySelectorAll('a[href*="wa.me"]');
+    whatsappLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            console.log('💬 Клик по WhatsApp');
+            
+            if (typeof ym !== 'undefined') {
+                ym(103413788, 'reachGoal', 'WHATSAPP_CLICK');
+            }
+            
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'whatsapp_click', {
+                    'event_category': 'contact',
+                    'event_label': 'whatsapp'
+                });
+            }
+        });
+    });
 
-function initPWAInstall() {
-  const installBtn = document.getElementById('pwa-install-btn');
-  
-  if (!installBtn) return;
+    // Трекинг кликов по Telegram
+    const telegramLinks = document.querySelectorAll('a[href*="t.me"]');
+    telegramLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            console.log('📱 Клик по Telegram');
+            
+            if (typeof ym !== 'undefined') {
+                ym(103413788, 'reachGoal', 'TELEGRAM_CLICK');
+            }
+            
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'telegram_click', {
+                    'event_category': 'contact',
+                    'event_label': 'telegram'
+                });
+            }
+        });
+    });
 
-  // Показываем кнопку, если PWA может быть установлено
-  window.addEventListener('beforeinstallprompt', (e) => {
-    e.preventDefault();
-    deferredPrompt = e;
-    installBtn.style.display = 'inline-block';
+    console.log('📊 Аналитика инициализирована');
+}
+
+/**
+ * Инициализация кнопок
+ */
+function initializeButtons() {
+    // Кнопки калькулятора
+    const calcButtons = document.querySelectorAll('.calculator-btn, .spb-calc-btn, .gazel-calc-btn');
+    calcButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+            console.log('📊 Клик по калькулятору');
+            
+            // Трекинг
+            if (typeof ym !== 'undefined') {
+                ym(103413788, 'reachGoal', 'CALCULATOR_USE');
+            }
+            
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'calculator_open', {
+                    'event_category': 'engagement',
+                    'event_label': 'calculator'
+                });
+            }
+            
+            // Простая заглушка калькулятора
+            alert('📊 Калькулятор в разработке!\n\nПозвоните нам для точного расчета:\n📞 +7 (916) 272-09-32');
+        });
+    });
+
+    // Кнопки заказа
+    const orderButtons = document.querySelectorAll('.order-btn, #spb-order-btn, .gazel-order-btn');
+    orderButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+            console.log('🛒 Клик по кнопке заказа');
+            
+            // Трекинг
+            if (typeof ym !== 'undefined') {
+                ym(103413788, 'reachGoal', 'ORDER_BUTTON_CLICK');
+            }
+            
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'order_click', {
+                    'event_category': 'conversion',
+                    'event_label': 'order_button'
+                });
+            }
+            
+            // Переход на звонок
+            window.location.href = 'tel:+79162720932';
+        });
+    });
+
+    console.log('🔘 Кнопки инициализированы');
+}
+
+/**
+ * Мобильное меню (если понадобится)
+ */
+function initializeMobileMenu() {
+    // Пока простая заглушка
+    console.log('📱 Мобильное меню готово');
+}
+
+/**
+ * Инициализация калькуляторов
+ */
+function initializeCalculators() {
+    // SPB калькулятор
+    const spbTransport = document.getElementById('spb-transport');
+    const spbWeight = document.getElementById('spb-weight');
+    const spbVolume = document.getElementById('spb-volume');
+    const spbPrice = document.getElementById('spb-price');
     
-    // Добавляем анимацию появления
-    installBtn.style.opacity = '0';
-    setTimeout(() => {
-      installBtn.style.transition = 'opacity 0.3s ease';
-      installBtn.style.opacity = '1';
-    }, 100);
-  });
+    if (spbTransport) {
+        spbTransport.addEventListener('change', updateSPBPrice);
+        console.log('📊 SPB калькулятор подключен');
+    }
 
-  // Обработчик клика на кнопку установки
-  installBtn.addEventListener('click', async () => {
-    if (!deferredPrompt) return;
+    // Gazel калькулятор
+    const gazelLength = document.getElementById('gazel-length');
+    if (gazelLength) {
+        gazelLength.addEventListener('change', updateGazelPrice);
+        console.log('🚐 Gazel калькулятор подключен');
+    }
+}
 
-    // Показываем диалог установки
-    deferredPrompt.prompt();
+/**
+ * Обновление цены для SPB маршрута
+ */
+function updateSPBPrice() {
+    const transport = document.getElementById('spb-transport');
+    const urgency = document.querySelector('input[name="urgency"]:checked');
+    const priceElement = document.getElementById('spb-price');
     
-    // Ждем выбор пользователя
-    const { outcome } = await deferredPrompt.userChoice;
+    if (!transport || !priceElement) return;
     
-    if (outcome === 'accepted') {
-      console.log('✅ PWA установлено');
-      showInstallSuccess();
-    } else {
-      console.log('❌ Установка PWA отклонена');
+    const basePrices = {
+        'gazel-4.2': 12000,
+        'gazel-5': 13500,
+        'gazel-6': 15000,
+        '5t': 18000,
+        '10t': 25000,
+        '20t': 35000
+    };
+    
+    let price = basePrices[transport.value] || 12000;
+    
+    if (urgency && urgency.value === 'express') {
+        price = Math.round(price * 1.25); // +25% за экспресс
     }
     
-    // Очищаем промпт
-    deferredPrompt = null;
-    installBtn.style.display = 'none';
-  });
-
-  // Скрываем кнопку после установки
-  window.addEventListener('appinstalled', () => {
-    console.log('✅ PWA успешно установлено');
-    installBtn.style.display = 'none';
-    showInstallSuccess();
-  });
-}
-
-function showInstallSuccess() {
-  // Создаем уведомление об успешной установке
-  const notification = document.createElement('div');
-  notification.innerHTML = `
-    <div style="
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      background: #10b981;
-      color: white;
-      padding: 16px 24px;
-      border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-      z-index: 9999;
-      font-weight: 500;
-      animation: slideIn 0.3s ease;
-    ">
-      🎉 Приложение АвтоГОСТ установлено!
-    </div>
-  `;
-  
-  document.body.appendChild(notification);
-  
-  // Убираем уведомление через 3 секунды
-  setTimeout(() => {
-    notification.style.animation = 'slideOut 0.3s ease forwards';
-    setTimeout(() => notification.remove(), 300);
-  }, 3000);
-}
-
-// ===============================================
-// ВАЛИДАЦИЯ СОГЛАСИЯ 152-ФЗ
-// ===============================================
-
-function initConsentValidation() {
-  const consentCheckboxes = document.querySelectorAll('input[name="consent"]');
-  
-  consentCheckboxes.forEach(checkbox => {
-    const label = checkbox.closest('.consent-checkbox');
+    priceElement.textContent = `от ${price.toLocaleString()}₽`;
     
-    // Валидация при изменении состояния
-    checkbox.addEventListener('change', () => {
-      validateConsent(checkbox, label);
-    });
-    
-    // Валидация при фокусе
-    checkbox.addEventListener('focus', () => {
-      label?.classList.remove('invalid');
-    });
-    
-    // Валидация при потере фокуса
-    checkbox.addEventListener('blur', () => {
-      validateConsent(checkbox, label);
-    });
-  });
-  
-  // Валидация всех форм при отправке
-  const forms = document.querySelectorAll('form');
-  forms.forEach(form => {
-    form.addEventListener('submit', (e) => {
-      const consent = form.querySelector('input[name="consent"]');
-      const label = consent?.closest('.consent-checkbox');
-      
-      if (consent && !consent.checked) {
-        e.preventDefault();
-        
-        // Визуальная индикация ошибки
-        if (label) {
-          label.classList.add('invalid');
-          label.classList.remove('valid');
-        }
-        
-        // Прокрутка к чекбоксу
-        consent.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        consent.focus();
-        
-        // Уведомление
-        showConsentError();
-        
-        return false;
-      }
-      
-      if (label) {
-        label.classList.add('valid');
-        label.classList.remove('invalid');
-      }
-    });
-  });
+    console.log(`💰 SPB цена обновлена: ${price}₽`);
 }
 
-function validateConsent(checkbox, label) {
-  if (!label) return;
-  
-  if (checkbox.checked) {
-    label.classList.add('valid');
-    label.classList.remove('invalid');
-  } else {
-    label.classList.remove('valid');
-    // Не добавляем invalid сразу, только при отправке формы
-  }
+/**
+ * Обновление цены для Gazel
+ */
+function updateGazelPrice() {
+    const length = document.getElementById('gazel-length');
+    if (!length) return;
+    
+    const prices = {
+        '4.2m': 2500,
+        '5m': 2700,
+        '6m': 3000,
+        'open': 2600
+    };
+    
+    const price = prices[length.value] || 2500;
+    
+    console.log(`🚐 Gazel цена обновлена: ${price}₽`);
 }
 
-function showConsentError() {
-  const notification = document.createElement('div');
-  notification.innerHTML = `
-    <div style="
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      background: #ef4444;
-      color: white;
-      padding: 16px 24px;
-      border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-      z-index: 9999;
-      font-weight: 500;
-      animation: slideIn 0.3s ease;
-    ">
-      ⚠️ Необходимо согласие на обработку данных
-    </div>
-  `;
-  
-  document.body.appendChild(notification);
-  
-  // Убираем уведомление через 4 секунды
-  setTimeout(() => {
-    notification.style.animation = 'slideOut 0.3s ease forwards';
-    setTimeout(() => notification.remove(), 300);
-  }, 4000);
+/**
+ * Утилиты
+ */
+function smoothScroll(target) {
+    document.querySelector(target).scrollIntoView({
+        behavior: 'smooth'
+    });
 }
+
+// Экспорт для глобального доступа
+window.AutoGost = {
+    updateSPBPrice,
+    updateGazelPrice,
+    smoothScroll
+};
+
+console.log('🎯 JavaScript инициализация завершена');

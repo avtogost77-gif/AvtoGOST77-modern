@@ -1,279 +1,31 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="yandex-verification" content="376fdf2ca69f9a1f" />
-  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
-  <meta http-equiv="X-Frame-Options" content="DENY" />
-  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
-  <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <!-- SEO Мета-теги -->
-  <title>Грузоперевозки Москва 2ч подача | АвтоГОСТ</title>
-  <meta name="description" content="Грузоперевозки по России от 35₽/км. Подача транспорта за 2 часа в Москве. 60K+ перевозчиков. Аутсорсинг логистики для бизнеса." />
-  <meta name="keywords" content="грузоперевозки москва, удаленный отдел логистики, аутсорсинг логистики, доставка на маркетплейсы, спот заявки транспорт, грузоперевозки малый бизнес, прямые перевозки без складов, срочная подача транспорта" />
+  <!-- SEO мета-теги -->
+  <title>АвтоГОСТ — Пока вы создаете, мы доставляем | Логистика без забот</title>
+  <meta name="description" content="Инфраструктура вашего бизнеса. Занимайтесь делом — логистику доверьте нам. 60,000+ перевозчиков, подача за 2 часа, 99.3% вовремя.">
+  <meta name="keywords" content="грузоперевозки, логистика, аутсорсинг транспорта, доставка по России, подача транспорта">
   
   <!-- Open Graph -->
-  <meta property="og:title" content="АвтоГОСТ — Грузоперевозки по России | Логистика Москва" />
-  <meta property="og:description" content="Подача транспорта за 2 часа в Москве и МО. 60000+ перевозчиков. Аутсорсинг логистики от 35₽/км. Онлайн калькулятор стоимости." />
-  <meta property="og:image" content="https://avtogost77.ru/assets/img/og-image.jpg" />
-  <meta property="og:url" content="https://avtogost77.ru" />
-  <meta property="og:type" content="website" />
-  <meta property="og:locale" content="ru_RU" />
+  <meta property="og:title" content="АвтоГОСТ — Пока вы создаете, мы доставляем">
+  <meta property="og:description" content="Инфраструктура вашего бизнеса. 60,000+ перевозчиков, подача за 2 часа, 99.3% вовремя.">
+  <meta property="og:image" content="/assets/img/hero-logistics.webp">
+  <meta property="og:url" content="https://avtogost77.ru">
+  <meta property="og:type" content="website">
   
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="АвтоГОСТ — Грузоперевозки по России" />
-  <meta name="twitter:description" content="Подача транспорта за 2 часа. 60000+ перевозчиков. Онлайн калькулятор." />
-  <meta name="twitter:image" content="https://avtogost77.ru/assets/img/twitter-card.jpg" />
+  <!-- Безопасность -->
+  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  <meta http-equiv="X-Frame-Options" content="DENY">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
   
-  <!-- Canonical и альтернативные версии -->
-  <link rel="canonical" href="https://avtogost77.ru/" />
-  <link rel="alternate" hreflang="ru" href="https://avtogost77.ru/" />
-  
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="assets/img/favicon.png" />
-  <link rel="apple-touch-icon" sizes="180x180" href="assets/img/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16x16.png">
-  
-  <!-- Critical CSS (inline for fastest loading) -->
-  <link rel="stylesheet" href="assets/css/critical.css">
-  
-  <!-- Main CSS - загружаем сразу для гарантии -->
-  <link rel="stylesheet" href="assets/css/styles.css">
-  <link rel="stylesheet" href="assets/css/mobile.css">
-  
-  <!-- Preload Critical Resources -->
-  <link rel="preload" href="assets/js/calc.js" as="script">
-  <link rel="preload" href="assets/js/performance.js" as="script">
-  <link rel="preload" href="assets/js/seo-optimizer.js" as="script">
-  
-  <!-- DNS Prefetch for external resources -->
-  <link rel="dns-prefetch" href="//fonts.googleapis.com">
-  <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
-  <link rel="dns-prefetch" href="//unpkg.com">
-  
-  <!-- Non-critical CSS (deferred loading) -->
-  <noscript>
-    <link rel="stylesheet" href="assets/css/styles.css">
-    <link rel="stylesheet" href="assets/css/mobile.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
-  </noscript>
-  
-  <!-- Schema.org JSON-LD -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "TransportationCompany",
-    "name": "АвтоГОСТ",
-    "alternateName": "AvtoGOST",
-    "description": "Инфраструктура бизнеса. Работаем незаметно, как электричество в розетке. Пока вы создаете — мы доставляем. Логистика без тревог для малого и среднего бизнеса.",
-    "url": "https://avtogost77.ru",
-    "logo": "https://avtogost77.ru/assets/img/logo.png",
-    "image": "https://avtogost77.ru/assets/img/company-photo.jpg",
-    "telephone": "+7-916-272-09-32",
-    "email": "avtogost77@gmail.com",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Москва",
-      "addressRegion": "Московская область",
-      "addressCountry": "RU"
-    },
-    "areaServed": [
-      {
-        "@type": "Country",
-        "name": "Россия"
-      },
-      {
-        "@type": "State",
-        "name": "Московская область"
-      }
-    ],
-    "serviceType": [
-      "Грузоперевозки",
-      "Логистические услуги",
-      "Аутсорсинг логистики",
-      "Экспедирование грузов",
-      "Удаленный отдел логистики"
-    ],
-    "founder": {
-      "@type": "Person",
-      "name": "АвтоГОСТ"
-    },
-    "foundingDate": "2014",
-    "numberOfEmployees": "50-100",
-    "slogan": "Логистика без забот",
-    "priceRange": "$$",
-    "paymentAccepted": [
-      "Cash",
-      "Credit Card",
-      "Bank Transfer",
-      "Invoice"
-    ],
-    "hasOfferCatalog": {
-      "@type": "OfferCatalog",
-      "name": "Логистические услуги",
-      "itemListElement": [
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Грузоперевозки по России",
-            "description": "Доставка грузов автомобильным транспортом по всей территории России"
-          }
-        },
-        {
-          "@type": "Offer", 
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Аутсорсинг логистики",
-            "description": "Полное ведение логистических операций клиента силами нашей команды"
-          }
-        },
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service", 
-            "name": "Экспресс-доставка Москва и МО",
-            "description": "Подача транспорта в течение 2 часов в Москве и Московской области"
-          }
-        }
-      ]
-    },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.8",
-      "reviewCount": "127",
-      "bestRating": "5",
-      "worstRating": "1"
-    },
-    "review": [
-      {
-        "@type": "Review",
-        "author": {
-          "@type": "Organization",
-          "name": "ООО Логистик-Трейд"
-        },
-        "reviewRating": {
-          "@type": "Rating",
-          "ratingValue": "5"
-        },
-        "reviewBody": "Отличная компания для аутсорсинга логистики. Быстрая подача транспорта, всегда выполняют обязательства в срок."
-      }
-    ],
-    "sameAs": [
-      "https://wa.me/79162720932",
-      "https://t.me/father_bot"
-    ]
-  }
-  </script>
-
-  <!-- Локальный бизнес Schema -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "@id": "https://avtogost77.ru/#LocalBusiness",
-    "name": "АвтоГОСТ",
-    "image": "https://avtogost77.ru/assets/img/office.jpg",
-    "telephone": "+7-916-272-09-32",
-    "email": "avtogost77@gmail.com",
-    "url": "https://avtogost77.ru",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Москва и Московская область",
-      "addressLocality": "Москва", 
-      "postalCode": "101000",
-      "addressCountry": "RU"
-    },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": "55.7558",
-      "longitude": "37.6176"
-    },
-    "openingHoursSpecification": [
-      {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": [
-          "Monday",
-          "Tuesday", 
-          "Wednesday",
-          "Thursday",
-          "Friday"
-        ],
-        "opens": "09:00",
-        "closes": "18:00"
-      },
-      {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": "Saturday",
-        "opens": "10:00",
-        "closes": "16:00"
-      }
-    ],
-    "priceRange": "$$",
-    "currenciesAccepted": "RUB",
-    "paymentAccepted": ["Cash", "Credit Card", "Invoice"]
-  }
-  </script>
-
-  <!-- FAQ Schema -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "Какая стоимость грузоперевозок по России?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Стоимость грузоперевозок начинается от 35 рублей за километр и зависит от типа груза, веса, расстояния и дополнительных услуг. Точную стоимость можно рассчитать в нашем онлайн-калькуляторе."
-        }
-      },
-      {
-        "@type": "Question", 
-        "name": "За какое время можете подать транспорт в Москве?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "В Москве и Московской области мы гарантируем подачу транспорта в течение 2 часов. При несоблюдении срока предоставляем скидку 10%."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Какие типы грузов перевозите?",
-        "acceptedAnswer": {
-          "@type": "Answer", 
-          "text": "Мы перевозим все типы грузов: обычные, хрупкие, опасные, негабаритные, продукты питания, медицинские товары. Имеем все необходимые лицензии и сертификаты."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Предоставляете ли аутсорсинг логистики?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Да, мы предоставляем полный аутсорсинг логистических операций - становимся вашим удаленным отделом логистики. Это позволяет сэкономить до 30% на логистических расходах."
-        }
-      }
-    ]
-  }
-  </script>
-
-  <!-- Веб-приложение манифест -->
-  <link rel="manifest" href="/manifest.json">
-  <meta name="theme-color" content="#2563eb">
-  <meta name="msapplication-TileColor" content="#2563eb">
-  
-  <!-- Yandex.Metrika counter -->
-  <script type="text/javascript" >
+  <!-- СОХРАНЕННАЯ АНАЛИТИКА -->
+  <!-- Яндекс.Метрика (ID: 103413788) -->
+  <script type="text/javascript">
      (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-     m[i].l=1*new Date();
-     for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-     k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+     m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
      (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
 
      ym(103413788, "init", {
@@ -285,480 +37,510 @@
      });
   </script>
   <noscript><div><img src="https://mc.yandex.ru/watch/103413788" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-  <!-- /Yandex.Metrika counter -->
-  
-  <!-- Yandex.Metrika counter -->
-  <script type="text/javascript">
-      (function(m,e,t,r,i,k,a){
-          m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-          m[i].l=1*new Date();
-          for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-          k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
-      })(window, document,'script','https://mc.yandex.ru/metrika/tag.js', 'ym');
 
-      ym(103413788, 'init', {webvisor:true, clickmap:true, accurateTrackBounce:true, trackLinks:true});
+  <!-- Google Analytics 4 (НАСТРОЕНО) -->
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BZZPY2YQPP"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-BZZPY2YQPP');
   </script>
-  <noscript><div><img src="https://mc.yandex.ru/watch/103413788" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-  <!-- /Yandex.Metrika counter -->
+  
+  <!-- Иконки -->
+  <link rel="icon" type="image/webp" href="/assets/img/favicon.webp">
+  <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+  
+  <!-- Предзагрузка критических ресурсов -->
+  <link rel="preload" href="/assets/img/hero-logistics.webp" as="image">
+  <link rel="preload" href="/assets/fonts/inter-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preconnect" href="https://api.openai.com">
+  
+  <!-- Критические стили для LCP -->
+  <style>
+    /* CRITICAL CSS для мгновенной загрузки */
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --secondary: #64748b;
+      --accent: #f59e0b;
+      --success: #10b981;
+      --success-dark: #059669;
+      --danger: #ef4444;
+      --warning: #f59e0b;
+      
+      /* Glassmorphism 2030 */
+      --glass-bg: rgba(255, 255, 255, 0.08);
+      --glass-border: rgba(255, 255, 255, 0.2);
+      --glass-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+      
+      /* Анимации будущего */
+      --spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+      --elastic: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      --anticipation: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      
+      /* Тактильные эффекты */
+      --haptic-light: 0 2px 8px rgba(0, 0, 0, 0.1);
+      --haptic-medium: 0 8px 32px rgba(0, 0, 0, 0.12);
+      --haptic-strong: 0 16px 64px rgba(0, 0, 0, 0.15);
+      --haptic-glow: 0 0 32px rgba(37, 99, 235, 0.3);
+    }
+    
+    /* Reset */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    /* Тактильная типографика */
+    body {
+      font-family: 'Inter Variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+      line-height: 1.6;
+      color: #0f172a;
+      background: #ffffff;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+    }
+    
+    /* Hero секция - эмоциональное вовлечение */
+    .hero-future {
+      min-height: 100vh;
+      background: 
+        linear-gradient(135deg, rgba(37, 99, 235, 0.08) 0%, rgba(16, 185, 129, 0.08) 100%),
+        url('/assets/img/hero-logistics.webp') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    /* Параллакс слои */
+    .hero-future::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: radial-gradient(ellipse at center, transparent 0%, rgba(0, 0, 0, 0.1) 100%);
+      z-index: 1;
+    }
+    
+    .hero-content {
+      position: relative;
+      z-index: 10;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      text-align: center;
+      color: white;
+    }
+    
+    /* Заголовок с кинетической типографикой */
+    .hero-title {
+      font-size: clamp(3rem, 7vw, 5rem);
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+      text-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+      background: linear-gradient(135deg, #ffffff 0%, #f1f5f9 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: heroTitleIn 1.2s var(--spring) both;
+    }
+    
+    .hero-accent {
+      background: linear-gradient(135deg, #f59e0b 0%, #10b981 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      display: inline-block;
+      animation: heroAccentGlow 2s ease-in-out infinite alternate;
+    }
+    
+    .hero-subtitle {
+      font-size: clamp(1.2rem, 3vw, 1.6rem);
+      font-weight: 400;
+      margin-bottom: 3rem;
+      opacity: 0.95;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+      animation: heroSubtitleIn 1.2s var(--spring) 0.3s both;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    /* CTA кнопка будущего с тактильным эффектом */
+    .cta-future {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1.25rem 2.5rem;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--success) 100%);
+      color: white;
+      text-decoration: none;
+      border-radius: 60px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 
+        var(--haptic-medium),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(20px);
+      transition: all 0.4s var(--spring);
+      animation: ctaIn 1.2s var(--spring) 0.6s both;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .cta-future::before {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%; right: 0; bottom: 0;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: left 0.6s ease;
+    }
+    
+    .cta-future:hover {
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: 
+        var(--haptic-strong),
+        var(--haptic-glow),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    }
+    
+    .cta-future:hover::before {
+      left: 100%;
+    }
+    
+    .cta-future:active {
+      transform: translateY(-2px) scale(1.01);
+      transition: all 0.1s ease;
+    }
+    
+    /* Социальные доказательства */
+    .social-proof {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      margin-top: 4rem;
+      animation: socialProofIn 1.2s var(--spring) 0.9s both;
+    }
+    
+    .proof-item {
+      text-align: center;
+      color: white;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 20px;
+      padding: 1.5rem 1rem;
+      min-width: 140px;
+      transition: all 0.3s var(--spring);
+    }
+    
+    .proof-item:hover {
+      transform: translateY(-8px);
+      background: rgba(255, 255, 255, 0.15);
+      box-shadow: var(--haptic-medium);
+    }
+    
+    .proof-number {
+      font-size: 2.5rem;
+      font-weight: 800;
+      display: block;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+      margin-bottom: 0.5rem;
+    }
+    
+    .proof-label {
+      font-size: 0.9rem;
+      opacity: 0.9;
+      font-weight: 500;
+    }
+    
+    /* Анимации */
+    @keyframes heroTitleIn {
+      from {
+        opacity: 0;
+        transform: translateY(60px) scale(0.9);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+    
+    @keyframes heroSubtitleIn {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 0.95;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes ctaIn {
+      from {
+        opacity: 0;
+        transform: translateY(40px) scale(0.9);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+    
+    @keyframes socialProofIn {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes heroAccentGlow {
+      from {
+        filter: brightness(1);
+      }
+      to {
+        filter: brightness(1.1);
+      }
+    }
+    
+    /* Индикатор прокрутки */
+    .scroll-indicator {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      color: rgba(255, 255, 255, 0.8);
+      animation: float 3s ease-in-out infinite;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .scroll-indicator:hover {
+      color: white;
+      transform: translateX(-50%) scale(1.1);
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(-10px); }
+    }
+    
+    /* Мобильная адаптация */
+    @media (max-width: 768px) {
+      .hero-content {
+        padding: 0 1rem;
+      }
+      
+      .social-proof {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: center;
+      }
+      
+      .proof-item {
+        width: 200px;
+      }
+      
+      .cta-future {
+        padding: 1rem 2rem;
+        font-size: 1rem;
+      }
+    }
+    
+    /* Предзагрузчик */
+    .preloader {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--success) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10000;
+      transition: opacity 0.5s ease, visibility 0.5s ease;
+    }
+    
+    .preloader.hidden {
+      opacity: 0;
+      visibility: hidden;
+    }
+    
+    .loader {
+      width: 60px;
+      height: 60px;
+      border: 4px solid rgba(255, 255, 255, 0.2);
+      border-top: 4px solid white;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+  
+  <!-- Дополнительные стили -->
+  <link rel="stylesheet" href="/assets/css/main.css">
+  
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LogisticsService",
+    "name": "АвтоГОСТ",
+    "description": "Инфраструктура бизнеса - грузоперевозки без забот",
+    "url": "https://avtogost77.ru",
+    "logo": "https://avtogost77.ru/assets/img/logo.png",
+    "areaServed": {
+      "@type": "Country",
+      "name": "Россия"
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Логистические услуги",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Грузоперевозки по России"
+          }
+        }
+      ]
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+79162720932",
+      "contactType": "customer service"
+    }
+  }
+  </script>
+</head>
 
-  </head>
 <body>
-  <!-- Sticky Guarantee Bar -->
-  <div class="sticky-bar">
-    <span>Гарантия: подача авто ≤ 2 ч или скидка 10 %</span>
-    <a href="#calc" class="btn btn-outline btn-sm">Оставить заявку</a>
+  <!-- Предзагрузчик -->
+  <div class="preloader" id="preloader">
+    <div class="loader"></div>
   </div>
-  <!-- Header -->
-  <header>
-    <div class="container navbar">
-      <a href="/" class="navbar-brand" aria-label="Авто Гост — логистика без забот" title="Авто Гост — логистика без забот">Авто&nbsp;Гост</a>
-      <button class="mobile-toggle" aria-label="Меню">☰</button>
-      <nav role="navigation" aria-label="Основная навигация">
-        <ul class="navbar-menu">
-        <li><a href="/">Главная</a></li>
-        <li>
-          <a href="services.html">Услуги ▾</a>
-          <div class="dropdown">
-            <a href="services.html#outsourcing">Аутсорсинг логистики</a>
-            <a href="services.html#ltl">Сборные грузы (LTL)</a>
-            <a href="services.html#t0-5">Грузовой транспорт 0-5 т</a>
-            <a href="services.html#t5-10">Грузовой транспорт 5-10 т</a>
-            <a href="services.html#t10-20">Грузовой транспорт 10-20 т</a>
-          </div>
-        </li>
-        <li><a href="about.html">О нас</a></li>
-        <li><a href="news.html">Новости</a></li>
-        <li><a href="contact.html">Контакты</a></li>
-        <li><a href="faq.html">FAQ</a></li>
-        </ul>
-      </nav>
-      <div class="navbar-social">
-        <a href="https://wa.me/79162720932" target="_blank" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
-        <a href="https://t.me/father_bot" target="_blank" aria-label="Telegram"><i class="bi bi-telegram"></i></a>
-      </div>
-    </div>
-  </header>
 
-  <!-- Основной контент страницы -->
-  <main>
-    <!-- Hero -->
-    <section class="hero hero-main" style="
-      background: #1a1a1a url('/assets/img/hero-logistics.jpg') center/cover no-repeat !important;
-      min-height: 70vh !important;
-      position: relative !important;
-      display: flex !important;
-      align-items: center !important;
-      color: white !important;
-    ">
-    <!-- Принудительный градиент -->
-    <div style="
-      position: absolute !important;
-      top: 0 !important; left: 0 !important; right: 0 !important; bottom: 0 !important;
-      background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%) !important;
-      z-index: 1 !important;
-      pointer-events: none !important;
-    "></div>
-    <div class="container" style="position: relative !important; z-index: 2 !important;">
-      <div class="hero-content">
-        <h1 class="animate-fade-in-up">Пока вы создаете — мы доставляем</h1>
-        <p class="text-lg animate-fade-in-up" style="animation-delay: 0.2s;">
-          Мы не логистическая компания — мы инфраструктура вашего бизнеса. Работаем незаметно, как инфраструктура города. Занимайтесь своим делом, логистику доверьте нам.
-        </p>
-        <div class="hero-actions animate-fade-in-up" style="animation-delay: 0.4s; margin-top: 2rem;">
-          <a href="#smart-calculator" class="btn btn-primary btn-lg">
-            <i class="bi bi-calculator"></i> Рассчитать доставку
-          </a>
-          <a href="services.html" class="btn btn-secondary btn-lg">
-            <i class="bi bi-truck"></i> Наши услуги
-          </a>
-          <button id="pwa-install-btn" class="btn btn-success btn-lg" style="display: none;">
-            <i class="bi bi-download"></i> Установить приложение
-          </button>
-        </div>
-      </div>
+  <!-- Hero секция - ЭТАП 1: AWARENESS -->
+  <section class="hero-future" id="hero">
+    <div class="hero-content">
+      <h1 class="hero-title">
+        Пока вы создаете —<br>
+        <span class="hero-accent">мы доставляем</span>
+      </h1>
       
-      <div class="hero-stats animate-fade-in-up" style="animation-delay: 0.6s;">
-        <div class="hero-stat">
-          <span class="hero-stat-number">10+</span>
-          <span class="hero-stat-label">лет опыта</span>
-        </div>
-        <div class="hero-stat">
-          <span class="hero-stat-number">60K+</span>
-          <span class="hero-stat-label">перевозчиков</span>
-        </div>
-        <div class="hero-stat">
-          <span class="hero-stat-number">99.3%</span>
-          <span class="hero-stat-label">доставок вовремя</span>
-        </div>
-        <div class="hero-stat">
-          <span class="hero-stat-number">2ч</span>
-          <span class="hero-stat-label">подача в Москве</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Benefits Section -->
-  <section class="section reveal">
-    <div class="container">
-              <div class="text-center" style="margin-bottom: 4rem;">
-        <h2>🎯 Фоновая логистика — вы даже не заметите, как груз дошел</h2>
-        <p class="text-lg text-muted">Ваш бизнес на переднем плане, логистика — в надежных руках. Живите спокойно, мы везем.</p>
-      </div>
-      
-      <div class="grid grid-3">
-        <div class="card reveal">
-          <div class="benefit-icon">🏗️</div>
-          <h3>Инфраструктура вашего бизнеса</h3>
-          <p>Мы становимся частью вашей инфраструктуры — незаметно, надежно, эффективно. Как городские дороги: вы ими пользуетесь, но не думаете о них</p>
-          <ul style="margin-top: 1rem; padding-left: 1.5rem;">
-            <li>Работаем в фоне вашего успеха</li>
-            <li>Вы даже не замечаете логистические процессы</li>
-            <li>Полная интеграция в ваш бизнес-процесс</li>
-          </ul>
-        </div>
-        
-        <div class="card reveal">
-          <div class="benefit-icon">🛡️</div>
-          <h3>Логистика без тревог</h3>
-          <p>Пока вы ведете переговоры — мы решаем форс-мажор с перевозчиком. Пока вы создаете продукт — мы доставляем предыдущий заказ</p>
-          <ul style="margin-top: 1rem; padding-left: 1.5rem;">
-            <li>Спите спокойно — мы на связи 24/7</li>
-            <li>Подвел перевозчик? Найдем замену за час</li>
-            <li>Работаем на опережение проблем</li>
-          </ul>
-        </div>
-        
-        <div class="card reveal">
-          <div class="benefit-icon">🎯</div>
-          <h3>Незаметная эффективность</h3>
-          <p>Вы заняты своим бизнесом, а груз уже едет к адресату. Никаких звонков, переживаний, контроля — все происходит само собой</p>
-          <ul style="margin-top: 1rem; padding-left: 1.5rem;">
-            <li>От заявки до доставки — без вашего участия</li>
-            <li>Отчеты приходят автоматически</li>
-            <li>Проблемы решаем до того, как вы о них узнаете</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Умный калькулятор стоимости доставки -->
-  <section id="smart-calculator" class="section" style="background: var(--color-bg);">
-    <div class="container">
-      <h2 class="text-center">💰 Калькулятор стоимости доставки</h2>
-      <p class="text-center text-lg" style="margin-bottom: 3rem;">
-        Рассчитайте примерную стоимость доставки за 30 секунд. Без регистрации и звонков.
+      <p class="hero-subtitle">
+        Мы не логистическая компания — мы инфраструктура вашего бизнеса.<br>
+        Занимайтесь делом, логистику доверьте нам.
       </p>
       
-      <!-- Контейнер для калькулятора - будет заполнен через JavaScript -->
-      <div id="calculator-container" style="max-width: 800px; margin: 0 auto;">
-        <div class="loading-calculator" style="text-align: center; padding: 3rem; color: #666;">
-          <i class="bi bi-hourglass-split" style="font-size: 2rem; margin-bottom: 1rem;"></i>
-          <p>Загружаем калькулятор...</p>
-        </div>
-      </div>
+      <!-- ВОРОНКА: Главный CTA -->
+      <a href="#smart-calculator" class="cta-future" id="main-cta">
+        <span style="font-size: 1.2em;">🚀</span>
+        Узнать стоимость за 30 секунд
+      </a>
       
-      <div class="calculator-disclaimer" style="background: #fff3cd; border: 1px solid #ffeaa7; border-radius: 8px; padding: 1.5rem; margin-top: 2rem; text-align: center;">
-        <p style="margin: 0; color: #856404;">
-          <i class="bi bi-info-circle"></i> 
-          <strong>Важно:</strong> Расчет носит ориентировочный характер. 
-          Точная стоимость определяется после осмотра груза и уточнения деталей маршрута.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Lead capture modal -->
-  <div class="modal-overlay" id="lead-modal" style="display: none;">
-    <div class="modal-box" data-aos="zoom-in">
-      <button class="modal-close" onclick="closeModal()" aria-label="Закрыть форму">&times;</button>
-      <h3 id="form-title">Получить точное предложение</h3>
-      <form id="lead-form" role="form" aria-labelledby="form-title">
-        <div class="form-group">
-          <label for="lead-name" class="sr-only">Ваше имя</label>
-          <input type="text" id="lead-name" name="name" placeholder="Ваше имя" required 
-                 aria-describedby="name-help" style="width:100%;margin-bottom:.5rem;padding:.5rem">
-          <div id="name-help" class="sr-only">Введите ваше полное имя для связи</div>
+      <!-- ЭТАП 2: INTEREST - Социальные доказательства -->
+      <div class="social-proof">
+        <div class="proof-item" data-aos="fade-up" data-aos-delay="100">
+          <span class="proof-number">60K+</span>
+          <span class="proof-label">перевозчиков</span>
         </div>
-        
-        <div class="form-group">
-          <label for="lead-phone" class="sr-only">Телефон</label>
-          <input type="tel" id="lead-phone" name="phone" placeholder="Телефон" required 
-                 aria-describedby="phone-help" style="width:100%;margin-bottom:.5rem;padding:.5rem">
-          <div id="phone-help" class="sr-only">Введите номер телефона в формате +7 (XXX) XXX-XX-XX</div>
+        <div class="proof-item" data-aos="fade-up" data-aos-delay="200">
+          <span class="proof-number">2ч</span>
+          <span class="proof-label">подача в Москве</span>
         </div>
-        
-        <div class="form-group">
-          <label for="lead-email" class="sr-only">Email (необязательно)</label>
-          <input type="email" id="lead-email" name="email" placeholder="Email (необязательно)" 
-                 aria-describedby="email-help" style="width:100%;margin-bottom:.5rem;padding:.5rem">
-          <div id="email-help" class="sr-only">Email для дублирования предложения (необязательно)</div>
-        </div>
-        
-        <input type="hidden" name="details" id="lead-details">
-        
-        <label class="consent-checkbox required">
-          <input type="checkbox" name="consent" checked aria-describedby="consent-help">
-          <span>Я согласен(а) с <a href="privacy-policy.html" target="_blank">обработкой персональных данных</a> в соответствии с политикой конфиденциальности</span>
-          <div id="consent-help" class="sr-only">Обязательное согласие на обработку персональных данных</div>
-        </label>
-        <button type="submit" class="btn btn-primary" style="width:100%;">Отправить заявку</button>
-      </form>
-    </div>
-  </div>
-
-  <!-- Services Snapshot -->
-  <section>
-    <div class="container">
-      <h2>Пока вы... — мы везем</h2>
-      <div class="services-grid">
-        <div data-aos="fade-up">
-          <i class="bi bi-briefcase"></i>
-          <h3>Пока вы растете — мы масштабируемся</h3>
-          <p>Становимся частью вашей инфраструктуры. Один раз настроили — дальше все работает само собой, как городское электричество.</p>
-          <a href="services.html#outsourcing" class="btn btn-outline">Стать частью нас</a>
-        </div>
-        <div data-aos="fade-up" data-aos-delay="100">
-          <i class="bi bi-box"></i>
-          <h3>Пока вы продаете — мы доставляем</h3>
-          <p>На маркетплейсы, в регионы, к конечным клиентам. Товар должен дойти — все остальное наша забота.</p>
-          <a href="marketplace-delivery.html" class="btn btn-outline">Как это работает</a>
-        </div>
-        <div data-aos="fade-up" data-aos-delay="200">
-          <i class="bi bi-truck"></i>
-          <h3>Пока вы спите — мы решаем проблемы</h3>
-          <p>Перевозчик пропал в 23:00? К утру мы найдем замену. Изменились планы за час до загрузки? Перестроим маршрут. Вы об этом даже не узнаете — мы уже все решили.</p>
-          <a href="urgent-delivery.html" class="btn btn-outline">Спать спокойно</a>
+        <div class="proof-item" data-aos="fade-up" data-aos-delay="300">
+          <span class="proof-number">99.3%</span>
+          <span class="proof-label">вовремя</span>
         </div>
       </div>
     </div>
-  </section>
-
-  <!-- How it works -->
-  <section style="background: var(--color-bg);">
-    <div class="container">
-      <h2>Как работает бизнес-инфраструктура</h2>
-      <ol>
-        <li><strong>Вы думаете о бизнесе</strong> — придумываете продукты, ведете продажи, развиваете компанию. О логистике даже не вспоминаете.</li>
-        <li><strong>Мы работаем в фоне</strong> — как электричество в розетке. Нужно отправить? Уже едет. Проблема в пути? Уже решена. Груз дошел? Документы у вас.</li>
-        <li><strong>Результат очевиден</strong> — клиенты получают товары вовремя, вы получаете довольных клиентов. Логистика просто исчезает из ваших забот.</li>
-      </ol>
+    
+    <div class="scroll-indicator" id="scroll-indicator">
+      <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">⬇</div>
+      <div style="font-size: 0.8rem;">Узнать больше</div>
     </div>
   </section>
 
-  <!-- Testimonials -->
-  <section>
-          <div class="container text-center">
-      <h2>Пока предприниматели творят — мы доставляем</h2>
-      <p><strong>«Пока готовили новую коллекцию — АвтоГОСТ довез предыдущую в Коледино»</strong><br>
-      «Горячий клиент заказал 20 тонн на сегодня. Я был на переговорах, даже не знал о проблеме — АвтоГОСТ уже все решили. Фура приехала, груз увезли. Красота!» — ООО «ПВХ-Трейд» <a href="urgent-delivery.html" style="color: var(--color-primary);">→ Читать кейс</a></p>
-      <br>
-      <p><strong>«Пока веду продажи — товар уже едет к покупателям»</strong><br>
-      «Раньше половину времени тратил на поиск транспорта. Теперь АвтоГОСТ — как часть моей компании, только невидимая. Написал в WhatsApp — забыл про логистику.» — ИП Соколов, поставщик на Wildberries <a href="marketplace-delivery.html" style="color: var(--color-primary);">→ Стать невидимым</a></p>
-      <br>
-      <p style="margin-top: 2rem;"><a href="moscow-regions.html" class="btn btn-outline">Посмотреть всю инфраструктуру</a></p>
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <section class="hero" style="padding: 3rem 0;">
-    <div class="container">
-      <h2 style="color:#fff;">Готовы стать инфраструктурой вашего бизнеса?</h2>
-      <p style="color:#fff; margin-bottom: 2rem;">Пока вы создаете — мы доставляем. Пока вы растете — мы масштабируемся. Пока вы спите — мы везем.</p>
-      <a href="contact.html" class="btn btn-primary">Стать частью инфраструктуры</a>
-    </div>
-  </section>
-  <!-- Live ticker -->
-  <div class="live-ticker"><span></span></div>
-  <!-- Footer -->
-  <footer>
-    <div class="container footer-grid">
-      <div>
-        <h4>Меню</h4>
-        <a href="/">Главная</a><br/>
-        <a href="services.html">Услуги</a><br/>
-        <a href="about.html">О нас</a><br/>
-        <a href="news.html">Новости</a><br/>
-        <a href="contact.html">Контакты</a>
-      </div>
-      <div>
-        <h4>Услуги</h4>
-        <a href="services.html#outsourcing">Аутсорсинг логистики</a><br/>
-        <a href="services.html#ltl">Сборные грузы</a><br/>
-        <a href="services.html#t0-5">0–5 т</a><br/>
-        <a href="services.html#t5-10">5–10 т</a><br/>
-        <a href="services.html#t10-20">10–20 т</a>
-      </div>
-      <div>
-        <h4>Контакты</h4>
-        <p>Телефон: <a href="https://wa.me/79162720932" target="_blank">+7 916 272-09-32</a></p>
-        <p>Email: <a href="mailto:avtogost77@gmail.com">avtogost77@gmail.com</a></p>
-      </div>
-    </div>
-    <div class="container text-center mt-2">
-      © 2023 Авто&nbsp;Гост. | <a href="privacy-policy.html">Политика конфиденциальности</a>
-    </div>
+  <!-- Основной контент будет загружен динамически -->
+  <main id="main-content">
+    <!-- Калькулятор, услуги, и другие секции -->
   </main>
-  </footer>
 
-  <!-- Modal Management -->
-  <script>
-    // Функции для управления модальными окнами
-    function openModal(modalId) {
-      const modal = document.getElementById(modalId);
-      if (modal) {
-        modal.style.display = 'flex';
-        document.body.style.overflow = 'hidden'; // Блокируем скролл
-        
-        // Focus на первый input
-        const firstInput = modal.querySelector('input[type="text"], input[type="tel"]');
-        if (firstInput) {
-          setTimeout(() => firstInput.focus(), 100);
-        }
-      }
-    }
-    
-    function closeModal() {
-      const modals = document.querySelectorAll('.modal-overlay');
-      modals.forEach(modal => {
-        modal.style.display = 'none';
-      });
-      document.body.style.overflow = ''; // Восстанавливаем скролл
-    }
-    
-    // Закрытие по клику вне модального окна
-    document.addEventListener('click', function(e) {
-      if (e.target.classList.contains('modal-overlay')) {
-        closeModal();
-      }
-    });
-    
-    // Закрытие по клавише Escape
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape') {
-        closeModal();
-      }
-    });
-    
-    // Обработка кликов по кнопкам "Рассчитать доставку"
-    document.addEventListener('DOMContentLoaded', function() {
-      const calcButtons = document.querySelectorAll('a[href="#smart-calculator"]');
-      calcButtons.forEach(button => {
-        button.addEventListener('click', function(e) {
-          e.preventDefault();
-          // Прокручиваем к калькулятору
-          const calculator = document.getElementById('smart-calculator');
-          if (calculator) {
-            calculator.scrollIntoView({ behavior: 'smooth' });
-            // Фокусируемся на первом поле через секунду
-            setTimeout(() => {
-              const firstInput = calculator.querySelector('input');
-              if (firstInput) firstInput.focus();
-            }, 1000);
-          }
-        });
-      });
-    });
-  </script>
-
-  <!-- ПРИНУДИТЕЛЬНАЯ ЗАГРУЗКА HERO ИЗОБРАЖЕНИЯ -->
-  <script>
-    // Гарантированная загрузка hero изображения
-    document.addEventListener('DOMContentLoaded', function() {
-      const hero = document.querySelector('.hero-main');
-      if (hero) {
-        // Метод 1: Принудительный background
-        hero.style.cssText += `
-          background: #1a1a1a url('/assets/img/hero-logistics.jpg') center/cover no-repeat !important;
-          min-height: 70vh !important;
-        `;
-        
-        // Метод 2: Проверка через 1 секунду
-        setTimeout(() => {
-          const styles = window.getComputedStyle(hero);
-          if (!styles.backgroundImage.includes('hero-logistics')) {
-            console.log('🚨 Основной метод не сработал, применяем резервный...');
-            
-            // Резервный метод: создаем img элемент
-            const imgElement = document.createElement('div');
-            imgElement.style.cssText = `
-              position: absolute !important;
-              top: 0 !important; left: 0 !important; right: 0 !important; bottom: 0 !important;
-              background: url('/assets/img/hero-logistics.jpg') center/cover no-repeat !important;
-              z-index: -1 !important;
-            `;
-            hero.appendChild(imgElement);
-            
-            // Альтернативный метод: прямая вставка img
-            const img = new Image();
-            img.onload = function() {
-              hero.style.cssText += `
-                background-image: url('${img.src}') !important;
-                background-size: cover !important;
-                background-position: center !important;
-              `;
-              console.log('✅ Резервный метод сработал!');
-            };
-            img.src = '/assets/img/hero-logistics.jpg';
-          } else {
-            console.log('✅ Hero изображение загружено успешно!');
-          }
-        }, 1000);
-      }
-    });
-  </script>
-
-  <!-- Service Worker Registration -->
-  <script>
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', function() {
-        navigator.serviceWorker.register('/sw.js').then(function(registration) {
-          console.log('SW registered: ', registration);
-        }).catch(function(registrationError) {
-          console.log('SW registration failed: ', registrationError);
-        });
-      });
-    }
-  </script>
-
-  <!-- Performance optimization loads first -->
-  <script src="assets/js/performance.js"></script>
-  <script src="assets/js/seo-optimizer.js"></script>
+  <!-- Подключение модулей -->
+  <script type="module" src="/src/main.ts"></script>
   
-  <!-- Core functionality -->
-  <script src="assets/js/main.js"></script>
-  <script src="assets/js/calc.js"></script>
-  <script src="assets/js/content-generator.js"></script>
-  <script src="assets/js/form-handler.js"></script>
-  <script src="assets/js/metrika-events.js"></script>
-  
-  <!-- UI enhancements (deferred) -->
-  <script defer src="assets/js/benefit.js"></script>
-  <script defer src="assets/js/ticker.js"></script>
-  <script defer src="assets/js/sticky-bar.js"></script>
-  <script defer src="assets/js/modern-ux.js"></script>
-  
-  <!-- External libraries (deferred) -->
-  <script defer src="https://unpkg.com/aos@2.3.4/dist/aos.js" onload="AOS.init({ once:true, duration:600 });"></script>
-  
-  <!-- Load non-critical CSS after page load -->
+  <!-- Inline скрипт для критических функций -->
   <script>
+    // Предзагрузчик
     window.addEventListener('load', function() {
-      // Load Bootstrap Icons
-      const iconCSS = document.createElement('link');
-      iconCSS.rel = 'stylesheet';
-      iconCSS.href = 'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css';
-      document.head.appendChild(iconCSS);
-      
-      // Load AOS CSS
-      const aosCSS = document.createElement('link');
-      aosCSS.rel = 'stylesheet';
-      aosCSS.href = 'https://unpkg.com/aos@2.3.4/dist/aos.css';
-      document.head.appendChild(aosCSS);
-      
-      // CSS уже загружен в head, больше не нужно
+      const preloader = document.getElementById('preloader');
+      if (preloader) {
+        preloader.classList.add('hidden');
+        setTimeout(() => preloader.remove(), 500);
+      }
+    });
+    
+    // Плавная прокрутка
+    document.getElementById('main-cta')?.addEventListener('click', function(e) {
+      e.preventDefault();
+      const target = document.getElementById('smart-calculator');
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+    
+    document.getElementById('scroll-indicator')?.addEventListener('click', function() {
+      const target = document.getElementById('smart-calculator') || document.getElementById('main-content');
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+    
+    // Тактильная обратная связь для устройств с поддержкой
+    function addHapticFeedback(element) {
+      element.addEventListener('click', function() {
+        if ('vibrate' in navigator) {
+          navigator.vibrate(50); // Легкая вибрация 50мс
+        }
+      });
+    }
+    
+    // Добавляем тактильную обратную связь ко всем интерактивным элементам
+    document.addEventListener('DOMContentLoaded', function() {
+      const interactiveElements = document.querySelectorAll('.cta-future, .proof-item, button, [role="button"]');
+      interactiveElements.forEach(addHapticFeedback);
     });
   </script>
+
+  <!-- Web Font загрузка -->
+  <link rel="preload" href="/assets/fonts/inter-var.woff2" as="font" type="font/woff2" crossorigin>
+  <style>
+    @font-face {
+      font-family: 'Inter Variable';
+      src: url('/assets/fonts/inter-var.woff2') format('woff2');
+      font-weight: 100 900;
+      font-style: normal;
+      font-display: swap;
+    }
+  </style>
+  
+  <!-- Основные скрипты -->
+  <script src="/assets/js/main.js"></script>
 </body>
 </html>
