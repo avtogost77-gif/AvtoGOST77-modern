@@ -1,6 +1,9 @@
-/* 🎨 АвтоГОСТ 2030 - Временная заглушка CSS */
+/**
+ * 🎨 АвтоГОСТ 2030 - Основные стили
+ * Временная заглушка CSS для работоспособности
+ */
 
-/* Сброс и базовые стили */
+/* Базовые стили */
 * {
     margin: 0;
     padding: 0;
@@ -8,10 +11,10 @@
 }
 
 body {
-    font-family: 'Arial', 'Helvetica', sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     line-height: 1.6;
     color: #333;
-    background: #fff;
+    background: #f8f9fa;
 }
 
 .container {
@@ -20,329 +23,355 @@ body {
     padding: 0 20px;
 }
 
-/* Header */
-.header {
-    background: #fff;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    position: sticky;
-    top: 0;
-    z-index: 100;
-}
-
-.header-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 0;
-}
-
-.logo a {
-    font-size: 24px;
-    font-weight: bold;
-    color: #007bff;
-    text-decoration: none;
-}
-
-.nav {
-    display: flex;
-    gap: 30px;
-}
-
-.nav a {
-    text-decoration: none;
-    color: #333;
-    font-weight: 500;
-    transition: color 0.3s;
-}
-
-.nav a:hover {
-    color: #007bff;
-}
-
-.header-phone a {
-    color: #28a745;
-    font-weight: bold;
-    text-decoration: none;
-    font-size: 18px;
-}
-
-/* Hero Section */
-.hero {
-    background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
-    color: white;
-    padding: 80px 20px;
-    text-align: center;
-}
-
-.hero-badge {
-    background: rgba(255,255,255,0.2);
-    padding: 8px 16px;
-    border-radius: 20px;
-    display: inline-block;
-    margin-bottom: 20px;
-    font-size: 14px;
-}
-
-.hero-title {
-    font-size: 48px;
-    margin-bottom: 20px;
-    line-height: 1.2;
-}
-
-.hero-subtitle {
-    font-size: 20px;
-    margin-bottom: 40px;
-    opacity: 0.9;
-}
-
-.route-highlight {
-    color: #ffc107;
-    font-weight: bold;
-}
-
-.accent {
-    color: #28a745;
-    font-weight: bold;
-}
-
-/* Buttons */
-.tactile-button {
-    display: inline-block;
-    padding: 15px 30px;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 16px;
-    transition: all 0.3s ease;
-    margin: 5px;
-    border: none;
-    cursor: pointer;
-}
-
-.tactile-button.primary-button {
-    background: #007bff;
-    color: white;
-}
-
-.tactile-button.primary-button:hover {
-    background: #0056b3;
-    transform: translateY(-2px);
-}
-
-.tactile-button.success-button {
-    background: #28a745;
-    color: white;
-}
-
-.tactile-button.success-button:hover {
-    background: #1e7e34;
-    transform: translateY(-2px);
-}
-
-.tactile-button.secondary-button {
-    background: #6c757d;
-    color: white;
-}
-
-.tactile-button.outline-button {
-    background: transparent;
-    color: #007bff;
-    border: 2px solid #007bff;
-}
-
-.tactile-button.info-button {
-    background: #17a2b8;
-    color: white;
-}
-
-.tactile-button.large {
-    padding: 18px 36px;
-    font-size: 18px;
-}
-
-/* Route Stats */
-.route-stats {
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-    margin: 40px 0;
-}
-
-.stat-item {
-    text-align: center;
-}
-
-.stat-number {
-    font-size: 24px;
-    font-weight: bold;
-    color: #ffc107;
-}
-
-.stat-label {
-    font-size: 14px;
-    opacity: 0.8;
-}
-
-/* Hero Actions */
-.hero-actions {
-    margin: 40px 0;
-}
-
-/* Sections */
+/* Секции */
 section {
     padding: 60px 0;
 }
 
-section:nth-child(even) {
-    background: #f8f9fa;
-}
-
-h2 {
-    font-size: 36px;
+.section-header {
     text-align: center;
-    margin-bottom: 40px;
-    color: #333;
+    margin-bottom: 50px;
 }
 
-h3 {
-    font-size: 24px;
-    margin-bottom: 20px;
-    color: #333;
+.section-header h2 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    color: #2c3e50;
 }
 
-/* Grid Layouts */
-.transport-grid-spb,
-.gazel-grid,
-.reviews-grid,
-.faq-grid {
+.section-header p {
+    font-size: 1.2rem;
+    color: #666;
+}
+
+/* Калькулятор */
+.calculator-section {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.calculator-section .section-header h2,
+.calculator-section .section-header p {
+    color: white;
+}
+
+.calculator-form {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 40px;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.calc-row {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    margin-top: 40px;
-}
-
-/* Cards */
-.transport-card,
-.gazel-card,
-.review-card,
-.faq-item {
-    background: white;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease;
-}
-
-.transport-card:hover,
-.gazel-card:hover {
-    transform: translateY(-5px);
-}
-
-.transport-icon,
-.gazel-image {
-    font-size: 48px;
-    text-align: center;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
     margin-bottom: 20px;
 }
 
-.transport-price,
-.gazel-price {
-    font-size: 24px;
-    font-weight: bold;
-    color: #28a745;
-    text-align: center;
-    margin: 20px 0;
+.calc-field {
+    display: flex;
+    flex-direction: column;
 }
 
-/* Popular/Featured badges */
-.transport-popular-badge,
-.gazel-popular-badge {
+.calc-field label {
+    margin-bottom: 8px;
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.calc-field input,
+.calc-field select {
+    padding: 15px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.9);
+    color: #333;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.calc-field input:focus,
+.calc-field select:focus {
+    outline: none;
+    border-color: #4CAF50;
+    background: white;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.calc-result {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.result-display {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 20px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.result-label {
+    display: block;
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    opacity: 0.9;
+}
+
+.result-price {
+    font-size: 2rem;
+    font-weight: 700;
+    display: block;
+}
+
+.result-price.success {
+    color: #4CAF50;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.result-price.error {
+    color: #ff6b6b;
+    font-size: 1.2rem;
+}
+
+.calc-actions {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn-calculate,
+.btn-order {
+    padding: 15px 30px;
+    border: none;
+    border-radius: 25px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-calculate {
+    background: #4CAF50;
+    color: white;
+}
+
+.btn-calculate:hover {
+    background: #45a049;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(76, 175, 80, 0.4);
+}
+
+.btn-order {
     background: #ff6b6b;
     color: white;
-    padding: 5px 12px;
-    border-radius: 15px;
-    font-size: 12px;
-    display: inline-block;
-    margin-bottom: 15px;
 }
 
-/* Footer */
-.footer {
-    background: #333;
-    color: white;
-    padding: 40px 0 20px;
+.btn-order:hover {
+    background: #ff5252;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
 }
 
-.footer-content {
+/* Преимущества */
+.advantages-section {
+    background: white;
+}
+
+.advantages-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 30px;
 }
 
-.footer-section h3,
-.footer-section h4 {
-    color: white;
+.advantage-card {
+    text-align: center;
+    padding: 30px 20px;
+    border-radius: 15px;
+    background: #f8f9fa;
+    border: 1px solid #e9ecef;
+    transition: all 0.3s ease;
+}
+
+.advantage-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    background: white;
+}
+
+.advantage-icon {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.advantage-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    color: #2c3e50;
+}
+
+.advantage-card p {
+    color: #666;
+    line-height: 1.6;
+}
+
+/* Услуги */
+.services-section {
+    background: #f8f9fa;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+.service-card {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    border: 1px solid #e9ecef;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.service-card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+    color: #2c3e50;
+}
+
+.service-card p {
+    color: #666;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.service-price {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #4CAF50;
+}
+
+/* Контакты */
+.contacts-section {
+    background: white;
+}
+
+.contacts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+}
+
+.contact-card {
+    text-align: center;
+    padding: 30px 20px;
+    border-radius: 15px;
+    background: #f8f9fa;
+    border: 1px solid #e9ecef;
+    transition: all 0.3s ease;
+}
+
+.contact-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    background: white;
+}
+
+.contact-icon {
+    font-size: 2.5rem;
     margin-bottom: 15px;
 }
 
-.footer-section ul {
-    list-style: none;
+.contact-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: #2c3e50;
 }
 
-.footer-section ul li {
-    margin-bottom: 8px;
-}
-
-.footer-section a {
-    color: #ccc;
+.contact-link {
+    color: #667eea;
     text-decoration: none;
-    transition: color 0.3s;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
 }
 
-.footer-section a:hover {
-    color: white;
+.contact-link:hover {
+    color: #764ba2;
+    text-decoration: underline;
 }
 
-.footer-bottom {
-    text-align: center;
-    margin-top: 30px;
-    padding-top: 20px;
-    border-top: 1px solid #555;
-    color: #ccc;
-}
-
-/* Responsive */
+/* Адаптивность */
 @media (max-width: 768px) {
-    .header-content {
-        flex-direction: column;
+    .calc-row {
+        grid-template-columns: 1fr;
         gap: 15px;
     }
     
-    .nav {
-        gap: 15px;
-    }
-    
-    .hero-title {
-        font-size: 32px;
-    }
-    
-    .hero-subtitle {
-        font-size: 16px;
-    }
-    
-    .route-stats {
+    .calc-actions {
         flex-direction: column;
-        gap: 20px;
+        align-items: center;
     }
     
-    .tactile-button {
-        display: block;
-        margin: 10px 0;
+    .btn-calculate,
+    .btn-order {
+        width: 100%;
+        max-width: 300px;
+    }
+    
+    .section-header h2 {
+        font-size: 2rem;
+    }
+    
+    .advantages-grid,
+    .services-grid,
+    .contacts-grid {
+        grid-template-columns: 1fr;
     }
 }
 
-/* Utilities */
-.text-center { text-align: center; }
-.mt-20 { margin-top: 20px; }
-.mb-20 { margin-bottom: 20px; }
-.p-20 { padding: 20px; }
+/* Анимации */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.advantage-card,
+.service-card,
+.contact-card {
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+/* Утилиты */
+.text-center {
+    text-align: center;
+}
+
+.mt-30 {
+    margin-top: 30px;
+}
+
+.mb-30 {
+    margin-bottom: 30px;
+}
+
+console.log('🎨 CSS стили загружены успешно!');

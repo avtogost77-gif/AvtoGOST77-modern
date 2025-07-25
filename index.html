@@ -480,10 +480,165 @@
   <!-- Основной контент будет загружен динамически -->
   <main id="main-content">
     <!-- Калькулятор, услуги, и другие секции -->
+    
+    <!-- Секция калькулятора -->
+    <section id="smart-calculator" class="calculator-section">
+      <div class="container">
+        <div class="section-header">
+          <h2>💰 Быстрый расчет стоимости</h2>
+          <p>Узнайте примерную стоимость доставки за 30 секунд</p>
+        </div>
+        
+        <div class="calculator-form">
+          <div class="calc-row">
+            <div class="calc-field">
+              <label for="calc-from">📍 Откуда:</label>
+              <input type="text" id="calc-from" placeholder="Москва" value="Москва">
+            </div>
+            <div class="calc-field">
+              <label for="calc-to">📍 Куда:</label>
+              <input type="text" id="calc-to" placeholder="Санкт-Петербург">
+            </div>
+          </div>
+          
+          <div class="calc-row">
+            <div class="calc-field">
+              <label for="calc-weight">⚖️ Вес (кг):</label>
+              <input type="number" id="calc-weight" placeholder="100" min="1" max="20000">
+            </div>
+            <div class="calc-field">
+              <label for="calc-volume">📦 Объем (м³):</label>
+              <input type="number" id="calc-volume" placeholder="1" min="0.1" max="100" step="0.1">
+            </div>
+          </div>
+          
+          <div class="calc-row">
+            <div class="calc-field">
+              <label for="calc-transport">🚛 Тип транспорта:</label>
+              <select id="calc-transport">
+                <option value="gazel">Газель (до 1.5т)</option>
+                <option value="5t">5-тонник</option>
+                <option value="10t">10-тонник</option>
+                <option value="20t">Фура 20т</option>
+              </select>
+            </div>
+            <div class="calc-field">
+              <label for="calc-urgency">⚡ Срочность:</label>
+              <select id="calc-urgency">
+                <option value="standard">Стандарт (1-3 дня)</option>
+                <option value="express">Экспресс (+30%)</option>
+              </select>
+            </div>
+          </div>
+          
+          <div class="calc-result">
+            <div class="result-display" id="calc-result">
+              <span class="result-label">Примерная стоимость:</span>
+              <span class="result-price" id="result-price">Введите параметры груза</span>
+            </div>
+            
+            <div class="calc-actions">
+              <button type="button" class="btn-calculate" onclick="calculatePrice()">
+                📊 Рассчитать стоимость
+              </button>
+              <button type="button" class="btn-order" onclick="orderTransport()">
+                📞 Заказать перевозку
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Секция преимуществ -->
+    <section class="advantages-section">
+      <div class="container">
+        <h2>⚡ Почему выбирают АвтоГОСТ</h2>
+        <div class="advantages-grid">
+          <div class="advantage-card">
+            <div class="advantage-icon">🚀</div>
+            <h3>Подача за 2 часа</h3>
+            <p>Быстрая подача транспорта в любую точку Москвы и МО</p>
+          </div>
+          <div class="advantage-card">
+            <div class="advantage-icon">💰</div>
+            <h3>Прозрачные цены</h3>
+            <p>Никаких скрытых доплат. Цена фиксируется заранее</p>
+          </div>
+          <div class="advantage-card">
+            <div class="advantage-icon">🛡️</div>
+            <h3>Гарантия качества</h3>
+            <p>Страхование груза и ответственность за сохранность</p>
+          </div>
+          <div class="advantage-card">
+            <div class="advantage-icon">📱</div>
+            <h3>Онлайн-отслеживание</h3>
+            <p>Контролируйте доставку в режиме реального времени</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Секция услуг -->
+    <section class="services-section">
+      <div class="container">
+        <h2>🚛 Наши услуги</h2>
+        <div class="services-grid">
+          <div class="service-card">
+            <h3>🏙️ Городские перевозки</h3>
+            <p>Доставка по Москве и Московской области</p>
+            <div class="service-price">от 2500₽</div>
+          </div>
+          <div class="service-card">
+            <h3>🌍 Межгород</h3>
+            <p>Перевозки по всей России</p>
+            <div class="service-price">от 12000₽</div>
+          </div>
+          <div class="service-card">
+            <h3>🏢 Корпоративные клиенты</h3>
+            <p>Логистический аутсорсинг для бизнеса</p>
+            <div class="service-price">по договору</div>
+          </div>
+          <div class="service-card">
+            <h3>📦 Сборные грузы</h3>
+            <p>Экономичная доставка небольших партий</p>
+            <div class="service-price">от 500₽</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Секция контактов -->
+    <section class="contacts-section">
+      <div class="container">
+        <h2>📞 Свяжитесь с нами</h2>
+        <div class="contacts-grid">
+          <div class="contact-card">
+            <div class="contact-icon">📱</div>
+            <h3>Телефон</h3>
+            <a href="tel:+79162720932" class="contact-link">+7 (916) 272-09-32</a>
+          </div>
+          <div class="contact-card">
+            <div class="contact-icon">💬</div>
+            <h3>WhatsApp</h3>
+            <a href="https://wa.me/79162720932" class="contact-link">Написать в WhatsApp</a>
+          </div>
+          <div class="contact-card">
+            <div class="contact-icon">📨</div>
+            <h3>Telegram</h3>
+            <a href="https://t.me/avtogost77" class="contact-link">@avtogost77</a>
+          </div>
+          <div class="contact-card">
+            <div class="contact-icon">✉️</div>
+            <h3>Email</h3>
+            <a href="mailto:avtogost77@gmail.com" class="contact-link">avtogost77@gmail.com</a>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
-  <!-- Подключение модулей -->
-  <script type="module" src="/src/main.ts"></script>
+  <!-- Подключение модулей (TypeScript убран для совместимости с хостингом) -->
   
   <!-- Inline скрипт для критических функций -->
   <script>
