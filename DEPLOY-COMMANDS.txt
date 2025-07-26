@@ -1,0 +1,28 @@
+# 🚨 ТОЧНЫЕ КОМАНДЫ ДЛЯ ДЕПЛОЯ КАЛЬКУЛЯТОРА
+
+## 📋 ДАННЫЕ ДЛЯ ПОДКЛЮЧЕНИЯ:
+Host: 31.31.197.43
+User: u3207373
+Pass: 5x8cZ19H0rWhh6Qt
+Directory: www/avtogost77.ru
+
+## 🔧 КОМАНДЫ SFTP:
+sftp u3207373@31.31.197.43
+# Пароль: 5x8cZ19H0rWhh6Qt
+
+cd www/avtogost77.ru
+put assets/js/emergency-fix.js assets/js/
+put index.html
+quit
+
+## 🌐 ISPMANAGER:
+https://vip284.hosting.reg.ru:1500/
+Login: u3207373
+Pass: 5x8cZ19H0rWhh6Qt
+
+## 📂 ФАЙЛЫ ДЛЯ ЗАМЕНЫ:
+1. assets/js/emergency-fix.js
+2. index.html
+
+## ✅ ПРОВЕРКА:
+https://avtogost77.ru - открыть калькулятор и протестировать
