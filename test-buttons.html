@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Тест кнопок - AvtoGOST</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/mobile.css">
+    <style>
+        body {
+            padding: 20px;
+            background: #f3f4f6;
+        }
+        .test-section {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .test-result {
+            margin-top: 20px;
+            padding: 20px;
+            background: #e0f2fe;
+            border-radius: 8px;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+    <h1>🧪 Тест кнопок на мобильных устройствах</h1>
+    
+    <div class="test-section">
+        <h2>Обычные кнопки</h2>
+        <button class="btn btn-primary" onclick="logClick('primary')">
+            Основная кнопка
+        </button>
+        <button class="btn btn-secondary" onclick="logClick('secondary')">
+            Вторичная кнопка
+        </button>
+        <a href="#test" class="btn btn-primary" onclick="logClick('link-button')">
+            Кнопка-ссылка
+        </a>
+    </div>
+
+    <div class="test-section">
+        <h2>Кнопки форм</h2>
+        <form onsubmit="logSubmit(event)">
+            <input type="text" placeholder="Введите текст" style="margin-bottom: 10px; padding: 10px;">
+            <br>
+            <button type="submit" class="btn btn-primary">
+                Отправить форму
+            </button>
+        </form>
+    </div>
+
+    <div class="test-section">
+        <h2>Touch события</h2>
+        <button class="btn btn-primary" 
+                ontouchstart="logTouch('start')"
+                ontouchend="logTouch('end')"
+                onclick="logClick('touch-button')">
+            Тест Touch
+        </button>
+    </div>
+
+    <div class="test-result" id="log">
+        <h3>Лог событий:</h3>
+        <div id="events"></div>
+    </div>
+
+    <div id="test" style="height: 100px; margin-top: 500px; background: #fbbf24; padding: 20px;">
+        Якорь для проверки smooth scroll
+    </div>
+
+    <script>
+        const eventsLog = document.getElementById('events');
+        let eventCount = 0;
+
+        function addLog(message) {
+            eventCount++;
+            const time = new Date().toLocaleTimeString();
+            eventsLog.innerHTML += `<div>${eventCount}. [${time}] ${message}</div>`;
+            eventsLog.scrollTop = eventsLog.scrollHeight;
+        }
+
+        function logClick(type) {
+            addLog(`CLICK: ${type} button clicked`);
+        }
+
+        function logTouch(type) {
+            addLog(`TOUCH: ${type} event fired`);
+        }
+
+        function logSubmit(e) {
+            e.preventDefault();
+            addLog('SUBMIT: Form submitted');
+        }
+
+        // Проверка загрузки ButtonFixer
+        window.addEventListener('DOMContentLoaded', () => {
+            addLog('DOM loaded');
+            
+            // Проверяем наличие touch
+            if ('ontouchstart' in window) {
+                addLog('DEVICE: Touch device detected');
+            } else {
+                addLog('DEVICE: Non-touch device');
+            }
+            
+            // Проверяем viewport
+            const viewport = document.querySelector('meta[name="viewport"]');
+            if (viewport) {
+                addLog(`VIEWPORT: ${viewport.content}`);
+            }
+        });
+    </script>
+    
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

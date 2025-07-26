@@ -244,6 +244,26 @@ body {
     min-width: 48px;
     font-size: 16px;
     padding: 16px 24px;
+    /* Критические фиксы для мобильных */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    /* Убираем задержки и улучшаем отклик */
+    touch-action: manipulation;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+    cursor: pointer;
+    position: relative;
+    z-index: 10;
+    /* Фикс для iOS */
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  /* Состояние активного нажатия */
+  .btn:active {
+    transform: scale(0.98);
+    opacity: 0.9;
   }
   
   .hero-buttons {
