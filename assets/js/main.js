@@ -19,6 +19,10 @@ const CONFIG = {
     TELEGRAM_CHAT_ID: '-1002478560797',
     YANDEX_METRIKA_ID: '103413788',
     GOOGLE_ANALYTICS_ID: 'G-BZZPY2YQPP',
+    API_ENDPOINTS: {
+        DISTANCE: 'https://api.openrouteservice.org/v2/directions/driving-car',
+        GEOCODING: 'https://nominatim.openstreetmap.org/search'
+    },
     CONTACT: {
         phone: '89162720932',
         email: 'avtogost77@gmail.com',
@@ -47,6 +51,13 @@ class AnimationUtils {
         setTimeout(() => {
             element.style.animation = '';
         }, 600);
+    }
+
+    static bounce(element) {
+        element.style.animation = 'bounce 0.8s ease-in-out';
+        setTimeout(() => {
+            element.style.animation = '';
+        }, 800);
     }
 
     static typeWriter(element, text, speed = 50) {
@@ -183,7 +194,8 @@ class AICalculator {
             const to = this.cityCoordinates.get(toCity.toLowerCase());
             
             if (!from || !to) {
-                return this.getFallbackDistance(fromCity, toCity);
+                // Fallback к геокодингу
+                return await this.geocodeAndCalculate(fromCity, toCity);
             }
 
             // Простой расчет по координатам (приблизительный)
@@ -191,6 +203,7 @@ class AICalculator {
             return Math.round(distance);
         } catch (error) {
             console.error('Ошибка расчета расстояния:', error);
+            // Fallback значения для популярных маршрутов
             return this.getFallbackDistance(fromCity, toCity);
         }
     }
@@ -263,6 +276,19 @@ class AICalculator {
         return Math.max(Math.round(finalPrice), minPrices[transportType]);
     }
 
+    calculateTravelTime(distance) {
+        // Примерная скорость с учетом остановок
+        const avgSpeed = 65; // км/ч
+        return Math.round(distance / avgSpeed);
+    }
+
+    calculateFuelCost(distance, transportType) {
+        const rate = this.rates[transportType];
+        const fuelPrice = 55; // рублей за литр
+        const fuelConsumption = (distance / 100) * rate.fuelPer100km;
+        return Math.round(fuelConsumption * fuelPrice);
+    }
+
     async performCalculation(formData) {
         try {
             const {
@@ -285,12 +311,14 @@ class AICalculator {
 
             // Расчеты
             const price = this.calculatePrice(distance, transport, weight, volume, urgency);
-            const travelTime = Math.round(distance / 65); // Среднее время в пути
+            const travelTime = this.calculateTravelTime(distance);
+            const fuelCost = this.calculateFuelCost(distance, transport);
 
             const result = {
                 price,
                 distance,
                 travelTime,
+                fuelCost,
                 fromCity,
                 toCity,
                 transport,
@@ -300,8 +328,8 @@ class AICalculator {
             this.hideLoadingState();
             this.displayResult(result);
 
-            // Отправляем в Telegram
-            this.sendToTelegram(result);
+            // Аналитика
+            this.trackCalculation(result);
 
             return result;
 
@@ -313,18 +341,20 @@ class AICalculator {
     }
 
     showLoadingState() {
-        const btn = document.getElementById('calculateBtn');
+        const btn = document.querySelector('#calculateBtn');
         if (btn) {
-            btn.innerHTML = '<span class="loading"></span> 🤖 AI анализирует...';
+            btn.innerHTML = '🤖 AI анализирует маршрут...';
             btn.disabled = true;
+            btn.style.background = '#6b7280';
         }
     }
 
     hideLoadingState() {
-        const btn = document.getElementById('calculateBtn');
+        const btn = document.querySelector('#calculateBtn');
         if (btn) {
             btn.innerHTML = '🤖 Рассчитать с помощью AI';
             btn.disabled = false;
+            btn.style.background = '';
         }
     }
 
@@ -336,10 +366,10 @@ class AICalculator {
             'Готово!'
         ];
 
-        const btn = document.getElementById('calculateBtn');
+        const btn = document.querySelector('#calculateBtn');
         
         for (let i = 0; i < messages.length; i++) {
-            if (btn) btn.innerHTML = `<span class="loading"></span> 🤖 ${messages[i]}`;
+            if (btn) btn.innerHTML = `🤖 ${messages[i]}`;
             await new Promise(resolve => setTimeout(resolve, 400));
         }
     }
@@ -353,50 +383,48 @@ class AICalculator {
         const detailsEl = document.getElementById('aiDetails');
 
         if (priceEl) {
-            AnimationUtils.typeWriter(priceEl, `${result.price.toLocaleString()} ₽`, 50);
+            priceEl.textContent = `${result.price.toLocaleString()} ₽`;
         }
-
+        
         if (detailsEl) {
             detailsEl.innerHTML = `
-                <strong>AI проанализировал:</strong> ${result.fromCity} → ${result.toCity}<br>
-                Расстояние: ${result.distance} км | Время: ~${result.travelTime} ч<br>
+                <strong>AI анализ:</strong> Маршрут ${result.fromCity} → ${result.toCity}<br>
+                📏 Расстояние: ${result.distance} км | ⏱ Время: ${result.travelTime} ч<br>
                 <em>Цена включает топливо, работу водителя и страхование</em>
             `;
         }
 
         // Показываем результат с анимацией
+        resultContainer.classList.add('show');
         resultContainer.style.display = 'block';
-        AnimationUtils.fadeIn(resultContainer);
+        
+        // Эффект печатной машинки для цены
+        if (priceEl) {
+            AnimationUtils.typeWriter(priceEl, `${result.price.toLocaleString()} ₽`, 100);
+        }
 
         // Scroll to result
         resultContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
 
-    async sendToTelegram(result) {
-        const message = `
-🤖 <b>AI РАСЧЕТ ВЫПОЛНЕН</b>
+    trackCalculation(result) {
+        // Яндекс.Метрика
+        if (typeof ym !== 'undefined') {
+            ym(CONFIG.YANDEX_METRIKA_ID, 'reachGoal', 'calculation', {
+                transport_type: result.transport,
+                distance: result.distance,
+                price: result.price
+            });
+        }
 
-📍 <b>Маршрут:</b> ${result.fromCity} → ${result.toCity}
-📏 <b>Расстояние:</b> ${result.distance} км
-🚛 <b>Транспорт:</b> ${this.getTransportName(result.transport)}
-
-💰 <b>Стоимость:</b> ${result.price.toLocaleString()} ₽
-⏱ <b>Время:</b> ~${result.travelTime} ч
-
-#Расчет #АвтоГОСТ
-        `.trim();
-
-        await TelegramBot.sendMessage(message);
-    }
-
-    getTransportName(type) {
-        const names = {
-            gazelle: 'Газель (до 1.5т)',
-            truck: 'Грузовик (до 5т)',
-            fura: 'Фура (до 20т)',
-            manipulator: 'Манипулятор'
-        };
-        return names[type] || type;
+        // Google Analytics
+        if (typeof gtag !== 'undefined') {
+            gtag('event', 'calculation', {
+                event_category: 'AI Calculator',
+                event_label: `${result.fromCity} - ${result.toCity}`,
+                value: result.price
+            });
+        }
     }
 }
 
@@ -442,10 +470,37 @@ class TelegramBot {
 
 📦 <b>Груз:</b> ${data.cargo || 'Не указано'}
 
-⏰ <b>Время:</b> ${new Date().toLocaleString('ru-RU')}
+💰 <b>Расчетная стоимость:</b> ${data.price || 'Не рассчитано'}
+
+⏰ <b>Время заказа:</b> ${new Date().toLocaleString('ru-RU')}
 
 #НовыйЗаказ #АвтоГОСТ
         `.trim();
+    }
+
+    static formatCalculationMessage(result) {
+        return `
+🤖 <b>AI РАСЧЕТ ВЫПОЛНЕН</b>
+
+📍 <b>Маршрут:</b> ${result.fromCity} → ${result.toCity}
+📏 <b>Расстояние:</b> ${result.distance} км
+🚛 <b>Транспорт:</b> ${this.getTransportName(result.transport)}
+
+💰 <b>Стоимость:</b> ${result.price.toLocaleString()} ₽
+⏱ <b>Время в пути:</b> ${result.travelTime} ч
+
+#Расчет #АвтоГОСТ
+        `.trim();
+    }
+
+    static getTransportName(type) {
+        const names = {
+            gazelle: 'Газель (до 1.5т)',
+            truck: 'Грузовик (до 5т)',
+            fura: 'Фура (до 20т)',
+            manipulator: 'Манипулятор'
+        };
+        return names[type] || type;
     }
 }
 
@@ -495,23 +550,28 @@ class AvtoGOSTApp {
         const navLinks = document.querySelectorAll('a[href^="#"]');
         navLinks.forEach(link => {
             link.addEventListener('click', (e) => {
-                e.preventDefault();
-                const target = document.querySelector(link.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+                const href = link.getAttribute('href');
+                if (href.startsWith('#')) {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
                 }
             });
         });
 
         // Скрытие/показ навбара при скролле
-        const header = document.getElementById('header');
+        const header = document.querySelector('#header');
         
         window.addEventListener('scroll', () => {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
             if (header) {
-                if (window.scrollY > 100) {
+                if (scrollTop > 100) {
                     header.classList.add('scrolled');
                 } else {
                     header.classList.remove('scrolled');
@@ -521,9 +581,9 @@ class AvtoGOSTApp {
     }
 
     setupCalculator() {
-        const calculatorForm = document.getElementById('calculatorForm');
-        if (calculatorForm) {
-            calculatorForm.addEventListener('submit', (e) => {
+        const calculateForm = document.querySelector('#calculatorForm');
+        if (calculateForm) {
+            calculateForm.addEventListener('submit', (e) => {
                 e.preventDefault();
                 this.handleCalculation();
             });
@@ -633,6 +693,11 @@ class AvtoGOSTApp {
             const result = await this.calculator.performCalculation(formData);
             
             if (result) {
+                // Отправляем данные в Telegram
+                const message = TelegramBot.formatCalculationMessage(result);
+                await TelegramBot.sendMessage(message);
+
+                // Показываем уведомление об успехе
                 NotificationManager.show(
                     'Расчет выполнен! Цена актуальна 24 часа.',
                     'success'
@@ -700,28 +765,20 @@ class AvtoGOSTApp {
         e.preventDefault();
         
         const inputs = e.target.querySelectorAll('input, textarea');
-        const data = {};
-        
-        inputs.forEach(input => {
-            if (input.placeholder.includes('имя') || input.placeholder.includes('Имя')) {
-                data.name = input.value;
-            } else if (input.type === 'tel' || input.placeholder.includes('телефон')) {
-                data.phone = input.value;
-            } else if (input.type === 'email') {
-                data.email = input.value;
-            } else if (input.tagName === 'TEXTAREA') {
-                data.cargo = input.value;
-            }
-        });
+        const contactData = {
+            name: inputs[0]?.value || '',
+            phone: inputs[1]?.value || '',
+            email: inputs[2]?.value || '',
+            message: inputs[3]?.value || ''
+        };
 
-        if (!data.phone) {
-            NotificationManager.show('Укажите номер телефона', 'warning');
+        if (!this.validateContactForm(contactData)) {
             return;
         }
 
         try {
             // Отправляем в Telegram
-            const message = TelegramBot.formatOrderMessage(data);
+            const message = TelegramBot.formatOrderMessage(contactData);
             const success = await TelegramBot.sendMessage(message);
 
             if (success) {
@@ -731,6 +788,9 @@ class AvtoGOSTApp {
                 );
                 
                 e.target.reset();
+
+                // Аналитика
+                this.trackOrder(contactData);
             } else {
                 throw new Error('Ошибка отправки');
             }
@@ -741,6 +801,21 @@ class AvtoGOSTApp {
                 'error'
             );
         }
+    }
+
+    validateContactForm(data) {
+        if (!data.phone) {
+            NotificationManager.show('Укажите номер телефона', 'warning');
+            return false;
+        }
+
+        const phoneRegex = /^[\d\s\+\-\(\)]{10,}$/;
+        if (!phoneRegex.test(data.phone)) {
+            NotificationManager.show('Укажите корректный номер телефона', 'warning');
+            return false;
+        }
+
+        return true;
     }
 
     setupAnimations() {
@@ -754,13 +829,14 @@ class AvtoGOSTApp {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.style.animation = 'fadeInUp 0.6s ease-out forwards';
+                    entry.target.style.opacity = '1';
                 }
             });
         }, observerOptions);
 
         // Наблюдаем за элементами
         const elementsToAnimate = document.querySelectorAll(
-            '.service-card, .stat, .form-group'
+            '.service-card, .stat, .calculator-card'
         );
         
         elementsToAnimate.forEach(el => {
@@ -791,55 +867,33 @@ class AvtoGOSTApp {
 
     animateCounter(element) {
         const text = element.textContent;
-        const hasPlus = text.includes('+');
-        const hasPercent = text.includes('%');
-        const hasK = text.includes('K');
-        const hasH = text.includes('ч');
-        
-        let target = 0;
-        
-        if (hasK) {
-            target = parseInt(text) * 1000;
-        } else if (hasPercent || hasH) {
-            target = parseFloat(text);
-        } else {
-            target = parseInt(text) || 0;
-        }
-
+        const target = parseInt(text.replace(/\D/g, ''));
+        const suffix = text.replace(/\d/g, '');
+        const duration = 2000;
+        const increment = target / (duration / 16);
         let current = 0;
-        const increment = target / 60;
-        
+
         const timer = setInterval(() => {
             current += increment;
-            
             if (current >= target) {
                 current = target;
                 clearInterval(timer);
             }
             
-            let displayValue = Math.floor(current);
-            
-            if (hasK) {
-                element.textContent = Math.floor(current / 1000) + 'K' + (hasPlus ? '+' : '');
-            } else if (hasPercent) {
-                element.textContent = displayValue + '%';
-            } else if (hasH) {
-                element.textContent = displayValue + 'ч';
-            } else {
-                element.textContent = displayValue + (hasPlus ? '+' : '');
-            }
+            element.textContent = Math.floor(current) + suffix;
         }, 16);
     }
 
     setupScrollEffects() {
         // Прогресс скролла
         const progressBar = document.createElement('div');
+        progressBar.className = 'scroll-progress';
         progressBar.style.cssText = `
             position: fixed;
             top: 0;
             left: 0;
             height: 3px;
-            background: linear-gradient(45deg, #2563eb, #10b981);
+            background: linear-gradient(45deg, #2563eb, #16a085);
             z-index: 10000;
             transition: width 0.1s ease;
         `;
@@ -849,9 +903,57 @@ class AvtoGOSTApp {
             const scrolled = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
             progressBar.style.width = scrolled + '%';
         });
+
+        // Кнопка "Наверх"
+        const backToTop = document.createElement('button');
+        backToTop.innerHTML = '↑';
+        backToTop.className = 'back-to-top';
+        backToTop.style.cssText = `
+            position: fixed;
+            bottom: 2rem;
+            left: 2rem;
+            width: 50px;
+            height: 50px;
+            background: rgba(37, 99, 235, 0.9);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(100px);
+        `;
+
+        document.body.appendChild(backToTop);
+
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 500) {
+                backToTop.style.opacity = '1';
+                backToTop.style.transform = 'translateY(0)';
+            } else {
+                backToTop.style.opacity = '0';
+                backToTop.style.transform = 'translateY(100px)';
+            }
+        });
     }
 
     initAnalytics() {
+        // Инициализация Яндекс.Метрики
+        if (typeof ym === 'undefined') {
+            console.log('Яндекс.Метрика не загружена');
+        }
+
+        // Инициализация Google Analytics
+        if (typeof gtag === 'undefined') {
+            console.log('Google Analytics не загружен');
+        }
+
         // Отслеживание кликов по кнопкам
         this.trackButtonClicks();
     }
@@ -878,6 +980,20 @@ class AvtoGOSTApp {
             });
         });
     }
+
+    trackOrder(orderData) {
+        if (typeof gtag !== 'undefined') {
+            gtag('event', 'generate_lead', {
+                event_category: 'Order',
+                event_label: 'Contact Form',
+                value: 1
+            });
+        }
+
+        if (typeof ym !== 'undefined') {
+            ym(CONFIG.YANDEX_METRIKA_ID, 'reachGoal', 'order_submitted');
+        }
+    }
 }
 
 // =====================================
@@ -885,11 +1001,28 @@ class AvtoGOSTApp {
 // =====================================
 
 // Инициализация приложения
-window.app = new AvtoGOSTApp();
+window.addEventListener('DOMContentLoaded', () => {
+    window.app = new AvtoGOSTApp();
+});
 
-// Обработчик ошибок
+// Дополнительные глобальные обработчики
 window.addEventListener('error', (event) => {
     console.error('Ошибка приложения:', event.error);
+    // Отправляем критические ошибки в Telegram
+    if (event.error && event.error.message) {
+        const errorMessage = `
+🚨 ОШИБКА НА САЙТЕ АВТОГОСТ
+
+📝 Сообщение: ${event.error.message}
+📄 Файл: ${event.filename}
+📍 Строка: ${event.lineno}
+🕐 Время: ${new Date().toLocaleString()}
+
+#Ошибка #СайтАвтоГОСТ
+        `;
+        
+        TelegramBot.sendMessage(errorMessage.trim());
+    }
 });
 
 // Отслеживание производительности
@@ -897,6 +1030,13 @@ window.addEventListener('load', () => {
     if ('performance' in window) {
         const loadTime = performance.timing.loadEventEnd - performance.timing.navigationStart;
         console.log(`⚡ Сайт загружен за ${loadTime}ms`);
+        
+        if (typeof gtag !== 'undefined') {
+            gtag('event', 'timing_complete', {
+                name: 'load',
+                value: loadTime
+            });
+        }
     }
 });
 
