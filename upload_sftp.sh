@@ -3,10 +3,10 @@
 echo "🚀 OPUS VERSION: ЗАГРУЗКА ЧЕРЕЗ SFTP!"
 echo "====================================="
 
-# SSH данные (будут заполнены)
+# SSH данные
 SSH_HOST="31.31.197.43"
 SSH_USER="u3207373"
-SSH_PASS=""  # Будет заполнено
+SSH_PASS="5x8cZ19H0rWhh6Qt"
 REMOTE_DIR="public_html"
 
 # Цвета для вывода
