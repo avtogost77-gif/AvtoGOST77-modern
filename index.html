@@ -37,10 +37,16 @@
   <!-- Critical CSS (inline for fastest loading) -->
   <link rel="stylesheet" href="assets/css/critical.css">
   
-  <!-- Preload Critical Resources -->
-  <link rel="preload" href="assets/css/styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <link rel="preload" href="assets/css/mobile.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <!-- Main CSS - загружаем сразу для надежности -->
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/mobile.css">
+  
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  
+  <!-- Preload Critical JS -->
   <link rel="preload" href="assets/js/calc.js" as="script">
+  <link rel="preload" href="assets/js/main.js" as="script">
   <link rel="preload" href="assets/js/performance.js" as="script">
   <link rel="preload" href="assets/js/seo-optimizer.js" as="script">
   
@@ -548,19 +554,31 @@
       aosCSS.href = 'https://unpkg.com/aos@2.3.4/dist/aos.css';
       document.head.appendChild(aosCSS);
       
-      // Load main CSS if not already loaded
-      if (!document.querySelector('link[href="assets/css/styles.css"]')) {
-        const mainCSS = document.createElement('link');
-        mainCSS.rel = 'stylesheet';
-        mainCSS.href = 'assets/css/styles.css';
-        document.head.appendChild(mainCSS);
-      }
+      // CSS уже подключен в head - убираем дублирование
       
-      // Load mobile CSS
-      const mobileCSS = document.createElement('link');
-      mobileCSS.rel = 'stylesheet';
-      mobileCSS.href = 'assets/css/mobile.css';
-      document.head.appendChild(mobileCSS);
+      // Отладка загрузки ресурсов
+      console.log('🚀 АвтоГОСТ загружается...');
+      setTimeout(() => {
+        const heroElement = document.querySelector('.hero');
+        if (heroElement) {
+          const styles = window.getComputedStyle(heroElement);
+          console.log('✅ Hero элемент найден');
+          console.log('🎨 Background:', styles.backgroundImage);
+          console.log('📏 Min-height:', styles.minHeight);
+        } else {
+          console.log('❌ Hero элемент не найден!');
+        }
+        
+        const buttons = document.querySelectorAll('.btn');
+        console.log(`🔘 Найдено кнопок: ${buttons.length}`);
+        
+        // Добавляем обработчики кликов для кнопок
+        buttons.forEach((btn, index) => {
+          btn.addEventListener('click', (e) => {
+            console.log(`🖱️ Клик по кнопке ${index + 1}:`, btn.textContent.trim());
+          });
+        });
+      }, 1000);
     });
   </script>
 </body>
