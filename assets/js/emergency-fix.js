@@ -221,13 +221,16 @@ function fixCalculator() {
 function handleCalculatorSubmit(form) {
     console.log('🧮 Calculator submit');
     
-    // Получаем данные из правильных полей
-    const from = form.querySelector('#fromCity')?.value || 'Москва';
-    const to = form.querySelector('#toCity')?.value || 'СПб';
-    const weight = form.querySelector('#weight')?.value || '1000';
-    const transport = form.querySelector('#transport')?.value || 'gazelle';
-    const volume = form.querySelector('#volume')?.value || '2';
-    const urgency = form.querySelector('#urgency')?.value || 'standard';
+    try {
+        // Получаем данные из правильных полей
+        const from = form.querySelector('#fromCity')?.value || 'Москва';
+        const to = form.querySelector('#toCity')?.value || 'СПб';
+        const weight = form.querySelector('#weight')?.value || '1000';
+        const transport = form.querySelector('#transport')?.value || 'gazelle';
+        const volume = form.querySelector('#volume')?.value || '2';
+        const urgency = form.querySelector('#urgency')?.value || 'standard';
+        
+        console.log('Form data:', { from, to, weight, transport, volume, urgency });
     
     // Умная логика расчета
     let basePrice = 2500;
@@ -292,8 +295,17 @@ function handleCalculatorSubmit(form) {
         }
     };
     
-    // Показываем результат
-    showCalculatorResult(from, to, weight, transport, urgency, totalPrice, distance, selectedTransport, calculation);
+        // Показываем результат
+        showCalculatorResult(from, to, weight, transport, urgency, totalPrice, distance, selectedTransport, calculation);
+        
+    } catch (error) {
+        console.error('❌ Ошибка в калькуляторе:', error);
+        showNotification('Ошибка расчета! Проверьте введенные данные.', 'error');
+        
+        // Показываем простой результат
+        const simplePrice = 2500 + (parseFloat(weight) || 1000) * 0.5;
+        showSimpleResult(simplePrice);
+    }
 }
 
 // Функция расчета расстояния
@@ -338,11 +350,14 @@ function showCalculatorResult(from, to, weight, transport, urgency, price, dista
         'express': 'Экспресс'
     };
     
-    // Проверяем превышения для предупреждений
+    // Проверяем превышения для предупреждений  
     const weightTons = parseFloat(weight) / 1000;
-    const volumeM3 = parseFloat(document.getElementById('volume')?.value || 0);
+    // Получаем объем из формы, а не из DOM напрямую
+    const volumeM3 = parseFloat(document.querySelector('#calculatorForm #volume')?.value || 2);
     const hasWeightExcess = weightTons > selectedTransport.weight;
     const hasVolumeExcess = volumeM3 > selectedTransport.volume;
+    
+    console.log('Debug values:', { weightTons, volumeM3, hasWeightExcess, hasVolumeExcess, selectedTransport, distance, price });
     
     resultDiv.innerHTML = `
         <div style="background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%); border: 2px solid #10b981; border-radius: 15px; padding: 25px; margin-top: 20px; box-shadow: 0 8px 25px rgba(16, 185, 129, 0.1);">
