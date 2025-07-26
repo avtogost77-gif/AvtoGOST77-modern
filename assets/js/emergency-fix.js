@@ -5,6 +5,60 @@
 
 console.log('🚨 EMERGENCY FIX LOADED!');
 
+// ИСПРАВЛЕНИЕ МОБИЛЬНОГО МЕНЮ
+function fixMobileMenu() {
+    const toggle = document.getElementById('mobileMenuToggle');
+    const mobileNav = document.getElementById('mobileNav');
+    
+    if (toggle && mobileNav) {
+        console.log('📱 Fixing mobile menu...');
+        
+        // Убираем старые обработчики
+        toggle.removeEventListener('click', toggle._clickHandler);
+        
+        // Новый обработчик
+        const clickHandler = function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            console.log('📱 Mobile menu clicked');
+            
+            // Переключаем состояние
+            const isActive = toggle.classList.contains('active');
+            
+            if (isActive) {
+                toggle.classList.remove('active');
+                mobileNav.classList.remove('active');
+                document.body.classList.remove('mobile-menu-open');
+            } else {
+                toggle.classList.add('active');
+                mobileNav.classList.add('active');
+                document.body.classList.add('mobile-menu-open');
+            }
+            
+            // Тактильная обратная связь
+            if ('vibrate' in navigator) {
+                navigator.vibrate(10);
+            }
+        };
+        
+        toggle._clickHandler = clickHandler;
+        toggle.addEventListener('click', clickHandler);
+        
+        // Закрытие по клику на ссылки
+        const mobileLinks = mobileNav.querySelectorAll('.mobile-nav-link');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                toggle.classList.remove('active');
+                mobileNav.classList.remove('active');
+                document.body.classList.remove('mobile-menu-open');
+            });
+        });
+        
+        console.log('✅ Mobile menu fixed!');
+    }
+}
+
 // Ждем загрузки DOM
 document.addEventListener('DOMContentLoaded', function() {
     console.log('🔧 Starting Emergency Button Fix...');
@@ -17,6 +71,9 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // ИСПРАВЛЕНИЕ КАЛЬКУЛЯТОРА
     fixCalculator();
+    
+    // ИСПРАВЛЕНИЕ МОБИЛЬНОГО МЕНЮ
+    fixMobileMenu();
     
     // МОНИТОРИНГ КЛИКОВ
     setupClickMonitoring();

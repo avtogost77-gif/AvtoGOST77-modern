@@ -411,7 +411,7 @@ header {
     var(--gradient-hero),
     url('../img/hero-logistics.webp') center/cover no-repeat;
   color: white;
-  padding: 140px 0 var(--spacing-2xl);
+  padding: 160px 0 var(--spacing-2xl);
   position: relative;
   overflow: hidden;
   min-height: 80vh;
