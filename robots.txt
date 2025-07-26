@@ -3,11 +3,29 @@ Allow: /
 Disallow: /assets/
 Disallow: /debug.html
 Disallow: /test-buttons.html
+Crawl-delay: 1
 
 User-agent: Googlebot
 Allow: /
+Allow: /assets/js/
+Allow: /assets/css/
+Allow: /assets/img/
 
 User-agent: Yandexbot
 Allow: /
+Allow: /assets/js/
+Allow: /assets/css/
+Allow: /assets/img/
 
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+User-agent: SeznamBot
+Disallow: /
+
+User-agent: GPTBot
+Disallow: /
+
+Host: https://avtogost77.ru
 Sitemap: https://avtogost77.ru/sitemap.xml
