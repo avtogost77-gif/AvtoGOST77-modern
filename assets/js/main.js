@@ -151,10 +151,10 @@ class NotificationManager {
 class AICalculator {
     constructor() {
         this.rates = {
-            gazelle: { baseRate: 35, fuelPer100km: 12, minPrice: 2500 },
-            truck: { baseRate: 45, fuelPer100km: 25, minPrice: 5000 },
-            fura: { baseRate: 55, fuelPer100km: 35, minPrice: 15000 },
-            manipulator: { baseRate: 65, fuelPer100km: 30, minPrice: 3500 }
+            gazelle: { baseRate: 35, fuelPer100km: 12 },
+            truck: { baseRate: 45, fuelPer100km: 25 },
+            fura: { baseRate: 55, fuelPer100km: 35 },
+            manipulator: { baseRate: 65, fuelPer100km: 30 }
         };
         
         this.cityCoordinates = new Map([
@@ -186,6 +186,7 @@ class AICalculator {
                 return this.getFallbackDistance(fromCity, toCity);
             }
 
+            // Простой расчет по координатам (приблизительный)
             const distance = this.calculateDistanceByCoords(from, to);
             return Math.round(distance);
         } catch (error) {
@@ -230,6 +231,13 @@ class AICalculator {
 
         let basePrice = distance * rate.baseRate;
         
+        // Коэффициенты по срочности
+        const urgencyMultipliers = {
+            standard: 1.0,
+            urgent: 1.3,
+            express: 1.5
+        };
+
         // Коэффициент по весу
         let weightMultiplier = 1.0;
         if (weight > 1000) weightMultiplier += (weight - 1000) / 1000 * 0.1;
@@ -239,19 +247,20 @@ class AICalculator {
         let volumeMultiplier = 1.0;
         if (volume > 10) volumeMultiplier += (volume - 10) / 10 * 0.15;
 
-        // Коэффициент срочности
-        const urgencyMultiplier = {
-            standard: 1.0,
-            urgent: 1.3,
-            express: 1.5
+        const finalPrice = basePrice * 
+                          urgencyMultipliers[urgency] * 
+                          weightMultiplier * 
+                          volumeMultiplier;
+
+        // Минимальная стоимость
+        const minPrices = {
+            gazelle: 2500,
+            truck: 5000,
+            fura: 15000,
+            manipulator: 3500
         };
 
-        const finalPrice = basePrice * 
-                          weightMultiplier * 
-                          volumeMultiplier * 
-                          urgencyMultiplier[urgency];
-
-        return Math.max(Math.round(finalPrice), rate.minPrice);
+        return Math.max(Math.round(finalPrice), minPrices[transportType]);
     }
 
     async performCalculation(formData) {
@@ -268,15 +277,15 @@ class AICalculator {
             // Показываем индикатор загрузки
             this.showLoadingState();
 
+            // Расчет расстояния с AI эффектом
+            const distance = await this.calculateDistance(fromCity, toCity);
+            
             // Имитация AI обработки
             await this.simulateAIProcessing();
 
-            // Расчет расстояния
-            const distance = await this.calculateDistance(fromCity, toCity);
-            
             // Расчеты
             const price = this.calculatePrice(distance, transport, weight, volume, urgency);
-            const travelTime = Math.round(distance / 65); // часы
+            const travelTime = Math.round(distance / 65); // Среднее время в пути
 
             const result = {
                 price,
@@ -291,12 +300,8 @@ class AICalculator {
             this.hideLoadingState();
             this.displayResult(result);
 
-            // Аналитика
-            this.trackCalculation(result);
-
             // Отправляем в Telegram
-            const message = TelegramBot.formatCalculationMessage(result);
-            await TelegramBot.sendMessage(message);
+            this.sendToTelegram(result);
 
             return result;
 
@@ -334,36 +339,54 @@ class AICalculator {
         const btn = document.getElementById('calculateBtn');
         
         for (let i = 0; i < messages.length; i++) {
-            if (btn) btn.innerHTML = `🤖 ${messages[i]}`;
-            await new Promise(resolve => setTimeout(resolve, 500));
+            if (btn) btn.innerHTML = `<span class="loading"></span> 🤖 ${messages[i]}`;
+            await new Promise(resolve => setTimeout(resolve, 400));
         }
     }
 
     displayResult(result) {
-        const resultEl = document.getElementById('aiResult');
-        const priceEl = document.getElementById('aiPrice');
-        const detailsEl = document.getElementById('aiDetails');
-        
-        if (!resultEl || !priceEl || !detailsEl) return;
+        const resultContainer = document.getElementById('aiResult');
+        if (!resultContainer) return;
 
         // Обновляем данные
-        priceEl.textContent = `${result.price.toLocaleString()} ₽`;
-        detailsEl.innerHTML = `
-            <strong>AI анализ завершен:</strong><br>
-            📍 Маршрут: ${result.fromCity} → ${result.toCity}<br>
-            📏 Расстояние: ${result.distance} км | ⏱ ${result.travelTime} ч<br>
-            🚛 ${this.getTransportName(result.transport)} | ⚡ ${this.getUrgencyName(result.urgency)}<br>
-            <em>Цена включает топливо, работу водителя и страхование</em>
-        `;
+        const priceEl = document.getElementById('aiPrice');
+        const detailsEl = document.getElementById('aiDetails');
+
+        if (priceEl) {
+            AnimationUtils.typeWriter(priceEl, `${result.price.toLocaleString()} ₽`, 50);
+        }
+
+        if (detailsEl) {
+            detailsEl.innerHTML = `
+                <strong>AI проанализировал:</strong> ${result.fromCity} → ${result.toCity}<br>
+                Расстояние: ${result.distance} км | Время: ~${result.travelTime} ч<br>
+                <em>Цена включает топливо, работу водителя и страхование</em>
+            `;
+        }
 
         // Показываем результат с анимацией
-        resultEl.style.display = 'block';
-        AnimationUtils.fadeIn(resultEl);
+        resultContainer.style.display = 'block';
+        AnimationUtils.fadeIn(resultContainer);
 
-        // Прокручиваем к результату
-        setTimeout(() => {
-            resultEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }, 300);
+        // Scroll to result
+        resultContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    async sendToTelegram(result) {
+        const message = `
+🤖 <b>AI РАСЧЕТ ВЫПОЛНЕН</b>
+
+📍 <b>Маршрут:</b> ${result.fromCity} → ${result.toCity}
+📏 <b>Расстояние:</b> ${result.distance} км
+🚛 <b>Транспорт:</b> ${this.getTransportName(result.transport)}
+
+💰 <b>Стоимость:</b> ${result.price.toLocaleString()} ₽
+⏱ <b>Время:</b> ~${result.travelTime} ч
+
+#Расчет #АвтоГОСТ
+        `.trim();
+
+        await TelegramBot.sendMessage(message);
     }
 
     getTransportName(type) {
@@ -374,35 +397,6 @@ class AICalculator {
             manipulator: 'Манипулятор'
         };
         return names[type] || type;
-    }
-
-    getUrgencyName(urgency) {
-        const names = {
-            standard: 'Стандартная',
-            urgent: 'Срочная (+30%)',
-            express: 'Экспресс (+50%)'
-        };
-        return names[urgency] || urgency;
-    }
-
-    trackCalculation(result) {
-        // Яндекс.Метрика
-        if (typeof ym !== 'undefined') {
-            ym(CONFIG.YANDEX_METRIKA_ID, 'reachGoal', 'calculation', {
-                transport_type: result.transport,
-                distance: result.distance,
-                price: result.price
-            });
-        }
-
-        // Google Analytics
-        if (typeof gtag !== 'undefined') {
-            gtag('event', 'calculation', {
-                event_category: 'AI Calculator',
-                event_label: `${result.fromCity} - ${result.toCity}`,
-                value: result.price
-            });
-        }
     }
 }
 
@@ -442,27 +436,15 @@ class TelegramBot {
 📞 <b>Телефон:</b> ${data.phone || 'Не указано'}
 📧 <b>Email:</b> ${data.email || 'Не указано'}
 
-📦 <b>Описание:</b> ${data.cargo || 'Не указано'}
+📍 <b>Маршрут:</b>
+   Откуда: ${data.from || 'Не указано'}
+   Куда: ${data.to || 'Не указано'}
 
-⏰ <b>Время заказа:</b> ${new Date().toLocaleString('ru-RU')}
+📦 <b>Груз:</b> ${data.cargo || 'Не указано'}
+
+⏰ <b>Время:</b> ${new Date().toLocaleString('ru-RU')}
 
 #НовыйЗаказ #АвтоГОСТ
-        `.trim();
-    }
-
-    static formatCalculationMessage(result) {
-        return `
-🤖 <b>AI РАСЧЕТ ВЫПОЛНЕН</b>
-
-📍 <b>Маршрут:</b> ${result.fromCity} → ${result.toCity}
-📏 <b>Расстояние:</b> ${result.distance} км
-🚛 <b>Транспорт:</b> ${result.transport}
-⚡ <b>Срочность:</b> ${result.urgency}
-
-💰 <b>Стоимость:</b> ${result.price.toLocaleString()} ₽
-⏱ <b>Время в пути:</b> ${result.travelTime} ч
-
-#Расчет #АвтоГОСТ
         `.trim();
     }
 }
@@ -492,6 +474,7 @@ class AvtoGOSTApp {
         this.setupNavigation();
         this.setupCalculator();
         this.setupForms();
+        this.setupAnimations();
         this.setupScrollEffects();
         this.initAnalytics();
 
@@ -512,16 +495,13 @@ class AvtoGOSTApp {
         const navLinks = document.querySelectorAll('a[href^="#"]');
         navLinks.forEach(link => {
             link.addEventListener('click', (e) => {
-                const href = link.getAttribute('href');
-                if (href.startsWith('#')) {
-                    e.preventDefault();
-                    const target = document.querySelector(href);
-                    if (target) {
-                        target.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                    }
+                e.preventDefault();
+                const target = document.querySelector(link.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
                 }
             });
         });
@@ -541,9 +521,9 @@ class AvtoGOSTApp {
     }
 
     setupCalculator() {
-        const form = document.getElementById('calculatorForm');
-        if (form) {
-            form.addEventListener('submit', (e) => {
+        const calculatorForm = document.getElementById('calculatorForm');
+        if (calculatorForm) {
+            calculatorForm.addEventListener('submit', (e) => {
                 e.preventDefault();
                 this.handleCalculation();
             });
@@ -557,7 +537,8 @@ class AvtoGOSTApp {
         const cities = [
             'Москва', 'Санкт-Петербург', 'Новосибирск', 'Екатеринбург',
             'Казань', 'Нижний Новгород', 'Челябинск', 'Омск', 'Самара',
-            'Ростов-на-Дону', 'Уфа', 'Красноярск', 'Воронеж', 'Пермь'
+            'Ростов-на-Дону', 'Уфа', 'Красноярск', 'Воронеж', 'Пермь',
+            'Волгоград', 'Краснодар', 'Саратов', 'Тюмень', 'Тольятти'
         ];
 
         const cityInputs = document.querySelectorAll('#fromCity, #toCity');
@@ -708,7 +689,7 @@ class AvtoGOSTApp {
     }
 
     setupForms() {
-        // Форма связи
+        // Форма контактов
         const contactForm = document.getElementById('contactForm');
         if (contactForm) {
             contactForm.addEventListener('submit', (e) => this.handleContactSubmit(e));
@@ -718,23 +699,29 @@ class AvtoGOSTApp {
     async handleContactSubmit(e) {
         e.preventDefault();
         
-        const formData = new FormData(e.target);
         const inputs = e.target.querySelectorAll('input, textarea');
+        const data = {};
         
-        const contactData = {
-            name: inputs[0]?.value || 'Не указано',
-            phone: inputs[1]?.value || 'Не указано',
-            email: inputs[2]?.value || 'Не указано',
-            cargo: inputs[3]?.value || 'Не указано'
-        };
+        inputs.forEach(input => {
+            if (input.placeholder.includes('имя') || input.placeholder.includes('Имя')) {
+                data.name = input.value;
+            } else if (input.type === 'tel' || input.placeholder.includes('телефон')) {
+                data.phone = input.value;
+            } else if (input.type === 'email') {
+                data.email = input.value;
+            } else if (input.tagName === 'TEXTAREA') {
+                data.cargo = input.value;
+            }
+        });
 
-        if (!this.validateContactForm(contactData)) {
+        if (!data.phone) {
+            NotificationManager.show('Укажите номер телефона', 'warning');
             return;
         }
 
         try {
             // Отправляем в Telegram
-            const message = TelegramBot.formatOrderMessage(contactData);
+            const message = TelegramBot.formatOrderMessage(data);
             const success = await TelegramBot.sendMessage(message);
 
             if (success) {
@@ -744,9 +731,6 @@ class AvtoGOSTApp {
                 );
                 
                 e.target.reset();
-
-                // Аналитика
-                this.trackOrder(contactData);
             } else {
                 throw new Error('Ошибка отправки');
             }
@@ -759,31 +743,103 @@ class AvtoGOSTApp {
         }
     }
 
-    validateContactForm(data) {
-        if (!data.phone || data.phone === 'Не указано') {
-            NotificationManager.show('Укажите номер телефона', 'warning');
-            return false;
+    setupAnimations() {
+        // Intersection Observer для анимаций при скролле
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.6s ease-out forwards';
+                }
+            });
+        }, observerOptions);
+
+        // Наблюдаем за элементами
+        const elementsToAnimate = document.querySelectorAll(
+            '.service-card, .stat, .form-group'
+        );
+        
+        elementsToAnimate.forEach(el => {
+            el.style.opacity = '0';
+            observer.observe(el);
+        });
+
+        // Анимация счетчиков
+        this.setupCounterAnimation();
+    }
+
+    setupCounterAnimation() {
+        const counters = document.querySelectorAll('.stat-number');
+        
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    this.animateCounter(entry.target);
+                    counterObserver.unobserve(entry.target);
+                }
+            });
+        });
+
+        counters.forEach(counter => {
+            counterObserver.observe(counter);
+        });
+    }
+
+    animateCounter(element) {
+        const text = element.textContent;
+        const hasPlus = text.includes('+');
+        const hasPercent = text.includes('%');
+        const hasK = text.includes('K');
+        const hasH = text.includes('ч');
+        
+        let target = 0;
+        
+        if (hasK) {
+            target = parseInt(text) * 1000;
+        } else if (hasPercent || hasH) {
+            target = parseFloat(text);
+        } else {
+            target = parseInt(text) || 0;
         }
 
-        const phoneRegex = /^[\d\s\+\-\(\)]{10,}$/;
-        if (!phoneRegex.test(data.phone)) {
-            NotificationManager.show('Укажите корректный номер телефона', 'warning');
-            return false;
-        }
-
-        return true;
+        let current = 0;
+        const increment = target / 60;
+        
+        const timer = setInterval(() => {
+            current += increment;
+            
+            if (current >= target) {
+                current = target;
+                clearInterval(timer);
+            }
+            
+            let displayValue = Math.floor(current);
+            
+            if (hasK) {
+                element.textContent = Math.floor(current / 1000) + 'K' + (hasPlus ? '+' : '');
+            } else if (hasPercent) {
+                element.textContent = displayValue + '%';
+            } else if (hasH) {
+                element.textContent = displayValue + 'ч';
+            } else {
+                element.textContent = displayValue + (hasPlus ? '+' : '');
+            }
+        }, 16);
     }
 
     setupScrollEffects() {
         // Прогресс скролла
         const progressBar = document.createElement('div');
-        progressBar.className = 'scroll-progress';
         progressBar.style.cssText = `
             position: fixed;
             top: 0;
             left: 0;
             height: 3px;
-            background: linear-gradient(45deg, #2563eb, #16a085);
+            background: linear-gradient(45deg, #2563eb, #10b981);
             z-index: 10000;
             transition: width 0.1s ease;
         `;
@@ -793,44 +849,6 @@ class AvtoGOSTApp {
             const scrolled = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
             progressBar.style.width = scrolled + '%';
         });
-
-        // Кнопка "Наверх"
-        const backToTop = document.createElement('button');
-        backToTop.innerHTML = '↑';
-        backToTop.className = 'back-to-top';
-        backToTop.style.cssText = `
-            position: fixed;
-            bottom: 2rem;
-            left: 2rem;
-            width: 50px;
-            height: 50px;
-            background: rgba(37, 99, 235, 0.9);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            font-size: 1.5rem;
-            cursor: pointer;
-            z-index: 1000;
-            transition: all 0.3s ease;
-            opacity: 0;
-            transform: translateY(100px);
-        `;
-
-        document.body.appendChild(backToTop);
-
-        backToTop.addEventListener('click', () => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 500) {
-                backToTop.style.opacity = '1';
-                backToTop.style.transform = 'translateY(0)';
-            } else {
-                backToTop.style.opacity = '0';
-                backToTop.style.transform = 'translateY(100px)';
-            }
-        });
     }
 
     initAnalytics() {
@@ -839,7 +857,7 @@ class AvtoGOSTApp {
     }
 
     trackButtonClicks() {
-        const buttons = document.querySelectorAll('button, .btn, .header-cta');
+        const buttons = document.querySelectorAll('button, .btn');
         
         buttons.forEach(button => {
             button.addEventListener('click', () => {
@@ -860,20 +878,6 @@ class AvtoGOSTApp {
             });
         });
     }
-
-    trackOrder(orderData) {
-        if (typeof gtag !== 'undefined') {
-            gtag('event', 'lead', {
-                event_category: 'Order',
-                event_label: 'Contact Form',
-                value: 1
-            });
-        }
-
-        if (typeof ym !== 'undefined') {
-            ym(CONFIG.YANDEX_METRIKA_ID, 'reachGoal', 'order_submitted');
-        }
-    }
 }
 
 // =====================================
@@ -886,21 +890,6 @@ window.app = new AvtoGOSTApp();
 // Обработчик ошибок
 window.addEventListener('error', (event) => {
     console.error('Ошибка приложения:', event.error);
-    // Отправляем критические ошибки в Telegram
-    if (event.error && event.error.message) {
-        const errorMessage = `
-🚨 ОШИБКА НА САЙТЕ АВТОГОСТ
-
-📝 Сообщение: ${event.error.message}
-📄 Файл: ${event.filename}
-📍 Строка: ${event.lineno}
-🕐 Время: ${new Date().toLocaleString()}
-
-#Ошибка #СайтАвтоГОСТ
-        `;
-        
-        TelegramBot.sendMessage(errorMessage.trim());
-    }
 });
 
 // Отслеживание производительности
@@ -908,13 +897,6 @@ window.addEventListener('load', () => {
     if ('performance' in window) {
         const loadTime = performance.timing.loadEventEnd - performance.timing.navigationStart;
         console.log(`⚡ Сайт загружен за ${loadTime}ms`);
-        
-        if (typeof gtag !== 'undefined') {
-            gtag('event', 'timing_complete', {
-                name: 'load',
-                value: loadTime
-            });
-        }
     }
 });
 
