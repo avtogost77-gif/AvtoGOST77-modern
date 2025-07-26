@@ -519,15 +519,144 @@ function showNotification(message, type = 'info') {
 // ГЛОБАЛЬНЫЕ ФУНКЦИИ
 // ===============================================
 window.orderDelivery = function() {
-    const phone = '+7 916 272-09-32';
+    // Показываем форму заявки вместо сразу WhatsApp
+    showOrderForm();
+};
+
+// ФУНКЦИЯ ПОКАЗА ФОРМЫ ЗАЯВКИ
+function showOrderForm() {
+    // Удаляем существующую форму если есть
+    const existingForm = document.getElementById('orderForm');
+    if (existingForm) {
+        existingForm.remove();
+    }
+    
+    // Создаем форму заявки
+    const formDiv = document.createElement('div');
+    formDiv.id = 'orderForm';
+    formDiv.innerHTML = `
+        <div style="background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); border: 2px solid #0ea5e9; border-radius: 15px; padding: 25px; margin-top: 20px; box-shadow: 0 8px 25px rgba(14, 165, 233, 0.1);">
+            <h4 style="color: #0369a1; margin-bottom: 20px; font-size: 20px;">📝 Оформление заявки</h4>
+            
+            <form id="deliveryOrderForm" onsubmit="submitOrderForm(event)">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px;">
+                    <div>
+                        <label style="display: block; color: #374151; font-weight: 600; margin-bottom: 5px;">👤 Ваше имя:</label>
+                        <input type="text" name="name" required style="width: 100%; padding: 12px; border: 2px solid #e5e7eb; border-radius: 8px; font-size: 14px;" placeholder="Иван Иванов">
+                    </div>
+                    <div>
+                        <label style="display: block; color: #374151; font-weight: 600; margin-bottom: 5px;">📱 Телефон:</label>
+                        <input type="tel" name="phone" required style="width: 100%; padding: 12px; border: 2px solid #e5e7eb; border-radius: 8px; font-size: 14px;" placeholder="+7 (999) 123-45-67">
+                    </div>
+                </div>
+                
+                <div style="margin-bottom: 15px;">
+                    <label style="display: block; color: #374151; font-weight: 600; margin-bottom: 5px;">✉️ Email (необязательно):</label>
+                    <input type="email" name="email" style="width: 100%; padding: 12px; border: 2px solid #e5e7eb; border-radius: 8px; font-size: 14px;" placeholder="ivan@company.ru">
+                </div>
+                
+                <div style="margin-bottom: 15px;">
+                    <label style="display: block; color: #374151; font-weight: 600; margin-bottom: 5px;">💼 Компания (необязательно):</label>
+                    <input type="text" name="company" style="width: 100%; padding: 12px; border: 2px solid #e5e7eb; border-radius: 8px; font-size: 14px;" placeholder="ООО Рога и Копыта">
+                </div>
+                
+                <div style="margin-bottom: 20px;">
+                    <label style="display: block; color: #374151; font-weight: 600; margin-bottom: 5px;">📝 Комментарий (необязательно):</label>
+                    <textarea name="comment" rows="3" style="width: 100%; padding: 12px; border: 2px solid #e5e7eb; border-radius: 8px; font-size: 14px; resize: vertical;" placeholder="Дополнительные пожелания или уточнения..."></textarea>
+                </div>
+                
+                <div style="margin-bottom: 20px;">
+                    <label style="display: flex; align-items: flex-start; gap: 10px; cursor: pointer;">
+                        <input type="checkbox" name="consent" required style="margin-top: 3px;">
+                        <span style="color: #374151; font-size: 14px; line-height: 1.4;">
+                            Я согласен(а) с <a href="privacy.html" target="_blank" style="color: #0ea5e9; text-decoration: underline;">обработкой персональных данных</a> и <a href="privacy.html" target="_blank" style="color: #0ea5e9; text-decoration: underline;">Политикой конфиденциальности</a> в соответствии с 152-ФЗ
+                        </span>
+                    </label>
+                </div>
+                
+                <div style="display: flex; gap: 10px;">
+                    <button type="submit" style="flex: 1; background: #0ea5e9; color: white; border: none; padding: 15px 20px; border-radius: 10px; font-weight: 600; cursor: pointer; font-size: 16px;">
+                        🚀 Отправить заявку
+                    </button>
+                    <button type="button" onclick="showWhatsAppOption()" style="background: #10b981; color: white; border: none; padding: 15px 20px; border-radius: 10px; font-weight: 600; cursor: pointer;">
+                        💬 WhatsApp
+                    </button>
+                    <button type="button" onclick="hideOrderForm()" style="background: #6b7280; color: white; border: none; padding: 15px 20px; border-radius: 10px; font-weight: 600; cursor: pointer;">
+                        ❌ Отмена
+                    </button>
+                </div>
+            </form>
+            
+            <p style="color: #6b7280; font-size: 12px; margin-top: 15px; text-align: center;">
+                🔒 Ваши данные защищены • ⚡ Ответим в течение 15 минут • 📞 Или звоните +7 916 272-09-32
+            </p>
+        </div>
+    `;
+    
+    // Добавляем форму после результата калькулятора
+    const resultDiv = document.getElementById('calculatorResult');
+    if (resultDiv) {
+        resultDiv.appendChild(formDiv);
+    }
+    
+    // Прокручиваем к форме
+    formDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+
+// ФУНКЦИЯ ОТПРАВКИ ФОРМЫ ЗАЯВКИ
+window.submitOrderForm = function(event) {
+    event.preventDefault();
+    
+    const form = event.target;
+    const formData = new FormData(form);
+    
+    const name = formData.get('name');
+    const phone = formData.get('phone');
+    const email = formData.get('email');
+    const company = formData.get('company');
+    const comment = formData.get('comment');
+    
+    // Формируем сообщение
+    let message = `🚚 ЗАЯВКА НА ДОСТАВКУ\n\n`;
+    message += `👤 Имя: ${name}\n`;
+    message += `📱 Телефон: ${phone}\n`;
+    if (email) message += `✉️ Email: ${email}\n`;
+    if (company) message += `💼 Компания: ${company}\n`;
+    message += `💰 Расчетная стоимость: от калькулятора\n`;
+    if (comment) message += `📝 Комментарий: ${comment}\n`;
+    message += `\n🌐 Заявка с сайта avtogost77.ru`;
+    
+    // Показываем уведомление об отправке
+    showNotification('✅ Заявка отправлена! Мы свяжемся с вами в течение 15 минут.', 'success');
+    
+    // Скрываем форму
+    hideOrderForm();
+    
+    // Логируем заявку (в реальной версии здесь будет отправка на сервер)
+    console.log('📨 Заявка отправлена:', { name, phone, email, company, comment });
+    
+    // В демо версии открываем WhatsApp с данными
+    const whatsappUrl = `https://wa.me/79162720932?text=${encodeURIComponent(message)}`;
+    setTimeout(() => {
+        window.open(whatsappUrl, '_blank');
+    }, 1000);
+};
+
+// ФУНКЦИЯ ПОКАЗА WHATSAPP ОПЦИИ
+window.showWhatsAppOption = function() {
     const message = 'Здравствуйте! Хочу заказать доставку. Рассчитал стоимость на сайте.';
     const whatsappUrl = `https://wa.me/79162720932?text=${encodeURIComponent(message)}`;
     
     window.open(whatsappUrl, '_blank');
-    console.log('📱 Opening WhatsApp');
-    
-    // Показываем уведомление
-    showNotification('Переходим в WhatsApp для оформления заказа! 📱', 'success');
+    showNotification('📱 Переходим в WhatsApp для быстрого оформления!', 'success');
+};
+
+// ФУНКЦИЯ СКРЫТИЯ ФОРМЫ
+window.hideOrderForm = function() {
+    const formDiv = document.getElementById('orderForm');
+    if (formDiv) {
+        formDiv.remove();
+    }
 };
 
 window.recalculate = function() {
