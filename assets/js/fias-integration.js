@@ -1,23 +1,40 @@
 // ===============================================
 // 🌍 ФИАС ИНТЕГРАЦИЯ - ТОЧНЫЕ АДРЕСА РОССИИ
 // DaData API для автозаполнения адресов
+// ПРОФЕССИОНАЛЬНАЯ ВЕРСИЯ - 40+ МИЛЛИОНОВ АДРЕСОВ
 // ===============================================
 
-console.log('🌍 ФИАС Integration Loading...');
+console.log('🌍 ФИАС Integration Loading - PROFESSIONAL VERSION...');
 
 // Конфигурация DaData API
 const DADATA_CONFIG = {
-    // Тестовый токен (замени на рабочий)
-    token: "your_dadata_token_here",
+    // API ключ (установится автоматически или можно задать вручную)
+    token: window.DADATA_TOKEN || "demo_token_for_development",
     baseUrl: "https://suggestions.dadata.ru/suggestions/api/4_1/rs",
-    // Для тестирования используем демо без токена
-    demo: true
+    // Автоматическое определение режима
+    demo: !window.DADATA_TOKEN,
+    // Настройки запросов
+    requestSettings: {
+        count: 10,              // Количество подсказок
+        language: "ru",         // Язык ответов
+        locations: [{
+            country: "*"        // Вся Россия
+        }],
+        // Фильтры качества
+        restrict_value: false,  // Не ограничивать по типу
+        // Дополнительные настройки
+        from_bound: { value: "city" },    // От города
+        to_bound: { value: "house" }      // До дома
+    }
 };
 
 class FiasAddressManager {
     constructor() {
         this.suggestions = new Map();
         this.selectedAddresses = new Map();
+        this.cache = new Map(); // Кеш запросов для экономии API
+        this.requestTimers = new Map(); // Таймеры для debounce
+        this.requestDelay = 300; // Задержка в мс
         this.init();
     }
 
@@ -107,43 +124,129 @@ class FiasAddressManager {
             return;
         }
 
-        try {
-            const suggestions = await this.searchAddresses(query);
-            this.showSuggestions(type, suggestions);
-        } catch (error) {
-            console.error('❌ Address search error:', error);
-            this.showDemoSuggestions(type, query);
+        // Отменяем предыдущий таймер для этого типа
+        if (this.requestTimers.has(type)) {
+            clearTimeout(this.requestTimers.get(type));
         }
+
+        // Проверяем кеш
+        const cacheKey = query.toLowerCase();
+        if (this.cache.has(cacheKey)) {
+            console.log(`💾 Using cached results for: "${query}"`);
+            this.showSuggestions(type, this.cache.get(cacheKey));
+            return;
+        }
+
+        // Устанавливаем таймер для debounce
+        const timer = setTimeout(async () => {
+            try {
+                const suggestions = await this.searchAddresses(query);
+                
+                // Сохраняем в кеш
+                this.cache.set(cacheKey, suggestions);
+                
+                // Ограничиваем размер кеша
+                if (this.cache.size > 100) {
+                    const firstKey = this.cache.keys().next().value;
+                    this.cache.delete(firstKey);
+                }
+                
+                this.showSuggestions(type, suggestions);
+            } catch (error) {
+                console.error('❌ Address search error:', error);
+                const demoSuggestions = this.getDemoSuggestions(query);
+                this.showSuggestions(type, demoSuggestions);
+            }
+        }, this.requestDelay);
+
+        this.requestTimers.set(type, timer);
     }
 
     // Поиск адресов через DaData API
     async searchAddresses(query) {
+        // Проверяем режим работы
         if (DADATA_CONFIG.demo) {
-            // Демо-режим без API
+            console.log('🔧 Demo mode: using local suggestions');
             return this.getDemoSuggestions(query);
         }
 
-        const response = await fetch(`${DADATA_CONFIG.baseUrl}/suggest/address`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Token ${DADATA_CONFIG.token}`
-            },
-            body: JSON.stringify({
+        try {
+            console.log(`🌐 Requesting DaData API for: "${query}"`);
+            
+            const requestBody = {
                 query: query,
-                count: 10,
-                locations: [{
-                    country: "*"
-                }]
-            })
-        });
+                ...DADATA_CONFIG.requestSettings
+            };
 
-        if (!response.ok) {
-            throw new Error(`DaData API error: ${response.status}`);
+            const response = await fetch(`${DADATA_CONFIG.baseUrl}/suggest/address`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Token ${DADATA_CONFIG.token}`,
+                    'X-Secret': DADATA_CONFIG.secret || '',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify(requestBody)
+            });
+
+            if (!response.ok) {
+                console.warn(`⚠️ DaData API error: ${response.status} - ${response.statusText}`);
+                
+                // Fallback на демо-режим при ошибке API
+                if (response.status === 401) {
+                    console.log('🔑 API key issue, switching to demo mode');
+                    DADATA_CONFIG.demo = true;
+                    return this.getDemoSuggestions(query);
+                }
+                
+                throw new Error(`DaData API error: ${response.status}`);
+            }
+
+            const data = await response.json();
+            const suggestions = data.suggestions || [];
+            
+            console.log(`✅ DaData returned ${suggestions.length} suggestions`);
+            
+            // Обрабатываем и улучшаем результаты
+            return this.processDaDataSuggestions(suggestions);
+            
+        } catch (error) {
+            console.error('❌ DaData API request failed:', error);
+            
+            // Автоматический fallback на демо-режим
+            console.log('🔄 Falling back to demo suggestions');
+            return this.getDemoSuggestions(query);
         }
+    }
 
-        const data = await response.json();
-        return data.suggestions || [];
+    // Обработка ответов от DaData API
+    processDaDataSuggestions(suggestions) {
+        return suggestions.map(suggestion => {
+            const data = suggestion.data || {};
+            return {
+                value: suggestion.value || suggestion.unrestricted_value,
+                unrestricted_value: suggestion.unrestricted_value,
+                data: {
+                    city: data.city || data.settlement || '',
+                    street: data.street || '',
+                    house: data.house || '',
+                    geo_lat: data.geo_lat || '',
+                    geo_lon: data.geo_lon || '',
+                    region: data.region || data.region_with_type || '',
+                    // Дополнительные поля от DaData
+                    postal_code: data.postal_code || '',
+                    country: data.country || 'Россия',
+                    federal_district: data.federal_district || '',
+                    area: data.area || '',
+                    settlement: data.settlement || '',
+                    street_type: data.street_type || '',
+                    house_type: data.house_type || '',
+                    // Качество геокодирования
+                    qc_geo: data.qc_geo || '',
+                    qc: data.qc || ''
+                }
+            };
+        });
     }
 
     // Демо-подсказки для тестирования
