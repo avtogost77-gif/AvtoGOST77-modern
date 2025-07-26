@@ -302,9 +302,9 @@ function handleCalculatorSubmit(form) {
         console.error('❌ Ошибка в калькуляторе:', error);
         showNotification('Ошибка расчета! Проверьте введенные данные.', 'error');
         
-        // Показываем простой результат
-        const simplePrice = 2500 + (parseFloat(weight) || 1000) * 0.5;
-        showSimpleResult(simplePrice);
+                 // Показываем простой результат
+         const simplePrice = 2500 + (parseFloat(weight) || 1000) * 0.5;
+         showSimpleResult(simplePrice, from, to);
     }
 }
 
@@ -533,6 +533,37 @@ window.recalculate = function() {
     
     showNotification('Введите новые данные для пересчета! 🔄', 'info');
 };
+
+// Простое отображение результата при ошибке
+function showSimpleResult(price, from, to) {
+    let resultDiv = document.getElementById('calculatorResult');
+    if (!resultDiv) {
+        resultDiv = document.createElement('div');
+        resultDiv.id = 'calculatorResult';
+        const calculator = document.getElementById('calculatorForm') || document.querySelector('.calculator-form');
+        if (calculator) {
+            calculator.appendChild(resultDiv);
+        }
+    }
+    
+    resultDiv.innerHTML = `
+        <div style="background: #f9fafb; border: 2px solid #6b7280; border-radius: 15px; padding: 25px; margin-top: 20px;">
+            <h4 style="color: #374151; margin-bottom: 15px;">📊 Ориентировочная стоимость</h4>
+            <p><strong>Маршрут:</strong> ${from} → ${to}</p>
+            <div style="text-align: center; background: white; padding: 20px; border-radius: 10px; margin: 15px 0;">
+                <p style="font-size: 24px; color: #6b7280; font-weight: bold; margin: 0;">
+                    от ${price.toLocaleString()}₽
+                </p>
+                <p style="color: #9ca3af; margin: 5px 0 0 0;">Примерная стоимость</p>
+            </div>
+            <button onclick="orderDelivery()" style="width: 100%; background: #10b981; color: white; border: none; padding: 15px; border-radius: 10px; font-weight: 600; cursor: pointer;">
+                📞 Уточнить стоимость
+            </button>
+        </div>
+    `;
+    
+    resultDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
 
 // CSS для анимации
 const style = document.createElement('style');
