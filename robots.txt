@@ -1,33 +1,13 @@
 User-agent: *
 Allow: /
-
-# Специальные правила для поисковых роботов
-User-agent: Yandex
-Allow: /
-Crawl-delay: 1
+Disallow: /assets/
+Disallow: /debug.html
+Disallow: /test-buttons.html
 
 User-agent: Googlebot
 Allow: /
-Crawl-delay: 1
 
-# Запрещаем индексацию служебных файлов
-Disallow: /assets/js/
-Disallow: /assets/css/
-Disallow: /*.json$
-Disallow: /sw.js
+User-agent: Yandexbot
+Allow: /
 
-# Разрешаем важные страницы
-Allow: /assets/img/
-Allow: /contact.html
-Allow: /services.html
-Allow: /about.html
-Allow: /news.html
-Allow: /faq.html
-
-# Host для Яндекса
-Host: avtogost77.ru
-
-# Ссылки на карты сайта
 Sitemap: https://avtogost77.ru/sitemap.xml
-Sitemap: https://avtogost77.ru/sitemap-images.xml
-Sitemap: https://avtogost77.ru/sitemap-news.xml
