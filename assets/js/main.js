@@ -996,6 +996,264 @@ class AvtoGOSTApp {
 }
 
 // =====================================
+// 🔧 ИСПРАВЛЕНИЕ БАГОВ С КНОПКАМИ
+// =====================================
+
+class ButtonFixer {
+    static init() {
+        // Ждем полной загрузки DOM
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', () => this.fixButtons());
+        } else {
+            this.fixButtons();
+        }
+    }
+
+    static fixButtons() {
+        // Удаляем дублирующиеся обработчики
+        const buttons = document.querySelectorAll('.btn, button, a[href^="#"]');
+        
+        buttons.forEach(button => {
+            // Клонируем элемент чтобы убрать все старые обработчики
+            const newButton = button.cloneNode(true);
+            button.parentNode.replaceChild(newButton, button);
+            
+            // Добавляем новый обработчик
+            if (newButton.tagName === 'A' && newButton.getAttribute('href')?.startsWith('#')) {
+                this.addSmoothScroll(newButton);
+            } else if (newButton.classList.contains('btn') || newButton.tagName === 'BUTTON') {
+                this.addClickHandler(newButton);
+            }
+        });
+
+        // Исправляем мобильные тач-события
+        this.fixMobileTouchEvents();
+    }
+
+    static addSmoothScroll(link) {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetId = link.getAttribute('href').substring(1);
+            const targetElement = document.getElementById(targetId);
+            
+            if (targetElement) {
+                targetElement.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    }
+
+    static addClickHandler(button) {
+        // Добавляем визуальный эффект клика
+        button.addEventListener('click', function(e) {
+            // Предотвращаем множественные клики
+            if (this.dataset.clicking === 'true') return;
+            this.dataset.clicking = 'true';
+            
+            // Визуальный эффект
+            this.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                this.style.transform = '';
+                delete this.dataset.clicking;
+            }, 150);
+            
+            // Специальные обработчики для разных кнопок
+            if (this.classList.contains('header-cta') || this.textContent.includes('Заказать звонок')) {
+                e.preventDefault();
+                document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+
+        // Улучшенные hover эффекты
+        button.addEventListener('mouseenter', function() {
+            this.style.transition = 'all 0.3s ease';
+        });
+    }
+
+    static fixMobileTouchEvents() {
+        // Исправляем проблемы с touch на мобильных
+        document.addEventListener('touchstart', function() {}, {passive: true});
+        
+        // Убираем задержку в 300мс на мобильных
+        const metaViewport = document.querySelector('meta[name=viewport]');
+        if (metaViewport) {
+            metaViewport.content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no';
+        }
+    }
+}
+
+// =====================================
+// 📱 МОБИЛЬНОЕ МЕНЮ
+// =====================================
+
+class MobileMenu {
+    constructor() {
+        this.toggle = document.getElementById('mobileMenuToggle');
+        this.menu = document.getElementById('mobileNav');
+        this.links = document.querySelectorAll('.mobile-nav-link');
+        this.isOpen = false;
+        
+        this.init();
+    }
+    
+    init() {
+        if (!this.toggle || !this.menu) return;
+        
+        this.toggle.addEventListener('click', () => this.toggleMenu());
+        
+        // Закрытие при клике на ссылку
+        this.links.forEach(link => {
+            link.addEventListener('click', () => this.closeMenu());
+        });
+        
+        // Закрытие при клике вне меню
+        document.addEventListener('click', (e) => {
+            if (this.isOpen && !this.menu.contains(e.target) && !this.toggle.contains(e.target)) {
+                this.closeMenu();
+            }
+        });
+        
+        // Закрытие при скролле
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            if (currentScroll > lastScroll && this.isOpen) {
+                this.closeMenu();
+            }
+            lastScroll = currentScroll;
+        });
+    }
+    
+    toggleMenu() {
+        this.isOpen = !this.isOpen;
+        this.menu.classList.toggle('active');
+        this.toggle.classList.toggle('active');
+        document.body.style.overflow = this.isOpen ? 'hidden' : '';
+    }
+    
+    closeMenu() {
+        this.isOpen = false;
+        this.menu.classList.remove('active');
+        this.toggle.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+}
+
+// =====================================
+// 🎯 АНИМАЦИЯ СЧЕТЧИКОВ
+// =====================================
+
+class CounterAnimation {
+    constructor() {
+        this.counters = document.querySelectorAll('[data-count]');
+        this.animated = false;
+        this.init();
+    }
+    
+    init() {
+        if (!this.counters.length) return;
+        
+        // Intersection Observer для запуска анимации при появлении
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !this.animated) {
+                    this.animated = true;
+                    this.animateCounters();
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        // Наблюдаем за первым счетчиком
+        if (this.counters[0]) {
+            observer.observe(this.counters[0]);
+        }
+    }
+    
+    animateCounters() {
+        this.counters.forEach(counter => {
+            const target = parseFloat(counter.dataset.count);
+            const duration = 2000;
+            const increment = target / (duration / 16);
+            let current = 0;
+            
+            const updateCounter = () => {
+                current += increment;
+                if (current < target) {
+                    counter.textContent = Math.floor(current).toLocaleString('ru-RU');
+                    requestAnimationFrame(updateCounter);
+                } else {
+                    // Финальное значение с правильным форматированием
+                    if (target % 1 !== 0) {
+                        counter.textContent = target.toLocaleString('ru-RU');
+                    } else {
+                        counter.textContent = Math.floor(target).toLocaleString('ru-RU');
+                    }
+                    
+                    // Добавляем символы если нужно
+                    if (counter.dataset.count === '60000') {
+                        counter.textContent += '+';
+                    } else if (counter.dataset.count === '99.3') {
+                        counter.textContent += '%';
+                    }
+                }
+            };
+            
+            updateCounter();
+        });
+    }
+}
+
+// =====================================
+// 📊 ПРОГРЕСС-БАР ЗАГРУЗКИ
+// =====================================
+
+class PageProgress {
+    constructor() {
+        this.progressBar = document.getElementById('pageProgress');
+        this.init();
+    }
+    
+    init() {
+        if (!this.progressBar) return;
+        
+        // Показываем прогресс при загрузке
+        this.updateProgress(30);
+        
+        // Обновляем при загрузке DOM
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', () => {
+                this.updateProgress(60);
+            });
+        }
+        
+        // Завершаем при полной загрузке
+        window.addEventListener('load', () => {
+            this.updateProgress(100);
+            setTimeout(() => {
+                this.progressBar.style.opacity = '0';
+                setTimeout(() => {
+                    this.progressBar.style.display = 'none';
+                }, 300);
+            }, 500);
+        });
+    }
+    
+    updateProgress(percent) {
+        this.progressBar.style.width = percent + '%';
+    }
+}
+
+// Инициализация новых компонентов
+document.addEventListener('DOMContentLoaded', () => {
+    new MobileMenu();
+    new CounterAnimation();
+    new PageProgress();
+    ButtonFixer.init(); // Инициализируем исправление кнопок
+});
+
+// =====================================
 // 🚀 ЗАПУСК ПРИЛОЖЕНИЯ
 // =====================================
 
