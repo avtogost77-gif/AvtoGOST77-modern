@@ -102,4 +102,16 @@
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
+  <url>
+    <loc>https://avtogost77.ru/moscow-spb-delivery.html</loc>
+    <lastmod>2024-07-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://avtogost77.ru/logistics-for-pvh.html</loc>
+    <lastmod>2024-07-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>
