@@ -102,7 +102,7 @@ class FiasAddressManager {
         const query = input.value.trim();
         const type = input.getAttribute('data-address-type');
 
-        if (query.length < 3) {
+        if (query.length < 2) {
             this.hideSuggestions(type);
             return;
         }
@@ -149,6 +149,7 @@ class FiasAddressManager {
     // Демо-подсказки для тестирования
     getDemoSuggestions(query) {
         const demoAddresses = [
+            // Москва
             {
                 value: "г Москва, ул Тверская, д 1",
                 unrestricted_value: "г Москва, ул Тверская, д 1",
@@ -158,9 +159,58 @@ class FiasAddressManager {
                     house: "1",
                     geo_lat: "55.755826",
                     geo_lon: "37.6173",
-                    region: "Москва"
+                    region: "г Москва"
                 }
             },
+            {
+                value: "г Москва, ул Тверская, д 5",
+                unrestricted_value: "г Москва, ул Тверская, д 5",
+                data: {
+                    city: "Москва",
+                    street: "Тверская",
+                    house: "5",
+                    geo_lat: "55.756826",
+                    geo_lon: "37.6183",
+                    region: "г Москва"
+                }
+            },
+            {
+                value: "г Москва, ул Арбат, д 10",
+                unrestricted_value: "г Москва, ул Арбат, д 10",
+                data: {
+                    city: "Москва",
+                    street: "Арбат",
+                    house: "10",
+                    geo_lat: "55.749826",
+                    geo_lon: "37.5873",
+                    region: "г Москва"
+                }
+            },
+            {
+                value: "г Москва, Красная площадь, д 1",
+                unrestricted_value: "г Москва, Красная площадь, д 1",
+                data: {
+                    city: "Москва",
+                    street: "Красная площадь",
+                    house: "1",
+                    geo_lat: "55.753826",
+                    geo_lon: "37.6213",
+                    region: "г Москва"
+                }
+            },
+            {
+                value: "г Москва, пр-кт Мира, д 150",
+                unrestricted_value: "г Москва, пр-кт Мира, д 150",
+                data: {
+                    city: "Москва",
+                    street: "проспект Мира",
+                    house: "150",
+                    geo_lat: "55.825826",
+                    geo_lon: "37.6473",
+                    region: "г Москва"
+                }
+            },
+            // Санкт-Петербург
             {
                 value: "г Санкт-Петербург, Невский пр-кт, д 28",
                 unrestricted_value: "г Санкт-Петербург, Невский пр-кт, д 28",
@@ -170,9 +220,34 @@ class FiasAddressManager {
                     house: "28",
                     geo_lat: "59.935493",
                     geo_lon: "30.322513",
-                    region: "Санкт-Петербург"
+                    region: "г Санкт-Петербург"
                 }
             },
+            {
+                value: "г Санкт-Петербург, Дворцовая площадь, д 2",
+                unrestricted_value: "г Санкт-Петербург, Дворцовая площадь, д 2",
+                data: {
+                    city: "Санкт-Петербург",
+                    street: "Дворцовая площадь",
+                    house: "2",
+                    geo_lat: "59.939493",
+                    geo_lon: "30.315513",
+                    region: "г Санкт-Петербург"
+                }
+            },
+            {
+                value: "г Санкт-Петербург, ул Рубинштейна, д 15",
+                unrestricted_value: "г Санкт-Петербург, ул Рубинштейна, д 15",
+                data: {
+                    city: "Санкт-Петербург",
+                    street: "Рубинштейна",
+                    house: "15",
+                    geo_lat: "59.930493",
+                    geo_lon: "30.335513",
+                    region: "г Санкт-Петербург"
+                }
+            },
+            // Екатеринбург
             {
                 value: "г Екатеринбург, ул Ленина, д 50",
                 unrestricted_value: "г Екатеринбург, ул Ленина, д 50",
@@ -184,12 +259,126 @@ class FiasAddressManager {
                     geo_lon: "60.597474",
                     region: "Свердловская область"
                 }
+            },
+            {
+                value: "г Екатеринбург, ул Малышева, д 71",
+                unrestricted_value: "г Екатеринбург, ул Малышева, д 71",
+                data: {
+                    city: "Екатеринбург",
+                    street: "Малышева",
+                    house: "71",
+                    geo_lat: "56.840011",
+                    geo_lon: "60.595474",
+                    region: "Свердловская область"
+                }
+            },
+            // Новосибирск
+            {
+                value: "г Новосибирск, ул Ленина, д 1",
+                unrestricted_value: "г Новосибирск, ул Ленина, д 1",
+                data: {
+                    city: "Новосибирск",
+                    street: "Ленина",
+                    house: "1",
+                    geo_lat: "55.030199",
+                    geo_lon: "82.920430",
+                    region: "Новосибирская область"
+                }
+            },
+            {
+                value: "г Новосибирск, Красный пр-кт, д 25",
+                unrestricted_value: "г Новосибирск, Красный пр-кт, д 25",
+                data: {
+                    city: "Новосибирск",
+                    street: "Красный проспект",
+                    house: "25",
+                    geo_lat: "55.032199",
+                    geo_lon: "82.918430",
+                    region: "Новосибирская область"
+                }
+            },
+            // Казань
+            {
+                value: "г Казань, ул Баумана, д 58",
+                unrestricted_value: "г Казань, ул Баумана, д 58",
+                data: {
+                    city: "Казань",
+                    street: "Баумана",
+                    house: "58",
+                    geo_lat: "55.790311",
+                    geo_lon: "49.114348",
+                    region: "Республика Татарстан"
+                }
+            },
+            // Нижний Новгород  
+            {
+                value: "г Нижний Новгород, ул Большая Покровская, д 40",
+                unrestricted_value: "г Нижний Новгород, ул Большая Покровская, д 40",
+                data: {
+                    city: "Нижний Новгород",
+                    street: "Большая Покровская",
+                    house: "40",
+                    geo_lat: "56.326887",
+                    geo_lon: "44.007048",
+                    region: "Нижегородская область"
+                }
+            },
+            // Краснодар
+            {
+                value: "г Краснодар, ул Красная, д 122",
+                unrestricted_value: "г Краснодар, ул Красная, д 122",
+                data: {
+                    city: "Краснодар",
+                    street: "Красная",
+                    house: "122",
+                    geo_lat: "45.035470",
+                    geo_lon: "38.975313",
+                    region: "Краснодарский край"
+                }
+            },
+            // Воронеж
+            {
+                value: "г Воронеж, пр-кт Революции, д 35",
+                unrestricted_value: "г Воронеж, пр-кт Революции, д 35",
+                data: {
+                    city: "Воронеж",
+                    street: "проспект Революции",
+                    house: "35",
+                    geo_lat: "51.672353",
+                    geo_lon: "39.184590",
+                    region: "Воронежская область"
+                }
+            },
+            // Ростов-на-Дону
+            {
+                value: "г Ростов-на-Дону, ул Большая Садовая, д 105",
+                unrestricted_value: "г Ростов-на-Дону, ул Большая Садовая, д 105",
+                data: {
+                    city: "Ростов-на-Дону",
+                    street: "Большая Садовая",
+                    house: "105",
+                    geo_lat: "47.222876",
+                    geo_lon: "39.720349",
+                    region: "Ростовская область"
+                }
             }
         ];
 
-        return demoAddresses.filter(addr => 
-            addr.value.toLowerCase().includes(query.toLowerCase())
-        );
+        const queryLower = query.toLowerCase().trim();
+        
+        // Умный поиск: ищем по городу, улице, дому
+        return demoAddresses.filter(addr => {
+            const searchText = addr.value.toLowerCase();
+            const city = addr.data.city?.toLowerCase() || '';
+            const street = addr.data.street?.toLowerCase() || '';
+            
+            // Ищем совпадения в любой части адреса
+            return searchText.includes(queryLower) || 
+                   city.includes(queryLower) || 
+                   street.includes(queryLower) ||
+                   // Поиск без учета сокращений (ул, д, пр-кт)
+                   searchText.replace(/[ул\s\.\,д\s\.\,пр-кт\s]/g, '').includes(queryLower.replace(/[ул\s\.\,д\s\.\,пр-кт\s]/g, ''));
+        }).slice(0, 8); // Показываем максимум 8 результатов
     }
 
     // Показ подсказок
@@ -207,29 +396,52 @@ class FiasAddressManager {
                 padding: 12px 16px;
                 cursor: pointer;
                 border-bottom: 1px solid #f3f4f6;
-                transition: background-color 0.2s;
-            ">
-                <div style="font-weight: 500; color: #111827;">
+                transition: all 0.2s ease;
+                user-select: none;
+                -webkit-user-select: none;
+                -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
+                position: relative;
+            " onmouseover="this.style.backgroundColor='#f9fafb'" onmouseout="this.style.backgroundColor=''">
+                <div style="font-weight: 500; color: #111827; pointer-events: none;">
                     ${this.highlightMatch(suggestion.value, this.getQuery(type))}
                 </div>
-                <div style="font-size: 12px; color: #6b7280; margin-top: 2px;">
-                    ${suggestion.data.region || ''}
+                <div style="font-size: 12px; color: #6b7280; margin-top: 2px; pointer-events: none;">
+                    📍 ${suggestion.data.region || ''}
                 </div>
             </div>
         `).join('');
 
-        // Добавляем hover эффекты
-        dropdown.querySelectorAll('.address-suggestion-item').forEach(item => {
+        // Добавляем hover эффекты и обработчики кликов
+        dropdown.querySelectorAll('.address-suggestion-item').forEach((item, itemIndex) => {
+            // Hover эффекты
             item.addEventListener('mouseenter', () => {
                 item.style.backgroundColor = '#f9fafb';
             });
             item.addEventListener('mouseleave', () => {
                 item.style.backgroundColor = '';
             });
+            
+            // Обработчик клика непосредственно на элементе
+            item.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                console.log(`🖱️ Direct click on suggestion item ${itemIndex}`);
+                this.selectAddress(e);
+            });
         });
 
         dropdown.style.display = 'block';
         this.suggestions.set(type, suggestions);
+        
+        // Дополнительный обработчик на весь dropdown
+        dropdown.onclick = (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            if (e.target.closest('.address-suggestion-item')) {
+                console.log('🖱️ Dropdown click handler triggered');
+                this.selectAddress(e);
+            }
+        };
     }
 
     // Подсветка совпадений
@@ -247,12 +459,25 @@ class FiasAddressManager {
 
     // Выбор адреса
     selectAddress(event) {
+        event.preventDefault();
+        event.stopPropagation();
+        
         const item = event.target.closest('.address-suggestion-item');
+        if (!item) {
+            console.warn('⚠️ Address suggestion item not found');
+            return;
+        }
+        
         const type = item.getAttribute('data-type');
         const index = parseInt(item.getAttribute('data-index'));
         
+        console.log(`🎯 Selecting address: type=${type}, index=${index}`);
+        
         const suggestions = this.suggestions.get(type);
-        if (!suggestions || !suggestions[index]) return;
+        if (!suggestions || !suggestions[index]) {
+            console.warn('⚠️ Address suggestion not found in cache');
+            return;
+        }
 
         const selectedAddress = suggestions[index];
         
@@ -260,6 +485,9 @@ class FiasAddressManager {
         const input = document.querySelector(`[data-address-type="${type}"]`);
         if (input) {
             input.value = selectedAddress.value;
+            console.log(`✅ Set input value: ${selectedAddress.value}`);
+        } else {
+            console.error(`❌ Input field not found for type: ${type}`);
         }
 
         // Сохраняем выбранный адрес
