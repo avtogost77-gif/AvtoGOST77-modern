@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     
     <!-- SEO META -->
     <title>АвтоГОСТ - Грузоперевозки по России от 2500₽ | AI калькулятор стоимости</title>
@@ -32,57 +32,173 @@
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
+    <!-- CSS переменные для быстрой загрузки -->
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --accent: #f59e0b;
+            --success: #10b981;
+            --danger: #ef4444;
+            --dark: #111827;
+            --light: #f9fafb;
+        }
+        
+        /* Критические стили для первого экрана */
+        body {
+            margin: 0;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.9) 0%, rgba(147, 51, 234, 0.8) 100%),
+                        url('assets/img/hero-logistics.webp') center/cover no-repeat;
+        }
+        
+        /* Предзагрузка анимаций */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animate-in {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+    </style>
+    
     <!-- Main CSS -->
     <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/mobile.css">
 </head>
 <body>
-    <!-- Header -->
+    <!-- Прогресс-бар загрузки страницы -->
+    <div class="page-progress" id="pageProgress"></div>
+    
+    <!-- Header с фиксом мобильного меню -->
     <header class="header" id="header">
         <div class="container">
             <div class="header-content">
-                <div class="logo">АвтоГОСТ</div>
-                <nav class="nav">
-                    <a href="#services">Услуги</a>
-                    <a href="#calculator">AI Калькулятор</a>
-                    <a href="#about">О нас</a>
-                    <a href="#contact">Контакты</a>
+                <div class="logo">
+                    <span class="logo-text">АвтоГОСТ</span>
+                    <span class="logo-badge">AI</span>
+                </div>
+                
+                <!-- Десктоп навигация -->
+                <nav class="nav desktop-nav">
+                    <a href="#services" class="nav-link">Услуги</a>
+                    <a href="#calculator" class="nav-link">AI Калькулятор</a>
+                    <a href="#about" class="nav-link">О нас</a>
+                    <a href="#contact" class="nav-link">Контакты</a>
                 </nav>
-                <a href="#contact" class="header-cta">Заказать звонок</a>
+                
+                <!-- Мобильный бургер -->
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Открыть меню">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                
+                <a href="#contact" class="header-cta desktop-only">
+                    <span>Заказать звонок</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/>
+                    </svg>
+                </a>
             </div>
         </div>
+        
+        <!-- Мобильное меню -->
+        <nav class="mobile-nav" id="mobileNav">
+            <div class="mobile-nav-content">
+                <a href="#services" class="mobile-nav-link">Услуги</a>
+                <a href="#calculator" class="mobile-nav-link">AI Калькулятор</a>
+                <a href="#about" class="mobile-nav-link">О нас</a>
+                <a href="#contact" class="mobile-nav-link">Контакты</a>
+                <a href="tel:89162720932" class="mobile-nav-cta">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/>
+                    </svg>
+                    <span>+7 916 272-09-32</span>
+                </a>
+            </div>
+        </nav>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
+    <!-- Hero Section с исправленным фоном -->
+    <section class="hero" id="hero">
         <div class="container">
-            <div class="hero-content">
-                <h1>Грузоперевозки нового поколения</h1>
-                <p>AI-платформа для логистики. 60,000+ проверенных перевозчиков, подача транспорта за 2 часа, гарантия 99.3% выполнения в срок.</p>
+            <div class="hero-content animate-in">
+                <div class="hero-badge">
+                    <span class="badge-icon">🚀</span>
+                    <span class="badge-text">Лидер логистики 2024</span>
+                </div>
                 
+                <h1 class="hero-title">
+                    Грузоперевозки <span class="text-gradient">нового поколения</span>
+                </h1>
+                
+                <p class="hero-description">
+                    AI-платформа для логистики. 60,000+ проверенных перевозчиков, 
+                    подача транспорта за 2 часа, гарантия 99.3% выполнения в срок.
+                </p>
+                
+                <!-- Анимированная статистика -->
                 <div class="hero-stats">
-                    <div class="stat">
-                        <span class="stat-number">60K+</span>
+                    <div class="stat" data-aos="fade-up" data-aos-delay="100">
+                        <span class="stat-number" data-count="60000">0</span>
                         <span class="stat-label">Перевозчиков</span>
                     </div>
-                    <div class="stat">
-                        <span class="stat-number">2ч</span>
-                        <span class="stat-label">Подача</span>
+                    <div class="stat" data-aos="fade-up" data-aos-delay="200">
+                        <span class="stat-number" data-count="2">0</span>
+                        <span class="stat-label">Часа подача</span>
                     </div>
-                    <div class="stat">
-                        <span class="stat-number">99.3%</span>
-                        <span class="stat-label">В срок</span>
+                    <div class="stat" data-aos="fade-up" data-aos-delay="300">
+                        <span class="stat-number" data-count="99.3">0</span>
+                        <span class="stat-label">% В срок</span>
                     </div>
-                    <div class="stat">
+                    <div class="stat" data-aos="fade-up" data-aos-delay="400">
                         <span class="stat-number">24/7</span>
                         <span class="stat-label">Поддержка</span>
                     </div>
                 </div>
                 
+                <!-- Кнопки с исправленными обработчиками -->
                 <div class="hero-buttons">
-                    <a href="#calculator" class="btn btn-primary">🤖 AI Калькулятор</a>
-                    <a href="#contact" class="btn btn-secondary">💬 Консультация</a>
+                    <a href="#calculator" class="btn btn-primary btn-lg">
+                        <span class="btn-icon">🤖</span>
+                        <span>AI Калькулятор</span>
+                        <span class="btn-arrow">→</span>
+                    </a>
+                    <a href="#contact" class="btn btn-secondary btn-lg">
+                        <span class="btn-icon">💬</span>
+                        <span>Консультация</span>
+                    </a>
+                </div>
+                
+                <!-- Доверие клиентов -->
+                <div class="hero-trust">
+                    <div class="trust-avatars">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='40' fill='%23e5e7eb'/%3E%3C/svg%3E" alt="Client 1">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='40' fill='%23d1d5db'/%3E%3C/svg%3E" alt="Client 2">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='40' fill='%239ca3af'/%3E%3C/svg%3E" alt="Client 3">
+                        <span class="trust-count">+15K</span>
+                    </div>
+                    <p class="trust-text">Более 15,000 довольных клиентов</p>
                 </div>
             </div>
+        </div>
+        
+        <!-- Анимированный фон -->
+        <div class="hero-bg-animation">
+            <div class="floating-shape shape-1"></div>
+            <div class="floating-shape shape-2"></div>
+            <div class="floating-shape shape-3"></div>
         </div>
     </section>
 
