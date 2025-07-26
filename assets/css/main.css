@@ -486,6 +486,38 @@ body {
   opacity: 0.9;
 }
 
+/* AI Result Styles */
+.ai-result {
+  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+  border: 2px solid #0ea5e9;
+  border-radius: var(--border-radius);
+  padding: 24px;
+  text-align: center;
+  margin-top: 24px;
+  display: none;
+}
+
+.ai-result.show {
+  display: block;
+  animation: slideInUp 0.5s ease-out;
+}
+
+.ai-price {
+  font-size: 2.5rem;
+  font-weight: 900;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 8px;
+}
+
+.ai-details {
+  color: #6b7280;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
 /* УСЛУГИ СЕКЦИЯ */
 .services-section {
   padding: 5rem 0;
