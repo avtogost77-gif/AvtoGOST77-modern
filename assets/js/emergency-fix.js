@@ -220,17 +220,48 @@ function fixCalculator() {
 
 function handleCalculatorSubmit(form) {
     console.log('🧮 Calculator submit');
+    console.log('📱 User Agent:', navigator.userAgent);
+    console.log('📱 Screen size:', window.innerWidth + 'x' + window.innerHeight);
     
     try {
-        // Получаем данные из правильных полей
-        const from = form.querySelector('#fromCity')?.value || 'Москва';
-        const to = form.querySelector('#toCity')?.value || 'СПб';
-        const weight = form.querySelector('#weight')?.value || '1000';
-        const transport = form.querySelector('#transport')?.value || 'gazelle';
-        const volume = form.querySelector('#volume')?.value || '2';
-        const urgency = form.querySelector('#urgency')?.value || 'standard';
+        // Получаем данные из правильных полей с дополнительной проверкой
+        const fromInput = form.querySelector('#fromCity') || form.querySelector('input[name="from"]') || form.querySelector('input[placeholder*="Откуда"]');
+        const toInput = form.querySelector('#toCity') || form.querySelector('input[name="to"]') || form.querySelector('input[placeholder*="Куда"]');
+        const weightInput = form.querySelector('#weight') || form.querySelector('input[name="weight"]');
+        const transportInput = form.querySelector('#transport') || form.querySelector('select[name="transport"]');
+        const volumeInput = form.querySelector('#volume') || form.querySelector('input[name="volume"]');
+        const urgencyInput = form.querySelector('#urgency') || form.querySelector('select[name="urgency"]');
         
-        console.log('Form data:', { from, to, weight, transport, volume, urgency });
+        const from = fromInput?.value || 'Москва';
+        const to = toInput?.value || 'СПб';
+        const weight = weightInput?.value || '1000';
+        const transport = transportInput?.value || 'gazelle';
+        const volume = volumeInput?.value || '2';
+        const urgency = urgencyInput?.value || 'standard';
+        
+        console.log('📋 Form elements found:', {
+            fromInput: !!fromInput,
+            toInput: !!toInput,
+            weightInput: !!weightInput,
+            transportInput: !!transportInput,
+            volumeInput: !!volumeInput,
+            urgencyInput: !!urgencyInput
+        });
+        
+        console.log('📋 Form data:', { from, to, weight, transport, volume, urgency });
+        
+        // Проверяем валидность данных
+        if (!from || !to) {
+            console.warn('⚠️ Missing address data:', { from, to });
+            showNotification('❌ Укажите города отправления и назначения!', 'error');
+            return;
+        }
+        
+        if (!weight || isNaN(parseFloat(weight))) {
+            console.warn('⚠️ Invalid weight:', weight);
+            showNotification('❌ Укажите корректный вес груза!', 'error');
+            return;
+        }
     
     // Умная логика расчета
     let basePrice = 2500;
