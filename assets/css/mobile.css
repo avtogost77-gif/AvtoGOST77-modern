@@ -103,7 +103,7 @@
 /* Hero секция для мобильных */
 @media (max-width: 768px) {
   .hero {
-    padding: 120px 0 3rem 0;
+    padding: 140px 0 3rem 0;
     text-align: center;
     margin-top: 0;
   }
