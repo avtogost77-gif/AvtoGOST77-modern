@@ -164,7 +164,7 @@ class AICalculator {
         this.rates = {
             gazelle: { baseRate: 35, fuelPer100km: 12 },
             truck: { baseRate: 45, fuelPer100km: 25 },
-            fura: { baseRate: 55, fuelPer100km: 35 },
+            semi: { baseRate: 55, fuelPer100km: 35 },
             manipulator: { baseRate: 65, fuelPer100km: 30 }
         };
         
@@ -238,17 +238,18 @@ class AICalculator {
         return fallbackDistances[key] || fallbackDistances[reverseKey] || 500;
     }
 
-    calculatePrice(distance, transportType, weight, volume, urgency) {
+    calculatePrice(distance, transportType, weight, volume, cargoType) {
         const rate = this.rates[transportType];
         if (!rate) return null;
 
         let basePrice = distance * rate.baseRate;
         
-        // Коэффициенты по срочности
-        const urgencyMultipliers = {
-            standard: 1.0,
-            urgent: 1.3,
-            express: 1.5
+        // Коэффициенты по типу груза
+        const cargoMultipliers = {
+            general: 1.0,
+            fragile: 1.3,
+            oversized: 1.5,
+            dangerous: 1.8
         };
 
         // Коэффициент по весу
@@ -261,7 +262,7 @@ class AICalculator {
         if (volume > 10) volumeMultiplier += (volume - 10) / 10 * 0.15;
 
         const finalPrice = basePrice * 
-                          urgencyMultipliers[urgency] * 
+                          cargoMultipliers[cargoType] * 
                           weightMultiplier * 
                           volumeMultiplier;
 
@@ -269,7 +270,7 @@ class AICalculator {
         const minPrices = {
             gazelle: 2500,
             truck: 5000,
-            fura: 15000,
+            semi: 15000,
             manipulator: 3500
         };
 
@@ -294,10 +295,10 @@ class AICalculator {
             const {
                 fromCity,
                 toCity,
+                cargoType,
                 weight,
                 volume,
-                transport,
-                urgency
+                transportType
             } = formData;
 
             // Показываем индикатор загрузки
@@ -310,9 +311,9 @@ class AICalculator {
             await this.simulateAIProcessing();
 
             // Расчеты
-            const price = this.calculatePrice(distance, transport, weight, volume, urgency);
+            const price = this.calculatePrice(distance, transportType, weight, volume, cargoType);
             const travelTime = this.calculateTravelTime(distance);
-            const fuelCost = this.calculateFuelCost(distance, transport);
+            const fuelCost = this.calculateFuelCost(distance, transportType);
 
             const result = {
                 price,
@@ -321,8 +322,8 @@ class AICalculator {
                 fuelCost,
                 fromCity,
                 toCity,
-                transport,
-                urgency
+                transportType,
+                cargoType
             };
 
             this.hideLoadingState();
@@ -341,7 +342,7 @@ class AICalculator {
     }
 
     showLoadingState() {
-        const btn = document.querySelector('#calculateBtn');
+        const btn = document.querySelector('.calculate-btn');
         if (btn) {
             btn.innerHTML = '🤖 AI анализирует маршрут...';
             btn.disabled = true;
@@ -350,9 +351,9 @@ class AICalculator {
     }
 
     hideLoadingState() {
-        const btn = document.querySelector('#calculateBtn');
+        const btn = document.querySelector('.calculate-btn');
         if (btn) {
-            btn.innerHTML = '🤖 Рассчитать с помощью AI';
+            btn.innerHTML = '🤖 Рассчитать с AI';
             btn.disabled = false;
             btn.style.background = '';
         }
@@ -366,7 +367,7 @@ class AICalculator {
             'Готово!'
         ];
 
-        const btn = document.querySelector('#calculateBtn');
+        const btn = document.querySelector('.calculate-btn');
         
         for (let i = 0; i < messages.length; i++) {
             if (btn) btn.innerHTML = `🤖 ${messages[i]}`;
@@ -382,36 +383,40 @@ class AICalculator {
         const priceEl = document.getElementById('aiPrice');
         const detailsEl = document.getElementById('aiDetails');
 
-        if (priceEl) {
-            priceEl.textContent = `${result.price.toLocaleString()} ₽`;
-        }
-        
+        if (priceEl) priceEl.textContent = `${result.price.toLocaleString()} ₽`;
         if (detailsEl) {
             detailsEl.innerHTML = `
                 <strong>AI анализ:</strong> Маршрут ${result.fromCity} → ${result.toCity}<br>
-                📏 Расстояние: ${result.distance} км | ⏱ Время: ${result.travelTime} ч<br>
+                Транспорт: ${this.getTransportName(result.transportType)} | Вес: ${result.weight}кг | Объем: ${result.volume}м³<br>
                 <em>Цена включает топливо, работу водителя и страхование</em>
             `;
         }
 
         // Показываем результат с анимацией
         resultContainer.classList.add('show');
-        resultContainer.style.display = 'block';
-        
+        AnimationUtils.fadeIn(resultContainer);
+
         // Эффект печатной машинки для цены
         if (priceEl) {
             AnimationUtils.typeWriter(priceEl, `${result.price.toLocaleString()} ₽`, 100);
         }
+    }
 
-        // Scroll to result
-        resultContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    getTransportName(type) {
+        const names = {
+            gazelle: 'Газель',
+            truck: 'Грузовик',
+            semi: 'Полуприцеп',
+            manipulator: 'Манипулятор'
+        };
+        return names[type] || type;
     }
 
     trackCalculation(result) {
         // Яндекс.Метрика
         if (typeof ym !== 'undefined') {
             ym(CONFIG.YANDEX_METRIKA_ID, 'reachGoal', 'calculation', {
-                transport_type: result.transport,
+                transport_type: result.transportType,
                 distance: result.distance,
                 price: result.price
             });
@@ -484,10 +489,12 @@ class TelegramBot {
 
 📍 <b>Маршрут:</b> ${result.fromCity} → ${result.toCity}
 📏 <b>Расстояние:</b> ${result.distance} км
-🚛 <b>Транспорт:</b> ${this.getTransportName(result.transport)}
+🚛 <b>Транспорт:</b> ${this.getTransportName(result.transportType)}
+📦 <b>Тип груза:</b> ${this.getCargoName(result.cargoType)}
 
 💰 <b>Стоимость:</b> ${result.price.toLocaleString()} ₽
 ⏱ <b>Время в пути:</b> ${result.travelTime} ч
+⛽ <b>Топливо:</b> ${result.fuelCost.toLocaleString()} ₽
 
 #Расчет #АвтоГОСТ
         `.trim();
@@ -497,8 +504,18 @@ class TelegramBot {
         const names = {
             gazelle: 'Газель (до 1.5т)',
             truck: 'Грузовик (до 5т)',
-            fura: 'Фура (до 20т)',
+            semi: 'Полуприцеп (до 20т)',
             manipulator: 'Манипулятор'
+        };
+        return names[type] || type;
+    }
+
+    static getCargoName(type) {
+        const names = {
+            general: 'Обычный груз',
+            fragile: 'Хрупкий груз',
+            oversized: 'Негабаритный',
+            dangerous: 'Опасный груз'
         };
         return names[type] || type;
     }
@@ -546,6 +563,17 @@ class AvtoGOSTApp {
     }
 
     setupNavigation() {
+        // Мобильное меню
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+
+        if (hamburger && navMenu) {
+            hamburger.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+                hamburger.classList.toggle('active');
+            });
+        }
+
         // Плавная прокрутка для навигации
         const navLinks = document.querySelectorAll('a[href^="#"]');
         navLinks.forEach(link => {
@@ -565,7 +593,8 @@ class AvtoGOSTApp {
         });
 
         // Скрытие/показ навбара при скролле
-        const header = document.querySelector('#header');
+        let lastScrollTop = 0;
+        const header = document.querySelector('.header');
         
         window.addEventListener('scroll', () => {
             const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
@@ -577,16 +606,24 @@ class AvtoGOSTApp {
                     header.classList.remove('scrolled');
                 }
             }
+            
+            lastScrollTop = scrollTop;
         });
     }
 
     setupCalculator() {
-        const calculateForm = document.querySelector('#calculatorForm');
-        if (calculateForm) {
-            calculateForm.addEventListener('submit', (e) => {
+        const calculateBtn = document.getElementById('calculateBtn');
+        const calculatorForm = document.getElementById('calculatorForm');
+        
+        if (calculatorForm) {
+            calculatorForm.addEventListener('submit', (e) => {
                 e.preventDefault();
                 this.handleCalculation();
             });
+        }
+        
+        if (calculateBtn) {
+            calculateBtn.addEventListener('click', () => this.handleCalculation());
         }
 
         // Автозаполнение городов
@@ -716,9 +753,10 @@ class AvtoGOSTApp {
         return {
             fromCity: document.getElementById('fromCity')?.value || '',
             toCity: document.getElementById('toCity')?.value || '',
+            cargoType: document.getElementById('cargoType')?.value || 'general',
             weight: parseInt(document.getElementById('weight')?.value) || 0,
             volume: parseFloat(document.getElementById('volume')?.value) || 0,
-            transport: document.getElementById('transport')?.value || 'gazelle',
+            transportType: document.getElementById('transport')?.value || 'gazelle',
             urgency: document.getElementById('urgency')?.value || 'standard'
         };
     }
@@ -754,7 +792,7 @@ class AvtoGOSTApp {
     }
 
     setupForms() {
-        // Форма контактов
+        // Контактная форма
         const contactForm = document.getElementById('contactForm');
         if (contactForm) {
             contactForm.addEventListener('submit', (e) => this.handleContactSubmit(e));
@@ -764,21 +802,21 @@ class AvtoGOSTApp {
     async handleContactSubmit(e) {
         e.preventDefault();
         
-        const inputs = e.target.querySelectorAll('input, textarea');
-        const contactData = {
-            name: inputs[0]?.value || '',
-            phone: inputs[1]?.value || '',
-            email: inputs[2]?.value || '',
-            message: inputs[3]?.value || ''
+        const formData = new FormData(e.target);
+        const orderData = {
+            name: formData.get('name') || e.target.querySelector('input[type="text"]')?.value,
+            phone: formData.get('phone') || e.target.querySelector('input[type="tel"]')?.value,
+            email: formData.get('email') || e.target.querySelector('input[type="email"]')?.value,
+            message: formData.get('message') || e.target.querySelector('textarea')?.value
         };
 
-        if (!this.validateContactForm(contactData)) {
+        if (!this.validateContactForm(orderData)) {
             return;
         }
 
         try {
             // Отправляем в Telegram
-            const message = TelegramBot.formatOrderMessage(contactData);
+            const message = TelegramBot.formatOrderMessage(orderData);
             const success = await TelegramBot.sendMessage(message);
 
             if (success) {
@@ -790,7 +828,7 @@ class AvtoGOSTApp {
                 e.target.reset();
 
                 // Аналитика
-                this.trackOrder(contactData);
+                this.trackOrder(orderData);
             } else {
                 throw new Error('Ошибка отправки');
             }
@@ -828,19 +866,17 @@ class AvtoGOSTApp {
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.style.animation = 'fadeInUp 0.6s ease-out forwards';
-                    entry.target.style.opacity = '1';
+                    entry.target.classList.add('fade-in-up');
                 }
             });
         }, observerOptions);
 
         // Наблюдаем за элементами
         const elementsToAnimate = document.querySelectorAll(
-            '.service-card, .stat, .calculator-card'
+            '.service-card, .advantage-item, .stat-item, .review-card'
         );
         
         elementsToAnimate.forEach(el => {
-            el.style.opacity = '0';
             observer.observe(el);
         });
 
@@ -868,7 +904,6 @@ class AvtoGOSTApp {
     animateCounter(element) {
         const text = element.textContent;
         const target = parseInt(text.replace(/\D/g, ''));
-        const suffix = text.replace(/\d/g, '');
         const duration = 2000;
         const increment = target / (duration / 16);
         let current = 0;
@@ -880,7 +915,15 @@ class AvtoGOSTApp {
                 clearInterval(timer);
             }
             
-            element.textContent = Math.floor(current) + suffix;
+            if (text.includes('K')) {
+                element.textContent = Math.floor(current / 1000) + 'K+';
+            } else if (text.includes('%')) {
+                element.textContent = Math.floor(current) + '%';
+            } else if (text.includes('ч')) {
+                element.textContent = Math.floor(current) + 'ч';
+            } else {
+                element.textContent = Math.floor(current) + '+';
+            }
         }, 16);
     }
 
@@ -959,7 +1002,7 @@ class AvtoGOSTApp {
     }
 
     trackButtonClicks() {
-        const buttons = document.querySelectorAll('button, .btn');
+        const buttons = document.querySelectorAll('button, .btn, .header-cta');
         
         buttons.forEach(button => {
             button.addEventListener('click', () => {
@@ -983,7 +1026,7 @@ class AvtoGOSTApp {
 
     trackOrder(orderData) {
         if (typeof gtag !== 'undefined') {
-            gtag('event', 'generate_lead', {
+            gtag('event', 'purchase', {
                 event_category: 'Order',
                 event_label: 'Contact Form',
                 value: 1
@@ -997,13 +1040,39 @@ class AvtoGOSTApp {
 }
 
 // =====================================
+// 🎯 ГЛОБАЛЬНЫЕ ФУНКЦИИ
+// =====================================
+
+// Функции для использования в HTML
+window.calculateWithAI = async function() {
+    if (window.app) {
+        await window.app.handleCalculation();
+    }
+};
+
+window.orderTransport = function() {
+    const phone = CONFIG.CONTACT.phone;
+    const message = 'Здравствуйте! Хочу заказать перевозку.';
+    window.open(`tel:${phone}`, '_self');
+    // Дублируем в WhatsApp
+    setTimeout(() => {
+        const whatsappUrl = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+        window.open(whatsappUrl, '_blank');
+    }, 1000);
+};
+
+window.submitContactForm = async function(event) {
+    if (window.app) {
+        await window.app.handleContactSubmit(event);
+    }
+};
+
+// =====================================
 // 🚀 ЗАПУСК ПРИЛОЖЕНИЯ
 // =====================================
 
 // Инициализация приложения
-window.addEventListener('DOMContentLoaded', () => {
-    window.app = new AvtoGOSTApp();
-});
+window.app = new AvtoGOSTApp();
 
 // Дополнительные глобальные обработчики
 window.addEventListener('error', (event) => {
@@ -1039,6 +1108,19 @@ window.addEventListener('load', () => {
         }
     }
 });
+
+// Отслеживание времени на странице
+let timeOnPage = 0;
+setInterval(() => {
+    timeOnPage += 30;
+    // Отправляем событие каждые 5 минут
+    if (timeOnPage % 300 === 0 && typeof gtag !== 'undefined') {
+        gtag('event', 'engagement', {
+            event_category: 'Time on Page',
+            value: timeOnPage
+        });
+    }
+}, 30000);
 
 console.log(`
 🚀 АВТОГОСТ ЗАГРУЖЕН УСПЕШНО!
