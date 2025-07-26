@@ -308,9 +308,18 @@ function handleCalculatorSubmit(form) {
     }
 }
 
-// Функция расчета расстояния
+// Функция расчета расстояния с поддержкой ФИАС
 function calculateDistance(from, to) {
-    // Простая база расстояний между крупными городами
+    // Сначала пробуем получить точное расстояние от ФИАС
+    if (window.getFiasDistance) {
+        const fiasDistance = window.getFiasDistance();
+        if (fiasDistance && fiasDistance > 0) {
+            console.log(`📍 Using FIAS precise distance: ${fiasDistance.toFixed(1)} km`);
+            return Math.round(fiasDistance);
+        }
+    }
+    
+    // Fallback: простая база расстояний между крупными городами
     const distances = {
         'москва-санкт-петербург': 635,
         'москва-екатеринбург': 1416,
@@ -330,7 +339,9 @@ function calculateDistance(from, to) {
     const route = `${from.toLowerCase().trim()}-${to.toLowerCase().trim()}`;
     const reverseRoute = `${to.toLowerCase().trim()}-${from.toLowerCase().trim()}`;
     
-    return distances[route] || distances[reverseRoute] || 500; // По умолчанию 500км
+    const distance = distances[route] || distances[reverseRoute] || 500; // По умолчанию 500км
+    console.log(`📊 Using database distance: ${distance} km`);
+    return distance;
 }
 
 function showCalculatorResult(from, to, weight, transport, urgency, price, distance, selectedTransport, calculation) {

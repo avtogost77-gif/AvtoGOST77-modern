@@ -227,13 +227,19 @@
             <div class="calculator-card">
                 <form class="calculator-form" id="calculatorForm">
                     <div class="form-group">
-                        <label class="form-label">📍 Откуда</label>
-                        <input type="text" class="form-input" placeholder="Москва" id="fromCity" required>
+                        <label class="form-label">📍 Точный адрес отправления</label>
+                        <input type="text" class="form-input" placeholder="Введите точный адрес..." id="fromCity" required>
+                        <small style="color: #6b7280; font-size: 12px; margin-top: 4px; display: block;">
+                            🌍 Поддерживаются точные адреса по всей России
+                        </small>
                     </div>
                     
                     <div class="form-group">
-                        <label class="form-label">📍 Куда</label>
-                        <input type="text" class="form-input" placeholder="Санкт-Петербург" id="toCity" required>
+                        <label class="form-label">📍 Точный адрес доставки</label>
+                        <input type="text" class="form-input" placeholder="Введите точный адрес..." id="toCity" required>
+                        <small style="color: #6b7280; font-size: 12px; margin-top: 4px; display: block;">
+                            💡 Начните вводить - появятся подсказки
+                        </small>
                     </div>
                     
                     <div class="form-group">
@@ -569,6 +575,9 @@
 
     <!-- 🚨 EMERGENCY JS FIX -->
     <script src="assets/js/emergency-fix.js"></script>
+    
+    <!-- 🌍 ФИАС ИНТЕГРАЦИЯ -->
+    <script src="assets/js/fias-integration.js"></script>
     
     <!-- Scripts -->
     <script src="assets/js/main.js"></script>
