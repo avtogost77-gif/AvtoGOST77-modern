@@ -2649,3 +2649,9 @@ header {
   padding-left: 12px;
   border-radius: 4px;
 }
+
+/* === Voice Button === */
+.voice-btn{position:fixed;bottom:80px;right:20px;z-index:9999;background:#2563eb;color:#fff;border:none;width:56px;height:56px;border-radius:50%;font-size:24px;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 12px rgba(0,0,0,.2);cursor:pointer;transition:background .2s}
+.voice-btn.listening{background:#059669;animation:pulse 1s infinite}
+@keyframes pulse{0%{transform:scale(1)}50%{transform:scale(1.1)}100%{transform:scale(1)}}
+@media(max-width:768px){.voice-btn{bottom:120px;right:16px}}
