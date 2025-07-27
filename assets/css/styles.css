@@ -2697,3 +2697,27 @@ header {
   font-size: 1.5rem;
   cursor: pointer;
 }
+.voice-btn {
+  position: fixed;
+  bottom: 90px;
+  right: 20px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--primary-600, #2563eb);
+  color: #fff;
+  border: none;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  z-index: 10000;
+  cursor: pointer;
+}
+.voice-btn:hover {
+  background: var(--primary-700, #1e40af);
+}
+@media (max-width: 768px){
+  .voice-btn{ bottom: 140px; right: 16px; }
+}

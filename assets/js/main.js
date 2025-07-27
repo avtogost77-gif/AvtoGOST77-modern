@@ -1115,6 +1115,66 @@ setInterval(() => {
 })();
 // ======== END UX ENHANCEMENTS ========
 
+// ======== PWA & Voice Enhancements (2025-07-27) ========
+(function(){
+  // 1. Service Worker registration
+  if('serviceWorker' in navigator){
+    navigator.serviceWorker.register('/sw.js').then(()=>{
+      console.log('SW registered');
+    }).catch(err=>console.warn('SW register error',err));
+  }
+
+  // 2. Install prompt handling
+  let deferredPrompt; const installBtn = document.getElementById('pwa-install-btn');
+  window.addEventListener('beforeinstallprompt', (e)=>{
+    e.preventDefault();
+    deferredPrompt = e;
+    installBtn && (installBtn.style.display='block');
+  });
+  installBtn && installBtn.addEventListener('click', async ()=>{
+    if(!deferredPrompt) return;
+    deferredPrompt.prompt();
+    const { outcome } = await deferredPrompt.userChoice;
+    window.gtag && gtag('event','pwa_install',{value: outcome});
+    deferredPrompt = null;
+    installBtn.style.display='none';
+  });
+
+  // 3. Voice recognition button
+  if('webkitSpeechRecognition' in window){
+    const btn = document.createElement('button');
+    btn.id='voiceBtn';
+    btn.className='voice-btn';
+    btn.type='button';
+    btn.title='Сказать маршрут';
+    btn.innerHTML='🎙️';
+    document.body.appendChild(btn);
+
+    const recognizer = new webkitSpeechRecognition();
+    recognizer.lang='ru-RU';
+    recognizer.interimResults=false;
+
+    btn.addEventListener('click', ()=>{
+      recognizer.start();
+      window.gtag && gtag('event','voice_start');
+    });
+    recognizer.addEventListener('result', (e)=>{
+      const text = Array.from(e.results).map(r=>r[0].transcript).join(' ');
+      console.log('Voice text:',text);
+      window.gtag && gtag('event','voice_result');
+      // очень простое парсинг: "Москва Санкт-Петербург"
+      const parts = text.split(/\s+(?:до|в|на)?\s+/i);
+      if(parts.length>=2){
+        document.getElementById('fromCity').value = parts[0].trim();
+        document.getElementById('toCity').value = parts[1].trim();
+        AnimationUtils.pulse(document.getElementById('fromCity'));
+        AnimationUtils.pulse(document.getElementById('toCity'));
+      }
+    });
+  }
+})();
+// ======== END PWA & Voice Enhancements ========
+
 console.log(`
 🚀 АВТОГОСТ ЗАГРУЖЕН УСПЕШНО!
 
