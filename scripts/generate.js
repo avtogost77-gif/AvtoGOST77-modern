@@ -32,9 +32,48 @@ function citySlug(city) {
 const dataPath = path.join(__dirname, '..', 'data', 'routes.yaml');
 const routes = yaml.load(fs.readFileSync(dataPath, 'utf8'));
 
+const citiesPath = path.join(__dirname, '..', 'data', 'cities.yaml');
+const servicesPath = path.join(__dirname, '..', 'data', 'services.yaml');
+let cities = [];
+let services = [];
+if (fs.existsSync(citiesPath)) {
+  cities = yaml.load(fs.readFileSync(citiesPath, 'utf8'));
+}
+if (fs.existsSync(servicesPath)) {
+  services = yaml.load(fs.readFileSync(servicesPath, 'utf8'));
+}
+
+// Build auto routes for base pages (no modifier) when cities & services defined
+if (cities.length && services.length) {
+  cities.forEach(origin => {
+    cities.forEach(dest => {
+      if (origin.slug === dest.slug) return; // skip same city
+      services.forEach(svc => {
+        routes.push({
+          service: svc.service,
+          service_ru: svc.service_ru,
+          from_city: origin.name,
+          to_city: dest.name,
+          payload: svc.payload,
+          cta: svc.cta
+        });
+      });
+    });
+  });
+}
+// Deduplicate routes (avoid duplicates from YAML overrides)
+const unique = new Map();
+routes.forEach(r=>{
+  const key=`${r.service}|${r.from_city}|${r.to_city}|${r.modifier||''}`;
+  if(!unique.has(key)) unique.set(key,r);
+});
+const finalRoutes = Array.from(unique.values());
+
+console.log(`Generating ${finalRoutes.length} routes...`);
+
 const generatedUrls = [];
 
-routes.forEach(route => {
+finalRoutes.forEach(route => {
   const fromSlug = citySlug(route.from_city);
   const toSlug = citySlug(route.to_city);
   const modifierSlug = route.modifier ? slugify(route.modifier) : '';
