@@ -49,13 +49,18 @@ if (cities.length && services.length) {
     cities.forEach(dest => {
       if (origin.slug === dest.slug) return; // skip same city
       services.forEach(svc => {
-        routes.push({
+        const base = {
           service: svc.service,
           service_ru: svc.service_ru,
           from_city: origin.name,
           to_city: dest.name,
           payload: svc.payload,
           cta: svc.cta
+        };
+        routes.push(base);
+        const modifiers = ['nedorogo', 'srochno'];
+        modifiers.forEach(mod=>{
+          routes.push({...base, modifier: mod, modifierText: mod});
         });
       });
     });
