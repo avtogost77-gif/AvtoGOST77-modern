@@ -27,7 +27,7 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 18
-      - run: npm ci --silent
+      - run: npm install --silent
       - name: Generate batch
         run: |
           node scripts/generate-enhanced.js
