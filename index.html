@@ -1,632 +1,365 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EMQ3D0X8K7"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-EMQ3D0X8K7');
-    </script>
-    
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>АвтоГОСТ - Грузоперевозки по России 24/7 | Калькулятор стоимости онлайн</title>
+    <meta name="description" content="Надежные грузоперевозки по России. ⚡ Подача за 2 часа, калькулятор стоимости онлайн, точные адреса. Работаем 24/7. Обширная сеть партнеров.">
+    <meta name="keywords" content="грузоперевозки россия, калькулятор стоимости доставки, заказать грузоперевозку онлайн, автогост, подача 2 часа">
     
-    <!-- SEO META -->
-    <title>АвтоГОСТ - Грузоперевозки по России от 2500₽ | AI калькулятор стоимости</title>
-    <meta name="description" content="АвтоГОСТ - профессиональные грузоперевозки по России. Надежная сеть партнеров, подача за 2 часа, доставка точно в срок. AI калькулятор стоимости!">
-    <meta name="keywords" content="грузоперевозки, логистика, доставка, газель, фура, манипулятор, АвтоГОСТ, AI калькулятор">
-    
-    <!-- Open Graph -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://avtogost77.ru/">
-    <meta property="og:title" content="АвтоГОСТ - Грузоперевозки по России">
-    <meta property="og:description" content="Надежная сеть партнеров, подача за 2 часа, 99% вовремя. AI калькулятор стоимости!">
-    <meta property="og:image" content="https://avtogost77.ru/assets/img/hero-logistics.webp">
-    
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://avtogost77.ru/">
-    <meta property="twitter:title" content="АвтоГОСТ - Грузоперевозки по России">
-    <meta property="twitter:description" content="Надежная сеть партнеров, подача за 2 часа, 99% вовремя. AI калькулятор стоимости!">
-    <meta property="twitter:image" content="https://avtogost77.ru/assets/img/hero-logistics.webp">
-    
-    <!-- Canonical & Alternate -->
-    <link rel="canonical" href="https://avtogost77.ru/">
-    <link rel="alternate" hreflang="ru" href="https://avtogost77.ru/">
-    
-    <!-- Additional SEO -->
-    <meta name="robots" content="index, follow">
-    <meta name="author" content="АвтоГОСТ">
-    <meta name="publisher" content="АвтоГОСТ">
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <link rel="icon" type="image/png" href="favicon.png">
-    <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
-    
-    <!-- Preload критических ресурсов -->
-    <link rel="preload" href="assets/img/hero-logistics.webp" as="image">
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" as="style">
-    
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    
-    <!-- 🚨 EMERGENCY CSS FIX -->
-    <link rel="stylesheet" href="assets/css/emergency-mobile-fix.css">
-    <link rel="stylesheet" href="assets/css/hero-fix.css">
-    
-    <!-- 🔑 DADATA API CONFIGURATION -->
-    <script src="dadata-config.js"></script>
-    
-    <!-- CSS переменные для быстрой загрузки -->
-    <style>
-        :root {
-            --primary: #2563eb;
-            --primary-dark: #1d4ed8;
-            --accent: #f59e0b;
-            --success: #10b981;
-            --danger: #ef4444;
-            --dark: #111827;
-            --light: #f9fafb;
-        }
-        
-        /* Критические стили для первого экрана */
-        body {
-            margin: 0;
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-        
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, rgba(37, 99, 235, 0.9) 0%, rgba(147, 51, 234, 0.8) 100%),
-                        url('assets/img/hero-logistics.webp') center/cover no-repeat;
-        }
-        
-        /* Предзагрузка анимаций */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .animate-in {
-            animation: fadeIn 0.6s ease-out forwards;
-        }
-    </style>
-    
-    <!-- Main CSS -->
-    <link rel="stylesheet" href="assets/css/critical-mobile-fix.css">
+    <!-- ПРОВЕРЕННЫЕ СТИЛИ -->
+    <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="stylesheet" href="assets/css/main.css">
     <link rel="stylesheet" href="assets/css/mobile.css">
-</head>
-<body>
-    <!-- Прогресс-бар загрузки страницы -->
-    <div class="page-progress" id="pageProgress"></div>
     
-    <!-- Header с фиксом мобильного меню -->
-    <header class="header" id="header">
-        <div class="container">
-            <div class="header-content">
-                <div class="logo">
-                    <span class="logo-text">АвтоГОСТ</span>
-                    <span class="logo-badge">AI</span>
-                </div>
-                
-                <!-- Десктоп навигация -->
-                <nav class="nav desktop-nav">
-                    <a href="#services" class="nav-link">Услуги</a>
-                    <a href="#calculator" class="nav-link">AI Калькулятор</a>
-                    <a href="#about" class="nav-link">О нас</a>
-                    <a href="#contact" class="nav-link">Контакты</a>
-                </nav>
-                
-                <!-- Мобильный бургер -->
-                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Открыть меню">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-                
-                <a href="#contact" class="header-cta desktop-only">
-                    <span>Заказать звонок</span>
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                        <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/>
-                    </svg>
-                </a>
-            </div>
-        </div>
-        
-        <!-- Мобильное меню -->
-        <nav class="mobile-nav" id="mobileNav">
-            <div class="mobile-nav-content">
-                <a href="#services" class="mobile-nav-link">Услуги</a>
-                <a href="#calculator" class="mobile-nav-link">AI Калькулятор</a>
-                <a href="#about" class="mobile-nav-link">О нас</a>
-                <a href="#contact" class="mobile-nav-link">Контакты</a>
-                <a href="tel:89162720932" class="mobile-nav-cta">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                        <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/>
-                    </svg>
-                    <span>+7 916 272-09-32</span>
-                </a>
-            </div>
-        </nav>
-    </header>
-
-    <!-- Hero Section с исправленным фоном -->
-    <section class="hero" id="hero">
-        <div class="container">
-            <div class="hero-content animate-in">
-                <div class="hero-badge">
-                    <span class="badge-icon">🚀</span>
-                    <span class="badge-text">Лидер логистики 2024</span>
-                </div>
-                
-                <h1 class="hero-title">
-                    Грузоперевозки <span class="text-gradient">нового поколения</span>
-                </h1>
-                
-                <p class="hero-description">
-                    AI-платформа для логистики. Обширная сеть надежных перевозчиков по всей России, 
-                    подача транспорта за 2 часа, гарантия выполнения в срок.
-                </p>
-                
-                <!-- Анимированная статистика -->
-                <div class="hero-stats">
-                    <div class="stat" data-aos="fade-up" data-aos-delay="100">
-                        <span class="stat-number" data-count="10">0</span>
-                        <span class="stat-label">Лет опыта</span>
-                    </div>
-                    <div class="stat" data-aos="fade-up" data-aos-delay="200">
-                        <span class="stat-number" data-count="2">0</span>
-                        <span class="stat-label">Часа подача</span>
-                    </div>
-                    <div class="stat" data-aos="fade-up" data-aos-delay="300">
-                        <span class="stat-number" data-count="99">0</span>
-                        <span class="stat-label">% В срок</span>
-                    </div>
-                    <div class="stat" data-aos="fade-up" data-aos-delay="400">
-                        <span class="stat-number">24/7</span>
-                        <span class="stat-label">Поддержка</span>
-                    </div>
-                </div>
-                
-                <!-- Кнопки с исправленными обработчиками -->
-                <div class="hero-buttons">
-                    <a href="#calculator" class="btn btn-primary btn-lg">
-                        <span class="btn-icon">🤖</span>
-                        <span>AI Калькулятор</span>
-                        <span class="btn-arrow">→</span>
-                    </a>
-                    <a href="#contact" class="btn btn-secondary btn-lg">
-                        <span class="btn-icon">💬</span>
-                        <span>Консультация</span>
-                    </a>
-                </div>
-                
-                <!-- Доверие клиентов -->
-                <div class="hero-trust">
-                    <div class="trust-avatars">
-                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='40' fill='%23e5e7eb'/%3E%3C/svg%3E" alt="Client 1">
-                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='40' fill='%23d1d5db'/%3E%3C/svg%3E" alt="Client 2">
-                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='40' fill='%239ca3af'/%3E%3C/svg%3E" alt="Client 3">
-                        <span class="trust-count">+15K</span>
-                    </div>
-                    <p class="trust-text">Более 15,000 довольных клиентов</p>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Анимированный фон -->
-        <div class="hero-bg-animation">
-            <div class="floating-shape shape-1"></div>
-            <div class="floating-shape shape-2"></div>
-            <div class="floating-shape shape-3"></div>
-        </div>
-    </section>
-
-    <!-- AI Calculator -->
-    <section class="calculator-section section" id="calculator">
-        <div class="container calculator-container">
-            <div class="section-header">
-                <h2 class="section-title">🤖 AI Калькулятор стоимости</h2>
-                <p class="section-subtitle">Искусственный интеллект рассчитает точную стоимость перевозки за секунды</p>
-            </div>
-            
-            <div class="calculator-card">
-                <form class="calculator-form" id="calculatorForm">
-                    <div class="form-group">
-                        <label class="form-label">📍 Точный адрес отправления</label>
-                        <input type="text" class="form-input" placeholder="Введите точный адрес..." id="fromCity" required>
-                        <small style="color: #6b7280; font-size: 12px; margin-top: 4px; display: block;">
-                            🌍 Поддерживаются точные адреса по всей России
-                        </small>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label class="form-label">📍 Точный адрес доставки</label>
-                        <input type="text" class="form-input" placeholder="Введите точный адрес..." id="toCity" required>
-                        <small style="color: #6b7280; font-size: 12px; margin-top: 4px; display: block;">
-                            💡 Начните вводить - появятся подсказки
-                        </small>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label class="form-label">🚚 Тип транспорта</label>
-                        <select class="form-input form-select" id="transport" required>
-                            <option value="">Выберите транспорт</option>
-                            <option value="gazelle">Газель 1.5т (до 12м³)</option>
-                            <option value="truck3t">Грузовик 3т (до 18м³)</option>
-                            <option value="truck5t">Грузовик 5т (6.2×2.45×2м, до 30м³)</option>
-                            <option value="truck10t">Грузовик 10т (6.2×2.45×2.2м, до 33м³)</option>
-                            <option value="fura20t">Фура 20т (13.6×2.45×2.6м, до 86м³)</option>
-                            <option value="fura_mega">Фура МЕГА 20т (16.5×2.45×2.6м, до 105м³)</option>
-                            <option value="manipulator">Манипулятор 10т</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label class="form-label">📦 Вес груза (кг)</label>
-                        <input type="number" class="form-input" placeholder="1000" id="weight" min="1" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label class="form-label">📏 Объем (м³)</label>
-                        <input type="number" class="form-input" placeholder="2" id="volume" min="0.1" step="0.1" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label class="form-label">⚡ Срочность</label>
-                        <select class="form-input form-select" id="urgency" required>
-                            <option value="standard">Стандартная</option>
-                            <option value="urgent">Срочная (+30%)</option>
-                            <option value="express">Экспресс (+50%)</option>
-                        </select>
-                    </div>
-                </form>
-                
-                <button type="submit" form="calculatorForm" class="btn btn-primary calculate-btn" id="calculateBtn">
-                    🤖 Рассчитать с помощью AI
-                </button>
-                
-                <div class="ai-result" id="aiResult" style="display: none;">
-                    <div class="ai-price" id="aiPrice">2,500 ₽</div>
-                    <div class="ai-details" id="aiDetails">
-                        AI проанализировал маршрут, тип груза и рыночные цены
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Services -->
-    <section class="services section" id="services">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Наши услуги</h2>
-                <p class="section-subtitle">Полный спектр логистических решений для вашего бизнеса</p>
-            </div>
-            
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">🚐</div>
-                    <h3 class="service-title">Газель</h3>
-                    <p class="service-description">Быстрая доставка малогабаритных грузов по городу и области</p>
-                    <ul class="service-features">
-                        <li>До 1.5 тонн</li>
-                        <li>Подача за 2 часа</li>
-                        <li>От 3,000₽ по Москве</li>
-                    </ul>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">🚛</div>
-                    <h3 class="service-title">Грузовик</h3>
-                    <p class="service-description">Перевозка средних грузов с максимальной надежностью</p>
-                    <ul class="service-features">
-                        <li>3-тонник: от 5,000₽</li>
-                        <li>5-тонник: от 7,000₽</li>
-                        <li>GPS контроль</li>
-                    </ul>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">🚚</div>
-                    <h3 class="service-title">Фура</h3>
-                    <p class="service-description">Крупногабаритные перевозки по всей России</p>
-                    <ul class="service-features">
-                        <li>10-тонник: от 10,000₽</li>
-                        <li>20-тонник: от 15,000₽</li>
-                        <li>Рефрижератор +30%</li>
-                    </ul>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">⚡</div>
-                    <h3 class="service-title">Спот-заявки</h3>
-                    <p class="service-description">Экстренная замена перевозчика</p>
-                    <ul class="service-features">
-                        <li>Решение за 3 часа</li>
-                        <li>Наценка +30-50%</li>
-                        <li>Гарантия подачи</li>
-                    </ul>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">📦</div>
-                    <h3 class="service-title">Маркетплейсы</h3>
-                    <p class="service-description">Доставка с Wildberries, Ozon, Яндекс.Маркет</p>
-                    <ul class="service-features">
-                        <li>Pickup пункты</li>
-                        <li>Сортировка</li>
-                        <li>API интеграция</li>
-                    </ul>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">⚡</div>
-                    <h3 class="service-title">Экспресс</h3>
-                    <p class="service-description">Срочная доставка за 2-4 часа</p>
-                    <ul class="service-features">
-                        <li>По Москве</li>
-                        <li>До 500 кг</li>
-                        <li>Real-time трекинг</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- About -->
-    <section class="advantages section" id="about">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Почему выбирают АвтоГОСТ</h2>
-                <p class="section-subtitle">Современные технологии на службе логистики</p>
-            </div>
-            
-            <div class="advantages-grid">
-                <div class="advantage-card">
-                    <div class="advantage-icon">🤖</div>
-                    <h3>AI Технологии</h3>
-                    <p>Искусственный интеллект подбирает оптимальные маршруты и цены в режиме реального времени</p>
-                </div>
-                
-                <div class="advantage-card">
-                    <div class="advantage-icon">⚡</div>
-                    <h3>Быстрая подача</h3>
-                    <p>Средняя подача транспорта составляет 2 часа благодаря нашей развитой сети перевозчиков</p>
-                </div>
-                
-                <div class="advantage-card">
-                    <div class="advantage-icon">🔒</div>
-                    <h3>Надежность</h3>
-                    <p>Тщательно проверяем каждого исполнителя, GPS мониторинг и фото-отчеты на всем маршруте</p>
-                </div>
-                
-                <div class="advantage-card">
-                    <div class="advantage-icon">💰</div>
-                    <h3>Честные цены</h3>
-                    <p>Прозрачное ценообразование без скрытых комиссий и доплат за километраж</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Stats -->
-    <section class="stats-section">
-        <div class="container">
-            <div class="stats-grid">
-                <div class="stat-item">
-                    <h3 class="stat-number">500+</h3>
-                    <p>Экстренных заявок решено</p>
-                </div>
-                <div class="stat-item">
-                    <h3 class="stat-number">99</h3>
-                    <p>Процент выполненных заказов</p>
-                </div>
-                <div class="stat-item">
-                    <h3 class="stat-number">2000000</h3>
-                    <p>Перевезенных грузов</p>
-                </div>
-                <div class="stat-item">
-                    <h3 class="stat-number">24</h3>
-                    <p>Часа в сутки работаем</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Reviews -->
-    <section class="reviews-section section">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Отзывы клиентов</h2>
-                <p class="section-subtitle">Что говорят о нас наши партнеры</p>
-            </div>
-            
-            <div class="reviews-grid">
-                <div class="review-card">
-                    <div class="review-text">
-                        "Спасли сделку на 2 млн! Перевозчик отказался за 3 часа до отгрузки, АвтоГОСТ нашел замену за 2 часа. Теперь работаем только с ними."
-                    </div>
-                    <div class="review-author">
-                        <div class="author-avatar">П</div>
-                        <div class="author-info">
-                            <h4>Павел Морозов</h4>
-                            <p>ООО "ПВХ-Трейд"</p>
-                            <div class="stars">⭐⭐⭐⭐⭐</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="review-card">
-                    <div class="review-text">
-                        "Доставили 500,000 игрушек к распродаже на Wildberries. 15 машин, жесткие окна приемки - справились без единого штрафа!"
-                    </div>
-                    <div class="review-author">
-                        <div class="author-avatar">Е</div>
-                        <div class="author-info">
-                            <h4>Елена Крылова</h4>
-                            <p>Поставщик WB/OZON</p>
-                            <div class="stars">⭐⭐⭐⭐⭐</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="review-card">
-                    <div class="review-text">
-                        "Экономим 115,000₽ в месяц! Перевели логистику на аутсорс АвтоГОСТ. Персональный менеджер решает все вопросы 24/7."
-                    </div>
-                    <div class="review-author">
-                        <div class="author-avatar">А</div>
-                        <div class="author-info">
-                            <h4>Алексей Новиков</h4>
-                            <p>Производство мебели</p>
-                            <div class="stars">⭐⭐⭐⭐⭐</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact -->
-    <section class="contact section" id="contact">
-        <div class="container">
-            <div class="contact-grid">
-                <div class="contact-info">
-                    <h3>Свяжитесь с нами</h3>
-                    <p>Получите персональное предложение и скидку до 20% на первый заказ</p>
-                    
-                    <ul class="contact-details">
-                        <li>📞 +7 (916) 272-09-32</li>
-                        <li>📧 avtogost77@gmail.com</li>
-                        <li>💬 @avtogost77</li>
-                        <li>🕒 Работаем 24/7</li>
-                        <li>📍 Вся Россия</li>
-                    </ul>
-                </div>
-                
-                <form class="contact-form" id="contactForm">
-                    <div class="form-group">
-                        <input type="text" name="name" class="form-input" placeholder="Ваше имя" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <input type="tel" name="phone" class="form-input" placeholder="Телефон" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <input type="email" name="email" class="form-input" placeholder="Email">
-                    </div>
-                    
-                    <div class="form-group">
-                        <textarea name="message" class="form-input" rows="4" placeholder="Опишите ваш груз и требования"></textarea>
-                    </div>
-                    
-                    <button type="submit" class="btn btn-secondary" style="width: 100%;">
-                        Получить предложение
-                    </button>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>АвтоГОСТ</h3>
-                    <p>Современная логистическая платформа с AI технологиями для профессиональных грузоперевозок по всей России.</p>
-                </div>
-                
-                <div class="footer-section">
-                    <h3>Услуги</h3>
-                    <ul>
-                        <li><a href="#services">Газель</a></li>
-                        <li><a href="#services">Грузовик</a></li>
-                        <li><a href="#services">Фура</a></li>
-                        <li><a href="/logistics-antivirus.html">Удаленный отдел логистики</a></li>
-                        <li><a href="#services">Экспресс доставка</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h3>Компания</h3>
-                    <ul>
-                        <li><a href="about.html">О нас</a></li>
-                        <li><a href="contact.html">Контакты</a></li>
-                        <li><a href="privacy.html">Конфиденциальность</a></li>
-                        <li><a href="services.html">Услуги</a></li>
-                        <li><a href="news.html">Новости</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h3>Поддержка</h3>
-                    <ul>
-                        <li><a href="tel:+79162720932">Помощь: +7 916 272-09-32</a></li>
-                        <li><a href="faq.html">Часто задаваемые вопросы</a></li>
-                        <li><a href="https://wa.me/79162720932">WhatsApp поддержка</a></li>
-                        <li><a href="mailto:avtogost77@gmail.com">Email: avtogost77@gmail.com</a></li>
-                        <li><a href="blog-1-carrier-failed.html">Полезные статьи</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h3>Популярные направления</h3>
-                    <ul>
-                        <li><a href="marketplace-delivery.html">Доставка на маркетплейсы</a></li>
-                        <li><a href="moscow-regions.html">Москва - регионы</a></li>
-                        <li><a href="urgent-delivery.html">Срочная доставка</a></li>
-                        <li><a href="blog-3-spot-orders.html">Спот-заявки</a></li>
-                        <li><a href="blog-4-remote-logistics.html">Удаленный отдел логистики</a></li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <p>&copy; 2024 АвтоГОСТ. Все права защищены. Создано с ❤️ для логистики будущего</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- 🚨 EMERGENCY JS FIX -->
-    <script src="assets/js/emergency-fix.js"></script>
+    <!-- AOS анимации -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
     
-    <!-- 🌍 ФИАС ИНТЕГРАЦИЯ -->
-    <script src="assets/js/fias-integration.js"></script>
+    <!-- SEO и метатеги -->
+    <link rel="canonical" href="https://avtogost77.ru/">
+    <meta property="og:title" content="АвтоГОСТ - Грузоперевозки по России 24/7">
+    <meta property="og:description" content="Надежные грузоперевозки по России. Подача за 2 часа, калькулятор стоимости онлайн.">
+    <meta property="og:url" content="https://avtogost77.ru/">
+    <meta property="og:type" content="website">
     
-    <!-- Scripts -->
-    <script src="assets/js/main.js"></script>
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EMQ3D0X8K7"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-EMQ3D0X8K7');
+    </script>
     
     <!-- Yandex.Metrika -->
     <script type="text/javascript">
         (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-        m[i].l=1*new Date();
-        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+        m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
         (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
-
-        ym(103413788, "init", {
+        
+        ym(98832562, "init", {
             clickmap:true,
             trackLinks:true,
             accurateTrackBounce:true,
             webvisor:true
         });
     </script>
-    <noscript><div><img src="https://mc.yandex.ru/watch/103413788" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+</head>
+<body>
+    <!-- Заголовок -->
+    <header class="header" id="header">
+        <div class="container">
+            <div class="header-content">
+                <!-- Логотип -->
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="assets/img/logo.png" alt="АвтоГОСТ" class="logo-img">
+                        <span class="logo-text">АвтоГОСТ</span>
+                    </a>
+                </div>
 
-    <!-- Обработчик форм -->
-    <script src="assets/js/form-handler.js" defer></script>
+                <!-- Навигация -->
+                <nav class="nav">
+                    <a href="#about" class="nav-link">О нас</a>
+                    <a href="services.html" class="nav-link">Услуги</a>
+                    <a href="#calculator" class="nav-link">Калькулятор</a>
+                    <a href="contact.html" class="nav-link">Контакты</a>
+                </nav>
+
+                <!-- Контакты в шапке -->
+                <div class="header-contacts">
+                    <a href="tel:+79162720932" class="contact-link">
+                        <span class="contact-text">+7 916 272-09-32</span>
+                    </a>
+                    <a href="https://wa.me/79162720932" class="btn btn-secondary btn-sm" target="_blank">
+                        WhatsApp
+                    </a>
+                </div>
+
+                <!-- Мобильное меню -->
+                <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Мобильная навигация -->
+        <nav class="mobile-nav" id="mobileNav">
+            <a href="#about" class="mobile-nav-link">О нас</a>
+            <a href="services.html" class="mobile-nav-link">Услуги</a>
+            <a href="#calculator" class="mobile-nav-link">Калькулятор</a>
+            <a href="contact.html" class="mobile-nav-link">Контакты</a>
+            <a href="tel:+79162720932" class="mobile-nav-link contact">📞 +7 916 272-09-32</a>
+            <a href="https://wa.me/79162720932" class="mobile-nav-link whatsapp" target="_blank">💬 WhatsApp</a>
+        </nav>
+    </header>
+
+    <!-- Hero секция -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content" data-aos="fade-up">
+                <h1>Грузоперевозки по России</h1>
+                <p class="hero-subtitle">
+                    Надежная доставка грузов по всей России. 
+                    <br>Профессиональная логистика 24/7.
+                </p>
+                
+                <div class="hero-stats" data-aos="fade-up" data-aos-delay="200">
+                    <div class="stat-item">
+                        <div class="stat-number">24/7</div>
+                        <div class="stat-label">Работаем круглосуточно</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">2 часа</div>
+                        <div class="stat-label">Подача транспорта</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">99.3%</div>
+                        <div class="stat-label">Доставка в срок</div>
+                    </div>
+                </div>
+                
+                <div class="hero-actions" data-aos="fade-up" data-aos-delay="400">
+                    <a href="#calculator" class="btn btn-primary btn-lg">Рассчитать стоимость</a>
+                    <a href="tel:+79162720932" class="btn btn-outline btn-lg">Связаться с нами</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Калькулятор -->
+    <section id="calculator" class="calculator-section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>Калькулятор стоимости перевозки</h2>
+                <p>Узнайте точную стоимость доставки вашего груза за несколько секунд</p>
+            </div>
+            
+            <form class="calculator-form" id="calculatorForm" data-aos="fade-up" data-aos-delay="200">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="fromCity">Откуда</label>
+                        <input type="text" 
+                               id="fromCity" 
+                               name="from" 
+                               placeholder="Введите город отправления" 
+                               data-address-type="from"
+                               autocomplete="off"
+                               required>
+                        <div class="address-suggestions" data-for="from"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="toCity">Куда</label>
+                        <input type="text" 
+                               id="toCity" 
+                               name="to" 
+                               placeholder="Введите город назначения"
+                               data-address-type="to"
+                               autocomplete="off"
+                               required>
+                        <div class="address-suggestions" data-for="to"></div>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="weight">Вес, кг</label>
+                        <input type="number" id="weight" name="weight" placeholder="Вес груза" min="1" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="transport">Тип транспорта</label>
+                        <select id="transport" name="transport" required>
+                            <option value="">Выберите тип транспорта</option>
+                            <option value="gazelle">Газель до 1.5т</option>
+                            <option value="truck3t">Грузовик до 3т</option>
+                            <option value="truck5t">Грузовик до 5т</option>
+                            <option value="truck10t">Грузовик до 10т</option>
+                            <option value="truck20t">Фура до 20т</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary btn-lg">
+                        <span class="btn-text">Рассчитать стоимость</span>
+                        <span class="btn-loading" style="display: none;">Рассчитываем...</span>
+                    </button>
+                </div>
+            </form>
+            
+            <div id="calculatorResult" class="calculator-result"></div>
+        </div>
+    </section>
+
+    <!-- О компании -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>О компании АвтоГОСТ</h2>
+                <p>Ваш надежный партнер в сфере грузоперевозок</p>
+            </div>
+            
+            <div class="about-content">
+                <div class="about-text" data-aos="fade-right">
+                    <h3>Почему выбирают нас?</h3>
+                    <ul class="about-features">
+                        <li>✅ <strong>Обширная сеть партнеров</strong> по всей России</li>
+                        <li>✅ <strong>Подача транспорта за 2 часа</strong> в Москве и МО</li>
+                        <li>✅ <strong>99.3% доставок в срок</strong> за последний год</li>
+                        <li>✅ <strong>Работаем 24/7</strong> без выходных и праздников</li>
+                        <li>✅ <strong>Страхование грузов</strong> до 1 млн рублей</li>
+                        <li>✅ <strong>Отслеживание в реальном времени</strong></li>
+                    </ul>
+                </div>
+                
+                <div class="about-stats" data-aos="fade-left">
+                    <div class="stat-card">
+                        <div class="stat-number">10+</div>
+                        <div class="stat-label">лет на рынке</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">50К+</div>
+                        <div class="stat-label">довольных клиентов</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">365</div>
+                        <div class="stat-label">дней в году работаем</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Контакты -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>Свяжитесь с нами</h2>
+                <p>Готовы ответить на все ваши вопросы 24/7</p>
+            </div>
+            
+            <div class="contact-content" data-aos="fade-up" data-aos-delay="200">
+                <div class="contact-item">
+                    <div class="contact-icon">📞</div>
+                    <div class="contact-info">
+                        <h3>Телефон</h3>
+                        <a href="tel:+79162720932">+7 916 272-09-32</a>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">📧</div>
+                    <div class="contact-info">
+                        <h3>Email</h3>
+                        <a href="mailto:avtogost77@gmail.com">avtogost77@gmail.com</a>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">💬</div>
+                    <div class="contact-info">
+                        <h3>WhatsApp</h3>
+                        <a href="https://wa.me/79162720932" target="_blank">Написать в WhatsApp</a>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">🕐</div>
+                    <div class="contact-info">
+                        <h3>Режим работы</h3>
+                        <span>24/7 без выходных</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Подвал -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-main">
+                    <div class="footer-section">
+                        <div class="footer-logo">
+                            <img src="assets/img/logo.png" alt="АвтоГОСТ" class="footer-logo-img">
+                            <span class="footer-logo-text">АвтоГОСТ</span>
+                        </div>
+                        <p class="footer-description">
+                            Надежный партнер в сфере грузоперевозок по России. 
+                            Работаем 24/7 для вашего бизнеса.
+                        </p>
+                        <div class="footer-social">
+                            <a href="https://wa.me/79162720932" class="social-link" target="_blank">WhatsApp</a>
+                            <a href="tel:+79162720932" class="social-link">Телефон</a>
+                            <a href="mailto:avtogost77@gmail.com" class="social-link">Email</a>
+                        </div>
+                    </div>
+                    
+                    <div class="footer-section">
+                        <h3>Услуги</h3>
+                        <ul>
+                            <li><a href="services.html">Грузоперевозки</a></li>
+                            <li><a href="#calculator">Калькулятор стоимости</a></li>
+                            <li><a href="contact.html">Заказать звонок</a></li>
+                            <li><a href="help.html">Экстренная доставка</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-section">
+                        <h3>Компания</h3>
+                        <ul>
+                            <li><a href="about.html">О нас</a></li>
+                            <li><a href="contact.html">Контакты</a></li>
+                            <li><a href="privacy.html">Конфиденциальность</a></li>
+                            <li><a href="services.html">Услуги</a></li>
+                            <li><a href="news.html">Новости</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-section">
+                        <h3>Поддержка</h3>
+                        <ul>
+                            <li><a href="tel:+79162720932">Помощь: +7 916 272-09-32</a></li>
+                            <li><a href="faq.html">Часто задаваемые вопросы</a></li>
+                            <li><a href="https://wa.me/79162720932">WhatsApp поддержка</a></li>
+                            <li><a href="mailto:avtogost77@gmail.com">Email: avtogost77@gmail.com</a></li>
+                            <li><a href="blog-1-carrier-failed.html">Полезные статьи</a></li>
+                        </ul>
+                    </div>
+                </div>
+                 
+                <div class="footer-bottom">
+                    <div class="footer-copyright">
+                        <p>&copy; 2024 АвтоГОСТ. Все права защищены.</p>
+                    </div>
+                    <div class="footer-legal">
+                        <a href="privacy.html">Политика конфиденциальности</a>
+                        <a href="terms.html">Условия использования</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ПРОВЕРЕННЫЕ JS МОДУЛИ -->
+    <script src="dadata-config.js"></script>
+    <script src="assets/js/emergency-fix.js"></script>
+    <script src="assets/js/fias-integration.js"></script>
+    <script src="assets/js/form-handler.js"></script>
+    <script src="assets/js/main.js"></script>
+    
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        // Инициализация AOS анимаций
+        AOS.init({
+            once: true,
+            duration: 600
+        });
+    </script>
 </body>
 </html>
