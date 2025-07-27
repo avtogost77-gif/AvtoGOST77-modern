@@ -14,7 +14,7 @@ set ftp:ssl-allow no
 set net:timeout 30
 set net:max-retries 3
 set net:reconnect-interval-base 5
-open ftp://u3207373:fGX954fqGU2w3ruY@31.31.197.43
+open ftp://$FTP_USER:$FTP_PASS@$FTP_HOST
 cd /www/avtogost77.ru
 echo '🧹 Очистка старых файлов...'
 rm -rf *
