@@ -12,6 +12,11 @@ RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [L,R=301]
 RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
 RewriteRule ^(.*)$ https://%1/$1 [L,R=301]
 
+# Добавляем слеш в конец URL каталогов
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_URI} !(.*)/$
+RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1/ [L,R=301]
+
 # Удаляем .html из URL (SEO-friendly URLs)
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
@@ -49,6 +54,11 @@ RewriteRule ^([^\.]+)$ $1.html [NC,L]
     ExpiresByType image/svg+xml "access plus 1 year"
     ExpiresByType image/x-icon "access plus 1 year"
     
+    # Видео и аудио
+    ExpiresByType video/mp4 "access plus 1 year"
+    ExpiresByType video/mpeg "access plus 1 year"
+    ExpiresByType audio/mp3 "access plus 1 year"
+    
     # CSS и JavaScript
     ExpiresByType text/css "access plus 1 month"
     ExpiresByType text/javascript "access plus 1 month"
@@ -56,6 +66,7 @@ RewriteRule ^([^\.]+)$ $1.html [NC,L]
     
     # Остальное
     ExpiresByType application/pdf "access plus 1 month"
+    ExpiresByType application/x-shockwave-flash "access plus 1 month"
 </IfModule>
 
 # Заголовки безопасности
@@ -71,7 +82,18 @@ RewriteRule ^([^\.]+)$ $1.html [NC,L]
     </FilesMatch>
 </IfModule>
 
+# Защита от хотлинкинга изображений
+RewriteCond %{HTTP_REFERER} !^$
+RewriteCond %{HTTP_REFERER} !^https?://(www\.)?avtogost77\.ru [NC]
+RewriteRule \.(jpg|jpeg|png|gif|webp)$ - [F]
+
 # Кастомные страницы ошибок
 ErrorDocument 404 /404.html
 ErrorDocument 403 /403.html
 ErrorDocument 500 /500.html
+
+# Оптимизация производительности
+<IfModule mod_deflate.c>
+    SetOutputFilter DEFLATE
+    SetEnvIfNoCase Request_URI \.(?:gif|jpe?g|png)$ no-gzip dont-vary
+</IfModule>
