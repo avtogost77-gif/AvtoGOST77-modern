@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>АвтоГОСТ - Грузоперевозки по России 24/7</title>
+    <meta name="description" content="Надежные грузоперевозки по России. Калькулятор стоимости онлайн. Подача транспорта за 2 часа. Работаем 24/7.">
+    
+    <!-- ТОЛЬКО БАЗОВЫЕ СТИЛИ -->
+    <link rel="stylesheet" href="assets/css/styles.css">
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EMQ3D0X8K7"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-EMQ3D0X8K7');
+    </script>
+</head>
+<body>
+    <!-- Заголовок -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <span class="logo-text">АвтоГОСТ</span>
+                </div>
+                <nav class="nav">
+                    <a href="#about" class="nav-link">О нас</a>
+                    <a href="#services" class="nav-link">Услуги</a>
+                    <a href="#calculator" class="nav-link">Калькулятор</a>
+                    <a href="#contact" class="nav-link">Контакты</a>
+                </nav>
+                <div class="header-contacts">
+                    <a href="tel:+79162720932" class="contact-link">+7 916 272-09-32</a>
+                    <a href="https://wa.me/79162720932" class="btn btn-secondary" target="_blank">WhatsApp</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero секция -->
+    <section class="hero" style="padding-top: 140px;">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Грузоперевозки по России</h1>
+                <p>Надежная доставка грузов по всей России. Работаем 24/7.</p>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">24/7</div>
+                        <div class="stat-label">Работаем круглосуточно</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">2 часа</div>
+                        <div class="stat-label">Подача транспорта</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">99%</div>
+                        <div class="stat-label">Доставка в срок</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Калькулятор -->
+    <section id="calculator" class="calculator-section">
+        <div class="container">
+            <h2>Калькулятор стоимости</h2>
+            <form class="calculator-form" id="calculatorForm">
+                <div class="form-group">
+                    <label for="fromCity">Откуда:</label>
+                    <input type="text" id="fromCity" name="from" placeholder="Город отправления" required>
+                </div>
+                <div class="form-group">
+                    <label for="toCity">Куда:</label>
+                    <input type="text" id="toCity" name="to" placeholder="Город назначения" required>
+                </div>
+                <div class="form-group">
+                    <label for="weight">Вес (кг):</label>
+                    <input type="number" id="weight" name="weight" placeholder="Вес груза" required>
+                </div>
+                <div class="form-group">
+                    <label for="transport">Тип транспорта:</label>
+                    <select id="transport" name="transport" required>
+                        <option value="">Выберите тип</option>
+                        <option value="gazelle">Газель до 1.5т</option>
+                        <option value="truck3t">Грузовик до 3т</option>
+                        <option value="truck5t">Грузовик до 5т</option>
+                        <option value="truck10t">Грузовик до 10т</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Рассчитать стоимость</button>
+            </form>
+            <div id="calculatorResult" class="calculator-result"></div>
+        </div>
+    </section>
+
+    <!-- Контакты -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2>Контакты</h2>
+            <div class="contact-info">
+                <p><strong>Телефон:</strong> +7 916 272-09-32</p>
+                <p><strong>Email:</strong> avtogost77@gmail.com</p>
+                <p><strong>Работаем:</strong> 24/7</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ТОЛЬКО БАЗОВЫЙ JS -->
+    <script>
+        // Простой калькулятор
+        document.getElementById('calculatorForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const from = document.getElementById('fromCity').value;
+            const to = document.getElementById('toCity').value;
+            const weight = document.getElementById('weight').value;
+            const transport = document.getElementById('transport').value;
+            
+            if (!from || !to || !weight || !transport) {
+                alert('Заполните все поля');
+                return;
+            }
+            
+            // Простой расчет
+            let basePrice = 0;
+            switch(transport) {
+                case 'gazelle': basePrice = 25; break;
+                case 'truck3t': basePrice = 35; break;
+                case 'truck5t': basePrice = 45; break;
+                case 'truck10t': basePrice = 55; break;
+            }
+            
+            const distance = 500; // Примерное расстояние
+            const price = Math.round(basePrice * distance + weight * 5);
+            
+            document.getElementById('calculatorResult').innerHTML = `
+                <h3>Стоимость доставки: ${price.toLocaleString()} ₽</h3>
+                <p>Маршрут: ${from} → ${to}</p>
+                <p>Вес: ${weight} кг</p>
+                <p>Транспорт: ${transport}</p>
+                <button onclick="orderDelivery()" class="btn btn-primary">Заказать доставку</button>
+            `;
+        });
+        
+        function orderDelivery() {
+            window.open('https://wa.me/79162720932?text=Здравствуйте! Хочу заказать грузоперевозку.', '_blank');
+        }
+    </script>
+</body>
+</html>

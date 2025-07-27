@@ -1,0 +1,51 @@
+# Initial sample routes. Extend as needed
+- service: fura
+  service_ru: "Фура"
+  from_city: "Москва"
+  to_city: "Санкт-Петербург"
+  modifier: "недорого"
+  payload: "20 тонн / 82 м³"
+  cta: "Узнать выгодную цену"
+
+- service: gazelle
+  service_ru: "Газель"
+  from_city: "Москва"
+  to_city: "Санкт-Петербург"
+  payload: "1,5 т / 12 м³"
+  cta: "Рассчитать стоимость"
+
+- service: gazelle
+  service_ru: "Газель"
+  from_city: "Санкт-Петербург"
+  to_city: "Москва"
+  payload: "1,5 т / 12 м³"
+
+- service: sbornye-gruzy
+  service_ru: "Сборные грузы"
+  from_city: "Москва"
+  to_city: "Екатеринбург"
+  payload: "от 1 м³"
+
+- service: sbornye-gruzy
+  service_ru: "Сборные грузы"
+  from_city: "Екатеринбург"
+  to_city: "Москва"
+  payload: "от 1 м³"
+
+- service: sbornye-gruzy
+  service_ru: "Сборные грузы"
+  from_city: "Москва"
+  to_city: "Казань"
+  payload: "от 1 м³"
+
+- service: sbornye-gruzy
+  service_ru: "Сборные грузы"
+  from_city: "Москва"
+  to_city: "Новосибирск"
+  payload: "от 1 м³"
+
+- service: sbornye-gruzy
+  service_ru: "Сборные грузы"
+  from_city: "Санкт-Петербург"
+  to_city: "Москва"
+  payload: "от 1 м³"
