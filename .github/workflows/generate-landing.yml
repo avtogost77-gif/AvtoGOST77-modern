@@ -1,0 +1,30 @@
+name: Generate Landing Pages
+
+on:
+  push:
+    paths:
+      - 'data/routes.yaml'
+      - 'templates/**'
+      - 'scripts/generate.js'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: Install deps
+        run: npm ci
+      - name: Generate landing pages
+        run: npm run generate:landing
+      - name: Commit & PR
+        uses: peter-evans/create-pull-request@v5
+        with:
+          commit-message: '🤖 Auto-generate landing pages'
+          branch: 'auto/landing-${{ github.run_id }}'
+          title: '🤖 Auto-generate landing pages'
+          body: 'This PR adds newly generated landing pages + sitemap update.'
