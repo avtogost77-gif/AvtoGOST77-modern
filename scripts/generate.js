@@ -78,7 +78,13 @@ console.log(`Generating ${finalRoutes.length} routes...`);
 
 const generatedUrls = [];
 
-finalRoutes.forEach(route => {
+const offset = parseInt(process.env.OFFSET || '0', 10);
+const batchSize = parseInt(process.env.BATCH_SIZE || '400', 10);
+const batchRoutes = finalRoutes.slice(offset, offset + batchSize);
+
+console.log(`Batch generation: OFFSET=${offset}, SIZE=${batchSize}`);
+
+batchRoutes.forEach(route => {
   const fromSlug = citySlug(route.from_city);
   const toSlug = citySlug(route.to_city);
   const modifierSlug = route.modifier ? slugify(route.modifier) : '';
