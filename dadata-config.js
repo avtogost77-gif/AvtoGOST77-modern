@@ -13,7 +13,7 @@
  */
 
 // 🔧 ОСНОВНАЯ НАСТРОЙКА
-window.DADATA_TOKEN = "YOUR_DADATA_TOKEN_HERE";
+window.DADATA_TOKEN = "bef975dfb301dc8d105703b0e740598cd2572323";
 
 // 📊 ДОПОЛНИТЕЛЬНЫЕ НАСТРОЙКИ (опционально)
 window.DADATA_CONFIG_CUSTOM = {
