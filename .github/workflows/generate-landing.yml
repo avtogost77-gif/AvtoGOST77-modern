@@ -1,11 +1,9 @@
 name: Generate & Deploy Landing Pages
 
 on:
+  workflow_dispatch:
   push:
-    paths:
-      - 'data/**'
-      - 'templates/**'
-      - 'scripts/generate.js'
+    branches: [ultimate-version]
   schedule:
     - cron: '0 23 * * *'  # каждый день в 23:00 MSK (~20:00 UTC)
 
