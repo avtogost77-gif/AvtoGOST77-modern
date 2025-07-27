@@ -30,7 +30,7 @@ jobs:
       - run: npm ci --silent
       - name: Generate batch
         run: |
-          node scripts/generate.js
+          node scripts/generate-enhanced.js
       - name: Update generator state
         run: |
           NEW_OFFSET=$((OFFSET+BATCH_SIZE))
@@ -51,4 +51,4 @@ jobs:
           FTP_HOST: ${{ secrets.FTP_HOST }}
           FTP_USER: ${{ secrets.FTP_USER }}
           FTP_PASS: ${{ secrets.FTP_PASS }}
-        run: bash deploy-final.sh
+        run: bash deploy-lftp-final.sh
