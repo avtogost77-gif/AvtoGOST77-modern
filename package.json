@@ -1,0 +1,13 @@
+{
+  "name": "avtogost-landing-generator",
+  "version": "1.0.0",
+  "description": "Static landing pages generator for AvtoGOST logistics website.",
+  "scripts": {
+    "generate:landing": "node scripts/generate.js"
+  },
+  "dependencies": {
+    "nunjucks": "^3.2.4",
+    "js-yaml": "^4.1.0",
+    "transliteration": "^2.1.6"
+  }
+}
