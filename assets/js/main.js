@@ -1050,6 +1050,71 @@ setInterval(() => {
     }
 }, 30000);
 
+// ======== UX ENHANCEMENTS (2025-07-27) ========
+(function(){
+  // Sticky CTA logic
+  const cta = document.getElementById('stickyCta');
+  if(cta){
+    const showAfter = 0.5; // 50% scroll
+    window.addEventListener('scroll',()=>{
+      const scrolled = window.scrollY || document.documentElement.scrollTop;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      if(docHeight>0 && scrolled/docHeight > showAfter){
+        cta.style.display='block';
+      } else {
+        cta.style.display='none';
+      }
+    });
+    // Event track
+    cta.addEventListener('click', ()=>{
+      if(window.gtag){ gtag('event','cta_click',{event_category:'engagement',event_label:'sticky_calculator'});}  
+    });
+  }
+
+  // Exit-intent popup (desktop) & scroll 90% (mobile)
+  const popup = document.getElementById('exitPopup');
+  const closeBtn = document.getElementById('exitClose');
+  let popupShown = false;
+  function showPopup(){
+    if(popupShown || !popup) return;
+    popupShown = true;
+    popup.style.display='flex';
+    if(window.gtag){ gtag('event','exit_intent_show'); }
+  }
+  if(popup){
+    // Desktop – mouse leave top
+    document.addEventListener('mouseout', e=>{
+      if(e.clientY<0){ showPopup(); }
+    });
+    // Mobile – scroll depth 90%
+    window.addEventListener('scroll', ()=>{
+      const scrolled = (window.scrollY||document.documentElement.scrollTop);
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      if(docHeight>0 && scrolled/docHeight>0.9){ showPopup(); }
+    });
+    // Close button
+    closeBtn?.addEventListener('click', ()=> popup.style.display='none');
+  }
+
+  // GA4 enhanced scroll event (25/50/75)
+  const marks = [0.25,0.5,0.75];
+  const fired = {};
+  window.addEventListener('scroll', ()=>{
+    const y = (window.scrollY||document.documentElement.scrollTop);
+    const h = document.documentElement.scrollHeight - window.innerHeight;
+    if(h<=0) return;
+    const ratio = y/h;
+    marks.forEach(m=>{
+      if(ratio>=m && !fired[m]){
+        fired[m]=true;
+        window.gtag && gtag('event','scroll_depth',{event_label:`${Math.round(m*100)}%`});
+      }
+    });
+  });
+
+})();
+// ======== END UX ENHANCEMENTS ========
+
 console.log(`
 🚀 АВТОГОСТ ЗАГРУЖЕН УСПЕШНО!
 

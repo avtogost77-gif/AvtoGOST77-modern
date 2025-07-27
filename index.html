@@ -36,6 +36,20 @@
     <link rel="stylesheet" href="assets/css/main.css">
 </head>
 <body>
+    <!-- Sticky CTA (hidden by default) -->
+    <div id="stickyCta" class="sticky-cta">
+        <a href="#calculator" class="btn btn-primary">🤖 Рассчитать стоимость</a>
+    </div>
+
+    <!-- Exit Intent Popup -->
+    <div id="exitPopup" class="exit-popup" style="display:none;">
+        <div class="exit-popup-content">
+            <p>Уходите? Напишите нам в WhatsApp, мы поможем с расчётом!</p>
+            <a href="https://wa.me/79162720932" class="btn btn-secondary">Открыть WhatsApp</a>
+            <button id="exitClose" class="exit-close">&times;</button>
+        </div>
+    </div>
+
     <!-- Header -->
     <header class="header" id="header">
         <div class="container">
@@ -454,13 +468,23 @@
     </script>
     <noscript><div><img src="https://mc.yandex.ru/watch/103413788" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BZZPY2YQPP"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-BZZPY2YQPP');
+    <!-- Enhanced GA events (initialised in main.js) -->
+
+    <!-- Schema.org Organization -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "АвтоГОСТ",
+      "url": "https://avtogost77.ru/",
+      "logo": "https://avtogost77.ru/assets/img/hero-logistics.webp",
+      "contactPoint": [{
+        "@type": "ContactPoint",
+        "telephone": "+7-916-272-09-32",
+        "contactType": "customer service",
+        "areaServed": "RU"
+      }]
+    }
     </script>
 </body>
 </html>
