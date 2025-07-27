@@ -49,12 +49,11 @@ cp sw.js $TEMP_DIR/
 
 echo "🎨 Копирую CSS..."
 mkdir -p $TEMP_DIR/assets/css
-cp assets/css/styles.css $TEMP_DIR/assets/css/
-cp assets/css/main.css $TEMP_DIR/assets/css/
-cp assets/css/mobile.css $TEMP_DIR/assets/css/
-cp assets/css/emergency-mobile-fix.css $TEMP_DIR/assets/css/
-cp assets/css/critical.css $TEMP_DIR/assets/css/
-cp assets/css/critical-mobile-fix.css $TEMP_DIR/assets/css/
+for css in main.css mobile.css styles.css critical.css critical-mobile-fix.css emergency-mobile-fix.css hero-fix.css; do
+    if [ -f "assets/css/$css" ]; then
+        cp "assets/css/$css" "$TEMP_DIR/assets/css/"
+    fi
+done
 
 echo "⚡ Копирую JS..."
 mkdir -p $TEMP_DIR/assets/js
