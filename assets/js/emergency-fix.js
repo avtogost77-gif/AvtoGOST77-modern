@@ -266,11 +266,11 @@ function fixCalculator() {
     if (calculatorForm) {
         const submitBtn = calculatorForm.querySelector('button[type="submit"], .calculator-btn');
         if (submitBtn) {
-            submitBtn.addEventListener('click', function(e) {
-                e.preventDefault();
-                handleCalculatorSubmit(calculatorForm);
-            });
-            console.log('✅ Calculator submit fixed');
+            const handler=function(e){e.preventDefault();handleCalculatorSubmit(calculatorForm);};
+            submitBtn.addEventListener('click', handler);
+            // перехватываем submit формы (Enter на мобильной клавиатуре)
+            calculatorForm.addEventListener('submit', handler);
+            console.log('✅ Calculator submit & form event fixed');
         }
     }
 }
