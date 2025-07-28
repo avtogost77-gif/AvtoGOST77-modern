@@ -1326,3 +1326,43 @@ console.log(`
  * Создано с ❤️ братской дружбой!
  * =================================================
  */
+
+// ======== VOICE INPUT MODULE (restored 2025-07-27) ========
+(function(){
+  if(!('webkitSpeechRecognition' in window)) return;
+  document.addEventListener('DOMContentLoaded',()=>{
+    const btn=document.createElement('button');
+    btn.className='voice-btn';
+    btn.type='button';
+    btn.title='Голосовой ввод';
+    btn.textContent='🎙';
+    document.body.appendChild(btn);
+    let recog;
+    btn.addEventListener('click',()=>{
+      if(!recog){
+        recog=new webkitSpeechRecognition();
+        recog.lang='ru-RU';
+        recog.interimResults=false;
+        recog.maxAlternatives=1;
+      }
+      btn.classList.add('listening');
+      recog.start();
+      if(window.ym){ym(96412345,'reachGoal','voice_start');}
+    });
+    (recog||{}).onresult=(e)=>{
+      const text=e.results[0][0].transcript.trim();
+      const words=text.split(/\s+/);
+      if(words.length>=2){
+        const from=words[0];
+        const to=words[1];
+        const fromInput=document.getElementById('fromCity');
+        const toInput=document.getElementById('toCity');
+        if(fromInput) fromInput.value=from;
+        if(toInput) toInput.value=to;
+      }
+      btn.classList.remove('listening');
+      if(window.ym){ym(96412345,'reachGoal','voice_result');}
+    };
+    (recog||{}).onend=()=>btn.classList.remove('listening');
+  });
+})();

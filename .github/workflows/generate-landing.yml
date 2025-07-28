@@ -1,16 +1,17 @@
 name: Generate & Deploy Landing Pages
 
 on:
+  workflow_dispatch:
   push:
-    paths:
-      - 'data/**'
-      - 'templates/**'
-      - 'scripts/generate.js'
+    branches: [ultimate-version]
   schedule:
     - cron: '0 23 * * *'  # каждый день в 23:00 MSK (~20:00 UTC)
 
 env:
-  BATCH_SIZE: '400'
+  BATCH_SIZE: '10000'
+
+permissions:
+  contents: write
 
 jobs:
   build-deploy:
@@ -27,10 +28,10 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 18
-      - run: npm ci --silent
+      - run: npm install --silent
       - name: Generate batch
         run: |
-          node scripts/generate.js
+          node scripts/generate-enhanced.js
       - name: Update generator state
         run: |
           NEW_OFFSET=$((OFFSET+BATCH_SIZE))
@@ -51,4 +52,4 @@ jobs:
           FTP_HOST: ${{ secrets.FTP_HOST }}
           FTP_USER: ${{ secrets.FTP_USER }}
           FTP_PASS: ${{ secrets.FTP_PASS }}
-        run: bash deploy-final.sh
+        run: bash deploy-lftp-final.sh

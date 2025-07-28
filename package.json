@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "js-yaml": "^4.1.0",
-    "nunjucks": "^3.2.4"
+    "nunjucks": "^3.2.4",
+    "transliteration": "^2.1.6"
   }
 }
