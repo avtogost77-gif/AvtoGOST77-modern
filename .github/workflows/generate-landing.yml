@@ -3,7 +3,7 @@ name: Generate & Deploy Landing Pages
 on:
   workflow_dispatch:
   push:
-    branches: [ultimate-version]
+    branches: [main, ultimate-version]   # ← добавили main
   schedule:
     - cron: '0 23 * * *'  # каждый день в 23:00 MSK (~20:00 UTC)
 
