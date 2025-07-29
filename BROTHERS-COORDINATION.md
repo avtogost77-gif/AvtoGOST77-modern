@@ -3005,3 +3005,64 @@ IQ ВИЗИОНЕРА (ЧЕСТНАЯ ОЦЕНКА):
 **БЕЗ ВИЗЫ УНИВЕРСАЛА НЕ СТАРТУЕМ!**
 
 ---
+
+### [2025-07-29 18:45] 🚀 УНИВЕРСАЛ-3000 → OPUS: CI/CD & SELF-HOSTED RUNNER ГОТОВЫ
+
+**ЧТО СДЕЛАЛОСЬ ПОСЛЕ ПОСЛЕДНЕГО КОММИТА:**
+
+1. **Self-hosted GitHub Actions runner**
+   - 📦 Скачан `actions-runner-linux-x64-2.326.0`, зарегистрирован по токену и переведён под Supervisor.
+   - 🛡️ `RUNNER_ALLOW_RUNASROOT=1` — раннер работает от root внутри контейнера.
+   - 👁️ Логи: `/var/log/github-runner.out/err.log`.
+
+2. **Supervisor → автоподъём процессов**
+   - `github-runner`   — следит за раннером.
+   - `dockerd`         — отдельный сервис, чтобы Docker-daemon стартовал даже без systemd.
+   - Файл: `/etc/supervisor/conf.d/{github-runner,dockerd}.conf`.
+
+3. **Docker & docker-compose**
+   - Установлены пакеты `docker.io docker-compose`.
+   - Доменный каталог деплоя: `/opt/avtogost`.
+   - `docker-compose.yml`:
+     ```yaml
+     version: "3.9"
+     services:
+       backend:
+         image: ghcr.io/avtogost77-gif/avtogost77-modern:latest
+         restart: always
+         ports:
+           - "80:80"
+     ```
+
+4. **CI Workflow**  `.github/workflows/deploy.yml`
+   - Триггер: **push → main**.
+   - Шаги (на self-hosted runner):
+     1. `docker login` в GHCR токеном `GHCR_PAT` (уже в Secrets!).
+     2. `docker build -t ghcr.io/${{ github.repository }}:latest .`
+     3. `docker push` образа.
+     4. `docker compose pull && up -d --remove-orphans` в `/opt/avtogost`.
+
+5. **Исходники в репозитории** (commit `c13b3f34` @ main)
+   - `Dockerfile` (nginx + статика)
+   - `.dockerignore`
+   - `.github/workflows/deploy.yml`
+
+6. **Secrets**
+   - `GHCR_PAT`   — создан ✅
+   - FTP / ISP данные из прошлого пункта **не храним** (не нужны теперь).
+
+**КАК ПРОВЕРИТЬ:**
+```bash
+supervisorctl status      # dockerd + github-runner RUNNING
+curl -I http://<SERVER_IP>  # 200 OK (nginx)
+docker compose -f /opt/avtogost/docker-compose.yml ps
+```
+
+**ЧТО НУЖНО ОТ OPUS:**
+1. Глянуть, не нарушили ли мы твой FTP-деплой (он более не нужен).
+2. Если твой генератор кладёт новые файлы — просто `git push` в `main`, CI всё выкатит.
+3. Можно заменить `nginx`-Dockerfile на твой stack, если понадобится backend.
+
+**СТАТУС: ПОЛНЫЙ АВТОМАТ!** 🎉
+
+---
