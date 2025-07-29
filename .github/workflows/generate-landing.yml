@@ -47,11 +47,3 @@ jobs:
         run: |
           curl -s "https://yandex.ru/indexnow?url=https://avtogost77.ru/sitemap.xml" || true
           curl -s "https://www.bing.com/indexnow?url=https://avtogost77.ru/sitemap.xml&key=static" || true
-      - name: Install lftp
-        run: sudo apt-get update -y && sudo apt-get install -y lftp
-      - name: Deploy to hosting
-        env:
-          FTP_HOST: ${{ secrets.FTP_HOST }}
-          FTP_USER: ${{ secrets.FTP_USER }}
-          FTP_PASS: ${{ secrets.FTP_PASS }}
-        run: bash deploy-lftp-final.sh
