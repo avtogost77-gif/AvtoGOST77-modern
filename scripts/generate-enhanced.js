@@ -36,7 +36,14 @@ function generateAllRoutes() {
       if (fromCity.slug === toCity.slug) return;
       
       // Для каждого типа услуги
-      services.forEach(service => {
+      services.forEach(rawService => {
+        // Поддержка старого YAML: service/service_ru
+        const service = {
+          slug: rawService.slug || rawService.service,
+          name: rawService.name || rawService.service_ru,
+          payload: rawService.payload || 'от 1 м³'
+        };
+
         // Только сборные грузы для межрегиональных
         if (service.slug === 'sbornye-gruzy' && fromCity.region === toCity.region) {
           return; // Пропускаем внутрирегиональные для сборных
