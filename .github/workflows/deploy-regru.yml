@@ -1,9 +1,9 @@
 name: Deploy to REG.RU
 
 on:
-  push:
-    branches: [ main ]
-  workflow_dispatch:
+  # push:
+  #   branches: [ main ]  # ОТКЛЮЧЕНО - используем VPS теперь!
+  workflow_dispatch:  # Только ручной запуск если нужно
 
 jobs:
   deploy:
