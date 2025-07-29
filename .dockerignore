@@ -1,0 +1,13 @@
+# Ignore VCS
+.git
+
+# GitHub metadata
+.github
+
+# Node and build artifacts
+node_modules
+scripts
+
+# Temporary files
+*.log
+*.tmp
