@@ -1,8 +1,9 @@
 name: Build & Deploy (self-hosted)
 
 on:
-  push:
-    branches: [main]
+  # push:
+  #   branches: [main]  # ОТКЛЮЧЕНО - требует self-hosted runner
+  workflow_dispatch:  # Только ручной запуск
 
 permissions:
   contents: read
