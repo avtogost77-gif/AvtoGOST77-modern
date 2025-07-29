@@ -1,0 +1,51 @@
+name: Sync to VPS
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      
+      - name: Setup SSH
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.VPS_SSH_KEY }}
+          SSH_HOST: ${{ secrets.VPS_HOST }}
+        run: |
+          mkdir -p ~/.ssh
+          echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H $SSH_HOST >> ~/.ssh/known_hosts
+      
+      - name: Sync to VPS
+        env:
+          VPS_HOST: ${{ secrets.VPS_HOST }}
+          VPS_PATH: /var/www/avtogost77
+        run: |
+          ssh $VPS_HOST << 'EOF'
+          cd $VPS_PATH || exit 1
+          
+          echo "🔄 Синхронизация репозитория..."
+          git fetch origin main
+          git reset --hard origin/main
+          
+          echo "🗑️ Удаление лишних файлов..."
+          git clean -fd
+          
+          echo "✅ Готово!"
+          echo "📊 Количество файлов:"
+          find . -name "*.html" -type f | wc -l
+          
+          echo "📝 Последний коммит:"
+          git log --oneline -1
+          EOF
+      
+      - name: Test website
+        run: |
+          echo "🌐 Проверяем сайт..."
+          curl -s -o /dev/null -w "%{http_code}" https://avtogost77.ru || echo "DNS еще не обновился"
