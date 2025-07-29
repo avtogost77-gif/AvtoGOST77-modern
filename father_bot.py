@@ -39,10 +39,31 @@ dp = Dispatcher()
 
 # Данные о транспорте (из CALCULATOR-LOGIC.md)
 TRANSPORT_TYPES = {
-    'gazelle': {'max_weight': 2000, 'max_volume': 16, 'density': 125, 'name': 'Газель'},
-    'five_ton': {'max_weight': 5000, 'max_volume': 36, 'density': 139, 'name': '5-тонник'},
-    'ten_ton': {'max_weight': 10000, 'max_volume': 50, 'density': 200, 'name': '10-тонник'},
-    'truck': {'max_weight': 20000, 'max_volume': 80, 'density': 250, 'name': 'Фура'}
+    'gazelle': {
+        'max_weight': 1500, 'max_volume': 16, 'density': 94, 
+        'name': 'Газель', 'min_price': 10000, 'min_price_region': 7500,
+        'coefficient': 0.36
+    },
+    'three_ton': {
+        'max_weight': 3000, 'max_volume': 18, 'density': 167, 
+        'name': '3-тонник', 'min_price': 13000, 'min_price_region': 9750,
+        'coefficient': 0.46
+    },
+    'five_ton': {
+        'max_weight': 5000, 'max_volume': 36, 'density': 139, 
+        'name': '5-тонник', 'min_price': 20000, 'min_price_region': 15000,
+        'coefficient': 0.71
+    },
+    'ten_ton': {
+        'max_weight': 10000, 'max_volume': 50, 'density': 200, 
+        'name': '10-тонник', 'min_price': 24000, 'min_price_region': 18000,
+        'coefficient': 0.86
+    },
+    'truck': {
+        'max_weight': 20000, 'max_volume': 82, 'density': 244, 
+        'name': 'Фура 20т', 'min_price': 28000, 'min_price_region': 21000,
+        'coefficient': 1.0
+    }
 }
 
 # Примеры цен (из CALCULATOR-LOGIC.md)
@@ -59,14 +80,17 @@ def get_optimal_transport(weight: float, volume: float) -> str:
             return transport_id
     return 'truck'
 
-def calculate_price(weight: float, volume: float, distance: int) -> int:
+def calculate_price(weight: float, volume: float, distance: int, from_city: str = '', to_city: str = '') -> int:
     """Расчет цены по логике из CALCULATOR-LOGIC.md"""
     # Определяем транспорт
     transport = get_optimal_transport(weight, volume)
+    transport_data = TRANSPORT_TYPES[transport]
     
-    # Базовая цена
+    # Базовая цена для фуры
     if distance < 50:
         price_per_km = 700
+    elif distance < 100:
+        price_per_km = 280
     elif distance < 200:
         price_per_km = 200
     elif distance < 500:
@@ -76,15 +100,19 @@ def calculate_price(weight: float, volume: float, distance: int) -> int:
     
     base_price = distance * price_per_km
     
-    # Минимальная цена
-    min_prices = {
-        'gazelle': 5000,
-        'five_ton': 8000,
-        'ten_ton': 12000,
-        'truck': 20000
-    }
+    # Применяем коэффициент для транспорта меньше фуры
+    if transport != 'truck':
+        base_price = base_price * transport_data['coefficient']
     
-    return max(base_price, min_prices.get(transport, 20000))
+    # Определяем минималку (Москва или регион)
+    is_moscow = 'Москв' in from_city or 'Москв' in to_city
+    min_price = transport_data['min_price'] if is_moscow else transport_data['min_price_region']
+    
+    # Применяем минимальную цену
+    final_price = max(base_price, min_price)
+    
+    # Округляем до сотен
+    return int(round(final_price / 100) * 100)
 
 # Клавиатуры
 def get_cargo_keyboard():
@@ -194,7 +222,7 @@ async def city_to_handler(message: types.Message, state: FSMContext):
     
     # Расчет (упрощенный)
     distance = 500  # В реальности нужно считать через API
-    price = calculate_price(data['weight'], data['volume'], distance)
+    price = calculate_price(data['weight'], data['volume'], distance, data['from_city'], data['to_city'])
     transport = get_optimal_transport(data['weight'], data['volume'])
     transport_name = TRANSPORT_TYPES[transport]['name']
     
