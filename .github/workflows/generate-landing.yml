@@ -2,13 +2,13 @@ name: Generate & Deploy Landing Pages
 
 on:
   workflow_dispatch:
-  push:
-    branches: [main, ultimate-version]   # ← добавили main
+  # push:
+  #   branches: [main, ultimate-version]   # ОТКЛЮЧЕНО - слишком много генерации
   schedule:
     - cron: '0 23 * * *'  # каждый день в 23:00 MSK (~20:00 UTC)
 
 env:
-  BATCH_SIZE: '10000'
+  BATCH_SIZE: '400'
 
 permissions:
   contents: write
