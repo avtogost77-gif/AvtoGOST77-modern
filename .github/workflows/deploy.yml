@@ -1,0 +1,37 @@
+name: Build & Deploy (self-hosted)
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  build-deploy:
+    runs-on: self-hosted
+    env:
+      IMAGE_NAME: ghcr.io/${{ github.repository }}:latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Log in to GitHub Container Registry
+        env:
+          CR_PAT: ${{ secrets.GHCR_PAT }} # personal access token with "write:packages"
+        run: echo "$CR_PAT" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+
+      - name: Build Docker image
+        run: |
+          docker build -t $IMAGE_NAME .
+
+      - name: Push image to registry
+        run: |
+          docker push $IMAGE_NAME
+
+      - name: Deploy container via docker-compose
+        run: |
+          cd /opt/avtogost
+          docker compose pull
+          docker compose up -d --remove-orphans
