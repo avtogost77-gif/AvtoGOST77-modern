@@ -1,0 +1,97 @@
+name: Deploy to REG.RU
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: 📥 Checkout code
+      uses: actions/checkout@v3
+    
+    - name: 📦 Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+        cache: 'npm'
+    
+    - name: 📦 Install dependencies
+      run: npm ci
+    
+    - name: 🏗️ Generate static pages
+      run: |
+        echo "🚀 Генерируем страницы маршрутов..."
+        node scripts/generate-routes.js
+        echo "✅ Сгенерировано страниц: $(find . -name "*-*-*.html" | wc -l)"
+    
+    - name: 🧹 Clean unnecessary files
+      run: |
+        # Удаляем файлы, которые не нужны на хостинге
+        rm -rf .git .github node_modules
+        rm -f .gitignore package-lock.json
+        rm -f *.md *.sh
+        find . -name "*.map" -delete
+    
+    - name: 📊 Update analytics
+      run: |
+        # Обновляем аналитику если нужно
+        if [ -f "update-analytics.js" ]; then
+          node update-analytics.js
+        fi
+    
+    - name: 🚀 Deploy via FTP
+      uses: SamKirkland/FTP-Deploy-Action@4.3.3
+      with:
+        server: ${{ secrets.FTP_SERVER }}
+        username: ${{ secrets.FTP_USERNAME }}
+        password: ${{ secrets.FTP_PASSWORD }}
+        port: 21
+        protocol: ftp
+        # REG.RU специфика
+        server-dir: /www/avtogost77.ru/
+        # Оптимизация
+        exclude: |
+          **/.git*
+          **/.git*/**
+          **/node_modules/**
+          **/*.md
+          **/*.log
+          **/scripts/**
+          **/test/**
+          **/*.sh
+          **/package*.json
+          **/.env*
+        # Параллельная загрузка
+        parallel: 10
+        # Только измененные файлы
+        # state-name: .ftp-deploy-sync-state.json
+    
+    - name: 🔔 Notify success
+      if: success()
+      run: |
+        curl -X POST "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage" \
+          -d "chat_id=${{ secrets.TELEGRAM_CHAT_ID }}" \
+          -d "text=✅ Деплой на REG.RU успешно завершен!%0A%0A📊 Статистика:%0A- Коммит: ${{ github.sha }}%0A- Автор: ${{ github.actor }}%0A- Время: $(date '+%d.%m.%Y %H:%M')"
+    
+    - name: 🚨 Notify failure
+      if: failure()
+      run: |
+        curl -X POST "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage" \
+          -d "chat_id=${{ secrets.TELEGRAM_CHAT_ID }}" \
+          -d "text=❌ Ошибка деплоя на REG.RU!%0A%0A📊 Детали:%0A- Коммит: ${{ github.sha }}%0A- Автор: ${{ github.actor }}%0A- Проверьте логи: https://github.com/${{ github.repository }}/actions"
+
+# Альтернативный вариант через lftp (более надежный)
+# - name: 🚀 Deploy via LFTP
+#   run: |
+#     sudo apt-get install -y lftp
+#     lftp -c "
+#       set ftp:ssl-allow no
+#       set ftp:passive-mode on
+#       open ftp://${{ secrets.FTP_USERNAME }}:${{ secrets.FTP_PASSWORD }}@${{ secrets.FTP_SERVER }}
+#       mirror -R --parallel=5 --exclude=.git/ --exclude=node_modules/ --exclude=*.md ./ /www/avtogost77.ru/
+#       bye
+#     "
