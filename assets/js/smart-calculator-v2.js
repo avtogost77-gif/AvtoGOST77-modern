@@ -9,18 +9,32 @@ class SmartCalculatorV2 {
     this.transportTypes = {
       gazelle: {
         name: 'Газель',
-        maxWeight: 2000,    // кг
+        maxWeight: 1500,    // кг (исправлено!)
         maxVolume: 16,      // м³
-        density: 125,       // кг/м³
-        minPrice: 5000,     // минимальная цена
+        density: 94,        // кг/м³ (1500/16)
+        minPrice: 10000,    // минимальная цена Москва
+        minPriceRegion: 7500, // минималка в регионах
+        coefficient: 0.36,  // от цены фуры
         icon: '🚐'
+      },
+      threeTon: {
+        name: '3-тонник',
+        maxWeight: 3000,
+        maxVolume: 18,
+        density: 167,
+        minPrice: 13000,
+        minPriceRegion: 9750,
+        coefficient: 0.46,
+        icon: '🚛'
       },
       fiveTon: {
         name: '5-тонник',
         maxWeight: 5000,
         maxVolume: 36,
         density: 139,
-        minPrice: 8000,
+        minPrice: 20000,
+        minPriceRegion: 15000,
+        coefficient: 0.71,
         icon: '🚛'
       },
       tenTon: {
@@ -28,15 +42,19 @@ class SmartCalculatorV2 {
         maxWeight: 10000,
         maxVolume: 50,
         density: 200,
-        minPrice: 12000,
+        minPrice: 24000,
+        minPriceRegion: 18000,
+        coefficient: 0.86,
         icon: '🚚'
       },
       truck: {
         name: 'Фура 20т',
         maxWeight: 20000,
-        maxVolume: 80,
-        density: 250,
-        minPrice: 20000,
+        maxVolume: 82,     // м³ (минимум из диапазона 82-92)
+        density: 244,       // кг/м³ (20000/82)
+        minPrice: 28000,
+        minPriceRegion: 21000,
+        coefficient: 1.0,
         icon: '🚚'
       }
     };
@@ -110,8 +128,22 @@ class SmartCalculatorV2 {
 
     let basePrice = distance * pricePerKm;
 
-    // 5. Применяем минимальную цену транспорта
-    basePrice = Math.max(basePrice, transport.minPrice);
+    // 5. Определяем минималку с учетом региона
+    const isMoscow = fromCity.includes('Москв') || toCity.includes('Москв');
+    const minPrice = isMoscow ? transport.minPrice : transport.minPriceRegion;
+    
+    // Если выбрана не фура, применяем коэффициент от цены фуры
+    if (transport.name !== 'Фура 20т') {
+      basePrice = basePrice * transport.coefficient;
+    }
+    
+    // Применяем минимальную цену
+    basePrice = Math.max(basePrice, minPrice);
+    
+    // 5.1 Если это сборный груз - делаем дешевле!
+    if (cargoType === 'сборный' || cargoType === 'consolidated') {
+      basePrice = basePrice * 0.65; // Сборный груз дешевле на 35%!
+    }
 
     // 6. Коэффициент загрузки (чем меньше груз, тем дороже за единицу)
     const loadFactor = this.calculateLoadFactor(weight, volume, transport);
@@ -159,7 +191,11 @@ class SmartCalculatorV2 {
     // Считаем плотность груза
     const density = weight / volume;
 
-    for (const [key, transport] of Object.entries(this.transportTypes)) {
+    // Сортируем транспорт по вместимости для правильного выбора
+    const sortedTransports = Object.values(this.transportTypes)
+      .sort((a, b) => a.maxWeight - b.maxWeight);
+    
+    for (const transport of sortedTransports) {
       // Проверяем и по весу, и по объему
       if (weight <= transport.maxWeight && volume <= transport.maxVolume) {
         // Дополнительная проверка по плотности
