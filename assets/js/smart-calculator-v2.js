@@ -377,8 +377,8 @@ class SmartCalculatorV2 {
           </div>
 
           <div class="cta-buttons">
-            <button class="btn btn-primary" onclick="smartCalculatorV2.orderNow()">
-              ✅ Оформить заказ
+            <button class="btn btn-primary" onclick="smartCalculatorV2.showLeadForm()">
+              📝 Оставить заявку
             </button>
             <button class="btn btn-secondary" onclick="smartCalculatorV2.callManager()">
               📞 Позвонить менеджеру
@@ -408,11 +408,131 @@ class SmartCalculatorV2 {
     return div;
   }
 
-  // Кнопка оформить заказ
+  // Показать форму сбора лидов
+  showLeadForm() {
+    const leadForm = document.getElementById('leadForm');
+    if (leadForm) {
+      leadForm.style.display = 'block';
+      leadForm.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      
+      // Заполняем данные из калькулятора
+      this.fillLeadFormData();
+      
+      // Добавляем обработчик отправки
+      this.setupLeadFormHandler();
+    }
+  }
+
+  // Заполнить форму данными из калькулятора
+  fillLeadFormData() {
+    const fromCity = document.getElementById('fromCity')?.value || '';
+    const toCity = document.getElementById('toCity')?.value || '';
+    const weight = document.getElementById('weight')?.value || '';
+    const volume = document.getElementById('volume')?.value || '';
+    const transport = document.getElementById('transport')?.value || '';
+    
+    const comment = document.getElementById('leadComment');
+    if (comment) {
+      comment.value = `Маршрут: ${fromCity} → ${toCity}\nВес: ${weight} кг\nОбъем: ${volume} м³\nТранспорт: ${transport}`;
+    }
+  }
+
+  // Настройка обработчика формы лидов
+  setupLeadFormHandler() {
+    const form = document.getElementById('calculatorLeadForm');
+    if (form) {
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        this.handleLeadFormSubmit(e);
+      });
+    }
+  }
+
+  // Обработка отправки формы лидов
+  handleLeadFormSubmit(e) {
+    const formData = new FormData(e.target);
+    const data = {
+      name: formData.get('name'),
+      phone: formData.get('phone'),
+      email: formData.get('email'),
+      comment: formData.get('comment'),
+      timestamp: new Date().toISOString(),
+      source: 'calculator'
+    };
+
+    // Показываем загрузку
+    const submitBtn = e.target.querySelector('button[type="submit"]');
+    const btnText = submitBtn.querySelector('.btn-text');
+    const btnLoading = submitBtn.querySelector('.btn-loading');
+    
+    btnText.style.display = 'none';
+    btnLoading.style.display = 'inline';
+
+    // Отправляем данные (можно интегрировать с form-handler.js)
+    this.sendLeadData(data)
+      .then(() => {
+        this.showLeadSuccess();
+      })
+      .catch((error) => {
+        this.showLeadError(error);
+      })
+      .finally(() => {
+        btnText.style.display = 'inline';
+        btnLoading.style.display = 'none';
+      });
+  }
+
+  // Отправка данных лида
+  async sendLeadData(data) {
+    // Интеграция с существующим form-handler.js
+    if (window.handleFormSubmit) {
+      return window.handleFormSubmit(data);
+    }
+    
+    // Fallback - отправка в Telegram
+    const message = `Новая заявка с калькулятора:\n\nИмя: ${data.name}\nТелефон: ${data.phone}\nEmail: ${data.email}\nКомментарий: ${data.comment}`;
+    window.open(`https://t.me/father_bot?text=${encodeURIComponent(message)}`, '_blank');
+    
+    return Promise.resolve();
+  }
+
+  // Показать успешную отправку
+  showLeadSuccess() {
+    const leadForm = document.getElementById('leadForm');
+    if (leadForm) {
+      leadForm.innerHTML = `
+        <div class="lead-success">
+          <div class="success-icon">✅</div>
+          <h3>Заявка отправлена!</h3>
+          <p>Мы свяжемся с вами в ближайшее время для уточнения деталей.</p>
+          <button class="btn btn-primary" onclick="location.reload()">
+            Рассчитать еще раз
+          </button>
+        </div>
+      `;
+    }
+  }
+
+  // Показать ошибку отправки
+  showLeadError(error) {
+    const leadForm = document.getElementById('leadForm');
+    if (leadForm) {
+      leadForm.innerHTML = `
+        <div class="lead-error">
+          <div class="error-icon">❌</div>
+          <h3>Ошибка отправки</h3>
+          <p>Попробуйте позвонить нам напрямую: <a href="tel:+79162720932">+7 (916) 272-09-32</a></p>
+          <button class="btn btn-primary" onclick="location.reload()">
+            Попробовать снова
+          </button>
+        </div>
+      `;
+    }
+  }
+
+  // Кнопка оформить заказ (для совместимости)
   orderNow() {
-    // Можно интегрировать с телеграм ботом
-    const message = 'Хочу оформить заказ на грузоперевозку';
-    window.open(`https://t.me/father_bot?start=${encodeURIComponent(message)}`, '_blank');
+    this.showLeadForm();
   }
 
   // Кнопка позвонить

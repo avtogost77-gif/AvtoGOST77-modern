@@ -2752,5 +2752,112 @@ header {
 }
 
 .form-group {
+  margin-bottom: var(--spacing-md);
+}
+
+.form-text {
+  display: block;
+  margin-top: var(--spacing-xs);
+  font-size: 0.875rem;
+  color: var(--neutral-500);
+  line-height: 1.4;
+}
+
+.lead-form {
+  margin-top: var(--spacing-xl);
+  padding: var(--spacing-lg);
+  background: var(--gradient-card);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--neutral-200);
+}
+
+.lead-form-content {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.lead-form .section-header {
+  margin-bottom: var(--spacing-lg);
+}
+
+.lead-form .section-header h3 {
+  color: var(--primary-600);
+  margin-bottom: var(--spacing-xs);
+}
+
+.lead-form .section-header p {
+  color: var(--neutral-600);
+  font-size: 1rem;
+}
+
+.lead-form .form-group textarea {
+  width: 100%;
+  min-height: 100px;
+  padding: var(--spacing-sm);
+  border: 2px solid var(--neutral-200);
+  border-radius: var(--border-radius);
+  font-family: var(--font-primary);
+  font-size: 1rem;
+  resize: vertical;
+  transition: var(--transition-normal);
+}
+
+.lead-form .form-group textarea:focus {
+  outline: none;
+  border-color: var(--primary-400);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+@media (max-width: 768px) {
+  .lead-form {
+    padding: var(--spacing-md);
+    margin-top: var(--spacing-lg);
+  }
+  
+  .lead-form-content {
+    max-width: 100%;
+  }
+}
+
+/* Стили для успешной/ошибочной отправки */
+.lead-success,
+.lead-error {
+  text-align: center;
+  padding: var(--spacing-xl);
+}
+
+.success-icon,
+.error-icon {
+  font-size: 4rem;
+  margin-bottom: var(--spacing-md);
+}
+
+.lead-success h3 {
+  color: var(--success);
+  margin-bottom: var(--spacing-sm);
+}
+
+.lead-error h3 {
+  color: var(--error);
+  margin-bottom: var(--spacing-sm);
+}
+
+.lead-success p,
+.lead-error p {
+  color: var(--neutral-600);
+  margin-bottom: var(--spacing-lg);
+  line-height: 1.6;
+}
+
+.lead-error a {
+  color: var(--primary-600);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.lead-error a:hover {
+  text-decoration: underline;
+}
     position: relative;
 }
