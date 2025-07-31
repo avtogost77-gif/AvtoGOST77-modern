@@ -17,7 +17,7 @@ from aiogram.fsm.state import State, StatesGroup
 from aiogram.types import ReplyKeyboardMarkup, KeyboardButton, InlineKeyboardMarkup, InlineKeyboardButton
 
 # Настройки
-BOT_TOKEN = "7999458907:AAHAnyTyvfteW1WNKpns8w35jl14f0wn5es"  # Из BROTHERS-COORDINATION.md
+BOT_TOKEN = "ВАШ_НОВЫЙ_ТОКЕН_ЗДЕСЬ"  # TODO: Вставьте новый токен от BotFather
 MANAGER_CHAT_ID = 399711407  # Из BROTHERS-COORDINATION.md
 
 # Логирование

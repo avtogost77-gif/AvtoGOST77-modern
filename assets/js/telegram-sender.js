@@ -3,7 +3,7 @@
 
 const TELEGRAM_CONFIG = {
     // Бот токен @father_bot
-    botToken: '7999458907:AAHAnyTyvfteW1WNKpns8w35jl14f0wn5es',
+    botToken: 'ВАШ_НОВЫЙ_ТОКЕН_ЗДЕСЬ', // TODO: Вставьте новый токен от BotFather
     
     // Chat ID менеджера (Илюша)
     chatId: 399711407,
