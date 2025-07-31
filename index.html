@@ -8,6 +8,14 @@
     <meta name="description" content="Надежные грузоперевозки по России. ⚡ Подача за 2 часа, калькулятор стоимости онлайн, точные адреса. Работаем 24/7. Обширная сеть партнеров.">
     <meta name="keywords" content="грузоперевозки россия, калькулятор стоимости доставки, заказать грузоперевозку онлайн, автогост, подача 2 часа">
     
+    <!-- PWA метатеги -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#2c5aa0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="АвтоГОСТ">
+    <link rel="apple-touch-icon" href="assets/img/logo-192.png">
+    
     <!-- ПРОВЕРЕННЫЕ СТИЛИ -->
     <link rel="stylesheet" href="assets/css/styles.css?v=106">
     <link rel="stylesheet" href="assets/css/main.css">
@@ -476,6 +484,34 @@
             once: true,
             duration: 600
         });
+    </script>
+    
+    <!-- Tawk.to Online Chat -->
+    <script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+        s1.async=true;
+        s1.src='https://embed.tawk.to/64f8a8b5a91e863a5c123456/default';
+        s1.charset='UTF-8';
+        s1.setAttribute('crossorigin','*');
+        s0.parentNode.insertBefore(s1,s0);
+    })();
+    </script>
+    
+    <!-- PWA Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then((registration) => {
+                        console.log('SW registered: ', registration);
+                    })
+                    .catch((registrationError) => {
+                        console.log('SW registration failed: ', registrationError);
+                    });
+            });
+        }
     </script>
 </body>
 </html>
