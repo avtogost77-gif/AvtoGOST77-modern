@@ -416,14 +416,14 @@ class SmartLogisticsCalculator {
             <div class="route-inputs grid-2">
               <div class="input-group">
                 <div class="input-wrapper">
-                  <input type="text" id="from-city" placeholder="Откуда" required>
+                  <input type="text" id="from-city" placeholder="Откуда" >
                   <div class="input-icon">🏠</div>
                 </div>
                 <div class="input-suggestions" id="from-suggestions"></div>
               </div>
               <div class="input-group">
                 <div class="input-wrapper">
-                  <input type="text" id="to-city" placeholder="Куда" required>
+                  <input type="text" id="to-city" placeholder="Куда" >
                   <div class="input-icon">🎯</div>
                 </div>
                 <div class="input-suggestions" id="to-suggestions"></div>
@@ -468,7 +468,7 @@ class SmartLogisticsCalculator {
               <div class="param-group">
                 <label for="weight" class="param-label">Вес (кг)</label>
                 <div class="input-with-slider">
-                  <input type="number" id="weight" min="1" max="20000" value="100" required>
+                  <input type="number" id="weight" min="1" max="20000" value="100" >
                   <div class="slider-container">
                     <input type="range" id="weight-slider" min="1" max="2000" value="100" class="custom-slider">
                     <div class="slider-labels">
@@ -481,7 +481,7 @@ class SmartLogisticsCalculator {
               <div class="param-group">
                 <label for="volume" class="param-label">Объем (м³)</label>
                 <div class="input-with-slider">
-                  <input type="number" id="volume" min="0.1" max="100" step="0.1" value="5" required>
+                  <input type="number" id="volume" min="0.1" max="100" step="0.1" value="5" >
                   <div class="slider-container">
                     <input type="range" id="volume-slider" min="1" max="100" value="5" class="custom-slider">
                     <div class="slider-labels">
@@ -554,7 +554,7 @@ class SmartLogisticsCalculator {
 
           <div class="form-section" style="margin-top: 1.5rem;">
             <label class="service-checkbox modern-checkbox consent-checkbox" style="justify-content: center;">
-              <input type="checkbox" name="consent" required checked>
+              <input type="checkbox" name="consent"  checked>
               <span class="checkmark">
                 <i class="check-icon">✓</i>
               </span>
