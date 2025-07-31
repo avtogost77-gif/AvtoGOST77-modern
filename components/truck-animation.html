@@ -1,0 +1,96 @@
+<!-- 🚚 АНИМАЦИЯ ФУРЫ С ТЕЛЕФОНОМ -->
+<!-- Добавить перед </body> на главной странице -->
+
+<div class="truck-animation-container" id="truckAnimation">
+    <!-- Следы от колес -->
+    <div class="truck-tracks"></div>
+    
+    <!-- Фура -->
+    <a href="tel:+79162720932" class="truck-wrapper">
+        <div class="truck-message">
+            🚀 Едем к вам с первого гудка!
+        </div>
+        
+        <div class="truck">
+            <!-- Кабина -->
+            <div class="truck-cabin">
+                <div class="exhaust">
+                    <div class="smoke"></div>
+                    <div class="smoke"></div>
+                    <div class="smoke"></div>
+                </div>
+            </div>
+            
+            <!-- Прицеп с телефоном -->
+            <div class="truck-trailer">
+                <span class="truck-phone">📞 +7 916 272-09-32</span>
+                
+                <!-- Колеса -->
+                <div class="wheel wheel-1"></div>
+                <div class="wheel wheel-2"></div>
+                <div class="wheel wheel-3"></div>
+                <div class="wheel wheel-4"></div>
+            </div>
+        </div>
+    </a>
+</div>
+
+<!-- Кнопка скрыть/показать -->
+<button class="truck-toggle" onclick="toggleTruck()">
+    🚚 Скрыть фуру
+</button>
+
+<script>
+// Управление анимацией
+let truckVisible = true;
+
+function toggleTruck() {
+    const container = document.getElementById('truckAnimation');
+    const button = document.querySelector('.truck-toggle');
+    
+    if (truckVisible) {
+        container.style.display = 'none';
+        button.textContent = '🚚 Показать фуру';
+        localStorage.setItem('truck_hidden', 'true');
+    } else {
+        container.style.display = 'block';
+        button.textContent = '🚚 Скрыть фуру';
+        localStorage.removeItem('truck_hidden');
+    }
+    
+    truckVisible = !truckVisible;
+}
+
+// Проверяем, не скрыл ли пользователь фуру ранее
+document.addEventListener('DOMContentLoaded', function() {
+    if (localStorage.getItem('truck_hidden') === 'true') {
+        toggleTruck();
+    }
+    
+    // Отслеживаем клик по фуре
+    document.querySelector('.truck-wrapper').addEventListener('click', function() {
+        if (typeof ym !== 'undefined') {
+            ym(103413788, 'reachGoal', 'truck_phone_click');
+        }
+    });
+    
+    // Случайные сообщения
+    const messages = [
+        '🚀 Едем к вам с первого гудка!',
+        '📦 Везем ваш груз!',
+        '⚡ Доставим быстрее ветра!',
+        '🎯 Точно в срок!',
+        '💨 Уже в пути!',
+        '🚚 АвтоГОСТ - всегда вовремя!'
+    ];
+    
+    // Меняем сообщение каждые 20 секунд (полный цикл анимации)
+    setInterval(() => {
+        const messageEl = document.querySelector('.truck-message');
+        if (messageEl) {
+            const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+            messageEl.textContent = randomMessage;
+        }
+    }, 20000);
+});
+</script>
