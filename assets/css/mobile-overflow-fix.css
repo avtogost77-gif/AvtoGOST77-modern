@@ -1,9 +1,19 @@
 /* 📱 ФИКС ГОРИЗОНТАЛЬНОЙ ПРОКРУТКИ НА МОБИЛЬНЫХ */
 
 /* Основной фикс */
-html, body {
+html {
     overflow-x: hidden !important;
-    max-width: 100% !important;
+    max-width: 100vw !important;
+    width: 100vw !important;
+}
+
+body {
+    overflow-x: hidden !important;
+    max-width: 100vw !important;
+    width: 100vw !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    position: relative !important;
 }
 
 * {
