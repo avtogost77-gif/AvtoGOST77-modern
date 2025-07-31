@@ -143,7 +143,7 @@ window.submitLeadForm = async function(event) {
             <div style="padding: 40px; text-align: center;">
                 <i class="fas fa-check-circle" style="font-size: 60px; color: #4CAF50; margin-bottom: 20px;"></i>
                 <h3>Спасибо! Ваша заявка принята!</h3>
-                <p>Менеджер свяжется с вами в ближайшее время</p>
+                <p>Менеджер свяжется с вами в течение 15 минут</p>
                 <p style="margin-top: 20px; color: #ff9800; font-size: 12px;">
                     Если мы не позвоним в течение 10 минут, позвоните нам: +7 916 272-09-32
                 </p>
