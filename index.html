@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="assets/css/styles.css?v=106">
     <link rel="stylesheet" href="assets/css/main.css">
     <link rel="stylesheet" href="assets/css/urgent-fixes.css">
+    <link rel="stylesheet" href="assets/css/truck-animation.css">
     <link rel="stylesheet" href="assets/css/mobile.css">
     <link rel="stylesheet" href="assets/css/hero-fix.css?v=105">
     
@@ -468,7 +469,7 @@
 
 <!-- Плавающие кнопки -->
 <div class="float-buttons">
-    <a href="tel:+79999999999" class="float-btn phone-btn">
+    <a href="tel:+79162720932" class="float-btn phone-btn">
         <i class="fas fa-phone-alt"></i>
         <span class="tooltip">Позвонить сейчас</span>
     </a>
@@ -508,5 +509,103 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 </script>
+
+<!-- 🚚 АНИМАЦИЯ ФУРЫ -->
+<div class="truck-animation-container" id="truckAnimation">
+    <div class="truck-tracks"></div>
+    <a href="tel:+79162720932" class="truck-wrapper">
+        <div class="truck-message">🚀 Едем к вам с первого гудка!</div>
+        <div class="truck">
+            <div class="truck-cabin">
+                <div class="exhaust">
+                    <div class="smoke"></div>
+                    <div class="smoke"></div>
+                    <div class="smoke"></div>
+                </div>
+            </div>
+            <div class="truck-trailer">
+                <span class="truck-phone">📞 +7 916 272-09-32</span>
+                <div class="wheel wheel-1"></div>
+                <div class="wheel wheel-2"></div>
+                <div class="wheel wheel-3"></div>
+                <div class="wheel wheel-4"></div>
+            </div>
+        </div>
+    </a>
+</div>
+
+<button class="truck-toggle" onclick="toggleTruck()">🚚 Скрыть фуру</button>
+
+<script>
+let truckVisible = true;
+function toggleTruck() {
+    const container = document.getElementById('truckAnimation');
+    const button = document.querySelector('.truck-toggle');
+    if (truckVisible) {
+        container.style.display = 'none';
+        button.textContent = '🚚 Показать фуру';
+        localStorage.setItem('truck_hidden', 'true');
+    } else {
+        container.style.display = 'block';
+        button.textContent = '🚚 Скрыть фуру';
+        localStorage.removeItem('truck_hidden');
+    }
+    truckVisible = !truckVisible;
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    if (localStorage.getItem('truck_hidden') === 'true') {
+        toggleTruck();
+    }
+    
+    document.querySelector('.truck-wrapper').addEventListener('click', function() {
+        if (typeof ym !== 'undefined') {
+            ym(103413788, 'reachGoal', 'truck_phone_click');
+        }
+    });
+    
+    const messages = [
+        '🚀 Едем к вам с первого гудка!',
+        '📦 Везем ваш груз!',
+        '⚡ Доставим быстрее ветра!',
+        '🎯 Точно в срок!',
+        '💨 Уже в пути!',
+        '🚚 АвтоГОСТ - всегда вовремя!'
+    ];
+    
+    setInterval(() => {
+        const messageEl = document.querySelector('.truck-message');
+        if (messageEl) {
+            const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+            messageEl.textContent = randomMessage;
+        }
+    }, 20000);
+});
+</script>
+
+<!-- TRUCK ANIMATION -->
+<div class="truck-animation-container" id="truckAnimation">
+    <div class="truck-tracks"></div>
+    <a href="tel:+79162720932" class="truck-wrapper">
+        <div class="truck-message">🚀 Едем к вам с первого гудка!</div>
+        <div class="truck">
+            <div class="truck-cabin">
+                <div class="exhaust">
+                    <div class="smoke"></div>
+                    <div class="smoke"></div>
+                    <div class="smoke"></div>
+                </div>
+            </div>
+            <div class="truck-trailer">
+                <span class="truck-phone">📞 +7 916 272-09-32</span>
+                <div class="wheel wheel-1"></div>
+                <div class="wheel wheel-2"></div>
+                <div class="wheel wheel-3"></div>
+                <div class="wheel wheel-4"></div>
+            </div>
+        </div>
+    </a>
+</div>
+<button class="truck-toggle" onclick="toggleTruck()">🚚</button>
 </body>
 </html>
