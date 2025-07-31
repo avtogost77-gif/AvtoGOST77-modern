@@ -52,9 +52,14 @@ ${data.volume ? `📐 *Объем:* ${data.volume} м³` : ''}
 
 // Функция отправки в Telegram
 async function sendToTelegram(data, templateType = 'leadForm') {
+    console.log('📤 Отправка в Telegram:', { data, templateType });
+    console.log('🔑 Bot Token:', TELEGRAM_CONFIG.botToken ? 'Установлен' : 'НЕ УСТАНОВЛЕН!');
+    console.log('👤 Chat ID:', TELEGRAM_CONFIG.chatId);
+    
     try {
         // Формируем сообщение
         const message = TELEGRAM_CONFIG.templates[templateType](data);
+        console.log('📝 Сообщение:', message);
         
         // Отправляем в Telegram
         const response = await fetch(`https://api.telegram.org/bot${TELEGRAM_CONFIG.botToken}/sendMessage`, {
@@ -211,3 +216,13 @@ window.TelegramSender = {
     send: sendToTelegram,
     config: TELEGRAM_CONFIG
 };
+
+// Экспортируем функцию напрямую для совместимости
+window.sendToTelegram = sendToTelegram;window.sendToTelegram = sendToTelegram;
+window.sendToTelegram = sendToTelegram;
+
+// Добавляем логирование для отладки
+console.log('📱 Telegram Sender загружен!');
+console.log('🔑 Bot Token:', TELEGRAM_CONFIG.botToken ? 'Установлен' : 'НЕ УСТАНОВЛЕН!');
+console.log('👤 Chat ID:', TELEGRAM_CONFIG.chatId);
+console.log('✅ window.sendToTelegram доступна:', typeof window.sendToTelegram === 'function');
