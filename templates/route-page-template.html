@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сборные грузы {{CITY_FROM}} - {{CITY_TO}}: от {{MIN_PRICE}}₽ | АвтоГОСТ</title>
+    <meta name="description" content="Доставка сборных грузов из {{CITY_FROM_GENITIVE}} в {{CITY_TO_ACCUSATIVE}} от {{MIN_PRICE}}₽. Отправка {{FREQUENCY}}. Страховка включена. Скидка 10% новым клиентам!">
+    
+    <!-- Подключаем стили с главной -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/mobile.css">
+    <link rel="stylesheet" href="/assets/css/critical.css">
+    
+    <!-- Schema.org для SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Сборные грузы {{CITY_FROM}} - {{CITY_TO}}",
+        "provider": {
+            "@type": "Organization",
+            "name": "АвтоГОСТ",
+            "telephone": "+7 (495) XXX-XX-XX"
+        },
+        "areaServed": ["{{CITY_FROM}}", "{{CITY_TO}}"],
+        "description": "Профессиональная доставка сборных грузов по маршруту {{CITY_FROM}} - {{CITY_TO}}",
+        "offers": {
+            "@type": "Offer",
+            "priceRange": "от {{MIN_PRICE}}₽"
+        }
+    }
+    </script>
+</head>
+<body>
+    <!-- Header с главной -->
+    <header>
+        <!-- Копируем с index.html -->
+    </header>
+
+    <main>
+        <!-- Hero секция -->
+        <section class="route-hero">
+            <div class="container">
+                <h1>Сборные грузы {{CITY_FROM}} → {{CITY_TO}}</h1>
+                <p class="hero-subtitle">Надежная доставка от {{MIN_PRICE}}₽ за {{MIN_DAYS}} дня</p>
+                
+                <div class="hero-features">
+                    <div class="feature">
+                        <span class="icon">📦</span>
+                        <span>От 1 кг</span>
+                    </div>
+                    <div class="feature">
+                        <span class="icon">🚚</span>
+                        <span>{{FREQUENCY}}</span>
+                    </div>
+                    <div class="feature">
+                        <span class="icon">🛡️</span>
+                        <span>Страховка включена</span>
+                    </div>
+                    <div class="feature">
+                        <span class="icon">📱</span>
+                        <span>GPS-отслеживание</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Калькулятор -->
+        <section class="calculator-section">
+            <div class="container">
+                <h2>Рассчитайте стоимость доставки</h2>
+                <div id="calculator-widget">
+                    <!-- Предзаполненные поля -->
+                    <script>
+                        window.calculatorPresets = {
+                            fromCity: '{{CITY_FROM}}',
+                            toCity: '{{CITY_TO}}'
+                        };
+                    </script>
+                    <!-- Подключаем калькулятор с главной -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Уникальный контент маршрута -->
+        <section class="route-content">
+            <div class="container">
+                <div class="content-block">
+                    {{UNIQUE_INTRO}}
+                </div>
+
+                <!-- Таблица цен и сроков -->
+                <div class="price-table">
+                    <h3>Стоимость и сроки доставки {{CITY_FROM}} - {{CITY_TO}}</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Тип транспорта</th>
+                                <th>Грузоподъемность</th>
+                                <th>Срок доставки</th>
+                                <th>Цена от</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{PRICE_TABLE_ROWS}}
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Популярные грузы -->
+                <div class="popular-cargo">
+                    <h3>Что чаще всего перевозят по маршруту {{CITY_FROM}} - {{CITY_TO}}</h3>
+                    {{POPULAR_CARGO_LIST}}
+                </div>
+
+                <!-- FAQ -->
+                <div class="faq-section">
+                    <h3>Частые вопросы о доставке {{CITY_FROM}} - {{CITY_TO}}</h3>
+                    {{FAQ_ITEMS}}
+                </div>
+
+                <!-- Кейсы/отзывы -->
+                <div class="cases-section">
+                    <h3>Примеры наших перевозок</h3>
+                    {{CASE_STUDIES}}
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA секция -->
+        <section class="cta-section">
+            <div class="container">
+                <div class="cta-block">
+                    <h2>Готовы отправить груз?</h2>
+                    <p>Оставьте заявку сейчас и получите скидку 10% по промокоду GOST10</p>
+                    
+                    <form class="quick-form">
+                        <input type="tel" placeholder="+7 (___) ___-__-__" required>
+                        <button type="submit">Получить расчет</button>
+                    </form>
+                    
+                    <div class="cta-contacts">
+                        <a href="tel:+74951234567" class="phone">+7 (495) 123-45-67</a>
+                        <a href="https://wa.me/74951234567" class="whatsapp">WhatsApp</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer с главной -->
+    <footer>
+        <!-- Копируем с index.html -->
+    </footer>
+
+    <!-- Скрипты -->
+    <script src="/assets/js/smart-calculator-v2.js"></script>
+    <script src="/assets/js/form-handler.js"></script>
+    <script src="/assets/js/cities-simple.js"></script>
+</body>
+</html>
