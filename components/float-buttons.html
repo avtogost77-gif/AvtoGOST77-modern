@@ -1,0 +1,65 @@
+<!-- 🚀 ПЛАВАЮЩИЕ КНОПКИ ДЛЯ СВЯЗИ -->
+<!-- Добавить перед </body> на всех страницах -->
+
+<div class="float-buttons">
+    <!-- Телефон -->
+    <a href="tel:+79999999999" class="float-btn phone-btn">
+        <i class="fas fa-phone-alt"></i>
+        <span class="tooltip">Позвонить сейчас</span>
+    </a>
+    
+    <!-- WhatsApp -->
+    <a href="https://wa.me/79999999999?text=Здравствуйте! Интересует расчет стоимости грузоперевозки" 
+       class="float-btn whatsapp-btn" 
+       target="_blank">
+        <i class="fab fa-whatsapp"></i>
+        <span class="tooltip">Написать в WhatsApp</span>
+    </a>
+    
+    <!-- Telegram -->
+    <a href="https://t.me/avtogost77_bot" 
+       class="float-btn telegram-btn" 
+       target="_blank">
+        <i class="fab fa-telegram-plane"></i>
+        <span class="tooltip">Telegram бот</span>
+    </a>
+</div>
+
+<!-- Скрипт отслеживания кликов -->
+<script>
+// Отслеживаем клики для Метрики
+document.addEventListener('DOMContentLoaded', function() {
+    // Клики по телефону
+    document.querySelectorAll('a[href^="tel:"]').forEach(link => {
+        link.addEventListener('click', function() {
+            if (typeof ym !== 'undefined') {
+                ym(103413788, 'reachGoal', 'phone_click', {
+                    from: window.location.pathname
+                });
+            }
+        });
+    });
+    
+    // Клики по WhatsApp
+    document.querySelectorAll('a[href*="wa.me"]').forEach(link => {
+        link.addEventListener('click', function() {
+            if (typeof ym !== 'undefined') {
+                ym(103413788, 'reachGoal', 'whatsapp_click', {
+                    from: window.location.pathname
+                });
+            }
+        });
+    });
+    
+    // Клики по Telegram
+    document.querySelectorAll('a[href*="t.me"]').forEach(link => {
+        link.addEventListener('click', function() {
+            if (typeof ym !== 'undefined') {
+                ym(103413788, 'reachGoal', 'telegram_click', {
+                    from: window.location.pathname
+                });
+            }
+        });
+    });
+});
+</script>

@@ -11,6 +11,7 @@
     <!-- ПРОВЕРЕННЫЕ СТИЛИ -->
     <link rel="stylesheet" href="assets/css/styles.css?v=106">
     <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/urgent-fixes.css">
     <link rel="stylesheet" href="assets/css/mobile.css">
     <link rel="stylesheet" href="assets/css/hero-fix.css?v=105">
     
@@ -464,5 +465,48 @@
             duration: 600
         });
     </script>
+
+<!-- Плавающие кнопки -->
+<div class="float-buttons">
+    <a href="tel:+79999999999" class="float-btn phone-btn">
+        <i class="fas fa-phone-alt"></i>
+        <span class="tooltip">Позвонить сейчас</span>
+    </a>
+    <a href="https://wa.me/79999999999?text=Здравствуйте! Интересует расчет стоимости грузоперевозки" class="float-btn whatsapp-btn" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+        <span class="tooltip">WhatsApp</span>
+    </a>
+    <a href="https://t.me/avtogost77_bot" class="float-btn telegram-btn" target="_blank">
+        <i class="fab fa-telegram-plane"></i>
+        <span class="tooltip">Telegram бот</span>
+    </a>
+</div>
+
+<!-- Отслеживание кликов -->
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    // Телефон
+    document.querySelectorAll("a[href^="tel:"]").forEach(link => {
+        link.addEventListener("click", () => {
+            if (typeof ym !== "undefined") {
+                ym(103413788, "reachGoal", "phone_click", {
+                    from: window.location.pathname
+                });
+            }
+        });
+    });
+    
+    // WhatsApp
+    document.querySelectorAll("a[href*="wa.me"]").forEach(link => {
+        link.addEventListener("click", () => {
+            if (typeof ym !== "undefined") {
+                ym(103413788, "reachGoal", "whatsapp_click", {
+                    from: window.location.pathname
+                });
+            }
+        });
+    });
+});
+</script>
 </body>
 </html>
