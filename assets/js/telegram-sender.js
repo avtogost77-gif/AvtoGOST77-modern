@@ -78,6 +78,11 @@ async function sendToTelegram(data, templateType = 'leadForm') {
         
         if (!result.ok) {
             console.error('Telegram API error:', result);
+            console.error('Детали ошибки:', {
+                error_code: result.error_code,
+                description: result.description,
+                parameters: result.parameters
+            });
             // Fallback - сохраняем в localStorage
             saveToLocalStorage(data);
             return { success: false, error: result.description };
