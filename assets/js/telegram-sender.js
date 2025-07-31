@@ -2,12 +2,11 @@
 // Вместо API endpoint используем прямую отправку в Telegram
 
 const TELEGRAM_CONFIG = {
-    // Бот токен - НУЖНО ПОЛУЧИТЬ У @BotFather
-    botToken: 'YOUR_BOT_TOKEN', // Замените на реальный токен!
+    // Бот токен @father_bot
+    botToken: '7999458907:AAHAnyTyvfteW1WNKpns8w35jl14f0wn5es',
     
-    // Chat ID - куда отправлять сообщения
-    // Можно получить написав боту и посмотрев https://api.telegram.org/botYOUR_BOT_TOKEN/getUpdates
-    chatId: '@avtogost77', // Или числовой ID чата
+    // Chat ID менеджера (Илюша)
+    chatId: 399711407,
     
     // Шаблоны сообщений
     templates: {
@@ -189,7 +188,7 @@ window.sendCalculatorDataToTelegram = async function(calculatorData) {
 document.addEventListener('DOMContentLoaded', async function() {
     const pendingLeads = JSON.parse(localStorage.getItem('pendingLeads') || '[]');
     
-    if (pendingLeads.length > 0 && TELEGRAM_CONFIG.botToken !== 'YOUR_BOT_TOKEN') {
+    if (pendingLeads.length > 0) {
         console.log(`Found ${pendingLeads.length} pending leads, trying to send...`);
         
         for (const lead of pendingLeads) {
