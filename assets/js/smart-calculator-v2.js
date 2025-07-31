@@ -571,6 +571,9 @@ document.addEventListener('DOMContentLoaded', () => {
   
   // Инициализация Exit-Intent Pop-up
   initExitIntentPopup();
+  
+  // Инициализация Sticky Header
+  initStickyHeader();
 });
 
 // Exit-Intent Pop-up логика
@@ -725,4 +728,20 @@ function showExitError(error) {
 // Экспорт для использования в других модулях
 if (typeof module !== 'undefined' && module.exports) {
   module.exports = SmartCalculatorV2;
-}
+}// Sticky Header логика
+function initStickyHeader() {
+  let lastScrollTop = 0;
+  const stickyHeader = document.getElementById('stickyHeader');
+  const header = document.getElementById('header');
+
+  if (stickyHeader && header) {
+    window.addEventListener('scroll', () => {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      const headerHeight = header.offsetHeight;
+
+      // Показываем sticky header после прокрутки за основной header
+      if (scrollTop > headerHeight && scrollTop > lastScrollTop) {
+        stickyHeader.classList.add('visible');
+      } else if (scrollTop <= headerHeight || scrollTop < lastScrollTop) {
+        stickyHeader.classList.remove('visible');
+      }

@@ -3104,4 +3104,21 @@ header {
   }
 }
     position: relative;
+}/* Sticky Header */
+.sticky-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--neutral-200);
+  z-index: 1000;
+  transform: translateY(-100%);
+  transition: transform 0.3s ease-out;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+}
+
+.sticky-header.visible {
+  transform: translateY(0);
 }
