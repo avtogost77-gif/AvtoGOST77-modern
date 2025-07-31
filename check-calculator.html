@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Проверка калькулятора</title>
+</head>
+<body>
+    <h1>Тест калькулятора</h1>
+    
+    <div id="smart-calculator">
+        <form class="calc-form">
+            <input type="text" name="from" id="from" placeholder="Откуда" value="Москва">
+            <input type="text" name="to" id="to" placeholder="Куда" value="Санкт-Петербург">
+            <input type="number" name="weight" id="weight" placeholder="Вес (кг)" value="1000">
+            <input type="number" name="volume" id="volume" placeholder="Объем (м³)" value="10">
+            <select name="transport" id="transport">
+                <option value="auto">Автоподбор</option>
+                <option value="gazelle">Газель</option>
+                <option value="truck3t">3-тонник</option>
+                <option value="truck5t">5-тонник</option>
+                <option value="truck10t">10-тонник</option>
+                <option value="truck20t">Фура</option>
+            </select>
+            <button type="submit">Рассчитать</button>
+        </form>
+        <div id="calc-result"></div>
+    </div>
+    
+    <script>
+        // Простая проверка
+        console.log('Страница загружена');
+        
+        // Проверяем наличие функций
+        setTimeout(() => {
+            if (typeof SmartCalculatorV2 !== 'undefined') {
+                console.log('✅ SmartCalculatorV2 загружен');
+                const calc = new SmartCalculatorV2();
+                console.log('✅ Калькулятор создан', calc);
+            } else {
+                console.error('❌ SmartCalculatorV2 не найден!');
+            }
+        }, 1000);
+    </script>
+    
+    <script src="assets/js/cities-simple.js"></script>
+    <script src="assets/js/smart-calculator-v2.js"></script>
+</body>
+</html>
