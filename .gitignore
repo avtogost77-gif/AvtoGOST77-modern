@@ -68,3 +68,6 @@ backup/
 # Тестовые файлы
 test-*.html
 demo-*.html
+# Секретные данные
+.env
+.env.local
