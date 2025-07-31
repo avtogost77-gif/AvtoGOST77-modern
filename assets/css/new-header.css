@@ -38,19 +38,29 @@
     display: flex;
     align-items: center;
     text-decoration: none;
-    font-size: 24px;
-    font-weight: 700;
+    font-size: 32px;
+    font-weight: 800;
     color: #2c5aa0;
     transition: transform 0.3s ease;
+    letter-spacing: -0.5px;
 }
 
 .new-logo:hover {
     transform: scale(1.05);
 }
 
+/* Временно скрываем картинку, потом заменим на нормальный логотип */
 .new-logo img {
-    height: 40px;
-    margin-right: 12px;
+    display: none;
+}
+
+/* Стилизуем текст логотипа */
+.new-logo span {
+    background: linear-gradient(135deg, #2c5aa0 0%, #1e3a6f 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 2px 10px rgba(44, 90, 160, 0.1);
 }
 
 /* Центральное меню */
