@@ -3122,3 +3122,25 @@ header {
 .sticky-header.visible {
   transform: translateY(0);
 }
+/* Промокод и таймер */
+.promo-section {
+  margin-bottom: var(--spacing-lg);
+  padding: var(--spacing-md);
+  background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+  border-radius: var(--border-radius);
+  color: white;
+  text-align: center;
+  animation: pulse 2s infinite;
+}
+
+.timer-label {
+  font-size: 0.9rem;
+  margin-bottom: var(--spacing-xs);
+}
+
+.timer-display {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: var(--spacing-sm);
+  font-family: var(--font-secondary);
+}

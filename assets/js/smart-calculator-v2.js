@@ -489,9 +489,12 @@ class SmartCalculatorV2 {
       return window.handleFormSubmit(data);
     }
     
-    // Fallback - отправка в Telegram
-    const message = `Новая заявка с калькулятора:\n\nИмя: ${data.name}\nТелефон: ${data.phone}\nEmail: ${data.email}\nКомментарий: ${data.comment}`;
-    window.open(`https://t.me/father_bot?text=${encodeURIComponent(message)}`, '_blank');
+    // Интеграция с father_bot.py через Telegram
+    const promoCode = document.getElementById('promoCode')?.textContent || 'GOST10';
+    const message = `🎯 Новая заявка с калькулятора:\n\n👤 Имя: ${data.name}\n📞 Телефон: ${data.phone}\n📧 Email: ${data.email}\n💬 Комментарий: ${data.comment}\n🎁 Промокод: ${promoCode}\n⏰ Источник: форма лидов`;
+    
+    // Отправляем в father_bot для обработки менеджером
+    window.open(`https://t.me/father_bot?start=${encodeURIComponent(message)}`, '_blank');
     
     return Promise.resolve();
   }
@@ -574,6 +577,9 @@ document.addEventListener('DOMContentLoaded', () => {
   
   // Инициализация Sticky Header
   initStickyHeader();
+  
+  // Инициализация промокода и таймера
+  initPromoTimer();
 });
 
 // Exit-Intent Pop-up логика
@@ -745,3 +751,24 @@ function initStickyHeader() {
       } else if (scrollTop <= headerHeight || scrollTop < lastScrollTop) {
         stickyHeader.classList.remove('visible');
       }
+// Промокод и таймер логика
+function initPromoTimer() {
+  let timeLeft = 15 * 60; // 15 минут в секундах
+  const timerMinutes = document.getElementById('timerMinutes');
+  const timerSeconds = document.getElementById('timerSeconds');
+
+  const timer = setInterval(() => {
+    const minutes = Math.floor(timeLeft / 60);
+    const seconds = timeLeft % 60;
+
+    if (timerMinutes) timerMinutes.textContent = minutes.toString().padStart(2, '0');
+    if (timerSeconds) timerSeconds.textContent = seconds.toString().padStart(2, '0');
+
+    timeLeft--;
+
+    if (timeLeft < 0) {
+      clearInterval(timer);
+      hidePromoTimer();
+    }
+  }, 1000);
+}
