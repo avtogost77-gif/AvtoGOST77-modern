@@ -157,7 +157,10 @@
                     
                     <div class="form-group">
                         <label for="volume">Объем, м³</label>
-                        <input type="number" id="volume" name="volume" placeholder="Необязательно" min="0" step="0.1">
+                        <input type="number" id="volume" name="volume" placeholder="Если груз объемный, укажите объем" min="0" step="0.1">
+                        <small class="form-text">
+                            Если Ваш груз объемный или не запалетирован, введите объем или оставьте поле пустым для расчета с менеджером
+                        </small>
                     </div>
                     
                     <div class="form-group">
@@ -182,6 +185,47 @@
             </form>
             
             <div id="calculatorResult" class="calculator-result"></div>
+            
+            <!-- Форма сбора лидов -->
+            <div class="lead-form" id="leadForm" style="display: none;">
+                <div class="section-header" data-aos="fade-up">
+                    <h3>Оставить заявку на перевозку</h3>
+                    <p>Получите точный расчет и консультацию специалиста</p>
+                </div>
+                
+                <form id="calculatorLeadForm" class="lead-form-content" data-aos="fade-up" data-aos-delay="200">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="leadName">Ваше имя *</label>
+                            <input type="text" id="leadName" name="name" placeholder="Введите ваше имя" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="leadPhone">Телефон *</label>
+                            <input type="tel" id="leadPhone" name="phone" placeholder="+7 (___) ___-__-__" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="leadEmail">Email</label>
+                            <input type="email" id="leadEmail" name="email" placeholder="email@example.com">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="leadComment">Дополнительная информация</label>
+                            <textarea id="leadComment" name="comment" placeholder="Особенности груза, срочность, особые требования"></textarea>
+                        </div>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary btn-lg">
+                            <span class="btn-text">Отправить заявку</span>
+                            <span class="btn-loading" style="display: none;">Отправляем...</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
         </div>
     </section>
 
