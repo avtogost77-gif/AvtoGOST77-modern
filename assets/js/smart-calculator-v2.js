@@ -484,13 +484,13 @@ class SmartCalculatorV2 {
 
   // Отправка данных лида
   async sendLeadData(data) {
-      // Используем функцию из telegram-sender.js
-  if (window.sendToTelegram) {
-    return window.sendToTelegram(data, 'calculator');
-  }
-  
-  // Если telegram-sender.js не загружен, логируем ошибку
-  console.error('telegram-sender.js не загружен! Проверьте подключение скрипта.');
+    // Используем функцию из telegram-sender.js
+    if (window.sendToTelegram) {
+      return window.sendToTelegram(data, 'calculator');
+    }
+    
+    // Если telegram-sender.js не загружен, логируем ошибку
+    console.error('telegram-sender.js не загружен! Проверьте подключение скрипта.');
     
     return Promise.resolve();
   }
