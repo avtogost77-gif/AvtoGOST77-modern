@@ -81,6 +81,27 @@
         </nav>
     </header>
 
+    <!-- Sticky Header -->
+    <div class="sticky-header" id="stickyHeader">
+        <div class="container">
+            <div class="sticky-content">
+                <div class="sticky-logo">
+                    <img src="assets/img/logo.png" alt="АвтоГОСТ" class="sticky-logo-img">
+                    <span class="sticky-logo-text">АвтоГОСТ</span>
+                </div>
+                <div class="sticky-actions">
+                    <a href="tel:+79162720932" class="sticky-phone">
+                        <span class="sticky-phone-icon">📞</span>
+                        <span class="sticky-phone-text">+7 (916) 272-09-32</span>
+                    </a>
+                    <button class="btn btn-primary btn-sm" onclick="showExitPopup()">
+                        Получить скидку 10%
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Hero секция -->
     <section class="hero">
         <div class="container">
@@ -311,6 +332,40 @@
             </div>
         </div>
     </section>
+
+    <!-- Exit-Intent Pop-up -->
+    <div id="exitIntentPopup" class="exit-popup">
+        <div class="exit-popup-content">
+            <div class="exit-popup-header">
+                <h3>🎁 Специальное предложение!</h3>
+                <button class="exit-popup-close" onclick="closeExitPopup()">×</button>
+            </div>
+            <div class="exit-popup-body">
+                <div class="exit-popup-icon">🚛</div>
+                <h4>Получите скидку 10% на первую перевозку!</h4>
+                <p>Оставьте заявку прямо сейчас и получите персональное предложение от нашего менеджера</p>
+                
+                <form id="exitLeadForm" class="exit-lead-form">
+                    <div class="form-group">
+                        <input type="text" name="name" placeholder="Ваше имя" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" name="phone" placeholder="Телефон" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="email" placeholder="Email (необязательно)">
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-lg">
+                        Получить скидку 10%
+                    </button>
+                </form>
+                
+                <div class="exit-popup-footer">
+                    <small>Промокод: <strong>WELCOME10</strong></small>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Подвал -->
     <footer class="footer">

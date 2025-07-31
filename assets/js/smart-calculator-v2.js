@@ -568,7 +568,159 @@ class SmartCalculatorV2 {
 // Инициализация при загрузке
 document.addEventListener('DOMContentLoaded', () => {
   window.smartCalculatorV2 = new SmartCalculatorV2();
+  
+  // Инициализация Exit-Intent Pop-up
+  initExitIntentPopup();
 });
+
+// Exit-Intent Pop-up логика
+function initExitIntentPopup() {
+  let hasShownPopup = false;
+  let mouseLeaveCount = 0;
+  
+  // Проверяем, показывали ли уже pop-up в этой сессии
+  if (sessionStorage.getItem('exitPopupShown')) {
+    return;
+  }
+  
+  // Отслеживаем движение мыши
+  document.addEventListener('mouseleave', (e) => {
+    if (e.clientY <= 0 && !hasShownPopup && mouseLeaveCount === 0) {
+      mouseLeaveCount++;
+      setTimeout(() => {
+        showExitPopup();
+      }, 1000); // Задержка 1 секунда
+    }
+  });
+  
+  // Отслеживаем нажатие Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !hasShownPopup) {
+      showExitPopup();
+    }
+  });
+}
+
+// Показать Exit-Intent Pop-up
+function showExitPopup() {
+  const popup = document.getElementById('exitIntentPopup');
+  if (popup) {
+    popup.classList.add('show');
+    sessionStorage.setItem('exitPopupShown', 'true');
+    
+    // Настройка обработчика формы
+    setupExitFormHandler();
+  }
+}
+
+// Закрыть Exit-Intent Pop-up
+function closeExitPopup() {
+  const popup = document.getElementById('exitIntentPopup');
+  if (popup) {
+    popup.classList.remove('show');
+  }
+}
+
+// Настройка обработчика формы Exit-Intent
+function setupExitFormHandler() {
+  const form = document.getElementById('exitLeadForm');
+  if (form) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      handleExitFormSubmit(e);
+    });
+  }
+}
+
+// Обработка отправки формы Exit-Intent
+function handleExitFormSubmit(e) {
+  const formData = new FormData(e.target);
+  const data = {
+    name: formData.get('name'),
+    phone: formData.get('phone'),
+    email: formData.get('email'),
+    promoCode: 'WELCOME10',
+    source: 'exit-intent-popup',
+    timestamp: new Date().toISOString()
+  };
+
+  // Показываем загрузку
+  const submitBtn = e.target.querySelector('button[type="submit"]');
+  const originalText = submitBtn.textContent;
+  submitBtn.textContent = 'Отправляем...';
+  submitBtn.disabled = true;
+
+  // Отправляем данные
+  sendExitLeadData(data)
+    .then(() => {
+      showExitSuccess();
+    })
+    .catch((error) => {
+      showExitError(error);
+    })
+    .finally(() => {
+      submitBtn.textContent = originalText;
+      submitBtn.disabled = false;
+    });
+}
+
+// Отправка данных Exit-Intent лида
+async function sendExitLeadData(data) {
+  // Интеграция с существующим form-handler.js
+  if (window.handleFormSubmit) {
+    return window.handleFormSubmit(data);
+  }
+  
+  // Fallback - отправка в Telegram
+  const message = `🎁 Новая заявка с Exit-Intent Pop-up:\n\nИмя: ${data.name}\nТелефон: ${data.phone}\nEmail: ${data.email}\nПромокод: ${data.promoCode}`;
+  window.open(`https://t.me/father_bot?text=${encodeURIComponent(message)}`, '_blank');
+  
+  return Promise.resolve();
+}
+
+// Показать успешную отправку Exit-Intent
+function showExitSuccess() {
+  const popup = document.getElementById('exitIntentPopup');
+  if (popup) {
+    popup.innerHTML = `
+      <div class="exit-popup-content">
+        <div class="exit-popup-header">
+          <h3>✅ Успешно!</h3>
+          <button class="exit-popup-close" onclick="closeExitPopup()">×</button>
+        </div>
+        <div class="exit-popup-body">
+          <div class="exit-popup-icon">🎉</div>
+          <h4>Спасибо за заявку!</h4>
+          <p>Мы свяжемся с вами в ближайшее время и предоставим скидку 10% на первую перевозку.</p>
+          <div class="exit-popup-footer">
+            <small>Промокод: <strong>WELCOME10</strong></small>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+}
+
+// Показать ошибку отправки Exit-Intent
+function showExitError(error) {
+  const popup = document.getElementById('exitIntentPopup');
+  if (popup) {
+    popup.innerHTML = `
+      <div class="exit-popup-content">
+        <div class="exit-popup-header">
+          <h3>❌ Ошибка</h3>
+          <button class="exit-popup-close" onclick="closeExitPopup()">×</button>
+        </div>
+        <div class="exit-popup-body">
+          <div class="exit-popup-icon">😔</div>
+          <h4>Что-то пошло не так</h4>
+          <p>Попробуйте позвонить нам напрямую: <a href="tel:+79162720932">+7 (916) 272-09-32</a></p>
+          <p>Или напишите в WhatsApp: <a href="https://wa.me/79162720932">Написать</a></p>
+        </div>
+      </div>
+    `;
+  }
+}
 
 // Экспорт для использования в других модулях
 if (typeof module !== 'undefined' && module.exports) {
