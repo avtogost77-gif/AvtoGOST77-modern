@@ -484,14 +484,13 @@ class SmartCalculatorV2 {
 
   // Отправка данных лида
   async sendLeadData(data) {
-    // Интеграция с существующим form-handler.js
-    if (window.handleFormSubmit) {
-      return window.handleFormSubmit(data);
-    }
-    
-    // Fallback - отправка в Telegram
-    const message = `Новая заявка с калькулятора:\n\nИмя: ${data.name}\nТелефон: ${data.phone}\nEmail: ${data.email}\nКомментарий: ${data.comment}`;
-    window.open(`https://t.me/avtogost77_bot?text=${encodeURIComponent(message)}`, '_blank');
+      // Используем функцию из telegram-sender.js
+  if (window.sendToTelegram) {
+    return window.sendToTelegram(data, 'calculator');
+  }
+  
+  // Если telegram-sender.js не загружен, логируем ошибку
+  console.error('telegram-sender.js не загружен! Проверьте подключение скрипта.');
     
     return Promise.resolve();
   }
@@ -666,15 +665,17 @@ function handleExitFormSubmit(e) {
 
 // Отправка данных Exit-Intent лида
 async function sendExitLeadData(data) {
-  // Интеграция с существующим form-handler.js
-  if (window.handleFormSubmit) {
-    return window.handleFormSubmit(data);
+  // Добавляем промокод и источник к данным
+  data.promoCode = 'WELCOME10';
+  data.source = 'Exit-Intent Pop-up';
+  
+  // Используем функцию из telegram-sender.js
+  if (window.sendToTelegram) {
+    return window.sendToTelegram(data, 'exitIntent');
   }
   
-  // Fallback - отправка в Telegram
-  const message = `🎁 Новая заявка с Exit-Intent Pop-up:\n\nИмя: ${data.name}\nТелефон: ${data.phone}\nEmail: ${data.email}\nПромокод: ${data.promoCode}`;
-  window.open(`https://t.me/avtogost77_bot?text=${encodeURIComponent(message)}`, '_blank');
-  
+  // Если telegram-sender.js не загружен, логируем ошибку
+  console.error('telegram-sender.js не загружен! Проверьте подключение скрипта.');
   return Promise.resolve();
 }
 
