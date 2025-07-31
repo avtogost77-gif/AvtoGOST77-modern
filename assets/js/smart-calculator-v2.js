@@ -491,7 +491,7 @@ class SmartCalculatorV2 {
     
     // Fallback - отправка в Telegram
     const message = `Новая заявка с калькулятора:\n\nИмя: ${data.name}\nТелефон: ${data.phone}\nEmail: ${data.email}\nКомментарий: ${data.comment}`;
-    window.open(`https://t.me/father_bot?text=${encodeURIComponent(message)}`, '_blank');
+    window.open(`https://t.me/avtogost77_bot?text=${encodeURIComponent(message)}`, '_blank');
     
     return Promise.resolve();
   }
