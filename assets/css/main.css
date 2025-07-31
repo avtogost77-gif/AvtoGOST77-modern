@@ -1643,3 +1643,23 @@ body {
     display: none; /* Отключаем на мобильных для производительности */
   }
 }
+/* Расширенные стили для автозаполнения городов */
+
+.city-region {
+    font-size: 0.85em;
+    color: #666;
+    margin-left: 10px;
+}
+
+.no-results {
+    padding: 10px 15px;
+    color: #999;
+    font-style: italic;
+    text-align: center;
+}
+
+.suggestion-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
