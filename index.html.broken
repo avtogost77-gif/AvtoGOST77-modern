@@ -34,7 +34,8 @@
     <!-- analytics scripts moved to footer include -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
         <link rel="stylesheet" href="assets/css/new-header.css">
-    <link rel="stylesheet" href="assets/css/simple-fixes.css">
+    <!-- <link rel="stylesheet" href="assets/css/night-shift-fixes.css"> ОТКЛЮЧЕНО - ЛОМАЕТ ВСЕ -->
+    <link rel="stylesheet" href="assets/css/emergency-rollback.css">
 </head>
 <body>
     <!-- НОВЫЙ КРАСИВЫЙ ХЕДЕР -->
@@ -486,8 +487,9 @@
 <!-- PWA Service Worker Registration -->
 <script src="assets/js/telegram-sender.js"></script>
 </body>
+</html>
 
-<!-- Tawk.to Chat -->
+<!-- Tawk.to Online Chat -->
 <script type="text/javascript">
 var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
 (function(){
@@ -500,18 +502,8 @@ var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
 })();
 </script>
 
-<!-- PWA Service Worker -->
-<script>
-if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/sw.js').then((reg) => {
-            console.log('SW registered:', reg);
-        }).catch((err) => {
-            console.log('SW registration failed:', err);
-        });
-    });
-}
-</script>
+<!-- PWA Service Worker Registration -->
 
+<!-- PWA Service Worker Registration -->
 </body>
 </html>
