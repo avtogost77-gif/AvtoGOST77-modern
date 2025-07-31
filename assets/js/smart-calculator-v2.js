@@ -727,3 +727,36 @@ function showExitError(error) {
 if (typeof module !== 'undefined' && module.exports) {
   module.exports = SmartCalculatorV2;
 }
+
+// Инициализация при загрузке страницы
+document.addEventListener('DOMContentLoaded', function() {
+  // Проверяем наличие калькулятора на странице
+  const calculatorElement = document.getElementById('smart-calculator');
+  
+  if (calculatorElement) {
+    try {
+      // Создаем экземпляр калькулятора
+      window.smartCalculator = new SmartCalculatorV2();
+      console.log('✅ Smart Calculator v2.0 инициализирован успешно!');
+      
+      // Добавляем глобальные функции для совместимости
+      window.showExitPopup = function() {
+        // Логика показа exit popup
+        const popup = document.getElementById('exitIntentPopup');
+        if (popup) {
+          popup.classList.add('show');
+        }
+      };
+      
+      window.closeExitPopup = function() {
+        const popup = document.getElementById('exitIntentPopup');
+        if (popup) {
+          popup.classList.remove('show');
+        }
+      };
+      
+    } catch (error) {
+      console.error('❌ Ошибка инициализации калькулятора:', error);
+    }
+  }
+});
