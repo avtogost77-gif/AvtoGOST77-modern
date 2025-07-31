@@ -2,13 +2,21 @@ name: Generate & Deploy Landing Pages
 
 on:
   workflow_dispatch:
+  # Запуск только при создании тегов версий
   push:
-    branches: [main, ultimate-version]   # ← добавили main
+    tags:
+      - 'generate-*'  # Только при тегах типа generate-v1, generate-batch-1 и т.д.
+  # Или при коммитах со специальным сообщением
+  # push:
+  #   branches: [main]
+  #   paths:
+  #     - 'scripts/generate*.js'  # Только если изменились скрипты генерации
+  #     - '.github/workflows/generate-landing.yml'  # Или сам workflow
   schedule:
-    - cron: '0 23 * * *'  # каждый день в 23:00 MSK (~20:00 UTC)
+    - cron: '0 3 * * 0'  # Раз в неделю в воскресенье в 3:00 MSK
 
 env:
-  BATCH_SIZE: '10000'
+  BATCH_SIZE: '400'  # Разумный размер батча
 
 permissions:
   contents: write
@@ -47,11 +55,3 @@ jobs:
         run: |
           curl -s "https://yandex.ru/indexnow?url=https://avtogost77.ru/sitemap.xml" || true
           curl -s "https://www.bing.com/indexnow?url=https://avtogost77.ru/sitemap.xml&key=static" || true
-      - name: Install lftp
-        run: sudo apt-get update -y && sudo apt-get install -y lftp
-      - name: Deploy to hosting
-        env:
-          FTP_HOST: ${{ secrets.FTP_HOST }}
-          FTP_USER: ${{ secrets.FTP_USER }}
-          FTP_PASS: ${{ secrets.FTP_PASS }}
-        run: bash deploy-lftp-final.sh

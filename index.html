@@ -93,16 +93,16 @@
                 
                 <div class="hero-stats" data-aos="fade-up" data-aos-delay="200">
                     <div class="stat-item">
-                        <div class="stat-number">24/7</div>
-                        <div class="stat-label">Работаем круглосуточно</div>
+                        <div class="stat-number" style="color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">24/7</div>
+                        <div class="stat-label" style="color: white; text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">Работаем круглосуточно</div>
                     </div>
                     <div class="stat-item">
-                        <div class="stat-number">2 часа</div>
-                        <div class="stat-label">Подача транспорта</div>
+                        <div class="stat-number" style="color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">2 часа</div>
+                        <div class="stat-label" style="color: white; text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">Подача транспорта</div>
                     </div>
                     <div class="stat-item">
-                        <div class="stat-number">99.3%</div>
-                        <div class="stat-label">Доставка в срок</div>
+                        <div class="stat-number" style="color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">99.3%</div>
+                        <div class="stat-label" style="color: white; text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">Доставка в срок</div>
                     </div>
                 </div>
                 
@@ -153,6 +153,11 @@
                     <div class="form-group">
                         <label for="weight">Вес, кг</label>
                         <input type="number" id="weight" name="weight" placeholder="Вес груза" min="1" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="volume">Объем, м³</label>
+                        <input type="number" id="volume" name="volume" placeholder="Необязательно" min="0" step="0.1">
                     </div>
                     
                     <div class="form-group">
@@ -331,11 +336,10 @@
     </footer>
 
     <!-- ПРОВЕРЕННЫЕ JS МОДУЛИ -->
-    <script src="dadata-config.js?v=106"></script>
-    <script src="assets/js/emergency-fix.js?v=105" defer></script>
-    <script src="assets/js/fias-integration.js?v=106" defer></script>
+    <script src="assets/js/cities-simple.js" defer></script>
     <script src="assets/js/form-handler.js"></script>
     <script src="assets/js/main.js?v=106" defer></script>
+    <script src="assets/js/smart-calculator-v2.js?v=107" defer></script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-EMQ3D0X8K7"></script>
     <script>
         window.dataLayer = window.dataLayer || [];

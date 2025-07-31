@@ -1,31 +1,15 @@
 User-agent: *
 Allow: /
-Disallow: /assets/
-Disallow: /debug.html
-Disallow: /test-buttons.html
+Disallow: /assets/js/
+Disallow: /test/
+Disallow: *.json
+Disallow: *.md
 Crawl-delay: 1
 
-User-agent: Googlebot
+User-agent: Yandex
 Allow: /
-Allow: /assets/js/
-Allow: /assets/css/
-Allow: /assets/img/
-
-User-agent: Yandexbot
-Allow: /
-Allow: /assets/js/
-Allow: /assets/css/
-Allow: /assets/img/
-
-User-agent: Bingbot
-Allow: /
+Clean-param: utm_source&utm_medium&utm_campaign&utm_content&utm_term
 Crawl-delay: 1
 
-User-agent: SeznamBot
-Disallow: /
-
-User-agent: GPTBot
-Disallow: /
-
-Host: https://avtogost77.ru
 Sitemap: https://avtogost77.ru/sitemap.xml
+Host: https://avtogost77.ru
