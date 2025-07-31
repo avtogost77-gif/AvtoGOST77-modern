@@ -673,7 +673,7 @@ async function sendExitLeadData(data) {
   
   // Fallback - отправка в Telegram
   const message = `🎁 Новая заявка с Exit-Intent Pop-up:\n\nИмя: ${data.name}\nТелефон: ${data.phone}\nEmail: ${data.email}\nПромокод: ${data.promoCode}`;
-  window.open(`https://t.me/father_bot?text=${encodeURIComponent(message)}`, '_blank');
+  window.open(`https://t.me/avtogost77_bot?text=${encodeURIComponent(message)}`, '_blank');
   
   return Promise.resolve();
 }
