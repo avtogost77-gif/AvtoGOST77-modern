@@ -32,9 +32,43 @@
     
     <!-- analytics scripts moved to footer include -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/new-header.css">
 </head>
 <body>
-    <!-- Заголовок -->
+    <!-- НОВЫЙ КРАСИВЫЙ ХЕДЕР -->
+    <header class="new-header" id="newHeader">
+        <div class="new-header-content">
+            <!-- Логотип -->
+            <a href="/" class="new-logo">
+                <img src="assets/img/icon.svg" alt="АвтоГОСТ">
+                <span>АвтоГОСТ</span>
+            </a>
+            
+            <!-- Центральное меню -->
+            <nav class="new-nav">
+                <a href="#calculator" class="new-nav-link">Калькулятор</a>
+                <a href="#about" class="new-nav-link">О компании</a>
+                <a href="services.html" class="new-nav-link">Услуги</a>
+                <a href="contact.html" class="new-nav-link">Контакты</a>
+            </nav>
+            
+            <!-- Правая часть -->
+            <div class="new-header-right">
+                <a href="tel:+79162720932" class="new-phone">
+                    <i class="fas fa-phone"></i>
+                    <span>+7 916 272-09-32</span>
+                </a>
+                <a href="#calculator" class="new-header-btn">
+                    Рассчитать стоимость
+                </a>
+                <button class="mobile-menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Старый заголовок (скрыт через CSS) -->
     <header class="header" id="header">
         <div class="container">
             <div class="header-content">
