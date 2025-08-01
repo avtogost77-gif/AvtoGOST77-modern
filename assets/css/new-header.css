@@ -1,0 +1,183 @@
+/* 🎨 НОВЫЙ КРАСИВЫЙ ХЕДЕР */
+
+/* Скрываем старый уродливый хедер */
+.header {
+    display: none !important;
+}
+
+/* Новый минималистичный хедер */
+.new-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+    z-index: 9999;
+    padding: 15px 0;
+    transition: all 0.3s ease;
+}
+
+.new-header.scrolled {
+    padding: 10px 0;
+    background: rgba(255, 255, 255, 0.98);
+}
+
+.new-header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Логотип */
+.new-logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    font-size: 32px;
+    font-weight: 800;
+    color: #2c5aa0;
+    transition: transform 0.3s ease;
+    letter-spacing: -0.5px;
+}
+
+.new-logo:hover {
+    transform: scale(1.05);
+}
+
+/* Временно скрываем картинку, потом заменим на нормальный логотип */
+.new-logo img {
+    display: none;
+}
+
+/* Стилизуем текст логотипа */
+.new-logo span {
+    background: linear-gradient(135deg, #2c5aa0 0%, #1e3a6f 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 2px 10px rgba(44, 90, 160, 0.1);
+}
+
+/* Центральное меню */
+.new-nav {
+    display: flex;
+    gap: 35px;
+    align-items: center;
+}
+
+.new-nav-link {
+    color: #333;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.new-nav-link:hover {
+    color: #2c5aa0;
+}
+
+.new-nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #2c5aa0;
+    transition: width 0.3s ease;
+}
+
+.new-nav-link:hover::after {
+    width: 100%;
+}
+
+/* Правая часть с контактами */
+.new-header-right {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+/* Телефон */
+.new-phone {
+    display: flex;
+    align-items: center;
+    color: #333;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.new-phone:hover {
+    color: #2c5aa0;
+    transform: translateY(-2px);
+}
+
+.new-phone i {
+    margin-right: 8px;
+    color: #2c5aa0;
+}
+
+/* Кнопка заказать */
+.new-header-btn {
+    background: linear-gradient(135deg, #2c5aa0 0%, #1e3a6f 100%);
+    color: white;
+    padding: 10px 25px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(44, 90, 160, 0.3);
+}
+
+.new-header-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(44, 90, 160, 0.4);
+}
+
+/* Мобильное меню */
+.mobile-menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #333;
+    cursor: pointer;
+}
+
+/* Адаптив */
+@media (max-width: 768px) {
+    .new-nav {
+        display: none;
+    }
+    
+    .new-header-right {
+        gap: 15px;
+    }
+    
+    .new-phone span {
+        display: none;
+    }
+    
+    .new-header-btn {
+        padding: 8px 20px;
+        font-size: 14px;
+    }
+    
+    .mobile-menu-toggle {
+        display: block;
+    }
+}
+
+/* Добавляем отступ для контента */
+body {
+    padding-top: 80px;
+}

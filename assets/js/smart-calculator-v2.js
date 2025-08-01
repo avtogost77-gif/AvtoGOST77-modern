@@ -484,17 +484,22 @@ class SmartCalculatorV2 {
 
   // Отправка данных лида
   async sendLeadData(data) {
-    // Интеграция с существующим form-handler.js
-    if (window.handleFormSubmit) {
-      return window.handleFormSubmit(data);
+    // Используем функцию из telegram-sender.js
+    if (window.sendToTelegram) {
+      return window.sendToTelegram(data, 'calculator');
     }
     
+<<<<<<< HEAD
     // Интеграция с father_bot.py через Telegram
     const promoCode = document.getElementById('promoCode')?.textContent || 'GOST10';
     const message = `🎯 Новая заявка с калькулятора:\n\n👤 Имя: ${data.name}\n📞 Телефон: ${data.phone}\n📧 Email: ${data.email}\n💬 Комментарий: ${data.comment}\n🎁 Промокод: ${promoCode}\n⏰ Источник: форма лидов`;
     
     // Отправляем в father_bot для обработки менеджером
     window.open(`https://t.me/father_bot?start=${encodeURIComponent(message)}`, '_blank');
+=======
+    // Если telegram-sender.js не загружен, логируем ошибку
+    console.error('telegram-sender.js не загружен! Проверьте подключение скрипта.');
+>>>>>>> c413687f868b6af86d68ea0a9190ee5e14575663
     
     return Promise.resolve();
   }
@@ -507,7 +512,7 @@ class SmartCalculatorV2 {
         <div class="lead-success">
           <div class="success-icon">✅</div>
           <h3>Заявка отправлена!</h3>
-          <p>Мы свяжемся с вами в ближайшее время для уточнения деталей.</p>
+          <p>Мы свяжемся с вами в течение 15 минут для уточнения деталей.</p>
           <button class="btn btn-primary" onclick="location.reload()">
             Рассчитать еще раз
           </button>
@@ -675,15 +680,17 @@ function handleExitFormSubmit(e) {
 
 // Отправка данных Exit-Intent лида
 async function sendExitLeadData(data) {
-  // Интеграция с существующим form-handler.js
-  if (window.handleFormSubmit) {
-    return window.handleFormSubmit(data);
+  // Добавляем промокод и источник к данным
+  data.promoCode = 'WELCOME10';
+  data.source = 'Exit-Intent Pop-up';
+  
+  // Используем функцию из telegram-sender.js
+  if (window.sendToTelegram) {
+    return window.sendToTelegram(data, 'exitIntent');
   }
   
-  // Fallback - отправка в Telegram
-  const message = `🎁 Новая заявка с Exit-Intent Pop-up:\n\nИмя: ${data.name}\nТелефон: ${data.phone}\nEmail: ${data.email}\nПромокод: ${data.promoCode}`;
-  window.open(`https://t.me/father_bot?text=${encodeURIComponent(message)}`, '_blank');
-  
+  // Если telegram-sender.js не загружен, логируем ошибку
+  console.error('telegram-sender.js не загружен! Проверьте подключение скрипта.');
   return Promise.resolve();
 }
 
@@ -700,7 +707,7 @@ function showExitSuccess() {
         <div class="exit-popup-body">
           <div class="exit-popup-icon">🎉</div>
           <h4>Спасибо за заявку!</h4>
-          <p>Мы свяжемся с вами в ближайшее время и предоставим скидку 10% на первую перевозку.</p>
+          <p>Мы свяжемся с вами в течение 15 минут и предоставим скидку 10% на первую перевозку.</p>
           <div class="exit-popup-footer">
             <small>Промокод: <strong>WELCOME10</strong></small>
           </div>
@@ -734,6 +741,7 @@ function showExitError(error) {
 // Экспорт для использования в других модулях
 if (typeof module !== 'undefined' && module.exports) {
   module.exports = SmartCalculatorV2;
+<<<<<<< HEAD
 }// Sticky Header логика
 function initStickyHeader() {
   let lastScrollTop = 0;
@@ -772,3 +780,39 @@ function initPromoTimer() {
     }
   }, 1000);
 }
+=======
+}
+
+// Инициализация при загрузке страницы
+document.addEventListener('DOMContentLoaded', function() {
+  // Проверяем наличие калькулятора на странице
+  const calculatorElement = document.getElementById('smart-calculator');
+  
+  if (calculatorElement) {
+    try {
+      // Создаем экземпляр калькулятора
+      window.smartCalculator = new SmartCalculatorV2();
+      console.log('✅ Smart Calculator v2.0 инициализирован успешно!');
+      
+      // Добавляем глобальные функции для совместимости
+      window.showExitPopup = function() {
+        // Логика показа exit popup
+        const popup = document.getElementById('exitIntentPopup');
+        if (popup) {
+          popup.classList.add('show');
+        }
+      };
+      
+      window.closeExitPopup = function() {
+        const popup = document.getElementById('exitIntentPopup');
+        if (popup) {
+          popup.classList.remove('show');
+        }
+      };
+      
+    } catch (error) {
+      console.error('❌ Ошибка инициализации калькулятора:', error);
+    }
+  }
+});
+>>>>>>> c413687f868b6af86d68ea0a9190ee5e14575663
