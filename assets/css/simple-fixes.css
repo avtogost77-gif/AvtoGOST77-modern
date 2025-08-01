@@ -37,9 +37,6 @@
 }
 
 /* 3. Убираем фуру навсегда */
-.truck-animation-container,
-.truck-wrapper,
-.truck-toggle {
     display: none !important;
 }
 

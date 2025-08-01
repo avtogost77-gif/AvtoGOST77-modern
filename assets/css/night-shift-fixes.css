@@ -355,9 +355,6 @@ table {
 }
 
 /* Скрываем элементы которые вызывают проблемы */
-.truck-animation-container,
-.truck-wrapper,
-.truck-toggle {
     display: none !important;
 }
 

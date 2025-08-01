@@ -241,3 +241,23 @@
         flex-direction: column;
     }
 }
+/* ПОЛНОЕ СКРЫТИЕ ФУРЫ */
+[class*="truck"],
+[id*="truck"],
+[class*="call-from-road"],
+[id*="callFromRoad"],
+.truck-animation-container,
+.truck-wrapper,
+.truck-toggle,
+.moving-truck,
+.truck-strip {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    position: absolute !important;
+    left: -9999px !important;
+    top: -9999px !important;
+    width: 0 !important;
+    height: 0 !important;
+    overflow: hidden !important;
+}
