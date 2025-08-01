@@ -16,6 +16,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 timestamp: new Date().toLocaleString('ru-RU')
             };
             
+            // Определяем источник заявки
+            const source = data.name === 'Не указано' && data.email === 'Не указан' ? 'services-form' : 'contact-form';
+            
             // Формируем текст для отправки
             const text = `
 🚛 НОВАЯ ЗАЯВКА С САЙТА!
@@ -34,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function() {
             this.reset();
             
             // Отправляем в Telegram через father_bot
-            const success = await sendToTelegram(text, 'contact-form');
+            const success = await sendToTelegram(text, source);
             
             // Логируем только статус отправки (без данных)
             if (success) {
