@@ -496,6 +496,9 @@ class SmartCalculatorV2 {
     // Отправляем в father_bot для обработки менеджером
     window.open(`https://t.me/father_bot?start=${encodeURIComponent(message)}`, '_blank');
     
+    // Логируем только статус (без данных)
+    console.log('✅ Заявка с калькулятора отправлена в Telegram');
+    
     return Promise.resolve();
   }
 
@@ -684,8 +687,27 @@ async function sendExitLeadData(data) {
     return window.sendToTelegram(data, 'exitIntent');
   }
   
-  // Если telegram-sender.js не загружен, логируем ошибку
-  console.error('telegram-sender.js не загружен! Проверьте подключение скрипта.');
+  // Если telegram-sender.js не загружен, отправляем напрямую
+  try {
+    const botToken = '7999458907:AAGOAjQLmEZuT4SFx4Upl1GjuXO0yFuWok8';
+    const chatId = '399711407';
+    
+    const message = `🎁 Новая заявка с exit-intent:\n\n👤 Имя: ${data.name}\n📞 Телефон: ${data.phone}\n📧 Email: ${data.email}\n🎁 Промокод: ${data.promoCode}\n⏰ Источник: ${data.source}`;
+    
+    const response = await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ chat_id: chatId, text: message })
+    });
+    
+    if (response.ok) {
+      console.log('✅ Exit-intent заявка отправлена');
+      return Promise.resolve();
+    }
+  } catch (error) {
+    console.error('❌ Ошибка отправки exit-intent заявки');
+  }
+  
   return Promise.resolve();
 }
 
@@ -736,8 +758,9 @@ function showExitError(error) {
 // Экспорт для использования в других модулях
 if (typeof module !== 'undefined' && module.exports) {
   module.exports = SmartCalculatorV2;
-<<<<<<< HEAD
-}// Sticky Header логика
+}
+
+// Sticky Header логика
 function initStickyHeader() {
   let lastScrollTop = 0;
   const stickyHeader = document.getElementById('stickyHeader');
@@ -754,6 +777,10 @@ function initStickyHeader() {
       } else if (scrollTop <= headerHeight || scrollTop < lastScrollTop) {
         stickyHeader.classList.remove('visible');
       }
+    });
+  }
+}
+
 // Промокод и таймер логика
 function initPromoTimer() {
   let timeLeft = 15 * 60; // 15 минут в секундах
