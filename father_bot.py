@@ -9,6 +9,8 @@ import logging
 from datetime import datetime
 from typing import Dict, Optional
 import json
+import os
+from dotenv import load_dotenv
 
 from aiogram import Bot, Dispatcher, types, F
 from aiogram.filters import Command, StateFilter
@@ -16,9 +18,12 @@ from aiogram.fsm.context import FSMContext
 from aiogram.fsm.state import State, StatesGroup
 from aiogram.types import ReplyKeyboardMarkup, KeyboardButton, InlineKeyboardMarkup, InlineKeyboardButton
 
+# Загружаем переменные окружения
+load_dotenv()
+
 # Настройки
-BOT_TOKEN = "7999458907:AAHAnyTyvfteW1WNKpns8w35jl14f0wn5es"  # Из BROTHERS-COORDINATION.md
-MANAGER_CHAT_ID = 399711407  # Из BROTHERS-COORDINATION.md
+BOT_TOKEN = os.getenv("BOT_TOKEN", "ВАШ_НОВЫЙ_ТОКЕН_ЗДЕСЬ")  # Сначала пытаемся из .env
+MANAGER_CHAT_ID = int(os.getenv("CHAT_ID", "399711407"))  # Из .env или дефолт
 
 # Логирование
 logging.basicConfig(level=logging.INFO)
