@@ -34,10 +34,14 @@ document.addEventListener('DOMContentLoaded', function() {
             this.reset();
             
             // Отправляем в Telegram через father_bot
-            sendToTelegram(text, 'contact-form');
+            const success = await sendToTelegram(text, 'contact-form');
             
-            // Логируем для отладки
-            console.log('Новая заявка отправлена в Telegram:', text);
+            // Логируем только статус отправки (без данных)
+            if (success) {
+                console.log('✅ Заявка успешно отправлена');
+            } else {
+                console.error('❌ Ошибка отправки заявки');
+            }
         });
     }
     
