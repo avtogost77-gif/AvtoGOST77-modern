@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import type { PricingResult, CargoType } from "@/lib/types";
+import LeadForm from "./LeadForm";
 
 export default function Calculator() {
   const [form, setForm] = useState({
@@ -13,6 +14,7 @@ export default function Calculator() {
   });
   const [result, setResult] = useState<PricingResult | null>(null);
   const [loading, setLoading] = useState(false);
+  const [leadOpen, setLeadOpen] = useState(false);
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
@@ -111,10 +113,25 @@ export default function Calculator() {
                 <p>Расстояние: {result.distance} км</p>
                 <p>Транспорт: {result.transport}</p>
                 <p>Срок: {result.deliveryTime}</p>
+                {!leadOpen && (
+                  <button
+                    className="btn-primary mt-4"
+                    onClick={() => setLeadOpen(true)}
+                  >
+                    Оставить заявку
+                  </button>
+                )}
               </div>
             )
           )}
         </div>
+      )}
+
+      {leadOpen && (
+        <LeadForm
+          defaultComment={`${form.fromCity} → ${form.toCity}, ${form.weight} кг`}
+          onSuccess={() => setLeadOpen(false)}
+        />
       )}
     </section>
   );
