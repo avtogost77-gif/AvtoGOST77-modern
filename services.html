@@ -123,6 +123,30 @@
     </div>
   </section>
 
+  <!-- Простая форма заявки -->
+  <section class="contact-form-section" style="background: var(--color-bg); padding: 3rem 0;">
+    <div class="container">
+      <div class="contact-form-wrapper">
+        <h2>Оставить заявку на услуги</h2>
+        <p>Укажите телефон и опишите ваш груз - мы свяжемся в течение 10 минут</p>
+        
+        <form id="contactForm" class="simple-contact-form">
+          <div class="form-group">
+            <label for="phone">Телефон *</label>
+            <input type="tel" id="phone" name="phone" placeholder="+7 (___) ___-__-__" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="message">Описание груза *</label>
+            <textarea id="message" name="message" rows="4" placeholder="Например: доставить 3 паллеты из Москвы в Казань 12 ноября" required></textarea>
+          </div>
+          
+          <button type="submit" class="btn btn-primary">Отправить заявку</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
   <!-- Footer include -->
   <footer>
     <div class="container footer-grid">
@@ -150,6 +174,99 @@
     </div>
     <div class="container text-center mt-2">© 2023 Авто&nbsp;Гост.</div>
   </footer>
+
+  <!-- Стили для простой формы -->
+  <style>
+    .contact-form-section {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+    }
+    
+    .contact-form-wrapper {
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    
+    .contact-form-wrapper h2 {
+      margin-bottom: 1rem;
+      font-size: 2rem;
+    }
+    
+    .contact-form-wrapper p {
+      margin-bottom: 2rem;
+      opacity: 0.9;
+    }
+    
+    .simple-contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    
+    .form-group {
+      text-align: left;
+    }
+    
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+    
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px 16px;
+      border: 2px solid rgba(255,255,255,0.2);
+      border-radius: 8px;
+      background: rgba(255,255,255,0.1);
+      color: white;
+      font-size: 16px;
+      transition: all 0.3s ease;
+    }
+    
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: rgba(255,255,255,0.7);
+    }
+    
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: rgba(255,255,255,0.5);
+      background: rgba(255,255,255,0.15);
+    }
+    
+    .simple-contact-form .btn {
+      margin-top: 1rem;
+      padding: 15px 30px;
+      font-size: 18px;
+      font-weight: 600;
+      background: #10b981;
+      border: none;
+      border-radius: 8px;
+      color: white;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .simple-contact-form .btn:hover {
+      background: #059669;
+      transform: translateY(-2px);
+    }
+    
+    @media (max-width: 768px) {
+      .contact-form-wrapper h2 {
+        font-size: 1.5rem;
+      }
+      
+      .form-group input,
+      .form-group textarea {
+        font-size: 16px; /* Предотвращает зум на iOS */
+      }
+    }
+  </style>
 
   <!-- ЕДИНЫЕ JS МОДУЛИ ДЛЯ ВСЕХ СТРАНИЦ -->
   <script src="assets/js/emergency-fix.js"></script>
