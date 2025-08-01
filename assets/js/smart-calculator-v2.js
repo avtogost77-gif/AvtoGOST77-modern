@@ -620,6 +620,9 @@ document.addEventListener('DOMContentLoaded', () => {
   
   // Инициализация промокода и таймера
   initPromoTimer();
+  
+  // Запускаем обновление таймера
+  updatePromoTimer();
 });
 
 // Exit-Intent Pop-up логика
@@ -823,13 +826,19 @@ function initPromoTimer() {
   let timeLeft = 15 * 60; // 15 минут в секундах
   const timerMinutes = document.getElementById('timerMinutes');
   const timerSeconds = document.getElementById('timerSeconds');
+  const promoSection = document.querySelector('.promo-section');
+
+  if (!timerMinutes || !timerSeconds) {
+    console.log('Таймер промокода не найден на странице');
+    return;
+  }
 
   const timer = setInterval(() => {
     const minutes = Math.floor(timeLeft / 60);
     const seconds = timeLeft % 60;
 
-    if (timerMinutes) timerMinutes.textContent = minutes.toString().padStart(2, '0');
-    if (timerSeconds) timerSeconds.textContent = seconds.toString().padStart(2, '0');
+    timerMinutes.textContent = minutes.toString().padStart(2, '0');
+    timerSeconds.textContent = seconds.toString().padStart(2, '0');
 
     timeLeft--;
 
@@ -839,39 +848,40 @@ function initPromoTimer() {
     }
   }, 1000);
 }
-=======
+
+// Скрыть таймер промокода
+function hidePromoTimer() {
+  const promoSection = document.querySelector('.promo-section');
+  if (promoSection) {
+    promoSection.style.display = 'none';
+  }
 }
 
-// Инициализация при загрузке страницы
-document.addEventListener('DOMContentLoaded', function() {
-  // Проверяем наличие калькулятора на странице
-  const calculatorElement = document.getElementById('smart-calculator');
+// Обновить таймер промокода
+function updatePromoTimer() {
+  const timerMinutes = document.getElementById('timerMinutes');
+  const timerSeconds = document.getElementById('timerSeconds');
   
-  if (calculatorElement) {
-    try {
-      // Создаем экземпляр калькулятора
-      window.smartCalculator = new SmartCalculatorV2();
-      console.log('✅ Smart Calculator v2.0 инициализирован успешно!');
+  if (timerMinutes && timerSeconds) {
+    // Проверяем сохраненное время в localStorage
+    const savedTime = localStorage.getItem('promoTimerEnd');
+    if (savedTime) {
+      const endTime = parseInt(savedTime);
+      const now = Date.now();
+      const timeLeft = Math.max(0, Math.floor((endTime - now) / 1000));
       
-      // Добавляем глобальные функции для совместимости
-      window.showExitPopup = function() {
-        // Логика показа exit popup
-        const popup = document.getElementById('exitIntentPopup');
-        if (popup) {
-          popup.classList.add('show');
-        }
-      };
-      
-      window.closeExitPopup = function() {
-        const popup = document.getElementById('exitIntentPopup');
-        if (popup) {
-          popup.classList.remove('show');
-        }
-      };
-      
-    } catch (error) {
-      console.error('❌ Ошибка инициализации калькулятора:', error);
+      if (timeLeft > 0) {
+        const minutes = Math.floor(timeLeft / 60);
+        const seconds = timeLeft % 60;
+        
+        timerMinutes.textContent = minutes.toString().padStart(2, '0');
+        timerSeconds.textContent = seconds.toString().padStart(2, '0');
+        
+        // Запускаем таймер
+        setTimeout(updatePromoTimer, 1000);
+      } else {
+        hidePromoTimer();
+      }
     }
   }
-});
->>>>>>> c413687f868b6af86d68ea0a9190ee5e14575663
+}
