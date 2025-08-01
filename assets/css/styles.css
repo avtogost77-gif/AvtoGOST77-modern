@@ -226,6 +226,25 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: var(--shadow-hover);
 }
 
+.btn:disabled,
+.btn-disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background-color: #ccc !important;
+  color: #666 !important;
+  border-color: #ccc !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.btn-disabled:hover {
+  background-color: #ccc !important;
+  color: #666 !important;
+  border-color: #ccc !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
 .btn-secondary {
   background: white;
   color: var(--primary-600);
@@ -3104,4 +3123,119 @@ header {
   }
 }
     position: relative;
+}
+/* Промокод и таймер */
+.promo-section {
+  margin-bottom: var(--spacing-lg);
+  padding: var(--spacing-md);
+  background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+  border-radius: var(--border-radius);
+  color: white;
+  text-align: center;
+  animation: pulse 2s infinite;
+}
+
+.timer-label {
+  font-size: 0.9rem;
+  margin-bottom: var(--spacing-xs);
+}
+
+.timer-display {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: var(--spacing-sm);
+  font-family: var(--font-secondary);
+}
+
+/* Плавающие кнопки */
+.float-buttons {
+  position: fixed;
+  right: 20px;
+  bottom: 100px; /* Выше Tawk.to */
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.float-btn {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: white;
+  font-size: 24px;
+  transition: all 0.3s ease;
+  position: relative;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.float-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+}
+
+.phone-btn {
+  background: linear-gradient(135deg, #10b981, #059669);
+}
+
+.whatsapp-btn {
+  background: linear-gradient(135deg, #25d366, #128c7e);
+}
+
+.telegram-btn {
+  background: linear-gradient(135deg, #0088cc, #005580);
+}
+
+.tooltip {
+  position: absolute;
+  right: 70px;
+  background: rgba(0,0,0,0.8);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 14px;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  pointer-events: none;
+}
+
+.tooltip::after {
+  content: '';
+  position: absolute;
+  right: -5px;
+  top: 50%;
+  transform: translateY(-50%);
+  border: 5px solid transparent;
+  border-left-color: rgba(0,0,0,0.8);
+}
+
+.float-btn:hover .tooltip {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Адаптивность для мобильных */
+@media (max-width: 768px) {
+  .float-buttons {
+    right: 15px;
+    bottom: 120px; /* Еще выше на мобильных */
+  }
+  
+  .float-btn {
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+  }
+  
+  .tooltip {
+    right: 60px;
+    font-size: 12px;
+    padding: 6px 10px;
+  }
 }

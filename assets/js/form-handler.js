@@ -16,6 +16,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 timestamp: new Date().toLocaleString('ru-RU')
             };
             
+            // Определяем источник заявки
+            const source = data.name === 'Не указано' && data.email === 'Не указан' ? 'services-form' : 'contact-form';
+            
             // Формируем текст для отправки
             const text = `
 🚛 НОВАЯ ЗАЯВКА С САЙТА!
@@ -33,11 +36,46 @@ document.addEventListener('DOMContentLoaded', function() {
             // Очищаем форму
             this.reset();
             
-            // В MVP просто логируем, в продакшене отправим на сервер
-            console.log('Новая заявка:', text);
+            // Отправляем в Telegram через father_bot
+            const success = await sendToTelegram(text, source);
             
-            // TODO: Подключить отправку на email через серверный скрипт
+            // Логируем только статус отправки (без данных)
+            if (success) {
+                console.log('✅ Заявка успешно отправлена');
+            } else {
+                console.error('❌ Ошибка отправки заявки');
+            }
         });
+    }
+    
+    // Функция отправки в Telegram
+    async function sendToTelegram(message, source = 'form') {
+        try {
+            const botToken = '7999458907:AAGOAjQLmEZuT4SFx4Upl1GjuXO0yFuWok8';
+            const chatId = '399711407'; // ID менеджера
+            
+            const response = await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    chat_id: chatId,
+                    text: message,
+                    parse_mode: 'HTML'
+                })
+            });
+            
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            
+            console.log('Сообщение отправлено в Telegram');
+            return true;
+        } catch (error) {
+            console.error('Ошибка отправки в Telegram:', error);
+            return false;
+        }
     }
     
     // Простые уведомления

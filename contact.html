@@ -6,11 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Контакты логистического аутсорсинга | Россия, офис Москва</title>
   <meta name="description" content="Задайте вопрос или получите расчёт: телефон, WhatsApp, Telegram, форма заявки. Работаем по России, подача авто в Москве за 2 ч." />
-  <!-- ЕДИНЫЕ СТИЛИ ДЛЯ ВСЕХ СТРАНИЦ -->
-  <link rel="stylesheet" href="assets/css/emergency-mobile-fix.css">
-  <link rel="stylesheet" href="assets/css/main.css">
-    <link rel="stylesheet" href="assets/css/urgent-fixes.css">
-  <link rel="stylesheet" href="assets/css/mobile.css">
+    <!-- ЕДИНЫЕ СТИЛИ ДЛЯ ВСЕХ СТРАНИЦ -->
   <link rel="stylesheet" href="assets/css/styles.css" />
   
   <!-- Bootstrap Icons -->
@@ -18,26 +14,54 @@
   <!-- AOS scroll animations -->
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
   
-  <!-- DADATA API CONFIGURATION -->
-  <script src="dadata-config.js"></script>
+
   <link rel="icon" type="image/png" href="assets/img/favicon.png" />
+  
+  <!-- PWA метатеги -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#2c5aa0">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="АвтоГОСТ">
+  <link rel="apple-touch-icon" href="assets/img/icon-192x192.svg">
+  <link rel="apple-touch-icon" sizes="72x72" href="assets/img/icon-72x72.svg">
+  <link rel="apple-touch-icon" sizes="96x96" href="assets/img/icon-96x96.svg">
+  <link rel="apple-touch-icon" sizes="128x128" href="assets/img/icon-128x128.svg">
+  <link rel="apple-touch-icon" sizes="144x144" href="assets/img/icon-144x144.svg">
+  <link rel="apple-touch-icon" sizes="152x152" href="assets/img/icon-152x152.svg">
+  <link rel="apple-touch-icon" sizes="192x192" href="assets/img/icon-192x192.svg">
+  <link rel="apple-touch-icon" sizes="384x384" href="assets/img/icon-384x384.svg">
+  <link rel="apple-touch-icon" sizes="512x512" href="assets/img/icon-512x512.svg">
+  <meta name="msapplication-TileColor" content="#2c5aa0">
+  <meta name="msapplication-TileImage" content="assets/img/icon-144x144.svg">
+  <meta name="msapplication-config" content="browserconfig.xml">
+  
+  <  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EMQ3D0X8K7"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-EMQ3D0X8K7');
+  </script>
+  
   <!-- Yandex.Metrika counter -->
   <script type="text/javascript" >
-     (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-     m[i].l=1*new Date();
-     for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-     k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
-     (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+   m[i].l=1*new Date();
+   for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+   k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+   (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
 
-     ym(103413788, "init", {
-          clickmap:true,
-          trackLinks:true,
-          accurateTrackBounce:true,
-          webvisor:true
-     });
+   ym(103413788, "init", {
+        clickmap:true,
+        trackLinks:true,
+        accurateTrackBounce:true,
+        webvisor:true
+   });
   </script>
-  <noscript><div><img src="https://mc.yandex.ru/watch/103413788" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-  <!-- /Yandex.Metrika counter -->
+  <noscript><div><img src="https://mc.yandex.ru/watch/103413788" style="position:absolute; left:-9999px;" alt="" /></div></noscript> <!-- /Yandex.Metrika counter -->
 </head>
 <body>
   <header>
@@ -48,7 +72,7 @@
         <li><a href="/">Главная</a></li>
         <li><a href="services.html">Услуги</a></li>
         <li><a href="about.html">О нас</a></li>
-        <li><a href="news.html">Новости</a></li>
+
         <li><a href="contact.html">Контакты</a></li>
         <li><a href="faq.html">FAQ</a></li>
       </ul>
@@ -73,16 +97,16 @@
       <p>WhatsApp / Telegram: <a href="https://t.me/avtogost77" target="_blank">@avtogost77</a></p>
 
       <h2 class="mt-2">Форма заявки</h2>
-      <form id="contact-form" action="#" method="POST">
+      <form id="contactForm" action="#" method="POST">
         <label>Имя<br/><input type="text" name="name" required></label><br/>
         <label>Email<br/><input type="email" name="email" required></label><br/>
         <label>Телефон<br/><input type="tel" name="phone" required></label><br/>
         <label>Сообщение<br/><textarea name="message" rows="5" required placeholder="Например: доставить 3 паллеты из Москвы в Казань 12 ноября"></textarea></label><br/>
         <label class="consent-checkbox required">
-          <input type="checkbox" name="consent" required>
-          <span>Я согласен(а) с <a href="privacy.html" target="_blank">обработкой персональных данных</a> и <a href="privacy.html" target="_blank">Политикой конфиденциальности</a> в соответствии с 152-ФЗ</span>
+          <input type="checkbox" name="consent" id="privacyConsent" required>
+          <span>Я согласен(а) с <a href="privacy.html" target="_blank">обработкой персональных данных</a> и <a href="privacy.html" target="_blank">Политикой конфиденциальности</a> в соответствии с 152-ФЗ, включая использование cookies и аналитических сервисов Google и Яндекс для персонализации рекламы</span>
         </label>
-        <button type="submit" class="btn btn-primary">Отправить запрос</button>
+        <button type="submit" class="btn btn-primary" id="contactSubmitBtn" disabled>Отправить запрос</button>
       </form>
     </div>
   </section>
@@ -92,19 +116,61 @@
   </footer>
   
   <!-- ЕДИНЫЕ JS МОДУЛИ ДЛЯ ВСЕХ СТРАНИЦ -->
-  <script src="assets/js/emergency-fix.js"></script>
-  <script src="assets/js/fias-integration.js"></script>
+
   <script src="assets/js/form-handler.js"></script>
   <script src="assets/js/main.js"></script>
   
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
   <script>AOS.init({ once:true, duration:600 });</script>
-    <script src="/assets/js/smart-calculator-v2.js"></script>
-    <script src="/assets/js/cities-simple.js"></script>
+  <script src="assets/js/smart-calculator-v2.js?v=107" defer></script>
+  <script src="assets/js/cities-simple.js" defer></script>
+  
+  <!-- Tawk.to Online Chat -->
+  <script type="text/javascript">
+  var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+  
+  // Настройки чата от Opus
+  Tawk_API.onLoad = function(){
+      Tawk_API.setAttributes({
+          'name'  : 'Гость',
+          'email' : '',
+          'phone' : ''
+      });
+      
+      // Приветственное сообщение
+      Tawk_API.maximize();
+      setTimeout(() => {
+          Tawk_API.sendMessage('🚛 Добро пожаловать в АвтоГОСТ!\n\nЗдравствуйте! Я готов помочь вам с грузоперевозками по России.\n\n• Рассчитать стоимость доставки\n• Узнать сроки перевозки  \n• Получить консультацию специалиста\n• Оформить заявку\n\nЧто вас интересует?');
+      }, 2000);
+  };
+  
+  (function(){
+      var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+      s1.async=true;
+      s1.src='https://embed.tawk.to/64f8a8b5a91e863a5c123456/default';
+      s1.charset='UTF-8';
+      s1.setAttribute('crossorigin','*');
+      s0.parentNode.insertBefore(s1,s0);
+  })();
+  </script>
+  
+  <!-- PWA Service Worker Registration -->
+  <script>
+      if ('serviceWorker' in navigator) {
+          window.addEventListener('load', () => {
+              navigator.serviceWorker.register('/sw.js')
+                  .then((registration) => {
+                      console.log('SW registered: ', registration);
+                  })
+                  .catch((registrationError) => {
+                      console.log('SW registration failed: ', registrationError);
+                  });
+          });
+      }
+  </script>
 
 <!-- Плавающие кнопки -->
-<div class="float-buttons">
-    <a href="tel:+79162720932" class="float-btn phone-btn">
+<div class="float-buttons">   <a href="tel:+79162720932" class="float-btn phone-btn">
         <i class="fas fa-phone-alt"></i>
         <span class="tooltip">Позвонить сейчас</span>
     </a>
