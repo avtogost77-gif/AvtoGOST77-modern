@@ -170,9 +170,9 @@ class SmartCalculatorV2 {
       details: {
         weight,
         volume,
-        density: Math.round(weight / volume),
+        density: volume && volume > 0 ? Math.round(weight / volume) : 0,
         loadPercent: Math.round((weight / transport.maxWeight) * 100),
-        volumePercent: Math.round((volume / transport.maxVolume) * 100)
+        volumePercent: volume && volume > 0 ? Math.round((volume / transport.maxVolume) * 100) : 0
       }
     };
   }
@@ -188,18 +188,21 @@ class SmartCalculatorV2 {
 
   // Выбор оптимального транспорта
   selectOptimalTransport(weight, volume) {
-    // Считаем плотность груза
-    const density = weight / volume;
-
     // Сортируем транспорт по вместимости для правильного выбора
     const sortedTransports = Object.values(this.transportTypes)
       .sort((a, b) => a.maxWeight - b.maxWeight);
     
     for (const transport of sortedTransports) {
-      // Проверяем и по весу, и по объему
-      if (weight <= transport.maxWeight && volume <= transport.maxVolume) {
-        // Дополнительная проверка по плотности
-        if (density <= transport.density * 1.2) {  // даем 20% запас
+      // Проверяем по весу (обязательно)
+      if (weight <= transport.maxWeight) {
+        // Если объем указан, проверяем и его
+        if (volume && volume > 0) {
+          const density = weight / volume;
+          if (volume <= transport.maxVolume && density <= transport.density * 1.2) {
+            return transport;
+          }
+        } else {
+          // Если объем не указан, выбираем по весу
           return transport;
         }
       }
@@ -210,14 +213,24 @@ class SmartCalculatorV2 {
   // Коэффициент загрузки
   calculateLoadFactor(weight, volume, transport) {
     const weightUsage = weight / transport.maxWeight;
-    const volumeUsage = volume / transport.maxVolume;
-    const maxUsage = Math.max(weightUsage, volumeUsage);
-
-    // Чем меньше загрузка, тем дороже
-    if (maxUsage < 0.3) return 1.5;   // менее 30% - дорого
-    if (maxUsage < 0.5) return 1.3;   // менее 50%
-    if (maxUsage < 0.7) return 1.1;   // менее 70%
-    return 1.0;  // более 70% - базовая цена
+    
+    // Если объем указан, учитываем его
+    if (volume && volume > 0) {
+      const volumeUsage = volume / transport.maxVolume;
+      const maxUsage = Math.max(weightUsage, volumeUsage);
+      
+      // Чем меньше загрузка, тем дороже
+      if (maxUsage < 0.3) return 1.5;   // менее 30% - дорого
+      if (maxUsage < 0.5) return 1.3;   // менее 50%
+      if (maxUsage < 0.7) return 1.1;   // менее 70%
+      return 1.0;  // более 70% - базовая цена
+    } else {
+      // Если объем не указан, считаем только по весу
+      if (weightUsage < 0.3) return 1.4;   // менее 30% - дорого
+      if (weightUsage < 0.5) return 1.2;   // менее 50%
+      if (weightUsage < 0.7) return 1.05;  // менее 70%
+      return 1.0;  // более 70% - базовая цена
+    }
   }
 
   // Коэффициент популярности маршрута
@@ -324,8 +337,14 @@ class SmartCalculatorV2 {
     const cargoType = document.getElementById('cargo-type')?.value || 'general';
 
     // Валидация
-    if (!fromCity || !toCity || !weight || !volume) {
-      alert('Заполните все поля!');
+    if (!fromCity || !toCity || !weight) {
+      alert('Заполните города и вес груза!');
+      return;
+    }
+    
+    // Объем не обязательный, но учитывается если заполнен
+    if (volume && volume <= 0) {
+      alert('Объем должен быть больше 0!');
       return;
     }
 
@@ -371,8 +390,11 @@ class SmartCalculatorV2 {
             <h4>Параметры груза:</h4>
             <ul>
               <li>Вес: ${result.details.weight} кг (${result.details.loadPercent}% загрузки)</li>
-              <li>Объем: ${result.details.volume} м³ (${result.details.volumePercent}% загрузки)</li>
-              <li>Плотность: ${result.details.density} кг/м³</li>
+              ${result.details.volume ? 
+                `<li>Объем: ${result.details.volume} м³ (${result.details.volumePercent}% загрузки)</li>
+                 <li>Плотность: ${result.details.density} кг/м³</li>` : 
+                '<li>Объем: не указан</li>'
+              }
             </ul>
           </div>
 
