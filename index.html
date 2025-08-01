@@ -256,6 +256,15 @@
                             <label for="leadComment">Дополнительная информация</label>
                             <textarea id="leadComment" name="comment" placeholder="Особенности груза, срочность, особые требования"></textarea>
                         </div>
+                        
+                        <div class="form-group">
+                            <div class="consent-checkbox">
+                                <input type="checkbox" id="privacyConsent" name="privacyConsent" required>
+                                <label for="privacyConsent">
+                                    Я согласен(а) с <a href="privacy.html" target="_blank">обработкой персональных данных</a> в соответствии с 152-ФЗ
+                                </label>
+                            </div>
+                        </div>
                     </div>
                     
                     <div class="form-actions">
@@ -272,7 +281,7 @@
                                 </div>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-primary btn-lg">
+                        <button type="submit" class="btn btn-primary btn-lg" id="leadSubmitBtn" disabled>
                             <span class="btn-text">Отправить заявку</span>
                             <span class="btn-loading" style="display: none;">Отправляем...</span>
                         </button>

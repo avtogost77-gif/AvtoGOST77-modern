@@ -623,6 +623,9 @@ document.addEventListener('DOMContentLoaded', () => {
   
   // Запускаем обновление таймера
   updatePromoTimer();
+  
+  // Инициализация валидации согласия на обработку ПД
+  initPrivacyConsent();
 });
 
 // Exit-Intent Pop-up логика
@@ -883,5 +886,29 @@ function updatePromoTimer() {
         hidePromoTimer();
       }
     }
+  }
+}
+
+// Валидация согласия на обработку персональных данных
+function initPrivacyConsent() {
+  const consentCheckbox = document.getElementById('privacyConsent');
+  const submitBtn = document.getElementById('leadSubmitBtn') || document.getElementById('contactSubmitBtn');
+  
+  if (consentCheckbox && submitBtn) {
+    // Проверяем состояние чекбокса при загрузке
+    submitBtn.disabled = !consentCheckbox.checked;
+    
+    // Слушаем изменения чекбокса
+    consentCheckbox.addEventListener('change', function() {
+      submitBtn.disabled = !this.checked;
+      
+      if (this.checked) {
+        submitBtn.classList.remove('btn-disabled');
+        submitBtn.classList.add('btn-primary');
+      } else {
+        submitBtn.classList.add('btn-disabled');
+        submitBtn.classList.remove('btn-primary');
+      }
+    });
   }
 }
