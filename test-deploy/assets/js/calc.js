@@ -1245,7 +1245,7 @@ ${calculation.breakdown.services ? `• Услуги: ${calculation.breakdown.se
 #расчет #логистика #avtogost
 `;
 
-    fetch('https://api.telegram.org/bot7999458907:AAHAnyTyvfteW1WNKpns8w35jl14f0wn5es/sendMessage', {
+    fetch('https://api.telegram.org/bot7999458907:AAGOAjQLmEZuT4SFx4Upl1GjuXO0yFuWok8/sendMessage', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({

@@ -489,17 +489,12 @@ class SmartCalculatorV2 {
       return window.sendToTelegram(data, 'calculator');
     }
     
-<<<<<<< HEAD
     // Интеграция с father_bot.py через Telegram
     const promoCode = document.getElementById('promoCode')?.textContent || 'GOST10';
     const message = `🎯 Новая заявка с калькулятора:\n\n👤 Имя: ${data.name}\n📞 Телефон: ${data.phone}\n📧 Email: ${data.email}\n💬 Комментарий: ${data.comment}\n🎁 Промокод: ${promoCode}\n⏰ Источник: форма лидов`;
     
     // Отправляем в father_bot для обработки менеджером
     window.open(`https://t.me/father_bot?start=${encodeURIComponent(message)}`, '_blank');
-=======
-    // Если telegram-sender.js не загружен, логируем ошибку
-    console.error('telegram-sender.js не загружен! Проверьте подключение скрипта.');
->>>>>>> c413687f868b6af86d68ea0a9190ee5e14575663
     
     return Promise.resolve();
   }
