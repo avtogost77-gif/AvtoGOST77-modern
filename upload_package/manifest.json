@@ -1,0 +1,124 @@
+{
+  "name": "NextGen Logistics - Умная логистика",
+  "short_name": "NextGen",
+  "description": "AI-платформа для грузоперевозок с экономией до 115,000₽/мес",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "theme_color": "#2563eb",
+  "background_color": "#f9fafb",
+  "lang": "ru",
+  "scope": "/",
+  "categories": ["business", "logistics", "transportation"],
+  "screenshots": [
+    {
+      "src": "/images/screenshot-mobile.webp",
+      "sizes": "390x844",
+      "type": "image/webp",
+      "form_factor": "narrow",
+      "label": "Мобильная версия калькулятора"
+    },
+    {
+      "src": "/images/screenshot-desktop.webp",
+      "sizes": "1280x720",
+      "type": "image/webp", 
+      "form_factor": "wide",
+      "label": "Десктопная версия платформы"
+    }
+  ],
+  "icons": [
+    {
+      "src": "/images/icon-72.png",
+      "sizes": "72x72",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/images/icon-96.png", 
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/images/icon-128.png",
+      "sizes": "128x128", 
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/images/icon-144.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/images/icon-152.png",
+      "sizes": "152x152",
+      "type": "image/png", 
+      "purpose": "any"
+    },
+    {
+      "src": "/images/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/images/icon-384.png",
+      "sizes": "384x384", 
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/images/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Калькулятор стоимости",
+      "short_name": "Калькулятор",
+      "description": "Быстрый расчет стоимости доставки",
+      "url": "/#calculator",
+      "icons": [
+        {
+          "src": "/images/calc-icon.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Связаться с нами",
+      "short_name": "Контакты", 
+      "description": "Телефон и WhatsApp",
+      "url": "/contact",
+      "icons": [
+        {
+          "src": "/images/contact-icon.png", 
+          "sizes": "96x96"
+        }
+      ]
+    }
+  ],
+  "share_target": {
+    "action": "/share-route",
+    "method": "POST",
+    "enctype": "multipart/form-data",
+    "params": {
+      "title": "title",
+      "text": "text",
+      "url": "url"
+    }
+  },
+  "protocol_handlers": [
+    {
+      "protocol": "web+logistics",
+      "url": "/calculate?route=%s"
+    }
+  ],
+  "edge_side_panel": {
+    "preferred_width": 400
+  }
+}
