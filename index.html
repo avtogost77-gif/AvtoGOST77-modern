@@ -27,12 +27,23 @@
     <meta name="msapplication-TileImage" content="assets/img/icon-144x144.svg">
     <meta name="msapplication-config" content="browserconfig.xml">
     
-    <!-- ПРОВЕРЕННЫЕ СТИЛИ -->
-    <link rel="stylesheet" href="assets/css/styles.css?v=106">
+    <!-- КРИТИЧЕСКИЙ CSS INLINE -->
+    <style>
+:root{--primary-600:#2563eb;--primary-700:#1d4ed8;--neutral-50:#f8fafc;--neutral-200:#e2e8f0;--neutral-600:#475569;--neutral-800:#1e293b;--font-primary:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;--transition-normal:0.3s ease-out;--gradient-primary:linear-gradient(135deg,var(--primary-600) 0%,#60a5fa 100%);--gradient-hero:linear-gradient(135deg,rgba(102,126,234,0.45) 0%,rgba(118,75,162,0.45) 100%)}*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth;font-size:16px}body{font-family:var(--font-primary);background:var(--neutral-50);color:var(--neutral-800);line-height:1.6;font-weight:400;overflow-x:hidden;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.container{max-width:1400px;margin:0 auto;padding:0 1rem}@media (min-width:640px){.container{padding:0 2rem}}.btn{display:inline-flex;align-items:center;justify-content:center;padding:0.75rem 1.5rem;border-radius:0.5rem;font-weight:600;text-decoration:none;border:none;cursor:pointer;transition:all var(--transition-normal);font-size:1rem;line-height:1.5;gap:0.5rem}.btn-primary{background:var(--gradient-primary);color:white;box-shadow:0 4px 6px -1px rgb(0 0 0 / 0.1)}.btn-primary:hover{transform:translateY(-1px);box-shadow:0 10px 15px -3px rgb(0 0 0 / 0.1)}.btn-outline{background:transparent;color:white;border:2px solid white}.btn-outline:hover{background:white;color:var(--primary-600)}.btn-lg{padding:1rem 2rem;font-size:1.125rem}.header{position:fixed;top:0;left:0;right:0;background:rgba(255,255,255,0.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--neutral-200);z-index:1000;transition:all var(--transition-normal)}.header-content{display:flex;align-items:center;justify-content:space-between;padding:1rem 0}.logo{display:flex;align-items:center;gap:0.75rem}.logo a{display:flex;align-items:center;gap:0.75rem;text-decoration:none;color:var(--neutral-800)}.logo-img{width:40px;height:40px;border-radius:0.5rem}.logo-text{font-size:1.5rem;font-weight:700;background:var(--gradient-primary);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}.hero{position:relative;background:var(--gradient-hero);min-height:100vh;display:flex;align-items:center;padding:6rem 0 4rem;overflow:hidden}.hero-content{position:relative;z-index:1;text-align:center;max-width:800px;margin:0 auto}.hero h1{font-size:clamp(2.5rem,5vw,4rem);font-weight:700;color:white;margin-bottom:1.5rem;text-shadow:0 2px 4px rgba(0,0,0,0.1)}.hero-subtitle{font-size:clamp(1.125rem,2vw,1.5rem);color:rgba(255,255,255,0.9);margin-bottom:3rem;line-height:1.6}.hero-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:2rem;margin-bottom:3rem}.stat-item{text-align:center}.stat-number{font-size:clamp(2rem,4vw,3rem);font-weight:700;color:white;text-shadow:2px 2px 4px rgba(0,0,0,0.5);margin-bottom:0.5rem}.stat-label{font-size:0.875rem;color:rgba(255,255,255,0.8);text-shadow:1px 1px 2px rgba(0,0,0,0.5);text-transform:uppercase;letter-spacing:0.5px}.hero-actions{display:flex;flex-direction:column;gap:1rem;align-items:center}@media (min-width:640px){.hero-actions{flex-direction:row;justify-content:center}}@media (max-width:768px){.container{padding:0 1rem}.hero{padding:4rem 0 3rem;min-height:80vh}}
+    </style>
+    
+    <!-- ОПТИМИЗИРОВАННЫЕ СТИЛИ -->
+    <link rel="preload" href="assets/css/styles-optimized.min.css?v=107" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="assets/css/styles-optimized.min.css?v=107"></noscript>
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
     
+    <!-- Preload критически важных JS -->
+    <link rel="preload" href="assets/js/main.min.js?v=107" as="script">
+    <link rel="preload" href="assets/js/smart-calculator-v2.min.js?v=107" as="script">
+    
     <!-- AOS анимации -->
-    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+    <link rel="preload" href="https://unpkg.com/aos@2.3.4/dist/aos.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css"></noscript>
     
     <!-- SEO и метатеги -->
     <link rel="canonical" href="https://avtogost77.ru/">
@@ -44,6 +55,12 @@
     <!-- Google Analytics -->
     <meta name="google-site-verification" content="i_MV74DrBdT7aD2kZhmnAZuQGEM3XBsDV8aCtEphAho" />
     <meta name="yandex-verification" content="376fdf2ca69f9a1f" />
+    
+    <!-- DNS Prefetching for performance -->
+    <link rel="dns-prefetch" href="//www.googletagmanager.com">
+    <link rel="dns-prefetch" href="//mc.yandex.ru">
+    <link rel="dns-prefetch" href="//unpkg.com">
+    <link rel="dns-prefetch" href="//embed.tawk.to">
     
     <!-- analytics scripts moved to footer include -->
 </head>
@@ -474,10 +491,10 @@
     </footer>
 
     <!-- ПРОВЕРЕННЫЕ JS МОДУЛИ -->
-    <script src="assets/js/cities-simple.js" defer></script>
-    <script src="assets/js/form-handler.js"></script>
-    <script src="assets/js/main.js?v=106" defer></script>
-    <script src="assets/js/smart-calculator-v2.js?v=107" defer></script>
+    <script src="assets/js/cities-simple.min.js?v=107" defer></script>
+    <script src="assets/js/form-handler.min.js?v=107"></script>
+    <script src="assets/js/main.min.js?v=107" defer></script>
+    <script src="assets/js/smart-calculator-v2.min.js?v=107" defer></script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-EMQ3D0X8K7"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -495,7 +512,7 @@
           <noscript><div><img src="https://mc.yandex.ru/watch/103413788" style="position:absolute; left:-9999px;" alt="yandex metrika pixel" /></div></noscript>
     <!-- /Yandex.Metrika -->
     
-    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js" defer></script>
     <script>
         // Инициализация AOS анимаций
         AOS.init({
@@ -537,12 +554,12 @@
     <script>
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/sw.js')
+                navigator.serviceWorker.register('/sw.js?v=107')
                     .then((registration) => {
-                        console.log('SW registered: ', registration);
+                        // Service Worker registered successfully
                     })
                     .catch((registrationError) => {
-                        console.log('SW registration failed: ', registrationError);
+                        // Service Worker registration failed silently
                     });
             });
         }

@@ -311,14 +311,11 @@ class SmartCalculatorV2 {
     // Проверяем наличие элементов
     const form = document.getElementById('calculatorForm');
     if (!form) {
-      console.log('Калькулятор не найден на странице');
       return;
     }
 
     // Автозаполнение для демо
     this.setupAutocomplete();
-    
-    console.log('✅ Умный калькулятор v2.0 инициализирован!');
   }
 
   // Обработка расчета
@@ -515,8 +512,6 @@ class SmartCalculatorV2 {
     window.open(`https://t.me/father_bot?start=${encodeURIComponent(message)}`, '_blank');
     
     // Логируем только статус (без данных)
-    console.log('✅ Заявка с калькулятора отправлена в Telegram');
-    
     return Promise.resolve();
   }
 
@@ -740,7 +735,7 @@ async function sendExitLeadData(data) {
     });
     
     if (response.ok) {
-      console.log('✅ Exit-intent заявка отправлена');
+  
       return Promise.resolve();
     }
   } catch (error) {
@@ -828,7 +823,7 @@ function initPromoTimer() {
   const promoSection = document.querySelector('.promo-section');
 
   if (!timerMinutes || !timerSeconds) {
-    console.log('Таймер промокода не найден на странице');
+
     return;
   }
 

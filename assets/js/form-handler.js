@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Логируем только статус отправки (без данных)
             if (success) {
-                console.log('✅ Заявка успешно отправлена');
+          
             } else {
                 console.error('❌ Ошибка отправки заявки');
             }
@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
             
-            console.log('Сообщение отправлено в Telegram');
+        
             return true;
         } catch (error) {
             console.error('Ошибка отправки в Telegram:', error);
