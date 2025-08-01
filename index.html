@@ -41,9 +41,8 @@
     <link rel="preload" href="assets/js/main.min.js?v=107" as="script">
     <link rel="preload" href="assets/js/smart-calculator-v2.min.js?v=107" as="script">
     
-    <!-- AOS анимации -->
-    <link rel="preload" href="https://unpkg.com/aos@2.3.4/dist/aos.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css"></noscript>
+    <!-- AOS анимации - СИНХРОННАЯ ЗАГРУЗКА для предотвращения FOUC -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
     
     <!-- SEO и метатеги -->
     <link rel="canonical" href="https://avtogost77.ru/">
@@ -514,10 +513,17 @@
     
     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js" defer></script>
     <script>
-        // Инициализация AOS анимаций
-        AOS.init({
-            once: true,
-            duration: 600
+        // Инициализация AOS анимаций с проверкой готовности
+        document.addEventListener('DOMContentLoaded', function() {
+            // Ждём полной загрузки всех ресурсов
+            window.addEventListener('load', function() {
+                AOS.init({
+                    once: true,
+                    duration: 600,
+                    disable: false, // Принудительно включить
+                    startEvent: 'load' // Запуск после полной загрузки
+                });
+            });
         });
     </script>
     
