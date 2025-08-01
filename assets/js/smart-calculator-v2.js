@@ -570,26 +570,41 @@ class SmartCalculatorV2 {
 
   // Автозаполнение городов
   setupAutocomplete() {
-    // Список популярных городов
-    const cities = [
-      'Москва', 'Санкт-Петербург', 'Нижний Новгород', 'Екатеринбург',
-      'Новосибирск', 'Казань', 'Челябинск', 'Самара', 'Омск',
-      'Ростов-на-Дону', 'Уфа', 'Красноярск', 'Воронеж', 'Пермь'
-    ];
+    // Используем новую базу городов из cities-simple.js
+    if (typeof POPULAR_CITIES !== 'undefined') {
+      // Добавляем datalist с полной базой
+      const datalist = document.createElement('datalist');
+      datalist.id = 'cities-list';
+      POPULAR_CITIES.forEach(city => {
+        const option = document.createElement('option');
+        option.value = city;
+        datalist.appendChild(option);
+      });
+      document.body.appendChild(datalist);
 
-    // Добавляем datalist
-    const datalist = document.createElement('datalist');
-    datalist.id = 'cities-list';
-    cities.forEach(city => {
-      const option = document.createElement('option');
-      option.value = city;
-      datalist.appendChild(option);
-    });
-    document.body.appendChild(datalist);
+      // Привязываем к инпутам
+      document.getElementById('from-city')?.setAttribute('list', 'cities-list');
+      document.getElementById('to-city')?.setAttribute('list', 'cities-list');
+    } else {
+      // Fallback на старую базу если cities-simple.js не загружен
+      const cities = [
+        'Москва', 'Санкт-Петербург', 'Нижний Новгород', 'Екатеринбург',
+        'Новосибирск', 'Казань', 'Челябинск', 'Самара', 'Омск',
+        'Ростов-на-Дону', 'Уфа', 'Красноярск', 'Воронеж', 'Пермь'
+      ];
 
-    // Привязываем к инпутам
-    document.getElementById('from-city')?.setAttribute('list', 'cities-list');
-    document.getElementById('to-city')?.setAttribute('list', 'cities-list');
+      const datalist = document.createElement('datalist');
+      datalist.id = 'cities-list';
+      cities.forEach(city => {
+        const option = document.createElement('option');
+        option.value = city;
+        datalist.appendChild(option);
+      });
+      document.body.appendChild(datalist);
+
+      document.getElementById('from-city')?.setAttribute('list', 'cities-list');
+      document.getElementById('to-city')?.setAttribute('list', 'cities-list');
+    }
   }
 }
 
