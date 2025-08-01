@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>АвтоГОСТ - Логистика нового поколения | AI-powered грузоперевозки</title>
+    <meta name="description" content="Пока вы создаете — мы доставляем. Невидимая логистическая инфраструктура для вашего бизнеса. AI-калькулятор, голосовой ввод, анализ фото груза.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <!-- PWA -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#2c5aa0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    
+    <!-- Critical CSS -->
+    <style>
+        /* Critical inline styles for fast loading */
+        :root {
+            --primary: #2c5aa0;
+            --accent: #00d4aa;
+            --gradient-primary: linear-gradient(135deg, #2c5aa0 0%, #00d4aa 100%);
+        }
+        
+        body {
+            margin: 0;
+            font-family: 'Inter', -apple-system, sans-serif;
+            color: #212529;
+            background: #ffffff;
+        }
+        
+        .hero-ai {
+            min-height: 100vh;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            background: var(--gradient-primary);
+        }
+        
+        .glass {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+        
+        .loader {
+            width: 60px;
+            height: 60px;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="header glass" id="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="img/logo.svg" alt="АвтоГОСТ" class="logo-img">
+                    <span class="logo-text">АвтоГОСТ</span>
+                    <span class="logo-badge">AI</span>
+                </div>
+                
+                <nav class="nav desktop-nav">
+                    <a href="#services" class="nav-link">Услуги</a>
+                    <a href="#calculator" class="nav-link">AI Калькулятор</a>
+                    <a href="#about" class="nav-link">О нас</a>
+                    <a href="#contact" class="nav-link">Контакты</a>
+                </nav>
+                
+                <div class="header-actions">
+                    <button class="ai-assistant-btn glass" onclick="openAIChat()">
+                        <span class="ai-icon">🤖</span>
+                        <span>AI Помощник</span>
+                        <span class="pulse-dot"></span>
+                    </button>
+                    
+                    <a href="tel:+79162720932" class="header-phone">
+                        <span class="phone-icon">📞</span>
+                        <span class="phone-text">+7 916 272-09-32</span>
+                    </a>
+                </div>
+                
+                <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section with AI -->
+    <section class="hero-ai">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title gradient-text" data-aos="fade-up">
+                    Пока вы создаете —<br>мы доставляем
+                </h1>
+                
+                <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="100">
+                    Невидимая логистическая инфраструктура для вашего бизнеса.<br>
+                    Работаем как электричество — всегда есть, не думаете о нас.
+                </p>
+                
+                <!-- AI Voice Input -->
+                <div class="ai-input-container glass" data-aos="fade-up" data-aos-delay="200">
+                    <div class="ai-listening-indicator" id="listeningIndicator">
+                        <span class="pulse-dot"></span>
+                        <span class="listening-text">Скажите, что нужно перевезти...</span>
+                    </div>
+                    
+                    <button class="voice-button" id="voiceButton" onclick="startVoiceInput()">
+                        <svg class="microphone-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M12 1C10.34 1 9 2.34 9 4V12C9 13.66 10.34 15 12 15C13.66 15 15 13.66 15 12V4C15 2.34 13.66 1 12 1Z" fill="currentColor"/>
+                            <path d="M17 12C17 14.76 14.76 17 12 17C9.24 17 7 14.76 7 12H5C5 15.53 7.61 18.43 11 18.92V22H13V18.92C16.39 18.43 19 15.53 19 12H17Z" fill="currentColor"/>
+                        </svg>
+                    </button>
+                    
+                    <div class="ai-input-field">
+                        <input type="text" id="aiInput" placeholder="Или напишите здесь..." class="ai-text-input">
+                        <button class="ai-send-btn" onclick="processAIInput()">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <path d="M2 10L17 2L13 18L11 11L2 10Z" fill="currentColor"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Quick Actions -->
+                <div class="quick-actions" data-aos="fade-up" data-aos-delay="300">
+                    <button class="quick-btn glass" data-action="calculate">
+                        <span class="icon">🧮</span>
+                        <span>Калькулятор</span>
+                    </button>
+                    <button class="quick-btn glass urgent" data-action="urgent">
+                        <span class="icon">🚨</span>
+                        <span>Срочно за 2 часа</span>
+                    </button>
+                    <button class="quick-btn glass" data-action="marketplace">
+                        <span class="icon">📦</span>
+                        <span>На маркетплейс</span>
+                    </button>
+                    <button class="quick-btn glass" data-action="remote">
+                        <span class="icon">🏢</span>
+                        <span>Удаленный отдел</span>
+                    </button>
+                </div>
+                
+                <!-- Trust Bar -->
+                <div class="trust-bar glass" data-aos="fade-up" data-aos-delay="400">
+                    <div class="trust-item">
+                        <div class="trust-icon">🛡️</div>
+                        <div class="trust-text">
+                            <strong>Застрахованы</strong>
+                            <small>на 10 млн ₽</small>
+                        </div>
+                    </div>
+                    
+                    <div class="trust-item">
+                        <div class="trust-icon">⏱️</div>
+                        <div class="trust-text">
+                            <strong>99.3%</strong>
+                            <small>вовремя</small>
+                        </div>
+                    </div>
+                    
+                    <div class="trust-item">
+                        <div class="trust-icon">🏆</div>
+                        <div class="trust-text">
+                            <strong>12 лет</strong>
+                            <small>на рынке</small>
+                        </div>
+                    </div>
+                    
+                    <div class="trust-item live">
+                        <div class="trust-icon">🚛</div>
+                        <div class="trust-text">
+                            <strong class="live-counter" id="trucksCount">247</strong>
+                            <small>машин в пути</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Animated Background -->
+        <div class="hero-bg">
+            <div class="floating-truck">🚛</div>
+            <div class="road-lines"></div>
+            <div class="particles" id="particles"></div>
+        </div>
+    </section>
+
+    <!-- AI Calculator Section -->
+    <section class="calculator-section" id="calculator">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title gradient-text">AI Калькулятор 3.0</h2>
+                <p class="section-subtitle">Рассчитайте стоимость голосом, текстом или фото</p>
+            </div>
+            
+            <div class="calculator-ai glass">
+                <!-- AI Assistant -->
+                <div class="ai-assistant">
+                    <div class="ai-avatar">
+                        <img src="img/ai-avatar.svg" alt="AI помощник">
+                    </div>
+                    <div class="ai-message" id="aiMessage">
+                        <p>Привет! Я помогу рассчитать стоимость перевозки. Расскажите о грузе или загрузите фото 📸</p>
+                    </div>
+                </div>
+                
+                <!-- Photo Upload -->
+                <div class="photo-upload-zone" id="photoUploadZone">
+                    <input type="file" id="cargo-photo" accept="image/*" hidden>
+                    <label for="cargo-photo" class="upload-label">
+                        <div class="upload-icon">📷</div>
+                        <p>Сфотографируйте груз</p>
+                        <small>AI определит размеры и тип</small>
+                    </label>
+                    <div class="upload-preview" id="uploadPreview" style="display: none;">
+                        <img id="previewImage" alt="Preview">
+                        <div class="ai-analysis" id="aiAnalysis">
+                            <div class="analysis-loader">
+                                <span></span><span></span><span></span>
+                            </div>
+                            <p>Анализирую изображение...</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Voice or Type Switch -->
+                <div class="input-switch">
+                    <button class="switch-btn active" data-mode="voice" onclick="switchInputMode('voice')">
+                        🎤 Голосом
+                    </button>
+                    <button class="switch-btn" data-mode="type" onclick="switchInputMode('type')">
+                        ⌨️ Текстом
+                    </button>
+                    <button class="switch-btn" data-mode="form" onclick="switchInputMode('form')">
+                        📝 Форма
+                    </button>
+                </div>
+                
+                <!-- Voice Input Mode -->
+                <div class="input-mode" id="voiceMode">
+                    <button class="big-voice-btn glass" onclick="startCalculatorVoice()">
+                        <div class="voice-waves">
+                            <span></span><span></span><span></span><span></span><span></span>
+                        </div>
+                        <span class="voice-text">Нажмите и говорите</span>
+                    </button>
+                </div>
+                
+                <!-- Text Input Mode -->
+                <div class="input-mode" id="textMode" style="display: none;">
+                    <div class="chat-input glass">
+                        <textarea 
+                            id="calcTextInput" 
+                            placeholder="Например: Нужно перевезти холодильник и стиральную машину из Москвы в Санкт-Петербург"
+                            rows="3"
+                        ></textarea>
+                        <button class="chat-send-btn" onclick="processCalculatorText()">
+                            Рассчитать →
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Traditional Form (hidden by default) -->
+                <div class="input-mode" id="formMode" style="display: none;">
+                    <form class="calc-form" id="calculatorForm">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label>Откуда</label>
+                                <input type="text" id="fromCity" placeholder="Город отправления" list="cities-list">
+                            </div>
+                            <div class="form-group">
+                                <label>Куда</label>
+                                <input type="text" id="toCity" placeholder="Город назначения" list="cities-list">
+                            </div>
+                            <div class="form-group">
+                                <label>Вес (кг)</label>
+                                <input type="number" id="weight" placeholder="100" min="1">
+                            </div>
+                            <div class="form-group">
+                                <label>Объем (м³)</label>
+                                <input type="number" id="volume" placeholder="0.5" min="0.1" step="0.1">
+                            </div>
+                        </div>
+                        <button type="submit" class="calc-submit-btn gradient">
+                            Рассчитать стоимость
+                        </button>
+                    </form>
+                </div>
+                
+                <!-- Results -->
+                <div class="calc-results" id="calcResults" style="display: none;">
+                    <div class="results-grid">
+                        <div class="price-card neumorphic recommended">
+                            <div class="recommended-badge">Рекомендуем</div>
+                            <div class="transport-icon">🚐</div>
+                            <h3 class="transport-name">Газель</h3>
+                            <div class="price-value">15,000₽</div>
+                            <div class="price-details">
+                                <span>🚛 до 1.5 тонн</span>
+                                <span>📏 до 16 м³</span>
+                                <span>⏱️ Завтра</span>
+                            </div>
+                            <ul class="price-features">
+                                <li>✓ Страховка груза</li>
+                                <li>✓ Грузчики включены</li>
+                                <li>✓ Отслеживание 24/7</li>
+                            </ul>
+                            <button class="order-btn gradient" onclick="orderTransport('gazelle')">
+                                Заказать Газель
+                            </button>
+                        </div>
+                        
+                        <div class="price-card neumorphic">
+                            <div class="transport-icon">🚛</div>
+                            <h3 class="transport-name">3-тонник</h3>
+                            <div class="price-value">22,000₽</div>
+                            <div class="price-details">
+                                <span>🚛 до 3 тонн</span>
+                                <span>📏 до 18 м³</span>
+                                <span>⏱️ Завтра</span>
+                            </div>
+                            <button class="order-btn outline" onclick="orderTransport('3ton')">
+                                Выбрать
+                            </button>
+                        </div>
+                        
+                        <div class="price-card neumorphic">
+                            <div class="transport-icon">🚚</div>
+                            <h3 class="transport-name">5-тонник</h3>
+                            <div class="price-value">35,000₽</div>
+                            <div class="price-details">
+                                <span>🚛 до 5 тонн</span>
+                                <span>📏 до 36 м³</span>
+                                <span>⏱️ Завтра</span>
+                            </div>
+                            <button class="order-btn outline" onclick="orderTransport('5ton')">
+                                Выбрать
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="route-details glass">
+                        <h4>Детали маршрута</h4>
+                        <div class="route-info">
+                            <div class="route-item">
+                                <span class="route-label">Маршрут:</span>
+                                <span class="route-value" id="routeValue">Москва → Санкт-Петербург</span>
+                            </div>
+                            <div class="route-item">
+                                <span class="route-label">Расстояние:</span>
+                                <span class="route-value" id="distanceValue">700 км</span>
+                            </div>
+                            <div class="route-item">
+                                <span class="route-label">Время в пути:</span>
+                                <span class="route-value" id="timeValue">10-12 часов</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section" id="services">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Три ключевых сервиса</h2>
+                <p class="section-subtitle">Инфраструктурные решения для вашего бизнеса</p>
+            </div>
+            
+            <div class="services-grid">
+                <!-- Remote Logistics Department -->
+                <article class="service-card glass" data-aos="fade-up">
+                    <div class="service-icon floating">🏢</div>
+                    <h3>Удаленный отдел логистики</h3>
+                    <p>Полная замена штатных логистов. Экономия до 4 млн ₽/год</p>
+                    <ul class="service-benefits">
+                        <li>💰 От 15,000₽/месяц</li>
+                        <li>👤 Персональный менеджер</li>
+                        <li>📊 Отчеты и аналитика</li>
+                        <li>🔄 Масштабируемость</li>
+                    </ul>
+                    <div class="service-footer">
+                        <div class="service-price">
+                            <span class="price-label">от</span>
+                            <span class="price-value">15,000₽</span>
+                            <span class="price-period">/мес</span>
+                        </div>
+                        <button class="cta-button gradient" onclick="openServiceModal('remote')">
+                            Подключить →
+                        </button>
+                    </div>
+                </article>
+                
+                <!-- Spot Orders -->
+                <article class="service-card glass urgent" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-badge">🔥 Популярно</div>
+                    <div class="service-icon floating">🚨</div>
+                    <h3>Спот-заявки за 2 часа</h3>
+                    <p>Экстренная подача транспорта. Когда подвел перевозчик</p>
+                    <ul class="service-benefits">
+                        <li>⚡ Подача за 2 часа</li>
+                        <li>🚛 Любой транспорт</li>
+                        <li>💯 Гарантия подачи</li>
+                        <li>📞 Прямая связь</li>
+                    </ul>
+                    <div class="service-footer">
+                        <div class="service-price">
+                            <span class="price-label">наценка</span>
+                            <span class="price-value">+30%</span>
+                            <span class="price-period">к тарифу</span>
+                        </div>
+                        <button class="cta-button gradient urgent" onclick="openUrgentModal()">
+                            Срочно! →
+                        </button>
+                    </div>
+                </article>
+                
+                <!-- Marketplace Delivery -->
+                <article class="service-card glass" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-icon floating">📦</div>
+                    <h3>Доставка на маркетплейсы</h3>
+                    <p>Специальные условия для Wildberries, Ozon, Яндекс.Маркет</p>
+                    <ul class="service-benefits">
+                        <li>🏭 Все склады РФ</li>
+                        <li>⏰ Слоты и окна</li>
+                        <li>📋 Документы</li>
+                        <li>💰 Фикс цены</li>
+                    </ul>
+                    <div class="service-footer">
+                        <div class="service-price">
+                            <span class="price-label">от</span>
+                            <span class="price-value">8,000₽</span>
+                            <span class="price-period">Москва</span>
+                        </div>
+                        <button class="cta-button gradient" onclick="openServiceModal('marketplace')">
+                            Рассчитать →
+                        </button>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Как это работает</h2>
+                <p class="section-subtitle">Логистика без забот за 4 простых шага</p>
+            </div>
+            
+            <div class="steps-timeline">
+                <div class="step" data-aos="fade-right">
+                    <div class="step-number glass">1</div>
+                    <div class="step-content">
+                        <h3>Говорите или пишите</h3>
+                        <p>Скажите AI, что нужно перевезти. Голосом, текстом или фото</p>
+                    </div>
+                </div>
+                
+                <div class="step" data-aos="fade-left" data-aos-delay="100">
+                    <div class="step-number glass">2</div>
+                    <div class="step-content">
+                        <h3>AI рассчитает всё</h3>
+                        <p>Оптимальный транспорт, маршрут и стоимость за секунды</p>
+                    </div>
+                </div>
+                
+                <div class="step" data-aos="fade-right" data-aos-delay="200">
+                    <div class="step-number glass">3</div>
+                    <div class="step-content">
+                        <h3>Подтвердите заказ</h3>
+                        <p>Одним кликом. Персональный менеджер свяжется за 5 минут</p>
+                    </div>
+                </div>
+                
+                <div class="step" data-aos="fade-left" data-aos-delay="300">
+                    <div class="step-number glass">4</div>
+                    <div class="step-content">
+                        <h3>Отслеживайте онлайн</h3>
+                        <p>Real-time трекинг, уведомления и прямая связь с водителем</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Chat Assistant -->
+    <div class="ai-chat-overlay" id="aiChatOverlay">
+        <div class="chat-container glass">
+            <div class="chat-header">
+                <div class="chat-avatar">
+                    <img src="img/ai-avatar.svg" alt="AI">
+                </div>
+                <div class="chat-title">
+                    <h4>AI Логист АвтоГОСТ</h4>
+                    <span class="chat-status">🟢 Онлайн</span>
+                </div>
+                <button class="chat-close" onclick="closeAIChat()">×</button>
+            </div>
+            
+            <div class="chat-messages" id="chatMessages">
+                <div class="chat-message ai">
+                    <p>Привет! Я ваш персональный AI-логист. Чем могу помочь?</p>
+                    <div class="quick-replies">
+                        <button onclick="sendQuickReply('Рассчитать стоимость')">💰 Рассчитать стоимость</button>
+                        <button onclick="sendQuickReply('Срочная доставка')">🚨 Срочная доставка</button>
+                        <button onclick="sendQuickReply('Консультация')">💬 Консультация</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="chat-input-container">
+                <input type="text" id="chatInput" placeholder="Напишите сообщение..." onkeypress="handleChatEnter(event)">
+                <button class="chat-voice-btn" onclick="startChatVoice()">🎤</button>
+                <button class="chat-send-btn" onclick="sendChatMessage()">➤</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Action Buttons -->
+    <div class="floating-actions">
+        <button class="fab gradient pulse" onclick="openAIChat()">
+            <span class="fab-icon">🤖</span>
+            <span class="fab-label">AI помощник</span>
+        </button>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <div class="footer-logo">
+                        <img src="img/logo.svg" alt="АвтоГОСТ">
+                        <span>АвтоГОСТ</span>
+                    </div>
+                    <p class="footer-tagline">Пока вы создаете — мы доставляем</p>
+                    <p class="footer-description">
+                        Невидимая логистическая инфраструктура для вашего бизнеса
+                    </p>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Услуги</h4>
+                    <ul>
+                        <li><a href="#remote">Удаленный отдел логистики</a></li>
+                        <li><a href="#spot">Спот-заявки за 2 часа</a></li>
+                        <li><a href="#marketplace">Доставка на маркетплейсы</a></li>
+                        <li><a href="#calculator">AI Калькулятор</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Компания</h4>
+                    <ul>
+                        <li><a href="about.html">О нас</a></li>
+                        <li><a href="blog.html">Блог</a></li>
+                        <li><a href="contacts.html">Контакты</a></li>
+                        <li><a href="privacy.html">Конфиденциальность</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Контакты</h4>
+                    <div class="footer-contacts">
+                        <a href="tel:+79162720932" class="footer-contact">
+                            <span>📞</span> +7 916 272-09-32
+                        </a>
+                        <a href="https://wa.me/79162720932" class="footer-contact">
+                            <span>💬</span> WhatsApp
+                        </a>
+                        <a href="https://t.me/avtogost77_bot" class="footer-contact">
+                            <span>✈️</span> Telegram
+                        </a>
+                        <a href="mailto:info@avtogost77.ru" class="footer-contact">
+                            <span>📧</span> info@avtogost77.ru
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 АвтоГОСТ. Все права защищены.</p>
+                <p class="footer-tech">Powered by AI • Built with 💙</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/ai-assistant.js"></script>
+    <script src="js/calculator.js"></script>
+    <script src="js/animations.js"></script>
+    
+    <!-- AOS Animations -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            easing: 'ease-out',
+            once: true
+        });
+    </script>
+</body>
+</html>

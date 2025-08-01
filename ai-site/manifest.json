@@ -1,0 +1,96 @@
+{
+  "name": "АвтоГОСТ - AI Логистика",
+  "short_name": "АвтоГОСТ",
+  "description": "Невидимая логистическая инфраструктура для вашего бизнеса. AI-powered грузоперевозки.",
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#2c5aa0",
+  "background_color": "#ffffff",
+  "orientation": "portrait-primary",
+  "lang": "ru",
+  "dir": "ltr",
+  "categories": ["business", "logistics", "transportation"],
+  "iarc_rating_id": "e84b0d4a-5f2b-4a3c-9c5d-8e1f2b3a4c5d",
+  "icons": [
+    {
+      "src": "img/icon-72x72.png",
+      "sizes": "72x72",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "img/icon-96x96.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "img/icon-128x128.png",
+      "sizes": "128x128",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "img/icon-144x144.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "img/icon-152x152.png",
+      "sizes": "152x152",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "img/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "img/icon-384x384.png",
+      "sizes": "384x384",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "img/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "img/screenshot-1.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "label": "AI Калькулятор грузоперевозок"
+    },
+    {
+      "src": "img/screenshot-2.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "label": "Голосовой ввод и AI чат"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Рассчитать стоимость",
+      "short_name": "Калькулятор",
+      "description": "AI калькулятор грузоперевозок",
+      "url": "/#calculator",
+      "icons": [{ "src": "img/icon-96x96.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "Срочная доставка",
+      "short_name": "Срочно",
+      "description": "Подача транспорта за 2 часа",
+      "url": "/?urgent=true",
+      "icons": [{ "src": "img/icon-96x96.png", "sizes": "96x96" }]
+    }
+  ],
+  "prefer_related_applications": false,
+  "related_applications": []
+}
