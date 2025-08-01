@@ -309,17 +309,11 @@ class SmartCalculatorV2 {
   // ИНИЦИАЛИЗАЦИЯ UI
   init() {
     // Проверяем наличие элементов
-    const form = document.getElementById('smart-calc-form');
+    const form = document.getElementById('calculatorForm');
     if (!form) {
       console.log('Калькулятор не найден на странице');
       return;
     }
-
-    // Вешаем обработчики
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      this.handleCalculation();
-    });
 
     // Автозаполнение для демо
     this.setupAutocomplete();
@@ -330,11 +324,11 @@ class SmartCalculatorV2 {
   // Обработка расчета
   handleCalculation() {
     // Собираем данные
-    const fromCity = document.getElementById('from-city')?.value || '';
-    const toCity = document.getElementById('to-city')?.value || '';
+    const fromCity = document.getElementById('fromCity')?.value || '';
+    const toCity = document.getElementById('toCity')?.value || '';
     const weight = parseFloat(document.getElementById('weight')?.value || 0);
     const volume = parseFloat(document.getElementById('volume')?.value || 0);
-    const cargoType = document.getElementById('cargo-type')?.value || 'general';
+    const transport = document.getElementById('transport')?.value || 'gazelle';
 
     // Валидация
     if (!fromCity || !toCity || !weight) {
@@ -349,7 +343,7 @@ class SmartCalculatorV2 {
     }
 
     // Расчет
-    const result = this.calculatePrice(fromCity, toCity, weight, volume, cargoType);
+    const result = this.calculatePrice(fromCity, toCity, weight, volume, 'general');
 
     // Показываем результат
     this.showResult(result);
@@ -357,7 +351,7 @@ class SmartCalculatorV2 {
 
   // Отображение результата
   showResult(result) {
-    const resultDiv = document.getElementById('calc-result') || this.createResultDiv();
+    const resultDiv = document.getElementById('calculatorResult') || this.createResultDiv();
     
     if (result.error) {
       resultDiv.innerHTML = `
@@ -421,11 +415,13 @@ class SmartCalculatorV2 {
   // Создание div для результата
   createResultDiv() {
     const div = document.createElement('div');
-    div.id = 'calc-result';
-    div.className = 'calc-result-container';
+    div.id = 'calculatorResult';
+    div.className = 'calculator-result';
     
-    const form = document.getElementById('smart-calc-form');
-    form.parentNode.insertBefore(div, form.nextSibling);
+    const form = document.getElementById('calculatorForm');
+    if (form) {
+      form.parentNode.insertBefore(div, form.nextSibling);
+    }
     
     return div;
   }
@@ -583,8 +579,8 @@ class SmartCalculatorV2 {
       document.body.appendChild(datalist);
 
       // Привязываем к инпутам
-      document.getElementById('from-city')?.setAttribute('list', 'cities-list');
-      document.getElementById('to-city')?.setAttribute('list', 'cities-list');
+      document.getElementById('fromCity')?.setAttribute('list', 'cities-list');
+      document.getElementById('toCity')?.setAttribute('list', 'cities-list');
     } else {
       // Fallback на старую базу если cities-simple.js не загружен
       const cities = [
@@ -602,8 +598,8 @@ class SmartCalculatorV2 {
       });
       document.body.appendChild(datalist);
 
-      document.getElementById('from-city')?.setAttribute('list', 'cities-list');
-      document.getElementById('to-city')?.setAttribute('list', 'cities-list');
+      document.getElementById('fromCity')?.setAttribute('list', 'cities-list');
+      document.getElementById('toCity')?.setAttribute('list', 'cities-list');
     }
   }
 }
