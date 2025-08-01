@@ -6,11 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Удаленный отдел логистики | Спот-заявки | Доставка на маркетплейсы</title>
   <meta name="description" content="Удаленный отдел логистики для малого и среднего бизнеса. Спот-заявки день-в-день. Доставка на Wildberries, Ozon. Грузоперевозки от газели до фуры без складов экспедиторов." />
-  <!-- ЕДИНЫЕ СТИЛИ ДЛЯ ВСЕХ СТРАНИЦ -->
-  <link rel="stylesheet" href="assets/css/emergency-mobile-fix.css">
-  <link rel="stylesheet" href="assets/css/main.css">
-    <link rel="stylesheet" href="assets/css/urgent-fixes.css">
-  <link rel="stylesheet" href="assets/css/mobile.css">
+    <!-- ЕДИНЫЕ СТИЛИ ДЛЯ ВСЕХ СТРАНИЦ -->
   <link rel="stylesheet" href="assets/css/styles.css" />
   
   <!-- Bootstrap Icons -->
@@ -18,26 +14,54 @@
   <!-- AOS scroll animations -->
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
   
-  <!-- DADATA API CONFIGURATION -->
-  <script src="dadata-config.js"></script>
+
   <link rel="icon" type="image/png" href="assets/img/favicon.png" />
+  
+  <!-- PWA метатеги -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#2c5aa0">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="АвтоГОСТ">
+  <link rel="apple-touch-icon" href="assets/img/icon-192x192.svg">
+  <link rel="apple-touch-icon" sizes="72x72" href="assets/img/icon-72x72.svg">
+  <link rel="apple-touch-icon" sizes="96x96" href="assets/img/icon-96x96.svg">
+  <link rel="apple-touch-icon" sizes="128x128" href="assets/img/icon-128x128.svg">
+  <link rel="apple-touch-icon" sizes="144x144" href="assets/img/icon-144x144.svg">
+  <link rel="apple-touch-icon" sizes="152x152" href="assets/img/icon-152x152.svg">
+  <link rel="apple-touch-icon" sizes="192x192" href="assets/img/icon-192x192.svg">
+  <link rel="apple-touch-icon" sizes="384x384" href="assets/img/icon-384x384.svg">
+  <link rel="apple-touch-icon" sizes="512x512" href="assets/img/icon-512x512.svg">
+  <meta name="msapplication-TileColor" content="#2c5aa0">
+  <meta name="msapplication-TileImage" content="assets/img/icon-144x144.svg">
+  <meta name="msapplication-config" content="browserconfig.xml">
+  
+  <  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EMQ3D0X8K7"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-EMQ3D0X8K7');
+  </script>
+  
   <!-- Yandex.Metrika counter -->
   <script type="text/javascript" >
-     (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-     m[i].l=1*new Date();
-     for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-     k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
-     (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+   m[i].l=1*new Date();
+   for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+   k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+   (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
 
-     ym(103413788, "init", {
-          clickmap:true,
-          trackLinks:true,
-          accurateTrackBounce:true,
-          webvisor:true
-     });
+   ym(103413788, "init", {
+        clickmap:true,
+        trackLinks:true,
+        accurateTrackBounce:true,
+        webvisor:true
+   });
   </script>
-  <noscript><div><img src="https://mc.yandex.ru/watch/103413788" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-  <!-- /Yandex.Metrika counter -->
+  <noscript><div><img src="https://mc.yandex.ru/watch/103413788" style="position:absolute; left:-9999px;" alt="" /></div></noscript> <!-- /Yandex.Metrika counter -->
 </head>
 <body>
   <!-- Header include -->
@@ -58,7 +82,7 @@
           </div>
         </li>
         <li><a href="about.html">О нас</a></li>
-        <li><a href="news.html">Новости</a></li>
+
         <li><a href="contact.html">Контакты</a></li>
         <li><a href="faq.html">FAQ</a></li>
       </ul>
@@ -123,6 +147,38 @@
     </div>
   </section>
 
+  <!-- Простая форма заявки -->
+  <section class="contact-form-section" style="background: var(--color-bg); padding: 3rem 0;">
+    <div class="container">
+      <div class="contact-form-wrapper">
+        <h2>Оставить заявку на услуги</h2>
+        <p>Укажите телефон и опишите ваш груз - мы свяжемся в течение 10 минут</p>
+        
+        <form id="contactForm" class="simple-contact-form">
+          <div class="form-group">
+            <label for="phone">Телефон *</label>
+            <input type="tel" id="phone" name="phone" placeholder="+7 (___) ___-__-__" required>
+          </div>
+          
+          <di                    <div class="form-group">
+                      <label for="message">Описание груза *</label>
+                      <textarea id="message" name="message" rows="4" placeholder="Например: доставить 3 паллеты из Москвы в Казань 12 ноября" required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                      <div class="consent-checkbox">
+                        <input type="checkbox" id="privacyConsent" name="privacyConsent" required>
+                        <label for="privacyConsent">
+                          Я согласен(а) с <a href="privacy.html" target="_blank">обработкой персональных данных</a> в соответствии с 152-ФЗ, включая использование cookies и аналитических сервисов Google и Яндекс для персонализации рекламы
+                        </label>
+                      </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" id="contactSubmitBtn" disabled>Отправить заявку</button>       </form>
+      </div>
+    </div>
+  </section>
+
   <!-- Footer include -->
   <footer>
     <div class="container footer-grid">
@@ -131,7 +187,6 @@
         <a href="/">Главная</a><br/>
         <a href="services.html">Услуги</a><br/>
         <a href="about.html">О нас</a><br/>
-        <a href="news.html">Новости</a><br/>
         <a href="contact.html">Контакты</a>
       </div>
       <div>
@@ -151,16 +206,137 @@
     <div class="container text-center mt-2">© 2023 Авто&nbsp;Гост.</div>
   </footer>
 
+  <!-- Стили для простой формы -->
+  <style>
+    .contact-form-section {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+    }
+    
+    .contact-form-wrapper {
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    
+    .contact-form-wrapper h2 {
+      margin-bottom: 1rem;
+      font-size: 2rem;
+    }
+    
+    .contact-form-wrapper p {
+      margin-bottom: 2rem;
+      opacity: 0.9;
+    }
+    
+    .simple-contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    
+    .form-group {
+      text-align: left;
+    }
+    
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+    
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px 16px;
+      border: 2px solid rgba(255,255,255,0.2);
+      border-radius: 8px;
+      background: rgba(255,255,255,0.1);
+      color: white;
+      font-size: 16px;
+      transition: all 0.3s ease;
+    }
+    
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: rgba(255,255,255,0.7);
+    }
+    
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: rgba(255,255,255,0.5);
+      background: rgba(255,255,255,0.15);
+    }
+    
+    .simple-contact-form .btn {
+      margin-top: 1rem;
+      padding: 15px 30px;
+      font-size: 18px;
+      font-weight: 600;
+      background: #10b981;
+      border: none;
+      border-radius: 8px;
+      color: white;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .simple-contact-form .btn:hover {
+      background: #059669;
+      transform: translateY(-2px);
+    }
+    
+    @media (max-width: 768px) {
+      .contact-form-wrapper h2 {
+        font-size: 1.5rem;
+      }
+      
+      .form-group input,
+      .form-group textarea {
+        font-size: 16px; /* Предотвращает зум на iOS */
+      }
+    }
+  </style>
+
   <!-- ЕДИНЫЕ JS МОДУЛИ ДЛЯ ВСЕХ СТРАНИЦ -->
-  <script src="assets/js/emergency-fix.js"></script>
-  <script src="assets/js/fias-integration.js"></script>
+
   <script src="assets/js/form-handler.js"></script>
   <script src="assets/js/main.js"></script>
   
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
   <script>AOS.init({ once:true, duration:600 });</script>
-    <script src="/assets/js/smart-calculator-v2.js"></script>
-    <script src="/assets/js/cities-simple.js"></script>
+    <script src="assets/js/smart-calculator-v2.js?v=107" defer></script>
+    <script src="assets/js/cities-simple.js" defer></script>
+    
+    <!-- Tawk.to Online Chat -->
+    <script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    
+    // Настройки чата от Opus
+    Tawk_API.onLoad = function(){
+        Tawk_API.setAttributes({
+            'name'  : 'Гость',
+            'email' : '',
+            'phone' : ''
+        });
+        
+        // Приветственное сообщение
+        Tawk_API.maximize();
+        setTimeout(() => {
+            Tawk_API.sendMessage('🚛 Добро пожаловать в АвтоГОСТ!\n\nЗдравствуйте! Я готов помочь вам с грузоперевозками по России.\n\n• Рассчитать стоимость доставки\n• Узнать сроки перевозки  \n• Получить консультацию специалиста\n• Оформить заявку\n\nЧто вас интересует?');
+        }, 2000);
+    };
+    
+    (function(){
+        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+        s1.async=true;
+        s1.src='https://embed.tawk.to/64f8a8b5a91e863a5c123456/default';
+        s1.charset='UTF-8';
+        s1.setAttribute('crossorigin','*');
+        s0.parentNode.insertBefore(s1,s0);
+    })();
+    </script>
 
 <!-- Плавающие кнопки -->
 <div class="float-buttons">

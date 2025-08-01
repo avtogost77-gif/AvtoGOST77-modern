@@ -4,18 +4,32 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <meta http-equiv="Pragma" content="no-cache">
     <title>АвтоГОСТ - Грузоперевозки по России 24/7 | Калькулятор стоимости онлайн</title>
     <meta name="description" content="Надежные грузоперевозки по России. ⚡ Подача за 2 часа, калькулятор стоимости онлайн, точные адреса. Работаем 24/7. Обширная сеть партнеров.">
     <meta name="keywords" content="грузоперевозки россия, калькулятор стоимости доставки, заказать грузоперевозку онлайн, автогост, подача 2 часа">
     
+    <!-- PWA метатеги -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#2c5aa0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="АвтоГОСТ">
+    <link rel="apple-touch-icon" href="assets/img/icon-192x192.svg">
+    <link rel="apple-touch-icon" sizes="72x72" href="assets/img/icon-72x72.svg">
+    <link rel="apple-touch-icon" sizes="96x96" href="assets/img/icon-96x96.svg">
+    <link rel="apple-touch-icon" sizes="128x128" href="assets/img/icon-128x128.svg">
+    <link rel="apple-touch-icon" sizes="144x144" href="assets/img/icon-144x144.svg">
+    <link rel="apple-touch-icon" sizes="152x152" href="assets/img/icon-152x152.svg">
+    <link rel="apple-touch-icon" sizes="192x192" href="assets/img/icon-192x192.svg">
+    <link rel="apple-touch-icon" sizes="384x384" href="assets/img/icon-384x384.svg">
+    <link rel="apple-touch-icon" sizes="512x512" href="assets/img/icon-512x512.svg">
+    <meta name="msapplication-TileColor" content="#2c5aa0">
+    <meta name="msapplication-TileImage" content="assets/img/icon-144x144.svg">
+    <meta name="msapplication-config" content="browserconfig.xml">
+    
     <!-- ПРОВЕРЕННЫЕ СТИЛИ -->
     <link rel="stylesheet" href="assets/css/styles.css?v=106">
-    <link rel="stylesheet" href="assets/css/main.css">
-    <link rel="stylesheet" href="assets/css/urgent-fixes.css">
-    <link rel="stylesheet" href="assets/css/mobile.css">
-    <link rel="stylesheet" href="assets/css/hero-fix.css?v=105">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
     
     <!-- AOS анимации -->
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
@@ -32,45 +46,9 @@
     <meta name="yandex-verification" content="376fdf2ca69f9a1f" />
     
     <!-- analytics scripts moved to footer include -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-        <link rel="stylesheet" href="assets/css/new-header.css">
-    <link rel="stylesheet" href="assets/css/simple-fixes.css">
 </head>
 <body>
-    <!-- НОВЫЙ КРАСИВЫЙ ХЕДЕР -->
-    <header class="new-header" id="newHeader">
-        <div class="new-header-content">
-            <!-- Логотип -->
-            <a href="/" class="new-logo">
-                <img src="assets/img/icon.svg" alt="АвтоГОСТ">
-                <span>АвтоГОСТ</span>
-            </a>
-            
-            <!-- Центральное меню -->
-            <nav class="new-nav">
-                <a href="#calculator" class="new-nav-link">Калькулятор</a>
-                <a href="#about" class="new-nav-link">О компании</a>
-                <a href="services.html" class="new-nav-link">Услуги</a>
-                <a href="contact.html" class="new-nav-link">Контакты</a>
-            </nav>
-            
-            <!-- Правая часть -->
-            <div class="new-header-right">
-                <a href="tel:+79162720932" class="new-phone">
-                    <i class="fas fa-phone"></i>
-                    <span>+7 916 272-09-32</span>
-                </a>
-                <a href="#calculator" class="new-header-btn">
-                    Рассчитать стоимость
-                </a>
-                <button class="mobile-menu-toggle">
-                    <i class="fas fa-bars"></i>
-                </button>
-            </div>
-        </div>
-    </header>
-
-    <!-- Старый заголовок (скрыт через CSS) -->
+    <!-- Заголовок -->
     <header class="header" id="header">
         <div class="container">
             <div class="header-content">
@@ -134,7 +112,7 @@
                         <span class="sticky-phone-text">+7 (916) 272-09-32</span>
                     </a>
                     <button class="btn btn-primary btn-sm" onclick="showExitPopup()">
-                        Получить скидку 10%
+                        🎁 Скидка 10%
                     </button>
                 </div>
             </div>
@@ -237,7 +215,7 @@
                 </div>
                 
                 <div class="form-actions">
-                    <button type="submit" class="btn btn-primary btn-lg">
+                    <button type="button" class="btn btn-primary btn-lg" onclick="smartCalculatorV2.handleCalculation()">
                         <span class="btn-text">Рассчитать стоимость</span>
                         <span class="btn-loading" style="display: none;">Рассчитываем...</span>
                     </button>
@@ -276,10 +254,32 @@
                             <label for="leadComment">Дополнительная информация</label>
                             <textarea id="leadComment" name="comment" placeholder="Особенности груза, срочность, особые требования"></textarea>
                         </div>
+                        
+                        <div class="form-group">
+                            <div class="consent-checkbox">
+                                <input type="checkbox" id="privacyConsent" name="privacyConsent" required>
+                                <label for="privacyConsent">
+                                    Я согласен(а) с <a href="privacy.html" target="_blank">обработкой персональных данных</a> в соответствии с 152-ФЗ, включая использование cookies и аналитических сервисов Google и Яндекс для персонализации рекламы
+                                </label>
+                            </div>
+                        </div>
                     </div>
                     
                     <div class="form-actions">
-                        <button type="submit" class="btn btn-primary btn-lg">
+                        <div class="promo-section">
+                            <div class="promo-timer" id="promoTimer">
+                                <div class="timer-label">⏰ Специальное предложение истекает через:</div>
+                                <div class="timer-display">
+                                    <span id="timerMinutes">15</span>:<span id="timerSeconds">00</span>
+                                </div>
+                                <div class="promo-code">
+                                    <span class="promo-label">Промокод:</span>
+                                    <span class="promo-value" id="promoCode">GOST10</span>
+                                    <span class="promo-discount">-10%</span>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-lg" id="leadSubmitBtn" disabled>
                             <span class="btn-text">Отправить заявку</span>
                             <span class="btn-loading" style="display: none;">Отправляем...</span>
                         </button>
@@ -384,7 +384,7 @@
                 <h4>Получите скидку 10% на первую перевозку!</h4>
                 <p>Оставьте заявку прямо сейчас и получите персональное предложение от нашего менеджера</p>
                 
-                <form id="exitLeadForm" class="exit-lead-form" onsubmit="submitExitIntentForm(event)">
+                <form id="exitLeadForm" class="exit-lead-form">
                     <div class="form-group">
                         <input type="text" name="name" placeholder="Ваше имя" required>
                     </div>
@@ -444,7 +444,7 @@
                             <li><a href="contact.html">Контакты</a></li>
                             <li><a href="privacy.html">Конфиденциальность</a></li>
                             <li><a href="services.html">Услуги</a></li>
-                            <li><a href="news.html">Новости</a></li>
+
                         </ul>
                     </div>
                     
@@ -476,42 +476,76 @@
     <!-- ПРОВЕРЕННЫЕ JS МОДУЛИ -->
     <script src="assets/js/cities-simple.js" defer></script>
     <script src="assets/js/form-handler.js"></script>
-    <!-- MAIN.JS ПОЛНОСТЬЮ УДАЛЕН - КОНФЛИКТУЕТ С SMART-CALCULATOR-V2 -->
-    <script src="assets/js/smart-calculator-v2.js?v=108" defer></script>
+    <script src="assets/js/main.js?v=106" defer></script>
+    <script src="assets/js/smart-calculator-v2.js?v=107" defer></script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-EMQ3D0X8K7"></script>
-
-
-
-
-<!-- PWA Service Worker Registration -->
-<script src="assets/js/telegram-sender.js"></script>
-</body>
-
-<!-- Tawk.to Chat -->
-<script type="text/javascript">
-var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-(function(){
-    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-    s1.async=true;
-    s1.src='https://embed.tawk.to/688b871ce01f2c192b0258c5/1j1ggfhpf';
-    s1.charset='UTF-8';
-    s1.setAttribute('crossorigin','*');
-    s0.parentNode.insertBefore(s1,s0);
-})();
-</script>
-
-<!-- PWA Service Worker -->
-<script>
-if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/sw.js').then((reg) => {
-            console.log('SW registered:', reg);
-        }).catch((err) => {
-            console.log('SW registration failed:', err);
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}  
+        gtag('js', new Date());
+        gtag('config', 'G-EMQ3D0X8K7');
+    </script>
+    <!-- Yandex.Metrika -->
+    <script type="text/javascript" >
+      (function(m,e,t,r,i,k,a){ m[i]=m[i]||function(){ (m[i].a=m[i].a||[]).push(arguments)};
+      m[i].l=1*new Date(); k=e.createElement(t), a=e.getElementsByTagName(t)[0]; k.async=1; k.src=r; a.parentNode.insertBefore(k,a)})
+      (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+                       ym(103413788, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true });
+    </script>
+          <noscript><div><img src="https://mc.yandex.ru/watch/103413788" style="position:absolute; left:-9999px;" alt="yandex metrika pixel" /></div></noscript>
+    <!-- /Yandex.Metrika -->
+    
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        // Инициализация AOS анимаций
+        AOS.init({
+            once: true,
+            duration: 600
         });
-    });
-}
-</script>
-
+    </script>
+    
+    <!-- Tawk.to Online Chat -->
+    <script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    
+    // Настройки чата от Opus
+    Tawk_API.onLoad = function(){
+        Tawk_API.setAttributes({
+            'name'  : 'Гость',
+            'email' : '',
+            'phone' : ''
+        });
+        
+        // Приветственное сообщение
+        Tawk_API.maximize();
+        setTimeout(() => {
+            Tawk_API.sendMessage('🚛 Добро пожаловать в АвтоГОСТ!\n\nЗдравствуйте! Я готов помочь вам с грузоперевозками по России.\n\n• Рассчитать стоимость доставки\n• Узнать сроки перевозки  \n• Получить консультацию специалиста\n• Оформить заявку\n\nЧто вас интересует?');
+        }, 2000);
+    };
+    
+    (function(){
+        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+        s1.async=true;
+        s1.src='https://embed.tawk.to/64f8a8b5a91e863a5c123456/default';
+        s1.charset='UTF-8';
+        s1.setAttribute('crossorigin','*');
+        s0.parentNode.insertBefore(s1,s0);
+    })();
+    </script>
+    
+    <!-- PWA Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then((registration) => {
+                        console.log('SW registered: ', registration);
+                    })
+                    .catch((registrationError) => {
+                        console.log('SW registration failed: ', registrationError);
+                    });
+            });
+        }
+    </script>
 </body>
 </html>

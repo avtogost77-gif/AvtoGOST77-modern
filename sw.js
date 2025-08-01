@@ -19,6 +19,7 @@ const urlsToCache = [
   '/manifest.json'
 ];
 
+// Установка service worker
 self.addEventListener('install', event => {
   event.waitUntil(
     caches.open(CACHE_NAME)
@@ -29,16 +30,19 @@ self.addEventListener('install', event => {
   );
 });
 
+// Перехват запросов
 self.addEventListener('fetch', event => {
   event.respondWith(
     caches.match(event.request)
       .then(response => {
+        // Возвращаем кэшированный ответ или делаем сетевой запрос
         return response || fetch(event.request);
       }
     )
   );
 });
 
+// Обновление кэша
 self.addEventListener('activate', event => {
   event.waitUntil(
     caches.keys().then(cacheNames => {

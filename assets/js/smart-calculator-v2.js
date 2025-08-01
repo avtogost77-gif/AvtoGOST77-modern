@@ -170,9 +170,9 @@ class SmartCalculatorV2 {
       details: {
         weight,
         volume,
-        density: Math.round(weight / volume),
+        density: volume && volume > 0 ? Math.round(weight / volume) : 0,
         loadPercent: Math.round((weight / transport.maxWeight) * 100),
-        volumePercent: Math.round((volume / transport.maxVolume) * 100)
+        volumePercent: volume && volume > 0 ? Math.round((volume / transport.maxVolume) * 100) : 0
       }
     };
   }
@@ -188,18 +188,21 @@ class SmartCalculatorV2 {
 
   // Выбор оптимального транспорта
   selectOptimalTransport(weight, volume) {
-    // Считаем плотность груза
-    const density = weight / volume;
-
     // Сортируем транспорт по вместимости для правильного выбора
     const sortedTransports = Object.values(this.transportTypes)
       .sort((a, b) => a.maxWeight - b.maxWeight);
     
     for (const transport of sortedTransports) {
-      // Проверяем и по весу, и по объему
-      if (weight <= transport.maxWeight && volume <= transport.maxVolume) {
-        // Дополнительная проверка по плотности
-        if (density <= transport.density * 1.2) {  // даем 20% запас
+      // Проверяем по весу (обязательно)
+      if (weight <= transport.maxWeight) {
+        // Если объем указан, проверяем и его
+        if (volume && volume > 0) {
+          const density = weight / volume;
+          if (volume <= transport.maxVolume && density <= transport.density * 1.2) {
+            return transport;
+          }
+        } else {
+          // Если объем не указан, выбираем по весу
           return transport;
         }
       }
@@ -210,14 +213,24 @@ class SmartCalculatorV2 {
   // Коэффициент загрузки
   calculateLoadFactor(weight, volume, transport) {
     const weightUsage = weight / transport.maxWeight;
-    const volumeUsage = volume / transport.maxVolume;
-    const maxUsage = Math.max(weightUsage, volumeUsage);
-
-    // Чем меньше загрузка, тем дороже
-    if (maxUsage < 0.3) return 1.5;   // менее 30% - дорого
-    if (maxUsage < 0.5) return 1.3;   // менее 50%
-    if (maxUsage < 0.7) return 1.1;   // менее 70%
-    return 1.0;  // более 70% - базовая цена
+    
+    // Если объем указан, учитываем его
+    if (volume && volume > 0) {
+      const volumeUsage = volume / transport.maxVolume;
+      const maxUsage = Math.max(weightUsage, volumeUsage);
+      
+      // Чем меньше загрузка, тем дороже
+      if (maxUsage < 0.3) return 1.5;   // менее 30% - дорого
+      if (maxUsage < 0.5) return 1.3;   // менее 50%
+      if (maxUsage < 0.7) return 1.1;   // менее 70%
+      return 1.0;  // более 70% - базовая цена
+    } else {
+      // Если объем не указан, считаем только по весу
+      if (weightUsage < 0.3) return 1.4;   // менее 30% - дорого
+      if (weightUsage < 0.5) return 1.2;   // менее 50%
+      if (weightUsage < 0.7) return 1.05;  // менее 70%
+      return 1.0;  // более 70% - базовая цена
+    }
   }
 
   // Коэффициент популярности маршрута
@@ -296,17 +309,11 @@ class SmartCalculatorV2 {
   // ИНИЦИАЛИЗАЦИЯ UI
   init() {
     // Проверяем наличие элементов
-    const form = document.getElementById('smart-calc-form');
+    const form = document.getElementById('calculatorForm');
     if (!form) {
       console.log('Калькулятор не найден на странице');
       return;
     }
-
-    // Вешаем обработчики
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      this.handleCalculation();
-    });
 
     // Автозаполнение для демо
     this.setupAutocomplete();
@@ -317,20 +324,26 @@ class SmartCalculatorV2 {
   // Обработка расчета
   handleCalculation() {
     // Собираем данные
-    const fromCity = document.getElementById('from-city')?.value || '';
-    const toCity = document.getElementById('to-city')?.value || '';
+    const fromCity = document.getElementById('fromCity')?.value || '';
+    const toCity = document.getElementById('toCity')?.value || '';
     const weight = parseFloat(document.getElementById('weight')?.value || 0);
     const volume = parseFloat(document.getElementById('volume')?.value || 0);
-    const cargoType = document.getElementById('cargo-type')?.value || 'general';
+    const transport = document.getElementById('transport')?.value || 'gazelle';
 
     // Валидация
-    if (!fromCity || !toCity || !weight || !volume) {
-      alert('Заполните все поля!');
+    if (!fromCity || !toCity || !weight) {
+      alert('Заполните города и вес груза!');
+      return;
+    }
+    
+    // Объем не обязательный, но учитывается если заполнен
+    if (volume && volume <= 0) {
+      alert('Объем должен быть больше 0!');
       return;
     }
 
     // Расчет
-    const result = this.calculatePrice(fromCity, toCity, weight, volume, cargoType);
+    const result = this.calculatePrice(fromCity, toCity, weight, volume, 'general');
 
     // Показываем результат
     this.showResult(result);
@@ -338,7 +351,7 @@ class SmartCalculatorV2 {
 
   // Отображение результата
   showResult(result) {
-    const resultDiv = document.getElementById('calc-result') || this.createResultDiv();
+    const resultDiv = document.getElementById('calculatorResult') || this.createResultDiv();
     
     if (result.error) {
       resultDiv.innerHTML = `
@@ -371,8 +384,11 @@ class SmartCalculatorV2 {
             <h4>Параметры груза:</h4>
             <ul>
               <li>Вес: ${result.details.weight} кг (${result.details.loadPercent}% загрузки)</li>
-              <li>Объем: ${result.details.volume} м³ (${result.details.volumePercent}% загрузки)</li>
-              <li>Плотность: ${result.details.density} кг/м³</li>
+              ${result.details.volume ? 
+                `<li>Объем: ${result.details.volume} м³ (${result.details.volumePercent}% загрузки)</li>
+                 <li>Плотность: ${result.details.density} кг/м³</li>` : 
+                '<li>Объем: не указан</li>'
+              }
             </ul>
           </div>
 
@@ -399,11 +415,13 @@ class SmartCalculatorV2 {
   // Создание div для результата
   createResultDiv() {
     const div = document.createElement('div');
-    div.id = 'calc-result';
-    div.className = 'calc-result-container';
+    div.id = 'calculatorResult';
+    div.className = 'calculator-result';
     
-    const form = document.getElementById('smart-calc-form');
-    form.parentNode.insertBefore(div, form.nextSibling);
+    const form = document.getElementById('calculatorForm');
+    if (form) {
+      form.parentNode.insertBefore(div, form.nextSibling);
+    }
     
     return div;
   }
@@ -489,8 +507,15 @@ class SmartCalculatorV2 {
       return window.sendToTelegram(data, 'calculator');
     }
     
-    // Если telegram-sender.js не загружен, логируем ошибку
-    console.error('telegram-sender.js не загружен! Проверьте подключение скрипта.');
+    // Интеграция с father_bot.py через Telegram
+    const promoCode = document.getElementById('promoCode')?.textContent || 'GOST10';
+    const message = `🎯 Новая заявка с калькулятора:\n\n👤 Имя: ${data.name}\n📞 Телефон: ${data.phone}\n📧 Email: ${data.email}\n💬 Комментарий: ${data.comment}\n🎁 Промокод: ${promoCode}\n⏰ Источник: форма лидов`;
+    
+    // Отправляем в father_bot для обработки менеджером
+    window.open(`https://t.me/father_bot?start=${encodeURIComponent(message)}`, '_blank');
+    
+    // Логируем только статус (без данных)
+    console.log('✅ Заявка с калькулятора отправлена в Telegram');
     
     return Promise.resolve();
   }
@@ -541,26 +566,41 @@ class SmartCalculatorV2 {
 
   // Автозаполнение городов
   setupAutocomplete() {
-    // Список популярных городов
-    const cities = [
-      'Москва', 'Санкт-Петербург', 'Нижний Новгород', 'Екатеринбург',
-      'Новосибирск', 'Казань', 'Челябинск', 'Самара', 'Омск',
-      'Ростов-на-Дону', 'Уфа', 'Красноярск', 'Воронеж', 'Пермь'
-    ];
+    // Используем новую базу городов из cities-simple.js
+    if (typeof POPULAR_CITIES !== 'undefined') {
+      // Добавляем datalist с полной базой
+      const datalist = document.createElement('datalist');
+      datalist.id = 'cities-list';
+      POPULAR_CITIES.forEach(city => {
+        const option = document.createElement('option');
+        option.value = city;
+        datalist.appendChild(option);
+      });
+      document.body.appendChild(datalist);
 
-    // Добавляем datalist
-    const datalist = document.createElement('datalist');
-    datalist.id = 'cities-list';
-    cities.forEach(city => {
-      const option = document.createElement('option');
-      option.value = city;
-      datalist.appendChild(option);
-    });
-    document.body.appendChild(datalist);
+      // Привязываем к инпутам
+      document.getElementById('fromCity')?.setAttribute('list', 'cities-list');
+      document.getElementById('toCity')?.setAttribute('list', 'cities-list');
+    } else {
+      // Fallback на старую базу если cities-simple.js не загружен
+      const cities = [
+        'Москва', 'Санкт-Петербург', 'Нижний Новгород', 'Екатеринбург',
+        'Новосибирск', 'Казань', 'Челябинск', 'Самара', 'Омск',
+        'Ростов-на-Дону', 'Уфа', 'Красноярск', 'Воронеж', 'Пермь'
+      ];
 
-    // Привязываем к инпутам
-    document.getElementById('from-city')?.setAttribute('list', 'cities-list');
-    document.getElementById('to-city')?.setAttribute('list', 'cities-list');
+      const datalist = document.createElement('datalist');
+      datalist.id = 'cities-list';
+      cities.forEach(city => {
+        const option = document.createElement('option');
+        option.value = city;
+        datalist.appendChild(option);
+      });
+      document.body.appendChild(datalist);
+
+      document.getElementById('fromCity')?.setAttribute('list', 'cities-list');
+      document.getElementById('toCity')?.setAttribute('list', 'cities-list');
+    }
   }
 }
 
@@ -570,6 +610,18 @@ document.addEventListener('DOMContentLoaded', () => {
   
   // Инициализация Exit-Intent Pop-up
   initExitIntentPopup();
+  
+  // Инициализация Sticky Header
+  initStickyHeader();
+  
+  // Инициализация промокода и таймера
+  initPromoTimer();
+  
+  // Запускаем обновление таймера
+  updatePromoTimer();
+  
+  // Инициализация валидации согласия на обработку ПД
+  initPrivacyConsent();
 });
 
 // Exit-Intent Pop-up логика
@@ -674,8 +726,27 @@ async function sendExitLeadData(data) {
     return window.sendToTelegram(data, 'exitIntent');
   }
   
-  // Если telegram-sender.js не загружен, логируем ошибку
-  console.error('telegram-sender.js не загружен! Проверьте подключение скрипта.');
+  // Если telegram-sender.js не загружен, отправляем напрямую
+  try {
+    const botToken = '7999458907:AAGOAjQLmEZuT4SFx4Upl1GjuXO0yFuWok8';
+    const chatId = '399711407';
+    
+    const message = `🎁 Новая заявка с exit-intent:\n\n👤 Имя: ${data.name}\n📞 Телефон: ${data.phone}\n📧 Email: ${data.email}\n🎁 Промокод: ${data.promoCode}\n⏰ Источник: ${data.source}`;
+    
+    const response = await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ chat_id: chatId, text: message })
+    });
+    
+    if (response.ok) {
+      console.log('✅ Exit-intent заявка отправлена');
+      return Promise.resolve();
+    }
+  } catch (error) {
+    console.error('❌ Ошибка отправки exit-intent заявки');
+  }
+  
   return Promise.resolve();
 }
 
@@ -728,35 +799,112 @@ if (typeof module !== 'undefined' && module.exports) {
   module.exports = SmartCalculatorV2;
 }
 
-// Инициализация при загрузке страницы
-document.addEventListener('DOMContentLoaded', function() {
-  // Проверяем наличие калькулятора на странице
-  const calculatorElement = document.getElementById('smart-calculator');
+// Sticky Header логика
+function initStickyHeader() {
+  let lastScrollTop = 0;
+  const stickyHeader = document.getElementById('stickyHeader');
+  const header = document.getElementById('header');
+
+  if (stickyHeader && header) {
+    window.addEventListener('scroll', () => {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      const headerHeight = header.offsetHeight;
+
+      // Показываем sticky header после прокрутки за основной header
+      if (scrollTop > headerHeight && scrollTop > lastScrollTop) {
+        stickyHeader.classList.add('visible');
+      } else if (scrollTop <= headerHeight || scrollTop < lastScrollTop) {
+        stickyHeader.classList.remove('visible');
+      }
+    });
+  }
+}
+
+// Промокод и таймер логика
+function initPromoTimer() {
+  let timeLeft = 15 * 60; // 15 минут в секундах
+  const timerMinutes = document.getElementById('timerMinutes');
+  const timerSeconds = document.getElementById('timerSeconds');
+  const promoSection = document.querySelector('.promo-section');
+
+  if (!timerMinutes || !timerSeconds) {
+    console.log('Таймер промокода не найден на странице');
+    return;
+  }
+
+  const timer = setInterval(() => {
+    const minutes = Math.floor(timeLeft / 60);
+    const seconds = timeLeft % 60;
+
+    timerMinutes.textContent = minutes.toString().padStart(2, '0');
+    timerSeconds.textContent = seconds.toString().padStart(2, '0');
+
+    timeLeft--;
+
+    if (timeLeft < 0) {
+      clearInterval(timer);
+      hidePromoTimer();
+    }
+  }, 1000);
+}
+
+// Скрыть таймер промокода
+function hidePromoTimer() {
+  const promoSection = document.querySelector('.promo-section');
+  if (promoSection) {
+    promoSection.style.display = 'none';
+  }
+}
+
+// Обновить таймер промокода
+function updatePromoTimer() {
+  const timerMinutes = document.getElementById('timerMinutes');
+  const timerSeconds = document.getElementById('timerSeconds');
   
-  if (calculatorElement) {
-    try {
-      // Создаем экземпляр калькулятора
-      window.smartCalculator = new SmartCalculatorV2();
-      console.log('✅ Smart Calculator v2.0 инициализирован успешно!');
+  if (timerMinutes && timerSeconds) {
+    // Проверяем сохраненное время в localStorage
+    const savedTime = localStorage.getItem('promoTimerEnd');
+    if (savedTime) {
+      const endTime = parseInt(savedTime);
+      const now = Date.now();
+      const timeLeft = Math.max(0, Math.floor((endTime - now) / 1000));
       
-      // Добавляем глобальные функции для совместимости
-      window.showExitPopup = function() {
-        // Логика показа exit popup
-        const popup = document.getElementById('exitIntentPopup');
-        if (popup) {
-          popup.classList.add('show');
-        }
-      };
-      
-      window.closeExitPopup = function() {
-        const popup = document.getElementById('exitIntentPopup');
-        if (popup) {
-          popup.classList.remove('show');
-        }
-      };
-      
-    } catch (error) {
-      console.error('❌ Ошибка инициализации калькулятора:', error);
+      if (timeLeft > 0) {
+        const minutes = Math.floor(timeLeft / 60);
+        const seconds = timeLeft % 60;
+        
+        timerMinutes.textContent = minutes.toString().padStart(2, '0');
+        timerSeconds.textContent = seconds.toString().padStart(2, '0');
+        
+        // Запускаем таймер
+        setTimeout(updatePromoTimer, 1000);
+      } else {
+        hidePromoTimer();
+      }
     }
   }
-});
+}
+
+// Валидация согласия на обработку персональных данных
+function initPrivacyConsent() {
+  const consentCheckbox = document.getElementById('privacyConsent');
+  const submitBtn = document.getElementById('leadSubmitBtn') || document.getElementById('contactSubmitBtn');
+  
+  if (consentCheckbox && submitBtn) {
+    // Проверяем состояние чекбокса при загрузке
+    submitBtn.disabled = !consentCheckbox.checked;
+    
+    // Слушаем изменения чекбокса
+    consentCheckbox.addEventListener('change', function() {
+      submitBtn.disabled = !this.checked;
+      
+      if (this.checked) {
+        submitBtn.classList.remove('btn-disabled');
+        submitBtn.classList.add('btn-primary');
+      } else {
+        submitBtn.classList.add('btn-disabled');
+        submitBtn.classList.remove('btn-primary');
+      }
+    });
+  }
+}
