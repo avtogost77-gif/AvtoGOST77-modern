@@ -1,0 +1,26 @@
+#!/usr/bin/expect -f
+set timeout 20
+
+spawn ssh -o StrictHostKeyChecking=no root@193.160.208.183
+expect "password:"
+send "bar21!@\r"
+expect "#"
+
+# Check current state
+send "ls -la /var/www/wwwroot/\r"
+expect "#"
+
+# Create backup
+send "cp -r /var/www/wwwroot/avtogost77 /var/www/wwwroot/avtogost77_backup_\$(date +%Y%m%d_%H%M%S) 2>/dev/null || echo 'No existing files to backup'\r"
+expect "#"
+
+# Clean target directory
+send "rm -rf /var/www/wwwroot/avtogost77/*\r"
+expect "#"
+send "mkdir -p /var/www/wwwroot/avtogost77\r"
+expect "#"
+
+send "echo 'Directory cleaned and ready'\r"
+expect "#"
+send "exit\r"
+expect eof
