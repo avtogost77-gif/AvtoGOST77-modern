@@ -32,22 +32,32 @@
   <meta name="msapplication-TileImage" content="assets/img/icon-144x144.svg">
   <meta name="msapplication-config" content="browserconfig.xml">
   
-  <!-- Yandex.Metrika counter -->
-  <script type="text/javascript" >
+      <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EMQ3D0X8K7"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-EMQ3D0X8K7');
+    </script>
+    
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript" >
      (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
      m[i].l=1*new Date();
      for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
      k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
      (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
 
-     ym(103413788, "init", {
+     ym(103, "init", {
           clickmap:true,
           trackLinks:true,
           accurateTrackBounce:true,
           webvisor:true
      });
   </script>
-  <noscript><div><img src="https://mc.yandex.ru/watch/103413788" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+  <noscript><div><img src="https://mc.yandex.ru/watch/103" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
   <!-- /Yandex.Metrika counter -->
 </head>
 <body>
@@ -171,7 +181,7 @@ document.addEventListener("DOMContentLoaded", function() {
     document.querySelectorAll("a[href^="tel:"]").forEach(link => {
         link.addEventListener("click", () => {
             if (typeof ym !== "undefined") {
-                ym(103413788, "reachGoal", "phone_click", {
+                ym(103, "reachGoal", "phone_click", {
                     from: window.location.pathname
                 });
             }
@@ -182,7 +192,7 @@ document.addEventListener("DOMContentLoaded", function() {
     document.querySelectorAll("a[href*="wa.me"]").forEach(link => {
         link.addEventListener("click", () => {
             if (typeof ym !== "undefined") {
-                ym(103413788, "reachGoal", "whatsapp_click", {
+                ym(103, "reachGoal", "whatsapp_click", {
                     from: window.location.pathname
                 });
             }
