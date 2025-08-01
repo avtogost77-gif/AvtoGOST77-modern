@@ -99,12 +99,55 @@
   
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
   <script>AOS.init({ once:true, duration:600 });</script>
-    <script src="assets/js/smart-calculator-v2.js?v=107" defer></script>
-    <script src="/assets/js/cities-simple.js"></script>
+  <script src="assets/js/smart-calculator-v2.js?v=107" defer></script>
+  <script src="assets/js/cities-simple.js" defer></script>
+  
+  <!-- Tawk.to Online Chat -->
+  <script type="text/javascript">
+  var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+  
+  // Настройки чата от Opus
+  Tawk_API.onLoad = function(){
+      Tawk_API.setAttributes({
+          'name'  : 'Гость',
+          'email' : '',
+          'phone' : ''
+      });
+      
+      // Приветственное сообщение
+      Tawk_API.maximize();
+      setTimeout(() => {
+          Tawk_API.sendMessage('🚛 Добро пожаловать в АвтоГОСТ!\n\nЗдравствуйте! Я готов помочь вам с грузоперевозками по России.\n\n• Рассчитать стоимость доставки\n• Узнать сроки перевозки  \n• Получить консультацию специалиста\n• Оформить заявку\n\nЧто вас интересует?');
+      }, 2000);
+  };
+  
+  (function(){
+      var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+      s1.async=true;
+      s1.src='https://embed.tawk.to/64f8a8b5a91e863a5c123456/default';
+      s1.charset='UTF-8';
+      s1.setAttribute('crossorigin','*');
+      s0.parentNode.insertBefore(s1,s0);
+  })();
+  </script>
+  
+  <!-- PWA Service Worker Registration -->
+  <script>
+      if ('serviceWorker' in navigator) {
+          window.addEventListener('load', () => {
+              navigator.serviceWorker.register('/sw.js')
+                  .then((registration) => {
+                      console.log('SW registered: ', registration);
+                  })
+                  .catch((registrationError) => {
+                      console.log('SW registration failed: ', registrationError);
+                  });
+          });
+      }
+  </script>
 
 <!-- Плавающие кнопки -->
-<div class="float-buttons">
-    <a href="tel:+79162720932" class="float-btn phone-btn">
+<div class="float-buttons">   <a href="tel:+79162720932" class="float-btn phone-btn">
         <i class="fas fa-phone-alt"></i>
         <span class="tooltip">Позвонить сейчас</span>
     </a>

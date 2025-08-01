@@ -87,6 +87,22 @@
     <!-- Tawk.to Online Chat -->
     <script type="text/javascript">
     var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    
+    // Настройки чата от Opus
+    Tawk_API.onLoad = function(){
+        Tawk_API.setAttributes({
+            'name'  : 'Гость',
+            'email' : '',
+            'phone' : ''
+        });
+        
+        // Приветственное сообщение
+        Tawk_API.maximize();
+        setTimeout(() => {
+            Tawk_API.sendMessage('🚛 Добро пожаловать в АвтоГОСТ!\n\nЗдравствуйте! Я готов помочь вам с грузоперевозками по России.\n\n• Рассчитать стоимость доставки\n• Узнать сроки перевозки  \n• Получить консультацию специалиста\n• Оформить заявку\n\nЧто вас интересует?');
+        }, 2000);
+    };
+    
     (function(){
         var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
         s1.async=true;
