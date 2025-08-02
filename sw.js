@@ -1,40 +1,35 @@
-// ===============================================
-// SERVICE WORKER - АВТОГОСТ PWA v2.1 - FIXED!
-// Кэширование, офлайн-режим, уведомления
-// ===============================================
+// Service Worker для AvtoGOST77.ru - v2.5
+const CACHE_NAME = 'avtogost-v2.5-1754131877'; // НОВАЯ ВЕРСИЯ!
 
-const CACHE_NAME = 'avtogost-v2.1-fixed'; // НОВАЯ ВЕРСИЯ!
+// Файлы для кэширования
 const urlsToCache = [
   '/',
   '/index.html',
-  '/assets/css/styles-optimized.min.css', // ОБНОВЛЁННЫЕ ПУТИ!
-  '/assets/js/main.js',
-  '/assets/js/smart-calculator-v2.js',
-  '/assets/js/cities-simple.js',
-  '/assets/js/form-handler.js',
-  '/favicon.svg'
-  // УБРАЛИ MANIFEST.JSON НАХРЕН!
+  '/assets/css/styles-optimized.min.css',
+  '/assets/js/main.min.js',
+  '/assets/js/smart-calculator-v2.min.js',
+  '/assets/js/form-handler.min.js',
+  '/assets/js/cities-simple.min.js',
+  '/assets/img/favicon.svg'
 ];
 
-// Установка service worker с принудительным обновлением
+// Установка Service Worker
 self.addEventListener('install', event => {
-  console.log('🔄 SW installing - v2.1-fixed');
+  console.log('🔄 SW installing - v2.5-1754131877');
   event.waitUntil(
     caches.open(CACHE_NAME)
       .then(cache => {
         console.log('📦 Caching updated files');
         return cache.addAll(urlsToCache);
       })
-      .then(() => {
-        // Принудительно активируем новый SW
-        return self.skipWaiting();
-      })
   );
+  // Немедленно активируем новый SW
+  self.skipWaiting();
 });
 
-// Обновление кэша - УДАЛЯЕМ СТАРЫЕ ВЕРСИИ
+// Активация Service Worker
 self.addEventListener('activate', event => {
-  console.log('✅ SW activated - v2.1-fixed');
+  console.log('✅ SW activated - v2.5-1754131877');
   event.waitUntil(
     caches.keys().then(cacheNames => {
       return Promise.all(
@@ -45,25 +40,34 @@ self.addEventListener('activate', event => {
           }
         })
       );
-    }).then(() => {
-      // Принудительно обновляем все табы
-      return self.clients.claim();
     })
   );
+  // Немедленно берём контроль над всеми страницами
+  self.clients.claim();
 });
 
-// Перехват запросов - NETWORK FIRST для HTML
+// Обработка запросов
 self.addEventListener('fetch', event => {
-  // Для HTML файлов - сначала сеть, потом кэш
+  const url = new URL(event.request.url);
+  
+  // ВАЖНО: Игнорируем внешние домены (Yandex, Tawk.to, etc.)
+  if (url.origin !== location.origin) {
+    console.log('🚫 Ignoring external request:', url.href);
+    return; // Не обрабатываем внешние запросы
+  }
+  
+  // Только для наших файлов
   if (event.request.destination === 'document') {
+    // Для HTML - сначала сеть, потом кэш
     event.respondWith(
       fetch(event.request)
         .then(response => {
-          // Кэшируем новую версию
-          const responseClone = response.clone();
-          caches.open(CACHE_NAME).then(cache => {
-            cache.put(event.request, responseClone);
-          });
+          // Клонируем ответ для кэша
+          const responseToCache = response.clone();
+          caches.open(CACHE_NAME)
+            .then(cache => {
+              cache.put(event.request, responseToCache);
+            });
           return response;
         })
         .catch(() => {
@@ -76,7 +80,13 @@ self.addEventListener('fetch', event => {
     event.respondWith(
       caches.match(event.request)
         .then(response => {
-          return response || fetch(event.request);
+          if (response) {
+            return response;
+          }
+          return fetch(event.request).catch(err => {
+            console.log('❌ Failed to fetch:', event.request.url, err.message);
+            throw err;
+          });
         })
     );
   }
