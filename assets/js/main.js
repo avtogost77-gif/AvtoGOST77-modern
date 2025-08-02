@@ -14,8 +14,8 @@ function animateActiveUsers() {
     const counter = document.getElementById('activeUsers');
     if (!counter) return;
     
-    const minUsers = 15;
-    const maxUsers = 35;
+    const minUsers = 3;
+    const maxUsers = 12;
     
     setInterval(() => {
         const currentValue = parseInt(counter.textContent);
