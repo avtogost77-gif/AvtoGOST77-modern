@@ -140,12 +140,23 @@ class SmartCalculatorV2 {
       basePrice = transport.minPrice;
       priceCategory = 'Городская доставка (до 70км)';
     } else {
-      // ПЕРЕХОДНАЯ ЗОНА - база + доплата за км
+      // ПЕРЕХОДНАЯ ЗОНА - база + динамическая доплата за км по типу ТС
       const excessKm = distance - 70; // км свыше 70
-      const extraCost = excessKm * 25; // 25₽ за каждый км свыше 70км
+      
+      // ДИНАМИЧЕСКИЕ ТАРИФЫ ПО ТИПАМ ТС (чем больше машина, тем дороже км)
+      const kmRates = {
+        gazelle: 20,   // 20₽/км для газели
+        threeTon: 25,  // 25₽/км для 3-тонника
+        fiveTon: 35,   // 35₽/км для 5-тонника  
+        tenTon: 45,    // 45₽/км для 10-тонника
+        truck: 60      // 60₽/км для фуры
+      };
+      
+      const kmRate = kmRates[optimalTransport] || 25; // fallback
+      const extraCost = excessKm * kmRate;
       
       basePrice = transport.minPrice + extraCost;
-      priceCategory = `Переходная зона (${distance}км, +${excessKm}км × 25₽)`;
+      priceCategory = `Переходная зона (${distance}км, +${excessKm}км × ${kmRate}₽)`;
     }
     
     // Коэффициент загрузки (чем меньше груз, тем дороже)
