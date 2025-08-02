@@ -58,7 +58,7 @@ class SmartCalculatorV2 {
         density: 244,       // кг/м³ (20000/82)
         minPrice: 28000,
         minPriceRegion: 21000,
-        coefficient: 2.0,   // +100% к газели (80к vs 40к)
+        coefficient: 1.53,  // +53% к газели (130к vs 85к)
         allowConsolidated: false, // ФУРА НЕ СБОРНЫЙ!
         icon: '🚚'
       }
