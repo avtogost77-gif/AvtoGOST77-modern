@@ -128,6 +128,9 @@ class SmartCalculatorV2 {
     // Подбираем оптимальный транспорт
     const optimalTransport = this.selectOptimalTransport(weight, volume);
     const transport = this.transportTypes[optimalTransport];
+    
+    // Проверяем сборный груз для выбранного транспорта
+    const isConsolidated = (cargoType === 'сборный' || cargoType === 'consolidated') && transport.allowConsolidated;
 
     // БАЗОВАЯ ЦЕНА = минималка транспорта
     let basePrice = transport.minPrice;
@@ -528,15 +531,7 @@ class SmartCalculatorV2 {
     const toCity = document.getElementById('toCity')?.value || '';
     const weight = parseFloat(document.getElementById('weight')?.value || 0);
     const volume = parseFloat(document.getElementById('volume')?.value || 0);
-    const transport = document.getElementById('transport')?.value || 'gazelle';
     const isConsolidated = document.getElementById('isConsolidated')?.checked || false;
-    
-    // Проверяем можно ли сборный груз для выбранного транспорта
-    const transportType = this.transportTypes[transport] || this.transportTypes.gazelle;
-    if (!transportType.allowConsolidated && isConsolidated) {
-      alert('Сборный груз недоступен для фур! Снимите галочку или выберите другой транспорт.');
-      return;
-    }
 
     // Валидация
     if (!fromCity || !toCity || !weight) {
@@ -598,6 +593,7 @@ class SmartCalculatorV2 {
           <div class="cargo-details">
             <h4>Параметры груза:</h4>
             <ul>
+              <li><strong>Транспорт:</strong> ${result.transport} (автоматически подобран)</li>
               <li>Вес: ${result.details.weight} кг (${result.details.loadPercent}% загрузки)</li>
               ${result.details.volume ? 
                 `<li>Объем: ${result.details.volume} м³ (${result.details.volumePercent}% загрузки)</li>
