@@ -15,6 +15,7 @@ class SmartCalculatorV2 {
         minPrice: 10000,    // минимальная цена Москва
         minPriceRegion: 7500, // минималка в регионах
         coefficient: 1.0,   // БАЗОВАЯ цена (самая дешевая) - 40к
+        allowConsolidated: true,
         icon: '🚐'
       },
       threeTon: {
@@ -24,7 +25,8 @@ class SmartCalculatorV2 {
         density: 167,
         minPrice: 13000,
         minPriceRegion: 9750,
-        coefficient: 1.25,  // +25% к газели (50к vs 40к)
+        coefficient: 1.15,  // +15% к газели 
+        allowConsolidated: true,
         icon: '🚛'
       },
       fiveTon: {
@@ -34,7 +36,8 @@ class SmartCalculatorV2 {
         density: 139,
         minPrice: 20000,
         minPriceRegion: 15000,
-        coefficient: 1.8,   // +80% к газели
+        coefficient: 1.35,  // +35% к газели
+        allowConsolidated: true,
         icon: '🚛'
       },
       tenTon: {
@@ -44,7 +47,8 @@ class SmartCalculatorV2 {
         density: 200,
         minPrice: 24000,
         minPriceRegion: 18000,
-        coefficient: 2.2,   // +120% к газели
+        coefficient: 1.65,  // +65% к газели
+        allowConsolidated: true,
         icon: '🚚'
       },
       truck: {
@@ -54,7 +58,8 @@ class SmartCalculatorV2 {
         density: 244,       // кг/м³ (20000/82)
         minPrice: 28000,
         minPriceRegion: 21000,
-        coefficient: 3.0,   // +200% к газели (120к vs 40к)
+        coefficient: 2.0,   // +100% к газели (80к vs 40к)
+        allowConsolidated: false, // ФУРА НЕ СБОРНЫЙ!
         icon: '🚚'
       }
     };
@@ -209,8 +214,8 @@ class SmartCalculatorV2 {
     const minPrice = transport.minPriceRegion;
     basePrice = Math.max(basePrice, minPrice);
 
-    // СБОРНЫЕ ГРУЗЫ (только для межрегиональных!)
-    const isConsolidated = cargoType === 'сборный' || cargoType === 'consolidated';
+    // СБОРНЫЕ ГРУЗЫ (только для межрегиональных и НЕ для фур!)
+    const isConsolidated = (cargoType === 'сборный' || cargoType === 'consolidated') && transport.allowConsolidated;
     if (isConsolidated) {
       basePrice = basePrice * 0.65; // Сборный груз дешевле на 35%!
     }
@@ -525,6 +530,13 @@ class SmartCalculatorV2 {
     const volume = parseFloat(document.getElementById('volume')?.value || 0);
     const transport = document.getElementById('transport')?.value || 'gazelle';
     const isConsolidated = document.getElementById('isConsolidated')?.checked || false;
+    
+    // Проверяем можно ли сборный груз для выбранного транспорта
+    const transportType = this.transportTypes[transport] || this.transportTypes.gazelle;
+    if (!transportType.allowConsolidated && isConsolidated) {
+      alert('Сборный груз недоступен для фур! Снимите галочку или выберите другой транспорт.');
+      return;
+    }
 
     // Валидация
     if (!fromCity || !toCity || !weight) {
