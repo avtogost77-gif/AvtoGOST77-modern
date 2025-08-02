@@ -233,6 +233,19 @@ class SmartCalculatorV2 {
     const minPrice = transportMinPrices[optimalTransport];
     basePrice = Math.max(basePrice, minPrice);
 
+    // ДОБАВЛЯЕМ ₽/КМ ДОПЛАТЫ ПО ТИПУ ТС К МЕЖРЕГИОНАЛЬНЫМ
+    const interregionalKmRates = {
+      gazelle: 10,   // 10₽/км для газели
+      threeTon: 15,  // 15₽/км для 3-тонника
+      fiveTon: 20,   // 20₽/км для 5-тонника  
+      tenTon: 25,    // 25₽/км для 10-тонника
+      truck: 30      // 30₽/км для фуры
+    };
+    
+    const kmRate = interregionalKmRates[optimalTransport] || 15;
+    const kmSurcharge = distance * kmRate;
+    basePrice += kmSurcharge;
+
     // СБОРНЫЕ ГРУЗЫ (только для межрегиональных и НЕ для фур!)
     const isConsolidated = (cargoType === 'сборный' || cargoType === 'consolidated') && transport.allowConsolidated;
     if (isConsolidated) {
