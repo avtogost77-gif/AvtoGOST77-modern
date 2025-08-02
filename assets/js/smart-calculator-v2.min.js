@@ -25,7 +25,7 @@ class SmartCalculatorV2 {
         density: 167,
         minPrice: 13000,
         minPriceRegion: 9750,
-        coefficient: 1.15,  // +15% к газели 
+        coefficient: 1.25,  // 50к vs 40к = 1.25
         allowConsolidated: true,
         icon: '🚛'
       },
@@ -58,7 +58,7 @@ class SmartCalculatorV2 {
         density: 244,       // кг/м³ (20000/82)
         minPrice: 28000,
         minPriceRegion: 21000,
-        coefficient: 1.53,  // +53% к газели (130к vs 85к)
+        coefficient: 3.25,  // 130к vs 40к = 3.25
         allowConsolidated: false, // ФУРА НЕ СБОРНЫЙ!
         icon: '🚚'
       }
@@ -194,15 +194,15 @@ class SmartCalculatorV2 {
     
     if (distance < 300) {
       // КОРОТКОЕ ПЛЕЧО - высокий тариф за км
-      pricePerKm = 180;
+      pricePerKm = 85;
       distanceCategory = 'Короткое плечо (200-300км)';
     } else if (distance < 800) {
       // СРЕДНЕЕ ПЛЕЧО - оптимальный тариф
-      pricePerKm = 120;
+      pricePerKm = 55;
       distanceCategory = 'Среднее плечо (300-800км)';
     } else {
-      // ДЛИННОЕ ПЛЕЧО - экономный тариф
-      pricePerKm = 85;
+      // ДЛИННОЕ ПЛЕЧО - экономный тариф (ГАЗЕЛЬ 40к)
+      pricePerKm = 40;
       distanceCategory = 'Длинное плечо (800+км)';
     }
 
