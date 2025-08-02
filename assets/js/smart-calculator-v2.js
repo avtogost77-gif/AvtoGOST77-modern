@@ -146,8 +146,11 @@ class SmartCalculatorV2 {
     // Коэффициент загрузки (чем меньше груз, тем дороже)
     const loadFactor = this.calculateLoadFactor(weight, volume, transport);
     
+    // КОЭФФИЦИЕНТ ТИПА ТС (от фуры вниз)
+    const transportCoeff = transport.coefficient;
+    
     // Финальная цена
-    const finalPrice = Math.round(basePrice * loadFactor);
+    const finalPrice = Math.round(basePrice * loadFactor * transportCoeff);
 
     return {
       price: finalPrice,
@@ -160,6 +163,7 @@ class SmartCalculatorV2 {
         basePrice: transport.minPrice,
         distanceCoeff: distanceCoeff,
         loadFactor: loadFactor,
+        transportCoeff: transportCoeff,
         weight: weight,
         volume: volume,
         loadPercent: Math.round((weight / transport.maxWeight) * 100),
@@ -213,8 +217,11 @@ class SmartCalculatorV2 {
     const routeFactor = this.calculateRouteFactor(fromCity, toCity);
     const cargoFactor = this.getCargoFactor(cargoType);
 
+    // КОЭФФИЦИЕНТ ТИПА ТС (от фуры вниз)
+    const transportCoeff = transport.coefficient;
+
     // Финальная цена
-    const finalPrice = Math.round(basePrice * loadFactor * routeFactor * cargoFactor);
+    const finalPrice = Math.round(basePrice * loadFactor * routeFactor * cargoFactor * transportCoeff);
 
     return {
       price: finalPrice,
