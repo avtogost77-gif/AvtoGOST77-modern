@@ -36,7 +36,7 @@ class SmartCalculatorV2 {
         density: 139,
         minPrice: 20000,
         minPriceRegion: 15000,
-        coefficient: 1.2,   // ПЯТАК 30к (30к/25к = 1.2)
+        coefficient: 1.88,  // ПЯТАК 55к до СПб (было 1.2)
         allowConsolidated: true,
         icon: '🚛'
       },
@@ -47,7 +47,7 @@ class SmartCalculatorV2 {
         density: 200,
         minPrice: 24000,
         minPriceRegion: 18000,
-        coefficient: 1.48,  // ДЕСЯТКА 37к (37к/25к = 1.48)
+        coefficient: 1.84,  // ДЕСЯТКА 65к до СПб (было 1.48)
         allowConsolidated: true,
         icon: '🚚'
       },
