@@ -151,11 +151,9 @@ class SmartCalculatorV2 {
     // Коэффициент загрузки (чем меньше груз, тем дороже)
     const loadFactor = this.calculateLoadFactor(weight, volume, transport);
     
-    // КОЭФФИЦИЕНТ ТИПА ТС (от фуры вниз)
-    const transportCoeff = transport.coefficient;
-    
+    // ДЛЯ ЛОКАЛЬНЫХ - НЕТ коэффициента типа ТС (фиксированные цены)
     // Финальная цена
-    const finalPrice = Math.round(basePrice * loadFactor * transportCoeff);
+    const finalPrice = Math.round(basePrice * loadFactor);
 
     return {
       price: finalPrice,
