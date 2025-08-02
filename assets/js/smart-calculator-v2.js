@@ -228,6 +228,15 @@ class SmartCalculatorV2 {
     const loadFactor = this.calculateLoadFactor(weight, volume, transport);
     const routeFactor = this.calculateRouteFactor(fromCity, toCity);
     const cargoFactor = this.getCargoFactor(cargoType);
+    
+    console.log('📊 Коэффициенты:', {
+      loadFactor,
+      routeFactor,
+      cargoFactor,
+      transportCoeff: transport.coefficient,
+      basePrice,
+      minPrice
+    });
 
     // КОЭФФИЦИЕНТ ТИПА ТС (от фуры вниз)
     const transportCoeff = transport.coefficient;
@@ -300,19 +309,39 @@ class SmartCalculatorV2 {
     // Если объем указан, учитываем его
     if (volume && volume > 0) {
       const volumeUsage = volume / transport.maxVolume;
-      const maxUsage = Math.max(weightUsage, volumeUsage);
       
-      // Чем меньше загрузка, тем дороже
-      if (maxUsage < 0.3) return 1.5;   // менее 30% - дорого
-      if (maxUsage < 0.5) return 1.3;   // менее 50%
-      if (maxUsage < 0.7) return 1.1;   // менее 70%
-      return 1.0;  // более 70% - базовая цена
+      // ПРАВИЛЬНАЯ ЛОГИКА: берем тот параметр, который БОЛЬШЕ загружает машину
+      // Это определяет какой параметр лимитирует (вес или объем)
+      const limitingUsage = Math.max(weightUsage, volumeUsage);
+      
+      console.log('🔢 Load calculation:', {
+        weight,
+        volume,
+        transport: transport.name,
+        weightUsage: Math.round(weightUsage * 100) + '%',
+        volumeUsage: Math.round(volumeUsage * 100) + '%',
+        limitingUsage: Math.round(limitingUsage * 100) + '%'
+      });
+      
+      // Если перегруз по любому параметру - доплата
+      if (limitingUsage > 1.0) {
+        return 1.0 + (limitingUsage - 1.0) * 0.3; // доплата за перегруз
+      }
+      
+      // Чем ВЫШЕ загрузка, тем ДЕШЕВЛЕ (эффективнее)
+      if (limitingUsage > 0.8) return 1.0;   // 80%+ - базовая цена
+      if (limitingUsage > 0.6) return 1.1;   // 60-80% - небольшая доплата
+      if (limitingUsage > 0.4) return 1.25;  // 40-60% - средняя доплата
+      if (limitingUsage > 0.2) return 1.4;   // 20-40% - большая доплата
+      return 1.6;  // менее 20% - максимальная доплата
     } else {
       // Если объем не указан, считаем только по весу
-      if (weightUsage < 0.3) return 1.4;   // менее 30% - дорого
-      if (weightUsage < 0.5) return 1.2;   // менее 50%
-      if (weightUsage < 0.7) return 1.05;  // менее 70%
-      return 1.0;  // более 70% - базовая цена
+      if (weightUsage > 1.0) return 1.0 + (weightUsage - 1.0) * 0.3; // перегруз
+      if (weightUsage > 0.8) return 1.0;   // 80%+ - базовая цена
+      if (weightUsage > 0.6) return 1.1;   // 60-80%
+      if (weightUsage > 0.4) return 1.2;   // 40-60%
+      if (weightUsage > 0.2) return 1.35;  // 20-40%
+      return 1.5;  // менее 20% - максимальная доплата
     }
   }
 
