@@ -25,7 +25,7 @@ class SmartCalculatorV2 {
         density: 167,
         minPrice: 13000,
         minPriceRegion: 9750,
-        coefficient: 1.15,  // 46к vs 40к = 1.15
+        coefficient: 1.25,  // 50к vs 40к = 1.25
         allowConsolidated: true,
         icon: '🚛'
       },
@@ -36,7 +36,7 @@ class SmartCalculatorV2 {
         density: 139,
         minPrice: 20000,
         minPriceRegion: 15000,
-        coefficient: 1.35,  // 54к vs 40к = 1.35
+        coefficient: 1.625, // 65к vs 40к = 1.625
         allowConsolidated: true,
         icon: '🚛'
       },
