@@ -14,7 +14,7 @@ class SmartCalculatorV2 {
         density: 94,        // кг/м³ (1500/16)
         minPrice: 10000,    // минимальная цена Москва
         minPriceRegion: 7500, // минималка в регионах
-        coefficient: 1.0,   // БАЗОВАЯ цена (самая дешевая)
+        coefficient: 1.0,   // БАЗОВАЯ цена (самая дешевая) - 40к
         icon: '🚐'
       },
       threeTon: {
@@ -24,7 +24,7 @@ class SmartCalculatorV2 {
         density: 167,
         minPrice: 13000,
         minPriceRegion: 9750,
-        coefficient: 1.18,  // +18% к газели
+        coefficient: 1.25,  // +25% к газели (50к vs 40к)
         icon: '🚛'
       },
       fiveTon: {
@@ -34,7 +34,7 @@ class SmartCalculatorV2 {
         density: 139,
         minPrice: 20000,
         minPriceRegion: 15000,
-        coefficient: 1.35,  // +35% к газели
+        coefficient: 1.8,   // +80% к газели
         icon: '🚛'
       },
       tenTon: {
@@ -44,7 +44,7 @@ class SmartCalculatorV2 {
         density: 200,
         minPrice: 24000,
         minPriceRegion: 18000,
-        coefficient: 1.55,  // +55% к газели
+        coefficient: 2.2,   // +120% к газели
         icon: '🚚'
       },
       truck: {
@@ -54,7 +54,7 @@ class SmartCalculatorV2 {
         density: 244,       // кг/м³ (20000/82)
         minPrice: 28000,
         minPriceRegion: 21000,
-        coefficient: 1.85,  // +85% к газели (САМАЯ ДОРОГАЯ)
+        coefficient: 3.0,   // +200% к газели (120к vs 40к)
         icon: '🚚'
       }
     };
