@@ -27,6 +27,7 @@ function initCalculator() {
     try {
         if (typeof SmartCalculatorV2 !== 'undefined') {
             smartCalculatorV2 = new SmartCalculatorV2();
+            window.smartCalculatorV2 = smartCalculatorV2; // Глобальный доступ
             console.log('✅ SmartCalculatorV2 initialized');
         } else {
             console.error('❌ SmartCalculatorV2 class not found');
@@ -45,25 +46,56 @@ function initForms() {
     if (calcForm) {
         calcForm.addEventListener('submit', function(e) {
             e.preventDefault();
-            if (smartCalculatorV2) {
-                smartCalculatorV2.handleCalculation();
-            } else {
-                alert('Калькулятор загружается, попробуйте через секунду');
-            }
+            console.log('📝 Form submitted');
+            handleCalculation();
         });
     }
     
-    // Кнопка расчёта
-    const calcButton = document.querySelector('button[onclick*="handleCalculation"]');
+    // Кнопка расчёта по ID
+    const calcButton = document.getElementById('calculateButton');
     if (calcButton) {
         calcButton.addEventListener('click', function(e) {
             e.preventDefault();
-            if (smartCalculatorV2) {
-                smartCalculatorV2.handleCalculation();
-            } else {
-                alert('Калькулятор загружается, попробуйте через секунду');
-            }
+            console.log('🔘 Calculate button clicked');
+            handleCalculation();
         });
+        console.log('✅ Calculate button listener added');
+    } else {
+        console.error('❌ Calculate button not found');
+    }
+    
+    // Резервный обработчик для старых onclick
+    const oldButton = document.querySelector('button[onclick*="handleCalculation"]');
+    if (oldButton) {
+        oldButton.addEventListener('click', function(e) {
+            e.preventDefault();
+            console.log('🔘 Old button clicked');
+            handleCalculation();
+        });
+    }
+}
+
+// Универсальная функция расчёта
+function handleCalculation() {
+    console.log('🧮 Starting calculation...');
+    
+    if (smartCalculatorV2 && typeof smartCalculatorV2.handleCalculation === 'function') {
+        try {
+            smartCalculatorV2.handleCalculation();
+            console.log('✅ Calculator method called');
+        } catch (error) {
+            console.error('❌ Calculator error:', error);
+            alert('Ошибка расчёта: ' + error.message);
+        }
+    } else {
+        console.error('❌ Calculator not ready');
+        alert('Калькулятор загружается, попробуйте через секунду');
+        
+        // Попытка повторной инициализации
+        setTimeout(() => {
+            initCalculator();
+            setTimeout(handleCalculation, 500);
+        }, 1000);
     }
 }
 
@@ -99,5 +131,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Экспорт для глобального доступа
+// Глобальный доступ к функциям
 window.smartCalculatorV2 = smartCalculatorV2;
+window.handleCalculation = handleCalculation;
