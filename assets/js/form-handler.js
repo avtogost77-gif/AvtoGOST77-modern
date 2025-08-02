@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Обработка контактной формы
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
+        contactForm.addEventListener('submit', async function(e) {
             e.preventDefault();
             
             // Собираем данные формы
@@ -37,13 +37,17 @@ document.addEventListener('DOMContentLoaded', function() {
             this.reset();
             
             // Отправляем в Telegram через father_bot
-            const success = await sendToTelegram(text, source);
-            
-            // Логируем только статус отправки (без данных)
-            if (success) {
-          
-            } else {
-                console.error('❌ Ошибка отправки заявки');
+            try {
+                const success = await sendToTelegram(text, source);
+                
+                // Логируем только статус отправки (без данных)
+                if (success) {
+              
+                } else {
+                    console.error('❌ Ошибка отправки заявки');
+                }
+            } catch (error) {
+                console.error('❌ Ошибка отправки заявки:', error);
             }
         });
     }
