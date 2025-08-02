@@ -558,17 +558,25 @@
     
     <!-- PWA Service Worker Registration -->
     <script>
+        // ОТКЛЮЧАЕМ SERVICE WORKER ВРЕМЕННО - ПРОБЛЕМЫ С КЭШИРОВАНИЕМ
+        /*
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/sw.js?v=107')
+                navigator.serviceWorker.register('/sw.js')
                     .then((registration) => {
-                        // Service Worker registered successfully
+                        console.log('SW registered successfully');
                     })
                     .catch((registrationError) => {
-                        // Service Worker registration failed silently
+                        console.log('SW registration failed');
                     });
             });
         }
+        */
+        
+        // Простая инициализация без SW
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🚀 Site loaded without Service Worker');
+        });
     </script>
 </body>
 </html>

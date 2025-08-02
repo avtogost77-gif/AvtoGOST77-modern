@@ -1,97 +1,62 @@
-// Service Worker для AvtoGOST77.ru - v2.6
-const CACHE_NAME = 'avtogost-v2.6-temp'; // ВРЕМЕННАЯ ВЕРСИЯ БЕЗ ФАВИКОН
+// SERVICE WORKER KILLER v3.0 - УБИВАЕМ ВСЕ СТАРЫЕ КЭШИ
+console.log('💀 Service Worker KILLER v3.0 activated');
 
-// Файлы для кэширования - ТОЛЬКО КРИТИЧНЫЕ
-const urlsToCache = [
-  '/',
-  '/assets/css/styles-optimized.min.css',
-  '/assets/js/smart-calculator-v2.min.js'
-];
-
-// Установка Service Worker
-self.addEventListener('install', event => {
-  console.log('🔄 SW installing - v2.6-temp');
-  event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then(cache => {
-        console.log('📦 Caching critical files only');
-        return cache.addAll(urlsToCache).catch(err => {
-          console.error('❌ Cache addAll failed:', err);
-          // Кэшируем файлы по одному
-          return Promise.allSettled(
-            urlsToCache.map(url => 
-              cache.add(url).catch(e => console.error('❌ Failed to cache:', url, e))
-            )
-          );
-        });
-      })
-  );
-  // Немедленно активируем новый SW
+// Немедленно активируемся
+self.addEventListener('install', (event) => {
+  console.log('🔥 SW Killer installing - destroying old caches');
   self.skipWaiting();
 });
 
-// Активация Service Worker
-self.addEventListener('activate', event => {
-  console.log('✅ SW activated - v2.6-temp');
+// Удаляем ВСЕ кэши при активации
+self.addEventListener('activate', (event) => {
+  console.log('💀 SW Killer activated - NUKING ALL CACHES');
+  
   event.waitUntil(
     caches.keys().then(cacheNames => {
+      console.log('📋 Found caches:', cacheNames);
+      
       return Promise.all(
         cacheNames.map(cacheName => {
-          if (cacheName !== CACHE_NAME) {
-            console.log('🗑️ Deleting old cache:', cacheName);
-            return caches.delete(cacheName);
-          }
+          console.log('🗑️ DELETING cache:', cacheName);
+          return caches.delete(cacheName);
         })
       );
+    }).then(() => {
+      console.log('✅ ALL CACHES DESTROYED!');
+      
+      // Уведомляем все табы об обновлении
+      return self.clients.matchAll().then(clients => {
+        clients.forEach(client => {
+          client.postMessage({
+            msg: 'CACHE_CLEARED',
+            version: '3.0'
+          });
+        });
+      });
+    }).then(() => {
+      return self.clients.claim();
     })
   );
-  // Немедленно берём контроль над всеми страницами
-  self.clients.claim();
 });
 
-// Обработка запросов
-self.addEventListener('fetch', event => {
-  const url = new URL(event.request.url);
-  
-  // ВАЖНО: Игнорируем внешние домены (Yandex, Tawk.to, etc.)
-  if (url.origin !== location.origin) {
-    console.log('🚫 Ignoring external request:', url.href);
-    return; // Не обрабатываем внешние запросы
+// НЕ КЭШИРУЕМ НИЧЕГО - просто пропускаем все запросы
+self.addEventListener('fetch', (event) => {
+  // Логируем только критичные ошибки
+  if (event.request.url.includes('avtogost77.ru')) {
+    console.log('🚫 SW Killer: passing through request to', event.request.url);
   }
   
-  // Только для наших файлов
-  if (event.request.destination === 'document') {
-    // Для HTML - сначала сеть, потом кэш
-    event.respondWith(
-      fetch(event.request)
-        .then(response => {
-          // Клонируем ответ для кэша
-          const responseToCache = response.clone();
-          caches.open(CACHE_NAME)
-            .then(cache => {
-              cache.put(event.request, responseToCache);
-            });
-          return response;
-        })
-        .catch(() => {
-          // Если нет сети - берём из кэша
-          return caches.match(event.request);
-        })
-    );
-  } else {
-    // Для остальных ресурсов - сначала кэш, потом сеть
-    event.respondWith(
-      caches.match(event.request)
-        .then(response => {
-          if (response) {
-            return response;
-          }
-          return fetch(event.request).catch(err => {
-            console.log('❌ Failed to fetch:', event.request.url, err.message);
-            // Не выбрасываем ошибку, просто логируем
-            return new Response('', { status: 404 });
-          });
-        })
-    );
+  // Пропускаем запрос без кэширования
+  return;
+});
+
+// Слушаем сообщения от страницы
+self.addEventListener('message', (event) => {
+  console.log('📨 SW Killer received message:', event.data);
+  
+  if (event.data && event.data.type === 'SKIP_WAITING') {
+    self.skipWaiting();
   }
 });
+
+console.log('💀 SW Killer v3.0 ready - old caches will be destroyed!');
