@@ -103,7 +103,56 @@ class SmartCalculatorV2 {
     // 2. Получаем расстояние
     const distance = this.getDistance(fromCity, toCity);
     
-    // 3. НОВАЯ СИСТЕМА ТАРИФИКАЦИИ ПО ПЛЕЧАМ
+    // 3. РАЗДЕЛЯЕМ НА ЛОКАЛЬНЫЕ И МЕЖРЕГИОНАЛЬНЫЕ
+    const isLocal = distance <= 70; // До 70км = локальные
+    
+    if (isLocal) {
+      // ЛОКАЛЬНЫЕ ПЕРЕВОЗКИ (до 70км)
+      return this.calculateLocalPrice(fromCity, toCity, weight, volume, distance, cargoType);
+    } else {
+      // МЕЖРЕГИОНАЛЬНЫЕ ПЕРЕВОЗКИ (70км+)
+      return this.calculateInterregionalPrice(fromCity, toCity, weight, volume, distance, cargoType);
+    }
+  }
+
+  // ЛОКАЛЬНЫЕ ПЕРЕВОЗКИ - фиксированные минималки
+  calculateLocalPrice(fromCity, toCity, weight, volume, distance, cargoType) {
+    // Подбираем оптимальный транспорт
+    const optimalTransport = this.selectOptimalTransport(weight, volume);
+    const transport = this.transportTypes[optimalTransport];
+
+    // Для локальных используем только минималку транспорта
+    const basePrice = transport.minPrice;
+    
+    // Коэффициент загрузки (чем меньше груз, тем дороже)
+    const loadFactor = this.calculateLoadFactor(weight, volume, transport);
+    
+    // Финальная цена
+    const finalPrice = Math.round(basePrice * loadFactor);
+
+    return {
+      price: finalPrice,
+      transport: transport.name,
+      distance: distance,
+      deliveryType: 'Локальная доставка',
+      pricePerKm: Math.round(finalPrice / distance),
+      deliveryTime: '1 день',
+      details: {
+        basePrice: basePrice,
+        loadFactor: loadFactor,
+        weight: weight,
+        volume: volume,
+        loadPercent: Math.round((weight / transport.maxWeight) * 100),
+        volumePercent: volume ? Math.round((volume / transport.maxVolume) * 100) : 0,
+        density: volume ? Math.round(weight / volume) : 0,
+        isLocal: true
+      }
+    };
+  }
+
+  // МЕЖРЕГИОНАЛЬНЫЕ ПЕРЕВОЗКИ - система плеч + сборные
+  calculateInterregionalPrice(fromCity, toCity, weight, volume, distance, cargoType) {
+    // СИСТЕМА ТАРИФИКАЦИИ ПО ПЛЕЧАМ (только для межрегиональных!)
     let pricePerKm;
     let distanceCategory;
     
@@ -121,30 +170,35 @@ class SmartCalculatorV2 {
       distanceCategory = 'Длинное плечо';
     }
 
-    // 4. Базовая цена = минималка + расстояние
+    // Базовая цена = расстояние × тариф
     let basePrice = distance * pricePerKm;
 
-    // 5. Подбираем оптимальный транспорт
+    // Подбираем оптимальный транспорт
     const optimalTransport = this.selectOptimalTransport(weight, volume);
     const transport = this.transportTypes[optimalTransport];
 
-    // 6. Применяем минималку для выбранного транспорта
-    const minPrice = distance < 70 ? transport.minPrice : transport.minPriceRegion;
+    // Применяем минималку для выбранного транспорта
+    const minPrice = transport.minPriceRegion;
     basePrice = Math.max(basePrice, minPrice);
 
-    // 7. Коэффициенты нагрузки и маршрута
+    // СБОРНЫЕ ГРУЗЫ (только для межрегиональных!)
+    if (cargoType === 'сборный' || cargoType === 'consolidated') {
+      basePrice = basePrice * 0.65; // Сборный груз дешевле на 35%!
+    }
+
+    // Коэффициенты нагрузки и маршрута
     const loadFactor = this.calculateLoadFactor(weight, volume, transport);
     const routeFactor = this.calculateRouteFactor(fromCity, toCity);
     const cargoFactor = this.getCargoFactor(cargoType);
 
-    // 8. Финальная цена
+    // Финальная цена
     const finalPrice = Math.round(basePrice * loadFactor * routeFactor * cargoFactor);
 
     return {
       price: finalPrice,
       transport: transport.name,
       distance: distance,
-      distanceCategory: distanceCategory,
+      deliveryType: distanceCategory,
       pricePerKm: Math.round(finalPrice / distance),
       deliveryTime: this.calculateDeliveryTime(distance),
       details: {
@@ -157,7 +211,9 @@ class SmartCalculatorV2 {
         volume: volume,
         loadPercent: Math.round((weight / transport.maxWeight) * 100),
         volumePercent: volume ? Math.round((volume / transport.maxVolume) * 100) : 0,
-        density: volume ? Math.round(weight / volume) : 0
+        density: volume ? Math.round(weight / volume) : 0,
+        isLocal: false,
+        isConsolidated: cargoType === 'сборный' || cargoType === 'consolidated'
       }
     };
   }
@@ -436,7 +492,7 @@ class SmartCalculatorV2 {
               <span class="price-value">${result.price.toLocaleString()} ₽</span>
             </div>
             <div class="price-details">
-              <p>📏 Расстояние: ${result.distance} км (${result.distanceCategory})</p>
+              <p>📏 Расстояние: ${result.distance} км (${result.deliveryType})</p>
               <p>💰 Тариф: ${result.pricePerKm} ₽/км</p>
               <p>🚛 Транспорт: ${result.transport}</p>
               <p>⏱️ Срок доставки: ${result.deliveryTime}</p>
@@ -451,6 +507,14 @@ class SmartCalculatorV2 {
                 `<li>Объем: ${result.details.volume} м³ (${result.details.volumePercent}% загрузки)</li>
                  <li>Плотность: ${result.details.density} кг/м³</li>` : 
                 '<li>Объем: не указан</li>'
+              }
+              ${result.details.isLocal ? 
+                '<li><span class="badge badge-info">Локальная доставка</span> - отдельная машина</li>' :
+                `<li><span class="badge badge-success">Межрегиональная</span> доставка</li>
+                 ${result.details.isConsolidated ? 
+                   '<li><span class="badge badge-warning">Сборный груз</span> - экономия 35%!</li>' : 
+                   '<li>Отдельная машина</li>'
+                 }`
               }
             </ul>
           </div>
