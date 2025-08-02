@@ -548,7 +548,9 @@ class SmartCalculatorV2 {
 
   // Отображение результата
   showResult(result) {
+    console.log('📋 showResult called with:', result);
     const resultDiv = document.getElementById('calculatorResult') || this.createResultDiv();
+    console.log('📋 resultDiv found/created:', resultDiv);
     
     if (result.error) {
       resultDiv.innerHTML = `
@@ -621,18 +623,31 @@ class SmartCalculatorV2 {
     }
 
     // Скроллим к результату
+    console.log('📋 Scrolling to result and making visible');
+    resultDiv.style.display = 'block';
     resultDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    console.log('✅ Result displayed successfully');
   }
 
   // Создание div для результата
   createResultDiv() {
+    console.log('🔧 Creating new result div...');
     const div = document.createElement('div');
     div.id = 'calculatorResult';
     div.className = 'calculator-result';
     
     const form = document.getElementById('calculatorForm');
+    console.log('🔧 Calculator form found:', form);
     if (form) {
       form.parentNode.insertBefore(div, form.nextSibling);
+      console.log('🔧 Result div inserted after form');
+    } else {
+      // Fallback - добавляем в конец калькулятора
+      const calcSection = document.querySelector('.calculator-section, #calculator');
+      if (calcSection) {
+        calcSection.appendChild(div);
+        console.log('🔧 Result div added to calculator section');
+      }
     }
     
     return div;
