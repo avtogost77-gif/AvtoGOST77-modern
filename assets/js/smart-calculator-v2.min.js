@@ -25,7 +25,7 @@ class SmartCalculatorV2 {
         density: 167,
         minPrice: 13000,
         minPriceRegion: 9750,
-        coefficient: 1.25,  // 50к vs 40к = 1.25
+        coefficient: 1.15,  // 46к vs 40к = 1.15
         allowConsolidated: true,
         icon: '🚛'
       },
@@ -36,7 +36,7 @@ class SmartCalculatorV2 {
         density: 139,
         minPrice: 20000,
         minPriceRegion: 15000,
-        coefficient: 1.35,  // +35% к газели
+        coefficient: 1.35,  // 54к vs 40к = 1.35
         allowConsolidated: true,
         icon: '🚛'
       },
@@ -47,7 +47,7 @@ class SmartCalculatorV2 {
         density: 200,
         minPrice: 24000,
         minPriceRegion: 18000,
-        coefficient: 1.65,  // +65% к газели
+        coefficient: 2.45,  // 98к vs 40к = 2.45 (почти как фура!)
         allowConsolidated: true,
         icon: '🚚'
       },
