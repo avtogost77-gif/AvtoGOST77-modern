@@ -14,7 +14,7 @@ class SmartCalculatorV2 {
         density: 94,        // кг/м³ (1500/16)
         minPrice: 10000,    // минимальная цена Москва
         minPriceRegion: 7500, // минималка в регионах
-        coefficient: 1.0,   // БАЗОВАЯ цена (самая дешевая) - 40к
+        coefficient: 0.8,   // ГАЗЕЛЬ 20к (базовая цена 25₽/км)
         allowConsolidated: true,
         icon: '🚐'
       },
@@ -25,7 +25,7 @@ class SmartCalculatorV2 {
         density: 167,
         minPrice: 13000,
         minPriceRegion: 9750,
-        coefficient: 1.25,  // 50к vs 40к = 1.25
+        coefficient: 1.0,   // ТРЕШКА 25к (базовая цена 25₽/км)
         allowConsolidated: true,
         icon: '🚛'
       },
@@ -36,7 +36,7 @@ class SmartCalculatorV2 {
         density: 139,
         minPrice: 20000,
         minPriceRegion: 15000,
-        coefficient: 1.625, // 65к vs 40к = 1.625
+        coefficient: 1.2,   // ПЯТАК 30к (30к/25к = 1.2)
         allowConsolidated: true,
         icon: '🚛'
       },
@@ -47,7 +47,7 @@ class SmartCalculatorV2 {
         density: 200,
         minPrice: 24000,
         minPriceRegion: 18000,
-        coefficient: 2.45,  // 98к vs 40к = 2.45 (почти как фура!)
+        coefficient: 1.48,  // ДЕСЯТКА 37к (37к/25к = 1.48)
         allowConsolidated: true,
         icon: '🚚'
       },
@@ -58,7 +58,7 @@ class SmartCalculatorV2 {
         density: 244,       // кг/м³ (20000/82)
         minPrice: 28000,
         minPriceRegion: 21000,
-        coefficient: 3.25,  // 130к vs 40к = 3.25
+        coefficient: 1.68,  // ФУРА 42к (42к/25к = 1.68)
         allowConsolidated: false, // ФУРА НЕ СБОРНЫЙ!
         icon: '🚚'
       }
@@ -193,15 +193,15 @@ class SmartCalculatorV2 {
     let distanceCategory;
     
     if (distance < 300) {
-      // КОРОТКОЕ ПЛЕЧО - высокий тариф за км
-      pricePerKm = 85;
+      // КОРОТКОЕ ПЛЕЧО - средний тариф (для Рязани 250км - фура 42к)
+      pricePerKm = 25;
       distanceCategory = 'Короткое плечо (200-300км)';
     } else if (distance < 800) {
       // СРЕДНЕЕ ПЛЕЧО - оптимальный тариф
-      pricePerKm = 55;
+      pricePerKm = 35;
       distanceCategory = 'Среднее плечо (300-800км)';
     } else {
-      // ДЛИННОЕ ПЛЕЧО - экономный тариф (ГАЗЕЛЬ 40к)
+      // ДЛИННОЕ ПЛЕЧО - экономный тариф (ГАЗЕЛЬ 40к для СПб)
       pricePerKm = 40;
       distanceCategory = 'Длинное плечо (800+км)';
     }
