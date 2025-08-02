@@ -186,35 +186,48 @@ class SmartCalculatorV2 {
     };
   }
 
-  // МЕЖРЕГИОНАЛЬНЫЕ ПЕРЕВОЗКИ - система плеч + сборные
+  // МЕЖРЕГИОНАЛЬНЫЕ ПЕРЕВОЗКИ - комбинированная система
   calculateInterregionalPrice(fromCity, toCity, weight, volume, distance, cargoType) {
-    // СИСТЕМА ТАРИФИКАЦИИ ПО ПЛЕЧАМ (только для межрегиональных 200+км!)
+    // НОВАЯ КОМБИНИРОВАННАЯ СИСТЕМА: База = расстояние × тариф, НО не менее минималки ТС
     let pricePerKm;
     let distanceCategory;
     
-    if (distance < 300) {
-      // КОРОТКОЕ ПЛЕЧО - средний тариф (для Рязани 250км - фура 42к)
-      pricePerKm = 25;
-      distanceCategory = 'Короткое плечо (200-300км)';
-    } else if (distance < 800) {
-      // СРЕДНЕЕ ПЛЕЧО - оптимальный тариф
-      pricePerKm = 35;
-      distanceCategory = 'Среднее плечо (300-800км)';
-    } else {
-      // ДЛИННОЕ ПЛЕЧО - экономный тариф (ГАЗЕЛЬ 40к для СПб)
+    if (distance < 200) {
+      // БЛИЖНИЙ ПОДМОСКОВНЫЙ - высокий тариф
       pricePerKm = 40;
-      distanceCategory = 'Длинное плечо (800+км)';
+      distanceCategory = 'Ближний (до 200км)';
+    } else if (distance < 400) {
+      // СРЕДНИЙ РЕГИОНАЛЬНЫЙ - оптимальный тариф (Рязань, Тверь)
+      pricePerKm = 25;
+      distanceCategory = 'Региональный (200-400км)';
+    } else if (distance < 800) {
+      // ДАЛЬНИЙ МЕЖРЕГИОНАЛЬНЫЙ - экономичный (Воронеж, Нижний)
+      pricePerKm = 18;
+      distanceCategory = 'Межрегиональный (400-800км)';
+    } else {
+      // ДАЛЬНОБОЙНЫЙ - самый экономичный (СПб, Екатеринбург)
+      pricePerKm = 15;
+      distanceCategory = 'Дальнобойный (800км+)';
     }
-
-    // Базовая цена = расстояние × тариф
-    let basePrice = distance * pricePerKm;
 
     // Подбираем оптимальный транспорт
     const optimalTransport = this.selectOptimalTransport(weight, volume);
     const transport = this.transportTypes[optimalTransport];
 
+    // КОМБИНИРОВАННАЯ ЛОГИКА: База = расстояние × тариф
+    let basePrice = distance * pricePerKm;
+
+    // ЖЕСТКИЕ МИНИМАЛКИ ПО ТИПАМ ТС для коротких/средних плеч
+    const transportMinPrices = {
+      gazelle: distance < 400 ? 20000 : transport.minPriceRegion,
+      threeTon: distance < 400 ? 25000 : transport.minPriceRegion,
+      fiveTon: distance < 400 ? 30000 : transport.minPriceRegion,
+      tenTon: distance < 400 ? 37000 : transport.minPriceRegion,
+      truck: distance < 400 ? 42000 : transport.minPriceRegion
+    };
+
     // Применяем минималку для выбранного транспорта
-    const minPrice = transport.minPriceRegion;
+    const minPrice = transportMinPrices[optimalTransport];
     basePrice = Math.max(basePrice, minPrice);
 
     // СБОРНЫЕ ГРУЗЫ (только для межрегиональных и НЕ для фур!)
