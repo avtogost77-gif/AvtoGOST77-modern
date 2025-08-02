@@ -123,7 +123,7 @@ class SmartCalculatorV2 {
     }
   }
 
-  // ЛОКАЛЬНЫЕ ПЕРЕВОЗКИ - минималки + повышающие коэффициенты
+  // ЛОКАЛЬНЫЕ ПЕРЕВОЗКИ - плавный переход от городских к региональным
   calculateLocalPrice(fromCity, toCity, weight, volume, distance, cargoType) {
     // Подбираем оптимальный транспорт
     const optimalTransport = this.selectOptimalTransport(weight, volume);
@@ -132,29 +132,21 @@ class SmartCalculatorV2 {
     // Проверяем сборный груз для выбранного транспорта
     const isConsolidated = (cargoType === 'сборный' || cargoType === 'consolidated') && transport.allowConsolidated;
 
-    // БАЗОВАЯ ЦЕНА = минималка транспорта
-    let basePrice = transport.minPrice;
-    
-    // ПОВЫШАЮЩИЕ КОЭФФИЦИЕНТЫ ПО РАССТОЯНИЮ
-    let distanceCoeff = 1.0;
+    let basePrice;
     let priceCategory = '';
     
     if (distance <= 70) {
-      distanceCoeff = 1.0;  // Без повышения
-      priceCategory = 'Локальная доставка';
-    } else if (distance <= 100) {
-      distanceCoeff = 1.15; // +15%
-      priceCategory = 'Ближняя зона (+15%)';
-    } else if (distance <= 150) {
-      distanceCoeff = 1.30; // +30%
-      priceCategory = 'Средняя зона (+30%)';
+      // ГОРОДСКАЯ БАЗА - минималки транспорта
+      basePrice = transport.minPrice;
+      priceCategory = 'Городская доставка (до 70км)';
     } else {
-      distanceCoeff = 1.45; // +45%
-      priceCategory = 'Дальняя зона (+45%)';
+      // ПЕРЕХОДНАЯ ЗОНА - база + доплата за км
+      const excessKm = distance - 70; // км свыше 70
+      const extraCost = excessKm * 25; // 25₽ за каждый км свыше 70км
+      
+      basePrice = transport.minPrice + extraCost;
+      priceCategory = `Переходная зона (${distance}км, +${excessKm}км × 25₽)`;
     }
-    
-    // Применяем коэффициент расстояния
-    basePrice = basePrice * distanceCoeff;
     
     // Коэффициент загрузки (чем меньше груз, тем дороже)
     const loadFactor = this.calculateLoadFactor(weight, volume, transport);
