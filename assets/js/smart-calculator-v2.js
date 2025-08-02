@@ -91,12 +91,9 @@ class SmartCalculatorV2 {
 
   // ГЛАВНАЯ ЛОГИКА РАСЧЕТА
   async calculatePrice(fromCity, toCity, weight, volume, cargoType = 'general') {
-    console.log('🔄 calculatePrice called with:', { fromCity, toCity, weight, volume, cargoType });
-    
     try {
       // 1. Проверка на внутрирегиональную перевозку
       if (this.isSameRegion(fromCity, toCity)) {
-        console.log('⚠️ Same region detected');
         return {
           error: true,
           message: 'ВНИМАНИЕ! Сборные грузы только между регионами. Внутри региона - только отдельная машина!',
@@ -105,17 +102,13 @@ class SmartCalculatorV2 {
       }
 
       // 2. Получаем РЕАЛЬНОЕ расстояние через API
-      console.log('📍 Getting distance...');
       const distance = await this.getDistance(fromCity, toCity);
-      console.log('📏 Distance received:', distance, 'km');
       
       // 3. НОВАЯ ЛОГИКА РАЗДЕЛЕНИЯ
       if (distance < 200) {
-        console.log('🏠 Local price calculation (< 200km)');
         // ЛОКАЛЬНЫЕ И ПЕРЕХОДНАЯ ЗОНА (до 200км)
         return this.calculateLocalPrice(fromCity, toCity, weight, volume, distance, cargoType);
       } else {
-        console.log('🌍 Interregional price calculation (200km+)');
         // МЕЖРЕГИОНАЛЬНЫЕ ПЕРЕВОЗКИ (200км+)
         return this.calculateInterregionalPrice(fromCity, toCity, weight, volume, distance, cargoType);
       }
@@ -228,15 +221,6 @@ class SmartCalculatorV2 {
     const loadFactor = this.calculateLoadFactor(weight, volume, transport);
     const routeFactor = this.calculateRouteFactor(fromCity, toCity);
     const cargoFactor = this.getCargoFactor(cargoType);
-    
-    console.log('📊 Коэффициенты:', {
-      loadFactor,
-      routeFactor,
-      cargoFactor,
-      transportCoeff: transport.coefficient,
-      basePrice,
-      minPrice
-    });
 
     // КОЭФФИЦИЕНТ ТИПА ТС (от фуры вниз)
     const transportCoeff = transport.coefficient;
@@ -313,15 +297,6 @@ class SmartCalculatorV2 {
       // ПРАВИЛЬНАЯ ЛОГИКА: берем тот параметр, который БОЛЬШЕ загружает машину
       // Это определяет какой параметр лимитирует (вес или объем)
       const limitingUsage = Math.max(weightUsage, volumeUsage);
-      
-      console.log('🔢 Load calculation:', {
-        weight,
-        volume,
-        transport: transport.name,
-        weightUsage: Math.round(weightUsage * 100) + '%',
-        volumeUsage: Math.round(volumeUsage * 100) + '%',
-        limitingUsage: Math.round(limitingUsage * 100) + '%'
-      });
       
       // Если перегруз по любому параметру - доплата
       if (limitingUsage > 1.0) {
@@ -530,8 +505,6 @@ class SmartCalculatorV2 {
 
   // Обработка расчета
   handleCalculation() {
-    console.log('🧮 Starting handleCalculation method...');
-    
     // Собираем данные
     const fromCity = document.getElementById('fromCity')?.value || '';
     const toCity = document.getElementById('toCity')?.value || '';
@@ -539,47 +512,33 @@ class SmartCalculatorV2 {
     const volume = parseFloat(document.getElementById('volume')?.value || 0);
     const transport = document.getElementById('transport')?.value || 'gazelle';
 
-    console.log('📊 Form data:', {
-      fromCity,
-      toCity, 
-      weight,
-      volume,
-      transport
-    });
-
     // Валидация
     if (!fromCity || !toCity || !weight) {
-      console.log('❌ Validation failed - missing required fields');
       alert('Заполните города и вес груза!');
       return;
     }
     
     // Объем не обязательный, но учитывается если заполнен
     if (volume && volume <= 0) {
-      console.log('❌ Validation failed - invalid volume');
       alert('Объем должен быть больше 0!');
       return;
     }
 
-    console.log('✅ Validation passed, starting calculation...');
-
     // Расчет
     this.calculatePrice(fromCity, toCity, weight, volume, 'general')
       .then(result => {
-        console.log('✅ Calculation completed:', result);
+        console.log(`💰 ${fromCity} → ${toCity}: ${result.price.toLocaleString()} ₽`);
         this.showResult(result);
       })
       .catch(error => {
-        console.error('❌ Calculation error:', error);
+        console.error('❌ Ошибка расчёта:', error);
         alert('Ошибка расчёта: ' + error.message);
       });
   }
 
   // Отображение результата
   showResult(result) {
-    console.log('📋 showResult called with:', result);
     const resultDiv = document.getElementById('calculatorResult') || this.createResultDiv();
-    console.log('📋 resultDiv found/created:', resultDiv);
     
     if (result.error) {
       resultDiv.innerHTML = `
@@ -652,30 +611,24 @@ class SmartCalculatorV2 {
     }
 
     // Скроллим к результату
-    console.log('📋 Scrolling to result and making visible');
     resultDiv.style.display = 'block';
     resultDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    console.log('✅ Result displayed successfully');
   }
 
   // Создание div для результата
   createResultDiv() {
-    console.log('🔧 Creating new result div...');
     const div = document.createElement('div');
     div.id = 'calculatorResult';
     div.className = 'calculator-result';
     
     const form = document.getElementById('calculatorForm');
-    console.log('🔧 Calculator form found:', form);
     if (form) {
       form.parentNode.insertBefore(div, form.nextSibling);
-      console.log('🔧 Result div inserted after form');
     } else {
       // Fallback - добавляем в конец калькулятора
       const calcSection = document.querySelector('.calculator-section, #calculator');
       if (calcSection) {
         calcSection.appendChild(div);
-        console.log('🔧 Result div added to calculator section');
       }
     }
     
