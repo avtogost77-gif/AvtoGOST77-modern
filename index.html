@@ -350,6 +350,112 @@
         </div>
     </section>
 
+    <!-- ВОРОНКА ПРОДАЖ: МНОЖЕСТВЕННЫЕ ПУТИ КОНВЕРСИИ -->
+    <section class="conversion-funnel">
+        <div class="container">
+            <div class="funnel-header">
+                <h2>🎯 Не определились с расчетом? Выберите свой путь:</h2>
+                <p>Мы понимаем - каждый бизнес уникален. Поэтому предлагаем разные способы получить именно то, что нужно ВАМ</p>
+            </div>
+            
+            <div class="conversion-paths">
+                <!-- Путь 1: Быстрые -->
+                <div class="conversion-card urgent-path" data-aos="fade-up" data-aos-delay="100">
+                    <div class="path-icon">⚡</div>
+                    <h3>Срочно нужна доставка?</h3>
+                    <p class="path-description">Подача транспорта за <strong>2 часа</strong> в Москве</p>
+                    <div class="urgency-timer">
+                        <span class="timer-label">Осталось слотов сегодня:</span>
+                        <span class="slots-counter">3</span>
+                    </div>
+                    <button class="btn btn-phone btn-lg" onclick="openUrgentModal()">
+                        <svg class="btn-icon" viewBox="0 0 24 24">
+                            <path d="M6.62,10.79C8.06,13.62 10.38,15.94 13.21,17.38L15.41,15.18C15.69,14.9 16.08,14.82 16.43,14.93C17.55,15.3 18.75,15.5 20,15.5A1,1 0 0,1 21,16.5V20A1,1 0 0,1 20,21A17,17 0 0,1 3,4A1,1 0 0,1 4,3H7.5A1,1 0 0,1 8.5,4C8.5,5.25 8.7,6.45 9.07,7.57C9.18,7.92 9.1,8.31 8.82,8.59L6.62,10.79Z"/>
+                        </svg>
+                        Заказать срочно
+                    </button>
+                    <div class="path-proof">Забронировали: <strong>156 компаний</strong> за неделю</div>
+                </div>
+
+                <!-- Путь 2: Экономные -->
+                <div class="conversion-card economy-path" data-aos="fade-up" data-aos-delay="200">
+                    <div class="path-icon">💰</div>
+                    <h3>Хотите сэкономить?</h3>
+                    <p class="path-description">Бесплатный аудит ваших логистических расходов</p>
+                    <div class="savings-display">
+                        <span class="savings-label">Средняя экономия:</span>
+                        <span class="savings-amount">115,000₽/мес</span>
+                    </div>
+                    <button class="btn btn-success btn-lg" onclick="openSavingsModal()">
+                        <svg class="btn-icon" viewBox="0 0 24 24">
+                            <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+                        </svg>
+                        Получить аудит
+                    </button>
+                    <div class="path-proof">Сэкономили: <strong>24М рублей</strong> клиентам в 2024</div>
+                </div>
+
+                <!-- Путь 3: Осторожные -->
+                <div class="conversion-card consultation-path" data-aos="fade-up" data-aos-delay="300">
+                    <div class="path-icon">🤝</div>
+                    <h3>Нужна консультация?</h3>
+                    <p class="path-description">15-минутная консультация с экспертом по логистике</p>
+                    <div class="consultation-time">
+                        <span class="time-label">Ближайшее время:</span>
+                        <span class="next-slot">Сегодня в 16:30</span>
+                    </div>
+                    <button class="btn btn-primary btn-lg" onclick="openConsultationModal()">
+                        <svg class="btn-icon" viewBox="0 0 24 24">
+                            <path d="M20,2H4A2,2 0 0,0 2,4V22L6,18H20A2,2 0 0,0 22,16V4C22,2.89 21.1,2 20,2Z"/>
+                        </svg>
+                        Записаться бесплатно
+                    </button>
+                    <div class="path-proof">Консультаций проведено: <strong>1,247</strong></div>
+                </div>
+
+                <!-- Путь 4: Сравнивающие -->
+                <div class="conversion-card comparison-path" data-aos="fade-up" data-aos-delay="400">
+                    <div class="path-icon">📊</div>
+                    <h3>Сравниваете предложения?</h3>
+                    <p class="path-description">Получите персональное коммерческое предложение</p>
+                    <div class="comparison-benefit">
+                        <span class="benefit-label">Индивидуальные условия</span>
+                        <span class="benefit-value">до -30% от рынка</span>
+                    </div>
+                    <button class="btn btn-outline btn-lg" onclick="openComparisonModal()">
+                        <svg class="btn-icon" viewBox="0 0 24 24">
+                            <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"/>
+                        </svg>
+                        Получить КП
+                    </button>
+                    <div class="path-proof">КП отправлено: <strong>892</strong> за месяц</div>
+                </div>
+            </div>
+
+            <!-- Социальное доказательство -->
+            <div class="social-proof-banner" data-aos="fade-up" data-aos-delay="500">
+                <div class="proof-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">2,847</span>
+                        <span class="stat-label">довольных клиентов</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">98.7%</span>
+                        <span class="stat-label">доставок вовремя</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">24/7</span>
+                        <span class="stat-label">поддержка</span>
+                    </div>
+                    <div class="stat-item live-counter">
+                        <span class="stat-number" id="activeUsers">23</span>
+                        <span class="stat-label">сейчас рассчитывают стоимость</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- О компании -->
     <section id="about" class="about-section">
         <div class="container">
