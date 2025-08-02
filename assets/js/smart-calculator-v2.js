@@ -91,25 +91,37 @@ class SmartCalculatorV2 {
 
   // ГЛАВНАЯ ЛОГИКА РАСЧЕТА
   async calculatePrice(fromCity, toCity, weight, volume, cargoType = 'general') {
-    // 1. Проверка на внутрирегиональную перевозку
-    if (this.isSameRegion(fromCity, toCity)) {
-      return {
-        error: true,
-        message: 'ВНИМАНИЕ! Сборные грузы только между регионами. Внутри региона - только отдельная машина!',
-        alternativePrice: await this.calculateFullTruckPrice(fromCity, toCity)
-      };
-    }
-
-    // 2. Получаем РЕАЛЬНОЕ расстояние через API
-    const distance = await this.getDistance(fromCity, toCity);
+    console.log('🔄 calculatePrice called with:', { fromCity, toCity, weight, volume, cargoType });
     
-    // 3. НОВАЯ ЛОГИКА РАЗДЕЛЕНИЯ
-    if (distance < 200) {
-      // ЛОКАЛЬНЫЕ И ПЕРЕХОДНАЯ ЗОНА (до 200км)
-      return this.calculateLocalPrice(fromCity, toCity, weight, volume, distance, cargoType);
-    } else {
-      // МЕЖРЕГИОНАЛЬНЫЕ ПЕРЕВОЗКИ (200км+)
-      return this.calculateInterregionalPrice(fromCity, toCity, weight, volume, distance, cargoType);
+    try {
+      // 1. Проверка на внутрирегиональную перевозку
+      if (this.isSameRegion(fromCity, toCity)) {
+        console.log('⚠️ Same region detected');
+        return {
+          error: true,
+          message: 'ВНИМАНИЕ! Сборные грузы только между регионами. Внутри региона - только отдельная машина!',
+          alternativePrice: await this.calculateFullTruckPrice(fromCity, toCity)
+        };
+      }
+
+      // 2. Получаем РЕАЛЬНОЕ расстояние через API
+      console.log('📍 Getting distance...');
+      const distance = await this.getDistance(fromCity, toCity);
+      console.log('📏 Distance received:', distance, 'km');
+      
+      // 3. НОВАЯ ЛОГИКА РАЗДЕЛЕНИЯ
+      if (distance < 200) {
+        console.log('🏠 Local price calculation (< 200km)');
+        // ЛОКАЛЬНЫЕ И ПЕРЕХОДНАЯ ЗОНА (до 200км)
+        return this.calculateLocalPrice(fromCity, toCity, weight, volume, distance, cargoType);
+      } else {
+        console.log('🌍 Interregional price calculation (200km+)');
+        // МЕЖРЕГИОНАЛЬНЫЕ ПЕРЕВОЗКИ (200км+)
+        return this.calculateInterregionalPrice(fromCity, toCity, weight, volume, distance, cargoType);
+      }
+    } catch (error) {
+      console.error('❌ Error in calculatePrice:', error);
+      throw error;
     }
   }
 
@@ -489,6 +501,8 @@ class SmartCalculatorV2 {
 
   // Обработка расчета
   handleCalculation() {
+    console.log('🧮 Starting handleCalculation method...');
+    
     // Собираем данные
     const fromCity = document.getElementById('fromCity')?.value || '';
     const toCity = document.getElementById('toCity')?.value || '';
@@ -496,22 +510,40 @@ class SmartCalculatorV2 {
     const volume = parseFloat(document.getElementById('volume')?.value || 0);
     const transport = document.getElementById('transport')?.value || 'gazelle';
 
+    console.log('📊 Form data:', {
+      fromCity,
+      toCity, 
+      weight,
+      volume,
+      transport
+    });
+
     // Валидация
     if (!fromCity || !toCity || !weight) {
+      console.log('❌ Validation failed - missing required fields');
       alert('Заполните города и вес груза!');
       return;
     }
     
     // Объем не обязательный, но учитывается если заполнен
     if (volume && volume <= 0) {
+      console.log('❌ Validation failed - invalid volume');
       alert('Объем должен быть больше 0!');
       return;
     }
 
+    console.log('✅ Validation passed, starting calculation...');
+
     // Расчет
     this.calculatePrice(fromCity, toCity, weight, volume, 'general')
-      .then(result => this.showResult(result))
-      .catch(error => console.error('Ошибка расчета:', error));
+      .then(result => {
+        console.log('✅ Calculation completed:', result);
+        this.showResult(result);
+      })
+      .catch(error => {
+        console.error('❌ Calculation error:', error);
+        alert('Ошибка расчёта: ' + error.message);
+      });
   }
 
   // Отображение результата
