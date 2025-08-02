@@ -1,26 +1,29 @@
-// Service Worker для AvtoGOST77.ru - v2.5
-const CACHE_NAME = 'avtogost-v2.5-1754131877'; // НОВАЯ ВЕРСИЯ!
+// Service Worker для AvtoGOST77.ru - v2.6
+const CACHE_NAME = 'avtogost-v2.6-temp'; // ВРЕМЕННАЯ ВЕРСИЯ БЕЗ ФАВИКОН
 
-// Файлы для кэширования
+// Файлы для кэширования - ТОЛЬКО КРИТИЧНЫЕ
 const urlsToCache = [
   '/',
-  '/index.html',
   '/assets/css/styles-optimized.min.css',
-  '/assets/js/main.min.js',
-  '/assets/js/smart-calculator-v2.min.js',
-  '/assets/js/form-handler.min.js',
-  '/assets/js/cities-simple.min.js',
-  '/assets/img/favicon.svg'
+  '/assets/js/smart-calculator-v2.min.js'
 ];
 
 // Установка Service Worker
 self.addEventListener('install', event => {
-  console.log('🔄 SW installing - v2.5-1754131877');
+  console.log('🔄 SW installing - v2.6-temp');
   event.waitUntil(
     caches.open(CACHE_NAME)
       .then(cache => {
-        console.log('📦 Caching updated files');
-        return cache.addAll(urlsToCache);
+        console.log('📦 Caching critical files only');
+        return cache.addAll(urlsToCache).catch(err => {
+          console.error('❌ Cache addAll failed:', err);
+          // Кэшируем файлы по одному
+          return Promise.allSettled(
+            urlsToCache.map(url => 
+              cache.add(url).catch(e => console.error('❌ Failed to cache:', url, e))
+            )
+          );
+        });
       })
   );
   // Немедленно активируем новый SW
@@ -29,7 +32,7 @@ self.addEventListener('install', event => {
 
 // Активация Service Worker
 self.addEventListener('activate', event => {
-  console.log('✅ SW activated - v2.5-1754131877');
+  console.log('✅ SW activated - v2.6-temp');
   event.waitUntil(
     caches.keys().then(cacheNames => {
       return Promise.all(
@@ -85,7 +88,8 @@ self.addEventListener('fetch', event => {
           }
           return fetch(event.request).catch(err => {
             console.log('❌ Failed to fetch:', event.request.url, err.message);
-            throw err;
+            // Не выбрасываем ошибку, просто логируем
+            return new Response('', { status: 404 });
           });
         })
     );
