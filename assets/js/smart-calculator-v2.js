@@ -103,26 +103,45 @@ class SmartCalculatorV2 {
     // 2. Получаем РЕАЛЬНОЕ расстояние через API
     const distance = await this.getDistance(fromCity, toCity);
     
-    // 3. РАЗДЕЛЯЕМ НА ЛОКАЛЬНЫЕ И МЕЖРЕГИОНАЛЬНЫЕ
-    const isLocal = distance <= 70; // До 70км = локальные
-    
-    if (isLocal) {
-      // ЛОКАЛЬНЫЕ ПЕРЕВОЗКИ (до 70км)
+    // 3. НОВАЯ ЛОГИКА РАЗДЕЛЕНИЯ
+    if (distance < 200) {
+      // ЛОКАЛЬНЫЕ И ПЕРЕХОДНАЯ ЗОНА (до 200км)
       return this.calculateLocalPrice(fromCity, toCity, weight, volume, distance, cargoType);
     } else {
-      // МЕЖРЕГИОНАЛЬНЫЕ ПЕРЕВОЗКИ (70км+)
+      // МЕЖРЕГИОНАЛЬНЫЕ ПЕРЕВОЗКИ (200км+)
       return this.calculateInterregionalPrice(fromCity, toCity, weight, volume, distance, cargoType);
     }
   }
 
-  // ЛОКАЛЬНЫЕ ПЕРЕВОЗКИ - фиксированные минималки
+  // ЛОКАЛЬНЫЕ ПЕРЕВОЗКИ - минималки + повышающие коэффициенты
   calculateLocalPrice(fromCity, toCity, weight, volume, distance, cargoType) {
     // Подбираем оптимальный транспорт
     const optimalTransport = this.selectOptimalTransport(weight, volume);
     const transport = this.transportTypes[optimalTransport];
 
-    // Для локальных используем только минималку транспорта
-    const basePrice = transport.minPrice;
+    // БАЗОВАЯ ЦЕНА = минималка транспорта
+    let basePrice = transport.minPrice;
+    
+    // ПОВЫШАЮЩИЕ КОЭФФИЦИЕНТЫ ПО РАССТОЯНИЮ
+    let distanceCoeff = 1.0;
+    let priceCategory = '';
+    
+    if (distance <= 70) {
+      distanceCoeff = 1.0;  // Без повышения
+      priceCategory = 'Локальная доставка';
+    } else if (distance <= 100) {
+      distanceCoeff = 1.15; // +15%
+      priceCategory = 'Ближняя зона (+15%)';
+    } else if (distance <= 150) {
+      distanceCoeff = 1.30; // +30%
+      priceCategory = 'Средняя зона (+30%)';
+    } else {
+      distanceCoeff = 1.45; // +45%
+      priceCategory = 'Дальняя зона (+45%)';
+    }
+    
+    // Применяем коэффициент расстояния
+    basePrice = basePrice * distanceCoeff;
     
     // Коэффициент загрузки (чем меньше груз, тем дороже)
     const loadFactor = this.calculateLoadFactor(weight, volume, transport);
@@ -134,40 +153,42 @@ class SmartCalculatorV2 {
       price: finalPrice,
       transport: transport.name,
       distance: distance,
-      deliveryType: 'Локальная доставка',
+      deliveryType: priceCategory,
       pricePerKm: Math.round(finalPrice / distance),
-      deliveryTime: '1 день',
+      deliveryTime: distance <= 100 ? '1 день' : '1-2 дня',
       details: {
-        basePrice: basePrice,
+        basePrice: transport.minPrice,
+        distanceCoeff: distanceCoeff,
         loadFactor: loadFactor,
         weight: weight,
         volume: volume,
         loadPercent: Math.round((weight / transport.maxWeight) * 100),
         volumePercent: volume ? Math.round((volume / transport.maxVolume) * 100) : 0,
         density: volume ? Math.round(weight / volume) : 0,
-        isLocal: true
+        isLocal: true,
+        noConsolidated: true // Сборные недоступны
       }
     };
   }
 
   // МЕЖРЕГИОНАЛЬНЫЕ ПЕРЕВОЗКИ - система плеч + сборные
   calculateInterregionalPrice(fromCity, toCity, weight, volume, distance, cargoType) {
-    // СИСТЕМА ТАРИФИКАЦИИ ПО ПЛЕЧАМ (только для межрегиональных!)
+    // СИСТЕМА ТАРИФИКАЦИИ ПО ПЛЕЧАМ (только для межрегиональных 200+км!)
     let pricePerKm;
     let distanceCategory;
     
     if (distance < 300) {
       // КОРОТКОЕ ПЛЕЧО - высокий тариф за км
       pricePerKm = 180;
-      distanceCategory = 'Короткое плечо';
+      distanceCategory = 'Короткое плечо (200-300км)';
     } else if (distance < 800) {
       // СРЕДНЕЕ ПЛЕЧО - оптимальный тариф
       pricePerKm = 120;
-      distanceCategory = 'Среднее плечо';
+      distanceCategory = 'Среднее плечо (300-800км)';
     } else {
       // ДЛИННОЕ ПЛЕЧО - экономный тариф
       pricePerKm = 85;
-      distanceCategory = 'Длинное плечо';
+      distanceCategory = 'Длинное плечо (800+км)';
     }
 
     // Базовая цена = расстояние × тариф
@@ -182,7 +203,8 @@ class SmartCalculatorV2 {
     basePrice = Math.max(basePrice, minPrice);
 
     // СБОРНЫЕ ГРУЗЫ (только для межрегиональных!)
-    if (cargoType === 'сборный' || cargoType === 'consolidated') {
+    const isConsolidated = cargoType === 'сборный' || cargoType === 'consolidated';
+    if (isConsolidated) {
       basePrice = basePrice * 0.65; // Сборный груз дешевле на 35%!
     }
 
@@ -204,6 +226,7 @@ class SmartCalculatorV2 {
       details: {
         basePrice: basePrice,
         minPrice: minPrice,
+        pricePerKm: pricePerKm,
         loadFactor: loadFactor,
         routeFactor: routeFactor,
         cargoFactor: cargoFactor,
@@ -213,7 +236,7 @@ class SmartCalculatorV2 {
         volumePercent: volume ? Math.round((volume / transport.maxVolume) * 100) : 0,
         density: volume ? Math.round(weight / volume) : 0,
         isLocal: false,
-        isConsolidated: cargoType === 'сборный' || cargoType === 'consolidated'
+        isConsolidated: isConsolidated
       }
     };
   }
@@ -526,8 +549,14 @@ class SmartCalculatorV2 {
                 '<li>Объем: не указан</li>'
               }
               ${result.details.isLocal ? 
-                '<li><span class="badge badge-info">Локальная доставка</span> - отдельная машина</li>' :
+                `<li><span class="badge badge-info">Локальная зона</span> - только отдельная машина</li>
+                 ${result.details.distanceCoeff > 1 ? 
+                   `<li><span class="badge badge-warning">Повышающий коэфф. ×${result.details.distanceCoeff}</span></li>` : 
+                   '<li>Базовый тариф без повышения</li>'
+                 }
+                 <li><span class="badge badge-danger">Сборные грузы недоступны</span></li>` :
                 `<li><span class="badge badge-success">Межрегиональная</span> доставка</li>
+                 <li>Тариф: ${result.details.pricePerKm} ₽/км</li>
                  ${result.details.isConsolidated ? 
                    '<li><span class="badge badge-warning">Сборный груз</span> - экономия 35%!</li>' : 
                    '<li>Отдельная машина</li>'
