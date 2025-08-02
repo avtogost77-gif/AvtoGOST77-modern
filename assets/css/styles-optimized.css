@@ -535,6 +535,74 @@ body {
 }
 
 /* ===============================================
+   SEO КОНТЕНТ
+   =============================================== */
+
+.seo-content-section {
+  padding: 4rem 0;
+  background: var(--neutral-50);
+}
+
+.seo-content {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.seo-content h2 {
+  color: var(--primary-600);
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.seo-content h3 {
+  color: var(--primary-500);
+  font-size: 1.5rem;
+  margin: 2rem 0 1rem 0;
+}
+
+.seo-text p {
+  color: var(--text-primary);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.seo-list {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 1.5rem;
+}
+
+.seo-list li {
+  color: var(--text-primary);
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--neutral-200);
+}
+
+.seo-list li:last-child {
+  border-bottom: none;
+}
+
+.seo-list strong {
+  color: var(--primary-600);
+}
+
+@media (max-width: 768px) {
+  .seo-content-section {
+    padding: 2rem 0;
+  }
+  
+  .seo-content h2 {
+    font-size: 1.75rem;
+  }
+  
+  .seo-content h3 {
+    font-size: 1.25rem;
+  }
+}
+
+/* ===============================================
    КАЛЬКУЛЯТОР
    =============================================== */
 
