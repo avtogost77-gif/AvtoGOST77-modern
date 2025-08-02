@@ -277,8 +277,8 @@ class SmartCalculatorV2 {
     for (const [key, transport] of sortedTransports) {
       if (weight <= transport.maxWeight) {
         if (volume && volume > 0) {
-          const density = weight / volume;
-          if (volume <= transport.maxVolume && density <= transport.density * 1.2) {
+          // Проверяем только объем, плотность не критична
+          if (volume <= transport.maxVolume) {
             return key; // Возвращаем ключ транспорта
           }
         } else {
