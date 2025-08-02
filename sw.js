@@ -12,8 +12,8 @@ const urlsToCache = [
   '/assets/js/smart-calculator-v2.js',
   '/assets/js/cities-simple.js',
   '/assets/js/form-handler.js',
-  '/manifest.json',
   '/favicon.svg'
+  // УБРАЛИ MANIFEST.JSON НАХРЕН!
 ];
 
 // Установка service worker с принудительным обновлением
