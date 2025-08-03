@@ -3,6 +3,146 @@
    Объединенный CSS без дублирования
    =============================================== */
 
+/* ===============================================
+   СОВРЕМЕННАЯ НАВИГАЦИЯ - ЕДИНЫЙ СТИЛЬ
+   =============================================== */
+.header {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--neutral-200);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  transition: all 0.3s ease;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 0;
+  gap: 2rem;
+}
+
+/* Логотип */
+.logo-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary-600);
+  transition: color 0.3s ease;
+}
+
+.logo-link:hover {
+  color: var(--primary-700);
+}
+
+.logo-text {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Навигация */
+.nav {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.nav-link {
+  color: var(--neutral-600);
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.5rem 0;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--primary-600);
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--gradient-primary);
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+/* Header CTA */
+.header-cta .btn {
+  padding: 0.75rem 1.5rem;
+  border-radius: 50px;
+}
+
+/* Мобильное меню */
+.mobile-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+}
+
+.mobile-toggle span {
+  width: 24px;
+  height: 3px;
+  background: var(--neutral-600);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.mobile-toggle:hover span {
+  background: var(--primary-600);
+}
+
+/* Мобильная адаптация */
+@media (max-width: 768px) {
+  .nav {
+    display: none;
+  }
+  
+  .mobile-toggle {
+    display: flex;
+  }
+  
+  .header-content {
+    gap: 1rem;
+  }
+  
+  .header-cta .btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .logo-link {
+    font-size: 1.25rem;
+  }
+  
+  .header-cta .btn-icon {
+    display: none;
+  }
+}
+
 :root {
   /* Основные цвета */
   --primary-50: #eff6ff;
