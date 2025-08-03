@@ -71,3 +71,4 @@ demo-*.html
 # Секретные данные
 .env
 .env.local
+core
