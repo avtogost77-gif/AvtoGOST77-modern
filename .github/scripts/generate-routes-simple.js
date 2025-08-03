@@ -1,6 +1,9 @@
 const fs = require('fs');
 const path = require('path');
 
+// Подключаем систему реальных расстояний
+const { getRealDistance } = require('../../assets/js/real-distances.js');
+
 // База городов России (ТОП-10 для быстрого старта)
 const CITIES = {
   "moskva": {
@@ -511,8 +514,17 @@ function generateRoutes() {
         const toCity = CITIES[toCityCode];
         if (!toCity) continue;
         
-        // Расчет параметров маршрута
-        const distance = calculateDistance(fromCity.coords, toCity.coords);
+        // Расчет параметров маршрута с РЕАЛЬНЫМИ расстояниями
+        let distance = getRealDistance(fromCityCode, toCityCode);
+        
+        // Fallback на расчет по координатам если нет в базе
+        if (!distance) {
+          distance = calculateDistance(fromCity.coords, toCity.coords);
+          console.warn(`⚠️ Используем приблизительное расстояние для ${fromCityCode}-${toCityCode}: ${distance}км`);
+        } else {
+          console.log(`✅ Реальное расстояние ${fromCityCode}-${toCityCode}: ${distance}км`);
+        }
+        
         const basePrice = distance < 300 ? 15000 : 
                          distance < 800 ? 25000 : 
                          Math.round(distance * 45); // ₽/км для дальних маршрутов
