@@ -353,6 +353,280 @@ if (!document.getElementById('modal-styles')) {
     document.head.appendChild(styleSheet);
 }
 
+// ===============================================
+// EXIT-INTENT POPUP - ПОСЛЕДНИЙ ШАНС ПОЙМАТЬ КЛИЕНТА
+// ===============================================
+
+let exitIntentShown = false;
+let exitIntentTimer = null;
+
+// Детекция exit-intent
+function initExitIntent() {
+    // Проверяем, не показывали ли уже popup в этой сессии
+    if (sessionStorage.getItem('exitIntentShown')) {
+        return;
+    }
+    
+    // Отслеживаем движение мыши
+    document.addEventListener('mouseleave', function(e) {
+        // Если мышь ушла за верхний край экрана (к закрытию/адресной строке)
+        if (e.clientY <= 0 && !exitIntentShown) {
+            showExitIntentPopup();
+        }
+    });
+    
+    // Также показываем при попытке закрыть вкладку
+    window.addEventListener('beforeunload', function(e) {
+        if (!exitIntentShown) {
+            // Небольшая задержка чтобы успеть показать
+            setTimeout(() => {
+                showExitIntentPopup();
+            }, 50);
+        }
+    });
+    
+    // Дополнительный триггер - долгое время без активности (3 минуты)
+    let inactivityTimer = setTimeout(() => {
+        if (!exitIntentShown) {
+            showExitIntentPopup();
+        }
+    }, 180000); // 3 минуты
+    
+    // Сбрасываем таймер при активности
+    document.addEventListener('mousemove', () => {
+        clearTimeout(inactivityTimer);
+        inactivityTimer = setTimeout(() => {
+            if (!exitIntentShown) {
+                showExitIntentPopup();
+            }
+        }, 180000);
+    });
+}
+
+// Показать exit-intent popup
+function showExitIntentPopup() {
+    if (exitIntentShown) return;
+    
+    exitIntentShown = true;
+    sessionStorage.setItem('exitIntentShown', 'true');
+    
+    // Генерируем случайную скидку
+    const discounts = [10, 15, 20];
+    const discount = discounts[Math.floor(Math.random() * discounts.length)];
+    
+    // Создаем popup
+    const popup = createExitIntentPopup(discount);
+    
+    // Показываем с анимацией
+    setTimeout(() => {
+        popup.classList.add('show');
+    }, 100);
+}
+
+// Создание exit-intent popup
+function createExitIntentPopup(discount) {
+    const popupHTML = `
+        <div class="exit-intent-overlay" id="exitIntentPopup">
+            <div class="exit-intent-content">
+                <div class="exit-intent-header">
+                    <div class="exit-emoji">🛑</div>
+                    <h3>Подождите! Последнее предложение</h3>
+                    <button class="exit-close" onclick="closeExitIntent()">&times;</button>
+                </div>
+                
+                <div class="exit-intent-body">
+                    <div class="discount-badge">
+                        <span class="discount-percent">${discount}%</span>
+                        <span class="discount-text">СКИДКА</span>
+                    </div>
+                    
+                    <h4>Получите расчет стоимости со скидкой ${discount}%</h4>
+                    <p>Предложение действует только сейчас!</p>
+                    
+                    <div class="urgency-timer-exit">
+                        <span class="timer-text">Предложение истекает через:</span>
+                        <div class="countdown" id="exitCountdown">
+                            <span id="exitMinutes">14</span>:<span id="exitSeconds">59</span>
+                        </div>
+                    </div>
+                    
+                    <form class="exit-form" onsubmit="submitExitForm(event, ${discount})">
+                        <input type="text" name="exitName" placeholder="Ваше имя" required>
+                        <input type="tel" name="exitPhone" placeholder="+7 (999) 123-45-67" required>
+                        <input type="text" name="exitRoute" placeholder="Маршрут (например: Москва - СПб)" required>
+                        
+                        <button type="submit" class="btn btn-success btn-lg exit-btn">
+                            🎯 Получить расчет со скидкой ${discount}%
+                        </button>
+                        
+                        <p class="exit-guarantee">
+                            ✅ Расчет в течение 15 минут<br>
+                            ✅ Без скрытых доплат<br>
+                            ✅ Промокод: <strong>EXIT${discount}</strong>
+                        </p>
+                    </form>
+                    
+                    <div class="exit-social-proof">
+                        <span class="proof-text">🔥 Уже воспользовались:</span>
+                        <span class="proof-count" id="exitProofCount">127</span>
+                        <span class="proof-label">человек сегодня</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+    
+    document.body.insertAdjacentHTML('beforeend', popupHTML);
+    
+    const popup = document.getElementById('exitIntentPopup');
+    
+    // Закрытие по клику на overlay
+    popup.addEventListener('click', (e) => {
+        if (e.target === popup) {
+            closeExitIntent();
+        }
+    });
+    
+    // Запуск таймера обратного отсчета
+    startExitCountdown();
+    
+    // Анимация счетчика использований
+    animateExitProof();
+    
+    return popup;
+}
+
+// Обратный отсчет в exit popup
+function startExitCountdown() {
+    let totalSeconds = 15 * 60 - 1; // 14:59
+    
+    const countdown = setInterval(() => {
+        const minutes = Math.floor(totalSeconds / 60);
+        const seconds = totalSeconds % 60;
+        
+        const minutesEl = document.getElementById('exitMinutes');
+        const secondsEl = document.getElementById('exitSeconds');
+        
+        if (minutesEl && secondsEl) {
+            minutesEl.textContent = minutes.toString().padStart(2, '0');
+            secondsEl.textContent = seconds.toString().padStart(2, '0');
+            
+            // Красный цвет когда остается мало времени
+            if (totalSeconds <= 60) {
+                document.querySelector('.countdown')?.classList.add('urgent');
+            }
+        }
+        
+        totalSeconds--;
+        
+        if (totalSeconds < 0) {
+            clearInterval(countdown);
+            // Можно показать "Время истекло" или закрыть popup
+            if (minutesEl && secondsEl) {
+                minutesEl.textContent = '00';
+                secondsEl.textContent = '00';
+            }
+        }
+    }, 1000);
+    
+    return countdown;
+}
+
+// Анимация счетчика "воспользовались сегодня"
+function animateExitProof() {
+    const counter = document.getElementById('exitProofCount');
+    if (!counter) return;
+    
+    // Случайно увеличиваем счетчик каждые 10-30 секунд
+    setInterval(() => {
+        if (Math.random() > 0.7) {
+            const current = parseInt(counter.textContent);
+            counter.textContent = current + 1;
+            
+            // Эффект пульсации
+            counter.style.transform = 'scale(1.2)';
+            counter.style.color = '#10b981';
+            setTimeout(() => {
+                counter.style.transform = 'scale(1)';
+                counter.style.color = '';
+            }, 300);
+        }
+    }, Math.random() * 20000 + 10000); // 10-30 секунд
+}
+
+// Отправка формы exit-intent
+async function submitExitForm(event, discount) {
+    event.preventDefault();
+    
+    const form = event.target;
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
+    
+    const button = form.querySelector('button[type="submit"]');
+    const originalText = button.innerHTML;
+    button.innerHTML = '📤 Отправляем...';
+    button.disabled = true;
+    
+    try {
+        const success = await sendToTelegram({
+            ...data,
+            source: 'exit-intent',
+            discount: `${discount}%`,
+            promoCode: `EXIT${discount}`,
+            timestamp: new Date().toLocaleString('ru-RU')
+        });
+        
+        if (success) {
+            // Показываем успех
+            form.innerHTML = `
+                <div class="exit-success">
+                    <div class="success-icon">🎉</div>
+                    <h4>Заявка принята!</h4>
+                    <p>Ваш промокод: <strong>EXIT${discount}</strong></p>
+                    <p>Менеджер свяжется с вами в течение 15 минут</p>
+                    
+                    <div class="success-actions">
+                        <a href="https://wa.me/79162720932" class="btn btn-whatsapp btn-sm" target="_blank">
+                            💬 Написать в WhatsApp
+                        </a>
+                        <button class="btn btn-outline btn-sm" onclick="closeExitIntent()">
+                            Закрыть
+                        </button>
+                    </div>
+                </div>
+            `;
+            
+            // Автозакрытие через 10 секунд
+            setTimeout(() => {
+                closeExitIntent();
+            }, 10000);
+            
+        } else {
+            throw new Error('Ошибка отправки');
+        }
+        
+    } catch (error) {
+        console.error('Ошибка отправки exit-формы:', error);
+        button.innerHTML = '❌ Ошибка. Попробуйте еще раз';
+        button.disabled = false;
+        
+        setTimeout(() => {
+            button.innerHTML = originalText;
+        }, 3000);
+    }
+}
+
+// Закрытие exit-intent popup
+function closeExitIntent() {
+    const popup = document.getElementById('exitIntentPopup');
+    if (popup) {
+        popup.classList.add('hiding');
+        setTimeout(() => {
+            popup.remove();
+        }, 300);
+    }
+}
+
 // Инициализация при загрузке страницы
 document.addEventListener('DOMContentLoaded', function() {
     console.log('🚀 Main.js loaded');
@@ -386,6 +660,9 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }, Math.random() * 600000 + 600000); // 10-20 минут
     }
+
+    // Инициализация exit-intent
+    initExitIntent();
 });
 
 // Инициализация калькулятора
