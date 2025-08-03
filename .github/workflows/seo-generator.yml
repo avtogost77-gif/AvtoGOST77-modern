@@ -44,28 +44,27 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-node-
     
-    - name: Install dependencies
+    - name: Install dependencies (simplified)
       run: |
-        npm init -y
-        npm install axios cheerio fs-extra
+        echo "Используем только встроенные Node.js модули для стабильности"
     
     - name: Generate Routes Pages
       if: ${{ github.event.inputs.strategy == 'routes' || github.event.schedule }}
-      run: node .github/scripts/generate-routes.js
+      run: node .github/scripts/generate-routes-simple.js
       env:
-        PAGES_COUNT: ${{ github.event.inputs.pages_count || '10' }}
+        PAGES_COUNT: ${{ github.event.inputs.pages_count || '15' }}
     
     - name: Generate Industry Pages
       if: ${{ github.event.inputs.strategy == 'industries' }}
       run: node .github/scripts/generate-industries.js
       env:
-        PAGES_COUNT: ${{ github.event.inputs.pages_count || '5' }}
+        PAGES_COUNT: ${{ github.event.inputs.pages_count || '6' }}
     
     - name: Generate Calculator Pages
       if: ${{ github.event.inputs.strategy == 'calculators' }}
       run: node .github/scripts/generate-calculators.js
       env:
-        PAGES_COUNT: ${{ github.event.inputs.pages_count || '3' }}
+        PAGES_COUNT: ${{ github.event.inputs.pages_count || '6' }}
     
     - name: Update Sitemap
       run: node .github/scripts/update-sitemap.js

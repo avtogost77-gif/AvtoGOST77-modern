@@ -1,6 +1,5 @@
-const fs = require('fs-extra');
+const fs = require('fs');
 const path = require('path');
-const { glob } = require('glob');
 
 // Приоритеты страниц для sitemap
 const PAGE_PRIORITIES = {
@@ -36,6 +35,44 @@ function getPagePriority(filePath) {
   return PAGE_PRIORITIES.default;
 }
 
+// Рекурсивный поиск HTML файлов (замена glob)
+function findHtmlFiles(dir) {
+  let htmlFiles = [];
+  
+  function searchDir(currentDir) {
+    try {
+      const items = fs.readdirSync(currentDir);
+      
+      for (const item of items) {
+        const fullPath = path.join(currentDir, item);
+        const stat = fs.statSync(fullPath);
+        
+        if (stat.isDirectory()) {
+          // Пропускаем исключенные директории
+          if (EXCLUDE_PATTERNS.some(pattern => 
+            pattern.includes(item) || 
+            pattern.includes('**/' + item + '/**'))) {
+            continue;
+          }
+          searchDir(fullPath);
+        } else if (stat.isFile() && item.endsWith('.html')) {
+          // Пропускаем исключенные файлы
+          if (!EXCLUDE_PATTERNS.some(pattern => 
+            pattern.includes(item) || 
+            fullPath.includes(pattern.replace('**/','').replace('/**','')))) {
+            htmlFiles.push(fullPath.replace('./', ''));
+          }
+        }
+      }
+    } catch (error) {
+      // Игнорируем ошибки доступа к директориям
+    }
+  }
+  
+  searchDir(dir);
+  return htmlFiles;
+}
+
 // Генерация URL из файлового пути
 function generateURL(filePath) {
   let url = filePath;
@@ -59,15 +96,12 @@ function generateURL(filePath) {
 }
 
 // Основная функция обновления sitemap
-async function updateSitemap() {
+function updateSitemap() {
   console.log('🗺️ Обновляем sitemap.xml...');
   
   try {
     // Находим все HTML файлы
-    const htmlFiles = await glob('**/*.html', {
-      ignore: EXCLUDE_PATTERNS,
-      nodir: true
-    });
+    const htmlFiles = findHtmlFiles('.');
     
     console.log(`📄 Найдено ${htmlFiles.length} HTML файлов`);
     
@@ -108,7 +142,7 @@ async function updateSitemap() {
 </urlset>`;
     
     // Сохраняем sitemap.xml
-    await fs.writeFile('sitemap.xml', sitemapXML);
+            fs.writeFileSync('sitemap.xml', sitemapXML);
     console.log(`✅ Sitemap обновлен! Добавлено ${pages.length} страниц`);
     
     // Генерируем статистику по типам страниц
@@ -156,8 +190,8 @@ Allow: /contact
 Allow: /help
 Allow: /blog/`;
     
-    if (!await fs.pathExists('robots.txt')) {
-      await fs.writeFile('robots.txt', robotsTxt);
+            if (!fs.existsSync('robots.txt')) {
+          fs.writeFileSync('robots.txt', robotsTxt);
       console.log('🤖 Создан robots.txt');
     }
     
@@ -171,7 +205,7 @@ Allow: /blog/`;
 
 // Запуск обновления
 if (require.main === module) {
-  updateSitemap().catch(console.error);
+  updateSitemap();
 }
 
 module.exports = { updateSitemap };
