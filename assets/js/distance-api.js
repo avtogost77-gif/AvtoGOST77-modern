@@ -81,10 +81,19 @@ class DistanceAPI {
 
   // Статическая таблица (приоритет)
   getFromStatic(fromCity, toCity) {
-    if (typeof getRealDistance === 'function') {
-      return getRealDistance(fromCity, toCity);
+    // Импортируем функцию динамически для Node.js
+    try {
+      if (typeof getRealDistance !== 'undefined') {
+        return getRealDistance(fromCity, toCity);
+      }
+      
+      // Для Node.js окружения
+      const { getRealDistance: getDistance } = require('./real-distances.js');
+      return getDistance(fromCity, toCity);
+    } catch (error) {
+      console.warn('⚠️ Статическая база недоступна:', error.message);
+      return null;
     }
-    return null;
   }
 
   // OpenRouteService API (2000 запросов/день)
