@@ -109,7 +109,7 @@ class SmartCalculatorV2 {
         };
       }
 
-      // 2. Получаем РЕАЛЬНОЕ расстояние через API
+      // 2. Получаем РЕАЛЬНОЕ расстояние через API  
       const distance = await this.distanceAPI.getDistance(fromCity, toCity);
       
       // 3. НОВАЯ ЛОГИКА РАЗДЕЛЕНИЯ
@@ -220,30 +220,34 @@ class SmartCalculatorV2 {
     const optimalTransport = this.selectOptimalTransport(weight, volume);
     const transport = this.transportTypes[optimalTransport];
 
-    // ПРАВИЛЬНАЯ ЛОГИКА: ЕДИНАЯ ЦЕНА ЗА КМ ПО ТИПУ ТС
-    const transportKmRates = {
-      gazelle: distance < 200 ? 40 : (distance < 400 ? 25 : (distance < 800 ? 18 : 15)),
-      threeTon: distance < 200 ? 50 : (distance < 400 ? 30 : (distance < 800 ? 22 : 18)),
-      fiveTon: distance < 200 ? 65 : (distance < 400 ? 40 : (distance < 800 ? 30 : 25)),
-      tenTon: distance < 200 ? 80 : (distance < 400 ? 50 : (distance < 800 ? 35 : 30)),
-      truck: distance < 200 ? 100 : (distance < 400 ? 60 : (distance < 800 ? 45 : 35))
-    };
+    // КОМБИНИРОВАННАЯ ЛОГИКА: База = расстояние × тариф
+    let basePrice = distance * pricePerKm;
 
-    const actualKmRate = transportKmRates[optimalTransport] || 25;
-    let basePrice = distance * actualKmRate;
-
-    // ЖЕСТКИЕ МИНИМАЛКИ ПО ТИПАМ ТС 
+    // ЖЕСТКИЕ МИНИМАЛКИ ПО ТИПАМ ТС для коротких/средних плеч
     const transportMinPrices = {
-      gazelle: 10000,
-      threeTon: 13000,
-      fiveTon: 20000,
-      tenTon: 24000,
-      truck: 28000
+      gazelle: distance < 400 ? 20000 : transport.minPriceRegion,
+      threeTon: distance < 400 ? 25000 : transport.minPriceRegion,
+      fiveTon: distance < 400 ? 30000 : transport.minPriceRegion,
+      tenTon: distance < 400 ? 37000 : transport.minPriceRegion,
+      truck: distance < 400 ? 42000 : transport.minPriceRegion
     };
 
     // Применяем минималку для выбранного транспорта
     const minPrice = transportMinPrices[optimalTransport];
     basePrice = Math.max(basePrice, minPrice);
+
+    // ДОБАВЛЯЕМ ₽/КМ ДОПЛАТЫ ПО ТИПУ ТС К МЕЖРЕГИОНАЛЬНЫМ
+    const interregionalKmRates = {
+      gazelle: 10,   // 10₽/км для газели
+      threeTon: 15,  // 15₽/км для 3-тонника
+      fiveTon: 20,   // 20₽/км для 5-тонника  
+      tenTon: 25,    // 25₽/км для 10-тонника
+      truck: 30      // 30₽/км для фуры
+    };
+    
+    const kmRate = interregionalKmRates[optimalTransport] || 15;
+    const kmSurcharge = distance * kmRate;
+    basePrice += kmSurcharge;
 
     // СБОРНЫЕ ГРУЗЫ (только для межрегиональных и НЕ для фур!)
     const isConsolidated = (cargoType === 'сборный' || cargoType === 'consolidated') && transport.allowConsolidated;
@@ -267,12 +271,12 @@ class SmartCalculatorV2 {
       transport: transport.name,
       distance: distance,
       deliveryType: distanceCategory,
-      pricePerKm: actualKmRate,
+      pricePerKm: Math.round(finalPrice / distance),
       deliveryTime: this.calculateDeliveryTime(distance, isConsolidated),
       details: {
         basePrice: basePrice,
         minPrice: minPrice,
-        pricePerKm: actualKmRate,
+        pricePerKm: pricePerKm,
         loadFactor: loadFactor,
         routeFactor: routeFactor,
         cargoFactor: cargoFactor,
@@ -457,7 +461,6 @@ class SmartCalculatorV2 {
         'Москва-Чехов': 55,
         'Москва-Обухово': 45,
         'Москва-Сынково': 50,
-        'Москва-Большие Вяземы': 55,
         
         // РЕГИОНАЛЬНЫЕ МАРШРУТЫ
         'Москва-Тверь': 170,
