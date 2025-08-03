@@ -104,8 +104,8 @@ class DistanceAPI {
     // OpenRouteService API v2 endpoint
     const url = 'https://api.openrouteservice.org/v2/directions/driving-hgv';
     
-    // API ключ (публичный демо-ключ, для продакшена нужен свой)
-    const API_KEY = '5b3ce3597851110001cf6248d1bbcf73514c4d5e9a5b4d7e8a4a0a4f';
+    // Реальный API ключ (твой личный)
+    const API_KEY = '28d87edc85fa4551b58d331d8d24f8e3';
     
     const params = new URLSearchParams({
       start: `${coords.from.lng},${coords.from.lat}`,
