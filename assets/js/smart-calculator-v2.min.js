@@ -178,9 +178,9 @@ class SmartCalculatorV2 {
       deliveryTime: distance <= 100 ? '1 день' : '1-2 дня',
       details: {
         basePrice: transport.minPrice,
-        distanceCoeff: distanceCoeff,
+        distanceCoeff: 1.0, // Для локальных доставок всегда 1.0
         loadFactor: loadFactor,
-        transportCoeff: transportCoeff,
+        transportCoeff: 1.0, // Для локальных доставок всегда 1.0
         weight: weight,
         volume: volume,
         loadPercent: Math.round((weight / transport.maxWeight) * 100),
@@ -277,9 +277,11 @@ class SmartCalculatorV2 {
         basePrice: basePrice,
         minPrice: minPrice,
         pricePerKm: pricePerKm,
+        distanceCoeff: 1.0, // Для межрегиональных коэффициенты встроены в логику
         loadFactor: loadFactor,
         routeFactor: routeFactor,
         cargoFactor: cargoFactor,
+        transportCoeff: transportCoeff,
         weight: weight,
         volume: volume,
         loadPercent: Math.round((weight / transport.maxWeight) * 100),
