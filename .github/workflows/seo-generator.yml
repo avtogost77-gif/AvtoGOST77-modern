@@ -9,7 +9,7 @@ on:
       pages_count:
         description: 'Количество страниц для генерации'
         required: false
-        default: '10'
+        default: '50'
       strategy:
         description: 'Стратегия генерации'
         required: false
@@ -17,6 +17,7 @@ on:
         type: choice
         options:
         - routes
+        - routes-extended
         - industries
         - calculators
 
@@ -29,13 +30,13 @@ jobs:
       uses: actions/checkout@v4
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
-    
+
     - name: Setup Node.js
       uses: actions/setup-node@v4
       with:
         node-version: '18'
         cache: 'npm'
-    
+
     - name: Cache dependencies
       uses: actions/cache@v3
       with:
@@ -43,47 +44,59 @@ jobs:
         key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
         restore-keys: |
           ${{ runner.os }}-node-
-    
+
     - name: Install dependencies (simplified)
       run: |
         echo "Используем только встроенные Node.js модули для стабильности"
-    
-    - name: Generate Routes Pages
-      if: ${{ github.event.inputs.strategy == 'routes' || github.event.schedule }}
+
+    - name: Generate Routes Pages (Simple)
+      if: ${{ github.event.inputs.strategy == 'routes' }}
       run: node .github/scripts/generate-routes-simple.js
       env:
         PAGES_COUNT: ${{ github.event.inputs.pages_count || '15' }}
-    
+
+    - name: Generate Routes Pages (Extended with Marketplaces)
+      if: ${{ github.event.inputs.strategy == 'routes-extended' || github.event.schedule }}
+      run: node .github/scripts/generate-routes-extended.js
+      env:
+        PAGES_COUNT: ${{ github.event.inputs.pages_count || '50' }}
+
     - name: Generate Industry Pages
       if: ${{ github.event.inputs.strategy == 'industries' }}
       run: node .github/scripts/generate-industries.js
       env:
         PAGES_COUNT: ${{ github.event.inputs.pages_count || '6' }}
-    
+
     - name: Generate Calculator Pages
       if: ${{ github.event.inputs.strategy == 'calculators' }}
       run: node .github/scripts/generate-calculators.js
       env:
         PAGES_COUNT: ${{ github.event.inputs.pages_count || '6' }}
-    
+
     - name: Update Sitemap
       run: node .github/scripts/update-sitemap.js
-    
+
     - name: Update Internal Links
       run: node .github/scripts/update-links.js
-    
+
     - name: Commit and Push
       run: |
         git config --local user.email "seo-bot@avtogost77.ru"
         git config --local user.name "SEO Auto-Generator"
         git add .
-        git diff --staged --quiet || git commit -m "🤖 Автогенерация SEO страниц - $(date '+%Y-%m-%d %H:%M')"
+        git diff --staged --quiet || git commit -m "🤖 Автогенерация SEO страниц - $(date '+%Y-%m-%d %H:%M') | Стратегия: ${{ github.event.inputs.strategy || 'routes-extended' }} | Страниц: ${{ github.event.inputs.pages_count || '50' }}"
         git push
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    
+
     - name: Deploy to Server (опционально)
       if: success()
       run: |
-        echo "Страницы сгенерированы и готовы к деплою"
+        echo "🎉 РЕЗУЛЬТАТЫ ГЕНЕРАЦИИ:"
+        echo "📍 Маршруты: Включены города в радиусе 1000км от Москвы"
+        echo "📦 Маркетплейсы: Коледино WB, Подольск, Белые Столбы, Электросталь, Тверь Ozon"
+        echo "🏭 Промзоны: Тула промышленная"
+        echo "🎯 Всего направлений: 25+ городов"
+        echo "⚡ Реальные расстояния через OpenRouteService API"
+        echo "🚀 Страницы сгенерированы и готовы к деплою"
         # Здесь можно добавить автодеплой на сервер

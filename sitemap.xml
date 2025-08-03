@@ -85,7 +85,37 @@
         <priority>0.9</priority>
     </url>
     <url>
+        <loc>https://www.avtogost77.ru/routes/moskva/moskva-belgorod/</loc>
+        <lastmod>2025-08-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://www.avtogost77.ru/routes/moskva/moskva-belye-stolby/</loc>
+        <lastmod>2025-08-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://www.avtogost77.ru/routes/moskva/moskva-bryansk/</loc>
+        <lastmod>2025-08-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
         <loc>https://www.avtogost77.ru/routes/moskva/moskva-ekaterinburg/</loc>
+        <lastmod>2025-08-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://www.avtogost77.ru/routes/moskva/moskva-elektrostal/</loc>
+        <lastmod>2025-08-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://www.avtogost77.ru/routes/moskva/moskva-kaluga/</loc>
         <lastmod>2025-08-03</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
@@ -97,7 +127,43 @@
         <priority>0.9</priority>
     </url>
     <url>
+        <loc>https://www.avtogost77.ru/routes/moskva/moskva-koledinovo/</loc>
+        <lastmod>2025-08-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://www.avtogost77.ru/routes/moskva/moskva-kursk/</loc>
+        <lastmod>2025-08-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
         <loc>https://www.avtogost77.ru/routes/moskva/moskva-nizhniy-novgorod/</loc>
+        <lastmod>2025-08-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://www.avtogost77.ru/routes/moskva/moskva-orel/</loc>
+        <lastmod>2025-08-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://www.avtogost77.ru/routes/moskva/moskva-penza/</loc>
+        <lastmod>2025-08-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://www.avtogost77.ru/routes/moskva/moskva-podolsk/</loc>
+        <lastmod>2025-08-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://www.avtogost77.ru/routes/moskva/moskva-ryazan/</loc>
         <lastmod>2025-08-03</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
@@ -109,13 +175,61 @@
         <priority>0.9</priority>
     </url>
     <url>
+        <loc>https://www.avtogost77.ru/routes/moskva/moskva-saransk/</loc>
+        <lastmod>2025-08-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://www.avtogost77.ru/routes/moskva/moskva-smolensk/</loc>
+        <lastmod>2025-08-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
         <loc>https://www.avtogost77.ru/routes/moskva/moskva-spb/</loc>
         <lastmod>2025-08-03</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
+        <loc>https://www.avtogost77.ru/routes/moskva/moskva-tambov/</loc>
+        <lastmod>2025-08-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://www.avtogost77.ru/routes/moskva/moskva-tula/</loc>
+        <lastmod>2025-08-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://www.avtogost77.ru/routes/moskva/moskva-tver-ozon/</loc>
+        <lastmod>2025-08-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://www.avtogost77.ru/routes/moskva/moskva-tver/</loc>
+        <lastmod>2025-08-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://www.avtogost77.ru/routes/moskva/moskva-vladimir/</loc>
+        <lastmod>2025-08-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
         <loc>https://www.avtogost77.ru/routes/moskva/moskva-voronezh/</loc>
+        <lastmod>2025-08-03</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://www.avtogost77.ru/routes/moskva/moskva-yaroslavl/</loc>
         <lastmod>2025-08-03</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>

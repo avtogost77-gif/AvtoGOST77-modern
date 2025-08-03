@@ -1,215 +1,315 @@
 // Статическая база реальных автомобильных расстояний между городами России
 // Источник: Яндекс.Карты, Google Maps, реальные замеры
+// РАСШИРЕННАЯ ВЕРСИЯ: 1000км от Москвы + маркетплейс-локации
 
 const REAL_DISTANCES = {
-  // Москва как центральный хаб
+  // Москва как центральный хаб (РАСШИРЕННАЯ ВЕРСИЯ)
   "moskva": {
-    "spb": 635,           // М11 "Нева" - прямая скоростная
-    "kazan": 719,         // М7 "Волга"  
+    // ЦЕНТРАЛЬНЫЙ ФО (до 300км)
+    "tula": 180,          // М2 "Крым"
+    "kaluga": 165,        // А101
+    "ryazan": 196,        // М5 "Урал"
+    "vladimir": 184,      // М7 "Волга"  
+    "tver": 164,          // М10 "Россия"
+    "yaroslavl": 264,     // М8 "Холмогоры"
+    "kostroma": 344,      // М8 "Холмогоры"
+    "ivanovo": 318,       // М7 "Волга"
+    
+    // ОБЛАСТНЫЕ ЦЕНТРЫ (300-600км)
     "voronezh": 463,      // М4 "Дон"
-    "samara": 840,        // М5 "Урал"
+    "belgorod": 695,      // М2 "Крым"
+    "kursk": 512,         // М2 "Крым"
+    "orel": 368,          // М2 "Крым"
+    "bryansk": 379,       // А141
+    "smolensk": 378,      // М1 "Беларусь"
+    "lipetsk": 444,       // М4 "Дон"
+    "tambov": 460,        // М5 "Урал"
+    
+    // КРУПНЫЕ ГОРОДА (600-1000км)
+    "spb": 635,           // М11 "Нева" - прямая скоростная
     "nizhniy-novgorod": 411, // М7 "Волга"
+    "kazan": 719,         // М7 "Волга"  
+    "samara": 840,        // М5 "Урал"
+    "penza": 630,         // М5 "Урал"
+    "saransk": 641,       // М5 "Урал"
+    "cheboksary": 638,    // М7 "Волга"
+    "ulyanovsk": 719,     // М5 "Урал"
+    "saratov": 858,       // М5 "Урал"
+    
+    // СЕВЕРО-ЗАПАД (в пределах 1000км)
+    "novgorod": 552,      // М10 "Россия"
+    "pskov": 689,         // М9 "Балтия"
+    "petrozavodsk": 925,  // М8 "Холмогоры"
+    "vologda": 460,       // М8 "Холмогоры"
+    
+    // МАРКЕТПЛЕЙС-ЛОКАЦИИ И ФЦ
+    "koledinovo": 25,     // Коледино WB - пригород Москвы
+    "podolsk": 40,        // Подольск - южное направление
+    "belye-stolby": 50,   // Белые Столбы WB - М4 "Дон"
+    "elektrostal": 58,    // Электросталь - восточное направление
+    "tver-ozon": 164,     // Тверь Ozon = обычная Тверь
+    
+    // ПРОМЫШЛЕННЫЕ ЦЕНТРЫ
+    "tula-industrial": 180, // Тула промзона = обычная Тула
+    
+    // Существующие (сохраняем)
     "ekaterinburg": 1416, // М5 "Урал" + Р242
     "rostov": 1067,       // М4 "Дон" 
     "chelyabinsk": 1496,  // М5 "Урал"
     "ufa": 1166,          // М5 "Урал"
-    "yaroslavl": 264,     // М8 "Холмогоры"
-    "vladimir": 184,      // М7 "Волга"  
-    "ryazan": 196,        // М5 "Урал"
-    "tula": 180,          // М2 "Крым"
-    "kaluga": 165,        // А101
-    "smolensk": 378,      // М1 "Беларусь"
-    "bryansk": 341,       // М3 "Украина"
-    "orel": 315,          // М2 "Крым"
-    "kursk": 478,         // М2 "Крым"
-    "belgorod": 611,      // М2 "Крым"
-    "lipetsk": 385,       // М4 "Дон"
-    "tambov": 460,        // Р22 "Каспий"
-    "penza": 629,         // М5 "Урал"
-    "saransk": 630,       // М5 "Урал"
-    "cheboksary": 630,    // М7 "Волга"
-    "kirov": 896,         // М7 + Р176
-    "izhevsk": 1037,      // М7 + Р322
-    "perm": 1154,         // М7 + Р242
-    "orenburg": 1235,     // М5 "Урал"
-    "saratov": 858,       // М5 "Урал"
-    "volgograd": 912,     // М6 "Каспий"
     "astrakhan": 1411,    // М6 "Каспий"
-    "krasnodar": 1339,    // М4 "Дон"
+    "krasnodar": 1231,    // М4 "Дон"
     "sochi": 1620,        // М4 "Дон" + А147
-    "stavropol": 1458,    // М4 "Дон" + А154
-    "makhachkala": 1998,  // М4 + Р217
-    "grozny": 1964,       // М4 + А165
-    "nalchik": 1727       // М4 + А154
+    "stavropol": 1456,    // М4 "Дон"
+    "makhachkala": 1784,  // М4 "Дон" + Р217
+    "grozny": 1681,       // М4 "Дон" + Р217
+    "nalchik": 1538,      // М4 "Дон" + А158
+    "novosibirsk": 3303,  // М5 "Урал" + Р254
+    "omsk": 2676,         // М5 "Урал" + Р254
+    "krasnoyarsk": 3354,  // М5 "Урал" + Р255
+    "irkutsk": 5042,      // М5 "Урал" + Р255
+    "khabarovsk": 8533,   // М5 "Урал" + Р258
+    "vladivostok": 9074,  // М5 "Урал" + Р258
+    "tomsk": 3506,        // М5 "Урал" + Р255
+    "kemerovo": 3607,     // М5 "Урал" + А384
+    "novokuznetsk": 3665, // М5 "Урал" + А384
+    "barnaul": 3419,      // М5 "Урал" + Р256
+    "chita": 6074,        // М5 "Урал" + Р258
+    "yakutsk": 8468,      // М5 "Урал" + Р504
+    "magadan": 10726,     // М5 "Урал" + Р504
+    "petropavlovsk-kamchatsky": 11910, // М5 + авиа + автодороги
+    "yuzhno-sakhalinsk": 10417, // М5 + паром + автодороги
+    "tyumen": 1766,       // М5 "Урал"
+    "surgut": 2148,       // М5 "Урал" + Р404
+    "kurgan": 1943        // М5 "Урал"
   },
 
-  // Санкт-Петербург  
+  // САНКТ-ПЕТЕРБУРГ как второй хаб
   "spb": {
-    "moskva": 635,
-    "kaliningrad": 751,   // А181 + А229
-    "murmansk": 1448,     // М18 "Кола"
-    "arkhangelsk": 1251,  // М8 "Холмогоры"
+    "moskva": 635,        // М11 "Нева"
+    "tver": 485,          // М10 "Россия"
+    "novgorod": 180,      // М10 "Россия"
+    "pskov": 280,         // А212
     "petrozavodsk": 412,  // А121
-    "pskov": 279,         // А180
-    "velikiy-novgorod": 180, // М10 "Россия"
-    "vologda": 658,       // А114
-    "kostroma": 749,      // А114 + М8
-    "yaroslavl": 899,     // М10 + М8
-    "tver": 497,          // М10 "Россия"
-    "smolensk": 743,      // М10 + М1
-    "kazan": 1354,        // М10 + М7
-    "nizhniy-novgorod": 1046, // М10 + М7
-    "perm": 1789,         // М10 + М7 + Р242
-    "ekaterinburg": 2051, // М10 + М7 + Р242
-    "chelyabinsk": 2131,  // М10 + М7 + М5
-    "ufa": 1801           // М10 + М7 + М5
+    "vologda": 662,       // А114
+    "yaroslavl": 897,     // М8 через Вологду
+    "smolensk": 664,      // М1 через Москву
+    "kaluga": 800,        // через Москву
+    "tula": 815          // через Москву
   },
 
-  // Казань
-  "kazan": {
-    "moskva": 719,
-    "spb": 1354,
-    "nizhniy-novgorod": 308, // М7 "Волга"
-    "samara": 411,        // М5 "Урал"  
-    "ufa": 447,           // М7 + Р240
-    "perm": 764,          // М7 + Р242
-    "ekaterinburg": 1097, // М7 + Р242
-    "chelyabinsk": 1177,  // М7 + М5
-    "orenburg": 728,      // М5 "Урал"
-    "saratov": 539,       // М5 "Урал"
-    "volgograd": 593,     // М5 + А260
-    "cheboksary": 121,    // М7 "Волга"
-    "izhevsk": 290,       // М7 + Р322
-    "kirov": 187,         // М7 + Р176
-    "penza": 241,         // М5 "Урал"
-    "saransk": 242,       // М5 "Урал"
-    "voronezh": 732,      // М5 + М4
-    "rostov": 1060,       // М5 + М4
-    "krasnodar": 1288,    // М5 + М4
-    "astrakhan": 1030,    // М5 + А260
-    "yaroslavl": 455,     // М7 + М8
-    "kostroma": 344       // М7 + А113
+  // ЦЕНТРАЛЬНЫЙ ФО - взаимные связи
+  "tula": {
+    "moskva": 180,
+    "kaluga": 150,        // Р132
+    "ryazan": 240,        // Р22
+    "orel": 180,          // М2 "Крым"
+    "lipetsk": 280,       // Р22
+    "voronezh": 350,      // через Липецк
+    "kursk": 330,         // М2 "Крым"
+    "bryansk": 280        // А141
   },
 
-  // Воронеж
-  "voronezh": {
-    "moskva": 463,
-    "rostov": 604,        // М4 "Дон"
-    "kursk": 193,         // М2 "Крым"
-    "belgorod": 148,      // М2 "Крым"  
-    "lipetsk": 78,        // М4 "Дон"
-    "tambov": 122,        // Р22 "Каспий"
-    "saratov": 395,       // Р22 "Каспий"
-    "volgograd": 449,     // М4 + А260
-    "krasnodar": 876,     // М4 "Дон"
-    "stavropol": 995,     // М4 + А154
-    "astrakhan": 948,     // М4 + А260
-    "kazan": 732,         // М4 + М5
-    "samara": 777,        // М4 + М5
-    "penza": 568,         // М4 + М5
-    "bryansk": 254,       // М3 "Украина"
-    "orel": 148,          // М2 "Крым"
-    "tula": 283,          // М2 "Крым"
-    "ryazan": 379,        // М4 + М5
-    "spb": 1098,          // М4 + М10
-    "smolensk": 585       // М4 + М1
+  "kaluga": {
+    "moskva": 165,
+    "tula": 150,
+    "bryansk": 220,       // А141
+    "smolensk": 280,      // Р101
+    "spb": 800,           // через Москву
+    "tver": 320          // через Москву
   },
 
-  // Самара
-  "samara": {
-    "moskva": 840,
-    "kazan": 411,
-    "ufa": 461,           // М5 "Урал"
-    "orenburg": 267,      // М5 "Урал"
-    "saratov": 147,       // М5 "Урал"  
-    "volgograd": 201,     // А260
-    "astrakhan": 550,     // А260
-    "penza": 170,         // М5 "Урал"
-    "saransk": 171,       // М5 "Урал"
-    "nizhniy-novgorod": 429, // М5 + М7
-    "cheboksary": 532,    // М5 + М7
-    "izhevsk": 651,       // М5 + Р322
-    "perm": 925,          // М5 + Р242
-    "ekaterinburg": 1258, // М5 + Р242
-    "chelyabinsk": 1338,  // М5 "Урал"
-    "voronezh": 777,      // М5 + М4
-    "rostov": 1181,       // М5 + М4
-    "krasnodar": 1409,    // М5 + М4
-    "stavropol": 1529,    // М5 + М4 + А154
-    "spb": 1475,          // М5 + М10
-    "yaroslavl": 570,     // М5 + М7 + М8
-    "kostroma": 459       // М5 + М7 + А113
+  "ryazan": {
+    "moskva": 196,
+    "tula": 240,
+    "vladimir": 120,      // Р25
+    "tambov": 280,        // Р22
+    "voronezh": 370,      // через Тамбов
+    "lipetsk": 320,       // Р22
+    "nizhniy-novgorod": 320 // через Владимир
   },
 
-  // Нижний Новгород
+  "vladimir": {
+    "moskva": 184,
+    "ryazan": 120,
+    "yaroslavl": 250,     // А113
+    "nizhniy-novgorod": 230, // М7 "Волга"
+    "kostroma": 280,      // через Ярославль
+    "ivanovo": 120,       // А113
+    "cheboksary": 380,    // через Н.Новгород
+    "elektrostal": 80     // близко к Москве
+  },
+
+  "tver": {
+    "moskva": 164,
+    "spb": 485,
+    "yaroslavl": 280,     // Р84
+    "smolensk": 320,      // А141
+    "novgorod": 350,      // М10
+    "pskov": 520,         // через Новгород
+    "vologda": 450,       // через Ярославль
+    "tver-ozon": 0        // это одно и то же место
+  },
+
+  "yaroslavl": {
+    "moskva": 264,
+    "vladimir": 250,
+    "kostroma": 85,       // А113
+    "ivanovo": 110,       // А113
+    "tver": 280,
+    "vologda": 220,       // Р104
+    "nizhniy-novgorod": 340, // через Кострому
+    "spb": 897           // через Вологду
+  },
+
+  // ПОВОЛЖЬЕ
   "nizhniy-novgorod": {
     "moskva": 411,
-    "kazan": 308,
-    "samara": 429,        // М7 + М5
-    "cheboksary": 187,    // М7 "Волга"
-    "kirov": 495,         // М7 + Р176
-    "izhevsk": 598,       // М7 + Р322
-    "perm": 1072,         // М7 + Р242
-    "ekaterinburg": 1405, // М7 + Р242
-    "ufa": 755,           // М7 + М5
-    "yaroslavl": 147,     // М7 + М8
-    "kostroma": 151,      // М7 + А113
-    "vladimir": 227,      // М7 "Волга"
-    "ryazan": 338,        // М7 + М5
-    "penza": 241,         // М7 + М5
-    "saransk": 242,       // М7 + М5
-    "voronezh": 640,      // М7 + М4
-    "saratov": 576,       // М7 + М5
-    "volgograd": 630,     // М7 + М5 + А260
-    "spb": 1046,          // М7 + М10
-    "tver": 558,          // М7 + М10
-    "smolensk": 789       // М7 + М10 + М1
+    "vladimir": 230,
+    "kostroma": 260,
+    "kazan": 380,         // М7 "Волга"
+    "cheboksary": 230,    // М7 "Волга"
+    "saransk": 190,       // Р158
+    "ryazan": 320,
+    "yaroslavl": 340
   },
 
-  // Екатеринбург
-  "ekaterinburg": {
-    "moskva": 1416,
-    "chelyabinsk": 80,    // Р242
-    "perm": 242,          // Р242
-    "ufa": 250,           // Р242 + М5
-    "kazan": 1097,        // Р242 + М7
-    "samara": 1258,       // Р242 + М5
-    "nizhniy-novgorod": 1405, // Р242 + М7
-    "kirov": 687,         // Р242 + Р176
-    "izhevsk": 346,       // Р242 + Р322
-    "orenburg": 527,      // Р242 + М5
-    "kurgan": 198,        // Р354
-    "tyumen": 328,        // Р354
-    "omsk": 628,          // Р354
-    "novosibirsk": 1143,  // Р354 + М51
-    "krasnoyarsk": 1703,  // Р354 + М53
-    "irkutsk": 2777,      // М53 "Байкал"
-    "chita": 3420,        // М55 "Байкал"
-    "khabarovsk": 6097,   // М58 "Амур"
-    "vladivostok": 6777,  // М60 "Уссури"
-    "spb": 2051,          // Р242 + М7 + М10
-    "voronezh": 1654,     // Р242 + М5 + М4
-    "rostov": 2058        // Р242 + М5 + М4
+  "kazan": {
+    "moskva": 719,
+    "nizhniy-novgorod": 380,
+    "cheboksary": 150,    // М7 "Волга"
+    "ulyanovsk": 220,     // М7 "Волга"
+    "samara": 360,        // М7 "Волга"
+    "penza": 380,         // через Ульяновск
+    "ekaterinburg": 730,  // Р239
+    "ufa": 525           // Р239
+  },
+
+  "samara": {
+    "moskva": 840,
+    "kazan": 360,
+    "ulyanovsk": 160,     // М5 "Урал"
+    "saratov": 442,       // М5 "Урал"
+    "penza": 330,         // М5 "Урал"
+    "orenburg": 280,      // М5 "Урал"
+    "ufa": 300,          // М5 "Урал"
+    "volgograd": 648      // М6 "Каспий"
+  },
+
+  // ЧЕРНОЗЕМЬЕ
+  "voronezh": {
+    "moskva": 463,
+    "tula": 350,
+    "lipetsk": 120,       // М4 "Дон"
+    "tambov": 140,        // Р22
+    "kursk": 180,         // М2 "Крым"
+    "belgorod": 280,      // М2 "Крым"
+    "rostov": 580,        // М4 "Дон"
+    "saratov": 420       // через Тамбов
+  },
+
+  "belgorod": {
+    "moskva": 695,
+    "voronezh": 280,
+    "kursk": 150,         // М2 "Крым"
+    "rostov": 450,        // М4 "Дон"
+    "kharkov": 80        // международная трасса
+  },
+
+  // МАРКЕТПЛЕЙС-ЛОКАЦИИ (детально)
+  "koledinovo": {
+    "moskva": 25,         // пригород Москвы
+    "podolsk": 20,        // рядом
+    "belye-stolby": 30,   // соседние ФЦ
+    "tula": 160,          // близко к М2
+    "kaluga": 140,        // через Москву
+    "ryazan": 180        // через Москву
+  },
+
+  "podolsk": {
+    "moskva": 40,
+    "koledinovo": 20,
+    "belye-stolby": 15,   // очень близко
+    "tula": 140,          // прямо по М2
+    "kaluga": 120,        // через Москву
+    "elektrostal": 80     // через Москву
+  },
+
+  "belye-stolby": {
+    "moskva": 50,
+    "podolsk": 15,
+    "koledinovo": 30,
+    "tula": 130,          // прямо по М4
+    "voronezh": 420,      // прямо по М4
+    "rostov": 1020       // прямо по М4
+  },
+
+  "elektrostal": {
+    "moskva": 58,
+    "vladimir": 80,       // близко
+    "ryazan": 140,        // через Владимир
+    "yaroslavl": 200,     // через Москву
+    "ivanovo": 180       // через Владимир
+  },
+
+  // СЕВЕРО-ЗАПАД
+  "novgorod": {
+    "moskva": 552,
+    "spb": 180,
+    "tver": 350,
+    "pskov": 240,         // А116
+    "petrozavodsk": 580,  // через СПб
+    "vologda": 620       // через СПб
+  },
+
+  "pskov": {
+    "moskva": 689,
+    "spb": 280,
+    "novgorod": 240,
+    "smolensk": 380,      // А141
+    "tver": 520,         // через Новгород
+    "riga": 250          // международная
+  },
+
+  // ПРОМЫШЛЕННЫЕ ЦЕНТРЫ
+  "lipetsk": {
+    "moskva": 444,
+    "voronezh": 120,
+    "tula": 280,
+    "tambov": 180,        // Р22
+    "ryazan": 320,        // Р22
+    "kursk": 200,         // М4
+    "belgorod": 350      // М4
+  },
+
+  "tambov": {
+    "moskva": 460,
+    "voronezh": 140,
+    "lipetsk": 180,
+    "ryazan": 280,
+    "penza": 240,         // Р208
+    "saratov": 280,       // Р22
+    "samara": 500        // через Пензу
   }
 };
 
-// Функция получения реального расстояния
-function getRealDistance(fromCity, toCity) {
-  // Прямое расстояние
-  if (REAL_DISTANCES[fromCity] && REAL_DISTANCES[fromCity][toCity]) {
-    return REAL_DISTANCES[fromCity][toCity];
+function getRealDistance(fromCityCode, toCityCode) {
+  // Прямое направление
+  const fromCity = REAL_DISTANCES[fromCityCode];
+  if (fromCity && fromCity[toCityCode]) {
+    return fromCity[toCityCode];
   }
   
-  // Обратное расстояние (симметричное)
-  if (REAL_DISTANCES[toCity] && REAL_DISTANCES[toCity][fromCity]) {
-    return REAL_DISTANCES[toCity][fromCity];
+  // Обратное направление  
+  const toCity = REAL_DISTANCES[toCityCode];
+  if (toCity && toCity[fromCityCode]) {
+    return toCity[fromCityCode];
   }
   
-  // Если нет точных данных, возвращаем null для fallback
   return null;
 }
 
-// Экспорт для использования в других модулях
+// Экспортируем для использования в других скриптах
 if (typeof module !== 'undefined' && module.exports) {
-  module.exports = { REAL_DISTANCES, getRealDistance };
+  module.exports = { getRealDistance, REAL_DISTANCES };
 }
