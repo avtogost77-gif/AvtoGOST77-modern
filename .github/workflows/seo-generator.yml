@@ -1,0 +1,90 @@
+name: SEO Pages Auto-Generator
+
+on:
+  schedule:
+    # Запуск каждые 6 часов для постоянного роста
+    - cron: '0 */6 * * *'
+  workflow_dispatch:
+    inputs:
+      pages_count:
+        description: 'Количество страниц для генерации'
+        required: false
+        default: '10'
+      strategy:
+        description: 'Стратегия генерации'
+        required: false
+        default: 'routes'
+        type: choice
+        options:
+        - routes
+        - industries
+        - calculators
+
+jobs:
+  generate-seo-pages:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+    
+    - name: Cache dependencies
+      uses: actions/cache@v3
+      with:
+        path: ~/.npm
+        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-node-
+    
+    - name: Install dependencies
+      run: |
+        npm init -y
+        npm install axios cheerio fs-extra
+    
+    - name: Generate Routes Pages
+      if: ${{ github.event.inputs.strategy == 'routes' || github.event.schedule }}
+      run: node .github/scripts/generate-routes.js
+      env:
+        PAGES_COUNT: ${{ github.event.inputs.pages_count || '10' }}
+    
+    - name: Generate Industry Pages
+      if: ${{ github.event.inputs.strategy == 'industries' }}
+      run: node .github/scripts/generate-industries.js
+      env:
+        PAGES_COUNT: ${{ github.event.inputs.pages_count || '5' }}
+    
+    - name: Generate Calculator Pages
+      if: ${{ github.event.inputs.strategy == 'calculators' }}
+      run: node .github/scripts/generate-calculators.js
+      env:
+        PAGES_COUNT: ${{ github.event.inputs.pages_count || '3' }}
+    
+    - name: Update Sitemap
+      run: node .github/scripts/update-sitemap.js
+    
+    - name: Update Internal Links
+      run: node .github/scripts/update-links.js
+    
+    - name: Commit and Push
+      run: |
+        git config --local user.email "seo-bot@avtogost77.ru"
+        git config --local user.name "SEO Auto-Generator"
+        git add .
+        git diff --staged --quiet || git commit -m "🤖 Автогенерация SEO страниц - $(date '+%Y-%m-%d %H:%M')"
+        git push
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    
+    - name: Deploy to Server (опционально)
+      if: success()
+      run: |
+        echo "Страницы сгенерированы и готовы к деплою"
+        # Здесь можно добавить автодеплой на сервер
