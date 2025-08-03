@@ -2366,6 +2366,14 @@ body {
   padding: 1rem 2rem;
 }
 
+/* ФИКС: Иконки в кнопках карточек НЕ должны растягиваться */
+.conversion-card .btn svg,
+.conversion-card .btn .btn-icon {
+  width: 1.25rem !important;
+  height: 1.25rem !important;
+  flex-shrink: 0;
+}
+
 /* Адаптивность */
 @media (max-width: 768px) {
   .conversion-funnel {
