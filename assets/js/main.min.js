@@ -353,54 +353,89 @@ if (!document.getElementById('modal-styles')) {
     document.head.appendChild(styleSheet);
 }
 
-// ===============================================
-// EXIT-INTENT POPUP - ПОСЛЕДНИЙ ШАНС ПОЙМАТЬ КЛИЕНТА
-// ===============================================
+// ========================================================
+// 🎯 EXIT-INTENT POPUP SYSTEM V2.0
+// Исправлены баги для мобильных устройств
+// ========================================================
 
 let exitIntentShown = false;
-let exitIntentTimer = null;
 
-// Детекция exit-intent
+// Инициализация exit-intent системы
 function initExitIntent() {
-    // Проверяем, не показывали ли уже popup в этой сессии
-    if (sessionStorage.getItem('exitIntentShown')) {
+    // Проверяем, показывали ли уже в этой сессии
+    if (sessionStorage.getItem('exitIntentShown') === 'true') {
+        exitIntentShown = true;
         return;
     }
     
-    // Отслеживаем движение мыши
-    document.addEventListener('mouseleave', function(e) {
-        // Если мышь ушла за верхний край экрана (к закрытию/адресной строке)
-        if (e.clientY <= 0 && !exitIntentShown) {
-            showExitIntentPopup();
-        }
-    });
+    // МОБИЛЬНЫЕ УСТРОЙСТВА - другая логика
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 768;
     
-    // Также показываем при попытке закрыть вкладку
-    window.addEventListener('beforeunload', function(e) {
-        if (!exitIntentShown) {
-            // Небольшая задержка чтобы успеть показать
-            setTimeout(() => {
-                showExitIntentPopup();
-            }, 50);
-        }
-    });
-    
-    // Дополнительный триггер - долгое время без активности (3 минуты)
-    let inactivityTimer = setTimeout(() => {
-        if (!exitIntentShown) {
-            showExitIntentPopup();
-        }
-    }, 180000); // 3 минуты
-    
-    // Сбрасываем таймер при активности
-    document.addEventListener('mousemove', () => {
-        clearTimeout(inactivityTimer);
-        inactivityTimer = setTimeout(() => {
+    if (isMobile) {
+        // На мобильных показываем только при скролле вверх или долгом бездействии
+        let lastScrollY = window.scrollY;
+        let scrollUpCount = 0;
+        
+        window.addEventListener('scroll', () => {
+            const currentScrollY = window.scrollY;
+            
+            // Если скроллим вверх и находимся не в самом верху
+            if (currentScrollY < lastScrollY && currentScrollY > 100) {
+                scrollUpCount++;
+                // Показываем после 3х скроллов вверх
+                if (scrollUpCount >= 3 && !exitIntentShown) {
+                    showExitIntentPopup();
+                }
+            } else {
+                scrollUpCount = Math.max(0, scrollUpCount - 1);
+            }
+            
+            lastScrollY = currentScrollY;
+        });
+        
+        // Долгое бездействие на мобильных (5 минут)
+        setTimeout(() => {
             if (!exitIntentShown) {
                 showExitIntentPopup();
             }
-        }, 180000);
-    });
+        }, 300000); // 5 минут
+        
+    } else {
+        // ДЕСКТОП - классические триггеры
+        
+        // Отслеживаем движение мыши для desktop
+        document.addEventListener('mouseleave', function(e) {
+            // Если мышь ушла за верхний край экрана (к закрытию/адресной строке)
+            if (e.clientY <= 0 && !exitIntentShown) {
+                showExitIntentPopup();
+            }
+        });
+        
+        // Попытка закрыть вкладку (только desktop)
+        window.addEventListener('beforeunload', function(e) {
+            if (!exitIntentShown) {
+                // Показываем popup (не блокируем закрытие)
+                showExitIntentPopup();
+            }
+        });
+        
+        // Бездействие на desktop (3 минуты)
+        let inactivityTimer = setTimeout(() => {
+            if (!exitIntentShown) {
+                showExitIntentPopup();
+            }
+        }, 180000); // 3 минуты
+        
+        // Сбрасываем таймер при активности
+        document.addEventListener('mousemove', () => {
+            clearTimeout(inactivityTimer);
+            inactivityTimer = setTimeout(() => {
+                if (!exitIntentShown) {
+                    showExitIntentPopup();
+                }
+            }, 180000);
+        });
+    }
 }
 
 // Показать exit-intent popup
@@ -410,18 +445,36 @@ function showExitIntentPopup() {
     exitIntentShown = true;
     sessionStorage.setItem('exitIntentShown', 'true');
     
-    // Генерируем случайную скидку
-    const discounts = [10, 15, 20];
-    const discount = discounts[Math.floor(Math.random() * discounts.length)];
-    
-    // Создаем popup
-    const popup = createExitIntentPopup(discount);
+    // Находим существующий popup в HTML
+    const popup = document.getElementById('exitIntentPopup');
+    if (!popup) {
+        console.error('Exit intent popup не найден в HTML');
+        return;
+    }
     
     // Показываем с анимацией
+    popup.style.display = 'flex';
     setTimeout(() => {
         popup.classList.add('show');
-    }, 100);
+    }, 10);
+    
+    // Запуск таймера обратного отсчета
+    startExitCountdown();
+    
+    // Анимация счетчика использований
+    animateExitProof();
 }
+
+// ГЛОБАЛЬНАЯ функция закрытия popup
+window.closeExitPopup = function() {
+    const popup = document.getElementById('exitIntentPopup');
+    if (popup) {
+        popup.classList.remove('show');
+        setTimeout(() => {
+            popup.style.display = 'none';
+        }, 300);
+    }
+};
 
 // Создание exit-intent popup
 function createExitIntentPopup(discount) {
@@ -513,15 +566,22 @@ function startExitCountdown() {
             
             // Красный цвет когда остается мало времени
             if (totalSeconds <= 60) {
-                document.querySelector('.countdown')?.classList.add('urgent');
+                const countdownEl = document.getElementById('exitCountdown');
+                if (countdownEl) {
+                    countdownEl.classList.add('urgent');
+                }
             }
+        } else {
+            // Если элементы не найдены, останавливаем таймер
+            clearInterval(countdown);
+            return;
         }
         
         totalSeconds--;
         
         if (totalSeconds < 0) {
             clearInterval(countdown);
-            // Можно показать "Время истекло" или закрыть popup
+            // Время истекло
             if (minutesEl && secondsEl) {
                 minutesEl.textContent = '00';
                 secondsEl.textContent = '00';
@@ -539,18 +599,17 @@ function animateExitProof() {
     
     // Случайно увеличиваем счетчик каждые 10-30 секунд
     setInterval(() => {
-        if (Math.random() > 0.7) {
-            const current = parseInt(counter.textContent);
-            counter.textContent = current + 1;
-            
-            // Эффект пульсации
-            counter.style.transform = 'scale(1.2)';
+        const current = parseInt(counter.textContent) || 23;
+        const increase = Math.floor(Math.random() * 3) + 1; // +1-3
+        counter.textContent = current + increase;
+        
+        // Анимация изменения
+        counter.style.transform = 'scale(1.2)';
+        counter.style.color = '#10b981';
+        setTimeout(() => {
+            counter.style.transform = 'scale(1)';
             counter.style.color = '#10b981';
-            setTimeout(() => {
-                counter.style.transform = 'scale(1)';
-                counter.style.color = '';
-            }, 300);
-        }
+        }, 200);
     }, Math.random() * 20000 + 10000); // 10-30 секунд
 }
 
