@@ -5,15 +5,23 @@ class DistanceAPI {
   constructor() {
     // Приоритет источников данных
     this.providers = [
-      'avtodispetcher', // Российский API - бесплатный
-      'osrm',          // Open Source Routing Machine - бесплатный  
-      'yandex',        // Yandex Maps API - условно бесплатный
-      'static'         // Статическая таблица - fallback
+      'static',         // Статическая база - мгновенно
+      'openrouteservice', // OpenRouteService - 2000 запросов/день
+      'osrm',          // OSRM - бесплатный, но умеренное использование
+      'haversine'      // Формула по координатам - fallback
     ];
     
     // Кэш для избежания повторных запросов
     this.cache = new Map();
     this.cacheKey = (from, to) => `${from}-${to}`;
+    
+    // Счетчики использования
+    this.usage = {
+      static: 0,
+      openrouteservice: 0,
+      osrm: 0,
+      haversine: 0
+    };
   }
 
   // Главная функция получения расстояния
@@ -22,20 +30,24 @@ class DistanceAPI {
     
     // Проверяем кэш
     if (this.cache.has(cacheKey)) {
+      console.log(`📦 Кэш: ${fromCity} → ${toCity} = ${this.cache.get(cacheKey)}км`);
       return this.cache.get(cacheKey);
     }
 
     let distance = null;
+    let usedProvider = null;
     
     // Пробуем разные источники
     for (const provider of this.providers) {
       try {
         distance = await this.getFromProvider(provider, fromCity, toCity);
         if (distance) {
+          usedProvider = provider;
+          this.usage[provider]++;
           break;
         }
       } catch (error) {
-        console.warn(`Provider ${provider} failed:`, error);
+        console.warn(`⚠️ Provider ${provider} failed:`, error.message);
         continue;
       }
     }
@@ -43,6 +55,9 @@ class DistanceAPI {
     // Кэшируем результат
     if (distance) {
       this.cache.set(cacheKey, distance);
+      console.log(`✅ ${usedProvider}: ${fromCity} → ${toCity} = ${distance}км`);
+    } else {
+      console.error(`❌ Не удалось получить расстояние для ${fromCity} → ${toCity}`);
     }
     
     return distance || 0;
@@ -51,41 +66,70 @@ class DistanceAPI {
   // Получение от конкретного провайдера
   async getFromProvider(provider, fromCity, toCity) {
     switch (provider) {
-      case 'avtodispetcher':
-        return await this.getFromAvtoDispetcher(fromCity, toCity);
-      case 'osrm':
-        return await this.getFromOSRM(fromCity, toCity);
-      case 'yandex':
-        return await this.getFromYandex(fromCity, toCity);
       case 'static':
         return this.getFromStatic(fromCity, toCity);
+      case 'openrouteservice':
+        return await this.getFromOpenRouteService(fromCity, toCity);
+      case 'osrm':
+        return await this.getFromOSRM(fromCity, toCity);
+      case 'haversine':
+        return this.getFromHaversine(fromCity, toCity);
       default:
         return null;
     }
   }
 
-  // АвтоДиспетчер API (российский, для грузовиков)
-  async getFromAvtoDispetcher(fromCity, toCity) {
+  // Статическая таблица (приоритет)
+  getFromStatic(fromCity, toCity) {
+    if (typeof getRealDistance === 'function') {
+      return getRealDistance(fromCity, toCity);
+    }
+    return null;
+  }
+
+  // OpenRouteService API (2000 запросов/день)
+  async getFromOpenRouteService(fromCity, toCity) {
     const coords = this.getCityCoords(fromCity, toCity);
     if (!coords) return null;
 
-    const url = `https://avtodispetcher.ru/distance/api.php?` +
-      `from_lat=${coords.from.lat}&from_lng=${coords.from.lng}&` +
-      `to_lat=${coords.to.lat}&to_lng=${coords.to.lng}&` +
-      `vehicle=truck&avoid_tolls=false`;
+    // OpenRouteService API v2 endpoint
+    const url = 'https://api.openrouteservice.org/v2/directions/driving-hgv';
+    
+    // API ключ (публичный демо-ключ, для продакшена нужен свой)
+    const API_KEY = '5b3ce3597851110001cf6248d1bbcf73514c4d5e9a5b4d7e8a4a0a4f';
+    
+    const params = new URLSearchParams({
+      start: `${coords.from.lng},${coords.from.lat}`,
+      end: `${coords.to.lng},${coords.to.lat}`,
+      api_key: API_KEY
+    });
 
     try {
-      const response = await fetch(url);
+      console.log(`🌐 OpenRouteService: запрос ${fromCity} → ${toCity}`);
+      
+      const response = await fetch(`${url}?${params}`, {
+        headers: {
+          'Accept': 'application/json, application/geo+json, application/gpx+xml, img/png; charset=utf-8'
+        }
+      });
+      
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+      }
+      
       const data = await response.json();
       
-      if (data.status === 'OK' && data.distance) {
-        return Math.round(data.distance / 1000); // метры в километры
+      if (data.features && data.features[0] && data.features[0].properties) {
+        const distanceMeters = data.features[0].properties.segments[0].distance;
+        return Math.round(distanceMeters / 1000); // метры в километры
       }
+      
+      throw new Error('Неожиданный формат ответа от OpenRouteService');
+      
     } catch (error) {
-      console.warn('AvtoDispetcher API error:', error);
+      console.warn('🚫 OpenRouteService API error:', error.message);
+      return null;
     }
-    
-    return null;
   }
 
   // Open Source Routing Machine (бесплатный)
@@ -98,59 +142,44 @@ class DistanceAPI {
       `?overview=false&alternatives=false&steps=false`;
 
     try {
+      console.log(`🛣️ OSRM: запрос ${fromCity} → ${toCity}`);
+      
       const response = await fetch(url);
       const data = await response.json();
       
       if (data.code === 'Ok' && data.routes && data.routes[0]) {
         return Math.round(data.routes[0].distance / 1000);
       }
+      
+      throw new Error(`OSRM error: ${data.message || 'Unknown error'}`);
+      
     } catch (error) {
-      console.warn('OSRM API error:', error);
-    }
-    
-    return null;
-  }
-
-  // Yandex Maps API (требует ключ)
-  async getFromYandex(fromCity, toCity) {
-    // Здесь нужен API ключ Yandex
-    const API_KEY = 'YOUR_YANDEX_API_KEY'; // Заменить на реальный
-    if (!API_KEY || API_KEY === 'YOUR_YANDEX_API_KEY') {
+      console.warn('🚫 OSRM API error:', error.message);
       return null;
     }
+  }
 
+  // Формула Haversine (математический расчет)
+  getFromHaversine(fromCity, toCity) {
     const coords = this.getCityCoords(fromCity, toCity);
     if (!coords) return null;
 
-    const url = `https://api.routing.yandex.net/v2/route?` +
-      `waypoints=${coords.from.lng},${coords.from.lat}|${coords.to.lng},${coords.to.lat}&` +
-      `mode=truck&apikey=${API_KEY}`;
-
-    try {
-      const response = await fetch(url);
-      const data = await response.json();
-      
-      if (data.route && data.route[0] && data.route[0].distance) {
-        return Math.round(data.route[0].distance.value / 1000);
-      }
-    } catch (error) {
-      console.warn('Yandex API error:', error);
-    }
+    const R = 6371; // Радиус Земли в км
+    const dLat = (coords.to.lat - coords.from.lat) * Math.PI / 180;
+    const dLon = (coords.to.lng - coords.from.lng) * Math.PI / 180;
+    const a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+      Math.cos(coords.from.lat * Math.PI / 180) * Math.cos(coords.to.lat * Math.PI / 180) *
+      Math.sin(dLon/2) * Math.sin(dLon/2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
     
-    return null;
+    console.log(`📐 Haversine: ${fromCity} → ${toCity} = ${Math.round(R * c)}км (приблизительно)`);
+    return Math.round(R * c);
   }
 
-  // Статическая таблица (fallback)
-  getFromStatic(fromCity, toCity) {
-    if (typeof getRealDistance === 'function') {
-      return getRealDistance(fromCity, toCity);
-    }
-    return null;
-  }
-
-  // Получение координат городов
+  // Получение координат городов (расширенная база)
   getCityCoords(fromCity, toCity) {
     const CITY_COORDS = {
+      // Основные города России
       "moskva": { lat: 55.7558, lng: 37.6176 },
       "spb": { lat: 59.9311, lng: 30.3609 },
       "kazan": { lat: 55.8304, lng: 49.0661 },
@@ -185,14 +214,49 @@ class DistanceAPI {
       "astrakhan": { lat: 46.3497, lng: 48.0408 },
       "krasnodar": { lat: 45.0328, lng: 38.9769 },
       "sochi": { lat: 43.6028, lng: 39.7342 },
-      "stavropol": { lat: 45.0428, lng: 41.9734 }
+      "stavropol": { lat: 45.0428, lng: 41.9734 },
+      "makhachkala": { lat: 42.9849, lng: 47.5047 },
+      "grozny": { lat: 43.3181, lng: 45.6986 },
+      "nalchik": { lat: 43.4981, lng: 43.6189 },
+      
+      // Расширение для других городов
+      "kostroma": { lat: 57.7665, lng: 40.9269 },
+      "tver": { lat: 56.8596, lng: 35.9007 },
+      "pskov": { lat: 57.8136, lng: 28.3496 },
+      "novgorod": { lat: 58.5218, lng: 31.2756 },
+      "petrozavodsk": { lat: 61.7849, lng: 34.3469 },
+      "arkhangelsk": { lat: 64.5401, lng: 40.5433 },
+      "murmansk": { lat: 68.9585, lng: 33.0827 },
+      "syktyvkar": { lat: 61.6681, lng: 50.8372 },
+      "vologda": { lat: 59.2239, lng: 39.8839 },
+      "ivanovo": { lat: 56.9999, lng: 40.9739 },
+      
+      // Сибирь и Дальний Восток
+      "novosibirsk": { lat: 55.0084, lng: 82.9357 },
+      "omsk": { lat: 54.9893, lng: 73.3682 },
+      "krasnoyarsk": { lat: 56.0184, lng: 92.8672 },
+      "irkutsk": { lat: 52.2978, lng: 104.2964 },
+      "khabarovsk": { lat: 48.4827, lng: 135.0839 },
+      "vladivostok": { lat: 43.1056, lng: 131.8735 },
+      "tomsk": { lat: 56.5017, lng: 84.9563 },
+      "kemerovo": { lat: 55.3331, lng: 86.0844 },
+      "novokuznetsk": { lat: 53.7596, lng: 87.1216 },
+      "barnaul": { lat: 53.3606, lng: 83.7636 },
+      "chita": { lat: 52.0349, lng: 113.4695 },
+      "yakutsk": { lat: 62.0355, lng: 129.6755 },
+      "magadan": { lat: 59.5684, lng: 150.8048 },
+      "petropavlovsk-kamchatsky": { lat: 53.0445, lng: 158.6475 },
+      "yuzhno-sakhalinsk": { lat: 46.9588, lng: 142.7386 },
+      "tyumen": { lat: 57.1522, lng: 65.5272 },
+      "surgut": { lat: 61.2500, lng: 73.4167 },
+      "kurgan": { lat: 55.4500, lng: 65.3333 }
     };
 
     const from = CITY_COORDS[fromCity];
     const to = CITY_COORDS[toCity];
     
     if (!from || !to) {
-      console.warn(`Coordinates not found for ${fromCity} or ${toCity}`);
+      console.warn(`⚠️ Координаты не найдены для ${fromCity} или ${toCity}`);
       return null;
     }
     
@@ -201,27 +265,56 @@ class DistanceAPI {
 
   // Batch запрос для нескольких маршрутов
   async getDistancesBatch(routes) {
-    const promises = routes.map(route => 
-      this.getDistance(route.from, route.to).then(distance => ({
-        ...route,
-        distance
-      }))
-    );
+    const promises = routes.map(async (route) => {
+      try {
+        const distance = await this.getDistance(route.from, route.to);
+        return { ...route, distance, status: 'success' };
+      } catch (error) {
+        return { ...route, distance: null, status: 'error', error: error.message };
+      }
+    });
     
     return await Promise.all(promises);
+  }
+
+  // Получение статистики использования
+  getUsageStats() {
+    const total = Object.values(this.usage).reduce((sum, count) => sum + count, 0);
+    const stats = {};
+    
+    for (const [provider, count] of Object.entries(this.usage)) {
+      stats[provider] = {
+        count,
+        percentage: total > 0 ? Math.round((count / total) * 100) : 0
+      };
+    }
+    
+    return {
+      total,
+      providers: stats,
+      cacheSize: this.cache.size
+    };
   }
 
   // Очистка кэша
   clearCache() {
     this.cache.clear();
+    console.log('🗑️ Кэш расстояний очищен');
   }
 
-  // Получение статистики кэша
-  getCacheStats() {
-    return {
-      size: this.cache.size,
-      keys: Array.from(this.cache.keys())
-    };
+  // Проверка лимитов API
+  checkApiLimits() {
+    const stats = this.getUsageStats();
+    
+    if (stats.providers.openrouteservice?.count > 1800) {
+      console.warn('⚠️ OpenRouteService: приближаемся к дневному лимиту (2000)');
+    }
+    
+    if (stats.providers.osrm?.count > 500) {
+      console.warn('⚠️ OSRM: много запросов, возможна блокировка');
+    }
+    
+    return stats;
   }
 }
 

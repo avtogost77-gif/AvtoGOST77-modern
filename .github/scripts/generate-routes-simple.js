@@ -3,6 +3,7 @@ const path = require('path');
 
 // Подключаем систему реальных расстояний
 const { getRealDistance } = require('../../assets/js/real-distances.js');
+const { DistanceAPI } = require('../../assets/js/distance-api.js');
 
 // База городов России (ТОП-10 для быстрого старта)
 const CITIES = {
@@ -444,9 +445,12 @@ function generatePageHTML(fromCity, toCity, distance, price, content) {
 }
 
 // Основная функция генерации
-function generateRoutes() {
+async function generateRoutes() {
   const pagesCount = 15; // Генерируем 15 страниц для демо
-  console.log(`🚀 Генерируем ${pagesCount} маршрутных страниц...`);
+  console.log(`🚀 Генерируем ${pagesCount} маршрутных страниц с реальными расстояниями...`);
+  
+  // Инициализируем API для расчета расстояний
+  const distanceAPI = new DistanceAPI();
   
   let generatedCount = 0;
   
@@ -515,15 +519,7 @@ function generateRoutes() {
         if (!toCity) continue;
         
         // Расчет параметров маршрута с РЕАЛЬНЫМИ расстояниями
-        let distance = getRealDistance(fromCityCode, toCityCode);
-        
-        // Fallback на расчет по координатам если нет в базе
-        if (!distance) {
-          distance = calculateDistance(fromCity.coords, toCity.coords);
-          console.warn(`⚠️ Используем приблизительное расстояние для ${fromCityCode}-${toCityCode}: ${distance}км`);
-        } else {
-          console.log(`✅ Реальное расстояние ${fromCityCode}-${toCityCode}: ${distance}км`);
-        }
+        let distance = await distanceAPI.getDistance(fromCityCode, toCityCode);
         
         const basePrice = distance < 300 ? 15000 : 
                          distance < 800 ? 25000 : 
@@ -543,17 +539,27 @@ function generateRoutes() {
     }
   }
   
-  console.log(`🎉 Сгенерировано ${generatedCount} маршрутных страниц!`);
+  // Показываем статистику использования API
+  const stats = distanceAPI.getUsageStats();
+  console.log('\n📊 СТАТИСТИКА ИСПОЛЬЗОВАНИЯ API:');
+  console.log(`Всего запросов: ${stats.total}`);
+  for (const [provider, data] of Object.entries(stats.providers)) {
+    if (data.count > 0) {
+      console.log(`${provider}: ${data.count} (${data.percentage}%)`);
+    }
+  }
+  console.log(`Кэш: ${stats.cacheSize} записей`);
+  
+  console.log(`🎉 Сгенерировано ${generatedCount} маршрутных страниц с реальными расстояниями!`);
   return generatedCount;
 }
 
 // Запуск генерации
 if (require.main === module) {
-  try {
-    generateRoutes();
-  } catch (error) {
+  generateRoutes().catch(error => {
     console.error('❌ Ошибка:', error);
-  }
+    process.exit(1);
+  });
 }
 
 module.exports = { generateRoutes, CITIES };
