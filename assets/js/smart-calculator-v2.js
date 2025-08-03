@@ -5,6 +5,9 @@
 
 class SmartCalculatorV2 {
   constructor() {
+    // Инициализируем API для реальных расстояний
+    this.distanceAPI = new DistanceAPI();
+    
     // ТИПЫ ТРАНСПОРТА с реальными параметрами от Илюши
     this.transportTypes = {
       gazelle: {
@@ -107,7 +110,7 @@ class SmartCalculatorV2 {
       }
 
       // 2. Получаем РЕАЛЬНОЕ расстояние через API
-      const distance = await this.getDistance(fromCity, toCity);
+      const distance = await this.distanceAPI.getDistance(fromCity, toCity);
       
       // 3. НОВАЯ ЛОГИКА РАЗДЕЛЕНИЯ
       if (distance < 200) {
@@ -414,7 +417,7 @@ class SmartCalculatorV2 {
 
   // Расчет полной машины для внутрирегиональных
   async calculateFullTruckPrice(from, to) {
-    const distance = await this.getDistance(from, to) || 50;
+    const distance = await this.distanceAPI.getDistance(from, to) || 50;
     const basePrice = 20000;  // минимум для фуры
     const kmPrice = distance < 50 ? 500 : 200;
     return Math.max(basePrice, distance * kmPrice);
@@ -455,7 +458,6 @@ class SmartCalculatorV2 {
         'Москва-Обухово': 45,
         'Москва-Сынково': 50,
         'Москва-Большие Вяземы': 55,
-        'Большие Вяземы-Чехов': 500,
         
         // РЕГИОНАЛЬНЫЕ МАРШРУТЫ
         'Москва-Тверь': 170,
