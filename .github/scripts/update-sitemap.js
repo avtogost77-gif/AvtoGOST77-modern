@@ -92,7 +92,7 @@ function generateURL(filePath) {
     url += '/';
   }
   
-  return `https://www.avtogost77.ru/${url}`;
+  return `https://avtogost77.ru/${url}`;
 }
 
 // Основная функция обновления sitemap
@@ -168,7 +168,7 @@ function updateSitemap() {
 Allow: /
 
 # Sitemap
-Sitemap: https://www.avtogost77.ru/sitemap.xml
+Sitemap: https://avtogost77.ru/sitemap.xml
 
 # Ускоряем индексацию важных разделов
 Allow: /routes/

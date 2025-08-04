@@ -435,14 +435,14 @@ function generateIndustryHTML(industryCode, industry, content) {
     <meta name="keywords" content="${industry.keywords}, автогост, грузоперевозки ${industry.name.toLowerCase()}">
     
     <!-- Canonical URL -->
-    <link rel="canonical" href="https://www.avtogost77.ru/industries/${industryCode}.html">
+    <link rel="canonical" href="https://avtogost77.ru/industries/${industryCode}.html">
     
     <!-- Open Graph -->
     <meta property="og:title" content="${industry.title} | АвтоГОСТ">
     <meta property="og:description" content="${industry.description}">
-    <meta property="og:url" content="https://www.avtogost77.ru/industries/${industryCode}.html">
+    <meta property="og:url" content="https://avtogost77.ru/industries/${industryCode}.html">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="https://www.avtogost77.ru/assets/img/industry-${industryCode}.jpg">
+    <meta property="og:image" content="https://avtogost77.ru/assets/img/industry-${industryCode}.jpg">
     <meta property="og:locale" content="ru_RU">
     <meta property="og:site_name" content="АвтоГОСТ">
     
@@ -450,7 +450,7 @@ function generateIndustryHTML(industryCode, industry, content) {
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="${industry.title} | АвтоГОСТ">
     <meta name="twitter:description" content="${industry.description}">
-    <meta name="twitter:image" content="https://www.avtogost77.ru/assets/img/industry-${industryCode}.jpg">
+    <meta name="twitter:image" content="https://avtogost77.ru/assets/img/industry-${industryCode}.jpg">
     
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="../favicon.svg">
@@ -470,13 +470,13 @@ function generateIndustryHTML(industryCode, industry, content) {
         "@type": "Organization",
         "name": "АвтоГОСТ",
         "telephone": "+7-916-272-09-32",
-        "url": "https://www.avtogost77.ru"
+        "url": "https://avtogost77.ru"
       },
       "serviceArea": {
         "@type": "Place",
         "name": "Россия"
       },
-      "url": "https://www.avtogost77.ru/industries/${industryCode}.html"
+      "url": "https://avtogost77.ru/industries/${industryCode}.html"
     }
     </script>
     
@@ -592,7 +592,7 @@ async function generateIndustries() {
     <title>Грузоперевозки по отраслям | АвтоГОСТ - Профессиональная логистика</title>
     <meta name="description" content="Специализированные грузоперевозки для различных отраслей. Строительство, промышленность, ритейл, АПК, e-commerce, автопром.">
     <link rel="stylesheet" href="../assets/css/styles-optimized.css">
-    <link rel="canonical" href="https://www.avtogost77.ru/industries/">
+    <link rel="canonical" href="https://avtogost77.ru/industries/">
 </head>
 <body>
     <header class="header">

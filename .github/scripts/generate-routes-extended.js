@@ -527,14 +527,14 @@ function generateRouteHTMLExtended(fromCity, toCity, distance, price, content) {
     <meta name="keywords" content="${keywords}">
     
     <!-- Canonical URL -->
-    <link rel="canonical" href="https://www.avtogost77.ru/routes/${fromCity}/${fromCity}-${toCity}.html">
+    <link rel="canonical" href="https://avtogost77.ru/routes/${fromCity}/${fromCity}-${toCity}.html">
     
     <!-- Open Graph -->
     <meta property="og:title" content="Грузоперевозки ${from.name} — ${to.nameTo} | ${distance}км | АвтоГОСТ">
     <meta property="og:description" content="Доставка грузов ${from.nameFrom} ${to.nameTo} от ${price}₽. Расстояние ${distance} км.${to.isMarketplace ? ' Специализация: маркетплейсы.' : ''}">
-    <meta property="og:url" content="https://www.avtogost77.ru/routes/${fromCity}/${fromCity}-${toCity}.html">
+    <meta property="og:url" content="https://avtogost77.ru/routes/${fromCity}/${fromCity}-${toCity}.html">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="https://www.avtogost77.ru/assets/img/routes-${fromCity}-${toCity}.jpg">
+    <meta property="og:image" content="https://avtogost77.ru/assets/img/routes-${fromCity}-${toCity}.jpg">
     <meta property="og:locale" content="ru_RU">
     <meta property="og:site_name" content="АвтоГОСТ">
     
@@ -542,7 +542,7 @@ function generateRouteHTMLExtended(fromCity, toCity, distance, price, content) {
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Грузоперевозки ${from.name} — ${to.nameTo} | АвтоГОСТ">
     <meta name="twitter:description" content="Доставка грузов от ${price}₽. Расстояние ${distance} км.">
-    <meta name="twitter:image" content="https://www.avtogost77.ru/assets/img/routes-${fromCity}-${toCity}.jpg">
+    <meta name="twitter:image" content="https://avtogost77.ru/assets/img/routes-${fromCity}-${toCity}.jpg">
     
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
@@ -562,7 +562,7 @@ function generateRouteHTMLExtended(fromCity, toCity, distance, price, content) {
         "@type": "Organization",
         "name": "АвтоГОСТ",
         "telephone": "+7-916-272-09-32",
-        "url": "https://www.avtogost77.ru"
+        "url": "https://avtogost77.ru"
       },
       "areaServed": [
         {
@@ -580,7 +580,7 @@ function generateRouteHTMLExtended(fromCity, toCity, distance, price, content) {
         "priceRange": "от ${price}₽",
         "priceCurrency": "RUB"
       },
-      "url": "https://www.avtogost77.ru/routes/${fromCity}/${fromCity}-${toCity}.html"
+      "url": "https://avtogost77.ru/routes/${fromCity}/${fromCity}-${toCity}.html"
     }
     </script>
     
@@ -705,7 +705,7 @@ async function generateRoutesExtended() {
     <title>Грузоперевозки из ${fromCity.name} по России | АвтоГОСТ</title>
     <meta name="description" content="Грузоперевозки из ${fromCity.name} в ${fromCity.priority.length}+ городов России. ${fromCity.region}. Быстрая доставка, честные цены, отслеживание 24/7.">
     <link rel="stylesheet" href="../assets/css/styles-optimized.css">
-    <link rel="canonical" href="https://www.avtogost77.ru/routes/${fromCityCode}/">
+    <link rel="canonical" href="https://avtogost77.ru/routes/${fromCityCode}/">
 </head>
 <body>
     <header class="header">

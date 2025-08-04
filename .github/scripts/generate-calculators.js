@@ -457,14 +457,14 @@ function generateCalculatorHTML(pageCode, page, content) {
     <meta name="keywords" content="${page.keywords}, автогост калькулятор, онлайн расчет стоимости">
     
     <!-- Canonical URL -->
-    <link rel="canonical" href="https://www.avtogost77.ru/calculators/${pageCode}.html">
+    <link rel="canonical" href="https://avtogost77.ru/calculators/${pageCode}.html">
     
     <!-- Open Graph -->
     <meta property="og:title" content="${page.title} | Калькулятор АвтоГОСТ">
     <meta property="og:description" content="${page.description}">
-    <meta property="og:url" content="https://www.avtogost77.ru/calculators/${pageCode}.html">
+    <meta property="og:url" content="https://avtogost77.ru/calculators/${pageCode}.html">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="https://www.avtogost77.ru/assets/img/calculator-og.jpg">
+    <meta property="og:image" content="https://avtogost77.ru/assets/img/calculator-og.jpg">
     <meta property="og:locale" content="ru_RU">
     <meta property="og:site_name" content="АвтоГОСТ">
     
@@ -472,7 +472,7 @@ function generateCalculatorHTML(pageCode, page, content) {
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="${page.title} | Калькулятор АвтоГОСТ">
     <meta name="twitter:description" content="${page.description}">
-    <meta name="twitter:image" content="https://www.avtogost77.ru/assets/img/calculator-og.jpg">
+    <meta name="twitter:image" content="https://avtogost77.ru/assets/img/calculator-og.jpg">
     
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="../favicon.svg">
@@ -488,14 +488,14 @@ function generateCalculatorHTML(pageCode, page, content) {
       "@type": "WebApplication",
       "name": "${page.title}",
       "description": "${page.description}",
-      "url": "https://www.avtogost77.ru/calculators/${pageCode}.html",
+      "url": "https://avtogost77.ru/calculators/${pageCode}.html",
       "applicationCategory": "BusinessApplication",
       "operatingSystem": "Web browser",
       "provider": {
         "@type": "Organization",
         "name": "АвтоГОСТ",
         "telephone": "+7-916-272-09-32",
-        "url": "https://www.avtogost77.ru"
+        "url": "https://avtogost77.ru"
       },
       "offers": {
         "@type": "Offer",
@@ -633,7 +633,7 @@ async function generateCalculators() {
     <title>Калькуляторы стоимости грузоперевозок | АвтоГОСТ</title>
     <meta name="description" content="Онлайн калькуляторы для расчета стоимости различных видов грузоперевозок. Быстро, точно, бесплатно.">
     <link rel="stylesheet" href="../assets/css/styles-optimized.css">
-    <link rel="canonical" href="https://www.avtogost77.ru/calculators/">
+    <link rel="canonical" href="https://avtogost77.ru/calculators/">
 </head>
 <body>
     <header class="header">

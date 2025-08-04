@@ -240,12 +240,12 @@ function generatePageHTML(fromCity, toCity, distance, price, content) {
     <meta name="keywords" content="грузоперевозки ${from.name} ${to.nameTo}, доставка груза ${from.name} ${to.nameTo}, стоимость перевозки ${from.name} ${to.nameTo}, логистика ${from.name} ${to.nameTo}, транспортная компания">
     
     <!-- Canonical URL -->
-    <link rel="canonical" href="https://www.avtogost77.ru/routes/${fromCity}/${fromCity}-${toCity}.html">
+    <link rel="canonical" href="https://avtogost77.ru/routes/${fromCity}/${fromCity}-${toCity}.html">
     
     <!-- Open Graph -->
     <meta property="og:title" content="Грузоперевозки ${from.name} ${to.nameTo} от ${price}₽">
     <meta property="og:description" content="Надежная доставка грузов ${from.name} — ${to.nameTo}. ${distance}км за ${distance < 300 ? '6-12 часов' : distance < 800 ? '1-2 дня' : '2-3 дня'}">
-    <meta property="og:url" content="https://www.avtogost77.ru/routes/${fromCity}/${fromCity}-${toCity}.html">
+    <meta property="og:url" content="https://avtogost77.ru/routes/${fromCity}/${fromCity}-${toCity}.html">
     <meta property="og:type" content="website">
     
     <!-- Styles -->
