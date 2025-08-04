@@ -234,13 +234,13 @@ class SmartCalculatorV2 {
     // КОМБИНИРОВАННАЯ ЛОГИКА: База = расстояние × тариф
     let basePrice = distance * pricePerKm;
 
-    // ЖЕСТКИЕ МИНИМАЛКИ ПО ТИПАМ ТС для коротких/средних плеч
+    // ЖЕСТКИЕ МИНИМАЛКИ ПО ТИПАМ ТС только для коротких плеч (до 200км)
     const transportMinPrices = {
-      gazelle: distance < 400 ? 20000 : transport.minPriceRegion,
-      threeTon: distance < 400 ? 25000 : transport.minPriceRegion,
-      fiveTon: distance < 400 ? 30000 : transport.minPriceRegion,
-      tenTon: distance < 400 ? 37000 : transport.minPriceRegion,
-      truck: distance < 400 ? 42000 : transport.minPriceRegion
+      gazelle: distance < 200 ? 20000 : transport.minPriceRegion,
+      threeTon: distance < 200 ? 25000 : transport.minPriceRegion,
+      fiveTon: distance < 200 ? 30000 : transport.minPriceRegion,
+      tenTon: distance < 200 ? 37000 : transport.minPriceRegion,
+      truck: distance < 200 ? 42000 : transport.minPriceRegion
     };
 
     // Применяем минималку для выбранного транспорта
