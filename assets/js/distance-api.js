@@ -187,6 +187,52 @@ class DistanceAPI {
 
   // Получение координат городов (расширенная база)
   getCityCoords(fromCity, toCity) {
+    // Нормализация названий городов
+    const normalizeCity = (city) => {
+      const cityMap = {
+        'Москва': 'moskva',
+        'Санкт-Петербург': 'spb', 
+        'СПб': 'spb',
+        'Петербург': 'spb',
+        'Казань': 'kazan',
+        'Воронеж': 'voronezh', 
+        'Самара': 'samara',
+        'Нижний Новгород': 'nizhniy-novgorod',
+        'Екатеринбург': 'ekaterinburg',
+        'Ростов': 'rostov',
+        'Челябинск': 'chelyabinsk',
+        'Уфа': 'ufa',
+        'Рязань': 'ryazan',
+        'Тула': 'tula',
+        'Ярославль': 'yaroslavl',
+        'Владимир': 'vladimir',
+        'Калуга': 'kaluga',
+        'Смоленск': 'smolensk',
+        'Брянск': 'bryansk',
+        'Орел': 'orel',
+        'Курск': 'kursk',
+        'Белгород': 'belgorod',
+        'Липецк': 'lipetsk',
+        'Тамбов': 'tambov',
+        'Пенза': 'penza',
+        'Саранск': 'saransk',
+        'Чебоксары': 'cheboksary',
+        'Киров': 'kirov',
+        'Ижевск': 'izhevsk',
+        'Пермь': 'perm',
+        'Оренбург': 'orenburg',
+        'Гагарин': 'gagarin'
+      };
+      
+      // Если есть прямое соответствие - используем его
+      if (cityMap[city]) {
+        return cityMap[city];
+      }
+      
+      // Иначе приводим к нижнему регистру и убираем пробелы
+      return city.toLowerCase().replace(/\s+/g, '-');
+    };
+
     const CITY_COORDS = {
       // Основные города России
       "moskva": { lat: 55.7558, lng: 37.6176 },
@@ -258,11 +304,16 @@ class DistanceAPI {
       "yuzhno-sakhalinsk": { lat: 46.9588, lng: 142.7386 },
       "tyumen": { lat: 57.1522, lng: 65.5272 },
       "surgut": { lat: 61.2500, lng: 73.4167 },
-      "kurgan": { lat: 55.4500, lng: 65.3333 }
+      "kurgan": { lat: 55.4500, lng: 65.3333 },
+      "gagarin": { lat: 55.5539, lng: 34.9953 }
     };
 
-    const from = CITY_COORDS[fromCity];
-    const to = CITY_COORDS[toCity];
+    // Нормализуем названия городов
+    const normalizedFrom = normalizeCity(fromCity);
+    const normalizedTo = normalizeCity(toCity);
+    
+    const from = CITY_COORDS[normalizedFrom];
+    const to = CITY_COORDS[normalizedTo];
     
     if (!from || !to) {
       console.warn(`⚠️ Координаты не найдены для ${fromCity} или ${toCity}`);
