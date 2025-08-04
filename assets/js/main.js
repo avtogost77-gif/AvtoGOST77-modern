@@ -372,6 +372,13 @@ function initExitIntent() {
     const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 768;
     
     if (isMobile) {
+        // МОБИЛЬНЫЕ: Минимум 2 минуты после загрузки страницы
+        let isEarlySession = true;
+        setTimeout(() => {
+            isEarlySession = false;
+            console.log('🔓 Exit-intent разблокирован через 2 минуты');
+        }, 120000); // 2 минуты
+        
         // На мобильных показываем только при скролле вверх или долгом бездействии
         let lastScrollY = window.scrollY;
         let scrollUpCount = 0;
@@ -380,10 +387,10 @@ function initExitIntent() {
             const currentScrollY = window.scrollY;
             
             // Если скроллим вверх и находимся не в самом верху
-            if (currentScrollY < lastScrollY && currentScrollY > 100) {
+            if (currentScrollY < lastScrollY && currentScrollY > 200) {
                 scrollUpCount++;
-                // Показываем после 3х скроллов вверх
-                if (scrollUpCount >= 3 && !exitIntentShown) {
+                // Показываем после 5х скроллов вверх (больше терпения)
+                if (scrollUpCount >= 5 && !exitIntentShown && !isEarlySession) {
                     showExitIntentPopup();
                 }
             } else {
@@ -393,12 +400,12 @@ function initExitIntent() {
             lastScrollY = currentScrollY;
         });
         
-        // Долгое бездействие на мобильных (5 минут)
+        // Долгое бездействие на мобильных (10 минут)
         setTimeout(() => {
-            if (!exitIntentShown) {
+            if (!exitIntentShown && !isEarlySession) {
                 showExitIntentPopup();
             }
-        }, 300000); // 5 минут
+        }, 600000); // 10 минут
         
     } else {
         // ДЕСКТОП - классические триггеры
