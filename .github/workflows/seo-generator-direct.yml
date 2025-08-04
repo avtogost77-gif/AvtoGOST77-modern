@@ -1,0 +1,110 @@
+name: SEO Pages Generator (Direct Push)
+
+on:
+  workflow_dispatch:
+    inputs:
+      pages_count:
+        description: 'Количество страниц для генерации'
+        required: false
+        default: '50'
+      strategy:
+        description: 'Стратегия генерации'
+        required: false
+        default: 'routes-extended'
+        type: choice
+        options:
+        - routes-extended
+        - calculators
+        - industries
+
+jobs:
+  generate-and-push:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+
+    - name: Install dependencies
+      run: |
+        npm install fs-extra axios --no-package-lock --no-save
+
+    - name: Generate Pages
+      run: |
+        PAGES_COUNT="${{ github.event.inputs.pages_count || '50' }}"
+        STRATEGY="${{ github.event.inputs.strategy || 'routes-extended' }}"
+        
+        echo "🚀 Генерируем $PAGES_COUNT страниц ($STRATEGY)"
+        
+        case $STRATEGY in
+          "routes-extended")
+            node .github/scripts/generate-routes-extended.js
+            ;;
+          "calculators")
+            node .github/scripts/generate-calculators.js
+            ;;
+          "industries")
+            node .github/scripts/generate-industries.js
+            ;;
+        esac
+
+    - name: Update Sitemap
+      run: |
+        if [ -f ".github/scripts/update-sitemap.js" ]; then
+          node .github/scripts/update-sitemap.js
+        fi
+
+    - name: Check Changes
+      run: |
+        echo "📊 ПРОВЕРЯЕМ ИЗМЕНЕНИЯ:"
+        git status --porcelain
+        
+        if [ -n "$(git status --porcelain)" ]; then
+          echo "✅ Есть изменения для коммита"
+          echo "HAS_CHANGES=true" >> $GITHUB_ENV
+        else
+          echo "📝 Нет изменений"
+          echo "HAS_CHANGES=false" >> $GITHUB_ENV
+        fi
+
+    - name: Commit and Push (if changes exist)
+      if: env.HAS_CHANGES == 'true'
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        
+        git add -A
+        
+        PAGES_COUNT="${{ github.event.inputs.pages_count || '50' }}"
+        STRATEGY="${{ github.event.inputs.strategy || 'routes-extended' }}"
+        
+        git commit -m "🤖 AUTO-SEO: $PAGES_COUNT страниц ($STRATEGY)
+
+        ✅ Стратегия: $STRATEGY
+        📊 Количество: $PAGES_COUNT страниц
+        🗺️ Sitemap обновлен
+        🕐 $(date '+%Y-%m-%d %H:%M:%S')"
+        
+        # Пробуем push с разными токенами
+        git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/avtogost77-gif/AvtoGOST77-modern.git main || \
+        git push origin main
+
+    - name: Summary
+      run: |
+        if [ "${{ env.HAS_CHANGES }}" = "true" ]; then
+          echo "🎉 УСПЕШНО! Страницы добавлены в репозиторий"
+        else
+          echo "📝 Нет новых страниц для добавления"
+        fi
+        
+        echo "📊 СТАТИСТИКА:"
+        find routes/ -name "*.html" 2>/dev/null | wc -l | xargs echo "Маршруты:"
+        find calculators/ -name "*.html" 2>/dev/null | wc -l | xargs echo "Калькуляторы:"
+        find industries/ -name "*.html" 2>/dev/null | wc -l | xargs echo "Отрасли:"
