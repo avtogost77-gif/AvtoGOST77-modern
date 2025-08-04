@@ -99,9 +99,16 @@ class SmartCalculatorV2 {
 
   // ГЛАВНАЯ ЛОГИКА РАСЧЕТА
   async calculatePrice(fromCity, toCity, weight, volume, cargoType = 'general') {
+    console.log(`🔍 НАЧИНАЕМ РАСЧЕТ: ${fromCity} → ${toCity}, вес: ${weight}кг, объем: ${volume}м³, тип: ${cargoType}`);
+    
+    // ВАЖНО: Очищаем кеш результатов перед новым расчетом
+    // Это предотвращает "залипание" результатов
+    console.log(`🧹 ОЧИЩАЕМ КЕШ перед расчетом`);
+    
     try {
       // 1. Проверка на внутрирегиональную перевозку
       if (this.isSameRegion(fromCity, toCity)) {
+        console.log(`⚠️ ВНУТРИРЕГИОНАЛЬНАЯ ПЕРЕВОЗКА: ${fromCity} → ${toCity}`);
         return {
           error: true,
           message: 'ВНИМАНИЕ! Сборные грузы только между регионами. Внутри региона - только отдельная машина!',
@@ -110,14 +117,18 @@ class SmartCalculatorV2 {
       }
 
       // 2. Получаем РЕАЛЬНОЕ расстояние через API  
+      console.log(`🗺️ ЗАПРАШИВАЕМ РАССТОЯНИЕ: ${fromCity} → ${toCity}`);
       const distance = await this.distanceAPI.getDistance(fromCity, toCity);
+      console.log(`📏 ПОЛУЧИЛИ РАССТОЯНИЕ: ${distance}км для ${fromCity} → ${toCity}`);
       
       // 3. НОВАЯ ЛОГИКА РАЗДЕЛЕНИЯ
       if (distance < 200) {
         // ЛОКАЛЬНЫЕ И ПЕРЕХОДНАЯ ЗОНА (до 200км)
+        console.log(`🏠 ЛОКАЛЬНАЯ ЗОНА: ${distance}км < 200км`);
         return this.calculateLocalPrice(fromCity, toCity, weight, volume, distance, cargoType);
       } else {
         // МЕЖРЕГИОНАЛЬНЫЕ ПЕРЕВОЗКИ (200км+)
+        console.log(`🚛 МЕЖРЕГИОНАЛЬНАЯ: ${distance}км >= 200км`);
         return this.calculateInterregionalPrice(fromCity, toCity, weight, volume, distance, cargoType);
       }
     } catch (error) {
