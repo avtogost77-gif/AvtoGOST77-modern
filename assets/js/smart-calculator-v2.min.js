@@ -275,8 +275,21 @@ class SmartCalculatorV2 {
     const routeFactor = this.calculateRouteFactor(fromCity, toCity);
     const cargoFactor = this.getCargoFactor(cargoType);
 
-    // КОЭФФИЦИЕНТ ТИПА ТС (от фуры вниз)
-    const transportCoeff = transport.coefficient;
+    // КОЭФФИЦИЕНТ ЗОНЫ ДОСТАВКИ (вместо коэффициента ТС)
+    let zoneCoeff;
+    if (distance < 70) {
+      zoneCoeff = 1.3;  // Городские - самый высокий коэфф
+    } else if (distance < 200) {
+      zoneCoeff = 1.15; // Областные - высокий коэфф
+    } else if (distance < 400) {
+      zoneCoeff = 1.0;  // Межрегиональные - базовый коэфф
+    } else if (distance < 800) {
+      zoneCoeff = 0.9;  // Среднее плечо - экономия
+    } else {
+      zoneCoeff = 0.8;  // Длинное плечо - максимальная экономия
+    }
+    
+    const transportCoeff = zoneCoeff; // Используем зональный коэффициент
 
     // Финальная цена
     const finalPrice = Math.round(basePrice * loadFactor * routeFactor * cargoFactor * transportCoeff);
