@@ -1,0 +1,100 @@
+name: SEO Pages Generator (Alternative)
+
+on:
+  workflow_dispatch:
+    inputs:
+      pages_count:
+        description: 'Количество страниц для генерации'
+        required: false
+        default: '50'
+      strategy:
+        description: 'Стратегия генерации'
+        required: false
+        default: 'routes-extended'
+        type: choice
+        options:
+        - routes
+        - routes-extended
+        - industries
+        - calculators
+
+jobs:
+  generate-pages:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+
+    - name: Install dependencies
+      run: |
+        npm install fs-extra axios --no-package-lock --no-save
+
+    - name: Generate Pages
+      run: |
+        PAGES_COUNT="${{ github.event.inputs.pages_count || '50' }}"
+        STRATEGY="${{ github.event.inputs.strategy || 'routes-extended' }}"
+        
+        echo "🚀 Генерируем $PAGES_COUNT страниц ($STRATEGY)"
+        
+        case $STRATEGY in
+          "routes-extended")
+            node .github/scripts/generate-routes-extended.js
+            ;;
+          "routes")
+            node .github/scripts/generate-routes.js
+            ;;
+          "calculators")
+            node .github/scripts/generate-calculators.js
+            ;;
+          "industries")
+            node .github/scripts/generate-industries.js
+            ;;
+        esac
+
+    - name: Update Sitemap
+      run: |
+        if [ -f ".github/scripts/update-sitemap.js" ]; then
+          node .github/scripts/update-sitemap.js
+        else
+          echo "⚠️ update-sitemap.js не найден, пропускаем"
+        fi
+
+    - name: Create Pull Request
+      uses: peter-evans/create-pull-request@v5
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        commit-message: |
+          🤖 AUTO-SEO: Сгенерировано ${{ github.event.inputs.pages_count || '50' }} страниц (${{ github.event.inputs.strategy || 'routes-extended' }})
+          
+          ✅ Стратегия: ${{ github.event.inputs.strategy || 'routes-extended' }}
+          📊 Количество: ${{ github.event.inputs.pages_count || '50' }} страниц
+          🗺️ Sitemap обновлен
+        title: '🤖 Автогенерация SEO страниц'
+        body: |
+          ## 🚀 Автоматически сгенерированные SEO страницы
+          
+          **Параметры генерации:**
+          - 📊 Количество: ${{ github.event.inputs.pages_count || '50' }} страниц
+          - 🎯 Стратегия: ${{ github.event.inputs.strategy || 'routes-extended' }}
+          - 🕐 Время: $(date '+%Y-%m-%d %H:%M:%S')
+          
+          **Что создано:**
+          - ✅ Новые SEO-оптимизированные страницы
+          - ✅ Обновленный sitemap.xml
+          - ✅ Уникальный контент для каждой страницы
+          
+          Проверьте изменения и мержите PR для активации новых страниц.
+        branch: auto-seo-${{ github.run_number }}
+        delete-branch: true
+
+    - name: Summary
+      run: |
+        echo "✅ ГЕНЕРАЦИЯ ЗАВЕРШЕНА!"
+        echo "📊 Создан Pull Request с новыми страницами"
+        echo "🔗 Проверьте вкладку Pull Requests для мержа"
