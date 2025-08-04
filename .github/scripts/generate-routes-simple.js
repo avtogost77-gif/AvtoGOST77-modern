@@ -508,7 +508,14 @@ async function generateRoutes() {
 </body>
 </html>`;
     
-    fs.writeFileSync(`routes/${fromCityCode}/index.html`, cityIndexContent);
+    // ЗАЩИТА: НЕ перезаписываем существующие красивые index.html
+    const indexPath = `routes/${fromCityCode}/index.html`;
+    if (fs.existsSync(indexPath)) {
+      console.log(`⚠️ ПРОПУСК: ${indexPath} уже существует (сохраняем красивую версию)`);
+    } else {
+      fs.writeFileSync(indexPath, cityIndexContent);
+      console.log(`✅ Создана индексная страница: ${indexPath}`);
+    }
     
     // Генерируем страницы маршрутов
     if (fromCity.priority) {

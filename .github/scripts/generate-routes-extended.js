@@ -808,8 +808,14 @@ async function generateRoutesExtended() {
 </body>
 </html>`;
     
-    fs.writeFileSync(`routes/${fromCityCode}/index.html`, cityIndexContent);
-    console.log(`✅ Создана индексная страница: routes/${fromCityCode}/index.html`);
+    // ЗАЩИТА: НЕ перезаписываем существующие красивые index.html
+    const indexPath = `routes/${fromCityCode}/index.html`;
+    if (fs.existsSync(indexPath)) {
+      console.log(`⚠️ ПРОПУСК: ${indexPath} уже существует (сохраняем красивую версию)`);
+    } else {
+      fs.writeFileSync(indexPath, cityIndexContent);
+      console.log(`✅ Создана индексная страница: ${indexPath}`);
+    }
     
     // Генерируем страницы маршрутов
     for (const toCityCode of fromCity.priority) {
