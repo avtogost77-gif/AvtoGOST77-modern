@@ -92,6 +92,11 @@ function generateURL(filePath) {
     url += '/';
   }
   
+  // Исправляем проблему с index/ - должен быть корневой URL
+  if (url === 'index/') {
+    url = '';
+  }
+  
   return `https://avtogost77.ru/${url}`;
 }
 
@@ -105,7 +110,8 @@ function updateSitemap() {
     
     console.log(`📄 Найдено ${htmlFiles.length} HTML файлов`);
     
-    // Группируем файлы по типам
+    // Группируем файлы по типам и убираем дубликаты
+    const urlMap = new Map();
     const pages = htmlFiles.map(filePath => {
       const normalizedPath = filePath.replace(/\\/g, '/');
       const config = getPagePriority(normalizedPath);
@@ -118,6 +124,14 @@ function updateSitemap() {
         lastmod: new Date().toISOString().split('T')[0], // YYYY-MM-DD
         filePath: normalizedPath
       };
+    }).filter(page => {
+      // Убираем дубликаты URL
+      if (urlMap.has(page.url)) {
+        console.log(`⚠️  Дубликат URL пропущен: ${page.url}`);
+        return false;
+      }
+      urlMap.set(page.url, true);
+      return true;
     });
     
     // Сортируем по приоритету (высокий приоритет первым)

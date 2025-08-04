@@ -844,6 +844,13 @@ async function generateRoutesExtended() {
       const html = generateRouteHTMLExtended(fromCityCode, toCityCode, distance, basePrice, content);
       
       const filename = `routes/${fromCityCode}/${fromCityCode}-${toCityCode}.html`;
+      
+      // ЗАЩИТА: Проверяем существование файла перед перезаписью
+      if (fs.existsSync(filename)) {
+        console.log(`⚠️ ПРОПУСК: ${filename} уже существует (защита от перезаписи)`);
+        continue; // Пропускаем этот файл
+      }
+      
       fs.writeFileSync(filename, html);
       
       generatedCount++;
