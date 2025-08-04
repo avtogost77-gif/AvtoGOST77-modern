@@ -210,17 +210,21 @@ class SmartCalculatorV2 {
     let distanceCategory;
     
     if (distance < 200) {
-      // БЛИЖНИЙ ПОДМОСКОВНЫЙ - высокий тариф
-      pricePerKm = 40;
+      // БЛИЖНИЙ ПОДМОСКОВНЫЙ - самый высокий тариф
+      pricePerKm = 35;
       distanceCategory = 'Ближний (до 200км)';
-    } else if (distance < 400) {
-      // СРЕДНИЙ РЕГИОНАЛЬНЫЙ - оптимальный тариф (Рязань, Тверь)
-      pricePerKm = 25;
-      distanceCategory = 'Региональный (200-400км)';
+    } else if (distance < 300) {
+      // БЛИЗКИЙ РЕГИОНАЛЬНЫЙ - высокий тариф (Ярославль, Тула)
+      pricePerKm = 28;
+      distanceCategory = 'Близкий (200-300км)';
+    } else if (distance < 500) {
+      // СРЕДНИЙ РЕГИОНАЛЬНЫЙ - средний тариф (Воронеж, Нижний)
+      pricePerKm = 22;
+      distanceCategory = 'Средний (300-500км)';
     } else if (distance < 800) {
-      // ДАЛЬНИЙ МЕЖРЕГИОНАЛЬНЫЙ - экономичный (Воронеж, Нижний)
+      // ДАЛЬНИЙ МЕЖРЕГИОНАЛЬНЫЙ - экономичный (Саранск, Казань)
       pricePerKm = 18;
-      distanceCategory = 'Межрегиональный (400-800км)';
+      distanceCategory = 'Дальний (500-800км)';
     } else {
       // ДАЛЬНОБОЙНЫЙ - самый экономичный (СПб, Екатеринбург)
       pricePerKm = 15;
