@@ -18,6 +18,7 @@ on:
         options:
         - routes
         - routes-extended
+        - routes-new
         - industries
         - calculators
 
@@ -57,6 +58,9 @@ jobs:
             ;;
           "routes-extended")
             node .github/scripts/generate-routes-extended.js $PAGES_COUNT
+            ;;
+          "routes-new")
+            node .github/scripts/generate-new-routes.js $PAGES_COUNT
             ;;
           "calculators")
             node .github/scripts/generate-calculators.js $PAGES_COUNT
