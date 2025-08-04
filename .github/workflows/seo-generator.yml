@@ -35,68 +35,84 @@ jobs:
       uses: actions/setup-node@v4
       with:
         node-version: '18'
-        cache: 'npm'
 
-    - name: Cache dependencies
-      uses: actions/cache@v3
-      with:
-        path: ~/.npm
-        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-        restore-keys: |
-          ${{ runner.os }}-node-
-
-    - name: Install dependencies (simplified)
+    - name: Install dependencies
       run: |
-        echo "Используем только встроенные Node.js модули для стабильности"
+        npm install fs-extra axios --no-package-lock --no-save
+        echo "✅ Зависимости установлены"
 
-    - name: Generate Routes Pages (Simple)
-      if: ${{ github.event.inputs.strategy == 'routes' }}
-      run: node .github/scripts/generate-routes-simple.js
-      env:
-        PAGES_COUNT: ${{ github.event.inputs.pages_count || '15' }}
-
-    - name: Generate Routes Pages (Extended with Marketplaces)
-      if: ${{ github.event.inputs.strategy == 'routes-extended' || github.event.schedule }}
-      run: node .github/scripts/generate-routes-extended.js
-      env:
-        PAGES_COUNT: ${{ github.event.inputs.pages_count || '50' }}
-
-    - name: Generate Industry Pages
-      if: ${{ github.event.inputs.strategy == 'industries' }}
-      run: node .github/scripts/generate-industries.js
-      env:
-        PAGES_COUNT: ${{ github.event.inputs.pages_count || '6' }}
-
-    - name: Generate Calculator Pages
-      if: ${{ github.event.inputs.strategy == 'calculators' }}
-      run: node .github/scripts/generate-calculators.js
-      env:
-        PAGES_COUNT: ${{ github.event.inputs.pages_count || '6' }}
+    - name: Generate SEO Pages
+      run: |
+        PAGES_COUNT="${{ github.event.inputs.pages_count || '50' }}"
+        STRATEGY="${{ github.event.inputs.strategy || 'routes' }}"
+        
+        echo "🚀 Генерируем $PAGES_COUNT страниц стратегией: $STRATEGY"
+        
+        case $STRATEGY in
+          "routes")
+            node .github/scripts/generate-routes.js $PAGES_COUNT
+            ;;
+          "routes-extended")
+            node .github/scripts/generate-routes-extended.js $PAGES_COUNT
+            ;;
+          "calculators")
+            node .github/scripts/generate-calculators.js $PAGES_COUNT
+            ;;
+          "industries")
+            node .github/scripts/generate-industries.js $PAGES_COUNT
+            ;;
+          *)
+            echo "❌ Неизвестная стратегия: $STRATEGY"
+            exit 1
+            ;;
+        esac
 
     - name: Update Sitemap
-      run: node .github/scripts/update-sitemap.js
-
-    - name: Update Internal Links
-      run: node .github/scripts/update-links.js
-
-    - name: Commit and Push
       run: |
-        git config --local user.email "seo-bot@avtogost77.ru"
-        git config --local user.name "SEO Auto-Generator"
-        git add .
-        git diff --staged --quiet || git commit -m "🤖 Автогенерация SEO страниц - $(date '+%Y-%m-%d %H:%M') | Стратегия: ${{ github.event.inputs.strategy || 'routes-extended' }} | Страниц: ${{ github.event.inputs.pages_count || '50' }}"
-        git push
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        echo "🗺️ Обновляем sitemap.xml..."
+        node .github/scripts/update-sitemap.js
 
-    - name: Deploy to Server (опционально)
-      if: success()
+    - name: Commit and Push Changes
       run: |
-        echo "🎉 РЕЗУЛЬТАТЫ ГЕНЕРАЦИИ:"
-        echo "📍 Маршруты: Включены города в радиусе 1000км от Москвы"
-        echo "📦 Маркетплейсы: Коледино WB, Подольск, Белые Столбы, Электросталь, Тверь Ozon"
-        echo "🏭 Промзоны: Тула промышленная"
-        echo "🎯 Всего направлений: 25+ городов"
-        echo "⚡ Реальные расстояния через OpenRouteService API"
-        echo "🚀 Страницы сгенерированы и готовы к деплою"
-        # Здесь можно добавить автодеплой на сервер
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        
+        # Добавляем все новые файлы
+        git add routes/ calculators/ industries/ sitemap.xml
+        
+        # Проверяем есть ли изменения
+        if git diff --staged --quiet; then
+          echo "📝 Нет новых страниц для коммита"
+        else
+          PAGES_COUNT="${{ github.event.inputs.pages_count || '50' }}"
+          STRATEGY="${{ github.event.inputs.strategy || 'routes' }}"
+          
+          git commit -m "🤖 AUTO-SEO: Сгенерировано $PAGES_COUNT страниц ($STRATEGY)
+
+          ✅ Стратегия: $STRATEGY
+          📊 Количество: $PAGES_COUNT страниц
+          🗺️ Sitemap обновлен
+          🕐 $(date '+%Y-%m-%d %H:%M:%S')"
+          
+          git push
+          
+          echo "🎉 Страницы успешно добавлены в репозиторий!"
+        fi
+
+    - name: Summary
+      run: |
+        echo "📊 РЕЗУЛЬТАТ ГЕНЕРАЦИИ:"
+        echo "Стратегия: ${{ github.event.inputs.strategy || 'routes' }}"
+        echo "Страниц: ${{ github.event.inputs.pages_count || '50' }}"
+        echo "Время: $(date '+%Y-%m-%d %H:%M:%S')"
+        
+        # Подсчитываем файлы
+        ROUTES_COUNT=$(find routes/ -name "*.html" 2>/dev/null | wc -l || echo "0")
+        CALC_COUNT=$(find calculators/ -name "*.html" 2>/dev/null | wc -l || echo "0")
+        IND_COUNT=$(find industries/ -name "*.html" 2>/dev/null | wc -l || echo "0")
+        
+        echo "📄 Всего страниц в репозитории:"
+        echo "  Маршруты: $ROUTES_COUNT"
+        echo "  Калькуляторы: $CALC_COUNT"  
+        echo "  Отрасли: $IND_COUNT"
+        echo "  ИТОГО: $((ROUTES_COUNT + CALC_COUNT + IND_COUNT))"

@@ -1,0 +1,36 @@
+{
+  "name": "avtogost77-seo-generator",
+  "version": "1.0.0",
+  "description": "Автогенератор SEO страниц для АвтоГОСТ",
+  "main": "index.js",
+  "scripts": {
+    "generate:routes": "node .github/scripts/generate-routes.js",
+    "generate:routes-extended": "node .github/scripts/generate-routes-extended.js",
+    "generate:calculators": "node .github/scripts/generate-calculators.js",
+    "generate:industries": "node .github/scripts/generate-industries.js",
+    "update:sitemap": "node .github/scripts/update-sitemap.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "seo",
+    "page-generator",
+    "logistics",
+    "cargo-transportation",
+    "avtogost"
+  ],
+  "author": "АвтоГОСТ",
+  "license": "MIT",
+  "dependencies": {
+    "fs-extra": "^11.2.0",
+    "axios": "^1.6.0"
+  },
+  "devDependencies": {},
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/avtogost77-gif/AvtoGOST77-modern.git"
+  }
+}
