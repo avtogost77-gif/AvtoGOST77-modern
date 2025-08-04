@@ -39,7 +39,7 @@ class SmartCalculatorV2 {
         density: 139,
         minPrice: 20000,
         minPriceRegion: 15000,
-        coefficient: 1.88,  // ПЯТАК 55к до СПб (было 1.2)
+        coefficient: 1.05,  // ПЯТАК ~50к (было 1.88)
         allowConsolidated: true,
         icon: '🚛'
       },
@@ -50,7 +50,7 @@ class SmartCalculatorV2 {
         density: 200,
         minPrice: 24000,
         minPriceRegion: 18000,
-        coefficient: 1.84,  // ДЕСЯТКА 65к до СПб (было 1.48)
+        coefficient: 1.08,  // ДЕСЯТКА ~63к (было 1.84)
         allowConsolidated: true,
         icon: '🚚'
       },
@@ -61,7 +61,7 @@ class SmartCalculatorV2 {
         density: 244,       // кг/м³ (20000/82)
         minPrice: 28000,
         minPriceRegion: 21000,
-        coefficient: 1.68,  // ФУРА 42к (42к/25к = 1.68)
+        coefficient: 0.95,  // ФУРА экономия масштаба ~70к (было 1.68)
         allowConsolidated: false, // ФУРА НЕ СБОРНЫЙ!
         icon: '🚚'
       }
