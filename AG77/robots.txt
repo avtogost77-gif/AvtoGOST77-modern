@@ -1,0 +1,31 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://avtogost77.ru/sitemap.xml
+
+# Основные страницы для индексации
+Allow: /index.html
+Allow: /services.html
+Allow: /contact.html
+
+# Медиа файлы
+Allow: /assets/
+Allow: /*.css
+Allow: /*.js
+Allow: /*.png
+Allow: /*.jpg
+Allow: /*.jpeg
+Allow: /*.gif
+Allow: /*.webp
+Allow: /*.svg
+
+# Запрет для служебных файлов
+Disallow: /manifest.json
+Disallow: /sw.js
+Disallow: /*.min.js$
+Disallow: /*.min.css$
+
+# Контакты для связи
+# Contact: info@avtogost77.ru
+# Host: avtogost77.ru
