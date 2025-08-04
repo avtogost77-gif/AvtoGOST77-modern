@@ -96,41 +96,53 @@ class DistanceAPI {
     }
   }
 
-  // OpenRouteService API (2000 запросов/день)
+  // OpenRouteService API (2000 запросов/день) - ПРАВИЛЬНАЯ РЕАЛИЗАЦИЯ
   async getFromOpenRouteService(fromCity, toCity) {
     const coords = this.getCityCoords(fromCity, toCity);
     if (!coords) return null;
 
-    // OpenRouteService API v2 endpoint
-    const url = 'https://api.openrouteservice.org/v2/directions/driving-hgv';
+    // Правильный endpoint для легковых автомобилей
+    const url = 'https://api.openrouteservice.org/v2/directions/driving-car';
     
-    // Реальный API ключ (твой личный)
+    // API ключ из переменной окружения или константы
     const API_KEY = '28d87edc85fa4551b58d331d8d24f8e3';
     
-    const params = new URLSearchParams({
-      start: `${coords.from.lng},${coords.from.lat}`,
-      end: `${coords.to.lng},${coords.to.lat}`,
-      api_key: API_KEY
-    });
+    // Правильный формат тела запроса
+    const requestBody = {
+      coordinates: [
+        [coords.from.lng, coords.from.lat],
+        [coords.to.lng, coords.to.lat]
+      ],
+      format: "json",
+      units: "km"
+    };
 
     try {
-      console.log(`🌐 OpenRouteService: запрос ${fromCity} → ${toCity}`);
+      console.log(`🌐 OpenRouteService: POST запрос ${fromCity} → ${toCity}`);
       
-      const response = await fetch(`${url}?${params}`, {
+      const response = await fetch(url, {
+        method: 'POST',
         headers: {
-          'Accept': 'application/json, application/geo+json, application/gpx+xml, img/png; charset=utf-8'
-        }
+          'Authorization': API_KEY,
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          'User-Agent': 'AvtoGOST77/1.0 (https://avtogost77.ru)'
+        },
+        body: JSON.stringify(requestBody)
       });
       
       if (!response.ok) {
-        throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+        const errorText = await response.text();
+        throw new Error(`HTTP ${response.status}: ${errorText}`);
       }
       
       const data = await response.json();
       
-      if (data.features && data.features[0] && data.features[0].properties) {
-        const distanceMeters = data.features[0].properties.segments[0].distance;
-        return Math.round(distanceMeters / 1000); // метры в километры
+      // Правильная структура ответа OpenRouteService
+      if (data.routes && data.routes[0] && data.routes[0].summary) {
+        const distanceKm = data.routes[0].summary.distance; // уже в км
+        console.log(`✅ OpenRouteService: ${fromCity} → ${toCity} = ${Math.round(distanceKm)}км`);
+        return Math.round(distanceKm);
       }
       
       throw new Error('Неожиданный формат ответа от OpenRouteService');
