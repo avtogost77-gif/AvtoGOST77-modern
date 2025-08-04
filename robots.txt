@@ -8,6 +8,12 @@ Sitemap: https://avtogost77.ru/sitemap.xml
 Allow: /index.html
 Allow: /services.html
 Allow: /contact.html
+Allow: /about.html
+
+# SEO страницы для индексации
+Allow: /routes/
+Allow: /calculators/
+Allow: /industries/
 
 # Медиа файлы
 Allow: /assets/
@@ -25,6 +31,15 @@ Disallow: /manifest.json
 Disallow: /sw.js
 Disallow: /*.min.js$
 Disallow: /*.min.css$
+
+# Специальные директивы для Яндекса
+User-agent: Yandex
+Allow: /
+Crawl-delay: 1
+
+# Дополнительные директивы для Яндекса
+Clean-param: utm_source&utm_medium&utm_campaign&utm_term&utm_content
+Clean-param: fbclid&gclid&yclid&_openstat&from
 
 # Контакты для связи
 # Contact: info@avtogost77.ru
