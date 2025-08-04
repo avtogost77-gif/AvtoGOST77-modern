@@ -283,42 +283,6 @@
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://avtogost77.ru/calculators/skolko-stoit-dostavka-stroymaterialov/</loc>
-        <lastmod>2025-08-04</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://avtogost77.ru/calculators/skolko-stoit-gruzovoe-taksi/</loc>
-        <lastmod>2025-08-04</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://avtogost77.ru/calculators/skolko-stoit-kvartirnyj-pereezd/</loc>
-        <lastmod>2025-08-04</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://avtogost77.ru/calculators/skolko-stoit-perevezti-mashinu/</loc>
-        <lastmod>2025-08-04</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://avtogost77.ru/calculators/skolko-stoit-perevozka-mebeli/</loc>
-        <lastmod>2025-08-04</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://avtogost77.ru/calculators/skolko-stoit-perevozka-pianino/</loc>
-        <lastmod>2025-08-04</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
         <loc>https://avtogost77.ru/contact/</loc>
         <lastmod>2025-08-04</lastmod>
         <changefreq>monthly</changefreq>
@@ -409,6 +373,12 @@
         <priority>0.6</priority>
     </url>
     <url>
+        <loc>https://avtogost77.ru/google-verification-template/</loc>
+        <lastmod>2025-08-04</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
         <loc>https://avtogost77.ru/privacy/</loc>
         <lastmod>2025-08-04</lastmod>
         <changefreq>monthly</changefreq>
@@ -416,12 +386,6 @@
     </url>
     <url>
         <loc>https://avtogost77.ru/terms/</loc>
-        <lastmod>2025-08-04</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.6</priority>
-    </url>
-    <url>
-        <loc>https://avtogost77.ru/test-distance-api/</loc>
         <lastmod>2025-08-04</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
