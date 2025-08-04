@@ -410,37 +410,44 @@ function initExitIntent() {
     } else {
         // ДЕСКТОП - классические триггеры
         
+        // ДЕСКТОП: Минимум 30 секунд после загрузки страницы
+        let isEarlyDesktopSession = true;
+        setTimeout(() => {
+            isEarlyDesktopSession = false;
+            console.log('🔓 Desktop exit-intent разблокирован через 30 секунд');
+        }, 30000); // 30 секунд
+        
         // Отслеживаем движение мыши для desktop
         document.addEventListener('mouseleave', function(e) {
             // Если мышь ушла за верхний край экрана (к закрытию/адресной строке)
-            if (e.clientY <= 0 && !exitIntentShown) {
+            if (e.clientY <= 0 && !exitIntentShown && !isEarlyDesktopSession) {
                 showExitIntentPopup();
             }
         });
         
         // Попытка закрыть вкладку (только desktop)
         window.addEventListener('beforeunload', function(e) {
-            if (!exitIntentShown) {
+            if (!exitIntentShown && !isEarlyDesktopSession) {
                 // Показываем popup (не блокируем закрытие)
                 showExitIntentPopup();
             }
         });
         
-        // Бездействие на desktop (3 минуты)
+        // Бездействие на desktop (5 минут)
         let inactivityTimer = setTimeout(() => {
-            if (!exitIntentShown) {
+            if (!exitIntentShown && !isEarlyDesktopSession) {
                 showExitIntentPopup();
             }
-        }, 180000); // 3 минуты
+        }, 300000); // 5 минут
         
         // Сбрасываем таймер при активности
         document.addEventListener('mousemove', () => {
             clearTimeout(inactivityTimer);
             inactivityTimer = setTimeout(() => {
-                if (!exitIntentShown) {
+                if (!exitIntentShown && !isEarlyDesktopSession) {
                     showExitIntentPopup();
                 }
-            }, 180000);
+            }, 300000); // 5 минут
         });
     }
 }
