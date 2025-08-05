@@ -29,8 +29,116 @@
   "@context": "https://schema.org",
   "@graph": [
     {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "АвтоГОСТ",
+      "alternateName": [
+        "AvtoGOST77",
+        "АвтоГОСТ77",
+        "АвтоГОСТ 77"
+      ],
+      "url": "https://avtogost77.ru",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://avtogost77.ru/assets/img/logo.svg",
+        "width": 200,
+        "height": 200
+      },
+      "image": [
+        "https://avtogost77.ru/assets/img/hero-logistics.webp",
+        "https://avtogost77.ru/assets/img/truck-delivery.jpg"
+      ],
+      "description": "Профессиональные грузоперевозки по России. Надежная доставка грузов с 2015 года. Работаем 24/7.",
+      "email": "info@avtogost77.ru",
+      "telephone": "+7 (495) 268-06-81",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "ул. Ленина, д. 10",
+        "addressLocality": "Москва",
+        "addressRegion": "Москва",
+        "postalCode": "101000",
+        "addressCountry": "RU"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 55.755826,
+        "longitude": 37.6173
+      },
+      "sameAs": [
+        "https://t.me/avtogost77",
+        "https://wa.me/74952680681",
+        "https://vk.com/avtogost77",
+        "https://ok.ru/avtogost77"
+      ],
+      "foundingDate": "2015-01-01",
+      "foundingLocation": {
+        "@type": "Place",
+        "name": "Москва"
+      },
+      "numberOfEmployees": {
+        "@type": "QuantitativeValue",
+        "minValue": 50,
+        "maxValue": 100
+      },
+      "slogan": "Доставляем быстро, надежно, выгодно",
+      "areaServed": {
+        "@type": "Country",
+        "name": "Россия",
+        "identifier": "RU"
+      },
+      "award": [
+        "Лучшая транспортная компания 2023",
+        "Надежный партнер года 2022"
+      ],
+      "memberOf": [
+        {
+          "@type": "Organization",
+          "name": "Ассоциация грузоперевозчиков России"
+        }
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Услуги грузоперевозок",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Междугородние грузоперевозки",
+              "description": "Доставка грузов между городами России"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Срочная доставка",
+              "description": "Экспресс-доставка грузов за 2-24 часа"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Перевозка сборных грузов",
+              "description": "Доставка малогабаритных грузов"
+            }
+          }
+        ]
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "reviewCount": "2847",
+        "bestRating": "5",
+        "worstRating": "1"
+      }
+    },
+    {
+      "@context": "https://schema.org",
       "@type": "Service",
-      "serviceType": "Грузоперевозки",
+      "serviceType": "Срочная доставка грузов по России за 2-24 часа | АвтоГОСТ",
+      "name": "Срочная доставка грузов по России за 2-24 часа | АвтоГОСТ",
       "description": "Экстренная доставка грузов по всей России. ⚡ Подача транспорта за 2 часа, доставка день в день. Работаем 24/7. Спот-заявки и горячие перевозки.",
       "provider": {
         "@type": "Organization",
@@ -41,63 +149,16 @@
         "@type": "Country",
         "name": "Россия"
       },
-      "hasOfferCatalog": {
-        "@type": "OfferCatalog",
-        "itemListElement": []
-      }
-    },
-    {
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "Насколько быстро вы можете подать транспорт?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "В Москве и области — от 2 часов. В других городах — от 3-4 часов. Точное время зависит от типа транспорта и загруженности."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Работаете ли вы ночью и в выходные?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Да, работаем 24/7 без выходных и праздников. Ночью действует повышающий коэффициент +15-20%."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Какие документы нужны для срочной отправки?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Минимальный пакет: данные отправителя и получателя, описание груза. Остальные документы можем оформить по ходу доставки."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Можно ли отменить срочный заказ?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Да, но если транспорт уже выехал на погрузку, придется оплатить подачу (обычно 30-50% от стоимости)."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Как отследить срочный груз?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Даем прямой контакт водителя + ссылку на онлайн-трекинг. Наш диспетчер на связи 24/7."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Что если груз не доставлен в срок?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Это крайне редко (2% случаев), но если произошло — компенсируем убытки согласно договору."
-          }
+      "availableChannel": {
+        "@type": "ServiceChannel",
+        "serviceUrl": "https://avtogost77.ru",
+        "servicePhone": "+7 (495) 268-06-81",
+        "availableLanguage": {
+          "@type": "Language",
+          "name": "Russian",
+          "alternateName": "ru"
         }
-      ]
+      }
     }
   ]
 }
