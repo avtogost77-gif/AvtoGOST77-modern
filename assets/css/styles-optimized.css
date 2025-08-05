@@ -2863,3 +2863,277 @@ body {
     flex-direction: column;
   }
 }
+
+/* ===============================================
+   НОВЫЕ СТИЛИ ДЛЯ РАСШИРЕННОГО КОНТЕНТА
+   =============================================== */
+
+/* Инфраструктура бизнеса */
+.business-infrastructure {
+  padding: 5rem 0;
+  background: #f8fafc;
+}
+
+.infrastructure-concept {
+  margin: 3rem 0;
+}
+
+.infrastructure-pillars {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.pillar {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.pillar:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.pillar-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.logistics-without-worries {
+  margin: 4rem 0;
+}
+
+.worry-free-benefits {
+  margin: 2rem 0;
+}
+
+.benefit-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+  margin: 1.5rem 0;
+  padding: 1.5rem;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.benefit-icon {
+  font-size: 2.5rem;
+  flex-shrink: 0;
+}
+
+.benefit-content h4 {
+  margin-bottom: 0.5rem;
+  color: var(--primary-600);
+}
+
+/* Кейсы успеха */
+.success-stories {
+  padding: 5rem 0;
+}
+
+.case-study {
+  background: white;
+  border-radius: 16px;
+  padding: 2.5rem;
+  margin: 2rem 0;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.case-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.case-badge {
+  background: var(--gradient-primary);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.case-content {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.case-problem,
+.case-solution,
+.case-result {
+  padding: 1.5rem;
+  background: #f8fafc;
+  border-radius: 8px;
+  border-left: 4px solid var(--primary-600);
+}
+
+.timeline {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+}
+
+.timeline li {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+/* Отраслевая экспертиза */
+.industry-expertise {
+  padding: 5rem 0;
+}
+
+.industry-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin: 3rem 0;
+}
+
+.industry-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
+
+.industry-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+.industry-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.industry-stat {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #e5e7eb;
+  text-align: center;
+}
+
+.industry-stat .stat-value {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--primary-600);
+  display: block;
+}
+
+.industry-stat .stat-label {
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+/* Технологии */
+.technology-section {
+  padding: 5rem 0;
+}
+
+.tech-features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin: 3rem 0;
+}
+
+.tech-feature {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.tech-feature:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.tech-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+/* Команда и ценности */
+.team-values {
+  padding: 5rem 0;
+  background: #f8fafc;
+}
+
+.team-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin: 3rem 0;
+}
+
+.team-stat {
+  text-align: center;
+  padding: 2rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.team-stat .stat-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: var(--primary-600);
+}
+
+.team-stat .stat-value {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--primary-700);
+  display: block;
+  margin: 0.5rem 0;
+}
+
+.team-stat .stat-label {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.team-stat .stat-detail {
+  font-size: 0.875rem;
+  color: #6b7280;
+  line-height: 1.5;
+}
+
+.company-values {
+  margin: 4rem 0;
+}
+
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.value-item {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.value-item h4 {
+  color: var(--primary-600);
+  margin-bottom: 1rem;
+}
