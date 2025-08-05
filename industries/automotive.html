@@ -35,25 +35,51 @@
     <link rel="stylesheet" href="../assets/css/styles-optimized.css">
     
     <!-- Schema.org JSON-LD -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Service",
-      "name": "Грузоперевозки для автопрома и автосервисов",
-      "description": "Доставка автомобилей, перевозка запчастей, логистика для автодилеров и сервисных центров",
-      "provider": {
-        "@type": "Organization",
-        "name": "АвтоГОСТ",
-        "telephone": "+7-916-272-09-32",
-        "url": "https://avtogost77.ru"
+    
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "Специализированные грузоперевозки",
+  "name": "Грузоперевозки для automotive",
+  "description": "Доставка автомобилей, перевозка запчастей, логистика для автодилеров и сервисных центров. Опыт работы с отраслью Автомобильная отрасль. Специализированный транспорт, точные сроки, прозрачные цены.",
+  "provider": {
+    "@type": "Organization",
+    "name": "АвтоГОСТ",
+    "url": "https://avtogost77.ru"
+  },
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Услуги для automotive",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Специализированная упаковка",
+          "description": "Упаковка с учетом специфики отрасли"
+        }
       },
-      "serviceArea": {
-        "@type": "Place",
-        "name": "Россия"
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Страхование грузов",
+          "description": "Полное страхование специфичных грузов"
+        }
       },
-      "url": "https://avtogost77.ru/industries/automotive.html"
-    }
-    </script>
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Экспресс-доставка",
+          "description": "Срочная доставка для критичных грузов"
+        }
+      }
+    ]
+  }
+}
+</script>
     
     <!-- Preload Critical Resources -->
     <link rel="preload" href="../assets/css/styles-optimized.css" as="style">

@@ -35,25 +35,51 @@
     <link rel="stylesheet" href="../assets/css/styles-optimized.css">
     
     <!-- Schema.org JSON-LD -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Service",
-      "name": "Грузоперевозки для интернет-магазинов и маркетплейсов",
-      "description": "Доставка интернет-заказов, фулфилмент для маркетплейсов, курьерская логистика",
-      "provider": {
-        "@type": "Organization",
-        "name": "АвтоГОСТ",
-        "telephone": "+7-916-272-09-32",
-        "url": "https://avtogost77.ru"
+    
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": "Специализированные грузоперевозки",
+  "name": "Грузоперевозки для ecommerce",
+  "description": "Доставка интернет-заказов, фулфилмент для маркетплейсов, курьерская логистика. Опыт работы с отраслью Интернет-торговля. Специализированный транспорт, точные сроки, прозрачные цены.",
+  "provider": {
+    "@type": "Organization",
+    "name": "АвтоГОСТ",
+    "url": "https://avtogost77.ru"
+  },
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Услуги для ecommerce",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Специализированная упаковка",
+          "description": "Упаковка с учетом специфики отрасли"
+        }
       },
-      "serviceArea": {
-        "@type": "Place",
-        "name": "Россия"
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Страхование грузов",
+          "description": "Полное страхование специфичных грузов"
+        }
       },
-      "url": "https://avtogost77.ru/industries/ecommerce.html"
-    }
-    </script>
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Экспресс-доставка",
+          "description": "Срочная доставка для критичных грузов"
+        }
+      }
+    ]
+  }
+}
+</script>
     
     <!-- Preload Critical Resources -->
     <link rel="preload" href="../assets/css/styles-optimized.css" as="style">

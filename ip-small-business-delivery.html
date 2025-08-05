@@ -23,25 +23,85 @@
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     
     <!-- Schema.org разметка -->
-    <script type="application/ld+json">
+    
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
     {
-      "@context": "https://schema.org",
       "@type": "Service",
-      "name": "Грузоперевозки для ИП и малого бизнеса",
-      "description": "Специальные условия грузоперевозок для индивидуальных предпринимателей и малого бизнеса",
+      "serviceType": "Грузоперевозки",
+      "description": "Специальные условия грузоперевозок для ИП и малого бизнеса. ✓ Без НДС ✓ Отсрочка платежа ✓ Гибкие тарифы ✓ От 1 заказа. Работаем с самозанятыми.",
       "provider": {
         "@type": "Organization",
         "name": "АвтоГОСТ",
-        "telephone": "+7-916-272-09-32",
-        "address": {
-          "@type": "PostalAddress",
-          "@addressCountry": "RU"
-        }
+        "url": "https://avtogost77.ru"
       },
-      "areaServed": "Россия",
-      "serviceType": "Грузоперевозки для бизнеса"
+      "areaServed": {
+        "@type": "Country",
+        "name": "Россия"
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "itemListElement": []
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Работаете ли вы с самозанятыми?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Да, работаем со всеми формами: самозанятые, ИП, ООО. Для самозанятых нужна только справка о постановке на учет."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Какая минимальная сумма заказа?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Минимальной суммы нет. Работаем от 1 заказа. Но чем больше заказов в месяц, тем больше скидка."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Как оформляется отсрочка платежа?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "При заключении договора определяем лимит (до 500,000₽) и срок отсрочки (7-30 дней). Никаких залогов и поручителей."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Можно ли работать без договора?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Для разовых заказов — да. Но с договором выгоднее: скидки, отсрочка, персональный менеджер."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Какие документы выдаете?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Полный пакет: договор, акты, накладные, счета. Работаем через ЭДО или обычные документы. Для самозанятых — чеки."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Есть ли у вас API для интеграции?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Да, есть API для интернет-магазинов. Интеграция с 1С, Битрикс24, amoCRM и другими системами."
+          }
+        }
+      ]
     }
-    </script>
+  ]
+}
+</script>
 </head>
 <body>
     <!-- Хедер -->

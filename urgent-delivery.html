@@ -23,25 +23,85 @@
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     
     <!-- Schema.org разметка -->
-    <script type="application/ld+json">
+    
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
     {
-      "@context": "https://schema.org",
       "@type": "Service",
-      "name": "Срочная доставка грузов",
-      "description": "Экстренная доставка грузов по России за 2-24 часа",
+      "serviceType": "Грузоперевозки",
+      "description": "Экстренная доставка грузов по всей России. ⚡ Подача транспорта за 2 часа, доставка день в день. Работаем 24/7. Спот-заявки и горячие перевозки.",
       "provider": {
         "@type": "Organization",
         "name": "АвтоГОСТ",
-        "telephone": "+7-916-272-09-32",
-        "address": {
-          "@type": "PostalAddress",
-          "@addressCountry": "RU"
-        }
+        "url": "https://avtogost77.ru"
       },
-      "areaServed": "Россия",
-      "serviceType": "Срочная доставка грузов"
+      "areaServed": {
+        "@type": "Country",
+        "name": "Россия"
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "itemListElement": []
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Насколько быстро вы можете подать транспорт?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "В Москве и области — от 2 часов. В других городах — от 3-4 часов. Точное время зависит от типа транспорта и загруженности."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Работаете ли вы ночью и в выходные?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Да, работаем 24/7 без выходных и праздников. Ночью действует повышающий коэффициент +15-20%."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Какие документы нужны для срочной отправки?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Минимальный пакет: данные отправителя и получателя, описание груза. Остальные документы можем оформить по ходу доставки."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Можно ли отменить срочный заказ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Да, но если транспорт уже выехал на погрузку, придется оплатить подачу (обычно 30-50% от стоимости)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Как отследить срочный груз?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Даем прямой контакт водителя + ссылку на онлайн-трекинг. Наш диспетчер на связи 24/7."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Что если груз не доставлен в срок?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Это крайне редко (2% случаев), но если произошло — компенсируем убытки согласно договору."
+          }
+        }
+      ]
     }
-    </script>
+  ]
+}
+</script>
 </head>
 <body>
     <!-- Хедер -->

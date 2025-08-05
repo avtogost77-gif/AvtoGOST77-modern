@@ -21,25 +21,69 @@
     <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
     
     <!-- Schema.org разметка -->
-    <script type="application/ld+json">
+    
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
     {
-      "@context": "https://schema.org",
       "@type": "Service",
-      "name": "Грузоперевозки Москвы Санкт-Петербург",
-      "description": "Доставка грузов Москвы — Санкт-Петербург, 632 км",
+      "serviceType": "Грузоперевозки",
+      "name": "Грузоперевозки Москвы — Санкт-Петербург",
+      "description": "Профессиональные грузоперевозки из Москвы в Санкт-Петербург. Расстояние 632 км.",
       "provider": {
         "@type": "Organization",
         "name": "АвтоГОСТ",
-        "telephone": "+7-916-272-09-32"
+        "url": "https://avtogost77.ru"
       },
-      "areaServed": ["Московская область", "Ленинградская область"],
-      "offers": {
-        "@type": "Offer",
-        "price": "25000",
-        "priceCurrency": "RUB"
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "Москвы"
+        },
+        {
+          "@type": "City",
+          "name": "Санкт-Петербург"
+        }
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Тарифы на перевозку Москвы — Санкт-Петербург",
+        "itemListElement": {
+          "@type": "Offer",
+          "priceSpecification": {
+            "@type": "PriceSpecification",
+            "price": "25000",
+            "priceCurrency": "RUB",
+            "unitText": "за доставку"
+          }
+        }
       }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Сколько стоит доставка из Москвы в Санкт-Петербург?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Стоимость доставки на расстояние 632 км начинается от 25000 ₽. Окончательная цена зависит от веса и габаритов груза."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Сколько времени занимает доставка из Москвы в Санкт-Петербург?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Доставка занимает от 2 до 3 дней в зависимости от типа груза и транспорта."
+          }
+        }
+      ]
     }
-    </script>
+  ]
+}
+</script>
 </head>
 <body>
     <!-- Навигация -->

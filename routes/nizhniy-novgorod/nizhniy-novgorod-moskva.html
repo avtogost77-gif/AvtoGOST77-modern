@@ -21,25 +21,69 @@
     <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
     
     <!-- Schema.org разметка -->
-    <script type="application/ld+json">
+    
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
     {
-      "@context": "https://schema.org",
       "@type": "Service",
-      "name": "Грузоперевозки Нижнего Новгорода Москву",
-      "description": "Доставка грузов Нижнего Новгорода — Москву, 411 км",
+      "serviceType": "Грузоперевозки",
+      "name": "Грузоперевозки Нижнего Новгорода — Москву",
+      "description": "Профессиональные грузоперевозки из Нижнего Новгорода в Москву. Расстояние 411 км.",
       "provider": {
         "@type": "Organization",
         "name": "АвтоГОСТ",
-        "telephone": "+7-916-272-09-32"
+        "url": "https://avtogost77.ru"
       },
-      "areaServed": ["Нижегородская область", "Московская область"],
-      "offers": {
-        "@type": "Offer",
-        "price": "25000",
-        "priceCurrency": "RUB"
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "Нижнего Новгорода"
+        },
+        {
+          "@type": "City",
+          "name": "Москву"
+        }
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Тарифы на перевозку Нижнего Новгорода — Москву",
+        "itemListElement": {
+          "@type": "Offer",
+          "priceSpecification": {
+            "@type": "PriceSpecification",
+            "price": "25000",
+            "priceCurrency": "RUB",
+            "unitText": "за доставку"
+          }
+        }
       }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Сколько стоит доставка из Нижнего Новгорода в Москву?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Стоимость доставки на расстояние 411 км начинается от 25000 ₽. Окончательная цена зависит от веса и габаритов груза."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Сколько времени занимает доставка из Нижнего Новгорода в Москву?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Доставка занимает от 1 до 2 дней в зависимости от типа груза и транспорта."
+          }
+        }
+      ]
     }
-    </script>
+  ]
+}
+</script>
 
     <style>
       .route-stats {

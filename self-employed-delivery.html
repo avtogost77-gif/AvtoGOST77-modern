@@ -23,25 +23,36 @@
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     
     <!-- Schema.org разметка -->
-    <script type="application/ld+json">
+    
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
     {
-      "@context": "https://schema.org",
       "@type": "Service",
-      "name": "Грузоперевозки для самозанятых",
-      "description": "Услуги грузоперевозок для самозанятых граждан с минимумом документов",
+      "serviceType": "Грузоперевозки",
+      "description": "Доставка грузов для самозанятых граждан. ✓ Минимум документов ✓ Быстрое оформление ✓ Чеки для налоговой ✓ От 1 заказа. Работаем по всей России.",
       "provider": {
         "@type": "Organization",
         "name": "АвтоГОСТ",
-        "telephone": "+7-916-272-09-32",
-        "address": {
-          "@type": "PostalAddress",
-          "@addressCountry": "RU"
-        }
+        "url": "https://avtogost77.ru"
       },
-      "areaServed": "Россия",
-      "serviceType": "Доставка для самозанятых"
+      "areaServed": {
+        "@type": "Country",
+        "name": "Россия"
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "itemListElement": []
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": []
     }
-    </script>
+  ]
+}
+</script>
 </head>
 <body>
     <!-- Хедер -->

@@ -21,25 +21,69 @@
     <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
     
     <!-- Schema.org разметка -->
-    <script type="application/ld+json">
+    
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
     {
-      "@context": "https://schema.org",
       "@type": "Service",
-      "name": "Грузоперевозки Москвы Самару",
-      "description": "Доставка грузов Москвы — Самару, 857 км",
+      "serviceType": "Грузоперевозки",
+      "name": "Грузоперевозки Москвы — Самару",
+      "description": "Профессиональные грузоперевозки из Москвы в Самару. Расстояние 857 км.",
       "provider": {
         "@type": "Organization",
         "name": "АвтоГОСТ",
-        "telephone": "+7-916-272-09-32"
+        "url": "https://avtogost77.ru"
       },
-      "areaServed": ["Московская область", "Самарская область"],
-      "offers": {
-        "@type": "Offer",
-        "price": "38565",
-        "priceCurrency": "RUB"
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "Москвы"
+        },
+        {
+          "@type": "City",
+          "name": "Самару"
+        }
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Тарифы на перевозку Москвы — Самару",
+        "itemListElement": {
+          "@type": "Offer",
+          "priceSpecification": {
+            "@type": "PriceSpecification",
+            "price": "38565",
+            "priceCurrency": "RUB",
+            "unitText": "за доставку"
+          }
+        }
       }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Сколько стоит доставка из Москвы в Самару?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Стоимость доставки на расстояние 857 км начинается от 38565 ₽. Окончательная цена зависит от веса и габаритов груза."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Сколько времени занимает доставка из Москвы в Самару?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Доставка занимает от 2 до 3 дней в зависимости от типа груза и транспорта."
+          }
+        }
+      ]
     }
-    </script>
+  ]
+}
+</script>
 </head>
 <body>
     <!-- Навигация -->

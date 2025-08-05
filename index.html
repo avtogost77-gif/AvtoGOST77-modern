@@ -35,27 +35,57 @@
     <meta name="twitter:image" content="https://avtogost77.ru/assets/img/hero-logistics.webp">
     
     <!-- Schema.org разметка -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "АвтоГОСТ",
-      "description": "Грузоперевозки по России 24/7",
-      "url": "https://avtogost77.ru",
-      "telephone": "+7-916-272-09-32",
-      "email": "info@avtogost77.ru",
-      "address": {
-        "@type": "PostalAddress",
-        "addressCountry": "RU",
-        "addressRegion": "Московская область"
+    
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "АвтоГОСТ",
+  "alternateName": "AvtoGOST77",
+  "url": "https://avtogost77.ru",
+  "logo": "https://avtogost77.ru/assets/img/logo.svg",
+  "description": "Профессиональные грузоперевозки по России. Надежная доставка грузов с 2015 года.",
+  "email": "info@avtogost77.ru",
+  "telephone": "+7 (495) 268-06-81",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Москва",
+    "addressRegion": "Москва",
+    "addressCountry": "RU"
+  },
+  "sameAs": [
+    "https://t.me/avtogost77",
+    "https://wa.me/74952680681"
+  ],
+  "foundingDate": "2015",
+  "areaServed": {
+    "@type": "Country",
+    "name": "Россия"
+  },
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Услуги грузоперевозок",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Междугородние грузоперевозки",
+          "description": "Доставка грузов между городами России"
+        }
       },
-      "serviceType": "Грузоперевозки",
-      "areaServed": "Россия",
-      "sameAs": [
-        "https://wa.me/79162720932"
-      ]
-    }
-    </script>
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Срочная доставка",
+          "description": "Экспресс-доставка грузов за 2-24 часа"
+        }
+      }
+    ]
+  }
+}
+</script>
     
     <!-- PWA метатеги -->
     <link rel="manifest" href="manifest.json">
