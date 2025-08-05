@@ -24,126 +24,134 @@
     
 
 
-<script type="application/ld+json">
+
+    <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@graph": [
+  "@type": "Organization",
+  "@id": "https://avtogost77.ru/#organization",
+  "name": "АвтоГОСТ",
+  "alternateName": "AvtoGOST77",
+  "url": "https://avtogost77.ru/",
+  "logo": {
+    "@type": "ImageObject",
+    "url": "https://avtogost77.ru/assets/img/logo.svg",
+    "width": 200,
+    "height": 60
+  },
+  "image": "https://avtogost77.ru/assets/img/hero-logistics.webp",
+  "description": "Профессиональная транспортная компания, специализирующаяся на грузоперевозках по России. Быстрая подача транспорта, точный расчет стоимости, круглосуточная работа.",
+  "telephone": "+7 916 272-09-32",
+  "email": "info@avtogost77.ru",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "ул. Большая Почтовая, д. 36",
+    "addressLocality": "Москва",
+    "addressRegion": "Москва",
+    "postalCode": "105082",
+    "addressCountry": "RU"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 55.780874,
+    "longitude": 37.70431
+  },
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+      "Sunday"
+    ],
+    "opens": "00:00",
+    "closes": "23:59"
+  },
+  "sameAs": [
+    "https://t.me/avtogost77",
+    "https://wa.me/79162720932"
+  ],
+  "priceRange": "₽₽",
+  "paymentAccepted": [
+    "Cash",
+    "Credit Card",
+    "Bank Transfer"
+  ],
+  "currenciesAccepted": "RUB",
+  "areaServed": {
+    "@type": "Country",
+    "name": "Россия"
+  },
+  "slogan": "Доставим вовремя и безопасно",
+  "foundingDate": "2010",
+  "numberOfEmployees": {
+    "@type": "QuantitativeValue",
+    "value": 50
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "reviewCount": "2341",
+    "bestRating": "5",
+    "worstRating": "1"
+  }
+}
+</script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Грузоперевозки spb — Moskva",
+  "description": "Профессиональные грузоперевозки по маршруту spb — Moskva. Расстояние 632 км. ",
+  "provider": {
+    "@id": "https://avtogost77.ru/#organization"
+  },
+  "areaServed": [
     {
-      "@type": "Organization",
-      "@id": "https://avtogost77.ru/#organization",
-      "name": "АвтоГОСТ",
-      "alternateName": [
-        "AvtoGOST77",
-        "АвтоГОСТ77",
-        "АвтоГОСТ 77"
-      ],
-      "url": "https://avtogost77.ru",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://avtogost77.ru/assets/img/logo.svg",
-        "width": 200,
-        "height": 200
-      },
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "telephone": "+7-999-216-20-07",
-        "contactType": "customer service",
-        "areaServed": "RU",
-        "availableLanguage": "Russian"
-      },
-      "sameAs": [
-        "https://t.me/avtogost77",
-        "https://wa.me/79992162007"
-      ],
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Москва",
-        "addressRegion": "Московская область",
-        "addressCountry": "RU"
-      }
+      "@type": "City",
+      "name": "spb"
     },
     {
-      "@type": "Service",
-      "@id": "https://avtogost77.ru/spb-moskva.html#service",
-      "name": "Грузоперевозки Санкт-Петербурга Москву от 25000₽ за 632км",
-      "description": "⚡ Надежная доставка грузов Санкт-Петербурга — Москву. Расстояние 632км, время доставки 1-2 дня. Калькулятор стоимости онлайн. Подача за 2 часа!",
-      "provider": {
-        "@id": "https://avtogost77.ru/#organization"
-      },
-      "serviceType": "Грузоперевозки",
-      "areaServed": {
-        "@type": "Country",
-        "name": "Россия"
-      },
-      "hasOfferCatalog": {
-        "@type": "OfferCatalog",
-        "name": "Услуги грузоперевозок",
-        "itemListElement": [
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Грузоперевозки Санкт-Петербурга Москву от 25000₽ за 632км",
-              "description": "⚡ Надежная доставка грузов Санкт-Петербурга — Москву. Расстояние 632км, время доставки 1-2 дня. Калькулятор стоимости онлайн. Подача за 2 часа!"
-            },
-            "priceSpecification": {
-              "@type": "PriceSpecification",
-              "priceCurrency": "RUB",
-              "price": "25000"
-            }
-          }
-        ]
-      }
-    },
-    {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Главная",
-          "item": "https://avtogost77.ru"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Маршруты",
-          "item": "https://avtogost77.ru/routes"
-        },
-        {
-          "@type": "ListItem",
-          "position": 3,
-          "name": "Грузоперевозки Санкт-Петербурга Москву от 25000₽ за 632км",
-          "item": "https://avtogost77.ru/spb-moskva.html"
-        }
-      ]
-    },
-    {
-      "@type": "LocalBusiness",
-      "name": "АвтоГОСТ - moskva",
-      "description": "Грузоперевозки в moskva",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "moskva",
-        "addressCountry": "RU"
-      },
-      "priceRange": "₽₽",
-      "openingHoursSpecification": {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": [
-          "Monday",
-          "Tuesday",
-          "Wednesday",
-          "Thursday",
-          "Friday",
-          "Saturday",
-          "Sunday"
-        ],
-        "opens": "00:00",
-        "closes": "23:59"
-      }
+      "@type": "City",
+      "name": "Moskva"
     }
-  ]
+  ],
+  "offers": {
+    "@type": "Offer",
+    "price": "15000",
+    "priceCurrency": "RUB",
+    "priceSpecification": {
+      "@type": "PriceSpecification",
+      "price": "15000",
+      "priceCurrency": "RUB",
+      "unitCode": "C62",
+      "unitText": "за перевозку"
+    },
+    "availability": "https://schema.org/InStock"
+  }
+}
+</script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TravelAction",
+  "name": "Доставка груза spb — Moskva",
+  "fromLocation": {
+    "@type": "City",
+    "name": "spb"
+  },
+  "toLocation": {
+    "@type": "City",
+    "name": "Moskva"
+  },
+  "distance": {
+    "@type": "Distance",
+    "value": "632",
+    "unitCode": "KMT"
+  }
 }
 </script>
 </head>

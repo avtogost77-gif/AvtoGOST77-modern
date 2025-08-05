@@ -88,82 +88,159 @@
 
 
 
-<script type="application/ld+json">
+
+    <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Organization",
-      "@id": "https://avtogost77.ru/#organization",
-      "name": "АвтоГОСТ",
-      "alternateName": [
-        "AvtoGOST77",
-        "АвтоГОСТ77",
-        "АвтоГОСТ 77"
-      ],
-      "url": "https://avtogost77.ru",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://avtogost77.ru/assets/img/logo.svg",
-        "width": 200,
-        "height": 200
-      },
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "telephone": "+7-999-216-20-07",
-        "contactType": "customer service",
-        "areaServed": "RU",
-        "availableLanguage": "Russian"
-      },
-      "sameAs": [
-        "https://t.me/avtogost77",
-        "https://wa.me/79992162007"
-      ],
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Москва",
-        "addressRegion": "Московская область",
-        "addressCountry": "RU"
-      }
+  "@type": "Organization",
+  "@id": "https://avtogost77.ru/#organization",
+  "name": "АвтоГОСТ",
+  "alternateName": "AvtoGOST77",
+  "url": "https://avtogost77.ru/",
+  "logo": {
+    "@type": "ImageObject",
+    "url": "https://avtogost77.ru/assets/img/logo.svg",
+    "width": 200,
+    "height": 60
+  },
+  "image": "https://avtogost77.ru/assets/img/hero-logistics.webp",
+  "description": "Профессиональная транспортная компания, специализирующаяся на грузоперевозках по России. Быстрая подача транспорта, точный расчет стоимости, круглосуточная работа.",
+  "telephone": "+7 916 272-09-32",
+  "email": "info@avtogost77.ru",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "ул. Большая Почтовая, д. 36",
+    "addressLocality": "Москва",
+    "addressRegion": "Москва",
+    "postalCode": "105082",
+    "addressCountry": "RU"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 55.780874,
+    "longitude": 37.70431
+  },
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+      "Sunday"
+    ],
+    "opens": "00:00",
+    "closes": "23:59"
+  },
+  "sameAs": [
+    "https://t.me/avtogost77",
+    "https://wa.me/79162720932"
+  ],
+  "priceRange": "₽₽",
+  "paymentAccepted": [
+    "Cash",
+    "Credit Card",
+    "Bank Transfer"
+  ],
+  "currenciesAccepted": "RUB",
+  "areaServed": {
+    "@type": "Country",
+    "name": "Россия"
+  },
+  "slogan": "Доставим вовремя и безопасно",
+  "foundingDate": "2010",
+  "numberOfEmployees": {
+    "@type": "QuantitativeValue",
+    "value": 50
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "reviewCount": "2341",
+    "bestRating": "5",
+    "worstRating": "1"
+  }
+}
+</script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "https://avtogost77.ru/#website",
+  "url": "https://avtogost77.ru/",
+  "name": "АвтоГОСТ",
+  "description": "Профессиональные грузоперевозки по России",
+  "publisher": {
+    "@id": "https://avtogost77.ru/#organization"
+  },
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "https://avtogost77.ru/search?q={search_term_string}"
     },
-    {
-      "@type": "WebSite",
-      "@id": "https://avtogost77.ru/#website",
-      "url": "https://avtogost77.ru",
-      "name": "АвтоГОСТ - Грузоперевозки по России",
-      "description": "Надежные грузоперевозки по всей России. Доставка от 1 кг до 20 тонн.",
-      "publisher": {
-        "@id": "https://avtogost77.ru/#organization"
-      },
-      "potentialAction": {
-        "@type": "SearchAction",
-        "target": {
-          "@type": "EntryPoint",
-          "urlTemplate": "https://avtogost77.ru/search?q={search_term_string}"
-        },
-        "query-input": "required name=search_term_string"
-      }
-    },
-    {
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "Как быстро вы можете организовать доставку?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Мы можем подать транспорт в течение 2-4 часов после заявки."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Какие типы грузов вы перевозите?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Мы перевозим любые типы грузов от 1 кг до 20 тонн, включая негабаритные и опасные грузы."
-          }
+    "query-input": "required name=search_term_string"
+  },
+  "inLanguage": "ru-RU"
+}
+</script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "@id": "https://avtogost77.ru/#service",
+  "serviceType": "Грузоперевозки",
+  "provider": {
+    "@id": "https://avtogost77.ru/#organization"
+  },
+  "areaServed": {
+    "@type": "Country",
+    "name": "Россия"
+  },
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Услуги грузоперевозок",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Междугородние перевозки",
+          "description": "Доставка грузов между городами России"
         }
-      ]
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Городские перевозки",
+          "description": "Доставка грузов по Москве и области"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Экспресс доставка",
+          "description": "Срочная доставка грузов за 2-24 часа"
+        }
+      }
+    ]
+  }
+}
+</script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Главная",
+      "item": "https://avtogost77.ru/"
     }
   ]
 }

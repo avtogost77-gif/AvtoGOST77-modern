@@ -68,91 +68,198 @@
 
 
 
-<script type="application/ld+json">
+
+    <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Organization",
-      "@id": "https://avtogost77.ru/#organization",
-      "name": "АвтоГОСТ",
-      "alternateName": [
-        "AvtoGOST77",
-        "АвтоГОСТ77",
-        "АвтоГОСТ 77"
-      ],
-      "url": "https://avtogost77.ru",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://avtogost77.ru/assets/img/logo.svg",
-        "width": 200,
-        "height": 200
-      },
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "telephone": "+7-999-216-20-07",
-        "contactType": "customer service",
-        "areaServed": "RU",
-        "availableLanguage": "Russian"
-      },
-      "sameAs": [
-        "https://t.me/avtogost77",
-        "https://wa.me/79992162007"
-      ],
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Москва",
-        "addressRegion": "Московская область",
-        "addressCountry": "RU"
-      }
-    },
-    {
-      "@type": "Service",
-      "@id": "https://avtogost77.ru/contact.html#service",
-      "name": "Контакты логистического аутсорсинга | Россия, офис Москва",
-      "description": "Задайте вопрос или получите расчёт: телефон, WhatsApp, Telegram, форма заявки. Работаем по России, подача авто в Москве за 2 ч.",
-      "provider": {
-        "@id": "https://avtogost77.ru/#organization"
-      },
-      "serviceType": "Грузоперевозки",
-      "areaServed": {
-        "@type": "Country",
-        "name": "Россия"
-      },
-      "hasOfferCatalog": {
-        "@type": "OfferCatalog",
-        "name": "Услуги грузоперевозок",
-        "itemListElement": [
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Контакты логистического аутсорсинга | Россия, офис Москва",
-              "description": "Задайте вопрос или получите расчёт: телефон, WhatsApp, Telegram, форма заявки. Работаем по России, подача авто в Москве за 2 ч."
-            },
-            "priceSpecification": {
-              "@type": "PriceSpecification",
-              "priceCurrency": "RUB",
-              "price": "от 15000"
-            }
-          }
-        ]
-      }
-    },
-    {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Главная",
-          "item": "https://avtogost77.ru"
-        }
-      ]
-    }
-  ]
+  "@type": "Organization",
+  "@id": "https://avtogost77.ru/#organization",
+  "name": "АвтоГОСТ",
+  "alternateName": "AvtoGOST77",
+  "url": "https://avtogost77.ru/",
+  "logo": {
+    "@type": "ImageObject",
+    "url": "https://avtogost77.ru/assets/img/logo.svg",
+    "width": 200,
+    "height": 60
+  },
+  "image": "https://avtogost77.ru/assets/img/hero-logistics.webp",
+  "description": "Профессиональная транспортная компания, специализирующаяся на грузоперевозках по России. Быстрая подача транспорта, точный расчет стоимости, круглосуточная работа.",
+  "telephone": "+7 916 272-09-32",
+  "email": "info@avtogost77.ru",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "ул. Большая Почтовая, д. 36",
+    "addressLocality": "Москва",
+    "addressRegion": "Москва",
+    "postalCode": "105082",
+    "addressCountry": "RU"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 55.780874,
+    "longitude": 37.70431
+  },
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+      "Sunday"
+    ],
+    "opens": "00:00",
+    "closes": "23:59"
+  },
+  "sameAs": [
+    "https://t.me/avtogost77",
+    "https://wa.me/79162720932"
+  ],
+  "priceRange": "₽₽",
+  "paymentAccepted": [
+    "Cash",
+    "Credit Card",
+    "Bank Transfer"
+  ],
+  "currenciesAccepted": "RUB",
+  "areaServed": {
+    "@type": "Country",
+    "name": "Россия"
+  },
+  "slogan": "Доставим вовремя и безопасно",
+  "foundingDate": "2010",
+  "numberOfEmployees": {
+    "@type": "QuantitativeValue",
+    "value": 50
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "reviewCount": "2341",
+    "bestRating": "5",
+    "worstRating": "1"
+  }
 }
 </script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": "https://avtogost77.ru/#localbusiness",
+  "name": "АвтоГОСТ - Офис в Москве",
+  "image": "https://avtogost77.ru/assets/img/office.webp",
+  "telephone": "+7 916 272-09-32",
+  "priceRange": "₽₽",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "ул. Большая Почтовая, д. 36",
+    "addressLocality": "Москва",
+    "addressRegion": "Москва",
+    "postalCode": "105082",
+    "addressCountry": "RU"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 55.780874,
+    "longitude": 37.70431
+  },
+  "url": "https://avtogost77.ru/contact",
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+      "Sunday"
+    ],
+    "opens": "00:00",
+    "closes": "23:59"
+  },
+  "hasMap": "https://yandex.ru/maps/-/CCUBqOWoXD"
+}
+</script>
+
+    <style>
+    /* Дополнительные стили для расширенного контента */
+    .section { padding: 60px 0; }
+    .bg-light { background-color: #f8f9fa; }
+    .lead { font-size: 1.2em; line-height: 1.6; color: #555; margin-bottom: 30px; }
+    .section-desc { font-size: 1.1em; color: #666; text-align: center; margin-bottom: 40px; }
+    
+    /* Timeline */
+    .timeline { position: relative; padding: 40px 0; }
+    .timeline::before { content: ''; position: absolute; left: 50px; top: 0; bottom: 0; width: 2px; background: #2c5aa0; }
+    .timeline-item { display: flex; margin-bottom: 40px; }
+    .timeline-item .year { width: 100px; font-size: 24px; font-weight: bold; color: #2c5aa0; }
+    .timeline-item .content { flex: 1; background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+    
+    /* Process steps */
+    .process-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
+    .step { text-align: center; padding: 30px; background: #fff; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+    .step-number { width: 60px; height: 60px; margin: 0 auto 20px; background: #2c5aa0; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: bold; }
+    
+    /* Benefits grid */
+    .benefits-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+    .benefit-card { padding: 30px; background: #fff; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+    .benefit-icon { font-size: 48px; margin-bottom: 15px; }
+    
+    /* Values grid */
+    .values-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
+    .value-card { text-align: center; padding: 30px; background: #fff; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+    .value-card .icon { font-size: 48px; margin-bottom: 15px; }
+    
+    /* Team stats */
+    .team-stats { display: flex; justify-content: space-around; flex-wrap: wrap; margin: 40px 0; }
+    .stat { text-align: center; padding: 20px; }
+    .stat .number { font-size: 48px; font-weight: bold; color: #2c5aa0; }
+    .stat .label { font-size: 16px; color: #666; }
+    
+    /* Testimonials */
+    .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; }
+    .testimonial { padding: 30px; background: #fff; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+    .testimonial .stars { color: #ffa500; font-size: 20px; margin-bottom: 15px; }
+    .testimonial .author { margin-top: 20px; padding-top: 20px; border-top: 1px solid #eee; }
+    .testimonial .author strong { display: block; margin-bottom: 5px; }
+    .testimonial .author span { color: #666; font-size: 14px; }
+    
+    /* Service categories */
+    .service-categories { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; margin-top: 40px; }
+    .category { padding: 30px; background: #fff; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+    .category h3 { margin-bottom: 20px; color: #2c5aa0; }
+    .category ul { list-style: none; padding: 0; }
+    .category li { padding: 10px 0; border-bottom: 1px solid #eee; }
+    .category li:last-child { border-bottom: none; }
+    
+    /* Status items */
+    .statuses-list { max-width: 800px; margin: 0 auto; }
+    .status-item { display: flex; align-items: center; margin-bottom: 30px; padding: 20px; background: #fff; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+    .status-icon { width: 60px; height: 60px; margin-right: 20px; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-size: 30px; }
+    .status-icon.new { background: #e3f2fd; }
+    .status-icon.confirmed { background: #e8f5e9; }
+    .status-icon.loading { background: #fff3e0; }
+    .status-icon.transit { background: #f3e5f5; }
+    .status-icon.arrived { background: #fce4ec; }
+    .status-icon.delivered { background: #e0f2f1; }
+    
+    /* Office grid */
+    .office-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 40px; }
+    .transport-options { list-style: none; padding: 0; }
+    .transport-options li { padding: 10px 0; border-bottom: 1px solid #eee; }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+        .timeline::before { left: 20px; }
+        .timeline-item .year { width: 60px; font-size: 18px; }
+        .team-stats { flex-direction: column; }
+        .stat { margin-bottom: 20px; }
+    }
+    </style>
 </head>
 <body>
   <header>
@@ -180,7 +287,116 @@
     </div>
   </section>
 
-  <section>
+  
+        <section class="contact-intro section">
+            <div class="container">
+                <h2>Ваш надежный партнер в логистике</h2>
+                <p>АвтоГОСТ - это не просто транспортная компания. Мы - ваш стратегический партнер в организации грузоперевозок по всей России. С 2010 года мы помогаем бизнесу оптимизировать логистические процессы, снижать затраты и обеспечивать своевременную доставку грузов.</p>
+                
+                <div class="why-contact-us">
+                    <h3>Почему стоит связаться именно с нами?</h3>
+                    <div class="benefits-grid">
+                        <div class="benefit-card">
+                            <div class="benefit-icon">🚀</div>
+                            <h4>Скорость реагирования</h4>
+                            <p>Отвечаем на заявки в течение 15 минут. Подача транспорта в Москве - от 2 часов. Мы понимаем, что в логистике время - это деньги, поэтому работаем максимально оперативно.</p>
+                        </div>
+                        <div class="benefit-card">
+                            <div class="benefit-icon">🛡️</div>
+                            <h4>Полная страховка груза</h4>
+                            <p>Все грузы застрахованы на полную стоимость. Мы несем материальную ответственность за сохранность вашего имущества на всех этапах перевозки.</p>
+                        </div>
+                        <div class="benefit-card">
+                            <div class="benefit-icon">📊</div>
+                            <h4>Прозрачное ценообразование</h4>
+                            <p>Никаких скрытых платежей и доплат. Вы получаете фиксированную цену до начала перевозки. Все условия прописываются в договоре.</p>
+                        </div>
+                        <div class="benefit-card">
+                            <div class="benefit-icon">🤝</div>
+                            <h4>Персональный менеджер</h4>
+                            <p>За каждым клиентом закрепляется персональный менеджер, который знает особенности вашего бизнеса и может предложить оптимальные логистические решения.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact-process section bg-light">
+            <div class="container">
+                <h2>Как начать сотрудничество</h2>
+                <div class="process-steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <h3>Оставьте заявку</h3>
+                        <p>Позвоните по телефону +7 916 272-09-32, напишите в WhatsApp или заполните форму на сайте. Укажите маршрут, характеристики груза и желаемые сроки доставки.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <h3>Получите расчет</h3>
+                        <p>В течение 15 минут наш менеджер свяжется с вами, уточнит детали и предоставит точный расчет стоимости с учетом всех особенностей перевозки.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <h3>Заключите договор</h3>
+                        <p>После согласования условий мы подготовим договор с фиксированной ценой и гарантиями. Работаем как по разовым заявкам, так и по долгосрочным контрактам.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <h3>Отслеживайте груз</h3>
+                        <p>После отправки вы получите трек-номер для отслеживания. Менеджер будет информировать вас о статусе доставки на всех ключевых этапах.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="office-details section">
+            <div class="container">
+                <h2>Наш офис в Москве</h2>
+                <div class="office-grid">
+                    <div class="office-info">
+                        <h3>Центральный офис</h3>
+                        <p>Наш головной офис расположен в удобном месте с хорошей транспортной доступностью. Здесь работает команда опытных логистов, которые координируют перевозки по всей России.</p>
+                        
+                        <h4>Как добраться:</h4>
+                        <ul class="transport-options">
+                            <li><strong>На метро:</strong> станция "Бауманская", выход к Бауманской улице, далее 10 минут пешком</li>
+                            <li><strong>На автомобиле:</strong> съезд с ТТК на улицу Радио, далее по навигатору. Есть парковка для клиентов</li>
+                            <li><strong>На автобусе:</strong> остановка "Большая Почтовая улица", маршруты 78, 425</li>
+                        </ul>
+                        
+                        <h4>Режим работы офиса:</h4>
+                        <p><strong>Понедельник - Пятница:</strong> 9:00 - 19:00<br>
+                        <strong>Суббота:</strong> 10:00 - 16:00<br>
+                        <strong>Воскресенье:</strong> выходной<br>
+                        <em>Диспетчерская служба работает круглосуточно 24/7</em></p>
+                    </div>
+                    
+                    <div class="office-features">
+                        <h3>Что вы найдете в нашем офисе</h3>
+                        <ul class="features-list">
+                            <li>✅ Комфортная переговорная для обсуждения крупных контрактов</li>
+                            <li>✅ Демонстрационный зал с образцами упаковочных материалов</li>
+                            <li>✅ Отдел по работе с документами для быстрого оформления</li>
+                            <li>✅ Касса для оплаты наличными</li>
+                            <li>✅ Кофе-зона для клиентов</li>
+                            <li>✅ Парковка на 20 мест</li>
+                        </ul>
+                        
+                        <div class="office-team">
+                            <h4>Наша команда</h4>
+                            <p>В московском офисе работает более 30 специалистов:</p>
+                            <ul>
+                                <li>10 опытных логистов</li>
+                                <li>8 менеджеров по работе с клиентами</li>
+                                <li>5 специалистов по документообороту</li>
+                                <li>4 IT-специалиста</li>
+                                <li>3 юриста</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section><section>
     <div class="container">
       <h2>Контактная информация</h2>
       <p>Телефон: <a href="https://wa.me/79162720932" target="_blank">+7 916 272-09-32</a></p>
@@ -371,6 +587,80 @@
         
         </section>
       
+
+        <section class="contact-advantages section bg-light">
+            <div class="container">
+                <h2>Преимущества работы с АвтоГОСТ</h2>
+                <div class="advantages-detailed">
+                    <div class="advantage-block">
+                        <h3>🚛 Собственный автопарк и проверенные партнеры</h3>
+                        <p>У нас есть собственные транспортные средства для самых востребованных направлений. Для остальных маршрутов мы работаем только с проверенными перевозчиками, которые прошли строгий отбор и имеют все необходимые лицензии и страховки.</p>
+                        <ul>
+                            <li>Более 50 собственных автомобилей</li>
+                            <li>500+ проверенных партнеров-перевозчиков</li>
+                            <li>Все виды транспорта: от каблуков до фур</li>
+                            <li>Специализированный транспорт для особых грузов</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="advantage-block">
+                        <h3>📱 Современные технологии</h3>
+                        <p>Мы инвестируем в технологии, чтобы сделать процесс заказа и отслеживания максимально удобным для клиентов:</p>
+                        <ul>
+                            <li>Онлайн-калькулятор с точным расчетом</li>
+                            <li>GPS-трекинг всех грузов в реальном времени</li>
+                            <li>Электронный документооборот</li>
+                            <li>Мобильное приложение для постоянных клиентов</li>
+                            <li>API для интеграции с вашими системами</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="advantage-block">
+                        <h3>💰 Гибкая система оплаты</h3>
+                        <p>Мы предлагаем различные варианты оплаты, чтобы сотрудничество было максимально удобным:</p>
+                        <ul>
+                            <li>Наличная оплата в офисе или водителю</li>
+                            <li>Безналичный расчет с НДС и без НДС</li>
+                            <li>Отсрочка платежа для постоянных клиентов</li>
+                            <li>Оплата картой через сайт</li>
+                            <li>Работа с самозанятыми и ИП</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="testimonials section">
+            <div class="container">
+                <h2>Отзывы наших клиентов</h2>
+                <div class="testimonials-grid">
+                    <div class="testimonial">
+                        <div class="stars">⭐⭐⭐⭐⭐</div>
+                        <p>"Работаем с АвтоГОСТ уже 3 года. За это время ни одного срыва поставки! Особенно радует оперативность менеджеров и прозрачность ценообразования."</p>
+                        <div class="author">
+                            <strong>Алексей Петров</strong>
+                            <span>Директор по логистике, ООО "ТехноПром"</span>
+                        </div>
+                    </div>
+                    <div class="testimonial">
+                        <div class="stars">⭐⭐⭐⭐⭐</div>
+                        <p>"Когда нужна срочная доставка - обращаюсь только в АвтоГОСТ. Подают машину за 2 часа, цены адекватные, водители вежливые."</p>
+                        <div class="author">
+                            <strong>Мария Иванова</strong>
+                            <span>ИП, продавец на маркетплейсах</span>
+                        </div>
+                    </div>
+                    <div class="testimonial">
+                        <div class="stars">⭐⭐⭐⭐⭐</div>
+                        <p>"Отличная компания! Помогли организовать сложную перевозку негабаритного оборудования. Все документы оформили быстро, доставили без повреждений."</p>
+                        <div class="author">
+                            <strong>Сергей Козлов</strong>
+                            <span>Начальник отдела снабжения, завод "МеталлСтрой"</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 <footer>
     <div class="container text-center mt-2">© 2023 Авто&nbsp;Гост.</div>
   </footer>

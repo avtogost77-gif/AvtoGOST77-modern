@@ -150,6 +150,82 @@
   ]
 }
 </script>
+
+    <style>
+    /* Дополнительные стили для расширенного контента */
+    .section { padding: 60px 0; }
+    .bg-light { background-color: #f8f9fa; }
+    .lead { font-size: 1.2em; line-height: 1.6; color: #555; margin-bottom: 30px; }
+    .section-desc { font-size: 1.1em; color: #666; text-align: center; margin-bottom: 40px; }
+    
+    /* Timeline */
+    .timeline { position: relative; padding: 40px 0; }
+    .timeline::before { content: ''; position: absolute; left: 50px; top: 0; bottom: 0; width: 2px; background: #2c5aa0; }
+    .timeline-item { display: flex; margin-bottom: 40px; }
+    .timeline-item .year { width: 100px; font-size: 24px; font-weight: bold; color: #2c5aa0; }
+    .timeline-item .content { flex: 1; background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+    
+    /* Process steps */
+    .process-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
+    .step { text-align: center; padding: 30px; background: #fff; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+    .step-number { width: 60px; height: 60px; margin: 0 auto 20px; background: #2c5aa0; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: bold; }
+    
+    /* Benefits grid */
+    .benefits-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+    .benefit-card { padding: 30px; background: #fff; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+    .benefit-icon { font-size: 48px; margin-bottom: 15px; }
+    
+    /* Values grid */
+    .values-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
+    .value-card { text-align: center; padding: 30px; background: #fff; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+    .value-card .icon { font-size: 48px; margin-bottom: 15px; }
+    
+    /* Team stats */
+    .team-stats { display: flex; justify-content: space-around; flex-wrap: wrap; margin: 40px 0; }
+    .stat { text-align: center; padding: 20px; }
+    .stat .number { font-size: 48px; font-weight: bold; color: #2c5aa0; }
+    .stat .label { font-size: 16px; color: #666; }
+    
+    /* Testimonials */
+    .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; }
+    .testimonial { padding: 30px; background: #fff; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+    .testimonial .stars { color: #ffa500; font-size: 20px; margin-bottom: 15px; }
+    .testimonial .author { margin-top: 20px; padding-top: 20px; border-top: 1px solid #eee; }
+    .testimonial .author strong { display: block; margin-bottom: 5px; }
+    .testimonial .author span { color: #666; font-size: 14px; }
+    
+    /* Service categories */
+    .service-categories { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; margin-top: 40px; }
+    .category { padding: 30px; background: #fff; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+    .category h3 { margin-bottom: 20px; color: #2c5aa0; }
+    .category ul { list-style: none; padding: 0; }
+    .category li { padding: 10px 0; border-bottom: 1px solid #eee; }
+    .category li:last-child { border-bottom: none; }
+    
+    /* Status items */
+    .statuses-list { max-width: 800px; margin: 0 auto; }
+    .status-item { display: flex; align-items: center; margin-bottom: 30px; padding: 20px; background: #fff; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+    .status-icon { width: 60px; height: 60px; margin-right: 20px; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-size: 30px; }
+    .status-icon.new { background: #e3f2fd; }
+    .status-icon.confirmed { background: #e8f5e9; }
+    .status-icon.loading { background: #fff3e0; }
+    .status-icon.transit { background: #f3e5f5; }
+    .status-icon.arrived { background: #fce4ec; }
+    .status-icon.delivered { background: #e0f2f1; }
+    
+    /* Office grid */
+    .office-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 40px; }
+    .transport-options { list-style: none; padding: 0; }
+    .transport-options li { padding: 10px 0; border-bottom: 1px solid #eee; }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+        .timeline::before { left: 20px; }
+        .timeline-item .year { width: 60px; font-size: 18px; }
+        .team-stats { flex-direction: column; }
+        .stat { margin-bottom: 20px; }
+    }
+    </style>
 </head>
 <body>
   <header class="header">
@@ -198,7 +274,84 @@
     </div>
   </section>
 
-  <section>
+  
+        <section class="company-story section">
+            <div class="container">
+                <h2>История нашей компании</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="year">2010</div>
+                        <div class="content">
+                            <h3>Начало пути</h3>
+                            <p>АвтоГОСТ начал свою деятельность с небольшого автопарка из 5 машин. Основатели компании - опытные логисты, которые увидели потребность рынка в качественных и надежных грузоперевозках.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="year">2013</div>
+                        <div class="content">
+                            <h3>Расширение географии</h3>
+                            <p>Открыли представительства в 5 крупных городах России. Автопарк вырос до 20 единиц техники. Начали работать с крупными корпоративными клиентами.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="year">2016</div>
+                        <div class="content">
+                            <h3>Технологический прорыв</h3>
+                            <p>Запустили собственную CRM-систему и онлайн-калькулятор. Внедрили GPS-трекинг для всех грузов. Первыми на рынке предложили API для интеграции.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="year">2019</div>
+                        <div class="content">
+                            <h3>Лидерство на рынке</h3>
+                            <p>Вошли в ТОП-10 транспортных компаний Москвы. Автопарк - более 50 машин. География покрытия - вся Россия. Более 1000 постоянных клиентов.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="year">2025</div>
+                        <div class="content">
+                            <h3>Новые горизонты</h3>
+                            <p>Продолжаем развиваться: внедряем искусственный интеллект для оптимизации маршрутов, развиваем экспресс-доставку, работаем над экологичностью перевозок.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mission-values section bg-light">
+            <div class="container">
+                <div class="mission-block">
+                    <h2>Наша миссия</h2>
+                    <p class="lead">Мы стремимся сделать грузоперевозки простыми, надежными и доступными для каждого бизнеса в России. Наша цель - стать связующим звеном между производителями и потребителями, обеспечивая бесперебойную цепочку поставок.</p>
+                </div>
+                
+                <div class="values-block">
+                    <h2>Наши ценности</h2>
+                    <div class="values-grid">
+                        <div class="value-card">
+                            <div class="icon">🤝</div>
+                            <h3>Надежность</h3>
+                            <p>Мы всегда выполняем взятые на себя обязательства. Ваш груз будет доставлен в срок и в полной сохранности.</p>
+                        </div>
+                        <div class="value-card">
+                            <div class="icon">💡</div>
+                            <h3>Инновации</h3>
+                            <p>Постоянно внедряем новые технологии и совершенствуем процессы, чтобы предоставлять лучший сервис.</p>
+                        </div>
+                        <div class="value-card">
+                            <div class="icon">🌱</div>
+                            <h3>Экологичность</h3>
+                            <p>Оптимизируем маршруты, обновляем автопарк на более экологичный транспорт, заботимся об окружающей среде.</p>
+                        </div>
+                        <div class="value-card">
+                            <div class="icon">👥</div>
+                            <h3>Клиентоориентированность</h3>
+                            <p>Каждый клиент важен для нас. Мы находим индивидуальный подход и оптимальное решение для любой задачи.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section><section>
     <div class="container">
       <h2>Наша миссия</h2>
       <p>Дать предпринимателям возможность сосредоточиться на бизнесе, доверив логистику профессионалам.</p>
@@ -363,6 +516,91 @@
         
         </section>
       
+
+        <section class="team section">
+            <div class="container">
+                <h2>Наша команда</h2>
+                <p class="section-desc">За успехом АвтоГОСТ стоят профессионалы своего дела - команда из более чем 200 человек, объединенных общей целью.</p>
+                
+                <div class="team-stats">
+                    <div class="stat">
+                        <div class="number">50+</div>
+                        <div class="label">Профессиональных водителей</div>
+                    </div>
+                    <div class="stat">
+                        <div class="number">30+</div>
+                        <div class="label">Опытных логистов</div>
+                    </div>
+                    <div class="stat">
+                        <div class="number">20+</div>
+                        <div class="label">Менеджеров по работе с клиентами</div>
+                    </div>
+                    <div class="stat">
+                        <div class="number">10+</div>
+                        <div class="label">IT-специалистов</div>
+                    </div>
+                </div>
+                
+                <div class="team-benefits">
+                    <h3>Почему сотрудники выбирают нас</h3>
+                    <ul>
+                        <li>Стабильная заработная плата и прозрачная система мотивации</li>
+                        <li>Обучение и повышение квалификации за счет компании</li>
+                        <li>Дружный коллектив и корпоративные мероприятия</li>
+                        <li>Возможности карьерного роста</li>
+                        <li>Современные условия труда</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="achievements section bg-light">
+            <div class="container">
+                <h2>Наши достижения</h2>
+                <div class="achievements-grid">
+                    <div class="achievement">
+                        <div class="icon">🏆</div>
+                        <h3>ТОП-10 транспортных компаний Москвы</h3>
+                        <p>По версии рейтинга "Логистика и транспорт" 2024</p>
+                    </div>
+                    <div class="achievement">
+                        <div class="icon">📜</div>
+                        <h3>Сертификат ISO 9001:2015</h3>
+                        <p>Международный стандарт качества управления</p>
+                    </div>
+                    <div class="achievement">
+                        <div class="icon">🌟</div>
+                        <h3>4.8 из 5 средний рейтинг</h3>
+                        <p>На основе более 2000 отзывов клиентов</p>
+                    </div>
+                    <div class="achievement">
+                        <div class="icon">🚚</div>
+                        <h3>100 000+ успешных доставок</h3>
+                        <p>За время работы компании</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="social-responsibility section">
+            <div class="container">
+                <h2>Социальная ответственность</h2>
+                <div class="responsibility-blocks">
+                    <div class="block">
+                        <h3>🌍 Забота об экологии</h3>
+                        <p>Мы постепенно обновляем автопарк на транспорт с более высоким экологическим классом. Оптимизация маршрутов позволяет снизить выбросы CO2 на 20%.</p>
+                    </div>
+                    <div class="block">
+                        <h3>🤲 Благотворительность</h3>
+                        <p>Регулярно участвуем в благотворительных акциях, бесплатно перевозим гуманитарную помощь, поддерживаем социальные проекты.</p>
+                    </div>
+                    <div class="block">
+                        <h3>👨‍🎓 Поддержка образования</h3>
+                        <p>Сотрудничаем с профильными вузами, предоставляем места для стажировок студентам логистических специальностей.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 <footer>
     <div class="container text-center mt-2">© 2023 Авто&nbsp;Гост.</div>
   </footer>
