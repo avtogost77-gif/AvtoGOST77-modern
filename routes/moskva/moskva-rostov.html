@@ -22,112 +22,128 @@
     
     <!-- Schema.org разметка -->
     
+
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "АвтоГОСТ",
-  "alternateName": [
-    "AvtoGOST77",
-    "АвтоГОСТ77",
-    "АвтоГОСТ 77"
-  ],
-  "url": "https://avtogost77.ru",
-  "logo": {
-    "@type": "ImageObject",
-    "url": "https://avtogost77.ru/assets/img/logo.svg",
-    "width": 200,
-    "height": 200
-  },
-  "image": [
-    "https://avtogost77.ru/assets/img/hero-logistics.webp",
-    "https://avtogost77.ru/assets/img/truck-delivery.jpg"
-  ],
-  "description": "Профессиональные грузоперевозки по России. Надежная доставка грузов с 2015 года. Работаем 24/7.",
-  "email": "info@avtogost77.ru",
-  "telephone": "+7 (495) 268-06-81",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "ул. Ленина, д. 10",
-    "addressLocality": "Москва",
-    "addressRegion": "Москва",
-    "postalCode": "101000",
-    "addressCountry": "RU"
-  },
-  "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": 55.755826,
-    "longitude": 37.6173
-  },
-  "sameAs": [
-    "https://t.me/avtogost77",
-    "https://wa.me/74952680681",
-    "https://vk.com/avtogost77",
-    "https://ok.ru/avtogost77"
-  ],
-  "foundingDate": "2015-01-01",
-  "foundingLocation": {
-    "@type": "Place",
-    "name": "Москва"
-  },
-  "numberOfEmployees": {
-    "@type": "QuantitativeValue",
-    "minValue": 50,
-    "maxValue": 100
-  },
-  "slogan": "Доставляем быстро, надежно, выгодно",
-  "areaServed": {
-    "@type": "Country",
-    "name": "Россия",
-    "identifier": "RU"
-  },
-  "award": [
-    "Лучшая транспортная компания 2023",
-    "Надежный партнер года 2022"
-  ],
-  "memberOf": [
+  "@graph": [
     {
       "@type": "Organization",
-      "name": "Ассоциация грузоперевозчиков России"
-    }
-  ],
-  "hasOfferCatalog": {
-    "@type": "OfferCatalog",
-    "name": "Услуги грузоперевозок",
-    "itemListElement": [
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "Междугородние грузоперевозки",
-          "description": "Доставка грузов между городами России"
-        }
+      "@id": "https://avtogost77.ru/#organization",
+      "name": "АвтоГОСТ",
+      "alternateName": [
+        "AvtoGOST77",
+        "АвтоГОСТ77",
+        "АвтоГОСТ 77"
+      ],
+      "url": "https://avtogost77.ru",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://avtogost77.ru/assets/img/logo.svg",
+        "width": 200,
+        "height": 200
       },
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "Срочная доставка",
-          "description": "Экспресс-доставка грузов за 2-24 часа"
-        }
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+7-999-216-20-07",
+        "contactType": "customer service",
+        "areaServed": "RU",
+        "availableLanguage": "Russian"
       },
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "Перевозка сборных грузов",
-          "description": "Доставка малогабаритных грузов"
-        }
+      "sameAs": [
+        "https://t.me/avtogost77",
+        "https://wa.me/79992162007"
+      ],
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Москва",
+        "addressRegion": "Московская область",
+        "addressCountry": "RU"
       }
-    ]
-  },
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "4.8",
-    "reviewCount": "2847",
-    "bestRating": "5",
-    "worstRating": "1"
-  }
+    },
+    {
+      "@type": "Service",
+      "@id": "https://avtogost77.ru/moskva-rostov.html#service",
+      "name": "Грузоперевозки Москвы Ростов-на-Дону от 43110₽ за 958км",
+      "description": "⚡ Надежная доставка грузов Москвы — Ростов-на-Дону. Расстояние 958км, время доставки 2-3 дня. Калькулятор стоимости онлайн. Подача за 2 часа!",
+      "provider": {
+        "@id": "https://avtogost77.ru/#organization"
+      },
+      "serviceType": "Грузоперевозки",
+      "areaServed": {
+        "@type": "Country",
+        "name": "Россия"
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Услуги грузоперевозок",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Грузоперевозки Москвы Ростов-на-Дону от 43110₽ за 958км",
+              "description": "⚡ Надежная доставка грузов Москвы — Ростов-на-Дону. Расстояние 958км, время доставки 2-3 дня. Калькулятор стоимости онлайн. Подача за 2 часа!"
+            },
+            "priceSpecification": {
+              "@type": "PriceSpecification",
+              "priceCurrency": "RUB",
+              "price": "43110"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Главная",
+          "item": "https://avtogost77.ru"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Маршруты",
+          "item": "https://avtogost77.ru/routes"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Грузоперевозки Москвы Ростов-на-Дону от 43110₽ за 958км",
+          "item": "https://avtogost77.ru/moskva-rostov.html"
+        }
+      ]
+    },
+    {
+      "@type": "LocalBusiness",
+      "name": "АвтоГОСТ - rostov",
+      "description": "Грузоперевозки в rostov",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "rostov",
+        "addressCountry": "RU"
+      },
+      "priceRange": "₽₽",
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+          "Sunday"
+        ],
+        "opens": "00:00",
+        "closes": "23:59"
+      }
+    }
+  ]
 }
 </script>
 </head>

@@ -110,6 +110,92 @@
             }
         }
     </style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://avtogost77.ru/#organization",
+      "name": "АвтоГОСТ",
+      "alternateName": [
+        "AvtoGOST77",
+        "АвтоГОСТ77",
+        "АвтоГОСТ 77"
+      ],
+      "url": "https://avtogost77.ru",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://avtogost77.ru/assets/img/logo.svg",
+        "width": 200,
+        "height": 200
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+7-999-216-20-07",
+        "contactType": "customer service",
+        "areaServed": "RU",
+        "availableLanguage": "Russian"
+      },
+      "sameAs": [
+        "https://t.me/avtogost77",
+        "https://wa.me/79992162007"
+      ],
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Москва",
+        "addressRegion": "Московская область",
+        "addressCountry": "RU"
+      }
+    },
+    {
+      "@type": "Service",
+      "@id": "https://avtogost77.ru/404.html#service",
+      "name": "Страница не найдена - АвтоГОСТ",
+      "description": "Запрашиваемая страница не найдена. Воспользуйтесь навигацией или свяжитесь с нами для получения помощи.",
+      "provider": {
+        "@id": "https://avtogost77.ru/#organization"
+      },
+      "serviceType": "Грузоперевозки",
+      "areaServed": {
+        "@type": "Country",
+        "name": "Россия"
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Услуги грузоперевозок",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Страница не найдена - АвтоГОСТ",
+              "description": "Запрашиваемая страница не найдена. Воспользуйтесь навигацией или свяжитесь с нами для получения помощи."
+            },
+            "priceSpecification": {
+              "@type": "PriceSpecification",
+              "priceCurrency": "RUB",
+              "price": "от 15000"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Главная",
+          "item": "https://avtogost77.ru"
+        }
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body>
     <!-- Навигация -->
