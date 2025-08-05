@@ -401,5 +401,93 @@
             }
         });
     </script>
+
+<!-- Блок внутренней перелинковки SEO -->
+<section class="internal-links-section">
+  <div class="container">
+    <h2 class="section-title">Полезная информация</h2>
+    <div class="links-grid">
+      <div class="links-block">
+        <h3>Грузоперевозки по отраслям</h3>
+        <ul class="links-list">
+          <li><a href="/industries/agricultural.html">Грузоперевозки для агропромышленного комплекса</a></li>
+          <li><a href="/industries/automotive.html">Грузоперевозки для автопрома и автосервисов</a></li>
+          <li><a href="/industries/ecommerce.html">Грузоперевозки для интернет-магазинов и маркетплейсов</a></li>
+        </ul>
+      </div>
+      <div class="links-block">
+        <h3>Полезные статьи</h3>
+        <ul class="links-list">
+          <li><a href="/blog-1-carrier-failed.html">Что делать, если подвел перевозчик</a></li>
+          <li><a href="/blog-2-wildberries-delivery.html">Доставка для Wildberries</a></li>
+          <li><a href="/blog-3-spot-orders.html">Спот-заявки в логистике</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+.internal-links-section {
+  padding: 4rem 0;
+  background-color: #f8f9fa;
+  margin-top: 3rem;
+}
+
+.links-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.links-block {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.links-block h3 {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+  color: #2563eb;
+}
+
+.links-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.links-list li {
+  margin-bottom: 0.75rem;
+}
+
+.links-list a {
+  color: #4b5563;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  transition: color 0.3s ease;
+}
+
+.links-list a:before {
+  content: "→";
+  margin-right: 0.5rem;
+  color: #2563eb;
+}
+
+.links-list a:hover {
+  color: #2563eb;
+}
+
+@media (max-width: 768px) {
+  .links-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+
 </body>
 </html>
