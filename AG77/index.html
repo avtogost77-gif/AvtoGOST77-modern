@@ -31,27 +31,7 @@
     <meta name="twitter:image" content="https://avtogost77.ru/assets/img/hero-logistics.webp">
     
     <!-- Schema.org разметка -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "АвтоГОСТ",
-      "description": "Грузоперевозки по России 24/7",
-      "url": "https://avtogost77.ru",
-      "telephone": "+7-916-272-09-32",
-      "email": "info@avtogost77.ru",
-      "address": {
-        "@type": "PostalAddress",
-        "addressCountry": "RU",
-        "addressRegion": "Московская область"
-      },
-      "serviceType": "Грузоперевозки",
-      "areaServed": "Россия",
-      "sameAs": [
-        "https://wa.me/79162720932"
-      ]
-    }
-    </script>
+    
     
     <!-- PWA метатеги -->
     <link rel="manifest" href="manifest.json">
@@ -104,6 +84,76 @@
     <link rel="dns-prefetch" href="//embed.tawk.to">
     
     <!-- analytics scripts moved to footer include -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "АвтоГОСТ - Грузоперевозки по России",
+  "url": "https://avtogost77.ru",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://avtogost77.ru/search?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "АвтоГОСТ",
+  "url": "https://avtogost77.ru",
+  "logo": "https://avtogost77.ru/assets/images/logo.svg",
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+7-495-668-65-17",
+    "contactType": "customer service",
+    "areaServed": "RU",
+    "availableLanguage": "Russian"
+  },
+  "sameAs": [
+    "https://t.me/avtogost77",
+    "https://wa.me/74956686517"
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "АвтоГОСТ - Грузоперевозки",
+  "image": "https://avtogost77.ru/assets/images/logo.svg",
+  "@id": "https://avtogost77.ru",
+  "url": "https://avtogost77.ru",
+  "telephone": "+7-495-668-65-17",
+  "priceRange": "₽₽",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Москва",
+    "addressRegion": "Московская область",
+    "addressCountry": "RU"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 55.7558,
+    "longitude": 37.6173
+  },
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+      "Sunday"
+    ],
+    "opens": "00:00",
+    "closes": "23:59"
+  }
+}
+</script>
 </head>
 <body>
     <!-- Заголовок -->
