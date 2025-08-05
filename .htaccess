@@ -75,3 +75,22 @@ RewriteRule ^([^\.]+)$ $1.html [NC,L]
 ErrorDocument 404 /404.html
 ErrorDocument 403 /403.html
 ErrorDocument 500 /500.html
+
+# SEO редиректы для новых страниц
+# Редиректы для срочной доставки
+Redirect 301 /express-delivery /urgent-delivery
+Redirect 301 /fast-delivery /urgent-delivery
+Redirect 301 /srochnaya-dostavka /urgent-delivery
+Redirect 301 /ekspress-dostavka /urgent-delivery
+
+# Редиректы для ИП и бизнеса
+Redirect 301 /business-delivery /ip-small-business-delivery
+Redirect 301 /ip-delivery /ip-small-business-delivery
+Redirect 301 /small-business-delivery /ip-small-business-delivery
+Redirect 301 /dostavka-dlya-ip /ip-small-business-delivery
+
+# Редиректы для самозанятых
+Redirect 301 /samozanyatye /self-employed-delivery
+Redirect 301 /freelance-delivery /self-employed-delivery
+Redirect 301 /npd-delivery /self-employed-delivery
+Redirect 301 /dostavka-dlya-samozanyatyh /self-employed-delivery
