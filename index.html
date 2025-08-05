@@ -245,6 +245,177 @@
   ]
 }
 </script>
+
+    <!-- Расширенная Schema.org разметка для логистических услуг -->
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MovingCompany",
+  "@id": "https://avtogost77.ru/#movingcompany",
+  "name": "АвтоГОСТ - Транспортная компания",
+  "url": "https://avtogost77.ru/",
+  "telephone": "+7 916 272-09-32",
+  "priceRange": "от 1500₽",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "ул. Краснодонская, д. 16А, стр. 1",
+    "addressLocality": "Москва",
+    "postalCode": "109382",
+    "addressCountry": "RU"
+  },
+  "areaServed": [
+    {
+      "@type": "Country",
+      "name": "Россия"
+    },
+    {
+      "@type": "City",
+      "name": "Москва"
+    },
+    {
+      "@type": "City",
+      "name": "Санкт-Петербург"
+    }
+  ],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Услуги грузоперевозок",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Экспресс-доставка по Москве",
+          "description": "Срочная доставка грузов по Москве за 2-4 часа",
+          "serviceType": "ParcelDelivery",
+          "availableDeliveryMethod": {
+            "@type": "ParcelService",
+            "name": "Экспресс-доставка",
+            "deliveryTime": {
+              "@type": "ShippingDeliveryTime",
+              "handlingTime": {
+                "@type": "QuantitativeValue",
+                "minValue": 0,
+                "maxValue": 1,
+                "unitCode": "HUR"
+              },
+              "transitTime": {
+                "@type": "QuantitativeValue",
+                "minValue": 2,
+                "maxValue": 4,
+                "unitCode": "HUR"
+              }
+            }
+          },
+          "offers": {
+            "@type": "AggregateOffer",
+            "priceCurrency": "RUB",
+            "lowPrice": "1500",
+            "highPrice": "5000",
+            "offerCount": "10+"
+          }
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Междугородние грузоперевозки",
+          "description": "Доставка грузов между городами России",
+          "serviceType": "FreightTransportation",
+          "availableDeliveryMethod": {
+            "@type": "ParcelService",
+            "name": "Междугородняя доставка",
+            "deliveryTime": {
+              "@type": "ShippingDeliveryTime",
+              "handlingTime": {
+                "@type": "QuantitativeValue",
+                "minValue": 0,
+                "maxValue": 2,
+                "unitCode": "HUR"
+              },
+              "transitTime": {
+                "@type": "QuantitativeValue",
+                "minValue": 1,
+                "maxValue": 7,
+                "unitCode": "DAY"
+              }
+            }
+          },
+          "offers": {
+            "@type": "AggregateOffer",
+            "priceCurrency": "RUB",
+            "lowPrice": "2000",
+            "highPrice": "50000",
+            "offerCount": "50+"
+          }
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Доставка для интернет-магазинов",
+          "description": "Комплексная логистика для e-commerce",
+          "serviceType": "ParcelDelivery",
+          "availableDeliveryMethod": {
+            "@type": "ParcelService",
+            "name": "E-commerce доставка",
+            "deliveryTime": {
+              "@type": "ShippingDeliveryTime",
+              "businessDays": {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+                "opens": "09:00",
+                "closes": "21:00"
+              },
+              "transitTime": {
+                "@type": "QuantitativeValue",
+                "minValue": 1,
+                "maxValue": 3,
+                "unitCode": "DAY"
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "knowsAbout": [
+    "Грузоперевозки",
+    "Логистика",
+    "Экспресс-доставка",
+    "Транспортные услуги",
+    "Доставка для бизнеса"
+  ],
+  "slogan": "Инфраструктура вашего бизнеса — пока вы создаете, мы доставляем"
+}
+</script>
+
+    <!-- Schema.org разметка для калькулятора -->
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Калькулятор стоимости грузоперевозок АвтоГОСТ",
+  "url": "https://avtogost77.ru/#calculator",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "RUB"
+  },
+  "featureList": [
+    "Расчет стоимости доставки онлайн",
+    "Учет веса и объема груза",
+    "850+ городов России",
+    "Мгновенный результат"
+  ],
+  "screenshot": "https://avtogost77.ru/assets/img/calculator-screenshot.png"
+}
+</script>
+
 </head>
 <body>
     <!-- Заголовок -->

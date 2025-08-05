@@ -109,6 +109,218 @@
     }
     </script>
     
+    <!-- Schema.org разметка -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "MovingCompany",
+      "name": "Транспортная компания Авто Гост",
+      "alternateName": "ТК АвтоГОСТ",
+      "url": "https://avtogost77.ru/transportnaya-kompaniya.html",
+      "logo": "https://avtogost77.ru/assets/img/logo.svg",
+      "image": "https://avtogost77.ru/assets/img/transport-company.jpg",
+      "description": "Официальная транспортная компания в Москве. Грузоперевозки по России от 1500₽. 17 лет опыта, 850+ городов, страхование каждого груза.",
+      "telephone": "+7 916 272-09-32",
+      "email": "info@avtogost77.ru",
+      "priceRange": "1500₽ - 150000₽",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "ул. Краснодонская, д. 16А, стр. 1",
+        "addressLocality": "Москва",
+        "addressRegion": "Москва",
+        "postalCode": "109382",
+        "addressCountry": "RU"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 55.663789,
+        "longitude": 37.735294
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "Россия"
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+        "opens": "00:00",
+        "closes": "23:59"
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Услуги транспортной компании",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Доставка транспортной компанией по Москве",
+              "description": "Срочная доставка грузов по Москве и области за 2-4 часа",
+              "serviceType": "ParcelDelivery",
+              "provider": {
+                "@type": "MovingCompany",
+                "name": "Авто Гост"
+              },
+              "areaServed": {
+                "@type": "City",
+                "name": "Москва"
+              },
+              "availableDeliveryMethod": {
+                "@type": "ParcelService",
+                "name": "Экспресс-доставка по городу",
+                "deliveryTime": {
+                  "@type": "ShippingDeliveryTime",
+                  "transitTime": {
+                    "@type": "QuantitativeValue",
+                    "minValue": 2,
+                    "maxValue": 4,
+                    "unitCode": "HUR"
+                  }
+                }
+              }
+            },
+            "priceSpecification": {
+              "@type": "PriceSpecification",
+              "price": "1500",
+              "priceCurrency": "RUB",
+              "minPrice": "1500",
+              "maxPrice": "5000"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Транспортная компания перевозки по России",
+              "description": "Междугородние перевозки транспортной компанией по всей России",
+              "serviceType": "FreightTransportation",
+              "provider": {
+                "@type": "MovingCompany",
+                "name": "Авто Гост"
+              },
+              "areaServed": {
+                "@type": "Country",
+                "name": "Россия"
+              },
+              "availableDeliveryMethod": {
+                "@type": "ParcelService",
+                "name": "Междугородняя доставка",
+                "deliveryTime": {
+                  "@type": "ShippingDeliveryTime",
+                  "transitTime": {
+                    "@type": "QuantitativeValue",
+                    "minValue": 1,
+                    "maxValue": 7,
+                    "unitCode": "DAY"
+                  }
+                }
+              }
+            },
+            "priceSpecification": {
+              "@type": "PriceSpecification",
+              "price": "5000",
+              "priceCurrency": "RUB",
+              "minPrice": "2000",
+              "maxPrice": "150000"
+            }
+          }
+        ]
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "reviewCount": "1247",
+        "bestRating": "5",
+        "worstRating": "1"
+      },
+      "review": [
+        {
+          "@type": "Review",
+          "author": {
+            "@type": "Person",
+            "name": "Александр Петров"
+          },
+          "datePublished": "2024-12-15",
+          "reviewBody": "Отличная транспортная компания! Груз доставили быстро и аккуратно. Рекомендую!",
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "5"
+          }
+        }
+      ],
+      "slogan": "Транспортная компания Авто Гост — инфраструктура вашего бизнеса",
+      "foundingDate": "2007",
+      "numberOfEmployees": {
+        "@type": "QuantitativeValue",
+        "minValue": 50,
+        "maxValue": 100
+      },
+      "owns": {
+        "@type": "OwnershipInfo",
+        "typeOfGood": {
+          "@type": "Vehicle",
+          "vehicleType": "Truck"
+        }
+      }
+    }
+    </script>
+    
+    <!-- Хлебные крошки -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Главная",
+          "item": "https://avtogost77.ru/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Транспортная компания",
+          "item": "https://avtogost77.ru/transportnaya-kompaniya.html"
+        }
+      ]
+    }
+    </script>
+    
+    <!-- FAQ Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Как отследить груз транспортной компании?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Для отслеживания груза транспортной компании используйте наш онлайн-сервис. Введите номер накладной на странице отслеживания или позвоните по телефону +7 916 272-09-32. Наши диспетчеры работают круглосуточно и предоставят актуальную информацию о местоположении вашего груза."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Какой номер телефона транспортной компании Авто Гост?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Телефон транспортной компании Авто Гост: +7 (916) 272-09-32. Мы работаем круглосуточно, без выходных. Также вы можете связаться с нами через WhatsApp или Telegram по этому же номеру."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Как рассчитать стоимость транспортной компании?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Рассчитать стоимость транспортной компании можно на нашем сайте с помощью онлайн-калькулятора. Укажите города отправления и доставки, вес и объем груза — система мгновенно покажет точную стоимость. Цены фиксированные, без скрытых платежей."
+          }
+        }
+      ]
+    }
+    </script>
+    
     <link rel="stylesheet" href="assets/css/styles-optimized.css">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 </head>
