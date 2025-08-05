@@ -480,4 +480,16 @@
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
+    <url>
+        <loc>https://avtogost77.ru/gruzoperevozki-spb.html</loc>
+        <lastmod>2025-01-16</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://avtogost77.ru/gruzoperevozki-ekaterinburg.html</loc>
+        <lastmod>2025-01-16</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
 </urlset>
