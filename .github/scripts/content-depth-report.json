@@ -1,0 +1,496 @@
+{
+  "date": "2025-08-05T10:19:21.138Z",
+  "totalPages": 97,
+  "needsImprovement": [
+    {
+      "filename": "google-verification-template.html",
+      "wordCount": 6,
+      "deficit": 1994
+    },
+    {
+      "filename": "index.html",
+      "wordCount": 20,
+      "deficit": 1980
+    },
+    {
+      "filename": "index.html",
+      "wordCount": 22,
+      "deficit": 1978
+    },
+    {
+      "filename": "index.html",
+      "wordCount": 25,
+      "deficit": 1975
+    },
+    {
+      "filename": "index.html",
+      "wordCount": 26,
+      "deficit": 1974
+    },
+    {
+      "filename": "index.html",
+      "wordCount": 30,
+      "deficit": 1970
+    },
+    {
+      "filename": "index.html",
+      "wordCount": 41,
+      "deficit": 1959
+    },
+    {
+      "filename": "contact.html",
+      "wordCount": 76,
+      "deficit": 1924
+    },
+    {
+      "filename": "contact.html",
+      "wordCount": 76,
+      "deficit": 1924
+    },
+    {
+      "filename": "about.html",
+      "wordCount": 83,
+      "deficit": 1917
+    },
+    {
+      "filename": "about.html",
+      "wordCount": 84,
+      "deficit": 1916
+    },
+    {
+      "filename": "index.html",
+      "wordCount": 157,
+      "deficit": 1843
+    },
+    {
+      "filename": "index.html",
+      "wordCount": 182,
+      "deficit": 1818
+    },
+    {
+      "filename": "track.html",
+      "wordCount": 201,
+      "deficit": 1799
+    },
+    {
+      "filename": "track.html",
+      "wordCount": 201,
+      "deficit": 1799
+    },
+    {
+      "filename": "index.html",
+      "wordCount": 208,
+      "deficit": 1792
+    },
+    {
+      "filename": "index.html",
+      "wordCount": 208,
+      "deficit": 1792
+    },
+    {
+      "filename": "moskva-izhevsk.html",
+      "wordCount": 231,
+      "deficit": 1769
+    },
+    {
+      "filename": "spb-moskva.html",
+      "wordCount": 234,
+      "deficit": 1766
+    },
+    {
+      "filename": "kazan-moskva.html",
+      "wordCount": 237,
+      "deficit": 1763
+    },
+    {
+      "filename": "moskva-kirov.html",
+      "wordCount": 239,
+      "deficit": 1761
+    },
+    {
+      "filename": "moskva-orenburg.html",
+      "wordCount": 239,
+      "deficit": 1761
+    },
+    {
+      "filename": "moskva-perm.html",
+      "wordCount": 239,
+      "deficit": 1761
+    },
+    {
+      "filename": "moskva-chelyabinsk.html",
+      "wordCount": 243,
+      "deficit": 1757
+    },
+    {
+      "filename": "moskva-vologda.html",
+      "wordCount": 243,
+      "deficit": 1757
+    },
+    {
+      "filename": "moskva-voronezh.html",
+      "wordCount": 243,
+      "deficit": 1757
+    },
+    {
+      "filename": "moskva-aleksandrov.html",
+      "wordCount": 246,
+      "deficit": 1754
+    },
+    {
+      "filename": "moskva-pskov.html",
+      "wordCount": 248,
+      "deficit": 1752
+    },
+    {
+      "filename": "moskva-kovrov.html",
+      "wordCount": 249,
+      "deficit": 1751
+    },
+    {
+      "filename": "automotive.html",
+      "wordCount": 252,
+      "deficit": 1748
+    },
+    {
+      "filename": "agricultural.html",
+      "wordCount": 259,
+      "deficit": 1741
+    },
+    {
+      "filename": "retail.html",
+      "wordCount": 259,
+      "deficit": 1741
+    },
+    {
+      "filename": "moskva-novgorod.html",
+      "wordCount": 259,
+      "deficit": 1741
+    },
+    {
+      "filename": "moskva-rostov.html",
+      "wordCount": 259,
+      "deficit": 1741
+    },
+    {
+      "filename": "ecommerce.html",
+      "wordCount": 260,
+      "deficit": 1740
+    },
+    {
+      "filename": "moskva-gusev.html",
+      "wordCount": 261,
+      "deficit": 1739
+    },
+    {
+      "filename": "promyshlennost.html",
+      "wordCount": 265,
+      "deficit": 1735
+    },
+    {
+      "filename": "moskva-ivanovo.html",
+      "wordCount": 266,
+      "deficit": 1734
+    },
+    {
+      "filename": "moskva-kostroma.html",
+      "wordCount": 266,
+      "deficit": 1734
+    },
+    {
+      "filename": "moskva-lipetsk.html",
+      "wordCount": 266,
+      "deficit": 1734
+    },
+    {
+      "filename": "voronezh-moskva.html",
+      "wordCount": 267,
+      "deficit": 1733
+    },
+    {
+      "filename": "samara-kazan.html",
+      "wordCount": 274,
+      "deficit": 1726
+    },
+    {
+      "filename": "samara-moskva.html",
+      "wordCount": 274,
+      "deficit": 1726
+    },
+    {
+      "filename": "services.html",
+      "wordCount": 277,
+      "deficit": 1723
+    },
+    {
+      "filename": "services.html",
+      "wordCount": 277,
+      "deficit": 1723
+    },
+    {
+      "filename": "kazan-samara.html",
+      "wordCount": 278,
+      "deficit": 1722
+    },
+    {
+      "filename": "stroitelstvo.html",
+      "wordCount": 284,
+      "deficit": 1716
+    },
+    {
+      "filename": "nizhniy-novgorod-kazan.html",
+      "wordCount": 285,
+      "deficit": 1715
+    },
+    {
+      "filename": "nizhniy-novgorod-moskva.html",
+      "wordCount": 285,
+      "deficit": 1715
+    },
+    {
+      "filename": "kazan-nizhniy-novgorod.html",
+      "wordCount": 286,
+      "deficit": 1714
+    },
+    {
+      "filename": "moskva-rybinsk.html",
+      "wordCount": 312,
+      "deficit": 1688
+    },
+    {
+      "filename": "moskva-murom.html",
+      "wordCount": 313,
+      "deficit": 1687
+    },
+    {
+      "filename": "moskva-bryansk.html",
+      "wordCount": 357,
+      "deficit": 1643
+    },
+    {
+      "filename": "moskva-orel.html",
+      "wordCount": 357,
+      "deficit": 1643
+    },
+    {
+      "filename": "moskva-smolensk.html",
+      "wordCount": 357,
+      "deficit": 1643
+    },
+    {
+      "filename": "moskva-tambov.html",
+      "wordCount": 357,
+      "deficit": 1643
+    },
+    {
+      "filename": "help.html",
+      "wordCount": 358,
+      "deficit": 1642
+    },
+    {
+      "filename": "help.html",
+      "wordCount": 358,
+      "deficit": 1642
+    },
+    {
+      "filename": "moskva-kaluga.html",
+      "wordCount": 364,
+      "deficit": 1636
+    },
+    {
+      "filename": "moskva-ryazan.html",
+      "wordCount": 364,
+      "deficit": 1636
+    },
+    {
+      "filename": "moskva-tula.html",
+      "wordCount": 364,
+      "deficit": 1636
+    },
+    {
+      "filename": "moskva-tver.html",
+      "wordCount": 364,
+      "deficit": 1636
+    },
+    {
+      "filename": "moskva-vladimir.html",
+      "wordCount": 364,
+      "deficit": 1636
+    },
+    {
+      "filename": "moskva-yaroslavl.html",
+      "wordCount": 364,
+      "deficit": 1636
+    },
+    {
+      "filename": "moskva-belgorod.html",
+      "wordCount": 373,
+      "deficit": 1627
+    },
+    {
+      "filename": "moskva-kursk.html",
+      "wordCount": 373,
+      "deficit": 1627
+    },
+    {
+      "filename": "moskva-penza.html",
+      "wordCount": 373,
+      "deficit": 1627
+    },
+    {
+      "filename": "moskva-saransk.html",
+      "wordCount": 373,
+      "deficit": 1627
+    },
+    {
+      "filename": "moskva-elektrostal.html",
+      "wordCount": 412,
+      "deficit": 1588
+    },
+    {
+      "filename": "moskva-podolsk.html",
+      "wordCount": 413,
+      "deficit": 1587
+    },
+    {
+      "filename": "moskva-koledinovo.html",
+      "wordCount": 414,
+      "deficit": 1586
+    },
+    {
+      "filename": "index.html",
+      "wordCount": 423,
+      "deficit": 1577
+    },
+    {
+      "filename": "index.html",
+      "wordCount": 423,
+      "deficit": 1577
+    },
+    {
+      "filename": "moskva-belye-stolby.html",
+      "wordCount": 426,
+      "deficit": 1574
+    },
+    {
+      "filename": "moskva-tver-ozon.html",
+      "wordCount": 438,
+      "deficit": 1562
+    },
+    {
+      "filename": "terms.html",
+      "wordCount": 541,
+      "deficit": 1459
+    },
+    {
+      "filename": "terms.html",
+      "wordCount": 541,
+      "deficit": 1459
+    },
+    {
+      "filename": "index.html",
+      "wordCount": 542,
+      "deficit": 1458
+    },
+    {
+      "filename": "blog-6-marketplace-insider.html",
+      "wordCount": 565,
+      "deficit": 1435
+    },
+    {
+      "filename": "privacy.html",
+      "wordCount": 582,
+      "deficit": 1418
+    },
+    {
+      "filename": "privacy.html",
+      "wordCount": 582,
+      "deficit": 1418
+    },
+    {
+      "filename": "blog-5-logistics-optimization.html",
+      "wordCount": 588,
+      "deficit": 1412
+    },
+    {
+      "filename": "moskva-ekaterinburg.html",
+      "wordCount": 679,
+      "deficit": 1321
+    },
+    {
+      "filename": "moskva-kazan.html",
+      "wordCount": 679,
+      "deficit": 1321
+    },
+    {
+      "filename": "moskva-samara.html",
+      "wordCount": 679,
+      "deficit": 1321
+    },
+    {
+      "filename": "moskva-nizhniy-novgorod.html",
+      "wordCount": 691,
+      "deficit": 1309
+    },
+    {
+      "filename": "moskva-spb.html",
+      "wordCount": 691,
+      "deficit": 1309
+    },
+    {
+      "filename": "blog-1-carrier-failed.html",
+      "wordCount": 727,
+      "deficit": 1273
+    },
+    {
+      "filename": "faq.html",
+      "wordCount": 836,
+      "deficit": 1164
+    },
+    {
+      "filename": "faq.html",
+      "wordCount": 836,
+      "deficit": 1164
+    },
+    {
+      "filename": "blog-4-remote-logistics.html",
+      "wordCount": 844,
+      "deficit": 1156
+    },
+    {
+      "filename": "blog-2-wildberries-delivery.html",
+      "wordCount": 912,
+      "deficit": 1088
+    },
+    {
+      "filename": "blog-3-spot-orders.html",
+      "wordCount": 1307,
+      "deficit": 693
+    },
+    {
+      "filename": "urgent-delivery.html",
+      "wordCount": 1345,
+      "deficit": 655
+    },
+    {
+      "filename": "ip-small-business-delivery.html",
+      "wordCount": 1414,
+      "deficit": 586
+    },
+    {
+      "filename": "self-employed-delivery.html",
+      "wordCount": 1530,
+      "deficit": 470
+    },
+    {
+      "filename": "index.html",
+      "wordCount": 1784,
+      "deficit": 216
+    }
+  ],
+  "statistics": {
+    "avgWords": 397,
+    "percentNeedsImprovement": 100,
+    "totalPagesToImprove": 97
+  }
+}
