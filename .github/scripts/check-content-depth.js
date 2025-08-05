@@ -1,122 +1,149 @@
 const fs = require('fs');
 const path = require('path');
 
-// Функция для подсчета слов в HTML контенте
-function countWords(htmlContent) {
-  // Удаляем скрипты и стили
-  let content = htmlContent.replace(/<script[\s\S]*?<\/script>/gi, '');
-  content = content.replace(/<style[\s\S]*?<\/style>/gi, '');
+// Function to count words in HTML content
+function countWords(html) {
+  // Remove script tags and their content
+  html = html.replace(/<script[^>]*>[\s\S]*?<\/script>/gi, '');
   
-  // Удаляем HTML теги
-  content = content.replace(/<[^>]*>/g, ' ');
+  // Remove style tags and their content
+  html = html.replace(/<style[^>]*>[\s\S]*?<\/style>/gi, '');
   
-  // Удаляем лишние пробелы и считаем слова
-  content = content.replace(/\s+/g, ' ').trim();
+  // Remove HTML tags
+  html = html.replace(/<[^>]+>/g, ' ');
   
-  // Считаем слова (русские и английские)
-  const words = content.match(/[\u0400-\u04FF]+|[a-zA-Z]+/g) || [];
+  // Decode HTML entities
+  html = html.replace(/&nbsp;/g, ' ')
+            .replace(/&lt;/g, '<')
+            .replace(/&gt;/g, '>')
+            .replace(/&amp;/g, '&')
+            .replace(/&quot;/g, '"')
+            .replace(/&#039;/g, "'");
+  
+  // Remove extra whitespace
+  html = html.replace(/\s+/g, ' ').trim();
+  
+  // Count words
+  const words = html.split(' ').filter(word => word.length > 0);
   return words.length;
 }
 
-// Функция для анализа файла
-function analyzeFile(filePath) {
-  const content = fs.readFileSync(filePath, 'utf8');
+// Function to analyze a single file
+function analyzeFile(filepath) {
+  const content = fs.readFileSync(filepath, 'utf8');
   const wordCount = countWords(content);
-  const filename = path.basename(filePath);
+  const filename = path.basename(filepath);
+  
+  // Extract title
+  const titleMatch = content.match(/<title>(.*?)<\/title>/);
+  const title = titleMatch ? titleMatch[1] : filename;
   
   return {
+    filepath: filepath.replace(/\\/g, '/'),
     filename,
+    title,
     wordCount,
-    needsImprovement: wordCount < 2000
+    needsExpansion: wordCount < 2000
   };
 }
 
-// Функция для обхода директорий
-function scanDirectory(dirPath, results = []) {
-  const files = fs.readdirSync(dirPath);
+// Function to scan all HTML files
+function scanAllPages() {
+  const results = [];
   
-  for (const file of files) {
-    const fullPath = path.join(dirPath, file);
-    const stat = fs.statSync(fullPath);
-    
-    if (stat.isDirectory() && !file.startsWith('.') && file !== 'node_modules' && file !== 'assets') {
-      scanDirectory(fullPath, results);
-    } else if (file.endsWith('.html') && !file.includes('404')) {
-      results.push(analyzeFile(fullPath));
+  // Scan root directory
+  const rootFiles = fs.readdirSync('.').filter(f => 
+    f.endsWith('.html') && 
+    f !== '404.html' && 
+    f !== 'google-verification-template.html'
+  );
+  rootFiles.forEach(file => {
+    results.push(analyzeFile(path.join('.', file)));
+  });
+  
+  // Scan subdirectories
+  const subdirs = ['routes', 'calculators', 'industries', 'blog'];
+  subdirs.forEach(dir => {
+    if (fs.existsSync(dir)) {
+      const scanDir = (dirPath) => {
+        const files = fs.readdirSync(dirPath);
+        files.forEach(file => {
+          const filepath = path.join(dirPath, file);
+          if (fs.statSync(filepath).isDirectory()) {
+            scanDir(filepath);
+          } else if (file.endsWith('.html') && file !== 'index.html') {
+            results.push(analyzeFile(filepath));
+          }
+        });
+      };
+      scanDir(dir);
     }
-  }
+  });
   
   return results;
 }
 
-// Главная функция
-function main() {
-  console.log('📊 Анализ глубины контента на страницах сайта\n');
-  console.log('Целевой показатель: минимум 2000 слов на страницу\n');
-  console.log('=' .repeat(60) + '\n');
+// Generate report
+function generateReport() {
+  const results = scanAllPages();
   
-  const baseDir = path.join(__dirname, '..', '..');
-  const results = scanDirectory(baseDir);
-  
-  // Сортируем по количеству слов (от меньшего к большему)
+  // Sort by word count (ascending)
   results.sort((a, b) => a.wordCount - b.wordCount);
   
-  // Страницы, требующие улучшения
-  const needsImprovement = results.filter(r => r.needsImprovement);
-  const goodPages = results.filter(r => !r.needsImprovement);
+  // Statistics
+  const total = results.length;
+  const needsExpansion = results.filter(r => r.needsExpansion).length;
+  const avgWordCount = Math.round(results.reduce((sum, r) => sum + r.wordCount, 0) / total);
   
-  console.log('❌ Страницы, требующие улучшения (< 2000 слов):\n');
-  for (const page of needsImprovement) {
-    console.log(`   ${page.filename.padEnd(40)} - ${page.wordCount} слов`);
-  }
+  console.log('='.repeat(80));
+  console.log('CONTENT DEPTH ANALYSIS REPORT');
+  console.log('='.repeat(80));
+  console.log(`\nTotal pages analyzed: ${total}`);
+  console.log(`Pages needing expansion (< 2000 words): ${needsExpansion}`);
+  console.log(`Average word count: ${avgWordCount}`);
+  console.log('\n' + '='.repeat(80));
+  console.log('PAGES NEEDING CONTENT EXPANSION:');
+  console.log('='.repeat(80));
   
-  console.log('\n✅ Страницы с достаточным контентом (>= 2000 слов):\n');
-  for (const page of goodPages) {
-    console.log(`   ${page.filename.padEnd(40)} - ${page.wordCount} слов`);
-  }
-  
-  // Статистика
-  console.log('\n' + '=' .repeat(60));
-  console.log('\n📈 Статистика:\n');
-  console.log(`   Всего страниц: ${results.length}`);
-  console.log(`   Требуют улучшения: ${needsImprovement.length} (${Math.round(needsImprovement.length / results.length * 100)}%)`);
-  console.log(`   Соответствуют требованиям: ${goodPages.length} (${Math.round(goodPages.length / results.length * 100)}%)`);
-  
-  // Средние показатели
-  const avgWords = Math.round(results.reduce((sum, r) => sum + r.wordCount, 0) / results.length);
-  console.log(`   Среднее количество слов: ${avgWords}`);
-  
-  // Топ-5 страниц с наименьшим контентом
-  console.log('\n🎯 Топ-5 страниц для приоритетного улучшения:\n');
-  for (let i = 0; i < Math.min(5, needsImprovement.length); i++) {
-    const page = needsImprovement[i];
+  // Show pages that need expansion
+  results.filter(r => r.needsExpansion).forEach(page => {
     const deficit = 2000 - page.wordCount;
-    console.log(`   ${i + 1}. ${page.filename} - всего ${page.wordCount} слов (нужно добавить ${deficit} слов)`);
-  }
+    console.log(`\n📄 ${page.filepath}`);
+    console.log(`   Title: ${page.title}`);
+    console.log(`   Current: ${page.wordCount} words`);
+    console.log(`   Needed: +${deficit} words`);
+  });
   
-  // Сохраняем отчет
-  const report = {
-    date: new Date().toISOString(),
-    totalPages: results.length,
-    needsImprovement: needsImprovement.map(p => ({
-      filename: p.filename,
-      wordCount: p.wordCount,
-      deficit: 2000 - p.wordCount
-    })),
+  console.log('\n' + '='.repeat(80));
+  console.log('TOP 10 SHORTEST PAGES:');
+  console.log('='.repeat(80));
+  
+  results.slice(0, 10).forEach((page, index) => {
+    console.log(`${index + 1}. ${page.filepath} - ${page.wordCount} words`);
+  });
+  
+  console.log('\n' + '='.repeat(80));
+  console.log('PAGES MEETING REQUIREMENT (>= 2000 words):');
+  console.log('='.repeat(80));
+  
+  results.filter(r => !r.needsExpansion).forEach(page => {
+    console.log(`✅ ${page.filepath} - ${page.wordCount} words`);
+  });
+  
+  // Save detailed report to file
+  const reportData = {
+    generated: new Date().toISOString(),
     statistics: {
-      avgWords,
-      percentNeedsImprovement: Math.round(needsImprovement.length / results.length * 100),
-      totalPagesToImprove: needsImprovement.length
-    }
+      total,
+      needsExpansion,
+      avgWordCount
+    },
+    pages: results
   };
   
-  fs.writeFileSync(
-    path.join(__dirname, 'content-depth-report.json'),
-    JSON.stringify(report, null, 2)
-  );
-  
-  console.log('\n💾 Отчет сохранен в .github/scripts/content-depth-report.json');
+  fs.writeFileSync('content-depth-report.json', JSON.stringify(reportData, null, 2));
+  console.log('\n💾 Detailed report saved to: content-depth-report.json');
 }
 
-// Запускаем анализ
-main();
+// Run the analysis
+generateReport();

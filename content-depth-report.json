@@ -1,0 +1,535 @@
+{
+  "generated": "2025-08-05T10:27:23.772Z",
+  "statistics": {
+    "total": 75,
+    "needsExpansion": 75,
+    "avgWordCount": 504
+  },
+  "pages": [
+    {
+      "filepath": "contact.html",
+      "filename": "contact.html",
+      "title": "Контакты логистического аутсорсинга | Россия, офис Москва",
+      "wordCount": 80,
+      "needsExpansion": true
+    },
+    {
+      "filepath": "about.html",
+      "filename": "about.html",
+      "title": "Логистический партнёр по России | Команда в Москве",
+      "wordCount": 95,
+      "needsExpansion": true
+    },
+    {
+      "filepath": "track.html",
+      "filename": "track.html",
+      "title": "Отследить груз | АвтоГОСТ - Отслеживание грузоперевозок онлайн",
+      "wordCount": 229,
+      "needsExpansion": true
+    },
+    {
+      "filepath": "routes/moskva/moskva-izhevsk.html",
+      "filename": "moskva-izhevsk.html",
+      "title": "Грузоперевозки moskva — Ижевск | АвтоГОСТ",
+      "wordCount": 260,
+      "needsExpansion": true
+    },
+    {
+      "filepath": "routes/moskva/moskva-kirov.html",
+      "filename": "moskva-kirov.html",
+      "title": "Грузоперевозки moskva — Киров | АвтоГОСТ",
+      "wordCount": 268,
+      "needsExpansion": true
+    },
+    {
+      "filepath": "routes/moskva/moskva-orenburg.html",
+      "filename": "moskva-orenburg.html",
+      "title": "Грузоперевозки moskva — Оренбург | АвтоГОСТ",
+      "wordCount": 268,
+      "needsExpansion": true
+    },
+    {
+      "filepath": "routes/moskva/moskva-perm.html",
+      "filename": "moskva-perm.html",
+      "title": "Грузоперевозки moskva — Пермь | АвтоГОСТ",
+      "wordCount": 268,
+      "needsExpansion": true
+    },
+    {
+      "filepath": "routes/moskva/moskva-vologda.html",
+      "filename": "moskva-vologda.html",
+      "title": "Грузоперевозки moskva — Вологда | АвтоГОСТ",
+      "wordCount": 269,
+      "needsExpansion": true
+    },
+    {
+      "filepath": "routes/spb/spb-moskva.html",
+      "filename": "spb-moskva.html",
+      "title": "Грузоперевозки Санкт-Петербурга Москву от 25000₽ за 632км | АвтоГОСТ",
+      "wordCount": 272,
+      "needsExpansion": true
+    },
+    {
+      "filepath": "routes/moskva/moskva-aleksandrov.html",
+      "filename": "moskva-aleksandrov.html",
+      "title": "Грузоперевозки moskva — Александров | АвтоГОСТ",
+      "wordCount": 275,
+      "needsExpansion": true
+    },
+    {
+      "filepath": "routes/moskva/moskva-kovrov.html",
+      "filename": "moskva-kovrov.html",
+      "title": "Грузоперевозки moskva — Ковров | АвтоГОСТ",
+      "wordCount": 277,
+      "needsExpansion": true
+    },
+    {
+      "filepath": "routes/moskva/moskva-pskov.html",
+      "filename": "moskva-pskov.html",
+      "title": "Грузоперевозки moskva — Псков | АвтоГОСТ",
+      "wordCount": 277,
+      "needsExpansion": true
+    },
+    {
+      "filepath": "routes/moskva/moskva-gusev.html",
+      "filename": "moskva-gusev.html",
+      "title": "Грузоперевозки moskva — Гусь-Хрустальный | АвтоГОСТ",
+      "wordCount": 279,
+      "needsExpansion": true
+    },
+    {
+      "filepath": "industries/automotive.html",
+      "filename": "automotive.html",
+      "title": "Грузоперевозки для автопрома и автосервисов | АвтоГОСТ - Профессиональная логистика",
+      "wordCount": 281,
+      "needsExpansion": true
+    },
+    {
+      "filepath": "industries/ecommerce.html",
+      "filename": "ecommerce.html",
+      "title": "Грузоперевозки для интернет-магазинов и маркетплейсов | АвтоГОСТ - Профессиональная логистика",
+      "wordCount": 284,
+      "needsExpansion": true
+    },
+    {
+      "filepath": "routes/kazan/kazan-moskva.html",
+      "filename": "kazan-moskva.html",
+      "title": "Грузоперевозки Казани Москву от 25000₽ за 715км | АвтоГОСТ",
+      "wordCount": 285,
+      "needsExpansion": true
+    },
+    {
+      "filepath": "routes/moskva/moskva-novgorod.html",
+      "filename": "moskva-novgorod.html",
+      "title": "Грузоперевозки moskva — Великий Новгород | АвтоГОСТ",
+      "wordCount": 288,
+      "needsExpansion": true
+    },
+    {
+      "filepath": "industries/retail.html",
+      "filename": "retail.html",
+      "title": "Грузоперевозки для ритейла и торговых сетей | АвтоГОСТ - Профессиональная логистика",
+      "wordCount": 288,
+      "needsExpansion": true
+    },
+    {
+      "filepath": "industries/agricultural.html",
+      "filename": "agricultural.html",
+      "title": "Грузоперевозки для агропромышленного комплекса | АвтоГОСТ - Профессиональная логистика",
+      "wordCount": 291,
+      "needsExpansion": true
+    },
+    {
+      "filepath": "routes/moskva/moskva-chelyabinsk.html",
+      "filename": "moskva-chelyabinsk.html",
+      "title": "Грузоперевозки Москвы Челябинск от 67320₽ за 1496км | АвтоГОСТ",
+      "wordCount": 293,
+      "needsExpansion": true
+    },
+    {
+      "filepath": "routes/moskva/moskva-rostov.html",
+      "filename": "moskva-rostov.html",
+      "title": "Грузоперевозки Москвы Ростов-на-Дону от 43110₽ за 958км | АвтоГОСТ",
+      "wordCount": 293,
+      "needsExpansion": true
+    },
+    {
+      "filepath": "routes/moskva/moskva-voronezh.html",
+      "filename": "moskva-voronezh.html",
+      "title": "Грузоперевозки Москвы Воронеж от 25000₽ за 466км | АвтоГОСТ",
+      "wordCount": 293,
+      "needsExpansion": true
+    },
+    {
+      "filepath": "industries/promyshlennost.html",
+      "filename": "promyshlennost.html",
+      "title": "Грузоперевозки для промышленных предприятий | АвтоГОСТ - Профессиональная логистика",
+      "wordCount": 293,
+      "needsExpansion": true
+    },
+    {
+      "filepath": "routes/moskva/moskva-ivanovo.html",
+      "filename": "moskva-ivanovo.html",
+      "title": "Грузоперевозки moskva — Ivanovo | АвтоГОСТ",
+      "wordCount": 295,
+      "needsExpansion": true
+    },
+    {
+      "filepath": "routes/moskva/moskva-kostroma.html",
+      "filename": "moskva-kostroma.html",
+      "title": "Грузоперевозки moskva — Kostroma | АвтоГОСТ",
+      "wordCount": 295,
+      "needsExpansion": true
+    },
+    {
+      "filepath": "routes/moskva/moskva-lipetsk.html",
+      "filename": "moskva-lipetsk.html",
+      "title": "Грузоперевозки moskva — Lipetsk | АвтоГОСТ",
+      "wordCount": 295,
+      "needsExpansion": true
+    },
+    {
+      "filepath": "services.html",
+      "filename": "services.html",
+      "title": "Удаленный отдел логистики | Спот-заявки | Доставка на маркетплейсы",
+      "wordCount": 314,
+      "needsExpansion": true
+    },
+    {
+      "filepath": "industries/stroitelstvo.html",
+      "filename": "stroitelstvo.html",
+      "title": "Грузоперевозки для строительства | АвтоГОСТ - Профессиональная логистика",
+      "wordCount": 316,
+      "needsExpansion": true
+    },
+    {
+      "filepath": "routes/voronezh/voronezh-moskva.html",
+      "filename": "voronezh-moskva.html",
+      "title": "Грузоперевозки Воронежа Москву от 25000₽ за 463км | АвтоГОСТ",
+      "wordCount": 325,
+      "needsExpansion": true
+    },
+    {
+      "filepath": "routes/samara/samara-kazan.html",
+      "filename": "samara-kazan.html",
+      "title": "Грузоперевозки Самары Казань от 25000₽ за 360км | АвтоГОСТ",
+      "wordCount": 333,
+      "needsExpansion": true
+    },
+    {
+      "filepath": "routes/samara/samara-moskva.html",
+      "filename": "samara-moskva.html",
+      "title": "Грузоперевозки Самары Москву от 37800₽ за 840км | АвтоГОСТ",
+      "wordCount": 333,
+      "needsExpansion": true
+    },
+    {
+      "filepath": "routes/kazan/kazan-samara.html",
+      "filename": "kazan-samara.html",
+      "title": "Грузоперевозки Казани Самару от 25000₽ за 360км | АвтоГОСТ",
+      "wordCount": 338,
+      "needsExpansion": true
+    },
+    {
+      "filepath": "routes/moskva/moskva-rybinsk.html",
+      "filename": "moskva-rybinsk.html",
+      "title": "Грузоперевозки moskva — Рыбинск | АвтоГОСТ",
+      "wordCount": 344,
+      "needsExpansion": true
+    },
+    {
+      "filepath": "routes/nizhniy-novgorod/nizhniy-novgorod-kazan.html",
+      "filename": "nizhniy-novgorod-kazan.html",
+      "title": "Грузоперевозки Нижнего Новгорода Казань от 25000₽ за 380км | АвтоГОСТ",
+      "wordCount": 344,
+      "needsExpansion": true
+    },
+    {
+      "filepath": "routes/nizhniy-novgorod/nizhniy-novgorod-moskva.html",
+      "filename": "nizhniy-novgorod-moskva.html",
+      "title": "Грузоперевозки Нижнего Новгорода Москву от 25000₽ за 411км | АвтоГОСТ",
+      "wordCount": 344,
+      "needsExpansion": true
+    },
+    {
+      "filepath": "routes/kazan/kazan-nizhniy-novgorod.html",
+      "filename": "kazan-nizhniy-novgorod.html",
+      "title": "Грузоперевозки Казани Нижний Новгород от 25000₽ за 380км | АвтоГОСТ",
+      "wordCount": 346,
+      "needsExpansion": true
+    },
+    {
+      "filepath": "routes/moskva/moskva-murom.html",
+      "filename": "moskva-murom.html",
+      "title": "Грузоперевозки moskva — Муром | АвтоГОСТ",
+      "wordCount": 348,
+      "needsExpansion": true
+    },
+    {
+      "filepath": "help.html",
+      "filename": "help.html",
+      "title": "Помощь и поддержка | АвтоГОСТ - Грузоперевозки 24/7",
+      "wordCount": 418,
+      "needsExpansion": true
+    },
+    {
+      "filepath": "routes/moskva/moskva-bryansk.html",
+      "filename": "moskva-bryansk.html",
+      "title": "Грузоперевозки Москва — Брянска | 379км за 25000₽ | АвтоГОСТ",
+      "wordCount": 427,
+      "needsExpansion": true
+    },
+    {
+      "filepath": "routes/moskva/moskva-orel.html",
+      "filename": "moskva-orel.html",
+      "title": "Грузоперевозки Москва — Орла | 368км за 25000₽ | АвтоГОСТ",
+      "wordCount": 427,
+      "needsExpansion": true
+    },
+    {
+      "filepath": "routes/moskva/moskva-smolensk.html",
+      "filename": "moskva-smolensk.html",
+      "title": "Грузоперевозки Москва — Смоленска | 378км за 25000₽ | АвтоГОСТ",
+      "wordCount": 427,
+      "needsExpansion": true
+    },
+    {
+      "filepath": "routes/moskva/moskva-tambov.html",
+      "filename": "moskva-tambov.html",
+      "title": "Грузоперевозки Москва — Тамбова | 460км за 25000₽ | АвтоГОСТ",
+      "wordCount": 427,
+      "needsExpansion": true
+    },
+    {
+      "filepath": "routes/moskva/moskva-kaluga.html",
+      "filename": "moskva-kaluga.html",
+      "title": "Грузоперевозки Москва — Калуги | 165км за 15000₽ | АвтоГОСТ",
+      "wordCount": 433,
+      "needsExpansion": true
+    },
+    {
+      "filepath": "routes/moskva/moskva-ryazan.html",
+      "filename": "moskva-ryazan.html",
+      "title": "Грузоперевозки Москва — Рязани | 196км за 15000₽ | АвтоГОСТ",
+      "wordCount": 433,
+      "needsExpansion": true
+    },
+    {
+      "filepath": "routes/moskva/moskva-tula.html",
+      "filename": "moskva-tula.html",
+      "title": "Грузоперевозки Москва — Тулы | 180км за 15000₽ | АвтоГОСТ",
+      "wordCount": 433,
+      "needsExpansion": true
+    },
+    {
+      "filepath": "routes/moskva/moskva-tver.html",
+      "filename": "moskva-tver.html",
+      "title": "Грузоперевозки Москва — Твери | 164км за 15000₽ | АвтоГОСТ",
+      "wordCount": 433,
+      "needsExpansion": true
+    },
+    {
+      "filepath": "routes/moskva/moskva-vladimir.html",
+      "filename": "moskva-vladimir.html",
+      "title": "Грузоперевозки Москва — Владимира | 184км за 15000₽ | АвтоГОСТ",
+      "wordCount": 433,
+      "needsExpansion": true
+    },
+    {
+      "filepath": "routes/moskva/moskva-yaroslavl.html",
+      "filename": "moskva-yaroslavl.html",
+      "title": "Грузоперевозки Москва — Ярославля | 264км за 15000₽ | АвтоГОСТ",
+      "wordCount": 433,
+      "needsExpansion": true
+    },
+    {
+      "filepath": "routes/moskva/moskva-belgorod.html",
+      "filename": "moskva-belgorod.html",
+      "title": "Грузоперевозки Москва — Белгорода | 695км за 25000₽ | АвтоГОСТ",
+      "wordCount": 447,
+      "needsExpansion": true
+    },
+    {
+      "filepath": "routes/moskva/moskva-kursk.html",
+      "filename": "moskva-kursk.html",
+      "title": "Грузоперевозки Москва — Курска | 512км за 25000₽ | АвтоГОСТ",
+      "wordCount": 447,
+      "needsExpansion": true
+    },
+    {
+      "filepath": "routes/moskva/moskva-penza.html",
+      "filename": "moskva-penza.html",
+      "title": "Грузоперевозки Москва — Пензы | 630км за 25000₽ | АвтоГОСТ",
+      "wordCount": 447,
+      "needsExpansion": true
+    },
+    {
+      "filepath": "routes/moskva/moskva-saransk.html",
+      "filename": "moskva-saransk.html",
+      "title": "Грузоперевозки Москва — Саранска | 641км за 25000₽ | АвтоГОСТ",
+      "wordCount": 447,
+      "needsExpansion": true
+    },
+    {
+      "filepath": "routes/moskva/moskva-elektrostal.html",
+      "filename": "moskva-elektrostal.html",
+      "title": "Грузоперевозки Москва — Электростали | 58км за 12000₽ | АвтоГОСТ",
+      "wordCount": 492,
+      "needsExpansion": true
+    },
+    {
+      "filepath": "routes/moskva/moskva-podolsk.html",
+      "filename": "moskva-podolsk.html",
+      "title": "Грузоперевозки Москва — Подольска | 40км за 8000₽ | АвтоГОСТ",
+      "wordCount": 493,
+      "needsExpansion": true
+    },
+    {
+      "filepath": "routes/moskva/moskva-koledinovo.html",
+      "filename": "moskva-koledinovo.html",
+      "title": "Грузоперевозки Москва — Коледино | 25км за 8000₽ | АвтоГОСТ",
+      "wordCount": 495,
+      "needsExpansion": true
+    },
+    {
+      "filepath": "routes/moskva/moskva-belye-stolby.html",
+      "filename": "moskva-belye-stolby.html",
+      "title": "Грузоперевозки Москва — Белых Столбов | 50км за 12000₽ | АвтоГОСТ",
+      "wordCount": 507,
+      "needsExpansion": true
+    },
+    {
+      "filepath": "routes/moskva/moskva-tver-ozon.html",
+      "filename": "moskva-tver-ozon.html",
+      "title": "Грузоперевозки Москва — Твери Ozon | 164км за 12000₽ | АвтоГОСТ",
+      "wordCount": 517,
+      "needsExpansion": true
+    },
+    {
+      "filepath": "terms.html",
+      "filename": "terms.html",
+      "title": "Условия использования | АвтоГОСТ - Грузоперевозки по России",
+      "wordCount": 591,
+      "needsExpansion": true
+    },
+    {
+      "filepath": "privacy.html",
+      "filename": "privacy.html",
+      "title": "Политика конфиденциальности | Авто Гост",
+      "wordCount": 621,
+      "needsExpansion": true
+    },
+    {
+      "filepath": "blog-6-marketplace-insider.html",
+      "filename": "blog-6-marketplace-insider.html",
+      "title": "Маркетплейсы изнутри: полный гайд по складам Wildberries, Ozon, Яндекс.Маркет",
+      "wordCount": 656,
+      "needsExpansion": true
+    },
+    {
+      "filepath": "blog-5-logistics-optimization.html",
+      "filename": "blog-5-logistics-optimization.html",
+      "title": "Оптимизация логистических затрат: 10 проверенных способов сэкономить до 30%",
+      "wordCount": 677,
+      "needsExpansion": true
+    },
+    {
+      "filepath": "routes/moskva/moskva-ekaterinburg.html",
+      "filename": "moskva-ekaterinburg.html",
+      "title": "Грузоперевозки Москвы Екатеринбург от 63855₽ за 1419км | АвтоГОСТ",
+      "wordCount": 770,
+      "needsExpansion": true
+    },
+    {
+      "filepath": "routes/moskva/moskva-kazan.html",
+      "filename": "moskva-kazan.html",
+      "title": "Грузоперевозки Москвы Казань от 25000₽ за 715км | АвтоГОСТ",
+      "wordCount": 770,
+      "needsExpansion": true
+    },
+    {
+      "filepath": "routes/moskva/moskva-samara.html",
+      "filename": "moskva-samara.html",
+      "title": "Грузоперевозки Москвы Самару от 38565₽ за 857км | АвтоГОСТ",
+      "wordCount": 770,
+      "needsExpansion": true
+    },
+    {
+      "filepath": "routes/moskva/moskva-spb.html",
+      "filename": "moskva-spb.html",
+      "title": "Грузоперевозки Москвы Санкт-Петербург от 25000₽ за 632км | АвтоГОСТ",
+      "wordCount": 770,
+      "needsExpansion": true
+    },
+    {
+      "filepath": "routes/moskva/moskva-nizhniy-novgorod.html",
+      "filename": "moskva-nizhniy-novgorod.html",
+      "title": "Грузоперевозки Москвы Нижний Новгород от 25000₽ за 401км | АвтоГОСТ",
+      "wordCount": 782,
+      "needsExpansion": true
+    },
+    {
+      "filepath": "blog-1-carrier-failed.html",
+      "filename": "blog-1-carrier-failed.html",
+      "title": "Подвел перевозчик: что делать? Пошаговая инструкция 2025",
+      "wordCount": 851,
+      "needsExpansion": true
+    },
+    {
+      "filepath": "faq.html",
+      "filename": "faq.html",
+      "title": "FAQ по аутсорсингу логистики в России | Ответы и советы",
+      "wordCount": 868,
+      "needsExpansion": true
+    },
+    {
+      "filepath": "blog-4-remote-logistics.html",
+      "filename": "blog-4-remote-logistics.html",
+      "title": "Удаленный отдел логистики vs штатный: что выгоднее в 2025?",
+      "wordCount": 1037,
+      "needsExpansion": true
+    },
+    {
+      "filepath": "blog-2-wildberries-delivery.html",
+      "filename": "blog-2-wildberries-delivery.html",
+      "title": "Доставка товара на склад Wildberries: полный гайд поставщика 2025",
+      "wordCount": 1043,
+      "needsExpansion": true
+    },
+    {
+      "filepath": "blog-3-spot-orders.html",
+      "filename": "blog-3-spot-orders.html",
+      "title": "Спот-заявки в логистике: что это и как использовать в 2025",
+      "wordCount": 1397,
+      "needsExpansion": true
+    },
+    {
+      "filepath": "urgent-delivery.html",
+      "filename": "urgent-delivery.html",
+      "title": "Срочная доставка грузов по России за 2-24 часа | АвтоГОСТ",
+      "wordCount": 1490,
+      "needsExpansion": true
+    },
+    {
+      "filepath": "ip-small-business-delivery.html",
+      "filename": "ip-small-business-delivery.html",
+      "title": "Грузоперевозки для ИП и малого бизнеса - выгодные условия | АвтоГОСТ",
+      "wordCount": 1528,
+      "needsExpansion": true
+    },
+    {
+      "filepath": "self-employed-delivery.html",
+      "filename": "self-employed-delivery.html",
+      "title": "Грузоперевозки для самозанятых - без лишних документов | АвтоГОСТ",
+      "wordCount": 1641,
+      "needsExpansion": true
+    },
+    {
+      "filepath": "index.html",
+      "filename": "index.html",
+      "title": "АвтоГОСТ - Грузоперевозки по России 24/7 | Калькулятор стоимости онлайн",
+      "wordCount": 1911,
+      "needsExpansion": true
+    }
+  ]
+}
