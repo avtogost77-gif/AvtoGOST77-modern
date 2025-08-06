@@ -1,0 +1,27 @@
+# Команды для проверки проблемы с 404 страницами
+
+# 1. Проверить, есть ли папки routes, industries, calculators на сервере:
+ls -la /www/wwwroot/avtogost77.ru/routes/
+ls -la /www/wwwroot/avtogost77.ru/industries/
+ls -la /www/wwwroot/avtogost77.ru/calculators/
+
+# 2. Найти все sitemap файлы:
+find /www/wwwroot/avtogost77.ru/ -name "*sitemap*" -type f
+
+# 3. Проверить nginx конфиг на rewrite правила:
+cat /www/server/panel/vhost/nginx/avtogost77.ru.conf | grep -E "rewrite|location|routes|industries"
+
+# 4. Проверить .htaccess (если используется):
+cat /www/wwwroot/avtogost77.ru/.htaccess | grep -E "RewriteRule|routes|industries"
+
+# 5. Проверить логи ошибок nginx за последние 404:
+tail -100 /www/wwwlogs/avtogost77.ru.error.log | grep "404"
+
+# 6. Проверить, может быть это символические ссылки:
+find /www/wwwroot/avtogost77.ru/ -type l -ls
+
+# 7. Проверить права доступа к корневой папке:
+ls -la /www/wwwroot/avtogost77.ru/
+
+# 8. Поискать PHP файлы, которые могли генерировать эти страницы:
+find /www/wwwroot/avtogost77.ru/ -name "*.php" | grep -E "route|index"
