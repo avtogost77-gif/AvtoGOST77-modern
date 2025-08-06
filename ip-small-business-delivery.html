@@ -104,6 +104,17 @@
   }
 }
 </script>
+
+    <style id="critical-css">
+:root{--primary-color:#2D67F8;--text-dark:#1a1a1a;--text-gray:#666;--white:#ffffff;--border:#e0e0e0;}*{margin:0;padding:0;box-sizing:border-box;}body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.6;color:var(--text-dark);}.container{max-width:1200px;margin:0 auto;padding:0 20px;} .header{background:var(--white);border-bottom:1px solid var(--border);padding:1rem 0;position:sticky;top:0;z-index:1000;}.header-content{display:flex;align-items:center;justify-content:space-between;}.logo{display:flex;align-items:center;gap:0.5rem;text-decoration:none;color:var(--text-dark);font-weight:700;font-size:1.25rem;}.logo-img{width:40px;height:40px;}.nav{display:none;}@media (min-width:768px){.nav{display:flex;gap:2rem;}}.nav-link{color:var(--text-dark);text-decoration:none;transition:color 0.3s;}.btn{display:inline-flex;align-items:center;gap:0.5rem;padding:0.75rem 1.5rem;border-radius:8px;text-decoration:none;font-weight:600;transition:all 0.3s;}.btn-primary{background:var(--primary-color);color:var(--white);} .hero{padding:3rem 0;background:linear-gradient(135deg,#f8f9fa 0%,#e9ecef 100%);}.hero h1{font-size:2.5rem;margin-bottom:1rem;line-height:1.2;}@media (min-width:768px){.hero h1{font-size:3.5rem;}}.hero-subtitle{font-size:1.25rem;color:var(--text-gray);margin-bottom:2rem;} img,svg{max-width:100%;height:auto;}.loading{opacity:0;transition:opacity 0.3s;}.loaded{opacity:1;}
+    </style>
+    <!-- Preload основных стилей -->
+    <link rel="preload" href="/assets/css/styles-optimized.min.css" as="style">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Асинхронная загрузка стилей -->
+    <link rel="stylesheet" href="/assets/css/styles-optimized.min.css" media="print" onload="this.media='all'; this.onload=null;">
+    <noscript><link rel="stylesheet" href="/assets/css/styles-optimized.min.css"></noscript>
 </head>
 <body>
     <!-- Хедер -->
@@ -1273,6 +1284,7 @@
     </style>
 
     <!-- Скрипты -->
-    <script src="assets/js/main.min.js"></script>
+    <script src="assets/js/main.min.js" defer></script>
+    <script src="/assets/js/lazy-loading.min.js" defer></script>
 </body>
 </html>
