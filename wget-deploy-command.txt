@@ -1,0 +1,41 @@
+# Команда для загрузки архива с деплоем напрямую на сервер
+
+# 1. Сначала нужно получить прямую ссылку на архив из GitHub
+# Вариант А: Если архив закоммичен в репозиторий
+wget https://github.com/avtogost77-gif/AvtoGOST77-modern/raw/cursor/review-project-history-for-seo-and-conversion-improvements-4b6e/avtogost-deploy-20250806-051853.zip
+
+# Вариант Б: Через GitHub Releases (если создашь релиз)
+# wget https://github.com/avtogost77-gif/AvtoGOST77-modern/releases/download/v1.0/avtogost-deploy-20250806-051853.zip
+
+# Вариант В: Через временную ссылку (например, с file.io или transfer.sh)
+# Сначала загружаем на временный хостинг с локальной машины:
+# curl -F "file=@avtogost-deploy-20250806-051853.zip" https://file.io
+# Потом на сервере:
+# wget https://file.io/XXXXXX
+
+# Полная последовательность команд для деплоя:
+cd /www/wwwroot/avtogost77.ru
+
+# Скачиваем архив
+wget https://github.com/avtogost77-gif/AvtoGOST77-modern/raw/cursor/review-project-history-for-seo-and-conversion-improvements-4b6e/avtogost-deploy-20250806-051853.zip
+
+# Создаем бекап
+tar -czf backup-$(date +%Y%m%d-%H%M%S).tar.gz --exclude='backup-*' --exclude='*.zip' --exclude='.git' .
+
+# Распаковываем
+unzip -o avtogost-deploy-20250806-051853.zip
+
+# Копируем файлы
+cp -rf avtogost-deploy-20250806-051853/* .
+
+# Устанавливаем права
+chown -R www:www .
+find . -type f -exec chmod 644 {} \;
+find . -type d -exec chmod 755 {} \;
+
+# Очищаем
+rm -rf avtogost-deploy-20250806-051853/
+rm -f avtogost-deploy-20250806-051853.zip
+
+# Проверяем
+ls -la | grep -E "(transportnaya|sbornye|gruzoperevozki)"
