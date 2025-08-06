@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<yml_catalog date="2025-02-03 12:00">
+    <shop>
+        <name>АвтоГОСТ - Грузоперевозки по России</name>
+        <company>ИП АвтоГОСТ</company>
+        <url>https://avtogost77.ru</url>
+        <phone>+7 (916) 272-09-32</phone>
+        <email>avtogost77@gmail.com</email>
+        <currencies>
+            <currency id="RUR" rate="1"/>
+        </currencies>
+        <categories>
+            <category id="1">Грузоперевозки</category>
+            <category id="2" parentId="1">Городские перевозки</category>
+            <category id="3" parentId="1">Междугородние перевозки</category>
+            <category id="4" parentId="1">Экспресс доставка</category>
+            <category id="5" parentId="1">Сборные грузы</category>
+            <category id="6" parentId="1">Специальные перевозки</category>
+            <category id="7" parentId="1">Логистические услуги</category>
+        </categories>
+        <offers>
+            <!-- ГАЗЕЛЬ - Городские перевозки -->
+            <offer id="gazelle-moscow" available="true">
+                <name>Перевозка газелью по Москве</name>
+                <categoryId>2</categoryId>
+                <price>3000</price>
+                <currencyId>RUR</currencyId>
+                <description>Перевозка грузов до 1,5 тонн газелью по Москве и области. Подача транспорта за 2 часа.</description>
+                <sales_notes>Минимальная стоимость за город</sales_notes>
+                <param name="Грузоподъемность">1.5 тонн</param>
+                <param name="Объем кузова">9 м³</param>
+                <param name="Время подачи">2 часа</param>
+                <param name="Тип кузова">Фургон/Тент</param>
+                <param name="Размеры кузова">3.2×1.9×1.8 м</param>
+            </offer>
+            
+            <offer id="gazelle-region" available="true">
+                <name>Перевозка газелью по России</name>
+                <categoryId>3</categoryId>
+                <price>15000</price>
+                <currencyId>RUR</currencyId>
+                <description>Междугородние перевозки газелью до 1,5 тонн по всей России. Надежно и быстро.</description>
+                <sales_notes>От 15 000₽ за межгород</sales_notes>
+                <param name="Грузоподъемность">1.5 тонн</param>
+                <param name="Объем кузова">9 м³</param>
+                <param name="Дальность">По всей России</param>
+                <param name="Время подачи">2-4 часа</param>
+            </offer>
+
+            <!-- 3-ТОННИК -->
+            <offer id="truck-3t-moscow" available="true">
+                <name>Перевозка 3-тонником по Москве</name>
+                <categoryId>2</categoryId>
+                <price>4000</price>
+                <currencyId>RUR</currencyId>
+                <description>Перевозка грузов до 3 тонн по Москве и области. Увеличенная грузоподъемность.</description>
+                <sales_notes>Минимальная стоимость</sales_notes>
+                <param name="Грузоподъемность">3 тонны</param>
+                <param name="Объем кузова">16 м³</param>
+                <param name="Размеры кузова">4.2×2.1×2.0 м</param>
+                <param name="Время подачи">2 часа</param>
+            </offer>
+
+            <offer id="truck-3t-region" available="true">
+                <name>Перевозка 3-тонником по России</name>
+                <categoryId>3</categoryId>
+                <price>20000</price>
+                <currencyId>RUR</currencyId>
+                <description>Междугородние перевозки 3-тонником до 3 тонн по России.</description>
+                <sales_notes>От 20 000₽</sales_notes>
+                <param name="Грузоподъемность">3 тонны</param>
+                <param name="Объем кузова">16 м³</param>
+                <param name="Дальность">По всей России</param>
+            </offer>
+
+            <!-- 5-ТОННИК -->
+            <offer id="truck-5t-moscow" available="true">
+                <name>Перевозка 5-тонником по Москве</name>
+                <categoryId>2</categoryId>
+                <price>5000</price>
+                <currencyId>RUR</currencyId>
+                <description>Перевозка грузов до 5 тонн по Москве. Для средних и крупных грузов.</description>
+                <sales_notes>Минимальная стоимость</sales_notes>
+                <param name="Грузоподъемность">5 тонн</param>
+                <param name="Объем кузова">25 м³</param>
+                <param name="Размеры кузова">5.0×2.2×2.2 м</param>
+                <param name="Время подачи">2-3 часа</param>
+            </offer>
+
+            <offer id="truck-5t-region" available="true">
+                <name>Перевозка 5-тонником по России</name>
+                <categoryId>3</categoryId>
+                <price>30000</price>
+                <currencyId>RUR</currencyId>
+                <description>Междугородние перевозки 5-тонником по всей России. Оптимальное соотношение цена-качество.</description>
+                <sales_notes>От 30 000₽</sales_notes>
+                <param name="Грузоподъемность">5 тонн</param>
+                <param name="Объем кузова">25 м³</param>
+                <param name="Дальность">По всей России</param>
+            </offer>
+
+            <!-- 10-ТОННИК -->
+            <offer id="truck-10t-moscow" available="true">
+                <name>Перевозка 10-тонником по Москве</name>
+                <categoryId>2</categoryId>
+                <price>7000</price>
+                <currencyId>RUR</currencyId>
+                <description>Перевозка крупных грузов до 10 тонн по Москве и области.</description>
+                <sales_notes>Минимальная стоимость</sales_notes>
+                <param name="Грузоподъемность">10 тонн</param>
+                <param name="Объем кузова">40 м³</param>
+                <param name="Размеры кузова">6.0×2.4×2.4 м</param>
+                <param name="Время подачи">3-4 часа</param>
+            </offer>
+
+            <offer id="truck-10t-region" available="true">
+                <name>Перевозка 10-тонником по России</name>
+                <categoryId>3</categoryId>
+                <price>40000</price>
+                <currencyId>RUR</currencyId>
+                <description>Междугородние перевозки 10-тонником. Для крупных партий груза.</description>
+                <sales_notes>От 40 000₽</sales_notes>
+                <param name="Грузоподъемность">10 тонн</param>
+                <param name="Объем кузова">40 м³</param>
+                <param name="Дальность">По всей России</param>
+            </offer>
+
+            <!-- ФУРА 20 ТОНН -->
+            <offer id="truck-20t-region" available="true">
+                <name>Перевозка фурой 20 тонн</name>
+                <categoryId>3</categoryId>
+                <price>60000</price>
+                <currencyId>RUR</currencyId>
+                <description>Перевозка крупных партий груза фурой до 20 тонн по всей России.</description>
+                <sales_notes>От 60 000₽, только межгород</sales_notes>
+                <param name="Грузоподъемность">20 тонн</param>
+                <param name="Объем кузова">82 м³</param>
+                <param name="Размеры кузова">13.6×2.45×2.7 м</param>
+                <param name="Тип">Фура/Полуприцеп</param>
+                <param name="Дальность">По всей России</param>
+            </offer>
+
+            <!-- ЭКСПРЕСС ДОСТАВКА -->
+            <offer id="express-moscow" available="true">
+                <name>Экспресс доставка по Москве</name>
+                <categoryId>4</categoryId>
+                <price>5000</price>
+                <currencyId>RUR</currencyId>
+                <description>Срочная доставка грузов по Москве. Подача в течение часа, доставка в день заказа.</description>
+                <sales_notes>Подача в течение часа</sales_notes>
+                <param name="Время подачи">60 минут</param>
+                <param name="Срок доставки">В день заказа</param>
+                <param name="Работа">24/7</param>
+                <param name="Приоритет">Высший</param>
+            </offer>
+
+            <offer id="express-region" available="true">
+                <name>Экспресс доставка по России</name>
+                <categoryId>4</categoryId>
+                <price>25000</price>
+                <currencyId>RUR</currencyId>
+                <description>Срочная междугородняя доставка. Максимально быстро в любую точку России.</description>
+                <sales_notes>От 25 000₽</sales_notes>
+                <param name="Время подачи">2 часа</param>
+                <param name="Срок доставки">1-2 дня</param>
+                <param name="Работа">24/7</param>
+                <param name="Дальность">По всей России</param>
+            </offer>
+
+            <!-- СБОРНЫЕ ГРУЗЫ -->
+            <offer id="consolidated-cargo" available="true">
+                <name>Сборные грузы</name>
+                <categoryId>5</categoryId>
+                <price>1500</price>
+                <currencyId>RUR</currencyId>
+                <description>Экономичная доставка небольших грузов в составе сборного груза. Увеличенные сроки доставки.</description>
+                <sales_notes>От 1 500₽ за место</sales_notes>
+                <param name="Минимальный вес">От 50 кг</param>
+                <param name="Скидка">До 30%</param>
+                <param name="Срок доставки">3-7 дней</param>
+                <param name="Экономия">Да</param>
+            </offer>
+
+            <!-- СПЕЦИАЛЬНЫЕ ПЕРЕВОЗКИ -->
+            <offer id="fragile-cargo" available="true">
+                <name>Перевозка хрупких грузов</name>
+                <categoryId>6</categoryId>
+                <price>4000</price>
+                <currencyId>RUR</currencyId>
+                <description>Аккуратная перевозка хрупких и деликатных грузов с особыми мерами предосторожности.</description>
+                <sales_notes>Надбавка +30%</sales_notes>
+                <param name="Упаковка">Специальная</param>
+                <param name="Страховка">Включена</param>
+                <param name="Осторожность">Повышенная</param>
+            </offer>
+
+            <offer id="valuable-cargo" available="true">
+                <name>Перевозка ценных грузов</name>
+                <categoryId>6</categoryId>
+                <price>5000</price>
+                <currencyId>RUR</currencyId>
+                <description>Перевозка ценных грузов с повышенными мерами безопасности и страхованием.</description>
+                <sales_notes>Надбавка +50%</sales_notes>
+                <param name="Охрана">Включена</param>
+                <param name="Страховка">До 1 млн ₽</param>
+                <param name="Контроль">GPS-мониторинг</param>
+            </offer>
+
+            <offer id="oversized-cargo" available="true">
+                <name>Перевозка негабаритных грузов</name>
+                <categoryId>6</categoryId>
+                <price>8000</price>
+                <currencyId>RUR</currencyId>
+                <description>Перевозка крупногабаритных грузов со специальным оборудованием и разрешениями.</description>
+                <sales_notes>Индивидуальный расчет</sales_notes>
+                <param name="Разрешения">Оформляем</param>
+                <param name="Сопровождение">При необходимости</param>
+                <param name="Оборудование">Специальное</param>
+            </offer>
+
+            <!-- ЛОГИСТИЧЕСКИЕ УСЛУГИ -->
+            <offer id="warehouse-services" available="true">
+                <name>Складские услуги</name>
+                <categoryId>7</categoryId>
+                <price>100</price>
+                <currencyId>RUR</currencyId>
+                <description>Временное хранение грузов на складе. Погрузочно-разгрузочные работы.</description>
+                <sales_notes>100₽/м³/сутки</sales_notes>
+                <param name="Хранение">Крытый склад</param>
+                <param name="Погрузка">Включена</param>
+                <param name="Безопасность">Охрана 24/7</param>
+            </offer>
+
+            <offer id="packaging-services" available="true">
+                <name>Упаковка грузов</name>
+                <categoryId>7</categoryId>
+                <price>500</price>
+                <currencyId>RUR</currencyId>
+                <description>Профессиональная упаковка грузов для безопасной транспортировки.</description>
+                <sales_notes>От 500₽</sales_notes>
+                <param name="Материалы">Включены</param>
+                <param name="Качество">Профессиональное</param>
+                <param name="Гарантия">На упаковку</param>
+            </offer>
+
+            <offer id="loading-services" available="true">
+                <name>Погрузочно-разгрузочные работы</name>
+                <categoryId>7</categoryId>
+                <price>1000</price>
+                <currencyId>RUR</currencyId>
+                <description>Услуги грузчиков для погрузки и разгрузки. Опытная бригада.</description>
+                <sales_notes>1000₽/час за бригаду</sales_notes>
+                <param name="Бригада">2-4 человека</param>
+                <param name="Опыт">Профессиональный</param>
+                <param name="Инструмент">Включен</param>
+            </offer>
+
+            <offer id="insurance-services" available="true">
+                <name>Страхование грузов</name>
+                <categoryId>7</categoryId>
+                <price>200</price>
+                <currencyId>RUR</currencyId>
+                <description>Страхование грузов на время перевозки от повреждений и утраты.</description>
+                <sales_notes>От 0.5% стоимости груза</sales_notes>
+                <param name="Покрытие">Полное</param>
+                <param name="Выплаты">Быстрые</param>
+                <param name="Документы">Оформляем</param>
+            </offer>
+        </offers>
+    </shop>
+</yml_catalog>
