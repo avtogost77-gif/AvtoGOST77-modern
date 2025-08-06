@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Удаленный отдел логистики | Спот-заявки | Доставка на маркетплейсы</title>
+  <meta name="description" content="Удаленный отдел логистики для малого и среднего бизнеса. Спот-заявки день-в-день. Доставка на Wildberries, Ozon. Грузоперевозки от газели до фуры без складов экспедиторов." />
+    <!-- ЕДИНЫЕ СТИЛИ ДЛЯ ВСЕХ СТРАНИЦ -->
+  <link rel="stylesheet" href="assets/css/styles-optimized.css?v=107" />
+  
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <!-- AOS scroll animations -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+  
+
+  <link rel="icon" type="image/png" href="assets/img/favicon.png" />
+  
+  <!-- PWA метатеги -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#2c5aa0">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="АвтоГОСТ">
+  <link rel="apple-touch-icon" href="assets/img/icon-192x192.svg">
+  <link rel="apple-touch-icon" sizes="72x72" href="assets/img/icon-72x72.svg">
+  <link rel="apple-touch-icon" sizes="96x96" href="assets/img/icon-96x96.svg">
+  <link rel="apple-touch-icon" sizes="128x128" href="assets/img/icon-128x128.svg">
+  <link rel="apple-touch-icon" sizes="144x144" href="assets/img/icon-144x144.svg">
+  <link rel="apple-touch-icon" sizes="152x152" href="assets/img/icon-152x152.svg">
+  <link rel="apple-touch-icon" sizes="192x192" href="assets/img/icon-192x192.svg">
+  <link rel="apple-touch-icon" sizes="384x384" href="assets/img/icon-384x384.svg">
+  <link rel="apple-touch-icon" sizes="512x512" href="assets/img/icon-512x512.svg">
+  <meta name="msapplication-TileColor" content="#2c5aa0">
+  <meta name="msapplication-TileImage" content="assets/img/icon-144x144.svg">
+  <meta name="msapplication-config" content="browserconfig.xml">
+  
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EMQ3D0X8K7"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-EMQ3D0X8K7');
+  </script>
+  
+  <!-- Yandex.Metrika counter -->
+  <script type="text/javascript" >
+   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+   m[i].l=1*new Date();
+   for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+   k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+   (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+   ym(103413788, "init", {
+        clickmap:true,
+        trackLinks:true,
+        accurateTrackBounce:true,
+        webvisor:true
+   });
+  </script>
+  <noscript><div><img src="https://mc.yandex.ru/watch/103413788" style="position:absolute; left:-9999px;" alt="" /></div></noscript> <!-- /Yandex.Metrika counter -->
+
+
+
+
+
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://avtogost77.ru/#organization",
+  "name": "АвтоГОСТ",
+  "alternateName": "AvtoGOST77",
+  "url": "https://avtogost77.ru/",
+  "logo": {
+    "@type": "ImageObject",
+    "url": "https://avtogost77.ru/assets/img/logo.svg",
+    "width": 200,
+    "height": 60
+  },
+  "image": "https://avtogost77.ru/assets/img/hero-logistics.webp",
+  "description": "Профессиональная транспортная компания, специализирующаяся на грузоперевозках по России. Быстрая подача транспорта, точный расчет стоимости, круглосуточная работа.",
+  "telephone": "+7 916 272-09-32",
+  "email": "info@avtogost77.ru",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "ул. Большая Почтовая, д. 36",
+    "addressLocality": "Москва",
+    "addressRegion": "Москва",
+    "postalCode": "105082",
+    "addressCountry": "RU"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 55.780874,
+    "longitude": 37.70431
+  },
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+      "Sunday"
+    ],
+    "opens": "00:00",
+    "closes": "23:59"
+  },
+  "sameAs": [
+    "https://t.me/avtogost77",
+    "https://wa.me/79162720932"
+  ],
+  "priceRange": "₽₽",
+  "paymentAccepted": [
+    "Cash",
+    "Credit Card",
+    "Bank Transfer"
+  ],
+  "currenciesAccepted": "RUB",
+  "areaServed": {
+    "@type": "Country",
+    "name": "Россия"
+  },
+  "slogan": "Доставим вовремя и безопасно",
+  "foundingDate": "2010",
+  "numberOfEmployees": {
+    "@type": "QuantitativeValue",
+    "value": 50
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "reviewCount": "2341",
+    "bestRating": "5",
+    "worstRating": "1"
+  }
+}
+</script>
+
+    <style>
+    /* Дополнительные стили для расширенного контента */
+    .section { padding: 60px 0; }
+    .bg-light { background-color: #f8f9fa; }
+    .lead { font-size: 1.2em; line-height: 1.6; color: #555; margin-bottom: 30px; }
+    .section-desc { font-size: 1.1em; color: #666; text-align: center; margin-bottom: 40px; }
+    
+    /* Timeline */
+    .timeline { position: relative; padding: 40px 0; }
+    .timeline::before { content: ''; position: absolute; left: 50px; top: 0; bottom: 0; width: 2px; background: #2c5aa0; }
+    .timeline-item { display: flex; margin-bottom: 40px; }
+    .timeline-item .year { width: 100px; font-size: 24px; font-weight: bold; color: #2c5aa0; }
+    .timeline-item .content { flex: 1; background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+    
+    /* Process steps */
+    .process-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
+    .step { text-align: center; padding: 30px; background: #fff; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+    .step-number { width: 60px; height: 60px; margin: 0 auto 20px; background: #2c5aa0; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: bold; }
+    
+    /* Benefits grid */
+    .benefits-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+    .benefit-card { padding: 30px; background: #fff; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+    .benefit-icon { font-size: 48px; margin-bottom: 15px; }
+    
+    /* Values grid */
+    .values-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
+    .value-card { text-align: center; padding: 30px; background: #fff; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+    .value-card .icon { font-size: 48px; margin-bottom: 15px; }
+    
+    /* Team stats */
+    .team-stats { display: flex; justify-content: space-around; flex-wrap: wrap; margin: 40px 0; }
+    .stat { text-align: center; padding: 20px; }
+    .stat .number { font-size: 48px; font-weight: bold; color: #2c5aa0; }
+    .stat .label { font-size: 16px; color: #666; }
+    
+    /* Testimonials */
+    .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; }
+    .testimonial { padding: 30px; background: #fff; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+    .testimonial .stars { color: #ffa500; font-size: 20px; margin-bottom: 15px; }
+    .testimonial .author { margin-top: 20px; padding-top: 20px; border-top: 1px solid #eee; }
+    .testimonial .author strong { display: block; margin-bottom: 5px; }
+    .testimonial .author span { color: #666; font-size: 14px; }
+    
+    /* Service categories */
+    .service-categories { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; margin-top: 40px; }
+    .category { padding: 30px; background: #fff; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+    .category h3 { margin-bottom: 20px; color: #2c5aa0; }
+    .category ul { list-style: none; padding: 0; }
+    .category li { padding: 10px 0; border-bottom: 1px solid #eee; }
+    .category li:last-child { border-bottom: none; }
+    
+    /* Status items */
+    .statuses-list { max-width: 800px; margin: 0 auto; }
+    .status-item { display: flex; align-items: center; margin-bottom: 30px; padding: 20px; background: #fff; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+    .status-icon { width: 60px; height: 60px; margin-right: 20px; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-size: 30px; }
+    .status-icon.new { background: #e3f2fd; }
+    .status-icon.confirmed { background: #e8f5e9; }
+    .status-icon.loading { background: #fff3e0; }
+    .status-icon.transit { background: #f3e5f5; }
+    .status-icon.arrived { background: #fce4ec; }
+    .status-icon.delivered { background: #e0f2f1; }
+    
+    /* Office grid */
+    .office-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 40px; }
+    .transport-options { list-style: none; padding: 0; }
+    .transport-options li { padding: 10px 0; border-bottom: 1px solid #eee; }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+        .timeline::before { left: 20px; }
+        .timeline-item .year { width: 60px; font-size: 18px; }
+        .team-stats { flex-direction: column; }
+        .stat { margin-bottom: 20px; }
+    }
+    </style>
+</head>
+<body>
+  <!-- Header include -->
+  <header>
+    <div class="container navbar">
+      <a href="/" class="navbar-brand" aria-label="Авто Гост — логистика без забот" title="Авто Гост — логистика без забот">Авто&nbsp;Гост</a>
+      <button class="mobile-toggle" aria-label="Меню">☰</button>
+      <ul class="navbar-menu">
+        <li><a href="/">Главная</a></li>
+        <li>
+          <a href="services.html">Услуги ▾</a>
+          <div class="dropdown">
+            <a href="#outsourcing">Аутсорсинг логистики</a>
+            <a href="#ltl">Сборные грузы (LTL)</a>
+            <a href="#t0-5">Грузовой транспорт 0-5 т</a>
+            <a href="#t5-10">Грузовой транспорт 5-10 т</a>
+            <a href="#t10-20">Грузовой транспорт 10-20 т</a>
+          </div>
+        </li>
+        <li><a href="about.html">О нас</a></li>
+
+        <li><a href="contact.html">Контакты</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+      </ul>
+      <div class="navbar-social">
+        <a href="https://wa.me/79162720932" target="_blank" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+        <a href="https://t.me/avtogost77" target="_blank" aria-label="Telegram"><i class="bi bi-telegram"></i></a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Outsourcing -->
+  <section id="outsourcing" class="hero" style="padding:4rem 0;">
+    <div class="container">
+      <h1 style="color:#fff;">Удаленный отдел логистики для малого и среднего бизнеса</h1>
+      <p>Не нужно содержать штатных логистов. Становимся вашим удаленным отделом с персональным менеджером. Прямые перевозки без складов экспедиторов от газели до фуры.</p>
+      <a href="contact.html" class="btn btn-primary">Стать нашим клиентом</a>
+    </div>
+  </section>
+  <section>
+    <div class="container">
+      <h2>Преимущества</h2>
+      <ul>
+        <li>Экономия до 30 % на логистических расходах.</li>
+        <li>Нет необходимости содержать логистический отдел.</li>
+        <li>Доступ к базе 60 000 перевозчиков по России.</li>
+        <li>SLA: подача машины в Москве за 2 часа.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- LTL -->
+  <section id="ltl" style="background: var(--color-bg);">
+    <div class="container">
+      <h2>Сборные грузоперевозки (LTL)</h2>
+      <p>Платите только за занятое место: оптимальное решение для нерегулярных отправок и небольших партий товара.</p>
+      <a href="contact.html" class="btn btn-outline">Рассчитать LTL</a>
+    </div>
+  </section>
+
+  <!-- Transport categories -->
+  <section id="t0-5">
+    <div class="container">
+      <h2>Грузовой транспорт 0–5 т</h2>
+      <p>Газели и фургоны для оперативной доставки по городу и области.</p>
+      <a href="contact.html" class="btn btn-outline">Заказать</a>
+    </div>
+  </section>
+
+  <section id="t5-10" style="background: var(--color-bg);">
+    <div class="container">
+      <h2>Грузовой транспорт 5–10 т</h2>
+      <p>Среднетоннажные машины для оптимального соотношения цены и грузоподъёмности.</p>
+      <a href="contact.html" class="btn btn-outline">Заказать</a>
+    </div>
+  </section>
+
+  <section id="t10-20">
+    <div class="container">
+      <h2>Грузовой транспорт 10–20 т</h2>
+      <p>Фуры и тягачи: доставка крупных партий по всей России.</p>
+      <a href="contact.html" class="btn btn-outline">Заказать</a>
+    </div>
+  </section>
+
+  <!-- B2B Аутсорсинг - Полный цикл -->
+  <section id="b2b-outsourcing" style="background: var(--color-bg); padding: 4rem 0;">
+    <div class="container">
+      <h2>B2B Аутсорсинг - Полный цикл</h2>
+      <p>Логистика от сырья до потребителя. Непрерывность производства.</p>
+      <div class="service-card" data-aos="fade-up" data-aos-delay="400">
+        <div class="service-icon">🏭</div>
+        <h3>B2B Аутсорсинг - Полный цикл</h3>
+        <p><strong>Логистика от сырья до потребителя</strong></p>
+        <ul>
+          <li>🔄 <strong>Сырьё → Производство:</strong> Забор у поставщиков, доставка на заводы</li>
+          <li>🏭 <strong>Производство → Сбыт:</strong> Вывоз готовой продукции, распределение</li>
+          <li>📦 <strong>Сбыт → Последняя миля:</strong> Доставка конечным потребителям</li>
+          <li>⚡ <strong>Непрерывность:</strong> Производство не останавливается</li>
+        </ul>
+        <div class="service-features">
+          <span class="feature-tag">Химическая промышленность</span>
+          <span class="feature-tag">ПВХ производство</span>
+          <span class="feature-tag">Металлургия</span>
+          <span class="feature-tag">Пищевая индустрия</span>
+        </div>
+        <div class="service-example">
+          <h4>💡 Пример схемы:</h4>
+          <div class="logistics-chain">
+            <div class="chain-step">
+              <span class="step-icon">🧪</span>
+              <span class="step-text">Поставщик химии</span>
+            </div>
+            <div class="chain-arrow">→</div>
+            <div class="chain-step">
+              <span class="step-icon">🏭</span>
+              <span class="step-text">ПВХ завод</span>
+            </div>
+            <div class="chain-arrow">→</div>
+            <div class="chain-step">
+              <span class="step-icon">🏢</span>
+              <span class="step-text">Дистрибьютор</span>
+            </div>
+            <div class="chain-arrow">→</div>
+            <div class="chain-step">
+              <span class="step-icon">🏪</span>
+              <span class="step-text">Потребитель</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Простая форма заявки -->
+  <section class="contact-form-section" style="background: var(--color-bg); padding: 3rem 0;">
+    <div class="container">
+      <div class="contact-form-wrapper">
+        <h2>Оставить заявку на услуги</h2>
+        <p>Укажите телефон и опишите ваш груз - мы свяжемся в течение 10 минут</p>
+        
+        <form id="contactForm" class="simple-contact-form">
+          <div class="form-group">
+            <label for="phone">Телефон *</label>
+                            <input type="tel" id="phone" name="phone" placeholder="+7 (___) ___-__-__" autocomplete="tel" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="message">Описание груза *</label>
+            <textarea id="message" name="message" rows="4" placeholder="Например: доставить 3 паллеты из Москвы в Казань 12 ноября" required></textarea>
+          </div>
+
+                    <div class="form-group">
+                      <div class="consent-checkbox">
+                        <input type="checkbox" id="privacyConsent" name="privacyConsent" required>
+                        <label for="privacyConsent">
+                          Я согласен(а) с <a href="privacy.html" target="_blank">обработкой персональных данных</a> в соответствии с 152-ФЗ, включая использование cookies и аналитических сервисов Google и Яндекс для персонализации рекламы
+                        </label>
+                      </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" id="contactSubmitBtn" disabled>Отправить заявку</button>       </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer include -->
+  <footer>
+    <div class="container footer-grid">
+      <div>
+        <h4>Меню</h4>
+        <a href="/">Главная</a><br/>
+        <a href="services.html">Услуги</a><br/>
+        <a href="about.html">О нас</a><br/>
+        <a href="contact.html">Контакты</a>
+      </div>
+      <div>
+        <h4>Услуги</h4>
+        <a href="#outsourcing">Аутсорсинг логистики</a><br/>
+        <a href="#ltl">Сборные грузы</a><br/>
+        <a href="#t0-5">0–5 т</a><br/>
+        <a href="#t5-10">5–10 т</a><br/>
+        <a href="#t10-20">10–20 т</a>
+      </div>
+      <div>
+        <h4>Контакты</h4>
+        <p>Телефон: <a href="https://wa.me/79162720932" target="_blank">+7 916 272-09-32</a></p>
+        <p>Email: <a href="mailto:avtogost77@gmail.com">avtogost77@gmail.com</a></p>
+      </div>
+    </div>
+    <div class="container text-center mt-2">© 2023 Авто&nbsp;Гост.</div>
+  </footer>
+
+  <!-- Стили для простой формы -->
+  <style>
+    .contact-form-section {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+    }
+    
+    .contact-form-wrapper {
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    
+    .contact-form-wrapper h2 {
+      margin-bottom: 1rem;
+      font-size: 2rem;
+    }
+    
+    .contact-form-wrapper p {
+      margin-bottom: 2rem;
+      opacity: 0.9;
+    }
+    
+    .simple-contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    
+    .form-group {
+      text-align: left;
+    }
+    
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+    
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px 16px;
+      border: 2px solid rgba(255,255,255,0.2);
+      border-radius: 8px;
+      background: rgba(255,255,255,0.1);
+      color: white;
+      font-size: 16px;
+      transition: all 0.3s ease;
+    }
+    
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: rgba(255,255,255,0.7);
+    }
+    
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: rgba(255,255,255,0.5);
+      background: rgba(255,255,255,0.15);
+    }
+    
+    .simple-contact-form .btn {
+      margin-top: 1rem;
+      padding: 15px 30px;
+      font-size: 18px;
+      font-weight: 600;
+      background: #10b981;
+      border: none;
+      border-radius: 8px;
+      color: white;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .simple-contact-form .btn:hover {
+      background: #059669;
+      transform: translateY(-2px);
+    }
+    
+    @media (max-width: 768px) {
+      .contact-form-wrapper h2 {
+        font-size: 1.5rem;
+      }
+      
+      .form-group input,
+      .form-group textarea {
+        font-size: 16px; /* Предотвращает зум на iOS */
+      }
+    }
+  </style>
+
+  <!-- ЕДИНЫЕ JS МОДУЛИ ДЛЯ ВСЕХ СТРАНИЦ -->
+
+  <script src="assets/js/form-handler.js?v=107"></script>
+  <script src="assets/js/main.js?v=107"></script>
+  
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>AOS.init({ once:true, duration:600 });</script>
+    <script src="assets/js/smart-calculator-v2.js?v=107" defer></script>
+    <script src="assets/js/cities-simple.js?v=107" defer></script>
+    
+    <!-- Tawk.to Online Chat -->
+    <script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    
+    // Настройки чата от Opus
+    Tawk_API.onLoad = function(){
+        Tawk_API.setAttributes({
+            'name'  : 'Гость',
+            'email' : '',
+            'phone' : ''
+        });
+        
+        // Приветственное сообщение
+        Tawk_API.maximize();
+        setTimeout(() => {
+            Tawk_API.sendMessage('🚛 Добро пожаловать в АвтоГОСТ!\n\nЗдравствуйте! Я готов помочь вам с грузоперевозками по России.\n\n• Рассчитать стоимость доставки\n• Узнать сроки перевозки  \n• Получить консультацию специалиста\n• Оформить заявку\n\nЧто вас интересует?');
+        }, 2000);
+    };
+    
+    (function(){
+        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+        s1.async=true;
+        s1.src='https://embed.tawk.to/64f8a8b5a91e863a5c123456/default';
+        s1.charset='UTF-8';
+        s1.setAttribute('crossorigin','*');
+        s0.parentNode.insertBefore(s1,s0);
+    })();
+    </script>
+
+<!-- Плавающие кнопки -->
+<div class="float-buttons">
+    <a href="tel:+79162720932" class="float-btn phone-btn">
+        <i class="fas fa-phone-alt"></i>
+        <span class="tooltip">Позвонить сейчас</span>
+    </a>
+    <a href="https://wa.me/79162720932?text=Здравствуйте! Интересует расчет стоимости грузоперевозки" class="float-btn whatsapp-btn" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+        <span class="tooltip">WhatsApp</span>
+    </a>
+    <a href="https://t.me/avtogost77_bot" class="float-btn telegram-btn" target="_blank">
+        <i class="fab fa-telegram-plane"></i>
+        <span class="tooltip">Telegram бот</span>
+    </a>
+</div>
+
+<!-- Отслеживание кликов -->
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    // Телефон
+    document.querySelectorAll("a[href^="tel:"]").forEach(link => {
+        link.addEventListener("click", () => {
+            if (typeof ym !== "undefined") {
+                ym(103413788, "reachGoal", "phone_click", {
+                    from: window.location.pathname
+                });
+            }
+        });
+    });
+    
+    // WhatsApp
+    document.querySelectorAll("a[href*="wa.me"]").forEach(link => {
+        link.addEventListener("click", () => {
+            if (typeof ym !== "undefined") {
+                ym(103413788, "reachGoal", "whatsapp_click", {
+                    from: window.location.pathname
+                });
+            }
+        });
+    });
+});
+</script>
+</body>
+</html>
