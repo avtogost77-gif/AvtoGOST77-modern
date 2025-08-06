@@ -1,0 +1,27 @@
+# ЭКСТРЕННОЕ ИСПРАВЛЕНИЕ 404 ОШИБОК
+
+# Вариант 1: Создать временный sitemap БЕЗ проблемных страниц
+cd /www/wwwroot/avtogost77.ru/
+cp sitemap.xml sitemap.xml.backup
+# Затем загрузить наш исправленный sitemap
+
+# Вариант 2: Скопировать папки в архив деплоя
+# На сервере запаковать недостающие папки:
+cd /www/wwwroot/avtogost77.ru/
+tar -czf missing-folders.tar.gz routes/ industries/ calculators/
+
+# Скачать архив на локальную машину:
+# scp root@server:/www/wwwroot/avtogost77.ru/missing-folders.tar.gz .
+
+# Вариант 3: Временный .htaccess редирект (САМЫЙ БЫСТРЫЙ!)
+# Добавить в начало .htaccess:
+cat >> /www/wwwroot/avtogost77.ru/.htaccess << 'EOF'
+
+# Временный редирект для 404 страниц
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^routes/.*$ / [R=302,L]
+RewriteRule ^industries/.*$ / [R=302,L]
+RewriteRule ^calculators/.*$ / [R=302,L]
+EOF
