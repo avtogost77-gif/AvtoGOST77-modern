@@ -4,17 +4,13 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Контакты логистического аутсорсинга | Россия, офис Москва</title>
-  <meta name="description" content="Задайте вопрос или получите расчёт: телефон, WhatsApp, Telegram, форма заявки. Работаем по России, подача авто в Москве за 2 ч." />
+  <title>Удаленный отдел логистики | Спот-заявки | Доставка на маркетплейсы</title>
+  <meta name="description" content="Удаленный отдел логистики для малого и среднего бизнеса. Спот-заявки день-в-день. Доставка на Wildberries, Ozon. Грузоперевозки от газели до фуры без складов экспедиторов." />
     <!-- ЕДИНЫЕ СТИЛИ ДЛЯ ВСЕХ СТРАНИЦ -->
   <link rel="stylesheet" href="assets/css/styles-optimized.css?v=107" />
-  <link rel="stylesheet" href="assets/css/enhanced-content.css">
   
   <!-- Bootstrap Icons -->
   <!-- AOS scroll animations -->
-  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
-  
-
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   
   <!-- PWA метатеги -->
@@ -85,11 +81,13 @@
   "image": "https://avtogost77.ru/assets/img/hero-logistics.webp",
   "description": "Профессиональная транспортная компания, специализирующаяся на грузоперевозках по России. Быстрая подача транспорта, точный расчет стоимости, круглосуточная работа.",
   "telephone": "+7 916 272-09-32",
-  "email": "avtogost77@gmail.com",
+  "email": "info@avtogost77.ru",
   "address": {
     "@type": "PostalAddress",
+    "streetAddress": "ул. Большая Почтовая, д. 36",
     "addressLocality": "Москва",
     "addressRegion": "Москва",
+    "postalCode": "105082",
     "addressCountry": "RU"
   },
   "geo": {
@@ -138,38 +136,6 @@
     "reviewCount": "2341",
     "bestRating": "5",
     "worstRating": "1"
-  }
-}
-</script>
-    <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  "@id": "https://avtogost77.ru/#localbusiness",
-  "name": "АвтоГОСТ",
-  "image": "https://avtogost77.ru/assets/img/hero-logistics.webp",
-  "telephone": "+7 916 272-09-32",
-  "priceRange": "₽₽",
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Москва",
-    "addressRegion": "Москва",
-    "addressCountry": "RU"
-  },
-  "url": "https://avtogost77.ru/contact",
-  "openingHoursSpecification": {
-    "@type": "OpeningHoursSpecification",
-    "dayOfWeek": [
-      "Monday",
-      "Tuesday",
-      "Wednesday",
-      "Thursday",
-      "Friday",
-      "Saturday",
-      "Sunday"
-    ],
-    "opens": "00:00",
-    "closes": "23:59"
   }
 }
 </script>
@@ -248,6 +214,15 @@
         .team-stats { flex-direction: column; }
         .stat { margin-bottom: 20px; }
     }
+    
+    /* Стили для заголовков услуг */
+    section h2 {
+        font-size: 2rem;
+        font-weight: 700;
+        color: #1a1a1a;
+        margin-bottom: 1.5rem;
+        line-height: 1.3;
+    }
     </style>
 
     <style id="critical-css">
@@ -262,7 +237,8 @@
     <noscript><link rel="stylesheet" href="/assets/css/styles-optimized.min.css"></noscript>
 </head>
 <body>
-    <header class="header">
+  <!-- Header include -->
+  <header class="header">
         <div class="container">
             <div class="header-content">
                 <div class="logo">
@@ -271,10 +247,10 @@
                 </div>
                 <nav class="nav">
                     <a href="/" class="nav-link">Главная</a>
-                    <a href="/about.html" class="nav-link">О компании</a>
-                    <a href="/services.html" class="nav-link">Услуги</a>
+                    <a href="/transportnaya-kompaniya.html" class="nav-link">О компании</a>
+                    <a href="/services.html" class="nav-link active">Услуги</a>
                     <a href="/#calculator" class="nav-link">Калькулятор</a>
-                    <a href="/contact.html" class="nav-link active">Контакты</a>
+                    <a href="/contact.html" class="nav-link">Контакты</a>
                 </nav>
                 <div class="header-cta">
                     <a href="tel:+79162720932" class="btn btn-primary">
@@ -288,179 +264,270 @@
         </div>
     </header>
 
-  <section class="hero" style="padding:4rem 0;">
+  <!-- Outsourcing -->
+  <section id="outsourcing" class="hero" style="padding:4rem 0;">
     <div class="container">
-      <h1 style="color:#fff;">Свяжитесь с нами — логистика по России, быстро из Москвы</h1>
+      <h1 style="color:#fff;">Удаленный отдел логистики для малого и среднего бизнеса</h1>
+      <p>Не нужно содержать штатных логистов. Становимся вашим удаленным отделом с персональным менеджером. Прямые перевозки без складов экспедиторов от газели до фуры.</p>
+      <a href="contact.html" class="btn btn-primary">Стать нашим клиентом</a>
+    </div>
+  </section>
+  <section>
+    <div class="container">
+      <h2>Преимущества</h2>
+      <ul>
+        <li>Экономия до 30 % на логистических расходах.</li>
+        <li>Нет необходимости содержать логистический отдел.</li>
+        <li>Широкая сеть проверенных партнеров-перевозчиков.</li>
+        <li>SLA: подача машины в Москве за 2 часа.</li>
+      </ul>
     </div>
   </section>
 
-  
-        <section class="contact-intro section">
-            <div class="container">
-                <h2>Ваш надежный партнер в логистике</h2>
-                <p>АвтоГОСТ - это не просто транспортная компания. Мы - ваш стратегический партнер в организации грузоперевозок по всей России. С 2010 года мы помогаем бизнесу оптимизировать логистические процессы, снижать затраты и обеспечивать своевременную доставку грузов.</p>
-                
-                <div class="why-contact-us">
-                    <h3>Почему стоит связаться именно с нами?</h3>
-                    <div class="benefits-grid">
-                        <div class="benefit-card">
-                            <div class="benefit-icon">🚀</div>
-                            <h4>Скорость реагирования</h4>
-                            <p>Отвечаем на заявки в течение 15 минут. Подача транспорта в Москве - от 2 часов. Мы понимаем, что в логистике время - это деньги, поэтому работаем максимально оперативно.</p>
-                        </div>
-                        <div class="benefit-card">
-                            <div class="benefit-icon">🛡️</div>
-                            <h4>Полная страховка груза</h4>
-                            <p>Все грузы застрахованы на полную стоимость. Мы несем материальную ответственность за сохранность вашего имущества на всех этапах перевозки.</p>
-                        </div>
-                        <div class="benefit-card">
-                            <div class="benefit-icon">📊</div>
-                            <h4>Прозрачное ценообразование</h4>
-                            <p>Никаких скрытых платежей и доплат. Вы получаете фиксированную цену до начала перевозки. Все условия прописываются в договоре.</p>
-                        </div>
-                        <div class="benefit-card">
-                            <div class="benefit-icon">🤝</div>
-                            <h4>Персональный менеджер</h4>
-                            <p>За каждым клиентом закрепляется персональный менеджер, который знает особенности вашего бизнеса и может предложить оптимальные логистические решения.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="contact-main section">
-            <div class="container">
-                <h2>Контактная информация</h2>
-                <div class="contact-grid">
-                    <div class="contact-card">
-                        <h3>📞 Телефон</h3>
-                        <p class="contact-main-phone">
-                            <a href="tel:+79162720932">+7 916 272-09-32</a>
-                        </p>
-                        <p class="contact-note">Звонки принимаются круглосуточно 24/7</p>
-                    </div>
-                    
-                    <div class="contact-card">
-                        <h3>💬 Мессенджеры</h3>
-                        <p>
-                            <a href="https://wa.me/79162720932" target="_blank" class="contact-messenger">
-                                <i class="bi bi-whatsapp"></i> WhatsApp
-                            </a>
-                        </p>
-                        <p>
-                            <a href="https://t.me/avtogost77" target="_blank" class="contact-messenger">
-                                <i class="bi bi-telegram"></i> Telegram
-                            </a>
-                        </p>
-                        <p class="contact-note">Отвечаем в течение 5 минут</p>
-                    </div>
-                    
-                    <div class="contact-card">
-                        <h3>✉️ Email</h3>
-                        <p>
-                            <a href="mailto:avtogost77@gmail.com">avtogost77@gmail.com</a>
-                        </p>
-                        <p class="contact-note">Для коммерческих предложений и документов</p>
-                    </div>
-                </div>
-                
-                <div class="emergency-contact">
-                    <h3>🚨 Экстренная линия 24/7</h3>
-                    <p>Срочная доставка? Подвел перевозчик? Нужна помощь прямо сейчас?</p>
-                    <a href="tel:+79162720932" class="btn btn-primary btn-lg">
-                        Звоните: +7 916 272-09-32
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <section class="contact-process section bg-light">
-            <div class="container">
-                <h2>Как начать сотрудничество</h2>
-                <div class="process-steps">
-                    <div class="step">
-                        <div class="step-number">1</div>
-                        <h3>Оставьте заявку</h3>
-                        <p>Позвоните по телефону +7 916 272-09-32, напишите в WhatsApp или заполните форму на сайте. Укажите маршрут, характеристики груза и желаемые сроки доставки.</p>
-                    </div>
-                    <div class="step">
-                        <div class="step-number">2</div>
-                        <h3>Получите расчет</h3>
-                        <p>В течение 15 минут наш менеджер свяжется с вами, уточнит детали и предоставит точный расчет стоимости с учетом всех особенностей перевозки.</p>
-                    </div>
-                    <div class="step">
-                        <div class="step-number">3</div>
-                        <h3>Заключите договор</h3>
-                        <p>После согласования условий мы подготовим договор с фиксированной ценой и гарантиями. Работаем как по разовым заявкам, так и по долгосрочным контрактам.</p>
-                    </div>
-                    <div class="step">
-                        <div class="step-number">4</div>
-                        <h3>Отслеживайте груз</h3>
-                        <p>После отправки вы получите трек-номер для отслеживания. Менеджер будет информировать вас о статусе доставки на всех ключевых этапах.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="contact-form-section section">
-            <div class="container">
-                <h2>Форма быстрой заявки</h2>
-                <p class="form-subtitle">Заполните форму — мы перезвоним в течение 15 минут</p>
-                
-                <form id="contactForm" class="contact-form">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="name">Ваше имя</label>
-                            <input type="text" id="name" name="name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="phone">Телефон *</label>
-                            <input type="tel" id="phone" name="phone" required placeholder="+7 (___) ___-__-__">
-                        </div>
-                    </div>
-                    
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" placeholder="example@mail.ru">
-                        </div>
-                        <div class="form-group">
-                            <label for="cargo">Тип груза</label>
-                            <input type="text" id="cargo" name="cargo" placeholder="Например: паллеты, коробки">
-                        </div>
-                    </div>
-                    
-                    <div class="form-group full-width">
-                        <label for="route">Маршрут</label>
-                        <input type="text" id="route" name="route" placeholder="Откуда - Куда">
-                    </div>
-                    
-                    <div class="form-group full-width">
-                        <label for="message">Дополнительная информация</label>
-                        <textarea id="message" name="message" rows="4" placeholder="Вес, габариты, особые условия..."></textarea>
-                    </div>
-                    
-                    <div class="form-group full-width">
-                        <label class="consent-checkbox">
-                            <input type="checkbox" name="consent" required>
-                            <span>Согласен с <a href="/privacy.html" target="_blank">политикой конфиденциальности</a></span>
-                        </label>
-                    </div>
-                    
-                    <button type="submit" class="btn btn-primary btn-lg">Отправить заявку</button>
-                </form>
-            </div>
-        </section>
-
-
-<footer class="footer">
+  <!-- LTL -->
+  <section id="ltl" style="background: var(--color-bg);">
     <div class="container">
-        <div class="footer-content">
-            <p>&copy; 2025 АвтоГОСТ. Все права защищены. Экстренная линия 24/7: +7 916 272-09-32</p>
-        </div>
+      <h2>Сборные грузоперевозки (LTL)</h2>
+      <p>Платите только за занятое место: оптимальное решение для нерегулярных отправок и небольших партий товара.</p>
+      <a href="contact.html" class="btn btn-outline">Рассчитать LTL</a>
     </div>
-</footer>
+  </section>
+
+  <!-- Transport categories -->
+  <section id="t0-5">
+    <div class="container">
+      <h2>Грузовой транспорт 0–5 т</h2>
+      <p>Газели и фургоны для оперативной доставки по городу и области.</p>
+      <a href="contact.html" class="btn btn-outline">Заказать</a>
+    </div>
+  </section>
+
+  <section id="t5-10" style="background: var(--color-bg);">
+    <div class="container">
+      <h2>Грузовой транспорт 5–10 т</h2>
+      <p>Среднетоннажные машины для оптимального соотношения цены и грузоподъёмности.</p>
+      <a href="contact.html" class="btn btn-outline">Заказать</a>
+    </div>
+  </section>
+
+  <section id="t10-20">
+    <div class="container">
+      <h2>Грузовой транспорт 10–20 т</h2>
+      <p>Фуры и тягачи: доставка крупных партий по всей России.</p>
+      <a href="contact.html" class="btn btn-outline">Заказать</a>
+    </div>
+  </section>
+
+  <!-- B2B Аутсорсинг - Полный цикл -->
+  <section id="b2b-outsourcing" style="background: var(--color-bg); padding: 4rem 0;">
+    <div class="container">
+      <h2>B2B Аутсорсинг - Полный цикл</h2>
+      <p>Логистика от сырья до потребителя. Непрерывность производства.</p>
+      <div class="service-card" data-aos="fade-up" data-aos-delay="400">
+        <div class="service-icon">🏭</div>
+        <h3>B2B Аутсорсинг - Полный цикл</h3>
+        <p><strong>Логистика от сырья до потребителя</strong></p>
+        <ul>
+          <li>🔄 <strong>Сырьё → Производство:</strong> Забор у поставщиков, доставка на заводы</li>
+          <li>🏭 <strong>Производство → Сбыт:</strong> Вывоз готовой продукции, распределение</li>
+          <li>📦 <strong>Сбыт → Последняя миля:</strong> Доставка конечным потребителям</li>
+          <li>⚡ <strong>Непрерывность:</strong> Производство не останавливается</li>
+        </ul>
+        <div class="service-features">
+          <span class="feature-tag">Химическая промышленность</span>
+          <span class="feature-tag">ПВХ производство</span>
+          <span class="feature-tag">Металлургия</span>
+          <span class="feature-tag">Пищевая индустрия</span>
+        </div>
+        <div class="service-example">
+          <h4>💡 Пример схемы:</h4>
+          <div class="logistics-chain">
+            <div class="chain-step">
+              <span class="step-icon">🧪</span>
+              <span class="step-text">Поставщик химии</span>
+            </div>
+            <div class="chain-arrow">→</div>
+            <div class="chain-step">
+              <span class="step-icon">🏭</span>
+              <span class="step-text">ПВХ завод</span>
+            </div>
+            <div class="chain-arrow">→</div>
+            <div class="chain-step">
+              <span class="step-icon">🏢</span>
+              <span class="step-text">Дистрибьютор</span>
+            </div>
+            <div class="chain-arrow">→</div>
+            <div class="chain-step">
+              <span class="step-icon">🏪</span>
+              <span class="step-text">Потребитель</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Простая форма заявки -->
+  <section class="contact-form-section" style="background: var(--color-bg); padding: 3rem 0;">
+    <div class="container">
+      <div class="contact-form-wrapper">
+        <h2>Оставить заявку на услуги</h2>
+        <p>Укажите телефон и опишите ваш груз - мы свяжемся в течение 10 минут</p>
+        
+        <form id="contactForm" class="simple-contact-form">
+          <div class="form-group">
+            <label for="phone">Телефон *</label>
+                            <input type="tel" id="phone" name="phone" placeholder="+7 (___) ___-__-__" autocomplete="tel" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="message">Описание груза *</label>
+            <textarea id="message" name="message" rows="4" placeholder="Например: доставить 3 паллеты из Москвы в Казань 12 ноября" required></textarea>
+          </div>
+
+                    <div class="form-group">
+                      <div class="consent-checkbox">
+                        <input type="checkbox" id="privacyConsent" name="privacyConsent" required>
+                        <label for="privacyConsent">
+                          Я согласен(а) с <a href="privacy.html" target="_blank">обработкой персональных данных</a> в соответствии с 152-ФЗ, включая использование cookies и аналитических сервисов Google и Яндекс для персонализации рекламы
+                        </label>
+                      </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" id="contactSubmitBtn" disabled>Отправить заявку</button>       </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer include -->
+  <footer>
+    <div class="container footer-grid">
+      <div>
+        <h4>Меню</h4>
+        <a href="/">Главная</a><br/>
+        <a href="services.html">Услуги</a><br/>
+        <a href="about.html">О нас</a><br/>
+        <a href="contact.html">Контакты</a>
+      </div>
+      <div>
+        <h4>Услуги</h4>
+        <a href="#outsourcing">Аутсорсинг логистики</a><br/>
+        <a href="#ltl">Сборные грузы</a><br/>
+        <a href="#t0-5">0–5 т</a><br/>
+        <a href="#t5-10">5–10 т</a><br/>
+        <a href="#t10-20">10–20 т</a>
+      </div>
+      <div>
+        <h4>Контакты</h4>
+        <p>Телефон: <a href="https://wa.me/79162720932" target="_blank">+7 916 272-09-32</a></p>
+        <p>Email: <a href="mailto:avtogost77@gmail.com">avtogost77@gmail.com</a></p>
+      </div>
+    </div>
+    <div class="container text-center mt-2">© 2023 Авто&nbsp;Гост.</div>
+  </footer>
+
+  <!-- Стили для простой формы -->
+  <style>
+    .contact-form-section {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+    }
+    
+    .contact-form-wrapper {
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    
+    .contact-form-wrapper h2 {
+      margin-bottom: 1rem;
+      font-size: 2rem;
+    }
+    
+    .contact-form-wrapper p {
+      margin-bottom: 2rem;
+      opacity: 0.9;
+    }
+    
+    .simple-contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    
+    .form-group {
+      text-align: left;
+    }
+    
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+    
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px 16px;
+      border: 2px solid rgba(255,255,255,0.2);
+      border-radius: 8px;
+      background: rgba(255,255,255,0.1);
+      color: white;
+      font-size: 16px;
+      transition: all 0.3s ease;
+    }
+    
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: rgba(255,255,255,0.7);
+    }
+    
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: rgba(255,255,255,0.5);
+      background: rgba(255,255,255,0.15);
+    }
+    
+    .simple-contact-form .btn {
+      margin-top: 1rem;
+      padding: 15px 30px;
+      font-size: 18px;
+      font-weight: 600;
+      background: #10b981;
+      border: none;
+      border-radius: 8px;
+      color: white;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .simple-contact-form .btn:hover {
+      background: #059669;
+      transform: translateY(-2px);
+    }
+    
+    @media (max-width: 768px) {
+      .contact-form-wrapper h2 {
+        font-size: 1.5rem;
+      }
+      
+      .form-group input,
+      .form-group textarea {
+        font-size: 16px; /* Предотвращает зум на iOS */
+      }
+    }
   
+    /* Стили для заголовков услуг */
+    section h2 {
+        font-size: 2rem;
+        font-weight: 700;
+        color: #1a1a1a;
+        margin-bottom: 1.5rem;
+        line-height: 1.3;
+    }
+    </style>
+
   <!-- ЕДИНЫЕ JS МОДУЛИ ДЛЯ ВСЕХ СТРАНИЦ -->
 
   
@@ -468,25 +535,24 @@
   
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js" defer></script>
   <script>AOS.init({ once:true, duration:600 });</script>
-  <script src="assets/js/smart-calculator-v2.js?v=107" defer></script>
-  
-  
-  <!-- PWA Service Worker Registration -->
-  <script>
-      if ('serviceWorker' in navigator) {
-          window.addEventListener('load', () => {
-              navigator.serviceWorker.register('/sw.js')
-                  .then((registration) => {
-                      console.log('SW registered: ', registration);
-                  })
-                  .catch((registrationError) => {
-                      console.log('SW registration failed: ', registrationError);
-                  });
-          });
-      }
-  </script>
-
-
+    <script src="assets/js/smart-calculator-v2.js?v=107" defer></script>
+    
+    
+    <!-- Плавающие кнопки -->
+<div class="float-buttons">
+    <a href="tel:+79162720932" class="float-btn phone-btn">
+        <i class="fas fa-phone-alt"></i>
+        <span class="tooltip">Позвонить сейчас</span>
+    </a>
+    <a href="https://wa.me/79162720932?text=Здравствуйте! Интересует расчет стоимости грузоперевозки" class="float-btn whatsapp-btn" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+        <span class="tooltip">WhatsApp</span>
+    </a>
+    <a href="https://t.me/avtogost77_bot" class="float-btn telegram-btn" target="_blank">
+        <i class="fab fa-telegram-plane"></i>
+        <span class="tooltip">Telegram бот</span>
+    </a>
+</div>
 
 <!-- Отслеживание кликов -->
 <script>
