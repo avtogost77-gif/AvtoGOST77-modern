@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192" width="192" height="192">
+  <rect width="192" height="192" fill="#2563eb" rx="24"/>
+  <g fill="white" transform="translate(24, 48)">
+    <rect x="0" y="24" width="64" height="32" rx="4"/>
+    <rect x="64" y="16" width="32" height="48" rx="4"/>
+    <circle cx="24" cy="64" r="9" fill="#374151"/>
+    <circle cx="48" cy="64" r="9" fill="#374151"/>
+    <circle cx="76.0" cy="64" r="9" fill="#374151"/>
+  </g>
+  <text x="96" y="96" font-family="Arial,sans-serif" font-size="12" font-weight="bold" fill="white" text-anchor="middle" dominant-baseline="middle">АВТО</text>
+  <text x="96" y="119.0" font-family="Arial,sans-serif" font-size="12" font-weight="bold" fill="#fbbf24" text-anchor="middle" dominant-baseline="middle">ГОСТ</text>
+</svg>
