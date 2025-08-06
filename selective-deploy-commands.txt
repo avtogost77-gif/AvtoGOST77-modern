@@ -1,0 +1,64 @@
+# КОМАНДЫ ДЛЯ СЕЛЕКТИВНОГО ДЕПЛОЯ
+
+# 1. Создать бэкап текущего состояния
+cd /www/wwwroot/avtogost77.ru/
+tar -czf backup-before-deploy-$(date +%Y%m%d-%H%M%S).tar.gz .
+
+# 2. Распаковать наш архив во временную папку
+mkdir /tmp/deploy-temp
+cd /tmp/deploy-temp
+wget https://raw.githubusercontent.com/avtogost77-gif/AvtoGOST77-modern/main/avtogost-deploy-20250806-094949.zip
+unzip avtogost-deploy-20250806-094949.zip
+
+# 3. Копировать только наши измененные файлы
+cd /www/wwwroot/avtogost77.ru/
+
+# Копируем основные HTML файлы (но НЕ из папок routes/industries/calculators)
+cp /tmp/deploy-temp/index.html .
+cp /tmp/deploy-temp/about.html .
+cp /tmp/deploy-temp/services.html .
+cp /tmp/deploy-temp/contact.html .
+cp /tmp/deploy-temp/help.html .
+cp /tmp/deploy-temp/faq.html .
+cp /tmp/deploy-temp/privacy.html .
+cp /tmp/deploy-temp/terms.html .
+cp /tmp/deploy-temp/track.html .
+cp /tmp/deploy-temp/404.html .
+cp /tmp/deploy-temp/blog-*.html .
+cp /tmp/deploy-temp/transportnaya-kompaniya.html .
+cp /tmp/deploy-temp/sbornye-gruzy.html .
+cp /tmp/deploy-temp/dostavka-na-marketpleysy.html .
+cp /tmp/deploy-temp/rc-dostavka.html .
+cp /tmp/deploy-temp/gruzoperevozki-*.html .
+cp /tmp/deploy-temp/logistika-dlya-biznesa.html .
+cp /tmp/deploy-temp/urgent-delivery.html .
+cp /tmp/deploy-temp/self-employed-delivery.html .
+cp /tmp/deploy-temp/ip-small-business-delivery.html .
+
+# Копируем конфиги и служебные файлы
+cp /tmp/deploy-temp/robots.txt .
+cp /tmp/deploy-temp/.htaccess .
+cp /tmp/deploy-temp/*.xml .
+cp /tmp/deploy-temp/*.json .
+cp /tmp/deploy-temp/*.yml .
+
+# Копируем assets
+cp -r /tmp/deploy-temp/assets/* assets/
+
+# Копируем обновления для blog/index.html
+cp /tmp/deploy-temp/blog/index.html blog/
+
+# 4. Очистка
+rm -rf /tmp/deploy-temp
+
+# 5. Проверка результата
+echo "===== ПРОВЕРКА ДЕПЛОЯ ====="
+echo "Всего HTML файлов:"
+find . -name "*.html" -type f | wc -l
+echo ""
+echo "Проверка критичных автогенерированных страниц:"
+ls -la routes/moskva/moskva-ivanovo.html
+ls -la routes/moskva/moskva-kostroma.html
+echo ""
+echo "Количество URL в sitemap:"
+grep -c "<url>" sitemap.xml
