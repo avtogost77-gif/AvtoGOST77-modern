@@ -391,7 +391,7 @@ function initExitIntent() {
                 scrollUpCount++;
                 // Показываем после 5х скроллов вверх (больше терпения)
                 if (scrollUpCount >= 5 && !exitIntentShown && !isEarlySession) {
-                    showExitIntentPopup();
+                    // showExitIntentPopup(); // ОТКЛЮЧЕНО
                 }
             } else {
                 scrollUpCount = Math.max(0, scrollUpCount - 1);
@@ -403,7 +403,7 @@ function initExitIntent() {
         // Долгое бездействие на мобильных (10 минут)
         setTimeout(() => {
             if (!exitIntentShown && !isEarlySession) {
-                showExitIntentPopup();
+                // showExitIntentPopup(); // ОТКЛЮЧЕНО
             }
         }, 600000); // 10 минут
         
@@ -421,7 +421,7 @@ function initExitIntent() {
         document.addEventListener('mouseleave', function(e) {
             // Если мышь ушла за верхний край экрана (к закрытию/адресной строке)
             if (e.clientY <= 0 && !exitIntentShown && !isEarlyDesktopSession) {
-                showExitIntentPopup();
+                // showExitIntentPopup(); // ОТКЛЮЧЕНО
             }
         });
         
@@ -429,14 +429,14 @@ function initExitIntent() {
         window.addEventListener('beforeunload', function(e) {
             if (!exitIntentShown && !isEarlyDesktopSession) {
                 // Показываем popup (не блокируем закрытие)
-                showExitIntentPopup();
+                // showExitIntentPopup(); // ОТКЛЮЧЕНО
             }
         });
         
         // Бездействие на desktop (5 минут)
         let inactivityTimer = setTimeout(() => {
             if (!exitIntentShown && !isEarlyDesktopSession) {
-                showExitIntentPopup();
+                // showExitIntentPopup(); // ОТКЛЮЧЕНО
             }
         }, 300000); // 5 минут
         
@@ -445,7 +445,7 @@ function initExitIntent() {
             clearTimeout(inactivityTimer);
             inactivityTimer = setTimeout(() => {
                 if (!exitIntentShown && !isEarlyDesktopSession) {
-                    showExitIntentPopup();
+                    // showExitIntentPopup(); // ОТКЛЮЧЕНО
                 }
             }, 300000); // 5 минут
         });
@@ -735,7 +735,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Инициализация exit-intent
-    initExitIntent();
+    // initExitIntent(); // ОТКЛЮЧЕНО - попап раздражает
 });
 
 // Инициализация калькулятора
