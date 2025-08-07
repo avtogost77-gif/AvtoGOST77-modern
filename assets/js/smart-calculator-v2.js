@@ -644,52 +644,23 @@ class SmartCalculatorV2 {
               <span class="price-label">Стоимость перевозки:</span>
               <span class="price-value">${result.price.toLocaleString()} ₽</span>
             </div>
-            <div class="price-details">
-              <p>📏 Расстояние: ${result.distance} км (${result.deliveryType})</p>
-              <p>💰 Тариф: ${result.pricePerKm} ₽/км</p>
-              <p>🚛 Транспорт: ${result.transport}</p>
-              <p>⏱️ Срок доставки: ${result.deliveryTime}</p>
+            <div class="price-info">
+              <p>🚛 ${result.transport}</p>
+              <p>📅 ${result.deliveryTime}</p>
             </div>
           </div>
 
-          <div class="cargo-details">
-            <h4>Параметры груза:</h4>
-            <ul>
-              <li><strong>Транспорт:</strong> ${result.transport} (автоматически подобран)</li>
-              <li>Вес: ${result.details.weight} кг (${result.details.loadPercent}% загрузки)</li>
-              ${result.details.volume ? 
-                `<li>Объем: ${result.details.volume} м³ (${result.details.volumePercent}% загрузки)</li>
-                 <li>Плотность: ${result.details.density} кг/м³</li>` : 
-                '<li>Объем: не указан</li>'
-              }
-              ${result.details.isLocal ? 
-                `<li><span class="badge badge-info">Локальная зона</span> - только отдельная машина</li>
-                 ${result.details.distanceCoeff > 1 ? 
-                   `<li><span class="badge badge-warning">Повышающий коэфф. ×${result.details.distanceCoeff}</span></li>` : 
-                   '<li>Базовый тариф без повышения</li>'
-                 }
-                 <li><span class="badge badge-danger">Сборные грузы недоступны</span></li>` :
-                `<li><span class="badge badge-success">Межрегиональная</span> доставка</li>
-                 <li>Тариф: ${result.details.pricePerKm} ₽/км</li>
-                 ${result.details.isConsolidated ? 
-                   '<li><span class="badge badge-warning">Сборный груз</span> - экономия 35%!</li>' : 
-                   '<li>Отдельная машина</li>'
-                 }`
-              }
-            </ul>
-          </div>
-
           <div class="cta-buttons">
-            <button class="btn btn-primary" onclick="smartCalculatorV2.showLeadForm()">
+            <button class="btn btn-primary btn-lg" onclick="smartCalculatorV2.showLeadForm()">
               📝 Оставить заявку
             </button>
             <button class="btn btn-secondary" onclick="smartCalculatorV2.callManager()">
-              📞 Позвонить менеджеру
+              📞 +7 (916) 272-09-32
             </button>
           </div>
 
           <div class="disclaimer">
-            <p><small>* Это предварительный расчет. Окончательная стоимость может измениться в зависимости от дополнительных условий.</small></p>
+            <p><small>* Окончательная стоимость подтверждается менеджером</small></p>
           </div>
         </div>
       `;
