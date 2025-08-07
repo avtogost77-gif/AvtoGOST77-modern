@@ -1,587 +1,795 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Удаленный отдел логистики | Спот-заявки | Доставка на маркетплейсы</title>
-  <meta name="description" content="Удаленный отдел логистики для малого и среднего бизнеса. Спот-заявки день-в-день. Доставка на Wildberries, Ozon. Грузоперевозки от газели до фуры без складов экспедиторов." />
-    <!-- ЕДИНЫЕ СТИЛИ ДЛЯ ВСЕХ СТРАНИЦ -->
-  <link rel="stylesheet" href="assets/css/styles-optimized.min.css?v=1754549859" />
-  
-  <!-- Bootstrap Icons -->
-  <!-- AOS scroll animations -->
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  
-  <!-- PWA метатеги -->
-  <link rel="manifest" href="manifest.json">
-  <meta name="theme-color" content="#2c5aa0">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="default">
-  <meta name="apple-mobile-web-app-title" content="АвтоГОСТ">
-  <link rel="apple-touch-icon" href="assets/img/icon-192x192.svg">
-  <link rel="apple-touch-icon" sizes="72x72" href="assets/img/icon-72x72.svg">
-  <link rel="apple-touch-icon" sizes="96x96" href="assets/img/icon-96x96.svg">
-  <link rel="apple-touch-icon" sizes="128x128" href="assets/img/icon-128x128.svg">
-  <link rel="apple-touch-icon" sizes="144x144" href="assets/img/icon-144x144.svg">
-  <link rel="apple-touch-icon" sizes="152x152" href="assets/img/icon-152x152.svg">
-  <link rel="apple-touch-icon" sizes="192x192" href="assets/img/icon-192x192.svg">
-  <link rel="apple-touch-icon" sizes="384x384" href="assets/img/icon-384x384.svg">
-  <link rel="apple-touch-icon" sizes="512x512" href="assets/img/icon-512x512.svg">
-  <meta name="msapplication-TileColor" content="#2c5aa0">
-  <meta name="msapplication-TileImage" content="assets/img/icon-144x144.svg">
-  <meta name="msapplication-config" content="browserconfig.xml">
-  
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EMQ3D0X8K7"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'G-EMQ3D0X8K7');
-  </script>
-  
-  <!-- Yandex.Metrika counter -->
-  <script type="text/javascript" >
-   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-   m[i].l=1*new Date();
-   for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-   k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
-   (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
-
-   ym(103413788, "init", {
-        clickmap:true,
-        trackLinks:true,
-        accurateTrackBounce:true,
-        webvisor:true
-   });
-  </script>
-  <noscript><div><img loading="lazy" src="https://mc.yandex.ru/watch/103413788" style="position:absolute; left:-9999px;" alt="" /></div></noscript> <!-- /Yandex.Metrika counter -->
-
-
-
-
-
-
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Услуги грузоперевозок | Газель, фура, манипулятор | АвтоГОСТ</title>
+    <meta name="description" content="Все виды грузоперевозок по России ⚡ Газель от 3000₽, фура от 15000₽. Подача за 2 часа, работаем 24/7. Экспресс-доставка, сборные грузы, переезды.">
+    <meta name="keywords" content="услуги грузоперевозок, заказать газель, аренда фуры, манипулятор, экспресс доставка">
+    
+    <!-- Основные стили -->
+    <link rel="stylesheet" href="assets/css/styles-optimized.min.css?v=1754549859" />
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    
+    <!-- AOS анимации -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+    
+    <!-- PWA Meta Tags -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#2c5aa0">
+    
+    <!-- Favicons -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    
+    <!-- Schema.org разметка -->
     <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "@id": "https://avtogost77.ru/#organization",
-  "name": "АвтоГОСТ",
-  "alternateName": "AvtoGOST77",
-  "url": "https://avtogost77.ru/",
-  "logo": {
-    "@type": "ImageObject",
-    "url": "https://avtogost77.ru/assets/img/logo.svg",
-    "width": 200,
-    "height": 60
-  },
-  "image": "https://avtogost77.ru/assets/img/hero-logistics.webp",
-  "description": "Профессиональная транспортная компания, специализирующаяся на грузоперевозках по России. Быстрая подача транспорта, точный расчет стоимости, круглосуточная работа.",
-  "telephone": "+7 916 272-09-32",
-  "email": "avtogost77@gmail.com",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "ул. Большая Почтовая, д. 36",
-    "addressLocality": "Москва",
-    "addressRegion": "Москва",
-    "postalCode": "105082",
-    "addressCountry": "RU"
-  },
-  "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": 55.780874,
-    "longitude": 37.70431
-  },
-  "openingHoursSpecification": {
-    "@type": "OpeningHoursSpecification",
-    "dayOfWeek": [
-      "Monday",
-      "Tuesday",
-      "Wednesday",
-      "Thursday",
-      "Friday",
-      "Saturday",
-      "Sunday"
-    ],
-    "opens": "00:00",
-    "closes": "23:59"
-  },
-  "sameAs": [
-    "https://t.me/avtogost77",
-    "https://wa.me/79162720932"
-  ],
-  "priceRange": "₽₽",
-  "paymentAccepted": [
-    "Cash",
-    "Credit Card",
-    "Bank Transfer"
-  ],
-  "currenciesAccepted": "RUB",
-  "areaServed": {
-    "@type": "Country",
-    "name": "Россия"
-  },
-  "slogan": "Доставим вовремя и безопасно",
-  "foundingDate": "2010",
-  "numberOfEmployees": {
-    "@type": "QuantitativeValue",
-    "value": 50
-  },
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "4.8",
-    "reviewCount": "2341",
-    "bestRating": "5",
-    "worstRating": "1"
-  }
-}
-</script>
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "@id": "https://avtogost77.ru/services.html",
+      "name": "Услуги грузоперевозок АвтоГОСТ",
+      "description": "Полный спектр услуг грузоперевозок: от газели до фуры, экспресс-доставка, сборные грузы, переезды",
+      "provider": {
+        "@type": "Organization",
+        "name": "АвтоГОСТ",
+        "telephone": "+7 916 272-09-32",
+        "email": "avtogost77@gmail.com"
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "Россия"
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Виды грузоперевозок",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Газель",
+              "description": "Малотоннажные перевозки до 1.5 тонн"
+            },
+            "priceSpecification": {
+              "@type": "PriceSpecification",
+              "price": "3000",
+              "priceCurrency": "RUB"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Фура 20 тонн",
+              "description": "Междугородние перевозки крупных партий"
+            },
+            "priceSpecification": {
+              "@type": "PriceSpecification",
+              "price": "15000",
+              "priceCurrency": "RUB"
+            }
+          }
+        ]
+      }
+    }
+    </script>
 
     <style>
-    /* Дополнительные стили для расширенного контента */
-    .section { padding: 60px 0; }
-    .bg-light { background-color: #f8f9fa; }
-    .lead { font-size: 1.2em; line-height: 1.6; color: #555; margin-bottom: 30px; }
-    .section-desc { font-size: 1.1em; color: #666; text-align: center; margin-bottom: 40px; }
-    
-    /* Timeline */
-    .timeline { position: relative; padding: 40px 0; }
-    .timeline::before { content: ''; position: absolute; left: 50px; top: 0; bottom: 0; width: 2px; background: #2c5aa0; }
-    .timeline-item { display: flex; margin-bottom: 40px; }
-    .timeline-item .year { width: 100px; font-size: 24px; font-weight: bold; color: #2c5aa0; }
-    .timeline-item .content { flex: 1; background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-    
-    /* Process steps */
-    .process-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
-    .step { text-align: center; padding: 30px; background: #fff; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-    .step-number { width: 60px; height: 60px; margin: 0 auto 20px; background: #2c5aa0; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: bold; }
-    
-    /* Benefits grid */
-    .benefits-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-    .benefit-card { padding: 30px; background: #fff; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-    .benefit-icon { font-size: 48px; margin-bottom: 15px; }
-    
-    /* Values grid */
-    .values-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
-    .value-card { text-align: center; padding: 30px; background: #fff; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-    .value-card .icon { font-size: 48px; margin-bottom: 15px; }
-    
-    /* Team stats */
-    .team-stats { display: flex; justify-content: space-around; flex-wrap: wrap; margin: 40px 0; }
-    .stat { text-align: center; padding: 20px; }
-    .stat .number { font-size: 48px; font-weight: bold; color: #2c5aa0; }
-    .stat .label { font-size: 16px; color: #666; }
-    
-    /* Testimonials */
-    .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; }
-    .testimonial { padding: 30px; background: #fff; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-    .testimonial .stars { color: #ffa500; font-size: 20px; margin-bottom: 15px; }
-    .testimonial .author { margin-top: 20px; padding-top: 20px; border-top: 1px solid #eee; }
-    .testimonial .author strong { display: block; margin-bottom: 5px; }
-    .testimonial .author span { color: #666; font-size: 14px; }
-    
-    /* Service categories */
-    .service-categories { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; margin-top: 40px; }
-    .category { padding: 30px; background: #fff; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-    .category h3 { margin-bottom: 20px; color: #2c5aa0; }
-    .category ul { list-style: none; padding: 0; }
-    .category li { padding: 10px 0; border-bottom: 1px solid #eee; }
-    .category li:last-child { border-bottom: none; }
-    
-    /* Status items */
-    .statuses-list { max-width: 800px; margin: 0 auto; }
-    .status-item { display: flex; align-items: center; margin-bottom: 30px; padding: 20px; background: #fff; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-    .status-icon { width: 60px; height: 60px; margin-right: 20px; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-size: 30px; }
-    .status-icon.new { background: #e3f2fd; }
-    .status-icon.confirmed { background: #e8f5e9; }
-    .status-icon.loading { background: #fff3e0; }
-    .status-icon.transit { background: #f3e5f5; }
-    .status-icon.arrived { background: #fce4ec; }
-    .status-icon.delivered { background: #e0f2f1; }
-    
-    /* Office grid */
-    .office-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 40px; }
-    .transport-options { list-style: none; padding: 0; }
-    .transport-options li { padding: 10px 0; border-bottom: 1px solid #eee; }
-    
-    /* Responsive */
-    @media (max-width: 768px) {
-        .timeline::before { left: 20px; }
-        .timeline-item .year { width: 60px; font-size: 18px; }
-        .team-stats { flex-direction: column; }
-        .stat { margin-bottom: 20px; }
-    }
-    
-    /* Стили для заголовков услуг */
-    section h2 {
-        font-size: 2rem;
-        font-weight: 700;
-        color: #1a1a1a;
-        margin-bottom: 1.5rem;
-        line-height: 1.3;
-    }
+        /* Дополнительные стили для услуг */
+        .services-hero {
+            background: linear-gradient(135deg, #2c5aa0 0%, #1e3a5f 100%);
+            color: white;
+            padding: 80px 0 60px;
+            margin-top: 60px;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin: 60px 0;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+        }
+        
+        .service-header {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 30px;
+            text-align: center;
+            border-bottom: 3px solid #2c5aa0;
+        }
+        
+        .service-icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+        
+        .service-content {
+            padding: 30px;
+        }
+        
+        .service-features {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+        
+        .service-features li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .service-features li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #28a745;
+            font-weight: bold;
+        }
+        
+        .service-price {
+            font-size: 28px;
+            font-weight: 700;
+            color: #2c5aa0;
+            margin: 20px 0;
+        }
+        
+        .service-cta {
+            text-align: center;
+            margin-top: 25px;
+        }
+        
+        /* Новая форма заявки */
+        .order-section {
+            background: #f8f9fa;
+            padding: 80px 0;
+        }
+        
+        .order-form-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            padding: 50px;
+        }
+        
+        .form-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .form-header h2 {
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .form-group {
+            margin-bottom: 0;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #2c5aa0;
+        }
+        
+        .form-submit {
+            text-align: center;
+            margin-top: 30px;
+        }
+        
+        .btn-submit {
+            background: #2c5aa0;
+            color: white;
+            padding: 16px 40px;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        
+        .btn-submit:hover {
+            background: #1e3a5f;
+        }
+        
+        /* FAQ секция */
+        .faq-section {
+            padding: 80px 0;
+        }
+        
+        .faq-item {
+            background: white;
+            border-radius: 8px;
+            margin-bottom: 16px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            overflow: hidden;
+        }
+        
+        .faq-question {
+            padding: 20px 25px;
+            cursor: pointer;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s ease;
+        }
+        
+        .faq-question:hover {
+            background: #f8f9fa;
+        }
+        
+        .faq-answer {
+            padding: 0 25px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+        
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            padding: 20px 25px;
+        }
+        
+        .faq-toggle {
+            font-size: 24px;
+            transition: transform 0.3s ease;
+        }
+        
+        .faq-item.active .faq-toggle {
+            transform: rotate(45deg);
+        }
     </style>
-
-    <style id="critical-css">
-:root{--primary-color:#2D67F8;--text-dark:#1a1a1a;--text-gray:#666;--white:#ffffff;--border:#e0e0e0;}*{margin:0;padding:0;box-sizing:border-box;}body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.6;color:var(--text-dark);}.container{max-width:1200px;margin:0 auto;padding:0 20px;} .header{background:var(--white);border-bottom:1px solid var(--border);padding:1rem 0;position:sticky;top:0;z-index:1000;}.header-content{display:flex;align-items:center;justify-content:space-between;}.logo{display:flex;align-items:center;gap:0.5rem;text-decoration:none;color:var(--text-dark);font-weight:700;font-size:1.25rem;}.logo-img{width:40px;height:40px;}.nav{display:none;}@media (min-width:768px){.nav{display:flex;gap:2rem;}}.nav-link{color:var(--text-dark);text-decoration:none;transition:color 0.3s;}.btn{display:inline-flex;align-items:center;gap:0.5rem;padding:0.75rem 1.5rem;border-radius:8px;text-decoration:none;font-weight:600;transition:all 0.3s;}.btn-primary{background:var(--primary-color);color:var(--white);} .hero{padding:3rem 0;background:linear-gradient(135deg,#f8f9fa 0%,#e9ecef 100%);}.hero h1{font-size:2.5rem;margin-bottom:1rem;line-height:1.2;}@media (min-width:768px){.hero h1{font-size:3.5rem;}}.hero-subtitle{font-size:1.25rem;color:var(--text-gray);margin-bottom:2rem;} img,svg{max-width:100%;height:auto;}.loading{opacity:0;transition:opacity 0.3s;}.loaded{opacity:1;}
-    </style>
-    <!-- Preload основных стилей -->
-    <link rel="preload" href="/assets/css/styles-optimized.min.css" as="style">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- Асинхронная загрузка стилей -->
-    <link rel="stylesheet" href="/assets/css/styles-optimized.min.css" media="print" onload="this.media='all'; this.onload=null;">
-    <noscript><link rel="stylesheet" href="/assets/css/styles-optimized.min.css"></noscript>
 </head>
 <body>
-  <!-- Header include -->
-  <header class="header">
+    <!-- Header -->
+    <header>
         <div class="container">
-            <div class="header-content">
-                <div class="logo">
-                    <img src="assets/img/logo.svg" alt="АвтоГОСТ" class="logo-img">
-                    <span class="logo-text">АвтоГОСТ</span>
-                </div>
-                <nav class="nav">
-                    <a href="/" class="nav-link">Главная</a>
-                    <a href="/transportnaya-kompaniya.html" class="nav-link">О компании</a>
-                    <a href="/services.html" class="nav-link active">Услуги</a>
-                    <a href="/#calculator" class="nav-link">Калькулятор</a>
-                    <a href="/contact.html" class="nav-link">Контакты</a>
-                </nav>
-                <div class="header-cta">
-                    <a href="tel:+79162720932" class="btn btn-primary">
-                        <svg class="btn-icon" viewBox="0 0 24 24">
-                            <path d="M6.62,10.79C8.06,13.62 10.38,15.94 13.21,17.38L15.41,15.18C15.69,14.9 16.08,14.82 16.43,14.93C17.55,15.3 18.75,15.5 20,15.5A1,1 0 0,1 21,16.5V20A1,1 0 0,1 20,21A17,17 0 0,1 3,4A1,1 0 0,1 4,3H7.5A1,1 0 0,1 8.5,4C8.5,5.25 8.7,6.45 9.07,7.57C9.18,7.92 9.1,8.31 8.82,8.59L6.62,10.79Z"/>
-                        </svg>
-                        Позвонить
-                    </a>
+            <div class="navbar">
+                <a href="/" class="navbar-brand">Авто&nbsp;Гост</a>
+                <button class="mobile-toggle" aria-label="Меню">☰</button>
+                <ul class="navbar-menu">
+                    <li><a href="/">Главная</a></li>
+                    <li><a href="services.html" class="active">Услуги</a></li>
+                    <li><a href="about.html">О нас</a></li>
+                    <li><a href="contact.html">Контакты</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                </ul>
+                <div class="navbar-social">
+                    <a href="https://wa.me/79162720932" target="_blank" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+                    <a href="https://t.me/avtogost77" target="_blank" aria-label="Telegram"><i class="bi bi-telegram"></i></a>
                 </div>
             </div>
         </div>
     </header>
 
-  <!-- Outsourcing -->
-  <section id="outsourcing" class="hero" style="padding:4rem 0;">
-    <div class="container">
-      <h1 style="color:#fff;">Удаленный отдел логистики для малого и среднего бизнеса</h1>
-      <p>Не нужно содержать штатных логистов. Становимся вашим удаленным отделом с персональным менеджером. Прямые перевозки без складов экспедиторов от газели до фуры.</p>
-      <a href="contact.html" class="btn btn-primary">Стать нашим клиентом</a>
-    </div>
-  </section>
-  <section>
-    <div class="container">
-      <h2>Преимущества</h2>
-      <ul>
-        <li>Экономия до 30 % на логистических расходах.</li>
-        <li>Нет необходимости содержать логистический отдел.</li>
-        <li>Широкая сеть проверенных партнеров-перевозчиков.</li>
-        <li>SLA: подача машины в Москве за 2 часа.</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- LTL -->
-  <section id="ltl" style="background: var(--color-bg);">
-    <div class="container">
-      <h2>Сборные грузоперевозки (LTL)</h2>
-      <p>Платите только за занятое место: оптимальное решение для нерегулярных отправок и небольших партий товара.</p>
-      <a href="contact.html" class="btn btn-outline">Рассчитать LTL</a>
-    </div>
-  </section>
-
-  <!-- Transport categories -->
-  <section id="t0-5">
-    <div class="container">
-      <h2>Грузовой транспорт 0–5 т</h2>
-      <p>Газели и фургоны для оперативной доставки по городу и области.</p>
-      <a href="contact.html" class="btn btn-outline">Заказать</a>
-    </div>
-  </section>
-
-  <section id="t5-10" style="background: var(--color-bg);">
-    <div class="container">
-      <h2>Грузовой транспорт 5–10 т</h2>
-      <p>Среднетоннажные машины для оптимального соотношения цены и грузоподъёмности.</p>
-      <a href="contact.html" class="btn btn-outline">Заказать</a>
-    </div>
-  </section>
-
-  <section id="t10-20">
-    <div class="container">
-      <h2>Грузовой транспорт 10–20 т</h2>
-      <p>Фуры и тягачи: доставка крупных партий по всей России.</p>
-      <a href="contact.html" class="btn btn-outline">Заказать</a>
-    </div>
-  </section>
-
-  <!-- B2B Аутсорсинг - Полный цикл -->
-  <section id="b2b-outsourcing" style="background: var(--color-bg); padding: 4rem 0;">
-    <div class="container">
-      <h2>B2B Аутсорсинг - Полный цикл</h2>
-      <p>Логистика от сырья до потребителя. Непрерывность производства.</p>
-      <div class="service-card" data-aos="fade-up" data-aos-delay="400">
-        <div class="service-icon">🏭</div>
-        <h3>B2B Аутсорсинг - Полный цикл</h3>
-        <p><strong>Логистика от сырья до потребителя</strong></p>
-        <ul>
-          <li>🔄 <strong>Сырьё → Производство:</strong> Забор у поставщиков, доставка на заводы</li>
-          <li>🏭 <strong>Производство → Сбыт:</strong> Вывоз готовой продукции, распределение</li>
-          <li>📦 <strong>Сбыт → Последняя миля:</strong> Доставка конечным потребителям</li>
-          <li>⚡ <strong>Непрерывность:</strong> Производство не останавливается</li>
-        </ul>
-        <div class="service-features">
-          <span class="feature-tag">Химическая промышленность</span>
-          <span class="feature-tag">ПВХ производство</span>
-          <span class="feature-tag">Металлургия</span>
-          <span class="feature-tag">Пищевая индустрия</span>
+    <!-- Hero секция -->
+    <section class="services-hero">
+        <div class="container">
+            <h1 data-aos="fade-up">Услуги грузоперевозок</h1>
+            <p class="lead" data-aos="fade-up" data-aos-delay="100">
+                От малотоннажных газелей до 20-тонных фур<br>
+                Подача транспорта от 2 часов • Работаем 24/7
+            </p>
+            <div class="hero-buttons" data-aos="fade-up" data-aos-delay="200">
+                <a href="#order-form" class="btn btn-primary btn-lg">
+                    <i class="bi bi-calculator"></i> Рассчитать стоимость
+                </a>
+                <a href="tel:+79162720932" class="btn btn-outline-light btn-lg">
+                    <i class="bi bi-telephone"></i> Позвонить
+                </a>
+            </div>
         </div>
-        <div class="service-example">
-          <h4>💡 Пример схемы:</h4>
-          <div class="logistics-chain">
-            <div class="chain-step">
-              <span class="step-icon">🧪</span>
-              <span class="step-text">Поставщик химии</span>
-            </div>
-            <div class="chain-arrow">→</div>
-            <div class="chain-step">
-              <span class="step-icon">🏭</span>
-              <span class="step-text">ПВХ завод</span>
-            </div>
-            <div class="chain-arrow">→</div>
-            <div class="chain-step">
-              <span class="step-icon">🏢</span>
-              <span class="step-text">Дистрибьютор</span>
-            </div>
-            <div class="chain-arrow">→</div>
-            <div class="chain-step">
-              <span class="step-icon">🏪</span>
-              <span class="step-text">Потребитель</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Простая форма заявки -->
-  <section class="contact-form-section" style="background: var(--color-bg); padding: 3rem 0;">
-    <div class="container">
-      <div class="contact-form-wrapper">
-        <h2>Оставить заявку на услуги</h2>
-        <p>Укажите телефон и опишите ваш груз - мы свяжемся в течение 10 минут</p>
-        
-        <form id="contactForm" class="simple-contact-form">
-          <div class="form-group">
-            <label for="phone">Телефон *</label>
-                            <input type="tel" id="phone" name="phone" placeholder="+7 (___) ___-__-__" autocomplete="tel" required>
-          </div>
-          
-          <div class="form-group">
-            <label for="message">Описание груза *</label>
-            <textarea id="message" name="message" rows="4" placeholder="Например: доставить 3 паллеты из Москвы в Казань 12 ноября" required></textarea>
-          </div>
-
-                    <div class="form-group">
-                      <div class="consent-checkbox">
-                        <input type="checkbox" id="privacyConsent" name="privacyConsent" required>
-                        <label for="privacyConsent">
-                          Я согласен(а) с <a href="privacy.html" target="_blank">обработкой персональных данных</a> в соответствии с 152-ФЗ, включая использование cookies и аналитических сервисов Google и Яндекс для персонализации рекламы
-                        </label>
-                      </div>
+    <!-- Основные услуги -->
+    <section class="section">
+        <div class="container">
+            <h2 class="text-center mb-5" data-aos="fade-up">Наши услуги грузоперевозок</h2>
+            
+            <div class="services-grid">
+                <!-- Газель -->
+                <div class="service-card" data-aos="fade-up">
+                    <div class="service-header">
+                        <div class="service-icon">🚐</div>
+                        <h3>Газель</h3>
+                        <p>До 1.5 тонн • До 16 м³</p>
                     </div>
+                    <div class="service-content">
+                        <ul class="service-features">
+                            <li>Городские перевозки</li>
+                            <li>Доставка для интернет-магазинов</li>
+                            <li>Квартирные переезды</li>
+                            <li>Срочная доставка документов</li>
+                            <li>Подача за 2 часа</li>
+                        </ul>
+                        <div class="service-price">от 3 000 ₽</div>
+                        <div class="service-cta">
+                            <a href="#order-form" class="btn btn-primary">Заказать газель</a>
+                        </div>
+                    </div>
+                </div>
 
-                    <button type="submit" class="btn btn-primary" id="contactSubmitBtn" disabled>Отправить заявку</button>       </form>
-      </div>
-    </div>
-  </section>
+                <!-- 3-тонник -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-header">
+                        <div class="service-icon">🚚</div>
+                        <h3>3-тонник</h3>
+                        <p>До 3 тонн • До 20 м³</p>
+                    </div>
+                    <div class="service-content">
+                        <ul class="service-features">
+                            <li>Офисные переезды</li>
+                            <li>Доставка стройматериалов</li>
+                            <li>Перевозка оборудования</li>
+                            <li>Межгород до 500 км</li>
+                            <li>Гидроборт по запросу</li>
+                        </ul>
+                        <div class="service-price">от 5 000 ₽</div>
+                        <div class="service-cta">
+                            <a href="#order-form" class="btn btn-primary">Заказать 3-тонник</a>
+                        </div>
+                    </div>
+                </div>
 
-  <!-- Footer include -->
-  <footer>
-    <div class="container footer-grid">
-      <div>
-        <h4>Меню</h4>
-        <a href="/">Главная</a><br/>
-        <a href="services.html">Услуги</a><br/>
-        <a href="about.html">О нас</a><br/>
-        <a href="contact.html">Контакты</a>
-      </div>
-      <div>
-        <h4>Услуги</h4>
-        <a href="#outsourcing">Аутсорсинг логистики</a><br/>
-        <a href="#ltl">Сборные грузы</a><br/>
-        <a href="#t0-5">0–5 т</a><br/>
-        <a href="#t5-10">5–10 т</a><br/>
-        <a href="#t10-20">10–20 т</a>
-      </div>
-      <div>
-        <h4>Контакты</h4>
-        <p>Телефон: <a href="https://wa.me/79162720932" target="_blank">+7 916 272-09-32</a></p>
-        <p>Email: <a href="mailto:avtogost77@gmail.com">avtogost77@gmail.com</a></p>
-      </div>
-    </div>
-    <div class="container text-center mt-2">© 2023 Авто&nbsp;Гост.</div>
-  </footer>
+                <!-- 5-тонник -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-header">
+                        <div class="service-icon">🚛</div>
+                        <h3>5-тонник</h3>
+                        <p>До 5 тонн • До 36 м³</p>
+                    </div>
+                    <div class="service-content">
+                        <ul class="service-features">
+                            <li>Доставка для производств</li>
+                            <li>Перевозка паллет</li>
+                            <li>Складская логистика</li>
+                            <li>Рефрижераторы в наличии</li>
+                            <li>GPS-мониторинг</li>
+                        </ul>
+                        <div class="service-price">от 7 000 ₽</div>
+                        <div class="service-cta">
+                            <a href="#order-form" class="btn btn-primary">Заказать 5-тонник</a>
+                        </div>
+                    </div>
+                </div>
 
-  <!-- Стили для простой формы -->
-  <style>
-    .contact-form-section {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: white;
-    }
-    
-    .contact-form-wrapper {
-      max-width: 600px;
-      margin: 0 auto;
-      text-align: center;
-    }
-    
-    .contact-form-wrapper h2 {
-      margin-bottom: 1rem;
-      font-size: 2rem;
-    }
-    
-    .contact-form-wrapper p {
-      margin-bottom: 2rem;
-      opacity: 0.9;
-    }
-    
-    .simple-contact-form {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-    }
-    
-    .form-group {
-      text-align: left;
-    }
-    
-    .form-group label {
-      display: block;
-      margin-bottom: 0.5rem;
-      font-weight: 500;
-    }
-    
-    .form-group input,
-    .form-group textarea {
-      width: 100%;
-      padding: 12px 16px;
-      border: 2px solid rgba(255,255,255,0.2);
-      border-radius: 8px;
-      background: rgba(255,255,255,0.1);
-      color: white;
-      font-size: 16px;
-      transition: all 0.3s ease;
-    }
-    
-    .form-group input::placeholder,
-    .form-group textarea::placeholder {
-      color: rgba(255,255,255,0.7);
-    }
-    
-    .form-group input:focus,
-    .form-group textarea:focus {
-      outline: none;
-      border-color: rgba(255,255,255,0.5);
-      background: rgba(255,255,255,0.15);
-    }
-    
-    .simple-contact-form .btn {
-      margin-top: 1rem;
-      padding: 15px 30px;
-      font-size: 18px;
-      font-weight: 600;
-      background: #10b981;
-      border: none;
-      border-radius: 8px;
-      color: white;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-    
-    .simple-contact-form .btn:hover {
-      background: #059669;
-      transform: translateY(-2px);
-    }
-    
-    @media (max-width: 768px) {
-      .contact-form-wrapper h2 {
-        font-size: 1.5rem;
-      }
-      
-      .form-group input,
-      .form-group textarea {
-        font-size: 16px; /* Предотвращает зум на iOS */
-      }
-    }
-  
-    /* Стили для заголовков услуг */
-    section h2 {
-        font-size: 2rem;
-        font-weight: 700;
-        color: #1a1a1a;
-        margin-bottom: 1.5rem;
-        line-height: 1.3;
-    }
-    </style>
+                <!-- 10-тонник -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-header">
+                        <div class="service-icon">🚚</div>
+                        <h3>10-тонник</h3>
+                        <p>До 10 тонн • До 60 м³</p>
+                    </div>
+                    <div class="service-content">
+                        <ul class="service-features">
+                            <li>Оптовые поставки</li>
+                            <li>Контейнерные перевозки</li>
+                            <li>Доставка по России</li>
+                            <li>Тентованные и изотермы</li>
+                            <li>Страхование груза</li>
+                        </ul>
+                        <div class="service-price">от 10 000 ₽</div>
+                        <div class="service-cta">
+                            <a href="#order-form" class="btn btn-primary">Заказать 10-тонник</a>
+                        </div>
+                    </div>
+                </div>
 
-  <!-- ЕДИНЫЕ JS МОДУЛИ ДЛЯ ВСЕХ СТРАНИЦ -->
+                <!-- 20-тонник (фура) -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="service-header">
+                        <div class="service-icon">🚛</div>
+                        <h3>Фура 20 тонн</h3>
+                        <p>До 20 тонн • До 96 м³</p>
+                    </div>
+                    <div class="service-content">
+                        <ul class="service-features">
+                            <li>Междугородние перевозки</li>
+                            <li>FTL (полная загрузка)</li>
+                            <li>Доставка по всей России</li>
+                            <li>Еврофуры и рефы</li>
+                            <li>Таможенное оформление</li>
+                        </ul>
+                        <div class="service-price">от 15 000 ₽</div>
+                        <div class="service-cta">
+                            <a href="#order-form" class="btn btn-primary">Заказать фуру</a>
+                        </div>
+                    </div>
+                </div>
 
-  
-  <script src="assets/js/main.js?v=107" defer></script>
-  
-  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js" defer></script>
-  <script>AOS.init({ once:true, duration:600 });</script>
-    <script src="assets/js/smart-calculator-v2.min.js?v=1754549859" defer></script>
-    
-    
-    <!-- Плавающие кнопки -->
-<div class="float-buttons">
-    <a href="tel:+79162720932" class="float-btn phone-btn">
-        <i class="fas fa-phone-alt"></i>
-        <span class="tooltip">Позвонить сейчас</span>
-    </a>
-    <a href="https://wa.me/79162720932?text=Здравствуйте! Интересует расчет стоимости грузоперевозки" class="float-btn whatsapp-btn" target="_blank">
-        <i class="fab fa-whatsapp"></i>
-        <span class="tooltip">WhatsApp</span>
-    </a>
-    <a href="https://t.me/avtogost77_bot" class="float-btn telegram-btn" target="_blank">
-        <i class="fab fa-telegram-plane"></i>
-        <span class="tooltip">Telegram бот</span>
-    </a>
-</div>
+                <!-- Манипулятор -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="service-header">
+                        <div class="service-icon">🏗️</div>
+                        <h3>Манипулятор</h3>
+                        <p>Кран + борт</p>
+                    </div>
+                    <div class="service-content">
+                        <ul class="service-features">
+                            <li>Погрузка/разгрузка</li>
+                            <li>Перевозка контейнеров</li>
+                            <li>Доставка бытовок</li>
+                            <li>Монтаж конструкций</li>
+                            <li>Грузоподъемность до 10т</li>
+                        </ul>
+                        <div class="service-price">от 8 000 ₽</div>
+                        <div class="service-cta">
+                            <a href="#order-form" class="btn btn-primary">Заказать манипулятор</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<!-- Отслеживание кликов -->
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-    // Телефон
-    document.querySelectorAll("a[href^="tel:"]").forEach(link => {
-        link.addEventListener("click", () => {
-            if (typeof ym !== "undefined") {
-                ym(103413788, "reachGoal", "phone_click", {
-                    from: window.location.pathname
+    <!-- Специальные услуги -->
+    <section class="section" style="background: #f8f9fa;">
+        <div class="container">
+            <h2 class="text-center mb-5" data-aos="fade-up">Специальные услуги</h2>
+            
+            <div class="services-grid">
+                <!-- Экспресс-доставка -->
+                <div class="service-card" data-aos="fade-up">
+                    <div class="service-header">
+                        <div class="service-icon">⚡</div>
+                        <h3>Экспресс-доставка</h3>
+                        <p>Срочно за 2-4 часа</p>
+                    </div>
+                    <div class="service-content">
+                        <ul class="service-features">
+                            <li>Подача за 2 часа</li>
+                            <li>Прямой маршрут</li>
+                            <li>Приоритетная обработка</li>
+                            <li>24/7 без выходных</li>
+                            <li>GPS-трекинг</li>
+                        </ul>
+                        <div class="service-price">+50% к тарифу</div>
+                        <div class="service-cta">
+                            <a href="#order-form" class="btn btn-danger">Срочный заказ</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Сборные грузы -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-header">
+                        <div class="service-icon">📦</div>
+                        <h3>Сборные грузы</h3>
+                        <p>От 1 коробки</p>
+                    </div>
+                    <div class="service-content">
+                        <ul class="service-features">
+                            <li>Экономия до 70%</li>
+                            <li>От 100 кг</li>
+                            <li>Консолидация на складе</li>
+                            <li>Регулярные отправки</li>
+                            <li>Отслеживание онлайн</li>
+                        </ul>
+                        <div class="service-price">от 15 ₽/кг</div>
+                        <div class="service-cta">
+                            <a href="#order-form" class="btn btn-primary">Рассчитать</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Переезды -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-header">
+                        <div class="service-icon">🏠</div>
+                        <h3>Переезды</h3>
+                        <p>Квартиры и офисы</p>
+                    </div>
+                    <div class="service-content">
+                        <ul class="service-features">
+                            <li>Упаковка вещей</li>
+                            <li>Грузчики в комплекте</li>
+                            <li>Сборка/разборка мебели</li>
+                            <li>Бережная перевозка</li>
+                            <li>Вывоз мусора</li>
+                        </ul>
+                        <div class="service-price">от 6 000 ₽</div>
+                        <div class="service-cta">
+                            <a href="#order-form" class="btn btn-primary">Заказать переезд</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Форма заказа -->
+    <section class="order-section" id="order-form">
+        <div class="container">
+            <div class="order-form-container">
+                <div class="form-header">
+                    <h2>Заказать грузоперевозку</h2>
+                    <p>Заполните форму - перезвоним через 5 минут с готовым расчетом</p>
+                </div>
+                
+                <form id="serviceOrderForm" class="order-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="transport">Тип транспорта *</label>
+                            <select id="transport" name="transport" required>
+                                <option value="">Выберите транспорт</option>
+                                <option value="gazelle">Газель (до 1.5т)</option>
+                                <option value="3ton">3-тонник</option>
+                                <option value="5ton">5-тонник</option>
+                                <option value="10ton">10-тонник</option>
+                                <option value="20ton">Фура 20т</option>
+                                <option value="manipulator">Манипулятор</option>
+                                <option value="other">Другой</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="service">Услуга *</label>
+                            <select id="service" name="service" required>
+                                <option value="">Выберите услугу</option>
+                                <option value="city">По городу</option>
+                                <option value="intercity">Межгород</option>
+                                <option value="express">Экспресс-доставка</option>
+                                <option value="moving">Переезд</option>
+                                <option value="regular">Регулярные перевозки</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="from">Откуда *</label>
+                            <input type="text" id="from" name="from" placeholder="Город, улица" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="to">Куда *</label>
+                            <input type="text" id="to" name="to" placeholder="Город, улица" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="weight">Вес груза</label>
+                            <input type="text" id="weight" name="weight" placeholder="Например: 500 кг">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="volume">Объем груза</label>
+                            <input type="text" id="volume" name="volume" placeholder="Например: 10 м³">
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Ваше имя *</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Телефон *</label>
+                            <input type="tel" id="phone" name="phone" placeholder="+7 (___) ___-__-__" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="comment">Комментарий к заказу</label>
+                        <textarea id="comment" name="comment" rows="3" placeholder="Особенности груза, пожелания по времени..."></textarea>
+                    </div>
+                    
+                    <div class="form-submit">
+                        <button type="submit" class="btn-submit">
+                            <i class="bi bi-send"></i> Отправить заявку
+                        </button>
+                        <p style="margin-top: 15px; color: #666;">
+                            Нажимая кнопку, вы соглашаетесь с <a href="privacy.html">обработкой персональных данных</a>
+                        </p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq-section">
+        <div class="container">
+            <h2 class="text-center mb-5">Часто задаваемые вопросы</h2>
+            
+            <div class="faq-container" style="max-width: 800px; margin: 0 auto;">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Как быстро вы подаете транспорт?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>В Москве и области - от 2 часов. По России - в течение суток. Для экспресс-заказов гарантируем подачу за 2 часа в пределах МКАД.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Какие документы нужны для заказа?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Для физлиц - только телефон. Для организаций - реквизиты компании. Все документы оформляем сами: договор, накладные, акты.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Есть ли страхование груза?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Да, все грузы застрахованы. Базовая страховка включена в стоимость. Для ценных грузов можем оформить дополнительное страхование.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Работаете ли вы в выходные?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Да, работаем 24/7 без выходных и праздников. Диспетчерская служба всегда на связи. Ночные и праздничные тарифы согласовываются индивидуально.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA секция -->
+    <section class="cta-section" style="background: #2c5aa0; color: white; padding: 60px 0;">
+        <div class="container text-center">
+            <h2 style="color: white; margin-bottom: 20px;">Нужна консультация?</h2>
+            <p style="font-size: 20px; margin-bottom: 30px;">
+                Позвоните нам или напишите в мессенджер - ответим на все вопросы!
+            </p>
+            <div class="cta-buttons">
+                <a href="tel:+79162720932" class="btn btn-light btn-lg" style="margin: 10px;">
+                    <i class="bi bi-telephone"></i> +7 (916) 272-09-32
+                </a>
+                <a href="https://wa.me/79162720932" class="btn btn-success btn-lg" style="margin: 10px;">
+                    <i class="bi bi-whatsapp"></i> WhatsApp
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Услуги</h3>
+                    <ul>
+                        <li><a href="#order-form">Газель</a></li>
+                        <li><a href="#order-form">Фура</a></li>
+                        <li><a href="#order-form">Манипулятор</a></li>
+                        <li><a href="#order-form">Экспресс-доставка</a></li>
+                        <li><a href="#order-form">Переезды</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Информация</h3>
+                    <ul>
+                        <li><a href="about.html">О компании</a></li>
+                        <li><a href="faq.html">Вопросы и ответы</a></li>
+                        <li><a href="contact.html">Контакты</a></li>
+                        <li><a href="privacy.html">Политика конфиденциальности</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Контакты</h3>
+                    <p><strong>Телефон:</strong> +7 (916) 272-09-32</p>
+                    <p><strong>Email:</strong> avtogost77@gmail.com</p>
+                    <p><strong>Режим работы:</strong> 24/7</p>
+                    <div class="social-links">
+                        <a href="https://wa.me/79162720932" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+                        <a href="https://t.me/avtogost77" aria-label="Telegram"><i class="bi bi-telegram"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 АвтоГОСТ. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Скрипты -->
+    <script src="assets/js/main.js?v=1754549859" defer></script>
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        // Инициализация AOS
+        document.addEventListener('DOMContentLoaded', function() {
+            AOS.init({ 
+                once: true, 
+                duration: 600 
+            });
+            
+            // FAQ аккордеон
+            const faqItems = document.querySelectorAll('.faq-item');
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                question.addEventListener('click', () => {
+                    item.classList.toggle('active');
+                });
+            });
+            
+            // Обработка формы
+            const form = document.getElementById('serviceOrderForm');
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Собираем данные
+                    const formData = new FormData(form);
+                    const data = Object.fromEntries(formData);
+                    
+                    // Здесь отправка формы
+                    console.log('Заявка на услугу:', data);
+                    
+                    // Показываем успех
+                    alert('Спасибо за заявку! Мы перезвоним в течение 5 минут.');
+                    form.reset();
                 });
             }
         });
-    });
-    
-    // WhatsApp
-    document.querySelectorAll("a[href*="wa.me"]").forEach(link => {
-        link.addEventListener("click", () => {
-            if (typeof ym !== "undefined") {
-                ym(103413788, "reachGoal", "whatsapp_click", {
-                    from: window.location.pathname
-                });
-            }
-        });
-    });
-});
-</script>
-    <script src="/assets/js/lazy-loading.min.js" defer></script>
-    <script src="assets/js/form-handler.js?v=107" defer></script>
-    <script src="assets/js/cities-simple.js?v=107" defer></script>
+    </script>
 </body>
 </html>
