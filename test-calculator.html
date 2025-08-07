@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Тест калькулятора - все зоны и транспорт</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .test-section { margin: 20px 0; padding: 20px; border: 1px solid #ddd; }
+        .test-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        .test-card { background: #f5f5f5; padding: 15px; border-radius: 8px; }
+        .price { font-size: 24px; color: #2563eb; font-weight: bold; }
+        .details { color: #666; font-size: 14px; }
+        h3 { margin-top: 0; }
+    </style>
+</head>
+<body>
+    <h1>Тестовые расчеты калькулятора</h1>
+    
+    <div class="test-section">
+        <h2>Параметры тестового груза:</h2>
+        <ul>
+            <li>Вес: <strong>500 кг</strong></li>
+            <li>Объем: <strong>5 м³</strong></li>
+            <li>Тип: <strong>Обычный груз (не сборный)</strong></li>
+        </ul>
+    </div>
+
+    <div id="testResults"></div>
+
+    <script>
+        // Тестовые маршруты для всех зон
+        const testRoutes = [
+            // Городская зона (до 70км)
+            { from: 'Москва', to: 'Химки', distance: 30, zone: 'Городская (до 70км)' },
+            
+            // Переходная зона (70-200км)
+            { from: 'Москва', to: 'Тула', distance: 180, zone: 'Переходная (70-200км)' },
+            
+            // Ближний межрегион (200-300км)
+            { from: 'Москва', to: 'Ярославль', distance: 250, zone: 'Ближний (200-300км)' },
+            
+            // Средний межрегион (300-500км)
+            { from: 'Москва', to: 'Воронеж', distance: 450, zone: 'Средний (300-500км)' },
+            
+            // Дальний межрегион (500-800км)
+            { from: 'Москва', to: 'Казань', distance: 700, zone: 'Дальний (500-800км)' },
+            
+            // Дальнобойный (800км+)
+            { from: 'Москва', to: 'Екатеринбург', distance: 1400, zone: 'Дальнобойный (800км+)' }
+        ];
+
+        // Типы транспорта
+        const transportTypes = ['gazelle', 'threeTon', 'fiveTon', 'tenTon', 'truck'];
+        const transportNames = {
+            gazelle: 'Газель',
+            threeTon: '3-тонник',
+            fiveTon: '5-тонник',
+            tenTon: '10-тонник',
+            truck: 'Фура 20т'
+        };
+
+        async function runTests() {
+            const resultsDiv = document.getElementById('testResults');
+            resultsDiv.innerHTML = '<h2>Загружаем калькулятор...</h2>';
+
+            // Ждем загрузки калькулятора
+            await new Promise(resolve => {
+                const checkInterval = setInterval(() => {
+                    if (window.smartCalculatorV2) {
+                        clearInterval(checkInterval);
+                        resolve();
+                    }
+                }, 100);
+            });
+
+            resultsDiv.innerHTML = '';
+
+            // Для каждой зоны
+            for (const route of testRoutes) {
+                const sectionDiv = document.createElement('div');
+                sectionDiv.className = 'test-section';
+                sectionDiv.innerHTML = `<h2>${route.zone}</h2><p class="details">${route.from} → ${route.to} (${route.distance} км)</p>`;
+                
+                const gridDiv = document.createElement('div');
+                gridDiv.className = 'test-grid';
+
+                // Для каждого типа транспорта
+                for (const transport of transportTypes) {
+                    // Временно меняем функцию выбора транспорта чтобы форсировать нужный
+                    const originalSelect = window.smartCalculatorV2.selectOptimalTransport;
+                    window.smartCalculatorV2.selectOptimalTransport = () => transport;
+
+                    try {
+                        const result = await window.smartCalculatorV2.calculatePrice(
+                            route.from,
+                            route.to,
+                            500,  // вес
+                            5,    // объем
+                            'general'
+                        );
+
+                        const card = document.createElement('div');
+                        card.className = 'test-card';
+                        card.innerHTML = `
+                            <h3>${transportNames[transport]}</h3>
+                            <div class="price">${result.price ? result.price.toLocaleString() : 'Ошибка'} ₽</div>
+                            <div class="details">
+                                ${result.pricePerKm ? `${result.pricePerKm} ₽/км` : ''}
+                                <br>${result.deliveryTime || ''}
+                            </div>
+                        `;
+                        gridDiv.appendChild(card);
+                    } catch (error) {
+                        console.error('Ошибка расчета:', error);
+                    }
+
+                    // Восстанавливаем оригинальную функцию
+                    window.smartCalculatorV2.selectOptimalTransport = originalSelect;
+                }
+
+                sectionDiv.appendChild(gridDiv);
+                resultsDiv.appendChild(sectionDiv);
+            }
+        }
+
+        // Загружаем калькулятор
+        const script = document.createElement('script');
+        script.src = 'assets/js/smart-calculator-v2.min.js?v=' + Date.now();
+        script.onload = () => {
+            // Загружаем зависимости
+            const distanceScript = document.createElement('script');
+            distanceScript.src = 'assets/js/distance-api.js';
+            distanceScript.onload = () => {
+                const citiesScript = document.createElement('script');
+                citiesScript.src = 'assets/js/cities-simple.js';
+                citiesScript.onload = () => {
+                    setTimeout(runTests, 500);
+                };
+                document.head.appendChild(citiesScript);
+            };
+            document.head.appendChild(distanceScript);
+        };
+        document.head.appendChild(script);
+    </script>
+</body>
+</html>
