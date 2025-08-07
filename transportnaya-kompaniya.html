@@ -89,16 +89,7 @@
         "url": "https://avtogost77.ru/",
         "availability": "https://schema.org/InStock"
       },
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "Отслеживание груза транспортной компании",
-          "description": "Онлайн отслеживание груза 24/7 по номеру накладной"
-        },
-        "url": "https://avtogost77.ru/",
-        "availability": "https://schema.org/InStock"
-      },
+
       {
         "@type": "Offer",
         "itemOffered": {
@@ -471,7 +462,7 @@
                         <h4>Быстрые ссылки</h4>
                         <ul>
                             <li><a href="#calculator">Рассчитать доставку</a></li>
-                            <li><a href="/track.html">Отслеживание груза</a></li>
+    
                             <li><a href="#services">Наши услуги</a></li>
                             <li><a href="#reviews">Отзывы клиентов</a></li>
                         </ul>
@@ -550,82 +541,82 @@
         </div>
     </section>
 
-    <!-- Отслеживание груза -->
-    <section class="tracking-section">
-        <div class="container">
-            <h2>Отслеживание груза транспортная компания</h2>
-            <p class="section-subtitle">Отследите ваш груз по номеру транспортной компании онлайн</p>
-            
-            <div class="tracking-form">
-                <form id="trackingForm">
-                    <div class="form-group">
-                        <label for="trackingNumber">Номер транспортной компании для отслеживания:</label>
-                        <input type="text" id="trackingNumber" placeholder="Например: АГ-2024-123456" required>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Отследить груз</button>
-                </form>
-                
-                <div class="tracking-info">
-                    <p><strong>Номер транспортной компании</strong> указан в транспортной накладной, которую вы получили при оформлении заказа.</p>
-                    <p>Также вы можете отслеживать номер транспортной компании через SMS или в личном кабинете.</p>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- Калькулятор -->
     <section id="calculator" class="calculator-section">
         <div class="container">
-            <h2>Транспортная компания рассчитать стоимость</h2>
-            <p class="section-subtitle">Узнайте стоимость транспортной компании за 30 секунд</p>
+            <h2>Рассчитать стоимость перевозки</h2>
+            <p class="section-subtitle">Точный расчет за 30 секунд с учетом всех факторов</p>
             
-            <div class="calculator-container">
-                <form id="transportCalculator">
-                    <div class="calc-row">
-                        <div class="calc-field">
-                            <label>Откуда (город)</label>
-                            <input type="text" name="from" placeholder="Например: Москва" required>
+            <div class="calculator-form-wrapper">
+                <form id="smartCalculatorForm" class="calculator-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="cityFrom">
+                                <i class="icon">📍</i> Откуда
+                            </label>
+                            <input type="text" 
+                                   id="cityFrom" 
+                                   name="from" 
+                                   class="form-control city-input" 
+                                   placeholder="Москва" 
+                                   required 
+                                   autocomplete="off">
+                            <div class="city-suggestions" id="suggestionsFrom"></div>
                         </div>
-                        <div class="calc-field">
-                            <label>Куда (город)</label>
-                            <input type="text" name="to" placeholder="Например: Санкт-Петербург" required>
-                        </div>
-                    </div>
-                    
-                    <div class="calc-row">
-                        <div class="calc-field">
-                            <label>Вес груза (кг)</label>
-                            <input type="number" name="weight" placeholder="100" min="1" required>
-                        </div>
-                        <div class="calc-field">
-                            <label>Объем (м³)</label>
-                            <input type="number" name="volume" placeholder="0.5" step="0.1" min="0.1">
-                        </div>
-                    </div>
-                    
-                    <div class="calc-row">
-                        <div class="calc-field full-width">
-                            <label>Тип груза</label>
-                            <select name="cargo-type">
-                                <option>Обычный груз</option>
-                                <option>Хрупкий груз</option>
-                                <option>Ценный груз</option>
-                                <option>Негабаритный груз</option>
-                            </select>
+                        
+                        <div class="form-group">
+                            <label for="cityTo">
+                                <i class="icon">📍</i> Куда
+                            </label>
+                            <input type="text" 
+                                   id="cityTo" 
+                                   name="to" 
+                                   class="form-control city-input" 
+                                   placeholder="Санкт-Петербург" 
+                                   required 
+                                   autocomplete="off">
+                            <div class="city-suggestions" id="suggestionsTo"></div>
                         </div>
                     </div>
                     
-                    <button type="submit" class="btn btn-primary btn-large">Рассчитать стоимость</button>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="cargoWeight">
+                                <i class="icon">⚖️</i> Вес груза (кг)
+                            </label>
+                            <input type="number" 
+                                   id="cargoWeight" 
+                                   name="weight" 
+                                   class="form-control" 
+                                   placeholder="500" 
+                                   min="1" 
+                                   max="20000" 
+                                   required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="cargoVolume">
+                                <i class="icon">📦</i> Объем (м³) 
+                                <span class="optional">необязательно</span>
+                            </label>
+                            <input type="number" 
+                                   id="cargoVolume" 
+                                   name="volume" 
+                                   class="form-control" 
+                                   placeholder="5" 
+                                   min="0.1" 
+                                   max="120" 
+                                   step="0.1">
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary btn-calculate">
+                        <i class="icon">💰</i> Рассчитать стоимость
+                    </button>
                 </form>
                 
-                <div class="calc-result" id="calcResult" style="display: none;">
-                    <h3>Предварительная стоимость:</h3>
-                    <div class="price-display">
-                        <span class="price-value">от 3,500 ₽</span>
-                        <span class="price-note">Точную стоимость уточнит менеджер</span>
-                    </div>
-                    <button class="btn btn-success" onclick="openOrderModal()">Оформить заказ</button>
-                </div>
+                <div id="calculatorResult" class="calculator-result" style="display: none;"></div>
             </div>
         </div>
     </section>
@@ -656,8 +647,8 @@
                 
                 <div class="advantage">
                     <div class="advantage-icon">📱</div>
-                    <h3>Отслеживание 24/7</h3>
-                    <p>Отслеживание груза транспортной компании по номеру в режиме реального времени.</p>
+                    <h3>Связь 24/7</h3>
+                    <p>Всегда на связи. Оперативно решаем любые вопросы по вашему грузу.</p>
                 </div>
                 
                 <div class="advantage">
@@ -763,21 +754,10 @@
     </footer>
 
     <!-- Scripts -->
-    <script src="assets/js/main.js" defer></script>
-    <script>
-        // Простая логика для калькулятора
-        document.getElementById('transportCalculator').addEventListener('submit', function(e) {
-            e.preventDefault();
-            document.getElementById('calcResult').style.display = 'block';
-            this.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        });
-
-        // Трекинг
-        document.getElementById('trackingForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Информация о грузе ' + document.getElementById('trackingNumber').value + ' будет отображена в личном кабинете');
-        });
-    </script>
+    <script src="assets/js/cities-simple.js?v=1754549859" defer></script>
+    <script src="assets/js/smart-calculator-v2.min.js?v=1754549859" defer></script>
+    <script src="assets/js/form-handler.js?v=1754549859" defer></script>
+    <script src="assets/js/main.js?v=1754549859" defer></script>
     <script src="/assets/js/lazy-loading.min.js" defer></script>
 </body>
 </html>
