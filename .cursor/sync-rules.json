@@ -1,0 +1,103 @@
+{
+  "syncRules": {
+    "include": [
+      "**/*.html",
+      "**/*.css",
+      "**/*.js",
+      "**/*.json",
+      "**/*.xml",
+      "**/*.yml",
+      "**/*.md",
+      "**/*.sh",
+      "**/*.py",
+      ".cursor/**",
+      ".htaccess",
+      "robots.txt",
+      "manifest.json"
+    ],
+    "exclude": [
+      ".git/**",
+      "node_modules/**",
+      "*.log",
+      "*.tmp",
+      "*.cache",
+      "*.lock",
+      ".DS_Store",
+      "Thumbs.db",
+      "desktop.ini",
+      "*.zip",
+      "*.tar.gz",
+      "*.rar",
+      "avtogost-deploy-*/**",
+      "avtogost-clean-deploy-*.zip",
+      "backup-*",
+      "temp-*/**",
+      ".cursor/cache/**",
+      ".cursor/logs/**"
+    ],
+    "sizeLimits": {
+      "maxFileSize": 10485760,
+      "warnFileSize": 5242880,
+      "totalSyncLimit": 104857600
+    },
+    "conflictHandling": {
+      "strategy": "latest-wins",
+      "backupConflicts": true,
+      "conflictBackupDir": ".cursor/conflicts",
+      "mergeableTypes": [
+        "*.md",
+        "*.txt",
+        "*.json",
+        "*.yml",
+        "*.xml"
+      ]
+    },
+    "syncTriggers": {
+      "immediate": [
+        "*.html",
+        "*.css",
+        "*.js",
+        ".cursor/config.json"
+      ],
+      "debounced": {
+        "delay": 1000,
+        "patterns": [
+          "*.md",
+          "*.txt",
+          "*.sh",
+          "*.py"
+        ]
+      },
+      "periodic": {
+        "interval": 300000,
+        "patterns": [
+          "*.xml",
+          "*.yml",
+          "*.json"
+        ]
+      }
+    },
+    "specialHandling": {
+      "largeFiles": {
+        "compress": true,
+        "chunkSize": 524288,
+        "patterns": [
+          "*.html",
+          "*.xml"
+        ]
+      },
+      "binaryFiles": {
+        "skip": true,
+        "patterns": [
+          "*.png",
+          "*.jpg",
+          "*.jpeg",
+          "*.gif",
+          "*.webp",
+          "*.svg",
+          "*.ico"
+        ]
+      }
+    }
+  }
+}

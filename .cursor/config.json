@@ -1,0 +1,87 @@
+{
+  "version": "1.0.0",
+  "sync": {
+    "enabled": true,
+    "mode": "bidirectional",
+    "autoSync": true,
+    "syncInterval": 30,
+    "conflictResolution": "latest-wins",
+    "syncOnSave": true,
+    "syncOnOpen": true
+  },
+  "backgroundAgents": {
+    "enabled": true,
+    "maxConcurrent": 3,
+    "retryAttempts": 3,
+    "retryDelay": 5000,
+    "timeout": 300000,
+    "agents": [
+      {
+        "name": "file-sync",
+        "enabled": true,
+        "priority": 1,
+        "trigger": ["file-change", "file-save"],
+        "excludePatterns": [
+          "*.log",
+          "*.tmp",
+          ".git/**",
+          "node_modules/**",
+          "*.zip",
+          "avtogost-deploy-*/**"
+        ]
+      },
+      {
+        "name": "settings-sync",
+        "enabled": true,
+        "priority": 2,
+        "trigger": ["settings-change"],
+        "syncItems": [
+          "workspace-settings",
+          "user-preferences",
+          "extensions",
+          "snippets",
+          "keybindings"
+        ]
+      },
+      {
+        "name": "history-sync",
+        "enabled": true,
+        "priority": 3,
+        "trigger": ["periodic"],
+        "interval": 60,
+        "syncItems": [
+          "command-history",
+          "search-history",
+          "recent-files"
+        ]
+      }
+    ]
+  },
+  "workspace": {
+    "syncState": true,
+    "syncOpenTabs": true,
+    "syncCursorPosition": true,
+    "syncSelection": true,
+    "syncFoldingState": true,
+    "syncBookmarks": true
+  },
+  "cloud": {
+    "provider": "cursor-cloud",
+    "autoConnect": true,
+    "compression": true,
+    "encryption": true,
+    "chunkSize": 1048576
+  },
+  "notifications": {
+    "syncStart": false,
+    "syncComplete": true,
+    "syncError": true,
+    "conflictDetected": true
+  },
+  "performance": {
+    "throttleSync": true,
+    "maxBandwidth": 5242880,
+    "batchSize": 50,
+    "deltaSync": true
+  }
+}
