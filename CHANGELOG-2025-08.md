@@ -16,4 +16,11 @@ Next steps
 - Add `BreadcrumbList` to `blog-1..4`.
 - Audit remaining pages for canonical consistency and click-tracking snippet.
 
+### Later on 2025-08-07
+
+- Added `BreadcrumbList` JSON‑LD to: `blog-1-carrier-failed.html`, `blog-2-wildberries-delivery.html`, `blog-3-spot-orders.html`, `blog-4-remote-logistics.html`.
+- Unified footer links to marketplace services:
+  - `blog-2-wildberries-delivery.html`: footer links now point to `dostavka-na-marketpleysy.html`.
+  - `blog-6-marketplace-insider.html`: footer links now point to `dostavka-na-marketpleysy.html`.
+
 
