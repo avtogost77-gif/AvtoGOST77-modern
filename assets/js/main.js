@@ -719,6 +719,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Сжимаем длинные секции на мобильных
     collapseLongSectionsOnMobile();
 
+    // Сокращаем таймлайн процесса на мобильных (показываем 3 шага)
+    collapseProcessStepsOnMobile();
+
     // Запускаем анимацию счетчика
     animateActiveUsers();
     
@@ -782,6 +785,31 @@ function collapseLongSectionsOnMobile() {
         });
     } catch (e) {
         console.warn('collapseLongSectionsOnMobile error', e);
+    }
+}
+
+// Сократить процесс до 3 шагов на мобильных
+function collapseProcessStepsOnMobile() {
+    try {
+        const isMobile = window.matchMedia('(max-width: 768px)').matches;
+        if (!isMobile) return;
+        const process = document.querySelector('.work-process .process-timeline');
+        if (!process) return;
+        const steps = Array.from(process.querySelectorAll('.process-step'));
+        if (steps.length <= 3) return;
+        // скрываем начиная с 4-го
+        steps.slice(3).forEach(step => step.style.display = 'none');
+        const expander = document.createElement('button');
+        expander.className = 'btn btn-outline btn-sm show-more';
+        expander.textContent = 'Показать все этапы';
+        expander.style.marginTop = '12px';
+        process.parentElement.appendChild(expander);
+        expander.addEventListener('click', function(){
+            steps.slice(3).forEach(step => step.style.display = '');
+            expander.remove();
+        });
+    } catch (e) {
+        console.warn('collapseProcessStepsOnMobile error', e);
     }
 }
 
