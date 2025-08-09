@@ -25,6 +25,7 @@ Next steps
 - Remote logistics article: added legal block (перевозка vs экспедирование) and contract "догмы".
 - How-to Gazelle article: added legal minimum and practical "догмы" для снижения ошибок/доплат.
 - New page: `legal-minimum.html` with concise legal checklists and CTA; added to `blog/index.html`.
+- Added priority door‑to‑door CTA banners to `blog-2`, `blog-3`, `blog-8`, `blog-9` (SLA + contacts).
 - Unified footer links to marketplace services:
   - `blog-2-wildberries-delivery.html`: footer links now point to `dostavka-na-marketpleysy.html`.
   - `blog-6-marketplace-insider.html`: footer links now point to `dostavka-na-marketpleysy.html`.
