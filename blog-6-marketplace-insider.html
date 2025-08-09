@@ -597,7 +597,7 @@
           <ul class="related-articles">
             <li><a href="blog-2-wildberries-delivery.html">Как начать поставки на Wildberries: пошаговая инструкция</a></li>
             <li><a href="blog-5-logistics-optimization.html">10 способов сэкономить на доставке товаров</a></li>
-            <li><a href="marketplace-delivery.html">Калькулятор доставки на маркетплейсы</a></li>
+            <li><a href="dostavka-na-marketpleysy.html">Калькулятор доставки на маркетплейсы</a></li>
           </ul>
         </div>
       </div>
@@ -651,28 +651,21 @@
 
 <!-- Отслеживание кликов -->
 <script>
-document.addEventListener("DOMContentLoaded", function() {
-    // Телефон
-    document.querySelectorAll("a[href^="tel:"]").forEach(link => {
-        link.addEventListener("click", () => {
-            if (typeof ym !== "undefined") {
-                ym(103413788, "reachGoal", "phone_click", {
-                    from: window.location.pathname
-                });
-            }
-        });
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('a[href^="tel:"]').forEach(function(link) {
+    link.addEventListener('click', function() {
+      if (typeof ym !== 'undefined') {
+        ym(103413788, 'reachGoal', 'phone_click', { from: window.location.pathname });
+      }
     });
-    
-    // WhatsApp
-    document.querySelectorAll("a[href*="wa.me"]").forEach(link => {
-        link.addEventListener("click", () => {
-            if (typeof ym !== "undefined") {
-                ym(103413788, "reachGoal", "whatsapp_click", {
-                    from: window.location.pathname
-                });
-            }
-        });
+  });
+  document.querySelectorAll('a[href*="wa.me"]').forEach(function(link) {
+    link.addEventListener('click', function() {
+      if (typeof ym !== 'undefined') {
+        ym(103413788, 'reachGoal', 'whatsapp_click', { from: window.location.pathname });
+      }
     });
+  });
 });
 </script>
     <script src="/assets/js/lazy-loading.min.js" defer></script>
