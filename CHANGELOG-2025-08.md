@@ -22,6 +22,9 @@ Next steps
 - Added `BreadcrumbList` JSON‑LD to: `blog-7-how-to-order-gazelle.html`, `blog-8-cargo-insurance.html`, `blog-9-dangerous-goods.html`, `blog-10-self-employed-logistics.html`.
 - Insurance article: added concise legal reference block (GК 796, 259‑FZ, PP 272/2011, CMR 17/23) with links note.
 - Dangerous goods article: added UN quick classifier, pre‑dispatch checklist, carrier verification, “don’t do” warnings, ADR reliefs (LQ/1000 points), and legal reference block; strengthened CTA to expert review.
+- Remote logistics article: added legal block (перевозка vs экспедирование) and contract "догмы".
+- How-to Gazelle article: added legal minimum and practical "догмы" для снижения ошибок/доплат.
+- New page: `legal-minimum.html` with concise legal checklists and CTA; added to `blog/index.html`.
 - Unified footer links to marketplace services:
   - `blog-2-wildberries-delivery.html`: footer links now point to `dostavka-na-marketpleysy.html`.
   - `blog-6-marketplace-insider.html`: footer links now point to `dostavka-na-marketpleysy.html`.
