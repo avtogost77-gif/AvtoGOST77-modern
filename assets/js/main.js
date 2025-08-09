@@ -716,6 +716,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Инициализация форм
     initForms();
 
+    // Сжимаем длинные секции на мобильных
+    collapseLongSectionsOnMobile();
+
     // Запускаем анимацию счетчика
     animateActiveUsers();
     
@@ -754,6 +757,34 @@ function initCalculator() {
         console.error('❌ Calculator initialization error:', error);
     }
 }
+// Сворачивание длинных секций на мобильных
+function collapseLongSectionsOnMobile() {
+    try {
+        const isMobile = window.matchMedia('(max-width: 768px)').matches;
+        if (!isMobile) return;
+        document.querySelectorAll('[data-collapse="mobile"]').forEach(function(section){
+            const maxHeight = 480; // px
+            const currentHeight = section.scrollHeight;
+            if (currentHeight > maxHeight) {
+                section.style.maxHeight = maxHeight + 'px';
+                section.style.overflow = 'hidden';
+                const expander = document.createElement('button');
+                expander.className = 'btn btn-outline btn-sm show-more';
+                expander.textContent = 'Показать больше';
+                expander.style.margin = '16px auto';
+                expander.onclick = function(){
+                    section.style.maxHeight = 'none';
+                    section.style.overflow = 'visible';
+                    expander.remove();
+                };
+                section.appendChild(expander);
+            }
+        });
+    } catch (e) {
+        console.warn('collapseLongSectionsOnMobile error', e);
+    }
+}
+
 
 // Инициализация форм
 function initForms() {
