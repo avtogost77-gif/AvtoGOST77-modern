@@ -20,6 +20,7 @@ Next steps
 
 - Added `BreadcrumbList` JSON‑LD to: `blog-1-carrier-failed.html`, `blog-2-wildberries-delivery.html`, `blog-3-spot-orders.html`, `blog-4-remote-logistics.html`.
 - Added `BreadcrumbList` JSON‑LD to: `blog-7-how-to-order-gazelle.html`, `blog-8-cargo-insurance.html`, `blog-9-dangerous-goods.html`, `blog-10-self-employed-logistics.html`.
+- Insurance article: added concise legal reference block (GК 796, 259‑FZ, PP 272/2011, CMR 17/23) with links note.
 - Unified footer links to marketplace services:
   - `blog-2-wildberries-delivery.html`: footer links now point to `dostavka-na-marketpleysy.html`.
   - `blog-6-marketplace-insider.html`: footer links now point to `dostavka-na-marketpleysy.html`.
