@@ -52,12 +52,7 @@
         "@type": "Country",
         "name": "Россия"
       },
-      "priceRange": "₽₽",
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.8",
-        "reviewCount": "1247"
-      }
+      "priceRange": "₽₽"
     }
     </script>
     
@@ -102,13 +97,7 @@
       }
     ]
   },
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "4.8",
-    "reviewCount": "127",
-    "bestRating": "5",
-    "worstRating": "1"
-  }
+  
 }
 </script>
     
@@ -230,13 +219,7 @@
       }
     ]
   },
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "4.8",
-    "reviewCount": "1247",
-    "bestRating": "5",
-    "worstRating": "1"
-  },
+  
   "review": [
     {
       "@type": "Review",
@@ -401,8 +384,31 @@
         </div>
     </section>
 
+    <!-- Быстрый выбор пути (компактный блок) -->
+    <section class="section" style="padding: 40px 0;">
+        <div class="container">
+            <div class="conversion-paths" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;">
+                <div class="conversion-card" style="background:#fff;border-radius:12px;box-shadow:0 2px 10px rgba(0,0,0,0.06);padding:20px;">
+                    <h3 style="margin-bottom:8px;">Кому подойдём</h3>
+                    <p style="color:#555;margin-bottom:12px;">E‑commerce, производство, розница, малый бизнес</p>
+                    <a href="#calculator" class="btn btn-primary btn-sm">Рассчитать</a>
+                </div>
+                <div class="conversion-card" style="background:#fff;border-radius:12px;box-shadow:0 2px 10px rgba(0,0,0,0.06);padding:20px;">
+                    <h3 style="margin-bottom:8px;">Когда подадим</h3>
+                    <p style="color:#555;margin-bottom:12px;">Москва и МО — от 2 часов, по РФ — от 3-4 часов</p>
+                    <a href="tel:+79162720932" class="btn btn-outline btn-sm">Позвонить</a>
+                </div>
+                <div class="conversion-card" style="background:#fff;border-radius:12px;box-shadow:0 2px 10px rgba(0,0,0,0.06);padding:20px;">
+                    <h3 style="margin-bottom:8px;">Сколько стоит</h3>
+                    <p style="color:#555;margin-bottom:12px;">Газель от 1500₽, фура от 45000₽, сборный от 15₽/кг</p>
+                    <a href="#calculator" class="btn btn-secondary btn-sm">Узнать цену</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- О транспортной компании -->
-    <section class="about-transport-company">
+    <section class="about-transport-company" data-collapse="mobile">
         <div class="container">
             <h2>Транспортная компания груз — доставляем всё!</h2>
             <div class="content-grid">
@@ -482,7 +488,7 @@
     </section>
 
     <!-- Услуги транспортной компании -->
-    <section id="services" class="transport-services">
+    <section id="services" class="transport-services" data-collapse="mobile">
         <div class="container">
             <h2>Транспортная компания перевозки — полный спектр услуг</h2>
             
@@ -615,7 +621,7 @@
     </section>
 
     <!-- Почему выбирают нас -->
-    <section id="why-us" class="why-us-section">
+    <section id="why-us" class="why-us-section" data-collapse="mobile">
         <div class="container">
             <h2>Почему выбирают транспортные компании России — Авто Гост</h2>
             
@@ -660,7 +666,7 @@
     </section>
 
     <!-- FAQ -->
-    <section class="faq-section">
+    <section class="faq-section" data-collapse="mobile">
         <div class="container">
             <h2>Частые вопросы о транспортной компании</h2>
             
@@ -684,6 +690,18 @@
                     <h3>Как отправить транспортной компанией посылку?</h3>
                     <p>Чтобы отправить посылку транспортной компанией: 1) Оформите заявку на сайте или по телефону 2) Мы заберем груз от вашей двери 3) Доставим получателю с уведомлением.</p>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Финальный CTA -->
+    <section class="section" style="background:linear-gradient(135deg,#1e293b 0%, #334155 100%);color:#fff;padding:48px 0;">
+        <div class="container" style="text-align:center;">
+            <h2 style="color:#fff;margin-bottom:8px;">Готовы, когда вы готовы</h2>
+            <p style="opacity:0.9;margin-bottom:20px;">Нажмите кнопку — мы возьмём логистику на себя. Вы — отдыхаете</p>
+            <div class="cta-actions" style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+                <a href="#calculator" class="btn btn-primary btn-lg">Рассчитать 30 сек</a>
+                <a href="tel:+79162720932" class="btn btn-outline btn-lg">Срочно: +7 916 272‑09‑32</a>
             </div>
         </div>
     </section>
@@ -827,5 +845,24 @@
     <script src="assets/js/form-handler.js?v=1754549859" defer></script>
     <script src="assets/js/main.js?v=1754549859" defer></script>
     <script src="/assets/js/lazy-loading.min.js" defer></script>
+  <script>
+  // CTA goals on Transport Company page
+  document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('a[href^="tel:"]').forEach(function(link){
+      link.addEventListener('click', function(){
+        if (typeof ym !== 'undefined') {
+          ym(103413788, 'reachGoal', 'phone_click', { from: 'transport-company' });
+        }
+      });
+    });
+    document.querySelectorAll('a[href*="wa.me"]').forEach(function(link){
+      link.addEventListener('click', function(){
+        if (typeof ym !== 'undefined') {
+          ym(103413788, 'reachGoal', 'whatsapp_click', { from: 'transport-company' });
+        }
+      });
+    });
+  });
+  </script>
 </body>
 </html>

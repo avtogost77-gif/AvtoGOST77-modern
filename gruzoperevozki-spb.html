@@ -162,7 +162,7 @@
     </section>
 
     <!-- О грузоперевозках в СПб -->
-    <section class="about-spb section">
+    <section class="about-spb section" data-collapse="mobile">
         <div class="container">
             <h2>Грузоперевозки в Санкт-Петербург — особенности и преимущества</h2>
             
@@ -235,7 +235,7 @@
     </section>
 
     <!-- Популярные маршруты -->
-    <section id="routes" class="routes section">
+    <section id="routes" class="routes section" data-collapse="mobile">
         <div class="container">
             <h2>Популярные направления грузоперевозок в СПб</h2>
             
@@ -284,7 +284,7 @@
     </section>
 
     <!-- Тарифы -->
-    <section class="pricing section">
+    <section class="pricing section" data-collapse="mobile">
         <div class="container">
             <h2>Стоимость грузоперевозок в Санкт-Петербург</h2>
             <p class="section-subtitle">Прозрачные цены без скрытых платежей</p>
@@ -334,7 +334,7 @@
     </section>
 
     <!-- Калькулятор -->
-    <section id="calculator" class="calculator-section section">
+    <section id="calculator" class="calculator-section section" data-collapse="mobile">
         <div class="container">
             <h2>Рассчитать стоимость грузоперевозки в СПб</h2>
             
@@ -389,7 +389,7 @@
     </section>
 
     <!-- Как мы работаем -->
-    <section class="how-we-work section">
+    <section class="how-we-work section" data-collapse="mobile">
         <div class="container">
             <h2>Как заказать грузоперевозку в Санкт-Петербург</h2>
             
@@ -422,7 +422,7 @@
     </section>
 
     <!-- FAQ -->
-    <section class="faq section">
+    <section class="faq section" data-collapse="mobile">
         <div class="container">
             <h2>Частые вопросы о грузоперевозках в СПб</h2>
             
@@ -456,7 +456,7 @@
     </section>
 
     <!-- Дополнительный контент для SEO -->
-    <section class="route-comparison section bg-light">
+    <section class="route-comparison section bg-light" data-collapse="mobile">
         <div class="container">
             <h2>Выбор маршрута: трасса М10 или платная М11</h2>
             
@@ -497,7 +497,7 @@
         </div>
     </section>
 
-    <section class="spb-districts section">
+    <section class="spb-districts section" data-collapse="mobile">
         <div class="container">
             <h2>Доставка грузов по районам Санкт-Петербурга</h2>
             
@@ -551,7 +551,7 @@
         </div>
     </section>
 
-    <section class="seasonal-info section bg-light">
+    <section class="seasonal-info section bg-light" data-collapse="mobile">
         <div class="container">
             <h2>Сезонные особенности грузоперевозок Москва-СПб</h2>
             
@@ -612,7 +612,7 @@
         </div>
     </section>
 
-    <section class="useful-tips section">
+    <section class="useful-tips section" data-collapse="mobile">
         <div class="container">
             <h2>Полезная информация для отправителей</h2>
             
@@ -715,5 +715,24 @@
 
     <script src="assets/js/main.min.js" defer></script>
     <script src="/assets/js/lazy-loading.min.js" defer></script>
+  <script>
+  // CTA goals on SPB page
+  document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('a[href^="tel:"]').forEach(function(link){
+      link.addEventListener('click', function(){
+        if (typeof ym !== 'undefined') {
+          ym(103413788, 'reachGoal', 'phone_click', { from: 'spb' });
+        }
+      });
+    });
+    document.querySelectorAll('a[href*="wa.me"]').forEach(function(link){
+      link.addEventListener('click', function(){
+        if (typeof ym !== 'undefined') {
+          ym(103413788, 'reachGoal', 'whatsapp_click', { from: 'spb' });
+        }
+      });
+    });
+  });
+  </script>
 </body>
 </html>
