@@ -353,8 +353,30 @@
         </div>
     </section>
 
+<!-- Быстрый выбор пути (компактный блок) -->
+<section class="section" style="padding: 40px 0;">
+    <div class="container">
+        <div class="conversion-paths" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;">
+            <div class="conversion-card" style="background:#fff;border-radius:12px;box-shadow:0 2px 10px rgba(0,0,0,0.06);padding:20px;">
+                <h3 style="margin-bottom:8px;">Кому подойдём</h3>
+                <p style="color:#555;margin-bottom:12px;">E‑commerce, производство, розница, малый бизнес</p>
+                <a href="#order-form" class="btn btn-primary btn-sm">Оформить заявку</a>
+            </div>
+            <div class="conversion-card" style="background:#fff;border-radius:12px;box-shadow:0 2px 10px rgba(0,0,0,0.06);padding:20px;">
+                <h3 style="margin-bottom:8px;">Когда подадим</h3>
+                <p style="color:#555;margin-bottom:12px;">Москва/МО — от 2 часов, регионы — в сутки</p>
+                <a href="tel:+79162720932" class="btn btn-outline btn-sm">Нужно срочно</a>
+            </div>
+            <div class="conversion-card" style="background:#fff;border-radius:12px;box-shadow:0 2px 10px rgba(0,0,0,0.06);padding:20px;">
+                <h3 style="margin-bottom:8px;">Сколько стоит</h3>
+                <p style="color:#555;margin-bottom:12px;">Газель от 3 000 ₽ • Фура от 15 000 ₽</p>
+                <a href="#order-form" class="btn btn-primary btn-sm">Получить расчёт</a>
+            </div>
+        </div>
+    </div>
+    </section>
     <!-- Основные услуги -->
-    <section class="section">
+    <section class="section" data-collapse="mobile">
         <div class="container">
             <h2 class="text-center mb-5" data-aos="fade-up">Наши услуги грузоперевозок</h2>
             
@@ -495,7 +517,7 @@
     </section>
 
     <!-- Специальные услуги -->
-    <section class="section" style="background: #f8f9fa;">
+    <section class="section" style="background: #f8f9fa;" data-collapse="mobile">
         <div class="container">
             <h2 class="text-center mb-5" data-aos="fade-up">Специальные услуги</h2>
             
@@ -570,7 +592,7 @@
     </section>
 
     <!-- Форма заказа -->
-    <section class="order-section" id="order-form">
+    <section class="order-section" id="order-form" data-collapse="mobile">
         <div class="container">
             <div class="order-form-container">
                 <div class="form-header">
@@ -662,7 +684,7 @@
     </section>
 
     <!-- FAQ -->
-    <section class="faq-section">
+    <section class="faq-section" data-collapse="mobile">
         <div class="container">
             <h2 class="text-center mb-5">Часто задаваемые вопросы</h2>
             
@@ -709,6 +731,18 @@
             </div>
         </div>
     </section>
+
+<!-- Финальный CTA -->
+<section class="section" style="background:linear-gradient(135deg,#1e293b 0%, #334155 100%);color:#fff;padding:48px 0;">
+    <div class="container" style="text-align:center;">
+        <h2 style="color:#fff;margin-bottom:8px;">Готовы, когда вы готовы</h2>
+        <p style="opacity:0.9;margin-bottom:20px;">Жмите кнопку — оформим заявку и подберём транспорт. Вы — занимаетесь делами</p>
+        <div class="cta-actions" style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+            <a href="#order-form" class="btn btn-primary btn-lg">Оформить заявку</a>
+            <a href="tel:+79162720932" class="btn btn-outline btn-lg">Срочно: +7 916 272‑09‑32</a>
+        </div>
+    </div>
+</section>
 
     <!-- CTA секция -->
     <section class="cta-section" style="background: #2c5aa0; color: white; padding: 60px 0;">
