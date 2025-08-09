@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="assets/css/styles-optimized.css">
   
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="canonical" href="https://avtogost77.ru/blog-2-wildberries-delivery.html">
 
 
 
@@ -600,7 +601,7 @@
           <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
             <a href="tel:+79162720932" class="btn btn-primary" style="background: white; color: #6f42c1;">📞 +7 916 272-09-32</a>
             <a href="https://wa.me/79162720932" class="btn" style="background: #25d366; color: white;">💬 WhatsApp</a>
-            <a href="marketplace-delivery.html" class="btn" style="background: transparent; border: 2px solid white; color: white;">📋 Все услуги</a>
+            <a href="dostavka-na-marketpleysy.html" class="btn" style="background: transparent; border: 2px solid white; color: white;">📋 Все услуги</a>
           </div>
           <p style="margin-top: 1rem; margin-bottom: 0;"><small>Консультация бесплатно. Работаем 24/7.</small></p>
         </div>
@@ -650,28 +651,21 @@
 
 <!-- Отслеживание кликов -->
 <script>
-document.addEventListener("DOMContentLoaded", function() {
-    // Телефон
-    document.querySelectorAll("a[href^="tel:"]").forEach(link => {
-        link.addEventListener("click", () => {
-            if (typeof ym !== "undefined") {
-                ym(103413788, "reachGoal", "phone_click", {
-                    from: window.location.pathname
-                });
-            }
-        });
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('a[href^="tel:"]').forEach(function(link) {
+    link.addEventListener('click', function() {
+      if (typeof ym !== 'undefined') {
+        ym(103413788, 'reachGoal', 'phone_click', { from: window.location.pathname });
+      }
     });
-    
-    // WhatsApp
-    document.querySelectorAll("a[href*="wa.me"]").forEach(link => {
-        link.addEventListener("click", () => {
-            if (typeof ym !== "undefined") {
-                ym(103413788, "reachGoal", "whatsapp_click", {
-                    from: window.location.pathname
-                });
-            }
-        });
+  });
+  document.querySelectorAll('a[href*="wa.me"]').forEach(function(link) {
+    link.addEventListener('click', function() {
+      if (typeof ym !== 'undefined') {
+        ym(103413788, 'reachGoal', 'whatsapp_click', { from: window.location.pathname });
+      }
     });
+  });
 });
 </script>
     <script src="/assets/js/lazy-loading.min.js" defer></script>
