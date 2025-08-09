@@ -24,6 +24,7 @@
   <link rel="stylesheet" href="assets/css/critical.css">
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="canonical" href="https://avtogost77.ru/blog-5-logistics-optimization.html">
   
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-EMQ3D0X8K7"></script>
@@ -107,6 +108,17 @@
     "value": 50
   },
   
+}
+</script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://avtogost77.ru/"},
+    {"@type": "ListItem", "position": 2, "name": "Блог", "item": "https://avtogost77.ru/blog/"},
+    {"@type": "ListItem", "position": 3, "name": "Оптимизация логистических затрат: 10 проверенных способов сэкономить до 30%", "item": "https://avtogost77.ru/blog-5-logistics-optimization.html"}
+  ]
 }
 </script>
     <script type="application/ld+json">
@@ -493,28 +505,21 @@
 
 <!-- Отслеживание кликов -->
 <script>
-document.addEventListener("DOMContentLoaded", function() {
-    // Телефон
-    document.querySelectorAll("a[href^="tel:"]").forEach(link => {
-        link.addEventListener("click", () => {
-            if (typeof ym !== "undefined") {
-                ym(103413788, "reachGoal", "phone_click", {
-                    from: window.location.pathname
-                });
-            }
-        });
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('a[href^="tel:"]').forEach(function(link) {
+    link.addEventListener('click', function() {
+      if (typeof ym !== 'undefined') {
+        ym(103413788, 'reachGoal', 'phone_click', { from: window.location.pathname });
+      }
     });
-    
-    // WhatsApp
-    document.querySelectorAll("a[href*="wa.me"]").forEach(link => {
-        link.addEventListener("click", () => {
-            if (typeof ym !== "undefined") {
-                ym(103413788, "reachGoal", "whatsapp_click", {
-                    from: window.location.pathname
-                });
-            }
-        });
+  });
+  document.querySelectorAll('a[href*="wa.me"]').forEach(function(link) {
+    link.addEventListener('click', function() {
+      if (typeof ym !== 'undefined') {
+        ym(103413788, 'reachGoal', 'whatsapp_click', { from: window.location.pathname });
+      }
     });
+  });
 });
 </script>
     <script src="/assets/js/lazy-loading.min.js" defer></script>
