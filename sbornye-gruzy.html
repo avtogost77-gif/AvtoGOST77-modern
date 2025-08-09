@@ -168,7 +168,7 @@
     </section>
 
     <!-- Что такое сборный груз -->
-    <section class="what-is-ltl section">
+    <section class="what-is-ltl section" data-collapse="mobile">
         <div class="container">
             <h2>Что такое сборный груз?</h2>
             <div class="content-grid">
@@ -211,7 +211,7 @@
     </section>
 
     <!-- Как работает доставка сборных грузов -->
-    <section id="how-it-works" class="how-it-works section">
+    <section id="how-it-works" class="how-it-works section" data-collapse="mobile">
         <div class="container">
             <h2>Как работает доставка сборных грузов</h2>
             <div class="process-steps">
@@ -240,7 +240,7 @@
     </section>
 
     <!-- Тарифы на сборные грузы -->
-    <section class="pricing section">
+    <section class="pricing section" data-collapse="mobile">
         <div class="container">
             <h2>Тарифы на перевозку сборных грузов</h2>
             <p class="section-subtitle">Прозрачные цены без скрытых платежей. Стоимость зависит от веса, объёма и направления</p>
@@ -298,7 +298,7 @@
     </section>
 
     <!-- Калькулятор -->
-    <section id="calculator" class="calculator-section section">
+    <section id="calculator" class="calculator-section section" data-collapse="mobile">
         <div class="container">
             <h2>Рассчитать стоимость сборного груза</h2>
             <div class="calculator">
@@ -342,7 +342,7 @@
     </section>
 
     <!-- Частые вопросы -->
-    <section class="faq section">
+    <section class="faq section" data-collapse="mobile">
         <div class="container">
             <h2>Частые вопросы о сборных грузах</h2>
             
@@ -400,7 +400,7 @@
     </section>
 
     <!-- Дополнительный контент для SEO -->
-    <section class="consolidation-process section bg-light">
+    <section class="consolidation-process section bg-light" data-collapse="mobile">
         <div class="container">
             <h2>Как формируются сборные грузы: прозрачность процесса</h2>
             
@@ -493,7 +493,7 @@
         </div>
     </section>
 
-    <section class="volume-weight section">
+    <section class="volume-weight section" data-collapse="mobile">
         <div class="container">
             <h2>Калькулятор объемного веса: считаем честно</h2>
             
@@ -556,7 +556,7 @@
         </div>
     </section>
 
-    <section class="small-business-benefits section bg-light">
+    <section class="small-business-benefits section bg-light" data-collapse="mobile">
         <div class="container">
             <h2>Сборные грузы для малого бизнеса: растите без лишних затрат</h2>
             
@@ -656,5 +656,32 @@
 
     <script src="assets/js/main.min.js" defer></script>
     <script src="/assets/js/lazy-loading.min.js" defer></script>
+    
+    <!-- Отслеживание кликов -->
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Телефон
+        document.querySelectorAll('a[href^="tel:"]').forEach(link => {
+            link.addEventListener("click", () => {
+                if (typeof ym !== "undefined") {
+                    ym(103413788, "reachGoal", "phone_click", {
+                        from: 'sbornye-gruzy'
+                    });
+                }
+            });
+        });
+        
+        // WhatsApp
+        document.querySelectorAll('a[href*="wa.me"]').forEach(link => {
+            link.addEventListener("click", () => {
+                if (typeof ym !== "undefined") {
+                    ym(103413788, "reachGoal", "whatsapp_click", {
+                        from: 'sbornye-gruzy'
+                    });
+                }
+            });
+        });
+    });
+    </script>
 </body>
 </html>

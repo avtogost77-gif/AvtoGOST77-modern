@@ -209,7 +209,7 @@
     </section>
 
     <!-- Быстрые контакты -->
-    <section class="quick-support">
+    <section class="quick-support" data-collapse="mobile">
         <div class="container">
             <div class="support-grid">
                 <div class="support-card urgent" data-aos="fade-up" data-aos-delay="100">
@@ -249,7 +249,7 @@
     </section>
 
     <!-- FAQ секция -->
-    <section class="faq-section">
+    <section class="faq-section" data-collapse="mobile">
         <div class="container">
             <h2 class="section-title" data-aos="fade-up">Часто задаваемые вопросы</h2>
             
@@ -379,7 +379,7 @@
     </section>
 
     <!-- Экстренная помощь -->
-    <section class="emergency-help">
+    <section class="emergency-help" data-collapse="mobile">
         <div class="container">
             <div class="emergency-card" data-aos="fade-up">
                 <div class="emergency-content">
@@ -504,5 +504,32 @@
     <script>AOS.init({ once:true, duration:600 });</script>
     <script src="/assets/js/lazy-loading.min.js" defer></script>
     <script src="assets/js/form-handler.js?v=107" defer></script>
+    
+    <!-- Отслеживание кликов -->
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Телефон
+        document.querySelectorAll('a[href^="tel:"]').forEach(link => {
+            link.addEventListener("click", () => {
+                if (typeof ym !== "undefined") {
+                    ym(103413788, "reachGoal", "phone_click", {
+                        from: 'help'
+                    });
+                }
+            });
+        });
+        
+        // WhatsApp
+        document.querySelectorAll('a[href*="wa.me"]').forEach(link => {
+            link.addEventListener("click", () => {
+                if (typeof ym !== "undefined") {
+                    ym(103413788, "reachGoal", "whatsapp_click", {
+                        from: 'help'
+                    });
+                }
+            });
+        });
+    });
+    </script>
 </body>
 </html>

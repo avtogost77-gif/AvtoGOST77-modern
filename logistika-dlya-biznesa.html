@@ -164,7 +164,7 @@
     </section>
 
     <!-- Для кого -->
-    <section class="for-whom section">
+    <section class="for-whom section" data-collapse="mobile">
         <div class="container">
             <h2>Кому подойдёт наша B2B логистика</h2>
             
@@ -239,7 +239,7 @@
     </section>
 
     <!-- Услуги B2B -->
-    <section id="services" class="b2b-services section">
+    <section id="services" class="b2b-services section" data-collapse="mobile">
         <div class="container">
             <h2>Комплексные решения для организации грузоперевозок</h2>
             
@@ -292,7 +292,7 @@
     </section>
 
     <!-- Преимущества для бизнеса -->
-    <section id="advantages" class="b2b-advantages section">
+    <section id="advantages" class="b2b-advantages section" data-collapse="mobile">
         <div class="container">
             <h2>Почему компании выбирают нашу B2B логистику</h2>
             
@@ -337,7 +337,7 @@
     </section>
 
     <!-- Кейсы -->
-    <section id="cases" class="case-studies section">
+    <section id="cases" class="case-studies section" data-collapse="mobile">
         <div class="container">
             <h2>Как мы помогаем бизнесу расти</h2>
             
@@ -379,7 +379,7 @@
     </section>
 
     <!-- Процесс работы -->
-    <section class="work-process section">
+    <section class="work-process section" data-collapse="mobile">
         <div class="container">
             <h2>Как начать работать с нами</h2>
             
@@ -412,7 +412,7 @@
     </section>
 
     <!-- Калькулятор B2B -->
-    <section id="calculator" class="calculator-b2b section">
+    <section id="calculator" class="calculator-b2b section" data-collapse="mobile">
         <div class="container">
             <h2>Рассчитайте стоимость корпоративной логистики</h2>
             
@@ -498,7 +498,7 @@
     </section>
 
     <!-- FAQ B2B -->
-    <section class="faq-b2b section">
+    <section class="faq-b2b section" data-collapse="mobile">
         <div class="container">
             <h2>Вопросы по корпоративной логистике</h2>
             
@@ -598,5 +598,32 @@
 
     <script src="assets/js/main.min.js" defer></script>
     <script src="/assets/js/lazy-loading.min.js" defer></script>
+    
+    <!-- Отслеживание кликов -->
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Телефон
+        document.querySelectorAll('a[href^="tel:"]').forEach(link => {
+            link.addEventListener("click", () => {
+                if (typeof ym !== "undefined") {
+                    ym(103413788, "reachGoal", "phone_click", {
+                        from: 'b2b'
+                    });
+                }
+            });
+        });
+        
+        // WhatsApp
+        document.querySelectorAll('a[href*="wa.me"]').forEach(link => {
+            link.addEventListener("click", () => {
+                if (typeof ym !== "undefined") {
+                    ym(103413788, "reachGoal", "whatsapp_click", {
+                        from: 'b2b'
+                    });
+                }
+            });
+        });
+    });
+    </script>
 </body>
 </html>

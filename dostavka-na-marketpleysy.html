@@ -145,7 +145,7 @@
     </section>
 
     <!-- Преимущества -->
-    <section class="advantages section">
+    <section class="advantages section" data-collapse="mobile">
         <div class="container">
             <h2>Почему выбирают нас для доставки на маркетплейсы</h2>
             
@@ -190,7 +190,7 @@
     </section>
 
     <!-- Список РЦ -->
-    <section id="rc-list" class="rc-list section">
+    <section id="rc-list" class="rc-list section" data-collapse="mobile">
         <div class="container">
             <h2>Доставляем на все склады и РЦ маркетплейсов</h2>
             
@@ -258,7 +258,7 @@
     </section>
 
     <!-- Процесс доставки -->
-    <section class="process section">
+    <section class="process section" data-collapse="mobile">
         <div class="container">
             <h2>Как происходит доставка на склад маркетплейса</h2>
             
@@ -291,7 +291,7 @@
     </section>
 
     <!-- Калькулятор -->
-    <section id="calculator" class="calculator-section section">
+    <section id="calculator" class="calculator-section section" data-collapse="mobile">
         <div class="container">
             <h2>Рассчитать стоимость доставки на маркетплейс</h2>
             
@@ -334,7 +334,7 @@
     </section>
 
     <!-- FAQ -->
-    <section class="faq section">
+    <section class="faq section" data-collapse="mobile">
         <div class="container">
             <h2>Частые вопросы о доставке на маркетплейсы</h2>
             
@@ -398,5 +398,32 @@
         </div>
     </footer>
     <script src="/assets/js/lazy-loading.min.js" defer></script>
+    
+    <!-- Отслеживание кликов -->
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Телефон
+        document.querySelectorAll('a[href^="tel:"]').forEach(link => {
+            link.addEventListener("click", () => {
+                if (typeof ym !== "undefined") {
+                    ym(103413788, "reachGoal", "phone_click", {
+                        from: 'marketplace'
+                    });
+                }
+            });
+        });
+        
+        // WhatsApp
+        document.querySelectorAll('a[href*="wa.me"]').forEach(link => {
+            link.addEventListener("click", () => {
+                if (typeof ym !== "undefined") {
+                    ym(103413788, "reachGoal", "whatsapp_click", {
+                        from: 'marketplace'
+                    });
+                }
+            });
+        });
+    });
+    </script>
 </body>
 </html>

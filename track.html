@@ -309,7 +309,7 @@
     </section>
 
     <!-- Основной контент -->
-    <section class="tracking-coming-soon">
+    <section class="tracking-coming-soon" data-collapse="mobile">
         <div class="container">
             <div class="coming-soon-content" data-aos="fade-up">
                 <div class="coming-soon-icon">
@@ -377,7 +377,7 @@
     </section>
 
     <!-- Информация о текущих возможностях -->
-    <section class="current-tracking">
+    <section class="current-tracking" data-collapse="mobile">
         <div class="container">
             <div class="section-header" data-aos="fade-up">
                 <h2>Как мы контролируем грузы</h2>
@@ -631,5 +631,32 @@
     </script>
     <script src="/assets/js/lazy-loading.min.js" defer></script>
     <script src="assets/js/form-handler.js?v=107" defer></script>
+    
+    <!-- Отслеживание кликов -->
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Телефон
+        document.querySelectorAll('a[href^="tel:"]').forEach(link => {
+            link.addEventListener("click", () => {
+                if (typeof ym !== "undefined") {
+                    ym(103413788, "reachGoal", "phone_click", {
+                        from: 'track'
+                    });
+                }
+            });
+        });
+        
+        // WhatsApp
+        document.querySelectorAll('a[href*="wa.me"]').forEach(link => {
+            link.addEventListener("click", () => {
+                if (typeof ym !== "undefined") {
+                    ym(103413788, "reachGoal", "whatsapp_click", {
+                        from: 'track'
+                    });
+                }
+            });
+        });
+    });
+    </script>
 </body>
 </html>
