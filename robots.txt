@@ -9,6 +9,11 @@ Allow: /index.html
 Allow: /services.html
 Allow: /contact.html
 Allow: /about.html
+Allow: /help.html
+Allow: /faq.html
+Allow: /track.html
+Allow: /news.html
+Allow: /legal-minimum.html
 
 # SEO страницы для индексации
 Allow: /routes/

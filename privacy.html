@@ -166,7 +166,7 @@
     </div>
   </section>
 
-  <section>
+      <section data-collapse="mobile">
     <div class="container">
       <h2>1. Общие положения</h2>
       <p>1.1. Настоящая Политика конфиденциальности определяет порядок обработки и защиты персональных данных пользователей сайта avtogost77.ru (далее — «Сайт») компанией АвтоГОСТ (далее — «Компания»).</p>
@@ -279,5 +279,32 @@
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js" defer></script>
   <script>AOS.init({ once:true, duration:600 });</script>
     <script src="/assets/js/lazy-loading.min.js" defer></script>
+    
+    <!-- Отслеживание кликов -->
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Телефон
+        document.querySelectorAll('a[href^="tel:"]').forEach(link => {
+            link.addEventListener("click", () => {
+                if (typeof ym !== "undefined") {
+                    ym(103413788, "reachGoal", "phone_click", {
+                        from: 'privacy'
+                    });
+                }
+            });
+        });
+        
+        // WhatsApp
+        document.querySelectorAll('a[href*="wa.me"]').forEach(link => {
+            link.addEventListener("click", () => {
+                if (typeof ym !== "undefined") {
+                    ym(103413788, "reachGoal", "whatsapp_click", {
+                        from: 'privacy'
+                    });
+                }
+            });
+        });
+    });
+    </script>
 </body>
 </html>

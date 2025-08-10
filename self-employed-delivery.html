@@ -189,7 +189,7 @@
         </div>
     </section>
     <!-- Детальное описание услуги -->
-    <section class="service-detailed section">
+    <section class="service-detailed section" data-collapse="mobile">
         <div class="container">
             <div class="service-overview">
                 <h2>Полное описание услуги</h2>
@@ -270,7 +270,7 @@
     </section>
     
     <!-- Преимущества работы с нами -->
-    <section class="why-us-detailed section bg-light">
+    <section class="why-us-detailed section bg-light" data-collapse="mobile">
         <div class="container">
             <h2>Почему клиенты выбирают АвтоГОСТ</h2>
             
@@ -345,7 +345,7 @@
     </section>
 
     <!-- Преимущества для самозанятых -->
-    <section class="advantages section">
+    <section class="advantages section" data-collapse="mobile">
         <div class="container">
             <h2 class="section-title">Почему самозанятые выбирают нас</h2>
             <p class="section-subtitle">Мы создали идеальные условия для работы без лишней бюрократии</p>
@@ -372,7 +372,7 @@
                 <div class="advantage-card">
                     <div class="advantage-icon">💰</div>
                     <h3>Удобная оплата</h3>
-                    <p>Оплата на карту физлица, через СБП или наличными. Без комиссий и задержек.</p>
+                    <p>Оплата через СБП. Без комиссий и задержек.</p>
                 </div>
 
                 <div class="advantage-card">
@@ -391,7 +391,7 @@
     </section>
 
     <!-- Для кого подходит -->
-    <section class="use-cases section bg-light">
+    <section class="use-cases section bg-light" data-collapse="mobile">
         <div class="container">
             <h2 class="section-title">Кто использует наши услуги</h2>
             
@@ -478,7 +478,7 @@
     </section>
 
     <!-- Как начать работать -->
-    <section id="quick-start" class="quick-start section">
+    <section id="quick-start" class="quick-start section" data-collapse="mobile">
         <div class="container">
             <h2 class="section-title">Начните работать за 15 минут</h2>
             <p class="section-subtitle">Простая регистрация, минимум документов, быстрый старт</p>
@@ -542,7 +542,7 @@
     </section>
 
     <!-- Тарифы для самозанятых -->
-    <section class="pricing section bg-light">
+    <section class="pricing section bg-light" data-collapse="mobile">
         <div class="container">
             <h2 class="section-title">Прозрачные тарифы без скрытых платежей</h2>
             <p class="section-subtitle">Все цены фиксированные. Платите только за доставку, никаких дополнительных сборов</p>
@@ -639,7 +639,7 @@
     </section>
 
     <!-- Калькулятор -->
-    <section class="calculator-section section">
+    <section class="calculator-section section" data-collapse="mobile">
         <div class="container">
             <h2 class="section-title">Рассчитайте стоимость доставки</h2>
             
@@ -693,7 +693,7 @@
     </section>
 
     <!-- Отзывы самозанятых -->
-    <section class="testimonials section bg-light">
+    <section class="testimonials section bg-light" data-collapse="mobile">
         <div class="container">
             <h2 class="section-title">Что говорят наши клиенты</h2>
             <p class="section-subtitle">Реальные отзывы самозанятых, которые работают с нами</p>
@@ -767,7 +767,7 @@
     </section>
 
     <!-- FAQ -->
-    <section class="faq section">
+    <section class="faq section" data-collapse="mobile">
         <div class="container">
             <h2 class="section-title">Ответы на частые вопросы</h2>
             
@@ -798,7 +798,7 @@
                         <ul>
                             <li>На карту физлица</li>
                             <li>Через СБП (Систему быстрых платежей)</li>
-                            <li>Наличными курьеру</li>
+                            <li>Безналичный расчет</li>
                         </ul>
                         <p>После оплаты вы получите чек, который можно использовать для налогового учета в приложении "Мой налог". Также предоставляем акт выполненных работ.</p>
                     </div>
@@ -1375,5 +1375,32 @@
 
     <script src="assets/js/main.min.js" defer></script>
     <script src="/assets/js/lazy-loading.min.js" defer></script>
+    
+    <!-- Отслеживание кликов -->
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Телефон
+        document.querySelectorAll('a[href^="tel:"]').forEach(link => {
+            link.addEventListener("click", () => {
+                if (typeof ym !== "undefined") {
+                    ym(103413788, "reachGoal", "phone_click", {
+                        from: 'self-employed-delivery'
+                    });
+                }
+            });
+        });
+        
+        // WhatsApp
+        document.querySelectorAll('a[href*="wa.me"]').forEach(link => {
+            link.addEventListener("click", () => {
+                if (typeof ym !== "undefined") {
+                    ym(103413788, "reachGoal", "whatsapp_click", {
+                        from: 'self-employed-delivery'
+                    });
+                }
+            });
+        });
+    });
+    </script>
 </body>
 </html>

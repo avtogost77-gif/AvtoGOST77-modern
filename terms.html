@@ -226,7 +226,7 @@
     </section>
 
     <!-- Основной контент -->
-    <section class="terms-content">
+    <section class="terms-content" data-collapse="mobile">
         <div class="container">
             <div class="terms-document" data-aos="fade-up">
                 
@@ -475,5 +475,32 @@
     <script>AOS.init({ once:true, duration:600 });</script>
     <script src="/assets/js/lazy-loading.min.js" defer></script>
     <script src="assets/js/form-handler.js?v=107" defer></script>
+    
+    <!-- Отслеживание кликов -->
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Телефон
+        document.querySelectorAll('a[href^="tel:"]').forEach(link => {
+            link.addEventListener("click", () => {
+                if (typeof ym !== "undefined") {
+                    ym(103413788, "reachGoal", "phone_click", {
+                        from: 'terms'
+                    });
+                }
+            });
+        });
+        
+        // WhatsApp
+        document.querySelectorAll('a[href*="wa.me"]').forEach(link => {
+            link.addEventListener("click", () => {
+                if (typeof ym !== "undefined") {
+                    ym(103413788, "reachGoal", "whatsapp_click", {
+                        from: 'terms'
+                    });
+                }
+            });
+        });
+    });
+    </script>
 </body>
 </html>

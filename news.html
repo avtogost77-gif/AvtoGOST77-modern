@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Новости логистики России | Тренды и лайфхаки для МСБ</title>
   <meta name="description" content="Свежие новости, аналитика и советы по грузоперевозкам по России. Особый акцент на московский рынок и экономию для малого и среднего бизнеса." />
+  <link rel="canonical" href="https://avtogost77.ru/news.html" />
   <link rel="stylesheet" href="assets/css/styles.css" />
   <!-- Bootstrap Icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
@@ -82,5 +83,32 @@
   <script src="assets/js/main.js"></script>
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
   <script>AOS.init({ once:true, duration:600 });</script>
+  
+  <!-- Отслеживание кликов -->
+  <script>
+  document.addEventListener("DOMContentLoaded", function() {
+      // Телефон
+      document.querySelectorAll('a[href^="tel:"]').forEach(link => {
+          link.addEventListener("click", () => {
+              if (typeof ym !== "undefined") {
+                  ym(103413788, "reachGoal", "phone_click", {
+                      from: 'news'
+                  });
+              }
+          });
+      });
+      
+      // WhatsApp
+      document.querySelectorAll('a[href*="wa.me"]').forEach(link => {
+          link.addEventListener("click", () => {
+              if (typeof ym !== "undefined") {
+                  ym(103413788, "reachGoal", "whatsapp_click", {
+                      from: 'news'
+                  });
+              }
+          });
+      });
+  });
+  </script>
 </body>
 </html>

@@ -127,7 +127,7 @@
     </section>
 
     <!-- О Екатеринбурге -->
-    <section id="info" class="city-info section">
+    <section id="info" class="city-info section" data-collapse="mobile">
         <div class="container">
             <h2>Грузоперевозки в Екатеринбург — ворота между Европой и Азией</h2>
             
@@ -195,7 +195,7 @@
     </section>
 
     <!-- Виды перевозок -->
-    <section id="types" class="transport-types section">
+    <section id="types" class="transport-types section" data-collapse="mobile">
         <div class="container">
             <h2>Виды грузоперевозок в Екатеринбург</h2>
             
@@ -240,7 +240,7 @@
     </section>
 
     <!-- Маршруты -->
-    <section class="routes section">
+    <section class="routes section" data-collapse="mobile">
         <div class="container">
             <h2>Популярные маршруты в Екатеринбург</h2>
             
@@ -271,7 +271,7 @@
                             <td><strong>Нижний Новгород</strong> — Екатеринбург</td>
                             <td>1400 км</td>
                             <td>2 дня</td>
-                            <td>от 3000₽</td>
+                            <td>по запросу</td>
                         </tr>
                         <tr>
                             <td><strong>Казань</strong> — Екатеринбург</td>
@@ -289,7 +289,7 @@
                             <td><strong>Челябинск</strong> — Екатеринбург</td>
                             <td>210 км</td>
                             <td>4-6 часов</td>
-                            <td>от 1000₽</td>
+                            <td>по запросу</td>
                         </tr>
                     </tbody>
                 </table>
@@ -302,7 +302,7 @@
     </section>
 
     <!-- Калькулятор -->
-    <section id="calculator" class="calculator-section section">
+    <section id="calculator" class="calculator-section section" data-collapse="mobile">
         <div class="container">
             <h2>Рассчитать стоимость доставки в Екатеринбург</h2>
             
@@ -362,7 +362,7 @@
     </section>
 
     <!-- Преимущества -->
-    <section class="advantages section">
+    <section class="advantages section" data-collapse="mobile">
         <div class="container">
             <h2>Почему выбирают нас для доставки в Екатеринбург</h2>
             
@@ -407,7 +407,7 @@
     </section>
 
     <!-- FAQ -->
-    <section class="faq section">
+    <section class="faq section" data-collapse="mobile">
         <div class="container">
             <h2>Вопросы о грузоперевозках в Екатеринбург</h2>
             
@@ -436,7 +436,7 @@
     </section>
 
     <!-- Дополнительный контент для SEO -->
-    <section class="route-details section bg-light">
+    <section class="route-details section bg-light" data-collapse="mobile">
         <div class="container">
             <h2>Транссибирская магистраль: ворота в Азию</h2>
             
@@ -467,7 +467,7 @@
         </div>
     </section>
 
-    <section class="climate-logistics section">
+    <section class="climate-logistics section" data-collapse="mobile">
         <div class="container">
             <h2>Климатические особенности перевозок на Урал</h2>
             
@@ -521,7 +521,7 @@
         </div>
     </section>
 
-    <section class="industrial-cargo section bg-light">
+    <section class="industrial-cargo section bg-light" data-collapse="mobile">
         <div class="container">
             <h2>Промышленные грузы Урала: специализация и опыт</h2>
             
@@ -575,7 +575,7 @@
         </div>
     </section>
 
-    <section class="customs-union section">
+    <section class="customs-union section" data-collapse="mobile">
         <div class="container">
             <h2>Транзит через Екатеринбург: ворота в Казахстан и Среднюю Азию</h2>
             
@@ -616,7 +616,7 @@
         </div>
     </section>
 
-    <section class="timezone-logistics section bg-light">
+    <section class="timezone-logistics section bg-light" data-collapse="mobile">
         <div class="container">
             <h2>Часовые пояса и логистика: планируем с учетом времени</h2>
             
@@ -649,7 +649,7 @@
                     <ul>
                         <li><strong>Для срочных грузов:</strong> отправка из Москвы в 22:00-00:00, прибытие к открытию складов</li>
                         <li><strong>Для сборных грузов:</strong> консолидация днем, отправка вечером</li>
-                        <li><strong>Документооборот:</strong> учитывайте разницу в рабочих часах офисов</li>
+                        <li><strong>Документооборот:</strong> учитывайте разницу в рабочих часах</li>
                         <li><strong>Связь с получателем:</strong> уточняйте местное время при согласовании доставки</li>
                     </ul>
                 </div>
@@ -697,5 +697,32 @@
         </div>
     </footer>
     <script src="/assets/js/lazy-loading.min.js" defer></script>
+    
+    <!-- Отслеживание кликов -->
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Телефон
+        document.querySelectorAll('a[href^="tel:"]').forEach(link => {
+            link.addEventListener("click", () => {
+                if (typeof ym !== "undefined") {
+                    ym(103413788, "reachGoal", "phone_click", {
+                        from: 'gruzoperevozki-ekaterinburg'
+                    });
+                }
+            });
+        });
+        
+        // WhatsApp
+        document.querySelectorAll('a[href*="wa.me"]').forEach(link => {
+            link.addEventListener("click", () => {
+                if (typeof ym !== "undefined") {
+                    ym(103413788, "reachGoal", "whatsapp_click", {
+                        from: 'gruzoperevozki-ekaterinburg'
+                    });
+                }
+            });
+        });
+    });
+    </script>
 </body>
 </html>

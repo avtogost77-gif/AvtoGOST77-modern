@@ -189,7 +189,7 @@
         </div>
     </section>
     <!-- Детальное описание услуги -->
-    <section class="service-detailed section">
+    <section class="service-detailed section" data-collapse="mobile">
         <div class="container">
             <div class="service-overview">
                 <h2>Полное описание услуги</h2>
@@ -270,7 +270,7 @@
     </section>
     
     <!-- Преимущества работы с нами -->
-    <section class="why-us-detailed section bg-light">
+    <section class="why-us-detailed section bg-light" data-collapse="mobile">
         <div class="container">
             <h2>Почему клиенты выбирают АвтоГОСТ</h2>
             
@@ -345,7 +345,7 @@
     </section>
 
     <!-- Кому подходит -->
-    <section class="target-audience section">
+    <section class="target-audience section" data-collapse="mobile">
         <div class="container">
             <h2 class="section-title">Кому подходят наши условия</h2>
             
@@ -438,7 +438,7 @@
     </section>
 
     <!-- Преимущества для бизнеса -->
-    <section id="benefits" class="benefits section bg-light">
+    <section id="benefits" class="benefits section bg-light" data-collapse="mobile">
         <div class="container">
             <h2 class="section-title">Преимущества для вашего бизнеса</h2>
             <p class="section-subtitle">Мы понимаем потребности малого бизнеса и создали оптимальные условия</p>
@@ -514,7 +514,7 @@
     </section>
 
     <!-- Как начать работать -->
-    <section class="how-to-start section">
+    <section class="how-to-start section" data-collapse="mobile">
         <div class="container">
             <h2 class="section-title">Как начать работать</h2>
             <p class="section-subtitle">Простая процедура подключения — начните экономить уже завтра</p>
@@ -587,7 +587,7 @@
     </section>
 
     <!-- Тарифы -->
-    <section class="pricing section bg-light">
+    <section class="pricing section bg-light" data-collapse="mobile">
         <div class="container">
             <h2 class="section-title">Специальные тарифы для бизнеса</h2>
             <p class="section-subtitle">Прозрачные цены без скрытых платежей. Чем больше заказов — тем выгоднее</p>
@@ -704,7 +704,7 @@
     </section>
 
     <!-- Отзывы -->
-    <section class="testimonials section">
+    <section class="testimonials section" data-collapse="mobile">
         <div class="container">
             <h2 class="section-title">Отзывы наших клиентов</h2>
             <p class="section-subtitle">Более 500 ИП и малых компаний уже работают с нами</p>
@@ -759,7 +759,7 @@
     </section>
 
     <!-- FAQ -->
-    <section class="faq section bg-light">
+    <section class="faq section bg-light" data-collapse="mobile">
         <div class="container">
             <h2 class="section-title">Частые вопросы</h2>
             
@@ -805,7 +805,7 @@
                 <p>Оставьте заявку и получите персональное предложение для вашего бизнеса</p>
                 
                 <div class="cta-form-wrapper">
-                    <form class="business-form" action="/submit-business" method="POST">
+                    <form class="business-form" action="javascript:void(0);" method="POST">
                         <h3>Расскажите о вашем бизнесе:</h3>
                         
                         <div class="form-row">
@@ -1285,5 +1285,32 @@
     <!-- Скрипты -->
     <script src="assets/js/main.min.js" defer></script>
     <script src="/assets/js/lazy-loading.min.js" defer></script>
+    
+    <!-- Отслеживание кликов -->
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Телефон
+        document.querySelectorAll('a[href^="tel:"]').forEach(link => {
+            link.addEventListener("click", () => {
+                if (typeof ym !== "undefined") {
+                    ym(103413788, "reachGoal", "phone_click", {
+                        from: 'ip-small-business-delivery'
+                    });
+                }
+            });
+        });
+        
+        // WhatsApp
+        document.querySelectorAll('a[href*="wa.me"]').forEach(link => {
+            link.addEventListener("click", () => {
+                if (typeof ym !== "undefined") {
+                    ym(103413788, "reachGoal", "whatsapp_click", {
+                        from: 'ip-small-business-delivery'
+                    });
+                }
+            });
+        });
+    });
+    </script>
 </body>
 </html>

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Страница не найдена - АвтоГОСТ</title>
     <meta name="description" content="Запрашиваемая страница не найдена. Воспользуйтесь навигацией или свяжитесь с нами для получения помощи.">
+    <link rel="canonical" href="https://avtogost77.ru/404.html">
     <link rel="stylesheet" href="assets/css/styles-optimized.css">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <style>
@@ -272,7 +273,7 @@
     </section>
 
     <!-- Popular Pages -->
-    <section class="popular-pages">
+    <section class="popular-pages" data-collapse="mobile">
         <div class="container">
             <h2 style="text-align: center; margin-bottom: 1rem;">Популярные страницы</h2>
             <p style="text-align: center; color: var(--neutral-600); margin-bottom: 2rem;">
@@ -346,5 +347,32 @@
         }
     </script>
     <script src="/assets/js/lazy-loading.min.js" defer></script>
+    
+    <!-- Отслеживание кликов -->
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Телефон
+        document.querySelectorAll('a[href^="tel:"]').forEach(link => {
+            link.addEventListener("click", () => {
+                if (typeof ym !== "undefined") {
+                    ym(103413788, "reachGoal", "phone_click", {
+                        from: '404'
+                    });
+                }
+            });
+        });
+        
+        // WhatsApp
+        document.querySelectorAll('a[href*="wa.me"]').forEach(link => {
+            link.addEventListener("click", () => {
+                if (typeof ym !== "undefined") {
+                    ym(103413788, "reachGoal", "whatsapp_click", {
+                        from: '404'
+                    });
+                }
+            });
+        });
+    });
+    </script>
 </body>
 </html>
