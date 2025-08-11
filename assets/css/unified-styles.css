@@ -834,6 +834,288 @@ a:hover {
   display: block;
 }
 
+/* UX КОМПОНЕНТЫ */
+
+/* АККОРДЕОНЫ */
+.accordion {
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-lg);
+  margin-bottom: 1rem;
+  overflow: hidden;
+}
+
+.accordion-trigger {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  background: var(--gray-50);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  user-select: none;
+}
+
+.accordion-trigger:hover {
+  background: var(--gray-100);
+}
+
+.accordion-title {
+  font-weight: 600;
+  color: var(--gray-900);
+}
+
+.accordion-icon {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary);
+  transition: transform var(--transition-fast);
+}
+
+.accordion.open .accordion-icon {
+  transform: rotate(180deg);
+}
+
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height var(--transition-normal);
+}
+
+.accordion-body {
+  padding: 1.5rem;
+  color: var(--gray-700);
+  line-height: 1.6;
+}
+
+/* TL;DR */
+.tldr {
+  background: var(--gray-50);
+  border-radius: var(--radius-xl);
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  border-left: 4px solid var(--primary);
+}
+
+.tldr-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.tldr-header h3 {
+  margin: 0;
+  color: var(--gray-900);
+}
+
+.tldr-toggle {
+  background: var(--primary);
+  color: var(--white);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  font-size: var(--text-sm);
+  transition: all var(--transition-fast);
+}
+
+.tldr-toggle:hover {
+  background: var(--primary-dark);
+}
+
+.tldr-summary {
+  font-weight: 500;
+  color: var(--gray-800);
+  margin-bottom: 1rem;
+}
+
+.tldr-details {
+  display: none;
+  color: var(--gray-600);
+  line-height: 1.6;
+}
+
+.tldr.expanded .tldr-details {
+  display: block;
+}
+
+/* STICKY TOC */
+.sticky-toc {
+  background: var(--white);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-md);
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  border: 1px solid var(--gray-200);
+}
+
+.sticky-toc.sticky {
+  position: fixed;
+  top: 100px;
+  right: 20px;
+  width: 300px;
+  max-height: 80vh;
+  overflow-y: auto;
+  z-index: 100;
+}
+
+.toc-header h3 {
+  margin: 0 0 1rem 0;
+  color: var(--gray-900);
+  font-size: var(--text-lg);
+}
+
+.toc-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.toc-item {
+  margin-bottom: 0.5rem;
+}
+
+.toc-item a {
+  display: block;
+  padding: 0.5rem;
+  color: var(--gray-600);
+  text-decoration: none;
+  border-radius: var(--radius-md);
+  transition: all var(--transition-fast);
+  font-size: var(--text-sm);
+}
+
+.toc-item a:hover {
+  background: var(--gray-100);
+  color: var(--primary);
+}
+
+.toc-h3 {
+  margin-left: 1rem;
+  font-size: 0.875rem;
+}
+
+/* КАРТОЧКИ ПРЕИМУЩЕСТВ */
+.benefit-card {
+  background: var(--white);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-md);
+  padding: 2rem;
+  text-align: center;
+  transition: all var(--transition-normal);
+  border: 1px solid var(--gray-200);
+}
+
+.benefit-card:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-4px);
+}
+
+.benefit-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.benefit-title {
+  font-size: var(--text-xl);
+  color: var(--gray-900);
+  margin-bottom: 1rem;
+}
+
+.benefit-description {
+  color: var(--gray-600);
+  line-height: 1.6;
+}
+
+/* МИНИ-КЕЙСЫ */
+.mini-case {
+  background: var(--white);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-md);
+  padding: 1.5rem;
+  border: 1px solid var(--gray-200);
+  transition: all var(--transition-normal);
+}
+
+.mini-case:hover {
+  box-shadow: var(--shadow-lg);
+}
+
+.case-header h4 {
+  color: var(--gray-900);
+  margin-bottom: 1rem;
+}
+
+.case-stats {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.case-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.stat-value {
+  font-size: var(--text-xl);
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.stat-label {
+  font-size: var(--text-xs);
+  color: var(--gray-500);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.case-description {
+  color: var(--gray-600);
+  line-height: 1.6;
+  font-size: var(--text-sm);
+}
+
+/* LAZY LOADING */
+.lazy {
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.lazy.loaded {
+  opacity: 1;
+}
+
+/* МОБИЛЬНАЯ АДАПТИВНОСТЬ ДЛЯ UX */
+@media (max-width: 768px) {
+  .sticky-toc.sticky {
+    position: static;
+    width: 100%;
+    max-height: none;
+  }
+  
+  .tldr-header {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+  
+  .case-stats {
+    justify-content: center;
+  }
+  
+  .accordion-trigger {
+    padding: 0.75rem 1rem;
+  }
+  
+  .accordion-body {
+    padding: 1rem;
+  }
+}
+
 /* HERO СТАТИСТИКА */
 .hero-stats {
   display: flex;
