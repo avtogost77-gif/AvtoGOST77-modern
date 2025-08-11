@@ -15,9 +15,39 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let price = 0;
     if (type === "FTL") {
-      // Full truck load — фиксированный тариф за км
-      const RATE_PER_KM = 95; // ₽/км (пример)
-      price = distance * RATE_PER_KM;
+      // Тарифы за км для разных типов ТС
+      const transportRates = {
+        gazelle: 30,   // 30₽/км для газели
+        threeTon: 40,  // 40₽/км для 3-тонника
+        fiveTon: 50,   // 50₽/км для 5-тонника  
+        tenTon: 62,    // 62₽/км для 10-тонника
+        truck: 70      // 70₽/км для фуры
+      };
+      
+      // Определяем тип ТС по весу (упрощенно)
+      let transportType = 'gazelle';
+      if (weight > 1500) transportType = 'threeTon';
+      if (weight > 3000) transportType = 'fiveTon';
+      if (weight > 5000) transportType = 'tenTon';
+      if (weight > 10000) transportType = 'truck';
+      
+      let baseRate = transportRates[transportType] || 30;
+      
+      // Зональные коэффициенты (чем меньше расстояние, тем дороже)
+      let zoneCoeff = 1.0;
+      if (distance < 70) {
+        zoneCoeff = 1.6;  // Городские - самый высокий
+      } else if (distance < 200) {
+        zoneCoeff = 1.4;  // Областные - высокий
+      } else if (distance < 400) {
+        zoneCoeff = 1.3;  // Межрегиональные - повышенный
+      } else if (distance < 800) {
+        zoneCoeff = 1.1;  // Среднее плечо - небольшая надбавка
+      } else {
+        zoneCoeff = 1.0;  // Длинное плечо - базовый
+      }
+      
+      price = distance * baseRate * zoneCoeff;
     } else {
       // LTL — тариф за кг*км
       const RATE_PER_KG_KM = 6.5; // ₽

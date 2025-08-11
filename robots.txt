@@ -47,5 +47,5 @@ Clean-param: utm_source&utm_medium&utm_campaign&utm_term&utm_content
 Clean-param: fbclid&gclid&yclid&_openstat&from
 
 # Контакты для связи
-# Contact: info@avtogost77.ru
-# Host: avtogost77.ru
+Contact: avtogost77@yandex.ru
+Host: avtogost77.ru
