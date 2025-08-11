@@ -322,7 +322,8 @@
         <div class="container">
             <div class="navbar">
                 <a href="/" class="navbar-brand">Авто&nbsp;Гост</a>
-                <button class="mobile-toggle" aria-label="Меню">☰</button>
+                <button class="mobile-toggle" aria-label="Меню">☰<span class="accordion-icon">+</span>
+                </div>
                 <ul class="navbar-menu">
                     <li><a href="/">Главная</a></li>
                     <li><a href="services.html" class="active">Услуги</a></li>
@@ -356,6 +357,40 @@
             </div>
         </div>
     </section>
+
+    <!-- TL;DR БЛОК -->
+    <div class="tldr">
+        <div class="tldr-header">
+            <h3>📋 Краткое содержание</h3>
+            <button class="tldr-toggle">Показать подробности<span class="accordion-icon">+</span>
+                </div>
+        </div>
+        <div class="tldr-content">
+            <div class="tldr-summary">
+                <strong>Услуги грузоперевозок | Газель, фура, манипулятор | АвтоГОСТ</strong> - подробная информация о услугах грузоперевозок. Узнайте о тарифах, сроках доставки, особенностях перевозки и получите ответы на частые вопросы.
+            </div>
+            <div class="tldr-details">
+                <p><strong>Основные разделы:</strong></p>
+                <ul>
+                    <li>✅ Описание услуг и преимуществ</li>
+                    <li>✅ Процесс организации перевозки</li>
+                    <li>✅ Тарифы и стоимость</li>
+                    <li>✅ Отзывы клиентов</li>
+                    <li>✅ Ответы на вопросы</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <!-- STICKY TOC -->
+    <div class="sticky-toc">
+        <div class="toc-header">
+            <h3>📑 Содержание</h3>
+        </div>
+        <ul class="toc-list">
+            <!-- TOC будет заполнен автоматически -->
+        </ul>
+    </div>
 
 <!-- Быстрый выбор пути (компактный блок) -->
 <section class="section" style="padding: 40px 0;">
@@ -677,7 +712,8 @@
                     <div class="form-submit">
                         <button type="submit" class="btn-submit">
                             <i class="bi bi-send"></i> Отправить заявку
-                        </button>
+                        <span class="accordion-icon">+</span>
+                </div>
                         <p style="margin-top: 15px; color: #666;">
                             Нажимая кнопку, вы соглашаетесь с <a href="privacy.html">обработкой персональных данных</a>
                         </p>
@@ -693,42 +729,46 @@
             <h2 class="text-center mb-5">Часто задаваемые вопросы</h2>
             
             <div class="faq-container" style="max-width: 800px; margin: 0 auto;">
-                <div class="faq-item">
+                <div class="accordion">
                     <div class="faq-question">
                         <span>Как быстро вы подаете транспорт?</span>
                         <span class="faq-toggle">+</span>
                     </div>
-                    <div class="faq-answer">
+                    <div class="accordion-content">
+                    <div class="accordion-body">
                         <p>В Москве и области - от 2 часов. По России - в течение суток. Для экспресс-заказов гарантируем подачу за 2 часа в пределах МКАД.</p>
                     </div>
                 </div>
                 
-                <div class="faq-item">
+                <div class="accordion">
                     <div class="faq-question">
                         <span>Какие документы нужны для заказа?</span>
                         <span class="faq-toggle">+</span>
                     </div>
-                    <div class="faq-answer">
+                    <div class="accordion-content">
+                    <div class="accordion-body">
                         <p>Для физлиц - только телефон. Для организаций - реквизиты компании. Все документы оформляем сами: договор, накладные, акты.</p>
                     </div>
                 </div>
                 
-                <div class="faq-item">
+                <div class="accordion">
                     <div class="faq-question">
                         <span>Есть ли страхование груза?</span>
                         <span class="faq-toggle">+</span>
                     </div>
-                    <div class="faq-answer">
+                    <div class="accordion-content">
+                    <div class="accordion-body">
                         <p>Страхование груза по вашему желанию. Можем организовать при необходимости.</p>
                     </div>
                 </div>
                 
-                <div class="faq-item">
+                <div class="accordion">
                     <div class="faq-question">
                         <span>Работаете ли вы в выходные?</span>
                         <span class="faq-toggle">+</span>
                     </div>
-                    <div class="faq-answer">
+                    <div class="accordion-content">
+                    <div class="accordion-body">
                         <p>Да, работаем 24/7 без выходных и праздников. Диспетчерская служба всегда на связи. Ночные и праздничные тарифы согласовываются индивидуально.</p>
                     </div>
                 </div>
@@ -811,6 +851,7 @@
 
     <!-- Скрипты -->
     <script src="assets/js/main.js?v=1754549859" defer></script>
+    <script src="assets/js/ux-improvements.js" defer></script>
     <script src="assets/js/ux-improvements.js?v=1754158000" defer></script>
     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
     <script>

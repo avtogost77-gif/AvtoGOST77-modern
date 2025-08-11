@@ -62,7 +62,12 @@
     }
     </script>
     
-    <link rel="stylesheet" href="assets/css/styles-optimized.css">
+    <!-- КРИТИЧЕСКИЙ CSS - ОПТИМИЗИРОВАННЫЙ -->
+    <link rel="stylesheet" href="assets/css/critical-optimized.min.css">
+
+    <!-- ОПТИМИЗИРОВАННЫЕ СТИЛИ - АСИНХРОННАЯ ЗАГРУЗКА -->
+    <link rel="stylesheet" href="assets/css/unified-styles.min.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="assets/css/unified-styles.min.css"></noscript>
 
     <style id="critical-css">
 :root{--primary-color:#2D67F8;--text-dark:#1a1a1a;--text-gray:#666;--white:#ffffff;--border:#e0e0e0;}*{margin:0;padding:0;box-sizing:border-box;}body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.6;color:var(--text-dark);}.container{max-width:1200px;margin:0 auto;padding:0 20px;} .header{background:var(--white);border-bottom:1px solid var(--border);padding:1rem 0;position:sticky;top:0;z-index:1000;}.header-content{display:flex;align-items:center;justify-content:space-between;}.logo{display:flex;align-items:center;gap:0.5rem;text-decoration:none;color:var(--text-dark);font-weight:700;font-size:1.25rem;}.logo-img{width:40px;height:40px;}.nav{display:none;}@media (min-width:768px){.nav{display:flex;gap:2rem;}}.nav-link{color:var(--text-dark);text-decoration:none;transition:color 0.3s;}.btn{display:inline-flex;align-items:center;gap:0.5rem;padding:0.75rem 1.5rem;border-radius:8px;text-decoration:none;font-weight:600;transition:all 0.3s;}.btn-primary{background:var(--primary-color);color:var(--white);} .hero{padding:3rem 0;background:linear-gradient(135deg,#f8f9fa 0%,#e9ecef 100%);}.hero h1{font-size:2.5rem;margin-bottom:1rem;line-height:1.2;}@media (min-width:768px){.hero h1{font-size:3.5rem;}}.hero-subtitle{font-size:1.25rem;color:var(--text-gray);margin-bottom:2rem;} img,svg{max-width:100%;height:auto;}.loading{opacity:0;transition:opacity 0.3s;}.loaded{opacity:1;}
@@ -147,6 +152,40 @@
         </div>
     </section>
 
+    <!-- TL;DR БЛОК -->
+    <div class="tldr">
+        <div class="tldr-header">
+            <h3>📋 Краткое содержание</h3>
+            <button class="tldr-toggle">Показать подробности<span class="accordion-icon">+</span>
+                </div>
+        </div>
+        <div class="tldr-content">
+            <div class="tldr-summary">
+                <strong>Грузоперевозки по Москве — доставка от 1500₽ за 2-4 часа | АвтоГОСТ</strong> - подробная информация о услугах грузоперевозок. Узнайте о тарифах, сроках доставки, особенностях перевозки и получите ответы на частые вопросы.
+            </div>
+            <div class="tldr-details">
+                <p><strong>Основные разделы:</strong></p>
+                <ul>
+                    <li>✅ Описание услуг и преимуществ</li>
+                    <li>✅ Процесс организации перевозки</li>
+                    <li>✅ Тарифы и стоимость</li>
+                    <li>✅ Отзывы клиентов</li>
+                    <li>✅ Ответы на вопросы</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <!-- STICKY TOC -->
+    <div class="sticky-toc">
+        <div class="toc-header">
+            <h3>📑 Содержание</h3>
+        </div>
+        <ul class="toc-list">
+            <!-- TOC будет заполнен автоматически -->
+        </ul>
+    </div>
+
     <!-- Быстрый заказ -->
     <section id="quick-order" class="quick-order section">
         <div class="container">
@@ -166,7 +205,8 @@
                         <label>Телефон</label>
                         <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" required>
                     </div>
-                    <button type="submit" class="btn btn-primary">Заказать машину</button>
+                    <button type="submit" class="btn btn-primary">Заказать машину<span class="accordion-icon">+</span>
+                </div>
                 </div>
             </form>
             
@@ -526,7 +566,8 @@
                         </div>
                     </div>
                     
-                    <button type="submit" class="btn btn-primary btn-lg">Рассчитать стоимость</button>
+                    <button type="submit" class="btn btn-primary btn-lg">Рассчитать стоимость<span class="accordion-icon">+</span>
+                </div>
                 </form>
                 
                 <div class="calc-result" style="display: none;">
@@ -590,32 +631,32 @@
             <h2>Частые вопросы о грузоперевозках по Москве</h2>
             
             <div class="faq-grid">
-                <div class="faq-item">
+                <div class="accordion">
                     <h3>Входят ли грузчики в стоимость?</h3>
                     <p>Нет, в базовую стоимость входит только транспорт и водитель. Грузчики оплачиваются отдельно — от 300₽/час за человека. Вы можете использовать своих грузчиков или заказать наших.</p>
                 </div>
                 
-                <div class="faq-item">
+                <div class="accordion">
                     <h3>Как быстро подадут машину?</h3>
                     <p>В пределах МКАД — 30-60 минут. За МКАД — 60-90 минут. Срочная подача за 15 минут — доплата 500₽. В час пик время может увеличиться.</p>
                 </div>
                 
-                <div class="faq-item">
+                <div class="accordion">
                     <h3>Работаете ли вы ночью?</h3>
                     <p>Да, работаем круглосуточно 24/7. Ночная доставка (с 22:00 до 06:00) дороже на 30% из-за ночного тарифа.</p>
                 </div>
                 
-                <div class="faq-item">
+                <div class="accordion">
                     <h3>Можно ли заказать на определённое время?</h3>
                     <p>Конечно! Предварительный заказ бесплатный. Машина приедет точно к указанному времени. Рекомендуем бронировать заранее.</p>
                 </div>
                 
-                <div class="faq-item">
+                <div class="accordion">
                     <h3>Есть ли пропуск в центр?</h3>
                     <p>У нас есть пропуск внутрь ТТК и СК для грузового транспорта.</p>
                 </div>
                 
-                <div class="faq-item">
+                <div class="accordion">
                     <h3>Как происходит оплата?</h3>
                     <p>Для физлиц — картой или переводом. Для организаций — безнал по договору. Оплата всегда после успешной доставки.</p>
                 </div>
@@ -794,5 +835,5 @@
     });
   });
   </script>
+    <script src="assets/js/ux-improvements.js" defer></script>
 </body>
-</html>

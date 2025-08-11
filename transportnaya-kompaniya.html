@@ -308,7 +308,12 @@
     }
     </script>
     
-    <link rel="stylesheet" href="assets/css/styles-optimized.css">
+    <!-- КРИТИЧЕСКИЙ CSS - ОПТИМИЗИРОВАННЫЙ -->
+    <link rel="stylesheet" href="assets/css/critical-optimized.min.css">
+
+    <!-- ОПТИМИЗИРОВАННЫЕ СТИЛИ - АСИНХРОННАЯ ЗАГРУЗКА -->
+    <link rel="stylesheet" href="assets/css/unified-styles.min.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="assets/css/unified-styles.min.css"></noscript>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 
     <style id="critical-css">
@@ -385,6 +390,40 @@
             </div>
         </div>
     </section>
+
+    <!-- TL;DR БЛОК -->
+    <div class="tldr">
+        <div class="tldr-header">
+            <h3>📋 Краткое содержание</h3>
+            <button class="tldr-toggle">Показать подробности<span class="accordion-icon">+</span>
+                </div>
+        </div>
+        <div class="tldr-content">
+            <div class="tldr-summary">
+                <strong>Транспортная компания Авто Гост — грузоперевозки по России</strong> - подробная информация о услугах грузоперевозок. Узнайте о тарифах, сроках доставки, особенностях перевозки и получите ответы на частые вопросы.
+            </div>
+            <div class="tldr-details">
+                <p><strong>Основные разделы:</strong></p>
+                <ul>
+                    <li>✅ Описание услуг и преимуществ</li>
+                    <li>✅ Процесс организации перевозки</li>
+                    <li>✅ Тарифы и стоимость</li>
+                    <li>✅ Отзывы клиентов</li>
+                    <li>✅ Ответы на вопросы</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <!-- STICKY TOC -->
+    <div class="sticky-toc">
+        <div class="toc-header">
+            <h3>📑 Содержание</h3>
+        </div>
+        <ul class="toc-list">
+            <!-- TOC будет заполнен автоматически -->
+        </ul>
+    </div>
 
     <!-- Быстрый выбор пути (компактный блок) -->
     <section class="section" style="padding: 40px 0;">
@@ -614,7 +653,8 @@
                     
                     <button type="submit" class="btn btn-primary btn-calculate">
                         <i class="icon">💰</i> Рассчитать стоимость
-                    </button>
+                    <span class="accordion-icon">+</span>
+                </div>
                 </form>
                 
                 <div id="calculatorResult" class="calculator-result" style="display: none;"></div>
@@ -673,22 +713,22 @@
             <h2>Частые вопросы о транспортной компании</h2>
             
             <div class="faq-list">
-                <div class="faq-item">
+                <div class="accordion">
                     <h3>Сколько стоит транспортная компания?</h3>
                     <p>Стоимость транспортной компании зависит от веса груза, расстояния и типа транспорта. Точную цену можно рассчитать в калькуляторе или узнать у менеджера.</p>
                 </div>
                 
-                <div class="faq-item">
+                <div class="accordion">
                     <h3>Как отследить транспортную компанию?</h3>
                     <p>Для отслеживания используйте номер транспортной компании из накладной. Введите его в форму отслеживания на сайте или позвоните по телефону транспортной компании.</p>
                 </div>
                 
-                <div class="faq-item">
+                <div class="accordion">
                     <h3>Какие транспортные компании России самые надежные?</h3>
                     <p>Авто Гост - надежная транспортная компания России. Мы имеем все лицензии и страхуем каждый груз.</p>
                 </div>
                 
-                <div class="faq-item">
+                <div class="accordion">
                     <h3>Как отправить транспортной компанией посылку?</h3>
                     <p>Чтобы отправить посылку транспортной компанией: 1) Оформите заявку на сайте или по телефону 2) Мы заберем груз от вашей двери 3) Доставим получателю с уведомлением.</p>
                 </div>
@@ -791,7 +831,8 @@
                 <p>Оставьте заявку и получите расчет стоимости за 5 минут!</p>
                 <div class="cta-actions">
                     <a href="tel:+79162720932" class="btn btn-primary btn-large">Позвонить</a>
-                    <button class="btn btn-secondary btn-large" onclick="openCallbackModal()">Заказать звонок</button>
+                    <button class="btn btn-secondary btn-large" onclick="openCallbackModal()">Заказать звонок<span class="accordion-icon">+</span>
+                </div>
                 </div>
             </div>
         </div>
@@ -846,6 +887,7 @@
     <script src="assets/js/smart-calculator-v2.min.js?v=1754549859" defer></script>
     <script src="assets/js/form-handler.js?v=1754549859" defer></script>
     <script src="assets/js/main.js?v=1754549859" defer></script>
+    <script src="assets/js/ux-improvements.js" defer></script>
     <script src="assets/js/ux-improvements.js?v=1754158000" defer></script>
     <script src="/assets/js/lazy-loading.min.js" defer></script>
   <script>
@@ -868,4 +910,3 @@
   });
   </script>
 </body>
-</html>

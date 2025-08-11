@@ -16,7 +16,12 @@
     <meta property="og:url" content="https://avtogost77.ru/blog-9-dangerous-goods.html">
     <meta property="og:image" content="https://avtogost77.ru/assets/img/blog/dangerous-goods.jpg">
     
-    <link rel="stylesheet" href="assets/css/styles-optimized.min.css">
+    <!-- КРИТИЧЕСКИЙ CSS - ОПТИМИЗИРОВАННЫЙ -->
+    <link rel="stylesheet" href="assets/css/critical-optimized.min.css">
+
+    <!-- ОПТИМИЗИРОВАННЫЕ СТИЛИ - АСИНХРОННАЯ ЗАГРУЗКА -->
+    <link rel="stylesheet" href="assets/css/unified-styles.min.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="assets/css/unified-styles.min.css"></noscript>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     
     <!-- Schema.org разметка -->
@@ -111,6 +116,40 @@
             </div>
         </div>
     </section>
+
+    <!-- TL;DR БЛОК -->
+    <div class="tldr">
+        <div class="tldr-header">
+            <h3>📋 Краткое содержание</h3>
+            <button class="tldr-toggle">Показать подробности<span class="accordion-icon">+</span>
+                </div>
+        </div>
+        <div class="tldr-content">
+            <div class="tldr-summary">
+                <strong>Перевозка опасных грузов автотранспортом: правила ADR 2025</strong> - подробная информация о услугах грузоперевозок. Узнайте о тарифах, сроках доставки, особенностях перевозки и получите ответы на частые вопросы.
+            </div>
+            <div class="tldr-details">
+                <p><strong>Основные разделы:</strong></p>
+                <ul>
+                    <li>✅ Описание услуг и преимуществ</li>
+                    <li>✅ Процесс организации перевозки</li>
+                    <li>✅ Тарифы и стоимость</li>
+                    <li>✅ Отзывы клиентов</li>
+                    <li>✅ Ответы на вопросы</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <!-- STICKY TOC -->
+    <div class="sticky-toc">
+        <div class="toc-header">
+            <h3>📑 Содержание</h3>
+        </div>
+        <ul class="toc-list">
+            <!-- TOC будет заполнен автоматически -->
+        </ul>
+    </div>
 
     <!-- Основной контент -->
     <article class="blog-content">
@@ -802,5 +841,5 @@
       });
     });
     </script>
+    <script src="assets/js/ux-improvements.js" defer></script>
 </body>
-</html>

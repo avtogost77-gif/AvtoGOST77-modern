@@ -73,7 +73,12 @@
     }
     </script>
     
-    <link rel="stylesheet" href="assets/css/styles-optimized.css">
+    <!-- КРИТИЧЕСКИЙ CSS - ОПТИМИЗИРОВАННЫЙ -->
+    <link rel="stylesheet" href="assets/css/critical-optimized.min.css">
+
+    <!-- ОПТИМИЗИРОВАННЫЕ СТИЛИ - АСИНХРОННАЯ ЗАГРУЗКА -->
+    <link rel="stylesheet" href="assets/css/unified-styles.min.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="assets/css/unified-styles.min.css"></noscript>
 
     <style id="critical-css">
 :root{--primary-color:#2D67F8;--text-dark:#1a1a1a;--text-gray:#666;--white:#ffffff;--border:#e0e0e0;}*{margin:0;padding:0;box-sizing:border-box;}body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.6;color:var(--text-dark);}.container{max-width:1200px;margin:0 auto;padding:0 20px;} .header{background:var(--white);border-bottom:1px solid var(--border);padding:1rem 0;position:sticky;top:0;z-index:1000;}.header-content{display:flex;align-items:center;justify-content:space-between;}.logo{display:flex;align-items:center;gap:0.5rem;text-decoration:none;color:var(--text-dark);font-weight:700;font-size:1.25rem;}.logo-img{width:40px;height:40px;}.nav{display:none;}@media (min-width:768px){.nav{display:flex;gap:2rem;}}.nav-link{color:var(--text-dark);text-decoration:none;transition:color 0.3s;}.btn{display:inline-flex;align-items:center;gap:0.5rem;padding:0.75rem 1.5rem;border-radius:8px;text-decoration:none;font-weight:600;transition:all 0.3s;}.btn-primary{background:var(--primary-color);color:var(--white);} .hero{padding:3rem 0;background:linear-gradient(135deg,#f8f9fa 0%,#e9ecef 100%);}.hero h1{font-size:2.5rem;margin-bottom:1rem;line-height:1.2;}@media (min-width:768px){.hero h1{font-size:3.5rem;}}.hero-subtitle{font-size:1.25rem;color:var(--text-gray);margin-bottom:2rem;} img,svg{max-width:100%;height:auto;}.loading{opacity:0;transition:opacity 0.3s;}.loaded{opacity:1;}
@@ -162,6 +167,40 @@
             </div>
         </div>
     </section>
+
+    <!-- TL;DR БЛОК -->
+    <div class="tldr">
+        <div class="tldr-header">
+            <h3>📋 Краткое содержание</h3>
+            <button class="tldr-toggle">Показать подробности<span class="accordion-icon">+</span>
+                </div>
+        </div>
+        <div class="tldr-content">
+            <div class="tldr-summary">
+                <strong>Грузоперевозки СПб — доставка грузов в Санкт-Петербург</strong> - подробная информация о услугах грузоперевозок. Узнайте о тарифах, сроках доставки, особенностях перевозки и получите ответы на частые вопросы.
+            </div>
+            <div class="tldr-details">
+                <p><strong>Основные разделы:</strong></p>
+                <ul>
+                    <li>✅ Описание услуг и преимуществ</li>
+                    <li>✅ Процесс организации перевозки</li>
+                    <li>✅ Тарифы и стоимость</li>
+                    <li>✅ Отзывы клиентов</li>
+                    <li>✅ Ответы на вопросы</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <!-- STICKY TOC -->
+    <div class="sticky-toc">
+        <div class="toc-header">
+            <h3>📑 Содержание</h3>
+        </div>
+        <ul class="toc-list">
+            <!-- TOC будет заполнен автоматически -->
+        </ul>
+    </div>
 
     <!-- О грузоперевозках в СПб -->
     <section class="about-spb section" data-collapse="mobile">
@@ -374,7 +413,8 @@
                         </select>
                     </div>
                     
-                    <button type="submit" class="btn btn-primary btn-lg">Рассчитать стоимость</button>
+                    <button type="submit" class="btn btn-primary btn-lg">Рассчитать стоимость<span class="accordion-icon">+</span>
+                </div>
                 </form>
                 
                 <div class="calculator-result" style="display: none;">
@@ -428,28 +468,28 @@
         <div class="container">
             <h2>Частые вопросы о грузоперевозках в СПб</h2>
             
-            <div class="faq-accordion">
-                <div class="faq-item">
+            <div class="accordion-container">
+                <div class="accordion">
                     <h3>За какое время доставляете груз из Москвы в Санкт-Петербург?</h3>
                     <p>Срок доставки зависит от типа перевозки: отдельная машина — 10-12 часов (экспресс), сборный груз — 1-2 дня. Точное время зависит от адресов забора и доставки.</p>
                 </div>
                 
-                <div class="faq-item">
+                <div class="accordion">
                     <h3>Можно ли отправить груз в СПб недорого?</h3>
                     <p>Да, самый экономичный вариант — сборный груз. Стоимость от 15 руб/кг при минимальной оплате от 500 рублей. Это в 3-5 раз дешевле отдельной машины.</p>
                 </div>
                 
-                <div class="faq-item">
+                <div class="accordion">
                     <h3>Доставляете ли в пригороды Санкт-Петербурга?</h3>
                     <p>Да, доставляем в любую точку СПб и Ленинградской области: Пушкин, Петергоф, Колпино, Всеволожск, Гатчина и другие населённые пункты.</p>
                 </div>
                 
-                <div class="faq-item">
+                <div class="accordion">
                     <h3>Какие документы нужны для отправки груза?</h3>
                     <p>Для физлиц — паспорт. Для организаций — накладная или счёт-фактура. Мы сами оформим транспортную накладную и акт приёма-передачи.</p>
                 </div>
                 
-                <div class="faq-item">
+                <div class="accordion">
                     <h3>Как отследить груз?</h3>
                     <p>После отправки всегда можете связаться с диспетчером — работаем круглосуточно.</p>
                 </div>
@@ -736,5 +776,5 @@
     });
   });
   </script>
+    <script src="assets/js/ux-improvements.js" defer></script>
 </body>
-</html>

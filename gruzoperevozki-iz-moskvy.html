@@ -94,7 +94,12 @@
 }
 </script>
     
-    <link rel="stylesheet" href="assets/css/styles-optimized.css">
+    <!-- КРИТИЧЕСКИЙ CSS - ОПТИМИЗИРОВАННЫЙ -->
+    <link rel="stylesheet" href="assets/css/critical-optimized.min.css">
+
+    <!-- ОПТИМИЗИРОВАННЫЕ СТИЛИ - АСИНХРОННАЯ ЗАГРУЗКА -->
+    <link rel="stylesheet" href="assets/css/unified-styles.min.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="assets/css/unified-styles.min.css"></noscript>
 
     <style id="critical-css">
 :root{--primary-color:#2D67F8;--text-dark:#1a1a1a;--text-gray:#666;--white:#ffffff;--border:#e0e0e0;}*{margin:0;padding:0;box-sizing:border-box;}body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.6;color:var(--text-dark);}.container{max-width:1200px;margin:0 auto;padding:0 20px;} .header{background:var(--white);border-bottom:1px solid var(--border);padding:1rem 0;position:sticky;top:0;z-index:1000;}.header-content{display:flex;align-items:center;justify-content:space-between;}.logo{display:flex;align-items:center;gap:0.5rem;text-decoration:none;color:var(--text-dark);font-weight:700;font-size:1.25rem;}.logo-img{width:40px;height:40px;}.nav{display:none;}@media (min-width:768px){.nav{display:flex;gap:2rem;}}.nav-link{color:var(--text-dark);text-decoration:none;transition:color 0.3s;}.btn{display:inline-flex;align-items:center;gap:0.5rem;padding:0.75rem 1.5rem;border-radius:8px;text-decoration:none;font-weight:600;transition:all 0.3s;}.btn-primary{background:var(--primary-color);color:var(--white);} .hero{padding:3rem 0;background:linear-gradient(135deg,#f8f9fa 0%,#e9ecef 100%);}.hero h1{font-size:2.5rem;margin-bottom:1rem;line-height:1.2;}@media (min-width:768px){.hero h1{font-size:3.5rem;}}.hero-subtitle{font-size:1.25rem;color:var(--text-gray);margin-bottom:2rem;} img,svg{max-width:100%;height:auto;}.loading{opacity:0;transition:opacity 0.3s;}.loaded{opacity:1;}
@@ -162,7 +167,8 @@
                 <div class="hero-search">
                     <form class="route-search">
                         <input type="text" placeholder="Введите город доставки..." class="search-input">
-                        <button type="submit" class="btn btn-primary">Найти маршрут</button>
+                        <button type="submit" class="btn btn-primary">Найти маршрут<span class="accordion-icon">+</span>
+                </div>
                     </form>
                 </div>
                 
@@ -177,6 +183,40 @@
             </div>
         </div>
     </section>
+
+    <!-- TL;DR БЛОК -->
+    <div class="tldr">
+        <div class="tldr-header">
+            <h3>📋 Краткое содержание</h3>
+            <button class="tldr-toggle">Показать подробности<span class="accordion-icon">+</span>
+                </div>
+        </div>
+        <div class="tldr-content">
+            <div class="tldr-summary">
+                <strong>Грузоперевозки из Москвы по России — доставка в 850+ городов</strong> - подробная информация о услугах грузоперевозок. Узнайте о тарифах, сроках доставки, особенностях перевозки и получите ответы на частые вопросы.
+            </div>
+            <div class="tldr-details">
+                <p><strong>Основные разделы:</strong></p>
+                <ul>
+                    <li>✅ Описание услуг и преимуществ</li>
+                    <li>✅ Процесс организации перевозки</li>
+                    <li>✅ Тарифы и стоимость</li>
+                    <li>✅ Отзывы клиентов</li>
+                    <li>✅ Ответы на вопросы</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <!-- STICKY TOC -->
+    <div class="sticky-toc">
+        <div class="toc-header">
+            <h3>📑 Содержание</h3>
+        </div>
+        <ul class="toc-list">
+            <!-- TOC будет заполнен автоматически -->
+        </ul>
+    </div>
 
     <!-- ТОП-15 маршрутов -->
     <section id="popular-routes" class="popular-routes section" data-collapse="mobile">
@@ -644,7 +684,8 @@
                         </div>
                     </div>
                     
-                    <button type="submit" class="btn btn-primary btn-lg">Рассчитать стоимость</button>
+                    <button type="submit" class="btn btn-primary btn-lg">Рассчитать стоимость<span class="accordion-icon">+</span>
+                </div>
                 </form>
                 
                 <div class="calc-result" style="display: none;">
@@ -658,7 +699,8 @@
                     </div>
                     <div class="result-actions">
                         <a href="tel:+79162720932" class="btn btn-primary">Оформить доставку</a>
-                        <button class="btn btn-secondary">Сохранить расчёт</button>
+                        <button class="btn btn-secondary">Сохранить расчёт<span class="accordion-icon">+</span>
+                </div>
                     </div>
                 </div>
             </div>
@@ -747,28 +789,28 @@
         <div class="container">
             <h2>Вопросы о доставке из Москвы по России</h2>
             
-            <div class="faq-accordion">
-                <div class="faq-item">
+            <div class="accordion-container">
+                <div class="accordion">
                     <h3>Какой самый экономичный способ отправить груз из Москвы?</h3>
                     <p>Сборный груз — самый выгодный вариант для партий до 1500 кг. Стоимость от 15₽/кг в зависимости от направления. Ваш груз едет вместе с другими в одной машине, что снижает цену в 3-5 раз.</p>
                 </div>
                 
-                <div class="faq-item">
+                <div class="accordion">
                     <h3>Как быстро доставите из Москвы в мой город?</h3>
                     <p>Сроки зависят от расстояния: ближние города (до 500 км) — 1 день, Поволжье и Юг — 1-2 дня, Урал — 2-3 дня, Сибирь — 3-5 дней, Дальний Восток — 5-10 дней. Отдельная машина быстрее на 30-50%.</p>
                 </div>
                 
-                <div class="faq-item">
+                <div class="accordion">
                     <h3>Можно ли отправить груз в город, которого нет в списке?</h3>
                     <p>Да! Мы доставляем в любой населённый пункт России. Если вашего города нет в популярных маршрутах, просто позвоните — рассчитаем индивидуально.</p>
                 </div>
                 
-                <div class="faq-item">
+                <div class="accordion">
                     <h3>Что такое попутный груз и как получить скидку?</h3>
                     <p>Попутный груз — это когда ваш груз догружают в машину, которая уже едет в нужном направлении. Скидка 30-50% от обычной цены. Нужна гибкость по датам (±1-2 дня).</p>
                 </div>
                 
-                <div class="faq-item">
+                <div class="accordion">
                     <h3>Как отследить груз в пути?</h3>
                     
                 </div>
@@ -841,5 +883,5 @@
     });
   });
   </script>
+    <script src="assets/js/ux-improvements.js" defer></script>
 </body>
-</html>
