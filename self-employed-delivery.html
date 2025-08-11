@@ -18,8 +18,12 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://avtogost77.ru/self-employed-delivery.html">
     
-    <!-- Стили -->
-    <link rel="stylesheet" href="assets/css/styles-optimized.min.css">
+    <!-- КРИТИЧЕСКИЙ CSS - ОПТИМИЗИРОВАННЫЙ -->
+    <link rel="stylesheet" href="assets/css/critical-optimized.min.css">
+    
+    <!-- ОПТИМИЗИРОВАННЫЕ СТИЛИ - АСИНХРОННАЯ ЗАГРУЗКА -->
+    <link rel="stylesheet" href="assets/css/unified-styles.min.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="assets/css/unified-styles.min.css"></noscript>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     
     <!-- Schema.org разметка -->
@@ -190,8 +194,53 @@
             </div>
         </div>
     </section>
+    
+    <!-- TL;DR БЛОК -->
+    <div class="tldr">
+        <div class="tldr-header">
+            <h3>📋 Краткое содержание</h3>
+            <button class="tldr-toggle">Показать подробности</button>
+        </div>
+        <div class="tldr-content">
+            <div class="tldr-summary">
+                <strong>Грузоперевозки для самозанятых</strong> - специальные условия без лишних документов. Оформление за 15 минут, чеки для налоговой, работа от 1 заказа. Подходит для handmade мастеров, фотографов, IT-специалистов, кондитеров и других самозанятых.
+            </div>
+            <div class="tldr-details">
+                <p><strong>Основные преимущества:</strong></p>
+                <ul>
+                    <li>✅ Минимум документов - только паспорт</li>
+                    <li>✅ Быстрое оформление за 15 минут</li>
+                    <li>✅ Чеки для налоговой инспекции</li>
+                    <li>✅ Удобная оплата без предоплат</li>
+                    <li>✅ Работа от 1 заказа</li>
+                    <li>✅ Поддержка 24/7</li>
+                </ul>
+                <p><strong>Подходит для:</strong> handmade мастеров, фотографов, IT-специалистов, кондитеров, дизайнеров, байеров и других самозанятых граждан.</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- STICKY TOC -->
+    <div class="sticky-toc">
+        <div class="toc-header">
+            <h3>📑 Содержание</h3>
+        </div>
+        <ul class="toc-list">
+            <li class="toc-item toc-h2"><a href="#service-detailed">Полное описание услуги</a></li>
+            <li class="toc-item toc-h2"><a href="#service-process">Как происходит организация перевозки</a></li>
+            <li class="toc-item toc-h2"><a href="#why-choose">Почему клиенты выбирают АвтоГОСТ</a></li>
+            <li class="toc-item toc-h2"><a href="#self-employed-benefits">Почему самозанятые выбирают нас</a></li>
+            <li class="toc-item toc-h2"><a href="#who-uses">Кто использует наши услуги</a></li>
+            <li class="toc-item toc-h2"><a href="#quick-start">Начните работать за 15 минут</a></li>
+            <li class="toc-item toc-h2"><a href="#pricing">Прозрачные тарифы</a></li>
+            <li class="toc-item toc-h2"><a href="#calculator">Рассчитайте стоимость</a></li>
+            <li class="toc-item toc-h2"><a href="#testimonials">Отзывы клиентов</a></li>
+            <li class="toc-item toc-h2"><a href="#faq">Ответы на вопросы</a></li>
+        </ul>
+    </div>
+    
     <!-- Детальное описание услуги -->
-    <section class="service-detailed section" data-collapse="mobile">
+    <section id="service-detailed" class="service-detailed section" data-collapse="mobile">
         <div class="container">
             <div class="service-overview">
                 <h2>Полное описание услуги</h2>
@@ -215,7 +264,7 @@
                 </div>
             </div>
             
-            <div class="service-process">
+            <div id="service-process" class="service-process">
                 <h2>Как происходит организация перевозки</h2>
                 
                 <div class="process-steps">
@@ -272,7 +321,7 @@
     </section>
     
     <!-- Преимущества работы с нами -->
-    <section class="why-us-detailed section bg-light" data-collapse="mobile">
+    <section id="why-choose" class="why-us-detailed section bg-light" data-collapse="mobile">
         <div class="container">
             <h2>Почему клиенты выбирают АвтоГОСТ</h2>
             
@@ -347,7 +396,7 @@
     </section>
 
     <!-- Преимущества для самозанятых -->
-    <section class="advantages section" data-collapse="mobile">
+    <section id="self-employed-benefits" class="advantages section" data-collapse="mobile">
         <div class="container">
             <h2 class="section-title">Почему самозанятые выбирают нас</h2>
             <p class="section-subtitle">Мы создали идеальные условия для работы без лишней бюрократии</p>
@@ -641,7 +690,7 @@
     </section>
 
     <!-- Калькулятор -->
-    <section class="calculator-section section" data-collapse="mobile">
+    <section id="calculator" class="calculator-section section" data-collapse="mobile">
         <div class="container">
             <h2 class="section-title">Рассчитайте стоимость доставки</h2>
             
@@ -773,13 +822,13 @@
         <div class="container">
             <h2 class="section-title">Ответы на частые вопросы</h2>
             
-            <div class="faq-accordion">
-                <div class="faq-item">
-                    <button class="faq-question" onclick="toggleFaq(this)">
-                        <span>Какие документы нужны самозанятому для работы с вами?</span>
-                        <i class="bi bi-chevron-down"></i>
-                    </button>
-                    <div class="faq-answer">
+            <div class="accordion">
+                <div class="accordion-trigger">
+                    <span class="accordion-title">Какие документы нужны самозанятому для работы с вами?</span>
+                    <span class="accordion-icon">+</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="accordion-body">
                         <p>Минимальный набор документов:</p>
                         <ul>
                             <li>Паспорт (фото или скан)</li>
@@ -789,13 +838,15 @@
                         <p>Больше ничего не нужно! Никаких печатей, протоколов и уставов.</p>
                     </div>
                 </div>
+            </div>
 
-                <div class="faq-item">
-                    <button class="faq-question" onclick="toggleFaq(this)">
-                        <span>Как происходит оплата и какие документы я получу?</span>
-                        <i class="bi bi-chevron-down"></i>
-                    </button>
-                    <div class="faq-answer">
+            <div class="accordion">
+                <div class="accordion-trigger">
+                    <span class="accordion-title">Как происходит оплата и какие документы я получу?</span>
+                    <span class="accordion-icon">+</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="accordion-body">
                         <p>Оплата возможна несколькими способами:</p>
                         <ul>
                             <li>На карту физлица</li>
@@ -805,33 +856,39 @@
                         <p>После оплаты вы получите чек, который можно использовать для налогового учета в приложении "Мой налог". Также предоставляем акт выполненных работ.</p>
                     </div>
                 </div>
+            </div>
 
-                <div class="faq-item">
-                    <button class="faq-question" onclick="toggleFaq(this)">
-                        <span>Есть ли минимальное количество заказов в месяц?</span>
-                        <i class="bi bi-chevron-down"></i>
-                    </button>
-                    <div class="faq-answer">
+            <div class="accordion">
+                <div class="accordion-trigger">
+                    <span class="accordion-title">Есть ли минимальное количество заказов в месяц?</span>
+                    <span class="accordion-icon">+</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="accordion-body">
                         <p>Нет! Вы можете делать хоть 1 заказ в месяц, хоть 100. Никаких обязательств по объему нет. Работайте в своем ритме.</p>
                     </div>
                 </div>
+            </div>
 
-                <div class="faq-item">
-                    <button class="faq-question" onclick="toggleFaq(this)">
-                        <span>Можно ли заказать доставку в другой город?</span>
-                        <i class="bi bi-chevron-down"></i>
-                    </button>
-                    <div class="faq-answer">
+            <div class="accordion">
+                <div class="accordion-trigger">
+                    <span class="accordion-title">Можно ли заказать доставку в другой город?</span>
+                    <span class="accordion-icon">+</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="accordion-body">
                         <p>Да, работаем по всей России! Междугородние перевозки — одна из наших специализаций. Доставляем от документов до крупногабаритных грузов.</p>
                     </div>
                 </div>
+            </div>
 
-                <div class="faq-item">
-                    <button class="faq-question" onclick="toggleFaq(this)">
-                        <span>Что делать, если груз хрупкий или требует особых условий?</span>
-                        <i class="bi bi-chevron-down"></i>
-                    </button>
-                    <div class="faq-answer">
+            <div class="accordion">
+                <div class="accordion-trigger">
+                    <span class="accordion-title">Что делать, если груз хрупкий или требует особых условий?</span>
+                    <span class="accordion-icon">+</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="accordion-body">
                         <p>Обязательно сообщите об этом менеджеру при заказе. У нас есть:</p>
                         <ul>
                             <li>Специальная упаковка для хрупких грузов</li>
@@ -841,13 +898,15 @@
                         </ul>
                     </div>
                 </div>
+            </div>
 
-                <div class="faq-item">
-                    <button class="faq-question" onclick="toggleFaq(this)">
-                        <span>Как быстро можно начать работать после регистрации?</span>
-                        <i class="bi bi-chevron-down"></i>
-                    </button>
-                    <div class="faq-answer">
+            <div class="accordion">
+                <div class="accordion-trigger">
+                    <span class="accordion-title">Как быстро можно начать работать после регистрации?</span>
+                    <span class="accordion-icon">+</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="accordion-body">
                         <p>Очень быстро! После отправки документов и подписания договора (15-20 минут) вы сразу можете делать первый заказ. Весь процесс от звонка до первой доставки занимает не более часа.</p>
                     </div>
                 </div>
@@ -1376,6 +1435,7 @@
     </script>
 
     <script src="assets/js/main.min.js" defer></script>
+    <script src="assets/js/ux-improvements.js" defer></script>
     <script src="/assets/js/lazy-loading.min.js" defer></script>
     
     <!-- Отслеживание кликов -->
