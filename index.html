@@ -522,17 +522,20 @@ document.addEventListener('DOMContentLoaded', function() {
                 <p class="hero-subtitle">Подача от 2 часов, контроль 24/7, всё под ключ. Просто нажмите кнопку — остальное сделаем мы</p>
                 
                 <div class="hero-stats">
-                    <div class="stat-item">
-                        <div class="stat-number" style="color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">24/7</div>
-                        <div class="stat-label" style="color: white; text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">Работаем круглосуточно</div>
+                    <div class="stat-item animate-on-scroll">
+                        <div class="stat-icon">🕐</div>
+                        <div class="stat-number" data-target="24">0</div>
+                        <div class="stat-label">Работаем круглосуточно</div>
                     </div>
-                    <div class="stat-item">
-                        <div class="stat-number" style="color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">2 часа</div>
-                        <div class="stat-label" style="color: white; text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">Подача транспорта</div>
+                    <div class="stat-item animate-on-scroll">
+                        <div class="stat-icon">⚡</div>
+                        <div class="stat-number" data-target="2">0</div>
+                        <div class="stat-label">Подача транспорта (часа)</div>
                     </div>
-                    <div class="stat-item">
-                        <div class="stat-number" style="color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">99.3%</div>
-                        <div class="stat-label" style="color: white; text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">Доставка в срок</div>
+                    <div class="stat-item animate-on-scroll">
+                        <div class="stat-icon">✅</div>
+                        <div class="stat-number" data-target="99.3">0</div>
+                        <div class="stat-label">Доставка в срок (%)</div>
                     </div>
                 </div>
                 
@@ -1978,5 +1981,6 @@ document.addEventListener('DOMContentLoaded', function() {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="assets/js/pdf-lead-magnet.js?v=1754158000" defer></script>
     <script src="assets/js/sticky-cta.js?v=1754158000" defer></script>
+    <script src="assets/js/animated-counter.js?v=1754158000" defer></script>
 </body>
 </html>

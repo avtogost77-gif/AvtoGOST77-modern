@@ -154,6 +154,7 @@ class CalculatorV2Enhanced {
     inputs.forEach(input => {
       input.addEventListener('blur', () => this.validateField(input));
       input.addEventListener('input', () => this.clearFieldError(input));
+      input.addEventListener('focus', () => this.showFieldHelp(input));
     });
   }
 
@@ -223,7 +224,35 @@ class CalculatorV2Enhanced {
     if (errorDiv) {
       errorDiv.remove();
     }
+    const helpDiv = field.parentNode.querySelector('.field-help');
+    if (helpDiv) {
+      helpDiv.remove();
+    }
     field.style.borderColor = '';
+  }
+
+  showFieldHelp(field) {
+    this.clearFieldError(field);
+    
+    const helpTexts = {
+      'from': 'Начните вводить название города',
+      'to': 'Куда нужно доставить груз?',
+      'weight': 'Вес в килограммах (например: 500)',
+      'volume': 'Объем в кубометрах (например: 2.5)'
+    };
+    
+    const fieldName = field.name || field.id;
+    const helpText = helpTexts[fieldName];
+    
+    if (helpText) {
+      const helpDiv = document.createElement('div');
+      helpDiv.className = 'field-help';
+      helpDiv.textContent = helpText;
+      helpDiv.style.color = '#6b7280';
+      helpDiv.style.fontSize = '0.875rem';
+      helpDiv.style.marginTop = '0.25rem';
+      field.parentNode.appendChild(helpDiv);
+    }
   }
 
   setupAutocomplete() {
@@ -448,6 +477,21 @@ class CalculatorV2Enhanced {
         
         <div class="result-disclaimer">
           <small>* Цена является ориентировочной и может измениться после уточнения деталей</small>
+        </div>
+        
+        <div class="result-micro-copy">
+          <div class="micro-copy-item">
+            <span class="micro-icon">⚡</span>
+            <span class="micro-text">Ответим за 2-10 минут</span>
+          </div>
+          <div class="micro-copy-item">
+            <span class="micro-icon">✅</span>
+            <span class="micro-text">99.3% доставок в срок</span>
+          </div>
+          <div class="micro-copy-item">
+            <span class="micro-icon">🛡️</span>
+            <span class="micro-text">Страхование по желанию</span>
+          </div>
         </div>
       </div>
     `;
