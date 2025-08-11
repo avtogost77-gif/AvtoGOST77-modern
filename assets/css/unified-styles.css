@@ -1116,6 +1116,218 @@ a:hover {
   }
 }
 
+/* КАЛЬКУЛЯТОР - ДОПОЛНИТЕЛЬНЫЕ СТИЛИ */
+.calculator-form {
+  display: grid;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.calculator-result {
+  display: none;
+  background: var(--gray-50);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  margin-top: 1.5rem;
+  border: 1px solid var(--gray-200);
+}
+
+.calculator-result.show {
+  display: block;
+  animation: fadeInUp 0.3s ease-out;
+}
+
+.calculator-result h3 {
+  color: var(--gray-900);
+  margin-bottom: 1rem;
+  font-size: var(--text-xl);
+}
+
+.calculator-result .price {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 1rem;
+}
+
+.calculator-result .details {
+  color: var(--gray-600);
+  line-height: 1.6;
+}
+
+.calculator-result .actions {
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* КАЛЬКУЛЯТОР ENHANCED */
+.calc-progress {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+  gap: 1rem;
+}
+
+.progress-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.step-number {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background: var(--gray-200);
+  color: var(--gray-600);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 0.875rem;
+  transition: all var(--transition-normal);
+}
+
+.progress-step.active .step-number {
+  background: var(--primary);
+  color: var(--white);
+}
+
+.progress-step.completed .step-number {
+  background: var(--secondary);
+  color: var(--white);
+}
+
+.step-label {
+  font-size: 0.75rem;
+  color: var(--gray-500);
+  text-align: center;
+}
+
+.calc-step {
+  display: none;
+  animation: fadeInUp 0.3s ease-out;
+}
+
+.calc-step.active {
+  display: block;
+}
+
+/* РЕЗУЛЬТАТ КАЛЬКУЛЯТОРА ENHANCED */
+.calc-result-enhanced {
+  background: linear-gradient(135deg, var(--gray-50) 0%, var(--white) 100%);
+  border-radius: var(--radius-xl);
+  padding: 2rem;
+  border: 1px solid var(--gray-200);
+  box-shadow: var(--shadow-md);
+  animation: fadeInUp 0.5s ease-out;
+}
+
+.result-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.result-price {
+  font-size: 3rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 1rem;
+}
+
+.result-details {
+  display: grid;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.result-detail {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.75rem;
+  background: var(--white);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--gray-200);
+}
+
+.result-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.result-disclaimer {
+  text-align: center;
+  color: var(--gray-500);
+  font-size: 0.875rem;
+  margin-top: 1rem;
+}
+
+.result-micro-copy {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--gray-200);
+}
+
+.micro-copy-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--gray-600);
+}
+
+.micro-icon {
+  font-size: 1rem;
+}
+
+.micro-text {
+  flex: 1;
+}
+
+/* ВАЛИДАЦИЯ ПОЛЕЙ */
+.field-error {
+  color: #dc2626;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+  display: none;
+}
+
+.field-error.show {
+  display: block;
+  animation: fadeIn 0.2s ease-out;
+}
+
+.field-help {
+  color: var(--gray-500);
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+  display: none;
+}
+
+.field-help.show {
+  display: block;
+  animation: fadeIn 0.2s ease-out;
+}
+
+.form-input.error {
+  border-color: #dc2626;
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+}
+
+.form-input.success {
+  border-color: var(--secondary);
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+}
+
 /* HERO СТАТИСТИКА */
 .hero-stats {
   display: flex;
