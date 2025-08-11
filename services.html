@@ -9,8 +9,12 @@
      <link rel="canonical" href="https://avtogost77.ru/services.html">
     <meta name="keywords" content="услуги грузоперевозок, заказать газель, аренда фуры, манипулятор, экспресс доставка">
     
-    <!-- Основные стили -->
-    <link rel="stylesheet" href="assets/css/styles-optimized.min.css?v=1754549859" />
+    <!-- КРИТИЧЕСКИЙ CSS - ОПТИМИЗИРОВАННЫЙ -->
+    <link rel="stylesheet" href="assets/css/critical-optimized.min.css">
+    
+    <!-- ОПТИМИЗИРОВАННЫЕ СТИЛИ - АСИНХРОННАЯ ЗАГРУЗКА -->
+    <link rel="stylesheet" href="assets/css/unified-styles.min.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="assets/css/unified-styles.min.css"></noscript>
     
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
@@ -807,6 +811,7 @@
 
     <!-- Скрипты -->
     <script src="assets/js/main.js?v=1754549859" defer></script>
+    <script src="assets/js/ux-improvements.js?v=1754158000" defer></script>
     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
     <script>
         // Инициализация AOS
