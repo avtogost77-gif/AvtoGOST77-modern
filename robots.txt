@@ -31,11 +31,9 @@ Allow: /*.gif
 Allow: /*.webp
 Allow: /*.svg
 
-# Запрет для служебных файлов
+# Запрет для служебных файлов (не блокируем CSS/JS для корректного рендеринга)
 Disallow: /manifest.json
 Disallow: /sw.js
-Disallow: /*.min.js$
-Disallow: /*.min.css$
 
 # Специальные директивы для Яндекса
 User-agent: Yandex
