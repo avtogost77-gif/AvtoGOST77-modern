@@ -289,6 +289,16 @@ Next steps
 - Аналитика: цели кликов (tel/WA), раскрытий, CTA результата калькулятора — в Метрике/GA4.
 
 ### Сроки/роллаут
+### 2025-08-12 — CSS фиксы + Preload
+
+- Заменены устаревшие CSS-подключения:
+  - `news.html`: `styles.css` → `critical-optimized.min.css` + `unified-styles.min.css` (async) + preload
+  - `blog-5-logistics-optimization.html`: удалён `styles.css`, `critical.css` → `critical-optimized.min.css`
+  - `blog-6-marketplace-insider.html`: удалён `styles.css`, `critical.css` → `critical-optimized.min.css`
+- Добавлен `<link rel="preload" ...>` для критического CSS на 5 страницах типов ТС:
+  - `gazel-gruzoperevozki.html`, `trehtonnik-gruzoperevozki.html`, `pyatitonnik-gruzoperevozki.html`, `desyatitonnik-gruzoperevozki.html`, `fura-20-tonn-gruzoperevozki.html`
+- Проверено: калькулятор везде использует `smart-calculator-v2.js`; `calc.js` больше не подключается.
+
 - Пилот на 2–3 страницах — 1 день; ревью → тиражирование итеративно.
 
 ---
