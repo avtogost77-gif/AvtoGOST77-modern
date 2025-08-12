@@ -298,6 +298,7 @@ Next steps
 - Добавлен `<link rel="preload" ...>` для критического CSS на 5 страницах типов ТС:
   - `gazel-gruzoperevozki.html`, `trehtonnik-gruzoperevozki.html`, `pyatitonnik-gruzoperevozki.html`, `desyatitonnik-gruzoperevozki.html`, `fura-20-tonn-gruzoperevozki.html`
 - Проверено: калькулятор везде использует `smart-calculator-v2.js`; `calc.js` больше не подключается.
+ - Добавлено подключение `assets/js/distance-api.js` на 5 страницах типов ТС для инициализации `DistanceAPI` в браузере.
 
 - Пилот на 2–3 страницах — 1 день; ревью → тиражирование итеративно.
 
