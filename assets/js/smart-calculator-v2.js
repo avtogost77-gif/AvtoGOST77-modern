@@ -235,8 +235,24 @@ class SmartCalculatorV2 {
     const optimalTransport = this.selectOptimalTransport(weight, volume);
     const transport = this.transportTypes[optimalTransport];
 
-    // ПРАВИЛЬНАЯ ЛОГИКА: используем тарифы по типу ТС
-    const transportKmRates = {
+    // КОМБИНИРОВАННАЯ ЛОГИКА: База = расстояние × тариф + доплата за тип ТС
+    let basePrice = distance * pricePerKm;
+
+    // ЖЕСТКИЕ МИНИМАЛКИ ПО ТИПАМ ТС только для коротких плеч (до 200км)
+    const transportMinPrices = {
+      gazelle: distance < 200 ? 20000 : transport.minPriceRegion,
+      threeTon: distance < 200 ? 25000 : transport.minPriceRegion,
+      fiveTon: distance < 200 ? 30000 : transport.minPriceRegion,
+      tenTon: distance < 200 ? 37000 : transport.minPriceRegion,
+      truck: distance < 200 ? 42000 : transport.minPriceRegion
+    };
+
+    // Применяем минималку для выбранного транспорта
+    const minPrice = transportMinPrices[optimalTransport];
+    basePrice = Math.max(basePrice, minPrice);
+
+    // ДОБАВЛЯЕМ ₽/КМ ДОПЛАТЫ ПО ТИПУ ТС К МЕЖРЕГИОНАЛЬНЫМ
+    const interregionalKmRates = {
       gazelle: 30,   // 30₽/км для газели
       threeTon: 40,  // 40₽/км для 3-тонника
       fiveTon: 50,   // 50₽/км для 5-тонника  
@@ -244,21 +260,9 @@ class SmartCalculatorV2 {
       truck: 70      // 70₽/км для фуры
     };
     
-    const kmRate = transportKmRates[optimalTransport] || 30;
-    let basePrice = distance * kmRate;
-
-    // ЖЕСТКИЕ МИНИМАЛКИ ПО ТИПАМ ТС
-    const transportMinPrices = {
-      gazelle: transport.minPrice,
-      threeTon: transport.minPrice,
-      fiveTon: transport.minPrice,
-      tenTon: transport.minPrice,
-      truck: transport.minPrice
-    };
-
-    // Применяем минималку для выбранного транспорта
-    const minPrice = transportMinPrices[optimalTransport];
-    basePrice = Math.max(basePrice, minPrice);
+    const kmRate = interregionalKmRates[optimalTransport] || 15;
+    const kmSurcharge = distance * kmRate;
+    basePrice += kmSurcharge;
 
     // СБОРНЫЕ ГРУЗЫ (только для межрегиональных и НЕ для фур!)
     const isConsolidated = (cargoType === 'сборный' || cargoType === 'consolidated') && transport.allowConsolidated;
@@ -278,11 +282,11 @@ class SmartCalculatorV2 {
     } else if (distance < 200) {
       zoneCoeff = 1.4;  // Областные - высокий коэфф
     } else if (distance < 400) {
-      zoneCoeff = 1.3;  // Межрегиональные - повышенный коэфф
+      zoneCoeff = 1.2;  // Межрегиональные - повышенный коэфф
     } else if (distance < 800) {
-      zoneCoeff = 1.1;  // Среднее плечо - небольшая надбавка
+      zoneCoeff = 1.0;  // Среднее плечо - без надбавки
     } else {
-      zoneCoeff = 1.0;  // Длинное плечо - базовый коэфф
+      zoneCoeff = 0.95;  // Длинное плечо - небольшая скидка
     }
     
     const transportCoeff = zoneCoeff; // Используем зональный коэффициент
