@@ -1,3 +1,15 @@
+RewriteEngine On
+
+# Redirect URLs without extension to corresponding .html if it exists
+RewriteCond %{REQUEST_URI} !/$
+RewriteCond %{REQUEST_URI} !\.[^./]+$
+RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI}.html -f
+RewriteRule ^(.*)$ $1.html [R=301,L]
+
+# Force single canonical host (no change here; rely on app/server config if needed)
+# Uncomment and set if required:
+# RewriteCond %{HTTP_HOST} !^avtogost77\.ru$ [NC]
+# RewriteRule ^(.*)$ https://avtogost77.ru/$1 [R=301,L]
 # АвтоГОСТ .htaccess
 # SEO оптимизация и производительность
 
