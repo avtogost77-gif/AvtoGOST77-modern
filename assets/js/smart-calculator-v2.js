@@ -282,11 +282,11 @@ class SmartCalculatorV2 {
     } else if (distance < 200) {
       zoneCoeff = 1.4;  // Областные - высокий коэфф
     } else if (distance < 400) {
-      zoneCoeff = 1.2;  // Межрегиональные - повышенный коэфф
+      zoneCoeff = 1.3;  // Межрегиональные - повышенный коэфф
     } else if (distance < 800) {
-      zoneCoeff = 1.0;  // Среднее плечо - без надбавки
+      zoneCoeff = 1.1;  // Среднее плечо - небольшая надбавка
     } else {
-      zoneCoeff = 0.95;  // Длинное плечо - небольшая скидка
+      zoneCoeff = 1.0;  // Длинное плечо - базовый коэфф
     }
     
     const transportCoeff = zoneCoeff; // Используем зональный коэффициент
