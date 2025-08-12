@@ -451,38 +451,70 @@
                 <h2>Калькулятор стоимости грузоперевозки газелью</h2>
                 <p>Рассчитайте точную стоимость за 30 секунд:</p>
                 
-                <div class="calculator-form">
-                    <div class="form-group">
-                        <label for="from-address">Откуда:</label>
-                        <input type="text" id="from-address" placeholder="Адрес загрузки" class="form-input">
+                <form class="calculator-form" id="calculatorForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="fromCity">Откуда</label>
+                            <input type="text" 
+                                   id="fromCity" 
+                                   name="from" 
+                                   placeholder="Введите город отправления" 
+                                   data-address-type="from"
+                                   autocomplete="off"
+                                   required>
+                            <div class="address-suggestions" data-for="from"></div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="toCity">Куда</label>
+                            <input type="text" 
+                                   id="toCity" 
+                                   name="to" 
+                                   placeholder="Введите город назначения"
+                                   data-address-type="to"
+                                   autocomplete="off"
+                                   required>
+                            <div class="address-suggestions" data-for="to"></div>
+                        </div>
                     </div>
                     
-                    <div class="form-group">
-                        <label for="to-address">Куда:</label>
-                        <input type="text" id="to-address" placeholder="Адрес разгрузки" class="form-input">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="weight">Вес, кг</label>
+                            <input type="number" id="weight" name="weight" placeholder="Вес груза" min="1" autocomplete="off" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="volume">Объем, м³</label>
+                            <input type="number" id="volume" name="volume" placeholder="Если груз объемный, укажите объем" min="0" step="0.1" autocomplete="off">
+                            <small class="form-text">
+                                Если Ваш груз объемный или не запалетирован, введите объем или оставьте поле пустым для расчета с менеджером
+                            </small>
+                        </div>
+                        
+                        <div class="form-group">
+                            <div class="checkbox-wrapper">
+                                <input type="checkbox" id="isConsolidated" name="isConsolidated">
+                                <label for="isConsolidated" class="checkbox-label">
+                                    <span class="checkbox-icon">📦</span>
+                                    <span class="checkbox-text">
+                                        <strong>Сборный груз</strong>
+                                        <small>Экономия до 35%, срок доставки +30%</small>
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
                     </div>
                     
-                    <div class="form-group">
-                        <label for="gazelle-type">Тип газели:</label>
-                        <select id="gazelle-type" class="form-input">
-                            <option value="standard">Стандартная (3м)</option>
-                            <option value="extended">Удлиненная (4м)</option>
-                            <option value="next">NEXT (4-6м)</option>
-                            <option value="refrigerator">Рефрижератор</option>
-                        </select>
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-primary btn-lg" id="calculateButton">
+                            <span class="btn-text">Рассчитать стоимость</span>
+                            <span class="btn-loading" style="display: none;">Рассчитываем...</span>
+                        </button>
                     </div>
-                    
-                    <div class="form-group">
-                        <label for="cargo-weight">Вес груза (кг):</label>
-                        <input type="number" id="cargo-weight" placeholder="1500" class="form-input">
-                    </div>
-                    
-                    <button type="button" class="btn btn-primary btn-lg" onclick="calculateGazelle()">Рассчитать стоимость</button>
-                </div>
+                </form>
                 
-                <div class="calculator-result" id="calculator-result">
-                    <!-- Результат будет показан здесь -->
-                </div>
+                <div id="calculatorResult" class="calculator-result"></div>
             </section>
 
             <!-- FAQ -->
@@ -614,75 +646,5 @@
     <script src="assets/js/main.js" defer></script>
     <script src="assets/js/ux-improvements.js" defer></script>
     <script src="assets/js/smart-calculator-v2.js" defer></script>
-    
-    <script>
-        // Калькулятор для газелей
-        function calculateGazelle() {
-            const fromAddress = document.getElementById('from-address').value;
-            const toAddress = document.getElementById('to-address').value;
-            const gazelleType = document.getElementById('gazelle-type').value;
-            const cargoWeight = parseInt(document.getElementById('cargo-weight').value) || 0;
-            
-            if (!fromAddress || !toAddress) {
-                alert('Пожалуйста, заполните адреса загрузки и разгрузки');
-                return;
-            }
-            
-                         // Простой расчет (в реальности здесь будет API)
-             let basePrice = 5000;
-             let pricePerKm = 35;
-             
-             switch(gazelleType) {
-                 case 'extended':
-                     basePrice = 6000;
-                     pricePerKm = 30;
-                     break;
-                 case 'next':
-                     basePrice = 7000;
-                     pricePerKm = 25;
-                     break;
-                 case 'refrigerator':
-                     basePrice = 8000;
-                     pricePerKm = 40;
-                     break;
-             }
-            
-            // Примерный расчет расстояния (в реальности через API)
-            const estimatedDistance = 50; // км
-            const totalPrice = basePrice + (estimatedDistance * pricePerKm);
-            
-            const resultDiv = document.getElementById('calculator-result');
-            resultDiv.innerHTML = `
-                <h3>Расчет стоимости</h3>
-                <div class="result-price">${totalPrice.toLocaleString()} ₽</div>
-                <div class="result-details">
-                    <div class="result-detail">
-                        <span>Маршрут:</span>
-                        <span>${fromAddress} → ${toAddress}</span>
-                    </div>
-                    <div class="result-detail">
-                        <span>Тип газели:</span>
-                        <span>${document.getElementById('gazelle-type').options[document.getElementById('gazelle-type').selectedIndex].text}</span>
-                    </div>
-                    <div class="result-detail">
-                        <span>Расстояние:</span>
-                        <span>~${estimatedDistance} км</span>
-                    </div>
-                    <div class="result-detail">
-                        <span>Вес груза:</span>
-                        <span>${cargoWeight} кг</span>
-                    </div>
-                </div>
-                <div class="result-actions">
-                    <a href="tel:+79162720932" class="btn btn-primary">Заказать</a>
-                    <a href="https://wa.me/79162720932" class="btn btn-success">WhatsApp</a>
-                </div>
-                <div class="result-disclaimer">
-                    * Расчет примерный. Точная стоимость уточняется при заказе.
-                </div>
-            `;
-            resultDiv.classList.add('show');
-        }
-    </script>
 </body>
 </html>
