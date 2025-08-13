@@ -5,10 +5,10 @@ class DistanceAPI {
   constructor() {
     // Приоритет источников данных
     this.providers = [
-      'static',         // Статическая база - мгновенно
-      'openrouteservice', // OpenRouteService - 2000 запросов/день
-      'osrm',          // OSRM - бесплатный, но умеренное использование
-      'haversine'      // Формула по координатам - fallback
+      'static',          // Статическая база - мгновенно
+      'osrm',            // OSRM - бесплатный, часто стабильнее в мобильных сетях
+      'openrouteservice',// OpenRouteService - 2000 запросов/день
+      'haversine'        // Формула по координатам - fallback
     ];
     
     // Кэш для избежания повторных запросов
@@ -30,7 +30,6 @@ class DistanceAPI {
     
     // Проверяем кэш
     if (this.cache.has(cacheKey)) {
-      console.log(`📦 Кэш: ${fromCity} → ${toCity} = ${this.cache.get(cacheKey)}км`);
       return this.cache.get(cacheKey);
     }
 
@@ -47,7 +46,6 @@ class DistanceAPI {
           break;
         }
       } catch (error) {
-        console.warn(`⚠️ Provider ${provider} failed:`, error.message);
         continue;
       }
     }
@@ -55,7 +53,6 @@ class DistanceAPI {
     // Кэшируем результат
     if (distance) {
       this.cache.set(cacheKey, distance);
-      console.log(`✅ ${usedProvider}: ${fromCity} → ${toCity} = ${distance}км`);
     } else {
       console.error(`❌ Не удалось получить расстояние для ${fromCity} → ${toCity}`);
     }
@@ -91,18 +88,18 @@ class DistanceAPI {
       const { getRealDistance: getDistance } = require('./real-distances.js');
       return getDistance(fromCity, toCity);
     } catch (error) {
-      console.warn('⚠️ Статическая база недоступна:', error.message);
       return null;
     }
   }
 
-  // OpenRouteService API (2000 запросов/день) - ПРАВИЛЬНАЯ РЕАЛИЗАЦИЯ
+  // OpenRouteService API (2000 запросов/день) - корректируем единицы измерения (метры → км)
   async getFromOpenRouteService(fromCity, toCity) {
     const coords = this.getCityCoords(fromCity, toCity);
     if (!coords) return null;
 
     // Правильный endpoint для легковых автомобилей
-    const url = 'https://api.openrouteservice.org/v2/directions/driving-car';
+    // Явно укажем единицы км через query, т.к. в POST body может игнорироваться
+    const url = 'https://api.openrouteservice.org/v2/directions/driving-car?units=km';
     
     // API ключ из переменной окружения или константы
     const API_KEY = '28d87edc85fa4551b58d331d8d24f8e3';
@@ -118,7 +115,6 @@ class DistanceAPI {
     };
 
     try {
-      console.log(`🌐 OpenRouteService: POST запрос ${fromCity} → ${toCity}`);
       
       const response = await fetch(url, {
         method: 'POST',
@@ -138,17 +134,17 @@ class DistanceAPI {
       
       const data = await response.json();
       
-      // Правильная структура ответа OpenRouteService
-      if (data.routes && data.routes[0] && data.routes[0].summary) {
-        const distanceKm = data.routes[0].summary.distance; // уже в км
-        console.log(`✅ OpenRouteService: ${fromCity} → ${toCity} = ${Math.round(distanceKm)}км`);
+      // Структура ответа OpenRouteService
+      if (data && data.routes && data.routes[0] && data.routes[0].summary) {
+        const rawDistance = data.routes[0].summary.distance;
+        // ORS часто возвращает метры; если значение > 1000, считаем что это метры
+        const distanceKm = rawDistance > 1000 ? (rawDistance / 1000) : rawDistance;
         return Math.round(distanceKm);
       }
       
       throw new Error('Неожиданный формат ответа от OpenRouteService');
       
     } catch (error) {
-      console.warn('🚫 OpenRouteService API error:', error.message);
       return null;
     }
   }
@@ -163,7 +159,6 @@ class DistanceAPI {
       `?overview=false&alternatives=false&steps=false`;
 
     try {
-      console.log(`🛣️ OSRM: запрос ${fromCity} → ${toCity}`);
       
       const response = await fetch(url);
       const data = await response.json();
@@ -175,7 +170,6 @@ class DistanceAPI {
       throw new Error(`OSRM error: ${data.message || 'Unknown error'}`);
       
     } catch (error) {
-      console.warn('🚫 OSRM API error:', error.message);
       return null;
     }
   }
@@ -193,7 +187,6 @@ class DistanceAPI {
       Math.sin(dLon/2) * Math.sin(dLon/2);
     const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
     
-    console.log(`📐 Haversine: ${fromCity} → ${toCity} = ${Math.round(R * c)}км (приблизительно)`);
     return Math.round(R * c);
   }
 
@@ -201,48 +194,81 @@ class DistanceAPI {
   getCityCoords(fromCity, toCity) {
     // Нормализация названий городов
     const normalizeCity = (city) => {
-      const cityMap = {
-        'Москва': 'moskva',
-        'Санкт-Петербург': 'spb', 
-        'СПб': 'spb',
-        'Петербург': 'spb',
-        'Казань': 'kazan',
-        'Воронеж': 'voronezh', 
-        'Самара': 'samara',
-        'Нижний Новгород': 'nizhniy-novgorod',
-        'Екатеринбург': 'ekaterinburg',
-        'Ростов': 'rostov',
-        'Челябинск': 'chelyabinsk',
-        'Уфа': 'ufa',
-        'Рязань': 'ryazan',
-        'Тула': 'tula',
-        'Ярославль': 'yaroslavl',
-        'Владимир': 'vladimir',
-        'Калуга': 'kaluga',
-        'Смоленск': 'smolensk',
-        'Брянск': 'bryansk',
-        'Орел': 'orel',
-        'Курск': 'kursk',
-        'Белгород': 'belgorod',
-        'Липецк': 'lipetsk',
-        'Тамбов': 'tambov',
-        'Пенза': 'penza',
-        'Саранск': 'saransk',
-        'Чебоксары': 'cheboksary',
-        'Киров': 'kirov',
-        'Ижевск': 'izhevsk',
-        'Пермь': 'perm',
-        'Оренбург': 'orenburg',
-        'Гагарин': 'gagarin'
-      };
-      
-      // Если есть прямое соответствие - используем его
-      if (cityMap[city]) {
-        return cityMap[city];
-      }
-      
-      // Иначе приводим к нижнему регистру и убираем пробелы
-      return city.toLowerCase().replace(/\s+/g, '-');
+      const raw = (city || '').toString().trim();
+      // Нормализуем: в нижний регистр, заменяем ё→е, убираем лишние пробелы
+      const lower = raw.toLowerCase().replace(/ё/g, 'е').replace(/\s+/g, ' ');
+
+      // Гибкие соответствия по ключевым фрагментам
+      if (lower.includes('санкт') || lower.includes('спб') || lower.includes('питер')) return 'spb';
+      if (lower.includes('моск')) return 'moskva';
+      if (lower.includes('ниж') && lower.includes('новгор')) return 'nizhniy-novgorod';
+      if (lower.includes('екатерин')) return 'ekaterinburg';
+      if (lower.includes('казан')) return 'kazan';
+      if (lower.includes('вороне')) return 'voronezh';
+      if (lower.includes('самар')) return 'samara';
+      if (lower.includes('ростов')) return 'rostov';
+      if (lower.includes('челябин')) return 'chelyabinsk';
+      if (lower.includes('уфа')) return 'ufa';
+      if (lower.includes('ряза')) return 'ryazan';
+      if (lower.includes('тула')) return 'tula';
+      if (lower.includes('ярослав')) return 'yaroslavl';
+      if (lower.includes('владимир')) return 'vladimir';
+      if (lower.includes('калуг')) return 'kaluga';
+      if (lower.includes('смолен')) return 'smolensk';
+      if (lower.includes('брян')) return 'bryansk';
+      if (lower.includes('орел') || lower.includes('орёл')) return 'orel';
+      if (lower.includes('курск')) return 'kursk';
+      if (lower.includes('белгор')) return 'belgorod';
+      if (lower.includes('липец')) return 'lipetsk';
+      if (lower.includes('тамбов')) return 'tambov';
+      if (lower.includes('пенза')) return 'penza';
+      if (lower.includes('саранск')) return 'saransk';
+      if (lower.includes('чебоксар')) return 'cheboksary';
+      if (lower.includes('киров')) return 'kirov';
+      if (lower.includes('ижевск')) return 'izhevsk';
+      if (lower.includes('перм')) return 'perm';
+      if (lower.includes('оренбург')) return 'orenburg';
+      if (lower.includes('саратов')) return 'saratov';
+      if (lower.includes('волгоград')) return 'volgograd';
+      if (lower.includes('астрахан')) return 'astrakhan';
+      if (lower.includes('краснодар')) return 'krasnodar';
+      if (lower.includes('сочи')) return 'sochi';
+      if (lower.includes('ставроп')) return 'stavropol';
+      if (lower.includes('махачкал')) return 'makhachkala';
+      if (lower.includes('грозн')) return 'grozny';
+      if (lower.includes('налчик')) return 'nalchik';
+      if (lower.includes('костром')) return 'kostroma';
+      if (lower.includes('твер')) return 'tver';
+      if (lower.includes('псков')) return 'pskov';
+      if (lower.includes('новгоро')) return 'novgorod';
+      if (lower.includes('петрозавод')) return 'petrozavodsk';
+      if (lower.includes('архангел')) return 'arkhangelsk';
+      if (lower.includes('мурман')) return 'murmansk';
+      if (lower.includes('сыктывкар')) return 'syktyvkar';
+      if (lower.includes('вологд')) return 'vologda';
+      if (lower.includes('иваново')) return 'ivanovo';
+      if (lower.includes('новосибир')) return 'novosibirsk';
+      if (lower.includes('омск')) return 'omsk';
+      if (lower.includes('краснояр')) return 'krasnoyarsk';
+      if (lower.includes('иркутск')) return 'irkutsk';
+      if (lower.includes('хабаров')) return 'khabarovsk';
+      if (lower.includes('владивосток')) return 'vladivostok';
+      if (lower.includes('томск')) return 'tomsk';
+      if (lower.includes('кемеров')) return 'kemerovo';
+      if (lower.includes('новокузнец')) return 'novokuznetsk';
+      if (lower.includes('барнаул')) return 'barnaul';
+      if (lower.includes('чита')) return 'chita';
+      if (lower.includes('якутск')) return 'yakutsk';
+      if (lower.includes('магадан')) return 'magadan';
+      if (lower.includes('камчат')) return 'petropavlovsk-kamchatsky';
+      if (lower.includes('сахалин')) return 'yuzhno-sakhalinsk';
+      if (lower.includes('тюм')) return 'tyumen';
+      if (lower.includes('сургут')) return 'surgut';
+      if (lower.includes('курган')) return 'kurgan';
+      if (lower.includes('гагарин')) return 'gagarin';
+
+      // Если не распознали — делаем слаг
+      return lower.replace(/\s+/g, '-');
     };
 
     const CITY_COORDS = {
@@ -328,7 +354,6 @@ class DistanceAPI {
     const to = CITY_COORDS[normalizedTo];
     
     if (!from || !to) {
-      console.warn(`⚠️ Координаты не найдены для ${fromCity} или ${toCity}`);
       return null;
     }
     
@@ -371,7 +396,6 @@ class DistanceAPI {
   // Очистка кэша
   clearCache() {
     this.cache.clear();
-    console.log('🗑️ Кэш расстояний очищен');
   }
 
   // Проверка лимитов API
@@ -379,11 +403,9 @@ class DistanceAPI {
     const stats = this.getUsageStats();
     
     if (stats.providers.openrouteservice?.count > 1800) {
-      console.warn('⚠️ OpenRouteService: приближаемся к дневному лимиту (2000)');
     }
     
     if (stats.providers.osrm?.count > 500) {
-      console.warn('⚠️ OSRM: много запросов, возможна блокировка');
     }
     
     return stats;

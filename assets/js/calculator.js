@@ -2,19 +2,16 @@
 // Версия: 2.0.1 (совместимость с GitHub)
 // Основной функционал: smart-calculator-v2.min.js
 
-console.log('📊 Calculator.js v2.0.1 загружен - совместимость с SmartCalculatorV2');
 
 // Проверяем наличие основной системы калькулятора
 document.addEventListener('DOMContentLoaded', function() {
     // Если SmartCalculatorV2 уже загружен, используем его
     if (window.smartCalculatorV2) {
-        console.log('✅ SmartCalculatorV2 обнаружен - используем основную систему');
         return;
     }
     
     // Если SmartCalculatorV2 не загружен, загружаем его
     if (!document.querySelector('script[src*="smart-calculator-v2"]')) {
-        console.log('🔄 Загружаем SmartCalculatorV2...');
         const script = document.createElement('script');
         script.src = 'assets/js/smart-calculator-v2.min.js';
         script.async = true;
@@ -43,9 +40,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Инициализация форм калькулятора если они есть
     setTimeout(() => {
         if (window.smartCalculatorV2) {
-            console.log('✅ SmartCalculatorV2 инициализирован');
         } else {
-            console.log('⚠️ SmartCalculatorV2 не загружен - используем fallback');
             initFallbackCalculator();
         }
     }, 1000);
@@ -146,7 +141,6 @@ function createResultDiv() {
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = {
         init: function() {
-            console.log('📊 Calculator.js модуль инициализирован');
         },
         version: '2.0.1',
         compatible: true

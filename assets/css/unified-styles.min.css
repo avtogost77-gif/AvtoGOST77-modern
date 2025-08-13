@@ -3,6 +3,15 @@
    Единый дизайн-система для всего сайта
    ============================================ */
 
+/* Footer/icon normalization hotfix */
+.footer-icon{width:1.25rem;height:1.25rem;fill:currentColor;flex-shrink:0}
+.footer-social{display:flex;gap:1rem;margin-top:1rem}
+.footer-social-btn{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;color:#fff;font-size:1.25rem;transition:all .3s}
+.footer-social-btn:hover{transform:translateY(-2px);color:#fff}
+.btn-icon{width:1.25rem;height:1.25rem;fill:currentColor}
+.client-logos .client-logo img{width:150px;height:80px;object-fit:contain;filter:grayscale(100%);opacity:.7;border-radius:8px;transition:all .3s}
+.client-logos .client-logo:hover img{filter:grayscale(0%);opacity:1}
+
 /* CSS ПЕРЕМЕННЫЕ - ЕДИНАЯ ЦВЕТОВАЯ СХЕМА */
 :root {
   /* Основные цвета бренда */

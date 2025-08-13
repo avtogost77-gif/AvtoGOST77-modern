@@ -102,7 +102,6 @@ class ABTesting {
             });
         }
         
-        console.log(`📊 A/B Test Impression: ${testName} - variant ${variant}`);
     }
     
     trackClick(testName, variant, buttonText) {
@@ -115,7 +114,6 @@ class ABTesting {
             });
         }
         
-        console.log(`📊 A/B Test Click: ${testName} - variant ${variant} - "${buttonText}"`);
     }
     
     // Метод для получения статистики
@@ -137,5 +135,4 @@ document.addEventListener('DOMContentLoaded', () => {
     window.abTesting = new ABTesting();
     
     // Выводим статистику в консоль для отладки
-    console.log('🎯 A/B Testing Stats:', window.abTesting.getStats());
 });

@@ -1,13 +1,11 @@
 // Простой обработчик форм для MVP
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('📝 Form handler loaded');
     
     // Обработка контактной формы
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
         contactForm.addEventListener('submit', async function(e) {
             e.preventDefault();
-            console.log('📧 Contact form submitted');
             
             // Собираем данные формы
             const formData = new FormData(this);
@@ -53,9 +51,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.error('❌ Ошибка отправки заявки:', error);
             }
         });
-        console.log('✅ Contact form handler added');
     } else {
-        console.log('ℹ️ Contact form not found');
     }
     
     // Обработка лид-формы калькулятора
@@ -63,7 +59,6 @@ document.addEventListener('DOMContentLoaded', function() {
     if (leadForm) {
         leadForm.addEventListener('submit', async function(e) {
             e.preventDefault();
-            console.log('🎯 Lead form submitted');
             
             // Собираем данные формы
             const formData = new FormData(this);
@@ -104,7 +99,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 const success = await sendToTelegram(text, 'calculator-lead');
                 
                 if (success) {
-                    console.log('✅ Lead sent successfully');
                 } else {
                     console.error('❌ Ошибка отправки лида');
                 }
@@ -112,9 +106,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.error('❌ Ошибка отправки лида:', error);
             }
         });
-        console.log('✅ Lead form handler added');
     } else {
-        console.log('ℹ️ Lead form not found');
     }
     
     // Инициализация согласия на обработку данных
@@ -197,9 +189,7 @@ function initPrivacyConsent() {
                 submitBtn.classList.remove('btn-primary');
             }
         });
-        console.log('✅ Privacy consent handler added');
     } else {
-        console.log('ℹ️ Privacy consent elements not found');
     }
 }
 

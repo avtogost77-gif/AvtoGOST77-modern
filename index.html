@@ -68,10 +68,8 @@
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
     
     <!-- Preload критически важных ресурсов -->
-    <link rel="preload" href="assets/js/main.min.js?v=1754158000" as="script">
+    <link rel="preload" href="assets/js/main.min.js?v=1754158001" as="script">
     <link rel="preload" href="assets/js/smart-calculator-v2.js" as="script">
-    <link rel="preload" href="assets/img/hero-logistics-tablet.webp" as="image" media="(min-width: 768px)">
-    <link rel="preload" href="assets/img/hero-logistics-mobile.webp" as="image" media="(max-width: 767px)">
     
     <!-- Google Analytics -->
     <meta name="google-site-verification" content="i_MV74DrBdT7aD2kZhmnAZuQGEM3XBsDV8aCtEphAho" />
@@ -1632,32 +1630,32 @@ document.addEventListener('DOMContentLoaded', function() {
                 <p>Мы работаем с компаниями, чьи товары вы видите каждый день</p>
                 <div class="client-logos">
                     <div class="client-logo">
-                        <img loading="lazy" src="https://via.placeholder.com/150x80/f8f9fa/6b7280?text=ЭРА" alt="ЭРА">
+                        <img loading="lazy" src="assets/img/logo-192.svg" width="150" height="80" alt="ЭРА">
                         <p class="client-name">ЭРА</p>
                         <p class="client-desc">Снабжаем сырьем</p>
                     </div>
                     <div class="client-logo">
-                        <img loading="lazy" src="https://via.placeholder.com/150x80/f8f9fa/6b7280?text=Пятёрочка" alt="Пятёрочка">
+                        <img loading="lazy" src="assets/img/logo-192.svg" width="150" height="80" alt="Пятёрочка">
                         <p class="client-name">Пятёрочка</p>
                         <p class="client-desc">Поставки в РЦ</p>
                     </div>
                     <div class="client-logo">
-                        <img loading="lazy" src="https://via.placeholder.com/150x80/f8f9fa/6b7280?text=Магнит" alt="Магнит">
+                        <img loading="lazy" src="assets/img/logo-192.svg" width="150" height="80" alt="Магнит">
                         <p class="client-name">Магнит</p>
                         <p class="client-desc">Межфилиальные перевозки</p>
                     </div>
                     <div class="client-logo">
-                        <img loading="lazy" src="https://via.placeholder.com/150x80/f8f9fa/6b7280?text=METRO" alt="METRO">
+                        <img loading="lazy" src="assets/img/logo-192.svg" width="150" height="80" alt="METRO">
                         <p class="client-name">METRO</p>
                         <p class="client-desc">Доставка поставщикам</p>
                     </div>
                     <div class="client-logo">
-                        <img loading="lazy" src="https://via.placeholder.com/150x80/f8f9fa/6b7280?text=Перекрёсток" alt="Перекрёсток">
+                        <img loading="lazy" src="assets/img/logo-192.svg" width="150" height="80" alt="Перекрёсток">
                         <p class="client-name">Перекрёсток</p>
                         <p class="client-desc">Срочные поставки</p>
                     </div>
                     <div class="client-logo">
-                        <img loading="lazy" src="https://via.placeholder.com/150x80/f8f9fa/6b7280?text=Лента" alt="Лента">
+                        <img loading="lazy" src="assets/img/logo-192.svg" width="150" height="80" alt="Лента">
                         <p class="client-name">Лента</p>
                         <p class="client-desc">Региональная логистика</p>
                     </div>
@@ -1871,12 +1869,12 @@ document.addEventListener('DOMContentLoaded', function() {
     </footer>
 
     <!-- КРИТИЧЕСКИЙ JS - ЗАГРУЗКА СРАЗУ -->
-    <script src="assets/js/main.min.js?v=1754158000"></script>
+    <script src="assets/js/main.min.js?v=1754158001"></script>
     
     <!-- НЕКРИТИЧЕСКИЙ JS - АСИНХРОННАЯ ЗАГРУЗКА -->
     <script src="assets/js/real-distances.js?v=1754153000" async></script>
-    <script src="assets/js/distance-api.js?v=1754160000" async></script>
-    <script src="assets/js/smart-calculator-v2.js" async></script>
+    <script src="assets/js/distance-api.js?v=20250813-fix" async></script>
+    <script src="assets/js/smart-calculator-v2.js?v=20250813-fix" async></script>
     <script src="assets/js/ab-testing.js" async></script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-EMQ3D0X8K7"></script>
     <script>
@@ -1913,22 +1911,23 @@ document.addEventListener('DOMContentLoaded', function() {
     
     <!-- PWA Service Worker Registration -->
     <script>
-        // ОТКЛЮЧАЕМ SERVICE WORKER ВРЕМЕННО - ПРОБЛЕМЫ С КЭШИРОВАНИЕМ
-        /*
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/sw.js')
+        // Восстановленная регистрация Service Worker
+        if ("serviceWorker" in navigator) {
+            window.addEventListener("load", () => {
+                navigator.serviceWorker.register("/sw.js")
                     .then((registration) => {
-                        console.log('SW registered successfully');
+                        console.log("✅ SW зарегистрирован успешно");
                     })
                     .catch((registrationError) => {
-                        console.log('SW registration failed');
+                        console.log("⚠️ SW регистрация не удалась:", registrationError);
                     });
             });
         }
-        */
         
-        // Простая инициализация без SW
+        // Инициализация сайта
+        document.addEventListener("DOMContentLoaded", function() {
+            console.log("🚀 Сайт загружен с Service Worker");
+        });
         document.addEventListener('DOMContentLoaded', function() {
             console.log('🚀 Site loaded without Service Worker');
         });
@@ -1974,11 +1973,11 @@ document.addEventListener('DOMContentLoaded', function() {
     <script src="/assets/js/lazy-loading.min.js" async></script>
     <script src="assets/js/cities-simple.min.js?v=1754151000" async></script>
     <script src="assets/js/form-handler.min.js?v=1754151000" async></script>
-    <script src="assets/js/calc-v2-enhanced.js?v=1754158000" defer></script>
+    <script src="assets/js/calc-v2-enhanced.js?v=1754158001" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <script src="assets/js/pdf-lead-magnet.js?v=1754158000" defer></script>
-    <script src="assets/js/sticky-cta.js?v=1754158000" defer></script>
-    <script src="assets/js/animated-counter.js?v=1754158000" defer></script>
-    <script src="assets/js/ux-improvements.js?v=1754158000" defer></script>
+    <script src="assets/js/pdf-lead-magnet.js?v=1754158001" defer></script>
+    <script src="assets/js/sticky-cta.js?v=1754158001" defer></script>
+    <script src="assets/js/animated-counter.js?v=1754158001" defer></script>
+    <script src="assets/js/ux-improvements.js?v=1754158001" defer></script>
 </body>
 </html>
