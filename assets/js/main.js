@@ -228,7 +228,6 @@ async function submitModal(event, type, source) {
         }
         
     } catch (error) {
-        console.error('Ошибка отправки формы:', error);
         button.textContent = 'Ошибка. Попробуйте еще раз';
         button.disabled = false;
         
@@ -460,7 +459,6 @@ function showExitIntentPopup() {
     // Находим существующий popup в HTML
     const popup = document.getElementById('exitIntentPopup');
     if (!popup) {
-        console.error('Exit intent popup не найден в HTML');
         return;
     }
     
@@ -677,7 +675,6 @@ async function submitExitForm(event, discount) {
         }
         
     } catch (error) {
-        console.error('Ошибка отправки exit-формы:', error);
         button.innerHTML = '❌ Ошибка. Попробуйте еще раз';
         button.disabled = false;
         
@@ -748,12 +745,10 @@ function initCalculator() {
             smartCalculatorV2 = new SmartCalculatorV2();
             window.smartCalculatorV2 = smartCalculatorV2; // Глобальный доступ
         } else {
-            console.error('❌ SmartCalculatorV2 class not found');
             // Повторяем попытку через 1 секунду
             setTimeout(initCalculator, 1000);
         }
     } catch (error) {
-        console.error('❌ Calculator initialization error:', error);
     }
 }
 // Сворачивание длинных секций на мобильных
@@ -827,7 +822,6 @@ function initForms() {
             handleCalculation();
         });
     } else {
-        console.error('❌ Calculate button not found');
     }
     
     // Резервный обработчик для старых onclick
@@ -847,11 +841,9 @@ function handleCalculation() {
         try {
             smartCalculatorV2.handleCalculation();
         } catch (error) {
-            console.error('❌ Calculator error:', error);
             alert('Ошибка расчёта: ' + error.message);
         }
     } else {
-        console.error('❌ Calculator not ready');
         alert('Калькулятор загружается, попробуйте через секунду');
         
         // Попытка повторной инициализации

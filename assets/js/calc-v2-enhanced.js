@@ -580,7 +580,6 @@ class CalculatorV2Enhanced {
         this.showEnhancedResult(result);
       }
     } catch (error) {
-      console.error('Ошибка расчета:', error);
       this.showStepError('Произошла ошибка при расчете. Попробуйте еще раз.');
     } finally {
       // Восстанавливаем кнопку

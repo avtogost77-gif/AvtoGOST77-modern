@@ -157,10 +157,13 @@
     <!-- Стили -->
     <!-- КРИТИЧЕСКИЙ CSS - ОПТИМИЗИРОВАННЫЙ -->
     <link rel="stylesheet" href="assets/css/critical-optimized.min.css">
+    <link rel="preload" href="assets/css/calculator-modern.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
 
     <!-- ОПТИМИЗИРОВАННЫЕ СТИЛИ - АСИНХРОННАЯ ЗАГРУЗКА -->
     <link rel="stylesheet" href="assets/css/unified-styles.min.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="assets/css/calculator-modern.min.css?v=20250813-new">
     <noscript><link rel="stylesheet" href="assets/css/unified-styles.min.css"></noscript>
+    <link rel="stylesheet" href="assets/css/calculator-modern.min.css?v=20250813-new">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     
     <style>
@@ -214,7 +217,7 @@
                 <nav class="nav">
                     <a href="/gruzoperevozki-iz-moskvy.html">Из Москвы</a>
                     <a href="index.html">Калькулятор</a>
-                    <a href="/track.html">Отслеживание</a>
+        
                 </nav>
                 <a href="tel:+79162720932" class="btn btn-primary">+7 916 272-09-32</a>
             </div>
@@ -641,7 +644,7 @@
                 </div>
                 
                 <h3>Наша философия работы</h3>
-                <p>Мы понимаем, что для вас важно сосредоточиться на развитии бизнеса, а не на логистических вопросах. Поэтому мы берем на себя всю организацию грузоперевозок: от расчета оптимального маршрута до контроля доставки. Используя собственный транспорт и надежную сеть партнеров, гарантируем стабильность и предсказуемость поставок.</p>
+                <p>Мы понимаем, что для вас важно сосредоточиться на развитии бизнеса, а не на логистических вопросах. Поэтому мы берем на себя всю организацию грузоперевозок: от расчета оптимального маршрута до контроля доставки. Используя надежную сеть проверенных партнеров, гарантируем стабильность и предсказуемость поставок.</p>
                 
                 <h3>Преимущества работы с нами</h3>
                 <ul>
@@ -744,7 +747,7 @@
                     <ul>
                         <li><a href="/gruzoperevozki-iz-moskvy.html">Грузоперевозки из Москвы</a></li>
                         <li><a href="index.html">Калькулятор</a></li>
-                        <li><a href="/track.html">Отслеживание</a></li>
+                        <li><a href="contact.html">Контакты</a></li>
                         <li><a href="/contact.html">Контакты</a></li>
                     </ul>
                 </div>
@@ -757,9 +760,9 @@
 
     <script src="assets/js/main.min.js" defer></script>
     <script src="assets/js/distance-api.js" defer></script>
-    <script src="assets/js/smart-calculator-v2.js" defer></script>
+    <script src="assets/js/smart-calculator-v2.min.js" defer></script>
     
-    <!-- Отслеживание кликов -->
+    <!-- Контакты кликов -->
     <script>
     document.addEventListener("DOMContentLoaded", function() {
         // Телефон

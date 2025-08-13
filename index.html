@@ -2086,11 +2086,25 @@ document.addEventListener('DOMContentLoaded', function() {
     <script src="/assets/js/lazy-loading.min.js" async></script>
     <script src="assets/js/cities-simple.min.js?v=1754151000" async></script>
     <script src="assets/js/form-handler.min.js?v=1754151000" async></script>
-    <script src="assets/js/calc-v2-enhanced.js?v=1754158001" defer></script>
+    <!-- Удален calc-v2-enhanced.js - используем smart-calculator-v2 -->
     <script src="assets/js/vendor/jspdf.umd.min.js"></script>
     <script src="assets/js/pdf-lead-magnet.js?v=1754158001" defer></script>
     <script src="assets/js/sticky-cta.js?v=1754158001" defer></script>
     <script src="assets/js/animated-counter.js?v=1754158001" defer></script>
+    
+    <!-- Инициализация компонентов -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Инициализация калькулятора UI
+            if (typeof CalculatorUI !== 'undefined') {
+                window.calculatorUI = new CalculatorUI();
+            }
+            // Инициализация анимированных счетчиков
+            if (typeof AnimatedCounter !== 'undefined') {
+                window.animatedCounter = new AnimatedCounter();
+            }
+        });
+    </script>
     <script src="assets/js/ux-improvements.js?v=1754158001" defer></script>
 </body>
 </html>

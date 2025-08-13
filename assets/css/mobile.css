@@ -100,6 +100,40 @@
   }
 }
 
+/* Секции с data-collapse="mobile" */
+@media (max-width: 768px) {
+  [data-collapse="mobile"] {
+    display: none;
+  }
+  
+  [data-collapse="mobile"].expanded {
+    display: block;
+  }
+  
+  .mobile-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 1rem;
+    background: var(--gray-50);
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    margin-bottom: 1rem;
+  }
+  
+  .mobile-toggle::after {
+    content: "▼";
+    font-size: 0.875rem;
+    transition: transform 0.3s ease;
+  }
+  
+  .mobile-toggle.expanded::after {
+    transform: rotate(180deg);
+  }
+}
+
 /* Hero секция для мобильных */
 @media (max-width: 768px) {
   .hero {
