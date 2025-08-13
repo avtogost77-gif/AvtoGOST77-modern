@@ -45,10 +45,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (success) {
               
                 } else {
-                    console.error('❌ Ошибка отправки заявки');
                 }
             } catch (error) {
-                console.error('❌ Ошибка отправки заявки:', error);
             }
         });
     } else {
@@ -100,10 +98,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 if (success) {
                 } else {
-                    console.error('❌ Ошибка отправки лида');
                 }
             } catch (error) {
-                console.error('❌ Ошибка отправки лида:', error);
             }
         });
     } else {
@@ -137,7 +133,6 @@ async function sendToTelegram(message, source = 'form') {
         
         return true;
     } catch (error) {
-        console.error('Ошибка отправки в Telegram:', error);
         return false;
     }
 }

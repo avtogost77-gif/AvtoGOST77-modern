@@ -54,7 +54,6 @@ class DistanceAPI {
     if (distance) {
       this.cache.set(cacheKey, distance);
     } else {
-      console.error(`❌ Не удалось получить расстояние для ${fromCity} → ${toCity}`);
     }
     
     return distance || 0;

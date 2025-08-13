@@ -348,7 +348,6 @@ class PDFLeadMagnet {
         })
       });
     } catch (error) {
-      console.error('Ошибка отправки в Telegram:', error);
     }
 
     // Отслеживаем в аналитике

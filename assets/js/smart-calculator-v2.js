@@ -125,7 +125,6 @@ class SmartCalculatorV2 {
         return this.calculateInterregionalPrice(fromCity, toCity, weight, volume, distance, cargoType);
       }
     } catch (error) {
-      console.error('❌ Error in calculatePrice:', error);
       throw error;
     }
   }
@@ -617,7 +616,6 @@ class SmartCalculatorV2 {
         this.showResult(result);
       })
       .catch(error => {
-        console.error('❌ Ошибка расчёта:', error);
         alert('Ошибка расчёта: ' + error.message);
       });
   }
@@ -1009,7 +1007,6 @@ async function sendExitLeadData(data) {
       return Promise.resolve();
     }
   } catch (error) {
-    console.error('❌ Ошибка отправки exit-intent заявки');
   }
   
   return Promise.resolve();
