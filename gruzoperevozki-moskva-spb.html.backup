@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Грузоперевозки Москва — Санкт‑Петербург | Доставка за 8–10 часов</title>
+  <meta name="description" content="Грузоперевозки Москва — Санкт‑Петербург по М11/М10. Доставка за 8–10 часов. Газель, 5‑тонник, фура. 24/7. Фиксированная цена.">
+  <link rel="canonical" href="https://avtogost77.ru/gruzoperevozki-moskva-spb.html">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Грузоперевозки Москва — Санкт‑Петербург | АвтоГОСТ">
+  <meta property="og:description" content="Надёжная доставка из Москвы в СПб. Подача 2–3 часа, фуры и Газели, контроль 24/7.">
+  <meta property="og:url" content="https://avtogost77.ru/gruzoperevozki-moskva-spb.html">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://avtogost77.ru/assets/img/moskva-spb-route.webp">
+
+  <!-- Schema.org Service -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "serviceType": "Грузоперевозки Москва — Санкт‑Петербург",
+    "provider": {"@type":"Organization","name":"АвтоГОСТ","telephone":"+7 916 272-09-32"},
+    "areaServed": [{"@type":"City","name":"Москва"},{"@type":"City","name":"Санкт‑Петербург"}],
+    "hasOfferCatalog": {"@type":"OfferCatalog","name":"Тарифы","itemListElement":[
+      {"@type":"Offer","itemOffered":{"@type":"Service","name":"Газель до 1.5 т"},"price":"9000","priceCurrency":"RUB"},
+      {"@type":"Offer","itemOffered":{"@type":"Service","name":"5‑тонник"},"price":"16000","priceCurrency":"RUB"},
+      {"@type":"Offer","itemOffered":{"@type":"Service","name":"Фура 20 т"},"price":"36000","priceCurrency":"RUB"}
+    ]}
+  }
+  </script>
+
+  <!-- CSS -->
+  <link rel="preload" href="assets/css/critical-optimized.min.css" as="style">
+  <link rel="stylesheet" href="assets/css/critical-optimized.min.css">
+  <link rel="stylesheet" href="assets/css/unified-styles.min.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="assets/css/unified-styles.min.css"></noscript>
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <div class="header-content">
+        <div class="logo"><a href="/"><img src="assets/img/logo.svg" alt="АвтоГОСТ"><span class="logo-text">АвтоГОСТ</span></a></div>
+        <nav class="nav"><a href="/">Главная</a><a href="/gruzoperevozki-iz-moskvy.html">Из Москвы</a><a href="/contact.html">Контакты</a></nav>
+        <div class="header-cta"><a href="tel:+79162720932" class="btn btn-primary">Позвонить</a></div>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero hero-route">
+    <div class="container">
+      <div class="breadcrumbs"><a href="/">Главная</a> / <a href="/gruzoperevozki-iz-moskvy.html">Из Москвы</a> / <span>Санкт‑Петербург</span></div>
+      <h1>Грузоперевозки Москва — Санкт‑Петербург</h1>
+      <p class="hero-subtitle">Маршрут М11/М10. Доставка 8–10 часов. Подача 2–3 часа. Работаем 24/7, договор и документы.</p>
+      <div class="route-info">
+        <div class="route-stat"><strong>700 км</strong><span>Расстояние</span></div>
+        <div class="route-stat"><strong>8–10 часов</strong><span>Время</span></div>
+        <div class="route-stat"><strong>от 9000₽</strong><span>Стоимость</span></div>
+        <div class="route-stat"><strong>24/7</strong><span>Режим</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section pricing-section" data-collapse="mobile">
+    <div class="container">
+      <h2>Тарифы на доставку Москва — Санкт‑Петербург</h2>
+      <div class="pricing-table">
+        <table>
+          <thead><tr><th>Транспорт</th><th>Г/п</th><th>Объём</th><th>Цена</th><th>Срок</th></tr></thead>
+          <tbody>
+            <tr><td>Газель стандарт</td><td>до 1.5 т</td><td>до 11 м³</td><td><strong>от 9000₽</strong></td><td>8–10 ч</td></tr>
+            <tr><td>5‑тонник</td><td>до 5 т</td><td>до 32 м³</td><td><strong>от 16000₽</strong></td><td>8–10 ч</td></tr>
+            <tr><td>Фура 20 т</td><td>до 20 т</td><td>до 86 м³</td><td><strong>от 36000₽</strong></td><td>8–10 ч</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="section route-features" data-collapse="mobile">
+    <div class="container">
+      <h2>Особенности маршрута М11/М10</h2>
+      <div class="content-grid">
+        <div class="content-main">
+          <h3>Платные/бесплатные участки</h3>
+          <ul>
+            <li>М11 — быстрее и стабильнее, платные участки для грузового транспорта.</li>
+            <li>М10 — альтернатива при сильных заторах/работах, время +1–2 часа.</li>
+          </ul>
+          <h3>Рекомендации</h3>
+          <ul>
+            <li>Ночные рейсы — быстрее, свободные рампы и парковки.</li>
+            <li>Для центра СПб — заранее оформить окна выгрузки, учесть ЗСД.</li>
+          </ul>
+        </div>
+        <aside class="content-sidebar">
+          <div class="info-card"><h4>Справка</h4><ul><li>Расстояние: 700 км</li><li>Время: 8–10 часов</li><li>Дежурные машины: есть</li></ul></div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="section cta-section">
+    <div class="container">
+      <div class="cta-block">
+        <h2>Нужна доставка Москва — Санкт‑Петербург?</h2>
+        <p>Получите точный расчёт за 10 минут</p>
+        <div class="cta-buttons"><a href="tel:+79162720932" class="btn btn-primary btn-lg">Позвонить</a><a href="https://wa.me/79162720932" class="btn btn-outline btn-lg">WhatsApp</a></div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-column"><h3>АвтоГОСТ</h3><p>Грузоперевозки по России. Договор, документы, контроль 24/7.</p></div>
+        <div class="footer-column"><h3>Услуги</h3><ul><li><a href="/gruzoperevozki-po-moskve.html">По Москве</a></li><li><a href="/sbornye-gruzy.html">Сборные грузы</a></li></ul></div>
+        <div class="footer-column"><h3>Контакты</h3><p>+7 916 272‑09‑32 • avtogost77@gmail.com</p></div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="assets/js/main.min.js"></script>
+  <script src="assets/js/distance-api.js?v=20250813"></script>
+  <script src="assets/js/smart-calculator-v2.js?v=20250813"></script>
+</body>
+</html>
+
+

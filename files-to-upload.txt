@@ -1,0 +1,5 @@
+Файлы для загрузки на VPS:
+1. assets/js/smart-calculator-v2.js
+2. assets/js/distance-api.js
+3. assets/js/real-distances.js
+4. index.html
