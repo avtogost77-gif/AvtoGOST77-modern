@@ -118,6 +118,12 @@
   "@graph": [
     {
       "@type": "Organization",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "reviewCount": "1250"
+    },
+    "priceRange": "₽₽",
       "@id": "https://avtogost77.ru/#organization",
       "name": "АвтоГОСТ",
       "alternateName": [
@@ -141,7 +147,7 @@
       },
       "sameAs": [
         "https://t.me/avtogost77",
-        "https://wa.me/79992162007"
+        "https://wa.me/79162720932"
       ],
       "address": {
         "@type": "PostalAddress",
@@ -152,6 +158,12 @@
     },
     {
       "@type": "Service",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "reviewCount": "1250"
+    },
+    "priceRange": "₽₽",
       "@id": "https://avtogost77.ru/404.html#service",
       "name": "Страница не найдена - АвтоГОСТ",
       "description": "Запрашиваемая страница не найдена. Воспользуйтесь навигацией или свяжитесь с нами для получения помощи.",
@@ -171,6 +183,12 @@
             "@type": "Offer",
             "itemOffered": {
               "@type": "Service",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "reviewCount": "1250"
+    },
+    "priceRange": "₽₽",
               "name": "Страница не найдена - АвтоГОСТ",
               "description": "Запрашиваемая страница не найдена. Воспользуйтесь навигацией или свяжитесь с нами для получения помощи."
             },
@@ -210,6 +228,19 @@
     <!-- ОПТИМИЗИРОВАННЫЕ СТИЛИ - АСИНХРОННАЯ ЗАГРУЗКА -->
     <link rel="stylesheet" href="assets/css/unified-styles.min.css" media="print" onload="this.media='all'">
     <noscript><link rel="stylesheet" href="assets/css/unified-styles.min.css"></noscript>
+    <!-- РЕДИЗАЙН - КРИТИЧЕСКИЕ ИСПРАВЛЕНИЯ -->
+    <link rel="stylesheet" href="assets/css/redesign-fixes.css">
+
+    <!-- Preconnect for analytics -->
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    <link rel="preconnect" href="https://mc.yandex.ru">
+  
+    <!-- Open Graph fallback -->
+    <meta property="og:title" content="Страница не найдена - АвтоГОСТ">
+    <meta property="og:description" content="Запрашиваемая страница не найдена. Воспользуйтесь навигацией или свяжитесь с нами для получения помощи.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://avtogost77.ru/404.html">
+    <meta property="og:image" content="https://avtogost77.ru/assets/img/hero-logistics.webp">
 </head>
 <body>
     <!-- Навигация -->
@@ -348,7 +379,7 @@
             // Добавить логику для мобильного меню
         }
     </script>
-    <script src="/assets/js/lazy-loading.min.js" defer></script>
+    <script src="assets/js/lazy-loading.min.js" defer></script>
     
     <!-- Контакты кликов -->
     <script>
@@ -376,5 +407,23 @@
         });
     });
     </script>
-</body>
-</html>
+
+<!-- Analytics Injection -->
+
+</html>    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EMQ3D0X8K7"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-EMQ3D0X8K7');
+    </script>
+    <!-- /Google Analytics -->
+    
+    <!-- Yandex.Metrika -->
+    <script type="text/javascript">
+      (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0];k.async=1;k.src=r;a.parentNode.insertBefore(k,a)})
+      (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+      ym(103413788, "init", {clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true});
+    </script>
+    <noscript><div><img loading="lazy" src="https://mc.yandex.ru/watch/103413788" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika -->

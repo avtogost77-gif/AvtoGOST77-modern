@@ -45,7 +45,7 @@
   --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   --gradient-secondary: linear-gradient(135deg, #10b981 0%, #059669 100%);
   --gradient-accent: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
-  --gradient-hero: linear-gradient(135deg, rgba(37, 99, 235, 0.8) 0%, rgba(16, 185, 129, 0.8) 100%);
+  --gradient-hero: linear-gradient(135deg, rgba(37, 99, 235, 0.3) 0%, rgba(16, 185, 129, 0.3) 100%);
   --gradient-card: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
   --gradient-button: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
   
@@ -1410,4 +1410,608 @@ a:hover {
     box-shadow: none;
     border: 1px solid var(--gray-300);
   }
+}
+/* Enhanced Content Styles */
+.enhanced-section,
+.route-section,
+.blog-enhancement {
+  margin: 3rem 0;
+  padding: 2rem;
+  background-color: #f8f9fa;
+  border-radius: 10px;
+}
+
+.enhanced-section h2,
+.route-section h2,
+.blog-enhancement h2 {
+  color: #2c5aa0;
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+}
+
+.enhanced-section h3,
+.route-section h3,
+.blog-enhancement h3 {
+  color: #333;
+  margin: 1.5rem 0 1rem;
+}
+
+.enhanced-section h4,
+.route-section h4,
+.blog-enhancement h4 {
+  color: #555;
+  margin: 1rem 0 0.5rem;
+}
+
+/* Team structure */
+.team-structure {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.department {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Values grid */
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.value-item {
+  text-align: center;
+  padding: 1.5rem;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Achievements */
+.achievements {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.achievement-item {
+  text-align: center;
+}
+
+.achievement-number {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #2c5aa0;
+}
+
+.achievement-text {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* Contact methods */
+.contact-methods {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 1.5rem;
+}
+
+.contact-method {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Offices */
+.office-main {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.region-office {
+  background: white;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 5px;
+  border-left: 4px solid #2c5aa0;
+}
+
+/* Schedule table */
+.schedule-table,
+.working-hours {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+.schedule-table th,
+.schedule-table td,
+.working-hours th,
+.working-hours td {
+  padding: 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.schedule-table th,
+.working-hours th {
+  background-color: #2c5aa0;
+  color: white;
+}
+
+/* Cargo types */
+.cargo-types {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.cargo-type {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Additional services */
+.additional-services {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.service-item {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Expert opinion */
+.expert-opinion {
+  display: flex;
+  gap: 2rem;
+  align-items: start;
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.expert-photo img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.expert-info {
+  flex: 1;
+}
+
+.expert-position {
+  color: #666;
+  font-style: italic;
+  margin-bottom: 1rem;
+}
+
+.expert-info blockquote {
+  font-style: italic;
+  border-left: 4px solid #2c5aa0;
+  padding-left: 1.5rem;
+  margin: 0;
+}
+
+/* Checklist */
+.checklist {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.checklist label {
+  display: block;
+  padding: 0.5rem 0;
+  cursor: pointer;
+}
+
+.checklist input[type="checkbox"] {
+  margin-right: 0.5rem;
+}
+
+/* Tools grid */
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.tool-item {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.tool-item h5 {
+  color: #2c5aa0;
+  margin-bottom: 0.5rem;
+}
+
+.tool-item ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.tool-item li {
+  padding: 0.25rem 0;
+  border-bottom: 1px dotted #eee;
+}
+
+/* Blog FAQ */
+.blog-faq .faq-item {
+  background: white;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.blog-faq h4 {
+  color: #2c5aa0;
+  margin-bottom: 0.5rem;
+}
+
+/* Payment methods */
+.payment-methods {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.payment-method {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Client types */
+.client-types {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.client-type {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.note {
+  font-size: 0.9rem;
+  color: #666;
+  font-style: italic;
+  margin-top: 0.5rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .expert-opinion {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .expert-photo {
+    margin: 0 auto;
+  }
+}/* HERO BLOCK FIX - АВТОГОСТ77 */
+/* Фикс наложения header на hero блок */
+
+body {
+    padding-top: 80px !important; /* Высота header */
+}
+
+@media (max-width: 768px) {
+    body {
+        padding-top: 70px !important; /* Меньше для мобилки */
+    }
+}
+
+/* Дополнительный фикс для hero */
+.hero {
+    margin-top: 0 !important;
+    padding-top: 60px !important;
+}
+
+/* Убираем лишние отступы если есть */
+main:first-child {
+    margin-top: 0 !important;
+}
+
+.hero-section {
+    margin-top: 0 !important;
+}/* 🎯 СРОЧНЫЕ УЛУЧШЕНИЯ КОНВЕРСИИ */
+
+/* 1. Красивый телефон в шапке */
+.header-phone {
+    display: inline-flex;
+    align-items: center;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 30px;
+    font-size: 18px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.header-phone:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+.header-phone i {
+    margin-right: 8px;
+    animation: ring 2s ease-in-out infinite;
+}
+
+@keyframes ring {
+    0%, 100% { transform: rotate(0deg); }
+    10%, 30% { transform: rotate(-10deg); }
+    20%, 40% { transform: rotate(10deg); }
+}
+
+/* 2. Плавающие кнопки (красивые) */
+.float-buttons {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.float-btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    position: relative;
+    overflow: hidden;
+}
+
+.float-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+}
+
+.float-btn:hover .tooltip {
+    opacity: 1;
+    right: 70px;
+}
+
+.float-btn .tooltip {
+    position: absolute;
+    right: 80px;
+    background: #333;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 8px;
+    white-space: nowrap;
+    font-size: 14px;
+    opacity: 0;
+    transition: all 0.3s ease;
+    pointer-events: none;
+}
+
+.phone-btn {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.whatsapp-btn {
+    background: #25D366;
+    color: white;
+}
+
+.telegram-btn {
+    background: #0088cc;
+    color: white;
+}
+
+/* 3. Форма захвата после калькулятора */
+.calc-lead-form {
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    padding: 30px;
+    border-radius: 15px;
+    margin-top: 20px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.calc-lead-form h3 {
+    color: #333;
+    margin-bottom: 10px;
+    font-size: 24px;
+}
+
+.calc-lead-form p {
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.calc-lead-form input {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+.calc-lead-form input:focus {
+    border-color: #667eea;
+    outline: none;
+}
+
+.calc-lead-form button {
+    width: 100%;
+    padding: 18px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.calc-lead-form button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+}
+
+/* 4. Доверие и социальное доказательство */
+.trust-badges {
+    display: flex;
+    justify-content: space-around;
+    margin: 40px 0;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.trust-badge {
+    text-align: center;
+    padding: 20px;
+    flex: 1;
+    min-width: 200px;
+}
+
+.trust-badge i {
+    font-size: 48px;
+    color: #667eea;
+    margin-bottom: 10px;
+}
+
+.trust-badge h4 {
+    font-size: 28px;
+    color: #333;
+    margin: 10px 0 5px;
+}
+
+.trust-badge p {
+    color: #666;
+    font-size: 14px;
+}
+
+/* 5. Пульсирующий индикатор "Мы онлайн" */
+.online-indicator {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #4CAF50;
+    font-weight: 500;
+}
+
+.online-dot {
+    width: 10px;
+    height: 10px;
+    background: #4CAF50;
+    border-radius: 50%;
+    position: relative;
+}
+
+.online-dot::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #4CAF50;
+    border-radius: 50%;
+    animation: pulse-dot 2s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(2);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 0;
+    }
+}
+
+/* 6. Мобильная адаптация */
+@media (max-width: 768px) {
+    .float-buttons {
+        bottom: 70px; /* Выше, чтобы не мешать навигации */
+    }
+    
+    .header-phone {
+        font-size: 16px;
+        padding: 10px 20px;
+    }
+    
+    .trust-badges {
+        flex-direction: column;
+    }
+}
+/* ПОЛНОЕ СКРЫТИЕ ФУРЫ */
+[class*="truck"],
+[id*="truck"],
+[class*="call-from-road"],
+[id*="callFromRoad"],
+.truck-animation-container,
+.truck-wrapper,
+.truck-toggle,
+.moving-truck,
+.truck-strip {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    position: absolute !important;
+    left: -9999px !important;
+    top: -9999px !important;
+    width: 0 !important;
+    height: 0 !important;
+    overflow: hidden !important;
 }

@@ -14,13 +14,11 @@
     <!-- Основные стили -->
     <!-- КРИТИЧЕСКИЙ CSS - ОПТИМИЗИРОВАННЫЙ -->
     <link rel="stylesheet" href="assets/css/critical-optimized.min.css">
-    <link rel="preload" href="assets/css/calculator-modern.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="stylesheet" href="assets/css/calculator-modern.min.css?v=20250813-new">
     
     <!-- ОПТИМИЗИРОВАННЫЕ СТИЛИ - АСИНХРОННАЯ ЗАГРУЗКА -->
     <link rel="stylesheet" href="assets/css/unified-styles.min.css" media="print" onload="this.media='all'">
-    <link rel="stylesheet" href="assets/css/calculator-modern.min.css?v=20250813-new">
     <noscript><link rel="stylesheet" href="assets/css/unified-styles.min.css"></noscript>
-    <link rel="stylesheet" href="assets/css/calculator-modern.min.css?v=20250813-new">
     
     <!-- Bootstrap Icons -->
     <!-- AOS scroll animations -->
@@ -44,7 +42,7 @@
     <meta name="msapplication-TileColor" content="#2c5aa0">
     <meta name="msapplication-TileImage" content="assets/img/icon-144x144.svg">
     <meta name="msapplication-config" content="browserconfig.xml">
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-EMQ3D0X8K7"></script>
@@ -75,6 +73,12 @@
   "@graph": [
     {
       "@type": "Organization",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "reviewCount": "1250"
+    },
+    "priceRange": "₽₽",
       "@id": "https://avtogost77.ru/#organization",
       "name": "АвтоГОСТ",
       "alternateName": [
@@ -98,7 +102,7 @@
       },
       "sameAs": [
         "https://t.me/avtogost77",
-        "https://wa.me/79992162007"
+        "https://wa.me/79162720932"
       ],
       "address": {
         "@type": "PostalAddress",
@@ -109,6 +113,12 @@
     },
     {
       "@type": "Service",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "reviewCount": "1250"
+    },
+    "priceRange": "₽₽",
       "@id": "https://avtogost77.ru/help.html#service",
       "name": "Помощь и поддержка - Грузоперевозки 24/7",
       "description": "Нужна помощь с заказом? ⚡ Подача за 2 часа, 99.3% в срок. FAQ, контакты, техподдержка 24/7. Обширная сеть надежных партнеров по России.",
@@ -128,6 +138,12 @@
             "@type": "Offer",
             "itemOffered": {
               "@type": "Service",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "reviewCount": "1250"
+    },
+    "priceRange": "₽₽",
               "name": "Помощь и поддержка - Грузоперевозки 24/7",
               "description": "Нужна помощь с заказом? ⚡ Подача за 2 часа, 99.3% в срок. FAQ, контакты, техподдержка 24/7. Обширная сеть надежных партнеров по России."
             },
@@ -245,9 +261,15 @@
     <!-- Асинхронная загрузка стилей -->
     <!-- ОПТИМИЗИРОВАННЫЕ СТИЛИ - АСИНХРОННАЯ ЗАГРУЗКА -->
     <link rel="stylesheet" href="assets/css/unified-styles.min.css" media="print" onload="this.media='all'">
-    <link rel="stylesheet" href="assets/css/calculator-modern.min.css?v=20250813-new">
     <noscript><link rel="stylesheet" href="assets/css/unified-styles.min.css"></noscript>
-    <link rel="stylesheet" href="assets/css/calculator-modern.min.css?v=20250813-new">
+    <!-- РЕДИЗАЙН - КРИТИЧЕСКИЕ ИСПРАВЛЕНИЯ -->
+    <link rel="stylesheet" href="assets/css/redesign-fixes.css">
+    <!-- Open Graph fallback -->
+    <meta property="og:title" content="Помощь и поддержка | АвтоГОСТ - Инфраструктура вашего бизнеса">
+    <meta property="og:description" content="Нужна помощь с заказом? ⚡ Подача за 2 часа, работаем 24/7. FAQ, контакты, техподдержка. Работаем с проверенными партнерами по России.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://avtogost77.ru/help.html">
+    <meta property="og:image" content="https://avtogost77.ru/assets/img/hero-logistics.webp">
 </head>
 <body>
     <!-- Header -->
@@ -576,7 +598,7 @@
     
     <script src="assets/js/vendor/aos.min.js" defer></script>
     <script>AOS.init({ once:true, duration:600 });</script>
-    <script src="/assets/js/lazy-loading.min.js" defer></script>
+    <script src="assets/js/lazy-loading.min.js" defer></script>
     <script src="assets/js/form-handler.js?v=107" defer></script>
     
     <!-- Контакты кликов -->

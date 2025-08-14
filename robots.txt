@@ -11,9 +11,38 @@ Allow: /contact.html
 Allow: /about.html
 Allow: /help.html
 Allow: /faq.html
-Allow: /track.html
 Allow: /news.html
 Allow: /legal-minimum.html
+Allow: /privacy.html
+Allow: /terms.html
+Allow: /404.html
+
+# Страницы услуг
+Allow: /gazel-gruzoperevozki.html
+Allow: /trehtonnik-gruzoperevozki.html
+Allow: /pyatitonnik-gruzoperevozki.html
+Allow: /desyatitonnik-gruzoperevozki.html
+Allow: /fura-20-tonn-gruzoperevozki.html
+Allow: /poputnyj-gruz.html
+Allow: /dogruz.html
+Allow: /pereezd-moskva.html
+Allow: /perevozka-mebeli.html
+Allow: /perevozka-medoborudovaniya.html
+Allow: /sbornye-gruzy.html
+Allow: /urgent-delivery.html
+Allow: /self-employed-delivery.html
+Allow: /transportnaya-kompaniya.html
+Allow: /logistika-dlya-biznesa.html
+Allow: /dostavka-na-marketpleysy.html
+Allow: /ip-small-business-delivery.html
+Allow: /rc-dostavka.html
+
+# Страницы маршрутов
+Allow: /gruzoperevozki-*.html
+
+# Блог страницы
+Allow: /blog-*.html
+Allow: /blog/
 
 # SEO страницы для индексации
 Allow: /routes/

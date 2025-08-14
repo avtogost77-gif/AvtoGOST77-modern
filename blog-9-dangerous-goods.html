@@ -18,12 +18,12 @@
     
     <!-- КРИТИЧЕСКИЙ CSS - ОПТИМИЗИРОВАННЫЙ -->
     <link rel="stylesheet" href="assets/css/critical-optimized.min.css">
-    <link rel="preload" href="assets/css/calculator-modern.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="stylesheet" href="assets/css/calculator-modern.min.css?v=20250813-new">
 
     <!-- ОПТИМИЗИРОВАННЫЕ СТИЛИ - АСИНХРОННАЯ ЗАГРУЗКА -->
     <link rel="stylesheet" href="assets/css/unified-styles.min.css" media="print" onload="this.media='all'">
     <noscript><link rel="stylesheet" href="assets/css/unified-styles.min.css"></noscript>
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
     
     <!-- Schema.org разметка -->
     <script type="application/ld+json">
@@ -37,10 +37,22 @@
       "dateModified": "2025-01-06",
       "author": {
         "@type": "Organization",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "reviewCount": "1250"
+    },
+    "priceRange": "₽₽",
         "name": "АвтоГОСТ"
       },
       "publisher": {
         "@type": "Organization",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "reviewCount": "1250"
+    },
+    "priceRange": "₽₽",
         "name": "АвтоГОСТ",
         "logo": {
           "@type": "ImageObject",
@@ -74,6 +86,13 @@
     <!-- ОПТИМИЗИРОВАННЫЕ СТИЛИ - АСИНХРОННАЯ ЗАГРУЗКА -->
     <link rel="stylesheet" href="assets/css/unified-styles.min.css" media="print" onload="this.media='all'">
     <noscript><link rel="stylesheet" href="assets/css/unified-styles.min.css"></noscript>
+    <!-- РЕДИЗАЙН - КРИТИЧЕСКИЕ ИСПРАВЛЕНИЯ -->
+    <link rel="stylesheet" href="assets/css/redesign-fixes.css">
+
+    <!-- Preconnect for analytics -->
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    <link rel="preconnect" href="https://mc.yandex.ru">
+  
 </head>
 <body>
     <!-- Хедер -->
@@ -437,7 +456,7 @@
                 <div class="cta-block">
                     <h3>🚚 Нужна перевозка опасных грузов?</h3>
                     <p>Организуем безопасную доставку с соблюдением всех требований ADR</p>
-                    <a href="/contact.html" class="btn btn-primary btn-lg">Получить консультацию</a>
+                    <a href="contact.html" class="btn btn-primary btn-lg">Получить консультацию</a>
                 </div>
 
                 <h2 id="driver-requirements">Требования к водителям</h2>
@@ -714,7 +733,7 @@
                     </div>
                     
                     <div class="cta-buttons">
-                        <a href="/contact.html" class="btn btn-primary btn-lg">Заказать перевозку ОГ</a>
+                        <a href="contact.html" class="btn btn-primary btn-lg">Заказать перевозку ОГ</a>
                         <a href="tel:+79162720932" class="btn btn-outline btn-lg">Консультация специалиста</a>
                     </div>
                 </div>
@@ -723,15 +742,15 @@
                 <div class="related-articles">
                     <h2>Читайте также:</h2>
                     <div class="articles-grid">
-                        <a href="/blog-8-cargo-insurance.html" class="article-card">
+                        <a href="blog-8-cargo-insurance.html" class="article-card">
                             <h3>Страхование грузов при перевозке</h3>
                             <p>Особенности страхования опасных грузов</p>
                         </a>
-                        <a href="/blog-1-carrier-failed.html" class="article-card">
+                        <a href="blog-1-carrier-failed.html" class="article-card">
                             <h3>Что делать, если подвел перевозчик</h3>
                             <p>План действий при срыве доставки ОГ</p>
                         </a>
-                        <a href="/blog-10-self-employed-logistics.html" class="article-card">
+                        <a href="blog-10-self-employed-logistics.html" class="article-card">
                             <h3>Логистика для малого бизнеса</h3>
                             <p>Как организовать перевозку специальных грузов</p>
                         </a>
@@ -761,9 +780,9 @@
                 <div class="footer-section">
                     <h3>Услуги</h3>
                     <ul>
-                        <li><a href="/services.html">Все услуги</a></li>
-                        <li><a href="/transportnaya-kompaniya.html">Корпоративным клиентам</a></li>
-                        <li><a href="/urgent-delivery.html">Срочная доставка</a></li>
+                        <li><a href="services.html">Все услуги</a></li>
+                        <li><a href="transportnaya-kompaniya.html">Корпоративным клиентам</a></li>
+                        <li><a href="urgent-delivery.html">Срочная доставка</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
@@ -820,7 +839,7 @@
       ]
     }
     </script>
-    <script src="/assets/js/lazy-loading.min.js" defer></script>
+    <script src="assets/js/lazy-loading.min.js" defer></script>
     <script>
     // CTA attribution (blog-9)
     document.addEventListener('DOMContentLoaded', function() {
@@ -843,4 +862,23 @@
     });
     </script>
     <script src="assets/js/ux-improvements.js" defer></script>
-</body>
+
+<!-- Analytics Injection -->
+
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EMQ3D0X8K7"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-EMQ3D0X8K7');
+    </script>
+    <!-- /Google Analytics -->
+    
+    <!-- Yandex.Metrika -->
+    <script type="text/javascript">
+      (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0];k.async=1;k.src=r;a.parentNode.insertBefore(k,a)})
+      (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+      ym(103413788, "init", {clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true});
+    </script>
+    <noscript><div><img loading="lazy" src="https://mc.yandex.ru/watch/103413788" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika -->

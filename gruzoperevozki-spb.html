@@ -19,10 +19,22 @@
 {
   "@context": "https://schema.org",
   "@type": "Service",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "reviewCount": "1250"
+    },
+    "priceRange": "₽₽",
   "name": "Грузоперевозки в Санкт-Петербург",
   "description": "Доставка грузов в СПб из Москвы и других городов России. Сборные и отдельные машины.",
   "provider": {
-    "@type": "MovingCompany",
+    "@type": "Service",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "reviewCount": "1250"
+    },
+    "priceRange": "₽₽",
     "@name": "АвтоГОСТ",
     "telephone": "+7 916 272-09-32",
     "address": {
@@ -75,11 +87,10 @@
     
     <!-- КРИТИЧЕСКИЙ CSS - ОПТИМИЗИРОВАННЫЙ -->
     <link rel="stylesheet" href="assets/css/critical-optimized.min.css">
-    <link rel="preload" href="assets/css/calculator-modern.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="stylesheet" href="assets/css/calculator-modern.min.css?v=20250813-new">
 
     <!-- ОПТИМИЗИРОВАННЫЕ СТИЛИ - АСИНХРОННАЯ ЗАГРУЗКА -->
     <link rel="stylesheet" href="assets/css/unified-styles.min.css" media="print" onload="this.media='all'">
-    <link rel="stylesheet" href="assets/css/calculator-modern.min.css?v=20250813-new">
     <noscript><link rel="stylesheet" href="assets/css/unified-styles.min.css"></noscript>
 
     <style id="critical-css">
@@ -93,8 +104,14 @@
     <!-- Асинхронная загрузка стилей -->
     <!-- ОПТИМИЗИРОВАННЫЕ СТИЛИ - АСИНХРОННАЯ ЗАГРУЗКА -->
     <link rel="stylesheet" href="assets/css/unified-styles.min.css" media="print" onload="this.media='all'">
-    <link rel="stylesheet" href="assets/css/calculator-modern.min.css?v=20250813-new">
     <noscript><link rel="stylesheet" href="assets/css/unified-styles.min.css"></noscript>
+    <!-- РЕДИЗАЙН - КРИТИЧЕСКИЕ ИСПРАВЛЕНИЯ -->
+    <link rel="stylesheet" href="assets/css/redesign-fixes.css">
+
+    <!-- Preconnect for analytics -->
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    <link rel="preconnect" href="https://mc.yandex.ru">
+  
 </head>
 <body>
     <!-- Хедер -->
@@ -109,7 +126,7 @@
                 </div>
                 <nav class="nav">
                     <a href="/" class="nav-link">Главная</a>
-                    <a href="/sbornye-gruzy.html" class="nav-link">Сборные грузы</a>
+                    <a href="sbornye-gruzy.html" class="nav-link">Сборные грузы</a>
                     <a href="#routes" class="nav-link">Направления</a>
                     <a href="#calculator" class="nav-link">Калькулятор</a>
                 </nav>
@@ -965,8 +982,8 @@
         </div>
     </footer>
 
-    <script src="assets/js/main.min.js" defer></script>
-    <script src="/assets/js/lazy-loading.min.js" defer></script>
+    <script src="assets/js/main.min.js?v=20250813-new" defer></script>
+    <script src="assets/js/lazy-loading.min.js" defer></script>
   <script>
   // CTA goals on SPB page
   document.addEventListener('DOMContentLoaded', function() {
@@ -989,4 +1006,23 @@
     <script src="assets/js/ux-improvements.js" defer></script>
     <script src="assets/js/smart-calculator-v2.min.js?v=20250813-fixed" async></script>
     <script src="assets/js/calculator-ui.min.js?v=20250813-new" async></script>
-</body>
+
+<!-- Analytics Injection -->
+
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EMQ3D0X8K7"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-EMQ3D0X8K7');
+    </script>
+    <!-- /Google Analytics -->
+    
+    <!-- Yandex.Metrika -->
+    <script type="text/javascript">
+      (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0];k.async=1;k.src=r;a.parentNode.insertBefore(k,a)})
+      (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+      ym(103413788, "init", {clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true});
+    </script>
+    <noscript><div><img loading="lazy" src="https://mc.yandex.ru/watch/103413788" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika -->

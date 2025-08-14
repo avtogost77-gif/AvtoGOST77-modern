@@ -14,6 +14,8 @@ class UXImprovements {
     this.setupTLDR();
     this.setupLazyLoading();
     this.setupScrollAnimations();
+    this.setupCalculatorEnhancements();
+    this.setupMobileStickyActions();
   }
 
   // АККОРДЕОНЫ
@@ -50,6 +52,36 @@ class UXImprovements {
         });
       }
     });
+  }
+
+  // ДОП. CTA ДЛЯ КАЛЬКУЛЯТОРА
+  setupCalculatorEnhancements() {
+    const btn = document.getElementById('downloadPdf');
+    if (btn) {
+      btn.addEventListener('click', () => {
+        if (window.calculatorV2 && typeof window.calculatorV2.downloadPDF === 'function') {
+          window.calculatorV2.downloadPDF();
+        } else if (window.pdfLeadMagnet) {
+          window.pdfLeadMagnet.showContactModal();
+        }
+      });
+    }
+  }
+
+  // ЛИПКИЕ КНОПКИ ДЛЯ МОБИЛЬНЫХ
+  setupMobileStickyActions() {
+    if (window.matchMedia('(max-width: 768px)').matches) {
+      const exists = document.querySelector('.mobile-sticky-actions');
+      if (exists) return;
+      const bar = document.createElement('div');
+      bar.className = 'mobile-sticky-actions';
+      bar.innerHTML = `
+        <a href="tel:+79162720932" class="msa-item">📞 Звонок</a>
+        <a href="https://wa.me/79162720932" target="_blank" class="msa-item">💬 WhatsApp</a>
+        <a href="#calculator" class="msa-item">🧮 Расчет</a>
+      `;
+      document.body.appendChild(bar);
+    }
   }
 
   // STICKY TOC (ОГЛАВЛЕНИЕ)
