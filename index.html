@@ -60,6 +60,9 @@
     <!-- Preload критически важных ресурсов -->
     <link rel="preload" href="assets/js/main.min.js?v=1754158001" as="script">
     <link rel="preload" href="assets/js/smart-calculator-v2.min.js?v=20250813-fixed" as="script">
+    <link rel="preload" href="assets/img/hero-logistics.webp" as="image" type="image/webp">
+    <link rel="preload" href="assets/img/hero-logistics-tablet.webp" as="image" type="image/webp" media="(max-width: 1024px)">
+    <link rel="preload" href="assets/img/hero-logistics-mobile.webp" as="image" type="image/webp" media="(max-width: 768px)">
     <!-- Google Analytics -->
     <meta name="google-site-verification" content="i_MV74DrBdT7aD2kZhmnAZuQGEM3XBsDV8aCtEphAho" />
     <meta name="yandex-verification" content="376fdf2ca69f9a1f" />
@@ -580,6 +583,13 @@ document.addEventListener('DOMContentLoaded', function() {
     </header>
     <!-- Hero секция -->
     <section class="hero">
+        <div class="hero-background">
+            <picture>
+                <source media="(max-width: 768px)" srcset="assets/img/hero-logistics-mobile.webp">
+                <source media="(max-width: 1024px)" srcset="assets/img/hero-logistics-tablet.webp">
+                <img src="assets/img/hero-logistics.webp" alt="Грузоперевозки по России" loading="eager">
+            </picture>
+        </div>
         <div class="container">
             <div class="hero-content">
                 <h1>Инфраструктура вашего бизнеса</h1>
