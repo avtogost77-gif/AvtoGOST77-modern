@@ -1873,15 +1873,7 @@ document.addEventListener('DOMContentLoaded', function() {
         </div>
     </footer>
     <!-- КРИТИЧЕСКИЙ JS - ЗАГРУЗКА СРАЗУ -->
-    <script src="assets/js/main.min.js?v=1754158001"></script>
     <!-- НЕКРИТИЧЕСКИЙ JS - АСИНХРОННАЯ ЗАГРУЗКА -->
-    <script src="assets/js/real-distances.js?v=1754153000" async></script>
-    <script src="assets/js/distance-api.js?v=20250813-fix" async></script>
-    <script src="assets/js/smart-calculator-v2.min.js?v=20250813-fixed" async></script>
-    <script src="assets/js/mobile-collapse.min.js?v=20250813-fix" async></script>
-    <script src="assets/js/calculator-ui.min.js?v=20250813-new" async></script>
-    <script src="assets/js/ab-testing.js" async></script>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EMQ3D0X8K7"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}  
@@ -1897,21 +1889,8 @@ document.addEventListener('DOMContentLoaded', function() {
     </script>
           <noscript><div><img loading="lazy" src="https://mc.yandex.ru/watch/103413788" style="position:absolute; left:-9999px;" alt="yandex metrika pixel" /></div></noscript>
     <!-- /Yandex.Metrika -->
-    <script src="assets/js/vendor/aos.min.js" defer></script>
     <script>
         // Инициализация AOS анимаций с проверкой готовности
-        document.addEventListener('DOMContentLoaded', function() {
-            // Ждём полной загрузки всех ресурсов
-            window.addEventListener('load', function() {
-                AOS.init({
-                    once: true,
-                    duration: 600,
-                    disable: false, // Принудительно включить
-                    startEvent: 'load' // Запуск после полной загрузки
-                });
-            });
-        });
-    </script>
     <!-- PWA Service Worker Registration -->
     <script>
         // Восстановленная регистрация Service Worker
@@ -1927,13 +1906,6 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
         // Инициализация сайта
-        document.addEventListener("DOMContentLoaded", function() {
-            console.log("🚀 Сайт загружен с Service Worker");
-        });
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('🚀 Site loaded without Service Worker');
-        });
-    </script>
     <!-- Плавающие кнопки -->
     <div class="floating-actions">
         <a href="https://wa.me/79162720932" class="floating-btn floating-whatsapp pulse" target="_blank" title="Написать в WhatsApp">
@@ -1969,29 +1941,8 @@ document.addEventListener('DOMContentLoaded', function() {
     <noscript><div><img loading="lazy" src="https://mc.yandex.ru/watch/103413788" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
     <!-- /Яндекс.Метрика -->
     <!-- ДОПОЛНИТЕЛЬНЫЙ JS - АСИНХРОННАЯ ЗАГРУЗКА -->
-    <script src="assets/js/lazy-loading.min.js" defer></script>
-    <script src="assets/js/cities-simple.min.js" defer></script>
-    <script src="assets/js/form-handler.min.js" defer></script>
     <!-- Удален calc-v2-enhanced.js - используем smart-calculator-v2 -->
-    <script src="assets/js/vendor/jspdf.umd.min.js"></script>
-    <script src="assets/js/pdf-lead-magnet.js?v=1754158001" defer></script>
-    <script src="assets/js/sticky-cta.js?v=1754158001" defer></script>
-    <script src="assets/js/animated-counter.js?v=1754158001" defer></script>
-    <script src="assets/js/ab-test-headers.js?v=1754158001" defer></script>
     <!-- Инициализация компонентов -->
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Инициализация калькулятора UI
-            if (typeof CalculatorUI !== 'undefined') {
-                window.calculatorUI = new CalculatorUI();
-            }
-            // Инициализация анимированных счетчиков
-            if (typeof AnimatedCounter !== 'undefined') {
-                window.animatedCounter = new AnimatedCounter();
-            }
-        });
-    </script>
-    <script src="assets/js/ux-improvements.js?v=1754158001" defer></script>
-    <script src="assets/js/tldr-toc.js?v=20250813" defer></script>
 </body>
 </html>

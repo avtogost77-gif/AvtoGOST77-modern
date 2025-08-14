@@ -1123,7 +1123,6 @@
     </footer>
 
     <!-- Скрипты -->
-    <script src="assets/js/main.js?v=1754549859" defer></script>
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -1144,7 +1143,6 @@
         ]
     }
     </script>
-    <script src="assets/js/ux-improvements.js" defer></script>
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -1165,7 +1163,6 @@
         ]
     }
     </script>
-    <script src="assets/js/smart-calculator-v2.min.js?v=20250813-fixed" async></script>
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -1186,7 +1183,6 @@
         ]
     }
     </script>
-    <script src="assets/js/calculator-ui.min.js?v=20250813-new" async></script>
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -1207,7 +1203,6 @@
         ]
     }
     </script>
-    <script src="assets/js/vendor/aos.min.js"></script>
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -1230,41 +1225,6 @@
     </script>
     <script>
         // Инициализация AOS
-        document.addEventListener('DOMContentLoaded', function() {
-            AOS.init({ 
-                once: true, 
-                duration: 600 
-            });
-            
-            // FAQ аккордеон
-            const faqItems = document.querySelectorAll('.faq-item');
-            faqItems.forEach(item => {
-                const question = item.querySelector('.faq-question');
-                question.addEventListener('click', () => {
-                    item.classList.toggle('active');
-                });
-            });
-            
-            // Обработка формы
-            const form = document.getElementById('serviceOrderForm');
-            if (form) {
-                form.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    
-                    // Собираем данные
-                    const formData = new FormData(form);
-                    const data = Object.fromEntries(formData);
-                    
-                    // Здесь отправка формы
-                    console.log('Заявка на услугу:', data);
-                    
-                    // Показываем успех
-                    alert('Спасибо за заявку! Мы перезвоним в течение 5 минут.');
-                    form.reset();
-                });
-            }
-        });
-    </script>
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -1291,7 +1251,6 @@
 </html>
     
     <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EMQ3D0X8K7"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-EMQ3D0X8K7');

@@ -21,7 +21,6 @@
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EMQ3D0X8K7"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
@@ -421,10 +420,6 @@
     </div>
   </section>
   <!-- Scripts -->
-  <script src="assets/js/main.js?v=107" defer></script>
-    <script src="assets/js/ux-improvements.js?v=1754158000" defer></script>
-  <script src="assets/js/distance-api.js" defer></script>
-  <script src="assets/js/smart-calculator-v2.min.js?v=20250813-fixed" async></script>
 <!-- Плавающие кнопки -->
 <div class="float-buttons">
     <a href="tel:+79162720932" class="float-btn phone-btn">
@@ -461,27 +456,5 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 <script>
 // CTA attribution (blog-5)
-document.addEventListener('DOMContentLoaded', function() {
-  var cta = document.querySelector('.priority-cta');
-  if (!cta) return;
-  cta.querySelectorAll('a[href^="tel:"]').forEach(function(link){
-    link.addEventListener('click', function(){
-      if (typeof ym !== 'undefined') {
-        ym(103413788, 'reachGoal', 'cta_click', { src: 'blog-5', channel: 'tel' });
-      }
-    });
-  });
-  cta.querySelectorAll('a[href*="wa.me"]').forEach(function(link){
-    link.addEventListener('click', function(){
-      if (typeof ym !== 'undefined') {
-        ym(103413788, 'reachGoal', 'cta_click', { src: 'blog-5', channel: 'wa' });
-      }
-    });
-  });
-});
-</script>
-    <script src="assets/js/lazy-loading.min.js" defer></script>
-    <script src="assets/js/form-handler.js?v=107" defer></script>
-    <script src="assets/js/cities-simple.js?v=107" defer></script>
 </body>
 </html>
