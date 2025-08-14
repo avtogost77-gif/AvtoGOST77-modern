@@ -31,12 +31,17 @@ BACKUP_DIR="backup-$(date +%Y%m%d-%H%M%S)"
 ssh -i $SSH_KEY $VPS_HOST "cd $VPS_PATH && mkdir -p $BACKUP_DIR && cp -r * $BACKUP_DIR/ 2>/dev/null || true"
 echo "✅ Резервная копия создана: $BACKUP_DIR"
 
-# Загружаем все HTML файлы
-echo "📤 Загрузка HTML файлов..."
-find . -name "*.html" -not -path "./backup*" | while read file; do
+# Загружаем корневые HTML файлы (только уровень 1), чтобы не перетереть index.html файлом из blog/
+echo "📤 Загрузка корневых HTML файлов..."
+find . -maxdepth 1 -name "*.html" -not -path "./backup*" -print0 | while IFS= read -r -d '' file; do
     echo "  📄 $file"
     scp -i $SSH_KEY "$file" $VPS_HOST:$VPS_PATH/
 done
+
+# Загружаем HTML файлы блога в свою директорию
+echo "📤 Загрузка HTML файлов блога..."
+ssh -i $SSH_KEY $VPS_HOST "mkdir -p $VPS_PATH/blog"
+scp -i $SSH_KEY -r blog/*.html $VPS_HOST:$VPS_PATH/blog/ 2>/dev/null || true
 
 # Загружаем CSS файлы
 echo "📤 Загрузка CSS файлов..."
