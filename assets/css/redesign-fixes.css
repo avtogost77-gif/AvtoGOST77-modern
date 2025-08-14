@@ -511,3 +511,65 @@
         width: 100% !important;
     }
 }
+
+/* ===== 10. УПЛОТНЕНИЕ: ПРЕИМУЩЕСТВА И ПРОГРЕСС ===== */
+/* Преимущества (бейджи) в одну строку на десктопе */
+@media (min-width: 992px) {
+    .calculator-badges {
+        flex-wrap: nowrap !important;
+        gap: 10px !important;
+        justify-content: center !important;
+    }
+    .calc-badge {
+        padding: 4px 10px !important;
+        font-size: 0.8rem !important;
+        border-radius: 14px !important;
+    }
+}
+
+/* Компактный прогресс-бар: шаги в горизонт, ниже вертикали меньше */
+.form-progress {
+    margin-bottom: 1.25rem !important;
+}
+
+.progress-line {
+    top: 1.1rem !important;
+}
+
+.progress-step {
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 8px !important;
+}
+
+.step-circle {
+    width: 2.25rem !important;
+    height: 2.25rem !important;
+    font-size: 0.9rem !important;
+}
+
+.step-label {
+    font-size: 0.8rem !important;
+}
+
+/* Мобильный фоллбэк: классическая вертикальная раскладка шагов */
+@media (max-width: 768px) {
+    .progress-step {
+        flex-direction: column !important;
+        gap: 0.5rem !important;
+    }
+    .step-circle {
+        width: 3rem !important;
+        height: 3rem !important;
+        font-size: 1rem !important;
+    }
+}
+
+/* Небольшое уменьшение внутренних отступов формы и групп */
+.calculator-form {
+    padding: 1.75rem !important;
+}
+
+.form-group {
+    margin-bottom: 1.1rem !important;
+}
