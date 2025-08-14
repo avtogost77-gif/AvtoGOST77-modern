@@ -413,6 +413,66 @@
     border: 1px solid rgba(0,0,0,0.06) !important;
 }
 
+/* ===== 12. ЕДИНЫЙ СТИЛЬ КНОПОК (как в hero) ДЛЯ КАЛЬКУЛЯТОРА ===== */
+/* Приводим кнопки калькулятора к виду .btn .btn-primary из hero */
+.btn-calculate {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 0.5rem !important;
+    padding: 1rem 2rem !important; /* как .btn-lg */
+    font-weight: 600 !important;
+    border: none !important;
+    border-radius: var(--radius-lg) !important;
+    background: var(--gradient-button) !important;
+    color: var(--white) !important;
+    box-shadow: var(--shadow-md) !important;
+    position: relative !important;
+    overflow: hidden !important;
+    transition: all var(--transition-normal) !important;
+    cursor: pointer !important;
+}
+
+.btn-calculate::before {
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: -100% !important;
+    width: 100% !important;
+    height: 100% !important;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent) !important;
+    transition: left var(--transition-slow) !important;
+}
+
+.btn-calculate:hover::before { left: 100% !important; }
+.btn-calculate:hover { transform: translateY(-2px) !important; box-shadow: var(--shadow-lg) !important; }
+.btn-calculate:active { transform: translateY(0) !important; }
+
+/* Кнопка в результате — такой же стиль, как .btn-primary */
+.btn-primary-result {
+    background: var(--gradient-button) !important;
+    color: var(--white) !important;
+    border: none !important;
+    box-shadow: var(--shadow-md) !important;
+}
+
+.btn-primary-result:hover {
+    box-shadow: var(--shadow-lg) !important;
+    transform: translateY(-2px) !important;
+}
+
+/* Вторичная — как .btn-secondary из hero */
+.btn-secondary-result {
+    background: var(--white) !important;
+    color: var(--primary) !important;
+    border: 2px solid var(--primary) !important;
+}
+
+.btn-secondary-result:hover {
+    background: var(--primary) !important;
+    color: var(--white) !important;
+}
+
 /* ===== 10. УПЛОТНЕНИЕ: ПРЕИМУЩЕСТВА И ПРОГРЕСС ===== */
 /* Преимущества (бейджи) в одну строку на десктопе */
 @media (min-width: 992px) {
