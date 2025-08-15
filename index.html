@@ -511,6 +511,8 @@ document.addEventListener('DOMContentLoaded', function() {
     <link rel="stylesheet" href="assets/css/header-optimization.css">
     <!-- ОПТИМИЗАЦИЯ HERO -->
     <link rel="stylesheet" href="assets/css/hero-optimization.css">
+    <!-- ОПТИМИЗАЦИЯ КАЛЬКУЛЯТОРА -->
+    <link rel="stylesheet" href="assets/css/calculator-optimization.css">
     <!-- FAQPage JSON-LD -->
     <script type="application/ld+json">
     {
@@ -895,28 +897,24 @@ document.addEventListener('DOMContentLoaded', function() {
                     </div>
                 </div>
                 <form class="calculator-form" id="calculatorForm">
-                    <!-- Прогресс-бар -->
+                    <!-- Прогресс-бар (упрощенный) -->
                     <div class="form-progress">
                         <div class="progress-line">
                             <div class="progress-line-fill" id="progressFill"></div>
                         </div>
                         <div class="progress-step active" data-step="1">
                             <div class="step-circle">1</div>
-                            <div class="step-label">Маршрут</div>
+                            <div class="step-label">Данные</div>
                         </div>
                         <div class="progress-step" data-step="2">
                             <div class="step-circle">2</div>
-                            <div class="step-label">Груз</div>
-                        </div>
-                        <div class="progress-step" data-step="3">
-                            <div class="step-circle">3</div>
-                            <div class="step-label">Расчет</div>
+                            <div class="step-label">Результат</div>
                         </div>
                     </div>
-                    <!-- Шаг 1: Маршрут -->
-                    <div class="calc-step active" id="step1">
+                    <!-- Объединенный шаг: Маршрут + Груз -->
+                    <div class="calc-step active combined-step" id="step1">
                         <div class="route-inputs">
-                            <div class="form-group">
+                            <div class="form-group input-with-icon">
                                 <label for="fromCity">Откуда</label>
                                 <input type="text" 
                                        class="form-control"
@@ -931,7 +929,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             <div class="route-arrow">
                                 →
                             </div>
-                            <div class="form-group">
+                            <div class="form-group input-with-icon">
                                 <label for="toCity">Куда</label>
                                 <input type="text" 
                                        class="form-control"
@@ -944,14 +942,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                 <div class="address-suggestions" data-for="to"></div>
                             </div>
                         </div>
-                        <div class="form-actions">
-                            <button type="button" class="btn-calculate" id="nextStep1">
-                                Далее: Указать груз
-                            </button>
-                        </div>
-                    </div>
-                    <!-- Шаг 2: Груз -->
-                    <div class="calc-step" id="step2">
+                        
                         <div class="cargo-inputs">
                             <div class="form-group">
                                 <label for="weight">Вес груза, кг</label>
@@ -976,6 +967,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                        autocomplete="off">
                             </div>
                         </div>
+                        
                         <div class="consolidated-checkbox">
                             <div class="checkbox-wrapper">
                                 <input type="checkbox" id="isConsolidated" name="isConsolidated">
@@ -990,15 +982,16 @@ document.addEventListener('DOMContentLoaded', function() {
                                 </div>
                             </div>
                         </div>
+                        
                         <div class="form-actions">
-                            <button type="button" class="btn-calculate" id="prevStep2">
-                                ← Назад
-                            </button>
-                            <button type="button" class="btn-calculate" id="nextStep2">
+                            <button type="button" class="btn-calculate" id="calculateButton">
                                 Рассчитать стоимость
                             </button>
                         </div>
                     </div>
+                    
+                    <!-- Шаг 2 скрыт, так как объединен с шагом 1 -->
+                    <div class="calc-step" id="step2" style="display: none;"></div>
                     <!-- Шаг 3: Расчет -->
                     <div class="calc-step" id="step3">
                         <div class="form-actions">
@@ -2033,5 +2026,6 @@ document.addEventListener('DOMContentLoaded', function() {
     <script src="assets/js/tldr-toc.js?v=20250813" defer></script>
     <script src="assets/js/header-interactions.js?v=20250816" defer></script>
     <script src="assets/js/hero-animations.js?v=20250816" defer></script>
+    <script src="assets/js/calculator-ui-enhanced.js?v=20250816" defer></script>
 </body>
 </html>
