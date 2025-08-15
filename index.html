@@ -60,6 +60,7 @@
     <!-- Preload критически важных ресурсов -->
     <link rel="preload" href="assets/js/main.min.js?v=1754158001" as="script">
     <link rel="preload" href="assets/js/smart-calculator-v2.min.js?v=20250813-fixed" as="script">
+    <link rel="preload" href="assets/js/header-interactions.js" as="script">
     <!-- Google Analytics -->
     <meta name="google-site-verification" content="i_MV74DrBdT7aD2kZhmnAZuQGEM3XBsDV8aCtEphAho" />
     <meta name="yandex-verification" content="376fdf2ca69f9a1f" />
@@ -506,6 +507,8 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
     <!-- РЕДИЗАЙН - КРИТИЧЕСКИЕ ИСПРАВЛЕНИЯ -->
     <link rel="stylesheet" href="assets/css/redesign-fixes.css">
+    <!-- ОПТИМИЗАЦИЯ ХЕДЕРА -->
+    <link rel="stylesheet" href="assets/css/header-optimization.css">
     <!-- FAQPage JSON-LD -->
     <script type="application/ld+json">
     {
@@ -553,20 +556,64 @@ document.addEventListener('DOMContentLoaded', function() {
                 </div>
                 <!-- Навигация -->
                 <nav class="nav">
-                    <a href="#about" class="nav-link">О нас</a>
+                    <!-- Основные пункты (всегда видимы) -->
+                    <div class="nav-primary">
+                        <a href="#calculator" class="nav-link nav-link-primary">Калькулятор</a>
+                        <a href="services.html" class="nav-link nav-link-primary">Услуги</a>
+                        <a href="contact.html" class="nav-link nav-link-primary">Контакты</a>
+                    </div>
+                    
+                    <!-- Второстепенные пункты (компактное меню) -->
+                    <div class="nav-secondary">
+                        <button class="nav-more-btn">
+                            Ещё <span class="nav-more-icon">▼</span>
+                        </button>
+                        <div class="nav-dropdown">
                     <a href="transportnaya-kompaniya.html" class="nav-link">О компании</a>
-                    <a href="services.html" class="nav-link">Услуги</a>
-                    <a href="#calculator" class="nav-link">Калькулятор</a>
-                    <a href="contact.html" class="nav-link">Контакты</a>
+                            <a href="#about" class="nav-link">О нас</a>
                     <a href="help.html" class="nav-link">Помощь</a>
+                            <a href="blog/index.html" class="nav-link">Блог</a>
+                        </div>
+                    </div>
                 </nav>
+                <!-- Поиск -->
+                <div class="header-search">
+                    <button class="search-toggle" aria-label="Поиск">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+                    </button>
+                    <div class="search-dropdown">
+                        <form class="search-form">
+                            <input type="text" placeholder="Поиск по сайту..." class="search-input">
+                            <button type="submit" class="search-submit">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="11" cy="11" r="8"></circle>
+                                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                                </svg>
+                            </button>
+                        </form>
+                        <div class="search-quick-links">
+                            <p class="search-quick-title">Популярные запросы:</p>
+                            <div class="search-quick-grid">
+                                <a href="gazel-gruzoperevozki.html">Газель</a>
+                                <a href="gruzoperevozki-moskva-spb.html">Москва-СПб</a>
+                                <a href="urgent-delivery.html">Срочная доставка</a>
+                                <a href="sbornye-gruzy.html">Сборные грузы</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Контакт кнопка -->
                 <div class="header-cta">
-                    <a href="tel:+79162720932" class="btn btn-primary">
+                    <a href="tel:+79162720932" class="btn btn-primary btn-compact">
                         <svg class="btn-icon" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
                             <path d="M6.62,10.79C8.06,13.62 10.38,15.94 13.21,17.38L15.41,15.18C15.69,14.9 16.08,14.82 16.43,14.93C17.55,15.3 18.75,15.5 20,15.5A1,1 0 0,1 21,16.5V20A1,1 0 0,1 20,21A17,17 0 0,1 3,4A1,1 0 0,1 4,3H7.5A1,1 0 0,1 8.5,4C8.5,5.25 8.7,6.45 9.07,7.57C9.18,7.92 9.1,8.31 8.82,8.59L6.62,10.79Z"/>
                         </svg>
-                        Позвонить
+                        <span class="btn-text">Позвонить</span>
+                        <span class="btn-status"></span>
                     </a>
                 </div>
                 <!-- Мобильное меню -->
@@ -1811,7 +1858,7 @@ document.addEventListener('DOMContentLoaded', function() {
             </div>
         </div>
     </section><footer class="footer">
-        <div class="footer-content">
+            <div class="footer-content">
             <div class="footer-row">
                 <div class="footer-col">
                     <h3>🚛 АвтоГОСТ</h3>
@@ -1982,5 +2029,6 @@ document.addEventListener('DOMContentLoaded', function() {
     </script>
     <script src="assets/js/ux-improvements.js?v=1754158001" defer></script>
     <script src="assets/js/tldr-toc.js?v=20250813" defer></script>
+    <script src="assets/js/header-interactions.js?v=20250816" defer></script>
 </body>
 </html>
