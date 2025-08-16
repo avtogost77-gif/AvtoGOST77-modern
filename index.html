@@ -506,13 +506,8 @@ document.addEventListener('DOMContentLoaded', function() {
 }
 </script>
     <!-- РЕДИЗАЙН - КРИТИЧЕСКИЕ ИСПРАВЛЕНИЯ -->
-    <link rel="stylesheet" href="assets/css/redesign-fixes.css">
-    <!-- ОПТИМИЗАЦИЯ ХЕДЕРА -->
-    <link rel="stylesheet" href="assets/css/header-optimization.css">
-    <!-- ОПТИМИЗАЦИЯ HERO -->
-    <link rel="stylesheet" href="assets/css/hero-optimization.css">
-    <!-- ОПТИМИЗАЦИЯ КАЛЬКУЛЯТОРА -->
-    <link rel="stylesheet" href="assets/css/calculator-optimization.css">
+    <!-- ОПТИМИЗИРОВАННЫЕ СТИЛИ -->
+    <link rel="stylesheet" href="assets/css/dist/optimizations.min.css?v=20250816">
     <!-- FAQPage JSON-LD -->
     <script type="application/ld+json">
     {
@@ -767,42 +762,60 @@ document.addEventListener('DOMContentLoaded', function() {
     </section>
     <!-- Ключевые преимущества (компактно) -->
     <section class="section" style="padding: 24px 0;">
-        <div class="container" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;">
-            <div style="background:#f8fafc;border-radius:12px;padding:16px;display:flex;gap:12px;align-items:center;">
-                <div style="font-size:22px;">⏱️</div>
-                <div><div style="font-weight:700;">Подача от 2 часов</div><div style="color:#666;">Москва и область</div></div>
+        <div class="container">
+            <div class="compact-benefits">
+                <div class="compact-benefit">
+                    <div class="compact-benefit-icon">⏱️</div>
+                    <div class="compact-benefit-content">
+                        <div class="compact-benefit-title">Подача от 2 часов</div>
+                        <div class="compact-benefit-subtitle">Москва и область</div>
             </div>
-            <div style="background:#f8fafc;border-radius:12px;padding:16px;display:flex;gap:12px;align-items:center;">
-                <div style="font-size:22px;">✅</div>
-                <div><div style="font-weight:700;">Проверенные партнеры</div><div style="color:#666;">и собственный транспорт</div></div>
             </div>
-            <div style="background:#f8fafc;border-radius:12px;padding:16px;display:flex;gap:12px;align-items:center;">
-                <div style="font-size:22px;">🕘</div>
-                <div><div style="font-weight:700;">Поддержка 24/7</div><div style="color:#666;">диспетчер на связи</div></div>
+                <div class="compact-benefit">
+                    <div class="compact-benefit-icon">✅</div>
+                    <div class="compact-benefit-content">
+                        <div class="compact-benefit-title">Проверенные партнеры</div>
+                        <div class="compact-benefit-subtitle">и собственный транспорт</div>
             </div>
-            <div style="background:#f8fafc;border-radius:12px;padding:16px;display:flex;gap:12px;align-items:center;">
-                <div style="font-size:22px;">🗺️</div>
-                <div><div style="font-weight:700;">850+ городов</div><div style="color:#666;">по всей России</div></div>
+                </div>
+                <div class="compact-benefit">
+                    <div class="compact-benefit-icon">🕘</div>
+                    <div class="compact-benefit-content">
+                        <div class="compact-benefit-title">Поддержка 24/7</div>
+                        <div class="compact-benefit-subtitle">диспетчер на связи</div>
+                    </div>
+                </div>
+                <div class="compact-benefit">
+                    <div class="compact-benefit-icon">🗺️</div>
+                    <div class="compact-benefit-content">
+                        <div class="compact-benefit-title">850+ городов</div>
+                        <div class="compact-benefit-subtitle">по всей России</div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
     <!-- Детальное описание услуг -->
     <section class="detailed-services section bg-light" data-collapse="mobile">
         <div class="container">
-            <h2>Основные направления логистических услуг</h2>
+            <h2 class="section-title">Основные направления логистических услуг</h2>
+            <p class="section-subtitle">Мы предлагаем полный спектр логистических решений для бизнеса любого масштаба</p>
             <div class="service-category">
                 <h3>Междугородние грузоперевозки</h3>
                 <p>Междугородние перевозки - основное направление нашей деятельности. Мы организуем доставку грузов между любыми городами России, от Калининграда до Владивостока. Наши логисты тщательно прорабатывают маршруты, учитывая особенности дорожной инфраструктуры, погодные условия и специфику груза.</p>
                 <div class="service-features">
                     <div class="feature">
+                        <div class="benefit-icon">🛣️</div>
                         <h4>Оптимальные маршруты</h4>
                         <p>Наши специалисты рассчитывают наиболее выгодные маршруты с учетом расстояния, состояния дорог, наличия платных участков и времени в пути. Это позволяет минимизировать транспортные расходы и сократить сроки доставки.</p>
                     </div>
                     <div class="feature">
+                        <div class="benefit-icon">🚚</div>
                         <h4>Оптимальный транспорт</h4>
                         <p>В зависимости от объема и характеристик груза мы подберем подходящий транспорт: от газелей для небольших грузов до 20-тонных фур для крупных партий товаров.</p>
                     </div>
                     <div class="feature">
+                        <div class="benefit-icon">📦</div>
                         <h4>Сборные грузы</h4>
                         <p>Для экономии на доставке небольших партий товаров мы предлагаем услугу сборных грузов. Ваш груз будет доставлен вместе с другими отправлениями по тому же маршруту, что позволит сэкономить до 35% от стоимости отдельной машины.</p>
                     </div>
@@ -844,10 +857,65 @@ document.addEventListener('DOMContentLoaded', function() {
         </div>
     </section>
     <!-- Процесс работы -->
-    <section class="work-process section" data-collapse="mobile">
+    <!-- Социальные доказательства -->
+    <section id="testimonials" class="social-proof-section">
+        <div class="container social-proof-container">
+            <div class="section-header">
+                <h2 class="section-title centered">Нам доверяют</h2>
+                <p class="section-subtitle">Более 5000 компаний выбрали нас своим логистическим партнером</p>
+            </div>
+            
+            <!-- Статистика -->
+            <div class="stats-counter">
+                <div class="stat-counter-item">
+                    <div class="counter-value" data-value="5247">0</div>
+                    <div class="counter-label">Клиентов</div>
+                </div>
+                <div class="stat-counter-item">
+                    <div class="counter-value" data-value="850">0</div>
+                    <div class="counter-label">Городов доставки</div>
+                </div>
+                <div class="stat-counter-item">
+                    <div class="counter-value" data-value="52893">0</div>
+                    <div class="counter-label">Выполненных заказов</div>
+                </div>
+                <div class="stat-counter-item">
+                    <div class="counter-value" data-value="99">0</div>
+                    <div class="counter-label">% довольных клиентов</div>
+                </div>
+            </div>
+            
+            <!-- Логотипы клиентов -->
+            <div class="clients-logos">
+                <div class="clients-logos-title">Среди наших клиентов</div>
+                <div class="logos-container">
+                    <div class="client-logo">
+                        <img src="assets/img/clients/ozon-logo.svg" alt="OZON">
+                    </div>
+                    <div class="client-logo">
+                        <img src="assets/img/clients/wildberries-logo.svg" alt="Wildberries">
+                    </div>
+                    <div class="client-logo">
+                        <img src="assets/img/clients/yandex-market-logo.svg" alt="Яндекс.Маркет">
+                    </div>
+                    <div class="client-logo">
+                        <img src="assets/img/clients/sber-logo.svg" alt="Сбер">
+                    </div>
+                    <div class="client-logo">
+                        <img src="assets/img/clients/ikea-logo.svg" alt="IKEA">
+                    </div>
+                    <div class="client-logo">
+                        <img src="assets/img/clients/lamoda-logo.svg" alt="Lamoda">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="how-we-work" class="work-process section content-section" data-collapse="mobile">
         <div class="container">
-            <h2>Как мы работаем: простой и прозрачный процесс</h2>
-            <p class="section-intro">Мы упростили процесс заказа грузоперевозки, чтобы вы могли сосредоточиться на своих делах, а не на логистике.</p>
+            <h2 class="section-title centered">Как мы работаем</h2>
+            <p class="section-subtitle">Мы упростили процесс заказа грузоперевозки, чтобы вы могли сосредоточиться на своих делах, а не на логистике</p>
             <div class="process-timeline">
                 <div class="process-step">
                     <div class="step-number">1</div>
@@ -910,7 +978,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             <div class="step-circle">2</div>
                             <div class="step-label">Результат</div>
                         </div>
-                    </div>
+                        </div>
                     <!-- Объединенный шаг: Маршрут + Груз -->
                     <div class="calc-step active combined-step" id="step1">
                         <div class="route-inputs">
@@ -1037,13 +1105,13 @@ document.addEventListener('DOMContentLoaded', function() {
                     </button>
                 </div>
             </div>
-            <!-- Форма сбора лидов -->
+            <!-- Форма сбора лидов (оптимизированная) -->
             <div class="lead-form" id="leadForm" style="display: none;">
-                <div class="section-header" data-aos="fade-up">
+                <div class="form-header">
                     <h3>Оставить заявку на перевозку</h3>
                     <p>Получите точный расчет и консультацию специалиста</p>
                 </div>
-                <form id="calculatorLeadForm" class="lead-form-content" data-aos="fade-up" data-aos-delay="200">
+                <form id="calculatorLeadForm" class="lead-form-content">
                     <div class="form-row">
                         <div class="form-group">
                             <label for="leadName">Ваше имя *</label>
@@ -1054,25 +1122,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             <input type="tel" id="leadPhone" name="phone" placeholder="+7 (___) ___-__-__" autocomplete="tel" required>
                         </div>
                     </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="leadEmail">Email</label>
-                            <input type="email" id="leadEmail" name="email" placeholder="email@example.com" autocomplete="email">
-                        </div>
-                        <div class="form-group">
-                            <label for="leadComment">Дополнительная информация</label>
-                            <textarea id="leadComment" name="comment" placeholder="Особенности груза, срочность, особые требования"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <div class="consent-checkbox">
-                                <input type="checkbox" id="privacyConsent" name="privacyConsent" required>
-                                <label for="privacyConsent">
-                                    Я согласен(а) с <a href="privacy.html" target="_blank">обработкой персональных данных</a> в соответствии с 152-ФЗ, включая использование cookies и аналитических сервисов Google и Яндекс для персонализации рекламы
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-actions">
+                    
                         <div class="promo-section">
                             <div class="promo-timer" id="promoTimer">
                                 <div class="timer-label">⏰ Специальное предложение истекает через:</div>
@@ -1086,9 +1136,22 @@ document.addEventListener('DOMContentLoaded', function() {
                                 </div>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-primary btn-lg" id="leadSubmitBtn" disabled>
-                            <span class="btn-text">Отправить заявку</span>
-                            <span class="btn-loading" style="display: none;">Отправляем...</span>
+                    
+                    <div class="form-group">
+                        <div class="checkbox-wrapper">
+                            <input type="checkbox" id="privacyConsent" name="privacyConsent" required>
+                            <div class="checkbox-content">
+                                <div class="checkbox-title">Согласие на обработку данных</div>
+                                <div class="checkbox-description">
+                                    Я согласен(а) с <a href="privacy.html" target="_blank">обработкой персональных данных</a> в соответствии с 152-ФЗ
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="submit" class="btn-submit">
+                            Отправить заявку
                         </button>
                     </div>
                 </form>
@@ -1096,11 +1159,11 @@ document.addEventListener('DOMContentLoaded', function() {
         </div>
     </section>
     <!-- ВОРОНКА ПРОДАЖ: МНОЖЕСТВЕННЫЕ ПУТИ КОНВЕРСИИ -->
-    <section class="conversion-funnel" data-collapse="mobile">
+    <section id="contact" class="conversion-funnel content-section" data-collapse="mobile">
         <div class="container">
-            <div class="funnel-header">
-                <h2>🎯 Не определились с расчетом? Выберите свой путь:</h2>
-                <p>Мы понимаем - каждый бизнес уникален. Поэтому предлагаем разные способы получить именно то, что нужно ВАМ</p>
+            <div class="section-header">
+                <h2 class="section-title centered">Выберите свой путь</h2>
+                <p class="section-subtitle">Мы понимаем - каждый бизнес уникален. Поэтому предлагаем разные способы получить именно то, что нужно вам</p>
             </div>
             <div class="conversion-paths">
                 <!-- Путь 1: Быстрые -->
@@ -1198,20 +1261,42 @@ document.addEventListener('DOMContentLoaded', function() {
     <!-- О компании -->
     <section id="about" class="about-section" data-collapse="mobile">
         <div class="container">
-            <div class="section-header" data-aos="fade-up">
-                <h2>О компании АвтоГОСТ</h2>
-                <p>Ваш надежный партнер в сфере грузоперевозок</p>
+            <div class="section-header">
+                <h2 class="section-title centered">О компании АвтоГОСТ</h2>
+                <p class="section-subtitle">Ваш надежный партнер в сфере грузоперевозок</p>
             </div>
             <div class="about-content">
                 <div class="about-text" data-aos="fade-right">
                     <h3>Почему выбирают нас?</h3>
-                    <ul class="about-features">
-                        <li>✅ <strong>Обширная сеть партнеров</strong> по всей России</li>
-                        <li>✅ <strong>Подача транспорта за 2 часа</strong> в Москве и МО</li>
-                        <li>✅ <strong>99.3% доставок в срок</strong> за последний год</li>
-                        <li>✅ <strong>Работаем 24/7</strong> без выходных и праздников</li>
-                        <li>✅ <strong>Страхование грузов</strong> до 1 млн рублей</li>
-                    </ul>
+                    <div class="benefits-grid">
+                        <div class="benefit-card">
+                            <div class="benefit-icon">🌐</div>
+                            <h4 class="benefit-title">Обширная сеть партнеров</h4>
+                            <p class="benefit-description">Надежные партнеры во всех регионах России</p>
+                </div>
+                        <div class="benefit-card">
+                            <div class="benefit-icon">⏱️</div>
+                            <h4 class="benefit-title">Подача за 2 часа</h4>
+                            <p class="benefit-description">Оперативная подача транспорта в Москве и МО</p>
+                            <div class="benefit-badge">Популярно</div>
+                        </div>
+                        <div class="benefit-card">
+                            <div class="benefit-icon">🎯</div>
+                            <h4 class="benefit-title">99.3% доставок в срок</h4>
+                            <p class="benefit-description">Высокая надежность за последний год</p>
+                        </div>
+                        <div class="benefit-card">
+                            <div class="benefit-icon">🕒</div>
+                            <h4 class="benefit-title">Работаем 24/7</h4>
+                            <p class="benefit-description">Без выходных и праздников</p>
+                        </div>
+                        <div class="benefit-card">
+                            <div class="benefit-icon">🔒</div>
+                            <h4 class="benefit-title">Страхование грузов</h4>
+                            <p class="benefit-description">Страховка до 1 млн рублей</p>
+                            <div class="benefit-badge">Важно</div>
+                        </div>
+                    </div>
                 </div>
                 <div class="about-stats" data-aos="fade-left">
                     <div class="stat-card">
@@ -1596,10 +1681,151 @@ document.addEventListener('DOMContentLoaded', function() {
         </div>
     </section>
     <!-- Технологии и инновации -->
-    <section class="technology-section section bg-light">
+    <!-- Отзывы клиентов -->
+    <section id="reviews" class="testimonials-section section">
         <div class="container">
-            <h2>Технологии на службе вашего бизнеса</h2>
-            <p class="section-intro">Мы инвестируем в технологии, чтобы сделать логистику прозрачной, предсказуемой и эффективной.</p>
+            <h2 class="section-title centered">Отзывы наших клиентов</h2>
+            <p class="section-subtitle">Что говорят о нас те, кто уже воспользовался нашими услугами</p>
+            
+            <!-- Отзывы клиентов -->
+            <div class="testimonials-container">
+                <div class="testimonials-slider">
+                    <div class="testimonial-card">
+                        <div class="testimonial-quote">"</div>
+                        <div class="testimonial-content">
+                            Сотрудничаем с АвтоГОСТ уже более 2 лет. За это время не было ни одной серьезной проблемы с доставкой. Оперативная подача транспорта, прозрачные цены и всегда на связи. Отдельно хочу отметить работу логистов - всегда помогут с оптимальным маршрутом.
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">ИМ</div>
+                            <div class="author-info">
+                                <div class="author-name">Иван Михайлов</div>
+                                <div class="author-company">ООО "ТехноПром"</div>
+                                <div class="testimonial-rating">
+                                    <span class="rating-star">★</span>
+                                    <span class="rating-star">★</span>
+                                    <span class="rating-star">★</span>
+                                    <span class="rating-star">★</span>
+                                    <span class="rating-star">★</span>
+                                </div>
+                                <div class="testimonial-date">15.07.2025</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-quote">"</div>
+                        <div class="testimonial-content">
+                            Наш интернет-магазин активно растет, и нам нужен был надежный партнер по логистике. АвтоГОСТ полностью оправдал ожидания. Особенно ценим возможность срочной доставки в день заказа и удобный калькулятор на сайте, который позволяет быстро рассчитать стоимость.
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">ЕК</div>
+                            <div class="author-info">
+                                <div class="author-name">Елена Ковалева</div>
+                                <div class="author-company">Интернет-магазин "HomeStyle"</div>
+                                <div class="testimonial-rating">
+                                    <span class="rating-star">★</span>
+                                    <span class="rating-star">★</span>
+                                    <span class="rating-star">★</span>
+                                    <span class="rating-star">★</span>
+                                    <span class="rating-star">★</span>
+                                </div>
+                                <div class="testimonial-date">03.06.2025</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-quote">"</div>
+                        <div class="testimonial-content">
+                            Работаем с компанией АвтоГОСТ более года. Регулярно отправляем грузы в разные города России. Очень удобно, что есть возможность консолидации грузов - это существенно экономит бюджет. Водители всегда вежливы и пунктуальны, а служба поддержки работает 24/7.
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">АС</div>
+                            <div class="author-info">
+                                <div class="author-name">Алексей Соколов</div>
+                                <div class="author-company">ЗАО "МебельПлюс"</div>
+                                <div class="testimonial-rating">
+                                    <span class="rating-star">★</span>
+                                    <span class="rating-star">★</span>
+                                    <span class="rating-star">★</span>
+                                    <span class="rating-star">★</span>
+                                    <span class="rating-star">★</span>
+                                </div>
+                                <div class="testimonial-date">22.05.2025</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-quote">"</div>
+                        <div class="testimonial-content">
+                            Хочу отметить высокий профессионализм сотрудников АвтоГОСТ. Недавно нам срочно потребовалось доставить медицинское оборудование в другой город. Несмотря на сложность и срочность заказа, всё было организовано идеально. Отдельное спасибо за индивидуальный подход!
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">МД</div>
+                            <div class="author-info">
+                                <div class="author-name">Марина Дмитриева</div>
+                                <div class="author-company">Медицинский центр "Здоровье"</div>
+                                <div class="testimonial-rating">
+                                    <span class="rating-star">★</span>
+                                    <span class="rating-star">★</span>
+                                    <span class="rating-star">★</span>
+                                    <span class="rating-star">★</span>
+                                    <span class="rating-star">★</span>
+                                </div>
+                                <div class="testimonial-date">10.04.2025</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-quote">"</div>
+                        <div class="testimonial-content">
+                            Наша компания специализируется на поставках строительных материалов, и логистика для нас критически важна. С АвтоГОСТ мы забыли о проблемах с доставкой. Всегда соблюдаются сроки, груз доставляется в целости и сохранности, а цены остаются конкурентными.
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">ПВ</div>
+                            <div class="author-info">
+                                <div class="author-name">Павел Васильев</div>
+                                <div class="author-company">ООО "СтройМаркет"</div>
+                                <div class="testimonial-rating">
+                                    <span class="rating-star">★</span>
+                                    <span class="rating-star">★</span>
+                                    <span class="rating-star">★</span>
+                                    <span class="rating-star">★</span>
+                                    <span class="rating-star">★</span>
+                                </div>
+                                <div class="testimonial-date">28.03.2025</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonials-navigation">
+                    <button class="testimonials-nav-button testimonials-nav-prev">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="15 18 9 12 15 6"></polyline>
+                        </svg>
+                    </button>
+                    <button class="testimonials-nav-button testimonials-nav-next">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Призыв к действию после отзывов -->
+            <div class="testimonials-cta">
+                <a href="#calculator" class="btn btn-primary btn-lg">Рассчитать стоимость доставки</a>
+            </div>
+        </div>
+    </section>
+    
+    <section id="technologies" class="technology-section section bg-light">
+        <div class="container">
+            <h2 class="section-title centered">Технологии на службе вашего бизнеса</h2>
+            <p class="section-subtitle">Мы инвестируем в технологии, чтобы сделать логистику прозрачной, предсказуемой и эффективной.</p>
             <div class="tech-features">
                 <div class="tech-feature">
                     <div class="tech-icon">🤖</div>
@@ -1612,6 +1838,9 @@ document.addEventListener('DOMContentLoaded', function() {
                     <p>Держим связь и контролируем исполнение заявки. По запросу организуем дополнительные опции контроля у перевозчика.</p>
                 </div>
                 <div class="tech-feature">
+                    <div class="tech-icon">📱</div>
+                    <h3>Мобильный доступ</h3>
+                    <p>Полностью адаптивный интерфейс для работы с любого устройства. Заказывайте перевозки и отслеживайте статус из любой точки мира.</p>
                 </div>
                 <div class="tech-feature">
                     <div class="tech-icon">📊</div>
@@ -1619,6 +1848,9 @@ document.addEventListener('DOMContentLoaded', function() {
                     <p>Детальная статистика по всем перевозкам. Анализ затрат по направлениям, типам грузов, сезонам. Рекомендации по оптимизации логистического бюджета.</p>
                 </div>
                 <div class="tech-feature">
+                    <div class="tech-icon">📄</div>
+                    <h3>Электронный документооборот</h3>
+                    <p>Минимум бумажной работы. Автоматическое формирование и хранение всех необходимых документов в электронном виде.</p>
                 </div>
                 <div class="tech-feature">
                     <div class="tech-icon">🛡️</div>
@@ -1852,54 +2084,141 @@ document.addEventListener('DOMContentLoaded', function() {
                 </div>
             </div>
         </div>
-    </section><footer class="footer">
-            <div class="footer-content">
-            <div class="footer-row">
-                <div class="footer-col">
-                    <h3>🚛 АвтоГОСТ</h3>
-                    <p>Надежный партнер в сфере грузоперевозок по России. Работаем 24/7 для вашего бизнеса.</p>
+    </section>
+    
+    <!-- Оптимизированный футер -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-container">
+                <!-- Информация о компании -->
+                <div class="footer-company">
+                    <a href="index.html" class="footer-logo">
+                        <span class="footer-logo-icon">🚛</span>
+                        АвтоГОСТ
+                    </a>
+                    <p class="footer-description">
+                        Надежный партнер в сфере грузоперевозок по России. Работаем 24/7 для вашего бизнеса.
+                    </p>
+                    <div class="footer-contacts">
+                        <div class="footer-contact-item">
+                            <span class="footer-contact-icon">📞</span>
+                            <a href="tel:+79162720932" class="footer-contact-link">+7 916 272-09-32</a>
+                        </div>
+                        <div class="footer-contact-item">
+                            <span class="footer-contact-icon">📧</span>
+                            <a href="mailto:avtogost77@gmail.com" class="footer-contact-link">avtogost77@gmail.com</a>
+                        </div>
+                    </div>
                     <div class="footer-social">
-                        <a href="https://wa.me/79162720932" class="footer-social-btn" target="_blank" title="WhatsApp">📱</a>
-                        <a href="https://t.me/avtogost77" class="footer-social-btn" target="_blank" title="Telegram">✈️</a>
-                        <a href="tel:+79162720932" class="footer-social-btn" title="Позвонить">📞</a>
+                        <a href="https://wa.me/79162720932" class="social-link" target="_blank" title="WhatsApp">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                            </svg>
+                        </a>
+                        <a href="https://t.me/avtogost77" class="social-link" target="_blank" title="Telegram">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.96 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+                            </svg>
+                        </a>
+                        <a href="tel:+79162720932" class="social-link" title="Позвонить">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                            </svg>
+                        </a>
                     </div>
                 </div>
-                <div class="footer-col">
-                    <h3>Услуги</h3>
-                    <ul>
-                        <li><a href="#calculator">Калькулятор стоимости</a></li>
-                        <li><a href="services.html">Грузоперевозки</a></li>
-                        <li><a href="contact.html">Заказать звонок</a></li>
-                        <li><a href="help.html">Экстренная доставка</a></li>
+                
+                <!-- Навигация по услугам -->
+                <div class="footer-nav">
+                    <h4 class="footer-nav-title">Услуги</h4>
+                    <ul class="footer-nav-list">
+                        <li class="footer-nav-item">
+                            <a href="#calculator" class="footer-nav-link">
+                                <span class="footer-nav-icon">→</span>
+                                Калькулятор стоимости
+                            </a>
+                        </li>
+                        <li class="footer-nav-item">
+                            <a href="services.html" class="footer-nav-link">
+                                <span class="footer-nav-icon">→</span>
+                                Грузоперевозки
+                            </a>
+                        </li>
+                        <li class="footer-nav-item">
+                            <a href="urgent-delivery.html" class="footer-nav-link">
+                                <span class="footer-nav-icon">→</span>
+                                Срочная доставка
+                            </a>
+                        </li>
+                        <li class="footer-nav-item">
+                            <a href="sbornye-gruzy.html" class="footer-nav-link">
+                                <span class="footer-nav-icon">→</span>
+                                Сборные грузы
+                            </a>
+                        </li>
+                        <li class="footer-nav-item">
+                            <a href="dostavka-na-marketpleysy.html" class="footer-nav-link">
+                                <span class="footer-nav-icon">→</span>
+                                Доставка на маркетплейсы
+                            </a>
+                        </li>
                     </ul>
                 </div>
-                <div class="footer-col">
-                    <h3>Компания</h3>
-                    <ul>
-                        <li><a href="about.html">О нас</a></li>
-                        <li><a href="contact.html">Контакты</a></li>
-                        <li><a href="privacy.html">Конфиденциальность</a></li>
-                        <li><a href="blog-1-carrier-failed.html">Полезные статьи</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h3>Контакты</h3>
-                    <ul>
-                        <li><a href="tel:+79162720932">📞 +7 916 272-09-32</a></li>
-                        <li><a href="https://wa.me/79162720932" target="_blank">📱 WhatsApp</a></li>
-                        <li><a href="https://t.me/avtogost77" target="_blank">✈️ Telegram</a></li>
-                        <li><a href="mailto:avtogost77@gmail.com">📧 avtogost77@gmail.com</a></li>
-                        <li><a href="faq.html">❓ FAQ</a></li>
-                    </ul>
-                </div>
-                <div class="footer-bottom">
-                    <div class="footer-copyright">
-                        <p>&copy; 2024 АвтоГОСТ. Все права защищены.</p>
+                
+                <!-- Популярные направления -->
+                <div class="footer-routes">
+                    <h4 class="footer-nav-title">Популярные направления</h4>
+                    <div class="footer-routes-grid">
+                        <a href="gruzoperevozki-moskva-spb.html" class="footer-route-link">Москва — СПб</a>
+                        <a href="gruzoperevozki-moskva-voronezh.html" class="footer-route-link">Москва — Воронеж</a>
+                        <a href="gruzoperevozki-moskva-tula.html" class="footer-route-link">Москва — Тула</a>
+                        <a href="gruzoperevozki-moskva-lipetsk.html" class="footer-route-link">Москва — Липецк</a>
+                        <a href="gruzoperevozki-moskva-belgorod.html" class="footer-route-link">Москва — Белгород</a>
+                        <a href="gruzoperevozki-moskva-orel.html" class="footer-route-link">Москва — Орел</a>
+                        <a href="gruzoperevozki-moskva-kursk.html" class="footer-route-link">Москва — Курск</a>
+                        <a href="gruzoperevozki-moskva-tambov.html" class="footer-route-link">Москва — Тамбов</a>
                     </div>
-                    <div class="footer-legal">
-                        <a href="privacy.html">Политика конфиденциальности</a>
-                        <a href="terms.html">Условия использования</a>
+                </div>
+                
+                <!-- Подписка на новости -->
+                <div class="footer-subscribe">
+                    <h4 class="footer-nav-title">Будьте в курсе</h4>
+                    <form class="footer-subscribe-form">
+                        <input type="email" class="footer-subscribe-input" placeholder="Ваш email" required>
+                        <button type="submit" class="footer-subscribe-button">Подписаться</button>
+                    </form>
+                    <p class="footer-subscribe-note">Новости логистики, акции и специальные предложения</p>
+                </div>
+                
+                <!-- Микро-CTA в футере -->
+                <div class="footer-cta">
+                    <div class="footer-cta-text">Нужна срочная доставка?</div>
+                    <div class="footer-cta-buttons">
+                        <a href="tel:+79162720932" class="footer-cta-button footer-cta-primary">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                            </svg>
+                            Позвонить
+                        </a>
+                        <a href="#calculator" class="footer-cta-button footer-cta-secondary">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/>
+                            </svg>
+                            Рассчитать
+                        </a>
                     </div>
+                </div>
+            </div>
+            
+            <!-- Нижняя часть футера -->
+            <div class="footer-bottom">
+                <div class="footer-copyright">
+                    &copy; 2024 АвтоГОСТ. Все права защищены.
+                </div>
+                <div class="footer-legal">
+                    <a href="privacy.html" class="footer-legal-link">Политика конфиденциальности</a>
+                    <a href="terms.html" class="footer-legal-link">Условия использования</a>
+                    <a href="contact.html" class="footer-legal-link">Контакты</a>
                 </div>
             </div>
         </div>
@@ -2022,10 +2341,5 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     </script>
-    <script src="assets/js/ux-improvements.js?v=1754158001" defer></script>
-    <script src="assets/js/tldr-toc.js?v=20250813" defer></script>
-    <script src="assets/js/header-interactions.js?v=20250816" defer></script>
-    <script src="assets/js/hero-animations.js?v=20250816" defer></script>
-    <script src="assets/js/calculator-ui-enhanced.js?v=20250816" defer></script>
-</body>
-</html>
+    <!-- ОПТИМИЗИРОВАННЫЕ СКРИПТЫ -->
+    <script src="assets/js/dist/optimizations.min.js?v=20250816" defer></script>
