@@ -657,22 +657,32 @@ document.addEventListener('DOMContentLoaded', function() {
     <!-- Быстрый выбор пути (компактный блок) -->
     <section class="section" style="padding: 40px 0;">
         <div class="container">
+            <style>
+            .conversion-paths a.conversion-card:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            }
+            .conversion-paths a.conversion-card:hover .btn {
+                transform: translateY(-2px);
+                box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+            }
+            </style>
             <div class="conversion-paths" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;">
-                <div class="conversion-card" style="background:#fff;border-radius:12px;box-shadow:0 2px 10px rgba(0,0,0,0.06);padding:20px;">
-                    <h3 style="margin-bottom:8px;">Кому подойдём</h3>
+                <a href="#calculator" class="conversion-card" style="background:#fff;border-radius:12px;box-shadow:0 2px 10px rgba(0,0,0,0.06);padding:20px;text-decoration:none;display:block;transition:all 0.3s ease;">
+                    <h3 style="margin-bottom:8px;color:#333;">Кому подойдём</h3>
                     <p style="color:#555;margin-bottom:12px;">Поставщики маркетплейсов, снабжающие организации, производство, малый бизнес</p>
-                    <a href="#calculator" class="btn btn-primary btn-sm">Рассчитать</a>
-                </div>
-                <div class="conversion-card" style="background:#fff;border-radius:12px;box-shadow:0 2px 10px rgba(0,0,0,0.06);padding:20px;">
-                    <h3 style="margin-bottom:8px;">Когда подадим</h3>
+                    <span class="btn btn-primary btn-sm">Рассчитать</span>
+                </a>
+                <a href="tel:+79162720932" class="conversion-card" style="background:#fff;border-radius:12px;box-shadow:0 2px 10px rgba(0,0,0,0.06);padding:20px;text-decoration:none;display:block;transition:all 0.3s ease;">
+                    <h3 style="margin-bottom:8px;color:#333;">Когда подадим</h3>
                     <p style="color:#555;margin-bottom:12px;">Москва/МО — от 2 часов, регионы — в сутки</p>
-                    <a href="tel:+79162720932" class="btn btn-outline btn-sm">Нужно срочно</a>
-                </div>
-                <div class="conversion-card" style="background:#fff;border-radius:12px;box-shadow:0 2px 10px rgba(0,0,0,0.06);padding:20px;">
-                    <h3 style="margin-bottom:8px;">Сколько стоит</h3>
+                    <span class="btn btn-outline btn-sm">Нужно срочно</span>
+                </a>
+                <a href="#calculator" class="conversion-card" style="background:#fff;border-radius:12px;box-shadow:0 2px 10px rgba(0,0,0,0.06);padding:20px;text-decoration:none;display:block;transition:all 0.3s ease;">
+                    <h3 style="margin-bottom:8px;color:#333;">Сколько стоит</h3>
                     <p style="color:#555;margin-bottom:12px;">Сборный от 15 ₽/кг • Отдельная машина от 30 ₽/км • Городские от 5000 ₽</p>
-                    <a href="#calculator" class="btn btn-primary btn-sm">Точный расчёт</a>
-                </div>
+                    <span class="btn btn-primary btn-sm">Точный расчёт</span>
+                </a>
             </div>
         </div>
     </section>
@@ -1347,7 +1357,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     <ul class="seo-list">
                         <li>⚡ <strong>Подачу транспорта за 2 часа</strong> в Москве и МО</li>
                         <li>💰 <strong>Выгодные цены на грузоперевозки</strong> с онлайн калькулятором</li>
-                        <li>🛡️ <strong>Страхование грузов</strong> до 1 миллиона рублей</li>
+                        <li>🛡️ <strong>Страхование грузов</strong>, когда необходимо</li>
                         <li>📱 <strong>Контроль доставки</strong> через менеджера 24/7</li>
                         <li>🕐 <strong>Работу 24/7</strong> без выходных и праздников</li>
                         <li>📞 <strong>Оперативную поддержку</strong> на всех этапах доставки</li>
