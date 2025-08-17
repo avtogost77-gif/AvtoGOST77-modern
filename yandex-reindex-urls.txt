@@ -1,0 +1,62 @@
+index.html
+services.html
+about.html
+contact.html
+faq.html
+help.html
+privacy.html
+terms.html
+news.html
+track.html
+
+# Основные сервисные страницы
+gruzoperevozki-po-moskve.html
+gruzoperevozki-iz-moskvy.html
+gruzoperevozki-spb.html
+sbornye-gruzy.html
+urgent-delivery.html
+logistika-dlya-biznesa.html
+transportnaya-kompaniya.html
+
+# Страницы типов транспорта
+gazel-gruzoperevozki.html
+trehtonnik-gruzoperevozki.html
+pyatitonnik-gruzoperevozki.html
+desyatitonnik-gruzoperevozki.html
+fura-20-tonn-gruzoperevozki.html
+
+# Страницы маршрутов
+gruzoperevozki-moskva-spb.html
+gruzoperevozki-moskva-voronezh.html
+gruzoperevozki-moskva-belgorod.html
+gruzoperevozki-moskva-tula.html
+gruzoperevozki-moskva-orel.html
+gruzoperevozki-moskva-kursk.html
+gruzoperevozki-moskva-lipetsk.html
+gruzoperevozki-moskva-tambov.html
+gruzoperevozki-ekaterinburg.html
+
+# Специальные страницы
+dostavka-na-marketpleysy.html
+self-employed-delivery.html
+rc-dostavka.html
+ip-small-business-delivery.html
+legal-minimum.html
+dogruz.html
+pereezd-moskva.html
+perevozka-mebeli.html
+perevozka-medoborudovaniya.html
+poputnyj-gruz.html
+
+# Страницы блога
+blog/index.html
+blog-1-carrier-failed.html
+blog-2-wildberries-delivery.html
+blog-3-spot-orders.html
+blog-4-remote-logistics.html
+blog-5-logistics-optimization.html
+blog-6-marketplace-insider.html
+blog-7-how-to-order-gazelle.html
+blog-8-cargo-insurance.html
+blog-9-dangerous-goods.html
+blog-10-self-employed-logistics.html

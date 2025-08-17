@@ -1,0 +1,33 @@
+# Приоритет 1 - Основные страницы (первыми отправить на переобход)
+index.html
+services.html
+gruzoperevozki-po-moskve.html
+gruzoperevozki-iz-moskvy.html
+gruzoperevozki-spb.html
+transportnaya-kompaniya.html
+
+# Приоритет 2 - Страницы типов транспорта
+gazel-gruzoperevozki.html
+trehtonnik-gruzoperevozki.html
+pyatitonnik-gruzoperevozki.html
+desyatitonnik-gruzoperevozki.html
+fura-20-tonn-gruzoperevozki.html
+
+# Приоритет 3 - Популярные маршруты
+gruzoperevozki-moskva-spb.html
+gruzoperevozki-moskva-voronezh.html
+gruzoperevozki-ekaterinburg.html
+
+# Приоритет 4 - Специальные услуги
+sbornye-gruzy.html
+urgent-delivery.html
+dostavka-na-marketpleysy.html
+self-employed-delivery.html
+dogruz.html
+poputnyj-gruz.html
+
+# Приоритет 5 - Блог
+blog/index.html
+blog-2-wildberries-delivery.html
+blog-5-logistics-optimization.html
+blog-8-cargo-insurance.html
