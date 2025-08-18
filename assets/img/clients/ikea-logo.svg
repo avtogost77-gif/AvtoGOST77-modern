@@ -1,11 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="200" height="60" viewBox="0 0 200 60" fill="none">
-  <ellipse cx="100" cy="30" rx="70" ry="20" fill="#0051BA"/>
-  <ellipse cx="100" cy="30" rx="65" ry="15" fill="#FFDA1A"/>
-  <path d="M50 30H55V40H60V30H65V25H50V30Z" fill="#0051BA"/>
-  <path d="M70 25H75V40H70V25Z" fill="#0051BA"/>
-  <path d="M80 25H85V35H95V40H80V25Z" fill="#0051BA"/>
-  <path d="M100 25H115V30H105V30.5H115V40H100V35H110V34.5H100V25Z" fill="#0051BA"/>
-  <path d="M125 25H130V40H125V25Z" fill="#0051BA"/>
-  <path d="M135 25H150V30H140V30.5H150V40H135V35H145V34.5H135V25Z" fill="#0051BA"/>
+<svg width="100" height="40" viewBox="0 0 100 40" xmlns="http://www.w3.org/2000/svg">
+  <rect width="100" height="40" fill="#005aa0" rx="8"/>
+  <text x="50" y="25" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white" text-anchor="middle">IKEA</text>
 </svg>

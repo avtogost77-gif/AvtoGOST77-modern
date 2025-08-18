@@ -1,12 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="200" height="60" viewBox="0 0 200 60" fill="none">
-  <path d="M35.5 12H40.5L50 48H45L42.5 38H33.5L31 48H26L35.5 12ZM34.5 34H41.5L38 20L34.5 34Z" fill="#CB11AB"/>
-  <path d="M52 12H57V44H68V48H52V12Z" fill="#CB11AB"/>
-  <path d="M70 12H84.5C87.5 12 89.5 12.5 90.5 13.5C91.5 14.5 92 16 92 18V22C92 24 91.5 25.5 90.5 26.5C89.5 27.5 87.5 28 84.5 28H75V48H70V12ZM75 24H84C85 24 85.6667 23.8333 86 23.5C86.3333 23.1667 86.5 22.6667 86.5 22V18C86.5 17.3333 86.3333 16.8333 86 16.5C85.6667 16.1667 85 16 84 16H75V24Z" fill="#CB11AB"/>
-  <path d="M95 12H112.5V16H100V27H110.5V31H100V44H112.5V48H95V12Z" fill="#CB11AB"/>
-  <path d="M115 12H120V27H130.5V12H135.5V48H130.5V31H120V48H115V12Z" fill="#CB11AB"/>
-  <path d="M139 12H144V48H139V12Z" fill="#CB11AB"/>
-  <path d="M147 12H152V44H163V48H147V12Z" fill="#CB11AB"/>
-  <path d="M165 12H170V48H165V12Z" fill="#CB11AB"/>
-  <path d="M173 12H178V44H189V48H173V12Z" fill="#CB11AB"/>
+<svg width="100" height="40" viewBox="0 0 100 40" xmlns="http://www.w3.org/2000/svg">
+  <rect width="100" height="40" fill="#cb11ab" rx="8"/>
+  <text x="50" y="25" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white" text-anchor="middle">WB</text>
 </svg>
