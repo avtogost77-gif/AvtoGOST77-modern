@@ -1,0 +1,486 @@
+/* ===== ОПТИМИЗАЦИЯ ФОРМ И ВОРОНКИ ПРОДАЖ ===== */
+
+/* Основные стили для форм */
+.optimized-form {
+    background: #fff;
+    border-radius: var(--radius-lg, 12px);
+    padding: 24px;
+    box-shadow: var(--shadow-md, 0 4px 6px rgba(0, 0, 0, 0.05));
+    margin: 20px 0;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+/* Заголовок формы */
+.form-header {
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.form-header h3 {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--primary, #2563eb);
+    margin-bottom: 8px;
+}
+
+.form-header p {
+    font-size: 16px;
+    color: #64748b;
+    margin: 0;
+}
+
+/* Прогресс-бар для форм */
+.form-progress-container {
+    margin-bottom: 24px;
+}
+
+.form-progress-bar {
+    height: 6px;
+    background: #e2e8f0;
+    border-radius: 3px;
+    overflow: hidden;
+    position: relative;
+}
+
+.form-progress-fill {
+    height: 100%;
+    background: var(--primary, #2563eb);
+    border-radius: 3px;
+    transition: width 0.3s ease;
+}
+
+.form-progress-steps {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 8px;
+}
+
+.form-progress-step {
+    font-size: 14px;
+    color: #64748b;
+    position: relative;
+    flex: 1;
+    text-align: center;
+}
+
+.form-progress-step.active {
+    color: var(--primary, #2563eb);
+    font-weight: 600;
+}
+
+.form-progress-step.completed {
+    color: #10b981;
+}
+
+/* Оптимизированные поля ввода */
+.form-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.form-group {
+    flex: 1;
+    min-width: 250px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: #334155;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: all 0.2s ease;
+    background: #f8fafc;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    border-color: var(--primary, #2563eb);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+    outline: none;
+    background: #fff;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder,
+.form-group select::placeholder {
+    color: #94a3b8;
+}
+
+.form-group textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+/* Чекбоксы и радиокнопки */
+.checkbox-wrapper {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 12px;
+    cursor: pointer;
+}
+
+.checkbox-wrapper input[type="checkbox"],
+.checkbox-wrapper input[type="radio"] {
+    width: 20px;
+    height: 20px;
+    margin-right: 12px;
+    margin-top: 2px;
+    accent-color: var(--primary, #2563eb);
+    cursor: pointer;
+}
+
+.checkbox-content {
+    flex: 1;
+}
+
+.checkbox-title {
+    font-weight: 600;
+    font-size: 16px;
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+}
+
+.checkbox-icon {
+    margin-right: 8px;
+    font-size: 18px;
+}
+
+.checkbox-description {
+    font-size: 14px;
+    color: #64748b;
+}
+
+/* Кнопки формы */
+.form-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 24px;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.form-actions button {
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-width: 160px;
+}
+
+.form-actions .btn-next {
+    background: var(--primary, #2563eb);
+    color: white;
+    border: none;
+}
+
+.form-actions .btn-next:hover {
+    background: #1d4ed8;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.form-actions .btn-back {
+    background: transparent;
+    color: #64748b;
+    border: 1px solid #cbd5e1;
+}
+
+.form-actions .btn-back:hover {
+    background: #f1f5f9;
+    color: #334155;
+}
+
+.form-actions .btn-submit {
+    background: var(--primary, #2563eb);
+    color: white;
+    border: none;
+    position: relative;
+    overflow: hidden;
+}
+
+.form-actions .btn-submit:hover {
+    background: #1d4ed8;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Анимация для кнопки отправки */
+.btn-submit::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: rgba(255, 255, 255, 0.1);
+    transform: rotate(45deg);
+    animation: btnSubmitShine 2s infinite;
+}
+
+@keyframes btnSubmitShine {
+    0% {
+        transform: translateX(-100%) rotate(45deg);
+    }
+    100% {
+        transform: translateX(100%) rotate(45deg);
+    }
+}
+
+/* Оптимизированная форма лид-магнита */
+.lead-form {
+    background: #fff;
+    border-radius: var(--radius-lg, 12px);
+    padding: 24px;
+    box-shadow: var(--shadow-lg, 0 10px 15px rgba(0, 0, 0, 0.1));
+    margin: 30px 0;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    position: relative;
+    overflow: hidden;
+}
+
+.lead-form::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 150px;
+    height: 150px;
+    background: var(--gradient-primary, linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(37, 99, 235, 0.05)));
+    border-radius: 0 0 0 100%;
+    z-index: 1;
+    opacity: 0.5;
+}
+
+.lead-form-content {
+    position: relative;
+    z-index: 2;
+}
+
+/* Секция с промо-таймером */
+.promo-section {
+    background: #f0f7ff;
+    border-radius: 8px;
+    padding: 12px;
+    margin-bottom: 16px;
+    border: 1px dashed #93c5fd;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.promo-timer {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.timer-label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #1e40af;
+}
+
+.timer-display {
+    background: #fff;
+    border-radius: 6px;
+    padding: 4px 8px;
+    font-weight: 700;
+    color: #1e40af;
+    border: 1px solid #bfdbfe;
+    font-family: monospace;
+    font-size: 16px;
+}
+
+/* Индикаторы заполнения полей */
+.form-completion {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid #e2e8f0;
+}
+
+.completion-progress {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.completion-bar {
+    width: 100px;
+    height: 6px;
+    background: #e2e8f0;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.completion-fill {
+    height: 100%;
+    background: #10b981;
+    border-radius: 3px;
+    transition: width 0.3s ease;
+}
+
+.completion-text {
+    font-size: 14px;
+    color: #64748b;
+}
+
+.completion-text strong {
+    color: #10b981;
+}
+
+/* Индикаторы валидности полей */
+.form-group.valid-field input,
+.form-group.valid-field textarea,
+.form-group.valid-field select {
+    border-color: #10b981;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%2310b981' viewBox='0 0 16 16'%3E%3Cpath d='M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 16px 16px;
+    padding-right: 40px;
+}
+
+.form-group.invalid-field input,
+.form-group.invalid-field textarea,
+.form-group.invalid-field select {
+    border-color: #ef4444;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23ef4444' viewBox='0 0 16 16'%3E%3Cpath d='M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 16px 16px;
+    padding-right: 40px;
+}
+
+.form-group .error-message {
+    color: #ef4444;
+    font-size: 12px;
+    margin-top: 4px;
+    display: none;
+}
+
+.form-group.invalid-field .error-message {
+    display: block;
+}
+
+/* Медиа-запросы для адаптивности */
+@media (max-width: 768px) {
+    .form-row {
+        flex-direction: column;
+        gap: 12px;
+    }
+    
+    .form-group {
+        min-width: 100%;
+    }
+    
+    .form-actions {
+        flex-direction: column;
+    }
+    
+    .form-actions button {
+        width: 100%;
+    }
+    
+    .promo-section {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+/* Микро-конверсии */
+.micro-conversion {
+    background: #f8fafc;
+    border-radius: 8px;
+    padding: 16px;
+    margin: 24px 0;
+    border: 1px solid #e2e8f0;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.micro-conversion-icon {
+    font-size: 24px;
+    color: var(--primary, #2563eb);
+    min-width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #eff6ff;
+    border-radius: 50%;
+}
+
+.micro-conversion-content {
+    flex: 1;
+}
+
+.micro-conversion-title {
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.micro-conversion-description {
+    font-size: 14px;
+    color: #64748b;
+    margin-bottom: 8px;
+}
+
+.micro-conversion-action {
+    display: inline-block;
+    padding: 6px 12px;
+    background: #eff6ff;
+    color: var(--primary, #2563eb);
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.micro-conversion-action:hover {
+    background: #dbeafe;
+    transform: translateY(-2px);
+}
+
+/* Анимации для форм */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.form-step {
+    animation: fadeIn 0.3s ease forwards;
+}
+
+.form-step.hidden {
+    display: none;
+}

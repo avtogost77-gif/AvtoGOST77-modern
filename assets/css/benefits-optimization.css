@@ -1,0 +1,279 @@
+/* ===== ОПТИМИЗАЦИЯ БЛОКА ПРЕИМУЩЕСТВ ===== */
+
+/* Основной блок преимуществ */
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin: 40px 0;
+}
+
+.benefit-card {
+    background: var(--white, #fff);
+    border-radius: var(--radius-lg, 12px);
+    box-shadow: var(--shadow-md, 0 4px 6px rgba(0, 0, 0, 0.05));
+    padding: 24px;
+    transition: var(--transition-normal, all 0.3s ease);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.benefit-card:hover {
+    box-shadow: var(--shadow-lg, 0 10px 15px rgba(0, 0, 0, 0.1));
+    transform: translateY(-5px);
+}
+
+.benefit-icon {
+    font-size: 36px;
+    margin-bottom: 16px;
+    position: relative;
+    z-index: 2;
+    height: 64px;
+    width: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--gradient-card, linear-gradient(135deg, rgba(245, 247, 250, 1), rgba(255, 255, 255, 1)));
+    border-radius: 16px;
+}
+
+.benefit-title {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--primary, #2563eb);
+    position: relative;
+    z-index: 2;
+}
+
+.benefit-description {
+    font-size: 16px;
+    color: #4b5563;
+    line-height: 1.5;
+    margin-bottom: 0;
+    position: relative;
+    z-index: 2;
+}
+
+.benefit-card::before {
+    content: '';
+    position: absolute;
+    top: -100%;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: var(--gradient-primary, linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(37, 99, 235, 0.05)));
+    border-radius: 50%;
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    z-index: 1;
+}
+
+.benefit-card:hover::before {
+    top: 0;
+    left: 0;
+    border-radius: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* Бейджи для преимуществ */
+.benefit-badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: var(--primary-light, rgba(59, 130, 246, 0.1));
+    color: var(--primary, #2563eb);
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 8px;
+    border-radius: 20px;
+    z-index: 2;
+}
+
+/* Компактный блок преимуществ для верхней части страницы */
+.compact-benefits {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    margin: 24px 0;
+}
+
+.compact-benefit {
+    background: #f8fafc;
+    border-radius: 12px;
+    padding: 16px;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(0, 0, 0, 0.03);
+}
+
+.compact-benefit:hover {
+    background: #f0f7ff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.compact-benefit-icon {
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.compact-benefit-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.compact-benefit-title {
+    font-weight: 700;
+    font-size: 16px;
+    margin: 0;
+}
+
+.compact-benefit-subtitle {
+    color: #666;
+    font-size: 14px;
+    margin: 0;
+}
+
+/* Технологические преимущества */
+.tech-features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+    margin: 32px 0;
+}
+
+.tech-feature {
+    background: #fff;
+    border-radius: var(--radius-lg, 12px);
+    padding: 24px;
+    box-shadow: var(--shadow-md, 0 4px 6px rgba(0, 0, 0, 0.05));
+    transition: all 0.3s ease;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.tech-feature:hover {
+    box-shadow: var(--shadow-lg, 0 10px 15px rgba(0, 0, 0, 0.1));
+    transform: translateY(-5px);
+}
+
+.tech-icon {
+    font-size: 32px;
+    margin-bottom: 16px;
+    height: 60px;
+    width: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--gradient-card, linear-gradient(135deg, rgba(245, 247, 250, 1), rgba(255, 255, 255, 1)));
+    border-radius: 16px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.tech-feature h3 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--primary, #2563eb);
+}
+
+.tech-feature p {
+    font-size: 15px;
+    color: #4b5563;
+    line-height: 1.5;
+    margin-bottom: 0;
+}
+
+/* Сервисные преимущества */
+.service-features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+    margin: 24px 0;
+}
+
+.feature {
+    background: #fff;
+    border-radius: var(--radius-lg, 12px);
+    padding: 20px;
+    box-shadow: var(--shadow-md, 0 4px 6px rgba(0, 0, 0, 0.05));
+    transition: all 0.3s ease;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.feature:hover {
+    box-shadow: var(--shadow-lg, 0 10px 15px rgba(0, 0, 0, 0.1));
+    transform: translateY(-3px);
+}
+
+.feature h4 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--primary, #2563eb);
+}
+
+.feature p {
+    font-size: 15px;
+    color: #4b5563;
+    line-height: 1.5;
+    margin-bottom: 0;
+}
+
+/* Медиа-запросы для адаптивности */
+@media (max-width: 768px) {
+    .benefits-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .tech-features {
+        grid-template-columns: 1fr;
+    }
+    
+    .service-features {
+        grid-template-columns: 1fr;
+    }
+    
+    .compact-benefits {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    .benefit-icon {
+        font-size: 30px;
+        height: 56px;
+        width: 56px;
+    }
+    
+    .benefit-title {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    .compact-benefits {
+        grid-template-columns: 1fr;
+    }
+    
+    .benefit-card {
+        padding: 20px;
+    }
+    
+    .tech-feature {
+        padding: 20px;
+    }
+    
+    .feature {
+        padding: 16px;
+    }
+}
