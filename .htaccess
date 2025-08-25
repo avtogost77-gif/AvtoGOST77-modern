@@ -1,41 +1,46 @@
+# Редиректы для исправления проблем с canonical
 RewriteEngine On
 
-# Redirect URLs without extension to corresponding .html if it exists
-RewriteCond %{REQUEST_URI} !/$
-RewriteCond %{REQUEST_URI} !\.[^./]+$
-RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI}.html -f
-RewriteRule ^(.*)$ $1.html [R=301,L]
+# Редирект с www на без www
+RewriteCond %{HTTP_HOST} ^www\.avtogost77\.ru$ [NC]
+RewriteRule ^(.*)$ https://avtogost77.ru/$1 [R=301,L]
 
-# Force single canonical host (no change here; rely on app/server config if needed)
-# Uncomment and set if required:
-# RewriteCond %{HTTP_HOST} !^avtogost77\.ru$ [NC]
-# RewriteRule ^(.*)$ https://avtogost77.ru/$1 [R=301,L]
-# АвтоГОСТ .htaccess
-# SEO оптимизация и производительность
-
-# Включаем RewriteEngine
-RewriteEngine On
-
-# Принудительное использование HTTPS
+# Редирект с HTTP на HTTPS
 RewriteCond %{HTTPS} off
-RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [L,R=301]
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 
-# Удаляем www (короткий домен лучше для запоминания)
-RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
-RewriteRule ^(.*)$ https://%1/$1 [L,R=301]
+# Редирект проблемных URL без .html на правильные
+RewriteRule ^gruzoperevozki-spb$ /gruzoperevozki-spb.html [R=301,L]
+RewriteRule ^sbornye-gruzy$ /sbornye-gruzy.html [R=301,L]
 
-# Удаляем .html из URL (SEO-friendly URLs)
+# Редирект moscow-spb-delivery.html на правильную страницу
+RewriteRule ^moscow-spb-delivery\.html$ /gruzoperevozki-moskva-spb.html [R=301,L]
+
+# Убираем trailing slash с главной страницы
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^([^\.]+)$ $1.html [NC,L]
+RewriteCond %{REQUEST_URI} (.+)/$
+RewriteRule ^ %1 [R=301,L]
 
-# Блокируем доступ к служебным файлам
-<FilesMatch "(^\.htaccess|\.git|\.env|\.md|\.sh|\.json|\.lock)">
+# Безопасность
+<Files ".htaccess">
     Order allow,deny
     Deny from all
-</FilesMatch>
+</Files>
 
-# Сжатие GZIP
+# Кеширование
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType text/css "access plus 1 year"
+    ExpiresByType application/javascript "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/jpg "access plus 1 year"
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/gif "access plus 1 year"
+    ExpiresByType image/svg+xml "access plus 1 year"
+    ExpiresByType image/webp "access plus 1 year"
+</IfModule>
+
+# Gzip сжатие
 <IfModule mod_deflate.c>
     AddOutputFilterByType DEFLATE text/plain
     AddOutputFilterByType DEFLATE text/html
@@ -46,63 +51,4 @@ RewriteRule ^([^\.]+)$ $1.html [NC,L]
     AddOutputFilterByType DEFLATE application/rss+xml
     AddOutputFilterByType DEFLATE application/javascript
     AddOutputFilterByType DEFLATE application/x-javascript
-    AddOutputFilterByType DEFLATE image/svg+xml
 </IfModule>
-
-# Кеширование браузером
-<IfModule mod_expires.c>
-    ExpiresActive On
-    
-    # Изображения
-    ExpiresByType image/jpeg "access plus 1 year"
-    ExpiresByType image/gif "access plus 1 year"
-    ExpiresByType image/png "access plus 1 year"
-    ExpiresByType image/webp "access plus 1 year"
-    ExpiresByType image/svg+xml "access plus 1 year"
-    ExpiresByType image/x-icon "access plus 1 year"
-    
-    # CSS и JavaScript
-    ExpiresByType text/css "access plus 1 month"
-    ExpiresByType text/javascript "access plus 1 month"
-    ExpiresByType application/javascript "access plus 1 month"
-    
-    # Остальное
-    ExpiresByType application/pdf "access plus 1 month"
-</IfModule>
-
-# Заголовки безопасности
-<IfModule mod_headers.c>
-    Header set X-Content-Type-Options "nosniff"
-    Header set X-Frame-Options "SAMEORIGIN"
-    Header set X-XSS-Protection "1; mode=block"
-    Header set Referrer-Policy "no-referrer-when-downgrade"
-    
-    # Cache-Control для статики
-    <FilesMatch "\.(ico|pdf|flv|jpg|jpeg|png|gif|webp|js|css|swf)$">
-        Header set Cache-Control "max-age=31536000, public"
-    </FilesMatch>
-</IfModule>
-
-# Кастомные страницы ошибок
-ErrorDocument 404 /404.html
-ErrorDocument 403 /403.html
-ErrorDocument 500 /500.html
-
-# SEO редиректы для новых страниц
-# Редиректы для срочной доставки
-Redirect 301 /express-delivery /urgent-delivery
-Redirect 301 /fast-delivery /urgent-delivery
-Redirect 301 /srochnaya-dostavka /urgent-delivery
-Redirect 301 /ekspress-dostavka /urgent-delivery
-
-# Редиректы для ИП и бизнеса
-Redirect 301 /business-delivery /ip-small-business-delivery
-Redirect 301 /ip-delivery /ip-small-business-delivery
-Redirect 301 /small-business-delivery /ip-small-business-delivery
-Redirect 301 /dostavka-dlya-ip /ip-small-business-delivery
-
-# Редиректы для самозанятых
-Redirect 301 /samozanyatye /self-employed-delivery
-Redirect 301 /freelance-delivery /self-employed-delivery
-Redirect 301 /npd-delivery /self-employed-delivery
-Redirect 301 /dostavka-dlya-samozanyatyh /self-employed-delivery
