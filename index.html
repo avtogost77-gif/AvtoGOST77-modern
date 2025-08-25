@@ -2181,3 +2181,41 @@ document.addEventListener('DOMContentLoaded', function() {
 </html>
 
 
+    <!-- Schema.org разметка для главной страницы -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "АвтоГОСТ",
+        "url": "https://avtogost77.ru",
+        "logo": "https://avtogost77.ru/assets/img/logo.png",
+        "description": "Инфраструктура вашего бизнеса. Перевозки по России: отдельные и сборные отправления.",
+        "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "RU",
+            "addressLocality": "Москва"
+        },
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+7-495-123-45-67",
+            "contactType": "customer service",
+            "availableLanguage": "Russian"
+        },
+        "sameAs": [
+            "https://t.me/avtogost77"
+        ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "АвтоГОСТ - Грузоперевозки по России",
+        "url": "https://avtogost77.ru",
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://avtogost77.ru/search?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+        }
+    }
+    </script>

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link rel="canonical" href="https://avtogost77.ru/sw-cache-cleaner.html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Очистка кэша Service Worker - АвтоГОСТ</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #2c5aa0 0%, #1a3a6a 100%);
+            color: white;
+            min-height: 100vh;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 30px;
+            backdrop-filter: blur(10px);
+        }
+        .btn {
+            background: #ff6b35;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            margin: 10px;
+            transition: all 0.3s ease;
+        }
+        .btn:hover {
+            background: #e55a2b;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255, 107, 53, 0.4);
+        }
+        .status {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            font-family: monospace;
+        }
+        .success {
+            border-left: 4px solid #10b981;
+        }
+        .error {
+            border-left: 4px solid #ef4444;
+        }
+        .warning {
+            border-left: 4px solid #f59e0b;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧹 Очистка кэша Service Worker</h1>
+        <p>Эта страница поможет очистить старый кэш браузера и обновить Service Worker KILLER v3.0.</p>
+
+        <div id="status"></div>
+
+        <button class="btn" onclick="clearCache()">💀 Очистить весь кэш</button>
+        <button class="btn" onclick="clearSWCache()">🗑️ Очистить SW кэш</button>
+        <button class="btn" onclick="updateSW()">🔄 Обновить SW</button>
+        <button class="btn" onclick="reloadPage()">🔄 Перезагрузить страницу</button>
+
+        <div class="status">
+            <h3>📋 Инструкция:</h3>
+            <ol>
+                <li>Нажмите "Очистить весь кэш" для полной очистки</li>
+                <li>Перезагрузите страницу (Ctrl+F5)</li>
+                <li>Проверьте, что CSS файлы загружаются без ошибок 404</li>
+            </ol>
+        </div>
+
+        <div class="status">
+            <h3>🔍 Что исправлено:</h3>
+            <ul>
+                <li>💀 Service Worker KILLER v3.0 активирован</li>
+                <li>✅ АГРЕССИВНЫЙ РЕЖИМ - пропускает все CSS/JS файлы</li>
+                <li>✅ Принудительная очистка всех старых кэшей</li>
+                <li>✅ Preload добавлен для всех bundle'ов</li>
+                <li>✅ Mobile sticky CTA на 44 страницах</li>
+                <li>✅ Исправлены права доступа файлов</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        const statusDiv = document.getElementById('status');
+
+        function log(message, type = 'info') {
+            const div = document.createElement('div');
+            div.className = `status ${type}`;
+            div.textContent = new Date().toLocaleTimeString() + ': ' + message;
+            statusDiv.appendChild(div);
+            console.log(message);
+        }
+
+        async function clearCache() {
+            try {
+                log('🧹 Начинаем очистку кэша...', 'warning');
+
+                // Очищаем Cache API
+                if ('caches' in window) {
+                    const cacheNames = await caches.keys();
+                    for (const name of cacheNames) {
+                        await caches.delete(name);
+                        log(`💀 Удален кэш: ${name}`, 'success');
+                    }
+                }
+
+                // Очищаем localStorage
+                localStorage.clear();
+                log('🗑️ Очищен localStorage', 'success');
+
+                // Очищаем sessionStorage
+                sessionStorage.clear();
+                log('🗑️ Очищен sessionStorage', 'success');
+
+                log('✅ Весь кэш очищен!', 'success');
+
+            } catch (error) {
+                log(`❌ Ошибка очистки: ${error}`, 'error');
+            }
+        }
+
+        async function clearSWCache() {
+            try {
+                log('🔄 Очищаем SW кэш...', 'warning');
+
+                if ('caches' in window) {
+                    const cacheNames = await caches.keys();
+                    for (const name of cacheNames) {
+                        if (name.includes('avtogost')) {
+                            await caches.delete(name);
+                            log(`💀 Удален SW кэш: ${name}`, 'success');
+                        }
+                    }
+                }
+
+                log('✅ SW кэш очищен!', 'success');
+
+            } catch (error) {
+                log(`❌ Ошибка: ${error}`, 'error');
+            }
+        }
+
+        async function updateSW() {
+            try {
+                log('🔄 Обновляем Service Worker...', 'warning');
+
+                if ('serviceWorker' in navigator) {
+                    const registration = await navigator.serviceWorker.getRegistration();
+                    if (registration) {
+                        await registration.update();
+                        log('✅ SW обновлен!', 'success');
+                    } else {
+                        log('⚠️ SW не зарегистрирован', 'warning');
+                    }
+                }
+
+            } catch (error) {
+                log(`❌ Ошибка SW: ${error}`, 'error');
+            }
+        }
+
+        function reloadPage() {
+            log('🔄 Перезагружаем страницу...', 'warning');
+            setTimeout(() => {
+                window.location.reload(true);
+            }, 1000);
+        }
+
+        // Автоматическая очистка при загрузке страницы
+        window.addEventListener('load', () => {
+            log('🚀 Страница загружена. SW KILLER v3.0 активен!', 'success');
+
+            // Проверяем SW
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.ready.then(() => {
+                    log('✅ SW готов к работе', 'success');
+                });
+            }
+        });
+    </script>
+</body>
+</html>
