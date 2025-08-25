@@ -39,13 +39,18 @@ class DistanceAPI {
     // Пробуем разные источники
     for (const provider of this.providers) {
       try {
+        console.log(`Пробуем провайдер: ${provider}`);
         distance = await this.getFromProvider(provider, fromCity, toCity);
         if (distance) {
           usedProvider = provider;
           this.usage[provider]++;
+          console.log(`✅ Использован провайдер: ${provider}, расстояние: ${distance} км`);
           break;
+        } else {
+          console.log(`❌ Провайдер ${provider} не вернул результат`);
         }
       } catch (error) {
+        console.log(`❌ Провайдер ${provider} ошибка:`, error.message);
         continue;
       }
     }
@@ -97,13 +102,12 @@ class DistanceAPI {
     if (!coords) return null;
 
     // Правильный endpoint для легковых автомобилей
-    // Явно укажем единицы км через query, т.к. в POST body может игнорироваться
-    const url = 'https://api.openrouteservice.org/v2/directions/driving-car?units=km';
+    const url = 'https://api.openrouteservice.org/v2/directions/driving-car';
     
     // API ключ из переменной окружения или константы
     const API_KEY = '28d87edc85fa4551b58d331d8d24f8e3';
     
-    // Правильный формат тела запроса
+    // Правильный формат тела запроса для OpenRouteService v2
     const requestBody = {
       coordinates: [
         [coords.from.lng, coords.from.lat],
@@ -114,36 +118,40 @@ class DistanceAPI {
     };
 
     try {
+      console.log('OpenRouteService запрос:', { fromCity, toCity, coords });
       
       const response = await fetch(url, {
         method: 'POST',
         headers: {
           'Authorization': API_KEY,
           'Content-Type': 'application/json',
-          'Accept': 'application/json',
-          'User-Agent': 'AvtoGOST77/1.0 (https://avtogost77.ru)'
+          'Accept': 'application/json'
         },
         body: JSON.stringify(requestBody)
       });
       
       if (!response.ok) {
         const errorText = await response.text();
+        console.error('OpenRouteService ошибка:', response.status, errorText);
         throw new Error(`HTTP ${response.status}: ${errorText}`);
       }
       
       const data = await response.json();
+      console.log('OpenRouteService ответ:', data);
       
-      // Структура ответа OpenRouteService
+      // Структура ответа OpenRouteService v2
       if (data && data.routes && data.routes[0] && data.routes[0].summary) {
         const rawDistance = data.routes[0].summary.distance;
-        // ORS часто возвращает метры; если значение > 1000, считаем что это метры
-        const distanceKm = rawDistance > 1000 ? (rawDistance / 1000) : rawDistance;
+        // ORS возвращает в км, если units=km
+        const distanceKm = rawDistance;
+        console.log('OpenRouteService расстояние:', distanceKm, 'км');
         return Math.round(distanceKm);
       }
       
       throw new Error('Неожиданный формат ответа от OpenRouteService');
       
     } catch (error) {
+      console.error('OpenRouteService исключение:', error);
       return null;
     }
   }

@@ -1,0 +1,2 @@
+=== СТРАНИЦЫ БЕЗ H1 ===
+../moscow-spb-delivery.html: НЕТ H1 ТЕГА

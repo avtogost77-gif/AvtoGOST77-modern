@@ -4,14 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- ЕДИНАЯ СИСТЕМА СТИЛЕЙ АВТОГОСТ77 -->
-    <link rel="stylesheet" href="assets/css/master/master-styles.min.css?v=20250818">
-    
+    <link rel="stylesheet" href="assets/css/master/master-styles.min.css?v=20250825-clean">
+    <link rel="stylesheet" href="assets/css/unified-site-styles.css?v=20250825-clean">
     <!-- AOS АНИМАЦИИ -->
     <link rel="stylesheet" href="assets/css/vendor/aos.min.css">
-    
     <!-- VENDOR СТИЛИ -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- 🚀 Preload новых bundle'ов вместо отдельных файлов -->
+    <link rel="preload" href="assets/js/bundles/critical-bundle.min.js?v=20250821-bundle" as="script">
+    <link rel="preload" href="assets/js/bundles/performance-bundle.min.js?v=20250821-bundle" as="script">
   <!-- SEO META -->
   <title>Оптимизация логистических затрат: 10 проверенных способов сэкономить до 30%</title>
   <meta name="description" content="Как сократить расходы на логистику без потери качества? 10 рабочих способов оптимизации затрат на грузоперевозки для малого и среднего бизнеса. Экономия до 30% гарантирована!">
@@ -24,6 +26,7 @@
   <meta property="og:image" content="https://avtogost77.ru/assets/img/logistics-optimization.jpg">
   <!-- Canonical -->
   <link rel="canonical" href="https://avtogost77.ru/blog-5-logistics-optimization.html">
+    <meta name="robots" content="index, follow">
   <!-- Styles -->
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -39,11 +42,6 @@
 {
   "@context": "https://schema.org",
   "@type": "Organization",
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.8",
-      "reviewCount": "1250"
-    },
     "priceRange": "₽₽",
   "@id": "https://avtogost77.ru/#organization",
   "name": "АвтоГОСТ",
@@ -153,12 +151,13 @@
     <!-- Preload критического CSS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- 🚀 Preload новых bundle'ов вместо отдельных файлов -->
+    <link rel="preload" href="assets/js/bundles/critical-bundle.min.js?v=20250821-bundle" as="script">
+    <link rel="preload" href="assets/js/bundles/performance-bundle.min.js?v=20250821-bundle" as="script">
     <!-- Асинхронная загрузка стилей -->
-
     <!-- Preconnect for analytics -->
     <link rel="preconnect" href="https://www.googletagmanager.com">
     <link rel="preconnect" href="https://mc.yandex.ru">
-  
 </head>
 <body>
   <!-- Header -->
@@ -413,12 +412,12 @@
       </div>
     </div>
   </footer>
-  <section class="priority-cta" style="background: linear-gradient(135deg,#2D67F8,#1b47b3); color:#fff; padding: 1.5rem; border-radius: 8px; width: calc(100% - 2rem); margin: 1rem auto; max-width: 1200px;">
-    <h3 style="margin:.25rem 0;color:#fff;">Сократить расходы без потери качества</h3>
-    <p style="margin:.25rem 0 .75rem 0;">Door‑to‑door или терминал, по вашему процессу. Реалистично: экономия 8–15% за счёт планирования и консолидации, без риска для SLA.</p>
-    <div style="display:flex;gap:.75rem;flex-wrap:wrap;">
-      <a href="tel:+79162720932" class="btn" style="background:#fff;color:#1b47b3;">Позвонить сейчас</a>
-      <a href="https://wa.me/79162720932?text=%23src%3Ablog-5-cta" class="btn" style="border:2px solid #fff;color:#fff;">Написать в WhatsApp</a>
+  <section class="priority-cta" >
+    <h3 >Сократить расходы без потери качества</h3>
+    <p >Door‑to‑door или терминал, по вашему процессу. Реалистично: экономия 8–15% за счёт планирования и консолидации, без риска для SLA.</p>
+    <div >
+      <a href="tel:+79162720932" class="btn" >Позвонить сейчас</a>
+      <a href="https://wa.me/79162720932?text=%23src%3Ablog-5-cta" class="btn" >Написать в WhatsApp</a>
     </div>
   </section>
   <!-- Scripts -->
@@ -484,5 +483,17 @@ document.addEventListener('DOMContentLoaded', function() {
     <script src="assets/js/lazy-loading.min.js" defer></script>
     <script src="assets/js/form-handler.js?v=107" defer></script>
     <script src="assets/js/cities-simple.js?v=107" defer></script>
+
+    <!-- 📱 MOBILE STICKY CTA -->
+    <div class="mobile-sticky-cta">
+        <div class="cta-buttons">
+            <a href="tel:+79162720932" class="btn btn-primary">
+                📞 Позвонить сейчас
+            </a>
+            <a href="https://wa.me/79162720932" class="btn btn-outline">
+                💬 WhatsApp
+            </a>
+        </div>
+    </div>
 </body>
 </html>

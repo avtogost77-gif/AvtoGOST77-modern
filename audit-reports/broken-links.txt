@@ -1,0 +1,14 @@
+=== БИТЫЕ ССЫЛКИ ===
+../track.html: БИТАЯ ССЫЛКА -> index.html#about
+../track.html: БИТАЯ ССЫЛКА -> index.html#calculator
+../track.html: БИТАЯ ССЫЛКА -> index.html#about
+../track.html: БИТАЯ ССЫЛКА -> index.html#calculator
+../track.html: БИТАЯ ССЫЛКА -> index.html#calculator
+../404.html: БИТАЯ ССЫЛКА -> index.html#calculator
+../404.html: БИТАЯ ССЫЛКА -> index.html#calculator
+../404.html: БИТАЯ ССЫЛКА -> index.html#calculator
+../blog/index.html: БИТАЯ ССЫЛКА -> ../index.html#calculator
+../blog-4-remote-logistics.html: БИТАЯ ССЫЛКА -> services.html#outsourcing
+../blog-4-remote-logistics.html: БИТАЯ ССЫЛКА -> services.html#outsourcing
+../terms.html: БИТАЯ ССЫЛКА -> index.html#calculator
+../terms.html: БИТАЯ ССЫЛКА -> index.html#calculator

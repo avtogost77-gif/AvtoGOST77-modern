@@ -6,131 +6,26 @@
     <title>Страница не найдена - АвтоГОСТ</title>
     <meta name="description" content="Запрашиваемая страница не найдена. Воспользуйтесь навигацией или свяжитесь с нами для получения помощи.">
     <!-- ЕДИНАЯ СИСТЕМА СТИЛЕЙ АВТОГОСТ77 -->
-    <link rel="stylesheet" href="assets/css/master/master-styles.min.css?v=20250818">
-    
+    <link rel="stylesheet" href="assets/css/master/master-styles.min.css?v=20250825-clean">
+    <link rel="stylesheet" href="assets/css/unified-site-styles.css?v=20250825-clean">
     <!-- AOS АНИМАЦИИ -->
     <link rel="stylesheet" href="assets/css/vendor/aos.min.css">
-    
     <!-- VENDOR СТИЛИ -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- 🚀 Preload новых bundle'ов вместо отдельных файлов -->
+    <link rel="preload" href="assets/js/bundles/critical-bundle.min.js?v=20250821-bundle" as="script">
+    <link rel="preload" href="assets/js/bundles/performance-bundle.min.js?v=20250821-bundle" as="script">
     <link rel="canonical" href="https://avtogost77.ru/404.html">
+    <meta name="robots" content="index, follow">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <style>
-        .error-hero {
-            background: var(--gradient-hero);
-            color: white;
-            min-height: 60vh;
-            display: flex;
-            align-items: center;
-            text-align: center;
-        }
-        
-        .error-content {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        
-        .error-code {
-            font-size: 8rem;
-            font-weight: 900;
-            line-height: 1;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.6) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .error-title {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-        
-        .error-description {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-        }
-        
-        .error-actions {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        
-        .popular-pages {
-            padding: 4rem 0;
-            background: var(--neutral-50);
-        }
-        
-        .pages-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-        
-        .page-card {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 12px;
-            box-shadow: var(--shadow-md);
-            text-decoration: none;
-            color: inherit;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        
-        .page-card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-xl);
-        }
-        
-        .page-icon {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-        }
-        
-        .page-title {
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            color: var(--primary-600);
-        }
-        
-        .page-description {
-            color: var(--neutral-600);
-            line-height: 1.5;
-        }
-        
-        @media (max-width: 640px) {
-            .error-code {
-                font-size: 5rem;
-            }
-            
-            .error-title {
-                font-size: 1.8rem;
-            }
-            
-            .error-actions {
-                flex-direction: column;
-                align-items: center;
-            }
-        }
-    </style>
-
+    <!-- ✅ Inline стили удалены - используем unified-site-styles.css?v=20250825-clean -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@graph": [
     {
       "@type": "Organization",
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.8",
-      "reviewCount": "1250"
-    },
     "priceRange": "₽₽",
       "@id": "https://avtogost77.ru/#organization",
       "name": "АвтоГОСТ",
@@ -166,11 +61,6 @@
     },
     {
       "@type": "Service",
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.8",
-      "reviewCount": "1250"
-    },
     "priceRange": "₽₽",
       "@id": "https://avtogost77.ru/404.html#service",
       "name": "Страница не найдена - АвтоГОСТ",
@@ -191,11 +81,6 @@
             "@type": "Offer",
             "itemOffered": {
               "@type": "Service",
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.8",
-      "reviewCount": "1250"
-    },
     "priceRange": "₽₽",
               "name": "Страница не найдена - АвтоГОСТ",
               "description": "Запрашиваемая страница не найдена. Воспользуйтесь навигацией или свяжитесь с нами для получения помощи."
@@ -223,7 +108,6 @@
   ]
 }
 </script>
-
     <style id="critical-css">
 :root{--primary-color:#2D67F8;--text-dark:#1a1a1a;--text-gray:#666;--white:#ffffff;--border:#e0e0e0;}*{margin:0;padding:0;box-sizing:border-box;}body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.6;color:var(--text-dark);}.container{max-width:1200px;margin:0 auto;padding:0 20px;} .header{background:var(--white);border-bottom:1px solid var(--border);padding:1rem 0;position:sticky;top:0;z-index:1000;}.header-content{display:flex;align-items:center;justify-content:space-between;}.logo{display:flex;align-items:center;gap:0.5rem;text-decoration:none;color:var(--text-dark);font-weight:700;font-size:1.25rem;}.logo-img{width:40px;height:40px;}.nav{display:none;}@media (min-width:768px){.nav{display:flex;gap:2rem;}}.nav-link{color:var(--text-dark);text-decoration:none;transition:color 0.3s;}.btn{display:inline-flex;align-items:center;gap:0.5rem;padding:0.75rem 1.5rem;border-radius:8px;text-decoration:none;font-weight:600;transition:all 0.3s;}.btn-primary{background:var(--primary-color);color:var(--white);} .hero{padding:3rem 0;background:linear-gradient(135deg,#f8f9fa 0%,#e9ecef 100%);}.hero h1{font-size:2.5rem;margin-bottom:1rem;line-height:1.2;}@media (min-width:768px){.hero h1{font-size:3.5rem;}}.hero-subtitle{font-size:1.25rem;color:var(--text-gray);margin-bottom:2rem;} img,svg{max-width:100%;height:auto;}.loading{opacity:0;transition:opacity 0.3s;}.loaded{opacity:1;}
     </style>
@@ -231,12 +115,13 @@
     <!-- Preload критического CSS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- 🚀 Preload новых bundle'ов вместо отдельных файлов -->
+    <link rel="preload" href="assets/js/bundles/critical-bundle.min.js?v=20250821-bundle" as="script">
+    <link rel="preload" href="assets/js/bundles/performance-bundle.min.js?v=20250821-bundle" as="script">
     <!-- Асинхронная загрузка стилей -->
-
     <!-- Preconnect for analytics -->
     <link rel="preconnect" href="https://www.googletagmanager.com">
     <link rel="preconnect" href="https://mc.yandex.ru">
-  
     <!-- Open Graph fallback -->
     <meta property="og:title" content="Страница не найдена - АвтоГОСТ">
     <meta property="og:description" content="Запрашиваемая страница не найдена. Воспользуйтесь навигацией или свяжитесь с нами для получения помощи.">
@@ -255,7 +140,6 @@
                         🚛 <span class="logo-text">АвтоГОСТ</span>
                     </a>
                 </div>
-
                 <!-- Навигация -->
                 <nav class="nav">
                     <a href="about.html" class="nav-link">О нас</a>
@@ -264,7 +148,6 @@
                     <a href="contact.html" class="nav-link">Контакты</a>
                     <a href="help.html" class="nav-link">Помощь</a>
                 </nav>
-
                 <!-- Контакт кнопка -->
                 <div class="header-cta">
                     <a href="tel:+79162720932" class="btn btn-primary">
@@ -274,7 +157,6 @@
                         Позвонить
                     </a>
                 </div>
-
                 <!-- Мобильное меню -->
                 <button class="mobile-toggle" onclick="toggleMobileMenu()">
                     <span></span>
@@ -284,7 +166,6 @@
             </div>
         </div>
     </header>
-
     <!-- Error Hero -->
     <section class="error-hero">
         <div class="container">
@@ -306,46 +187,39 @@
             </div>
         </div>
     </section>
-
     <!-- Popular Pages -->
     <section class="popular-pages" data-collapse="mobile">
         <div class="container">
-            <h2 style="text-align: center; margin-bottom: 1rem;">Популярные страницы</h2>
-            <p style="text-align: center; color: var(--neutral-600); margin-bottom: 2rem;">
+            <h2 >Популярные страницы</h2>
+            <p >
                 Возможно, вы искали одну из этих страниц?
             </p>
-            
             <div class="pages-grid">
                 <a href="index.html#calculator" class="page-card">
                     <div class="page-icon">💰</div>
                     <h3 class="page-title">Калькулятор стоимости</h3>
                     <p class="page-description">Рассчитайте стоимость доставки груза онлайн с реальными расстояниями</p>
                 </a>
-                
                 <a href="services.html" class="page-card">
                     <div class="page-icon">🚛</div>
                     <h3 class="page-title">Наши услуги</h3>
                     <p class="page-description">Полный спектр логистических услуг по России</p>
                 </a>
-                
                 <a href="about.html" class="page-card">
                     <div class="page-icon">🏢</div>
                     <h3 class="page-title">О компании</h3>
                     <p class="page-description">Узнайте больше о нашей команде и опыте работы</p>
                 </a>
-                
                 <a href="contact.html" class="page-card">
                     <div class="page-icon">📞</div>
                     <h3 class="page-title">Контакты</h3>
                     <p class="page-description">Свяжитесь с нами любым удобным способом</p>
                 </a>
-                
                 <a href="help.html" class="page-card">
                     <div class="page-icon">❓</div>
                     <h3 class="page-title">Помощь</h3>
                     <p class="page-description">Ответы на часто задаваемые вопросы</p>
                 </a>
-                
                 <a href="contact.html" class="page-card">
                     <div class="page-icon">📦</div>
                     <h3 class="page-title">Отследить груз</h3>
@@ -354,7 +228,6 @@
             </div>
         </div>
     </section>
-
     <!-- Плавающие кнопки -->
     <div class="floating-actions">
         <a href="https://wa.me/79162720932" class="floating-btn floating-whatsapp pulse" target="_blank" title="Написать в WhatsApp">
@@ -374,7 +247,6 @@
             </svg>
         </a>
     </div>
-
     <script>
         // Простая мобильная навигация (если нужна)
         function toggleMobileMenu() {
@@ -382,7 +254,6 @@
         }
     </script>
     <script src="assets/js/lazy-loading.min.js" defer></script>
-    
     <!-- Контакты кликов -->
     <script>
     document.addEventListener("DOMContentLoaded", function() {
@@ -396,7 +267,6 @@
                 }
             });
         });
-        
         // WhatsApp
         document.querySelectorAll('a[href*="wa.me"]').forEach(link => {
             link.addEventListener("click", () => {
@@ -409,9 +279,20 @@
         });
     });
     </script>
-
 <!-- Analytics Injection -->
 
+    <!-- 📱 MOBILE STICKY CTA -->
+    <div class="mobile-sticky-cta">
+        <div class="cta-buttons">
+            <a href="tel:+79162720932" class="btn btn-primary">
+                📞 Позвонить сейчас
+            </a>
+            <a href="https://wa.me/79162720932" class="btn btn-outline">
+                💬 WhatsApp
+            </a>
+        </div>
+    </div>
+</body>
 </html>    
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-EMQ3D0X8K7"></script>
@@ -420,12 +301,11 @@
       function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-EMQ3D0X8K7');
     </script>
     <!-- /Google Analytics -->
-    
     <!-- Yandex.Metrika -->
     <script type="text/javascript">
       (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0];k.async=1;k.src=r;a.parentNode.insertBefore(k,a)})
       (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
       ym(103413788, "init", {clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true});
     </script>
-    <noscript><div><img loading="lazy" src="https://mc.yandex.ru/watch/103413788" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <noscript><div><img loading="lazy" src="https://mc.yandex.ru/watch/103413788"  alt="" /></div></noscript>
     <!-- /Yandex.Metrika -->

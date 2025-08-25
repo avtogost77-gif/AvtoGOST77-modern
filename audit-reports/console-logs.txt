@@ -1,0 +1,8 @@
+=== CONSOLE.LOG В ПРОДАКШЕНЕ ===
+622:                      console.log('SW registered: ', registration);
+625:                      console.log('SW registration failed: ', registrationError);
+1887:                        console.log("✅ SW зарегистрирован успешно");
+1890:                        console.log("⚠️ SW регистрация не удалась:", registrationError);
+1896:            console.log("🚀 Сайт загружен с Service Worker");
+1899:            console.log('🚀 Site loaded without Service Worker');
+1139:                    // console.log('Заявка на услугу:', data); // DEBUG REMOVED

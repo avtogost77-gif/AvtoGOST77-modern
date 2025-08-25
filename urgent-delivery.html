@@ -8,14 +8,16 @@
     <meta name="description" content="Экстренная доставка грузов по всей России. ⚡ Подача транспорта за 2 часа, доставка день в день. Работаем 24/7. Спот-заявки и горячие перевозки.">
     <meta name="keywords" content="срочная доставка грузов, экспресс доставка, доставка день в день, спот заявки, горячие перевозки, срочная перевозка, экстренная доставка, быстрая доставка грузов">
     <!-- ЕДИНАЯ СИСТЕМА СТИЛЕЙ АВТОГОСТ77 -->
-    <link rel="stylesheet" href="assets/css/master/master-styles.min.css?v=20250818">
-    
+    <link rel="stylesheet" href="assets/css/master/master-styles.min.css?v=20250825-clean">
+    <link rel="stylesheet" href="assets/css/unified-site-styles.css?v=20250825-clean">
     <!-- AOS АНИМАЦИИ -->
     <link rel="stylesheet" href="assets/css/vendor/aos.min.css">
-    
     <!-- VENDOR СТИЛИ -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- 🚀 Preload новых bundle'ов вместо отдельных файлов -->
+    <link rel="preload" href="assets/js/bundles/critical-bundle.min.js?v=20250821-bundle" as="script">
+    <link rel="preload" href="assets/js/bundles/performance-bundle.min.js?v=20250821-bundle" as="script">
     <!-- Мета-теги -->
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://avtogost77.ru/urgent-delivery.html">
@@ -31,11 +33,6 @@
 {
   "@context": "https://schema.org",
   "@type": "Organization",
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.8",
-      "reviewCount": "1250"
-    },
     "priceRange": "₽₽",
   "@id": "https://avtogost77.ru/#organization",
   "name": "АвтоГОСТ",
@@ -117,12 +114,13 @@
     <!-- Preload критического CSS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- 🚀 Preload новых bundle'ов вместо отдельных файлов -->
+    <link rel="preload" href="assets/js/bundles/critical-bundle.min.js?v=20250821-bundle" as="script">
+    <link rel="preload" href="assets/js/bundles/performance-bundle.min.js?v=20250821-bundle" as="script">
     <!-- Асинхронная загрузка стилей -->
-
     <!-- Preconnect for analytics -->
     <link rel="preconnect" href="https://www.googletagmanager.com">
     <link rel="preconnect" href="https://mc.yandex.ru">
-  
 </head>
 <body>
     <!-- Хедер -->
@@ -762,272 +760,7 @@
         </div>
     </footer>
     <!-- Стили для страницы -->
-    <style>
-    .urgent-hero {
-        background: linear-gradient(135deg, #ff4444 0%, #cc0000 100%);
-        color: white;
-        padding: 6rem 0 4rem;
-        text-align: center;
-    }
-    .urgent-badge {
-        display: inline-block;
-        background: rgba(255,255,255,0.2);
-        padding: 0.5rem 1.5rem;
-        border-radius: 50px;
-        font-weight: 600;
-        margin-bottom: 1rem;
-        animation: pulse 2s infinite;
-    }
-    @keyframes pulse {
-        0% { opacity: 1; }
-        50% { opacity: 0.7; }
-        100% { opacity: 1; }
-    }
-    .urgent-hero h1 {
-        font-size: clamp(2rem, 5vw, 3.5rem);
-        margin-bottom: 1rem;
-        font-weight: 700;
-    }
-    .urgent-stats {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-        gap: 2rem;
-        margin: 3rem 0;
-        max-width: 800px;
-        margin-left: auto;
-        margin-right: auto;
-    }
-    .stat-item {
-        text-align: center;
-    }
-    .stat-number {
-        font-size: 3rem;
-        font-weight: 700;
-        display: block;
-        line-height: 1;
-    }
-    .stat-label {
-        font-size: 0.9rem;
-        opacity: 0.9;
-        margin-top: 0.5rem;
-    }
-    .cases-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-        gap: 2rem;
-        margin-top: 3rem;
-    }
-    .case-card {
-        background: white;
-        padding: 2rem;
-        border-radius: 12px;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        border-left: 4px solid #ddd;
-    }
-    .case-card.critical {
-        border-left-color: #ff4444;
-    }
-    .case-card.warning {
-        border-left-color: #ff9800;
-    }
-    .case-card.opportunity {
-        border-left-color: #4caf50;
-    }
-    .case-icon {
-        font-size: 3rem;
-        margin-bottom: 1rem;
-    }
-    .case-example {
-        margin-top: 1rem;
-        padding: 1rem;
-        background: #f5f5f5;
-        border-radius: 8px;
-        font-size: 0.9rem;
-    }
-    .process-timeline {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 2rem;
-        margin-top: 3rem;
-        position: relative;
-    }
-    .timeline-item {
-        text-align: center;
-    }
-    .timeline-icon {
-        width: 60px;
-        height: 60px;
-        background: #2563eb;
-        color: white;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.5rem;
-        font-weight: 700;
-        margin: 0 auto 1rem;
-    }
-    .timeline-time {
-        display: inline-block;
-        background: #e3f2fd;
-        padding: 0.25rem 0.75rem;
-        border-radius: 20px;
-        font-size: 0.85rem;
-        color: #1976d2;
-        margin-top: 0.5rem;
-    }
-    .types-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-        gap: 2rem;
-        margin-top: 3rem;
-    }
-    .type-card {
-        background: white;
-        padding: 2rem;
-        border-radius: 12px;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    }
-    .type-card h3 {
-        color: #1e293b;
-        margin-bottom: 1rem;
-    }
-    .type-card ul {
-        list-style: none;
-        padding: 0;
-    }
-    .type-card li {
-        padding: 0.5rem 0;
-        padding-left: 1.5rem;
-        position: relative;
-    }
-    .type-card li::before {
-        content: "✓";
-        position: absolute;
-        left: 0;
-        color: #4caf50;
-        font-weight: 700;
-    }
-    .type-price {
-        margin-top: 1.5rem;
-        padding: 1rem;
-        background: #f0f4f8;
-        border-radius: 8px;
-        font-weight: 700;
-        color: #2563eb;
-        text-align: center;
-    }
-    .pricing-table {
-        margin-top: 3rem;
-        overflow-x: auto;
-    }
-    .pricing-table table {
-        width: 100%;
-        border-collapse: collapse;
-        background: white;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    }
-    .pricing-table th {
-        background: #2563eb;
-        color: white;
-        padding: 1rem;
-        text-align: left;
-    }
-    .pricing-table td {
-        padding: 1rem;
-        border-bottom: 1px solid #e5e7eb;
-    }
-    .pricing-table tr:hover {
-        background: #f9fafb;
-    }
-    .pricing-note {
-        margin-top: 2rem;
-        padding: 1.5rem;
-        background: #fef3c7;
-        border-radius: 8px;
-        border-left: 4px solid #f59e0b;
-    }
-    .cta-section {
-        background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
-        color: white;
-        padding: 4rem 0;
-        text-align: center;
-    }
-    .cta-contacts {
-        display: flex;
-        justify-content: center;
-        gap: 2rem;
-        margin: 2rem 0;
-        flex-wrap: wrap;
-    }
-    .cta-phone,
-    .cta-whatsapp {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-        padding: 1.5rem 2rem;
-        background: rgba(255,255,255,0.1);
-        border-radius: 12px;
-        text-decoration: none;
-        color: white;
-        transition: all 0.3s ease;
-    }
-    .cta-phone:hover,
-    .cta-whatsapp:hover {
-        background: rgba(255,255,255,0.2);
-        transform: translateY(-2px);
-    }
-    .cta-icon {
-        font-size: 2rem;
-    }
-    .cta-label {
-        font-size: 0.9rem;
-        opacity: 0.9;
-    }
-    .cta-value {
-        font-size: 1.25rem;
-        font-weight: 700;
-    }
-    .quick-form {
-        display: flex;
-        gap: 1rem;
-        max-width: 600px;
-        margin: 2rem auto 0;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-    .quick-form input {
-        flex: 1;
-        min-width: 200px;
-        padding: 1rem;
-        border: none;
-        border-radius: 8px;
-        font-size: 1rem;
-    }
-    .quick-form button {
-        padding: 1rem 2rem;
-        min-width: 200px;
-    }
-    @media (max-width: 768px) {
-        .urgent-stats {
-            grid-template-columns: repeat(2, 1fr);
-        }
-        .cases-grid,
-        .types-grid {
-            grid-template-columns: 1fr;
-        }
-        .timeline-item {
-            margin-bottom: 2rem;
-        }
-        .quick-form {
-            flex-direction: column;
-        }
-        .quick-form input,
-        .quick-form button {
-            width: 100%;
-        }
-    }
-    </style>
+    <!-- ✅ Inline стили удалены - используем unified-site-styles.css?v=20250825-clean -->
     <!-- Скрипты -->
     <script src="assets/js/main.min.js?v=20250813-new" defer></script>
     <script type="application/ld+json">
@@ -1173,10 +906,7 @@
         ]
     }
     </script>
-
 <!-- Analytics Injection -->
-
-    
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-EMQ3D0X8K7"></script>
     <script>
@@ -1184,12 +914,11 @@
       function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-EMQ3D0X8K7');
     </script>
     <!-- /Google Analytics -->
-    
     <!-- Yandex.Metrika -->
     <script type="text/javascript">
       (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0];k.async=1;k.src=r;a.parentNode.insertBefore(k,a)})
       (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
       ym(103413788, "init", {clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true});
     </script>
-    <noscript><div><img loading="lazy" src="https://mc.yandex.ru/watch/103413788" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <noscript><div><img loading="lazy" src="https://mc.yandex.ru/watch/103413788"  alt="" /></div></noscript>
     <!-- /Yandex.Metrika -->

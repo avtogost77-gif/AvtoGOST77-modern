@@ -2,19 +2,22 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
+    <meta name="robots" content="index, follow">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Грузоперевозки по Москве — доставка от 1500₽ за 2-4 часа | АвтоГОСТ</title>
     <meta name="description" content="Грузоперевозки по Москве и области. ✓ Доставка за 2-4 часа ✓ Газель, 5-тонник, фура ✓ Работаем 24/7">
     <meta name="keywords" content="грузоперевозки по москве, грузоперевозки по москве и области, грузоперевозки москва и московская, грузоперевозки газель москва">
     <!-- ЕДИНАЯ СИСТЕМА СТИЛЕЙ АВТОГОСТ77 -->
-    <link rel="stylesheet" href="assets/css/master/master-styles.min.css?v=20250818">
-    
+    <link rel="stylesheet" href="assets/css/master/master-styles.min.css?v=20250825-clean">
+    <link rel="stylesheet" href="assets/css/unified-site-styles.css?v=20250825-clean">
     <!-- AOS АНИМАЦИИ -->
     <link rel="stylesheet" href="assets/css/vendor/aos.min.css">
-    
     <!-- VENDOR СТИЛИ -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- 🚀 Preload новых bundle'ов вместо отдельных файлов -->
+    <link rel="preload" href="assets/js/bundles/critical-bundle.min.js?v=20250821-bundle" as="script">
+    <link rel="preload" href="assets/js/bundles/performance-bundle.min.js?v=20250821-bundle" as="script">
     <link rel="canonical" href="https://avtogost77.ru/gruzoperevozki-po-moskve.html">
     <!-- Open Graph -->
     <meta property="og:title" content="Грузоперевозки по Москве — быстро и недорого">
@@ -26,11 +29,6 @@
     {
       "@context": "https://schema.org",
       "@type": "Organization",
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.8",
-      "reviewCount": "1250"
-    },
     "priceRange": "₽₽",
       "name": "АвтоГОСТ — Грузоперевозки по Москве",
       "description": "Грузоперевозки по Москве и Московской области. Газели, фуры, срочная доставка.",
@@ -95,12 +93,13 @@
     <!-- Preload критического CSS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- 🚀 Preload новых bundle'ов вместо отдельных файлов -->
+    <link rel="preload" href="assets/js/bundles/critical-bundle.min.js?v=20250821-bundle" as="script">
+    <link rel="preload" href="assets/js/bundles/performance-bundle.min.js?v=20250821-bundle" as="script">
     <!-- Асинхронная загрузка стилей (подключено выше) -->
-
     <!-- Preconnect for analytics -->
     <link rel="preconnect" href="https://www.googletagmanager.com">
     <link rel="preconnect" href="https://mc.yandex.ru">
-  
 </head>
 <body>
     <!-- Хедер -->
@@ -678,7 +677,7 @@
                             </button>
                             <button type="button" class="btn-calculate" id="calculateButton">
                                 <span class="btn-text">Рассчитываем стоимость...</span>
-                                <span class="btn-loading" style="display: none;">
+                                <span class="btn-loading" >
                                     <span class="loading-spinner"></span>
                                     Рассчитываем...
                                 </span>
@@ -1047,10 +1046,7 @@
         ]
     }
     </script>
-
 <!-- Analytics Injection -->
-
-    
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-EMQ3D0X8K7"></script>
     <script>
@@ -1058,12 +1054,11 @@
       function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-EMQ3D0X8K7');
     </script>
     <!-- /Google Analytics -->
-    
     <!-- Yandex.Metrika -->
     <script type="text/javascript">
       (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0];k.async=1;k.src=r;a.parentNode.insertBefore(k,a)})
       (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
       ym(103413788, "init", {clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true});
     </script>
-    <noscript><div><img loading="lazy" src="https://mc.yandex.ru/watch/103413788" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <noscript><div><img loading="lazy" src="https://mc.yandex.ru/watch/103413788"  alt="" /></div></noscript>
     <!-- /Yandex.Metrika -->

@@ -26,8 +26,8 @@ class SmartCalculatorV2 {
         maxWeight: 3000,
         maxVolume: 18,
         density: 167,
-        minPrice: 13000,
-        minPriceRegion: 9750,
+        minPrice: 20000,
+        minPriceRegion: 15000,
         coefficient: 1.0,   // ТРЕШКА 25к (базовая цена 25₽/км)
         allowConsolidated: true,
         icon: '🚛'
@@ -214,17 +214,13 @@ class SmartCalculatorV2 {
       pricePerKm = 22;
       distanceCategory = 'Средний (300-500км)';
     } else if (distance < 800) {
-      // ДАЛЬНИЙ МЕЖРЕГИОНАЛЬНЫЙ - средний тариф (Саранск, Казань)
-      pricePerKm = 25;
+      // ДАЛЬНИЙ МЕЖРЕГИОНАЛЬНЫЙ - экономичный (Саранск, Казань)
+      pricePerKm = 18;
       distanceCategory = 'Дальний (500-800км)';
-    } else if (distance < 1000) {
-      // ДАЛЬНОБОЙНЫЙ - экономичный (СПб, Екатеринбург)
-      pricePerKm = 22;
-      distanceCategory = 'Дальнобойный (800-1000км)';
     } else {
-      // СВЕРХДАЛЬНИЙ - специальный тариф для очень длинных маршрутов
-      pricePerKm = 25; // Повышаем тариф для очень длинных маршрутов
-      distanceCategory = 'Сверхдальний (1000км+)';
+      // ДАЛЬНОБОЙНЫЙ - самый экономичный (СПб, Екатеринбург)
+      pricePerKm = 15;
+      distanceCategory = 'Дальнобойный (800км+)';
     }
 
     // Подбираем оптимальный транспорт
@@ -258,20 +254,13 @@ class SmartCalculatorV2 {
     
     const kmRate = interregionalKmRates[optimalTransport] || 15;
     const kmSurcharge = distance * kmRate;
+    basePrice += kmSurcharge;
 
     // СБОРНЫЕ ГРУЗЫ (только для межрегиональных и НЕ для фур!)
     const isConsolidated = (cargoType === 'сборный' || cargoType === 'consolidated') && transport.allowConsolidated;
 
-    // Для сборных: не добавляем доплату по типу ТС (kmSurcharge), только базовый тариф по расстоянию и минималка
-    if (!isConsolidated) {
-      basePrice += kmSurcharge;
-    }
-    
     if (isConsolidated) {
-      // ИСПРАВЛЕНО: Сборный груз дешевле, но не менее разумной минималки
-      const consolidatedPrice = basePrice * 0.65; // Скидка 35%
-      const minConsolidatedPrice = transport.minPriceRegion * 0.8; // Минимум 80% от минималки ТС
-      basePrice = Math.max(consolidatedPrice, minConsolidatedPrice);
+      basePrice = basePrice * 0.75; // Сборный груз дешевле на 25%!
     }
 
     // Коэффициенты нагрузки и маршрута
@@ -869,7 +858,10 @@ class SmartCalculatorV2 {
 
 // Инициализация при загрузке
 document.addEventListener('DOMContentLoaded', () => {
-  window.smartCalculatorV2 = new SmartCalculatorV2();
+  // Инициализация для совместимости с preview-calculator.js
+  const calculatorInstance = new SmartCalculatorV2();
+  window.smartCalculatorV2 = calculatorInstance;
+  window.smartCalculator = calculatorInstance;
   
   // Инициализация Exit-Intent Pop-up
   initExitIntentPopup();

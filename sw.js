@@ -1,66 +1,42 @@
-// SERVICE WORKER АВТОГОСТ77 - ПРОДАКШН ВЕРСИЯ
-console.log('🚀 Service Worker АвтоГОСТ77 активирован');
+// ========================================================
+// 💀 SERVICE WORKER KILLER v3.1 - АГРЕССИВНАЯ ОЧИСТКА
+// Принудительно уничтожает все кеши и пропускает все запросы
+// ========================================================
 
-const CACHE_NAME = 'avtogost77-v1.0';
-const urlsToCache = [
-  '/',
-  '/index.html',
-  '/assets/css/critical-optimized.min.css',
-  '/assets/css/unified-styles.min.css',
-  '/assets/js/main.min.js',
-  '/assets/js/smart-calculator-v2.js',
-  '/favicon.svg',
-  '/manifest.json'
-];
+const CACHE_VERSION = 'v3.1-KILLER';
+const CACHE_NAME = `avtogost77-${CACHE_VERSION}`;
 
-// Установка
-self.addEventListener('install', (event) => {
-  console.log('📦 SW: Установка кэша');
+console.log('💀 Service Worker KILLER v3.1 activated');
+
+// Уничтожаем ВСЕ старые кеши при активации
+self.addEventListener('activate', event => {
+  console.log('💀 SW Killer v3.1 ready - old caches will be destroyed!');
+  
   event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then((cache) => {
-        console.log('✅ SW: Кэш открыт');
-        return cache.addAll(urlsToCache);
-      })
-  );
-  self.skipWaiting();
-});
-
-// Активация
-self.addEventListener('activate', (event) => {
-  console.log('🔄 SW: Активация');
-  event.waitUntil(
-    caches.keys().then((cacheNames) => {
+    caches.keys().then(cacheNames => {
       return Promise.all(
-        cacheNames.map((cacheName) => {
-          if (cacheName !== CACHE_NAME) {
-            console.log('🗑️ SW: Удаляем старый кэш:', cacheName);
-            return caches.delete(cacheName);
-          }
+        cacheNames.map(cacheName => {
+          console.log('💀 Destroying old cache:', cacheName);
+          return caches.delete(cacheName);
         })
       );
+    }).then(() => {
+      console.log('💀 All old caches destroyed!');
+      return self.clients.claim();
     })
   );
-  self.clients.claim();
 });
 
-// Перехват запросов
-self.addEventListener('fetch', (event) => {
-  // Пропускаем аналитику и внешние ресурсы
-  if (event.request.url.includes('googletagmanager.com') ||
-      event.request.url.includes('mc.yandex.ru') ||
-      event.request.url.includes('unpkg.com') ||
-      event.request.url.includes('cdnjs.cloudflare.com')) {
-    return;
-  }
-
-  event.respondWith(
-    caches.match(event.request)
-      .then((response) => {
-        // Возвращаем из кэша или загружаем из сети
-        return response || fetch(event.request);
-      })
-  );
+// Пропускаем ВСЕ запросы без кеширования
+self.addEventListener('fetch', event => {
+  console.log('🚫 SW Killer: passing through request to', event.request.url);
+  
+  // Просто пропускаем все запросы к серверу
+  event.respondWith(fetch(event.request));
 });
 
-console.log('✅ Service Worker АвтоГОСТ77 готов к работе');
+// Устанавливаем SW без кеширования
+self.addEventListener('install', event => {
+  console.log('💀 SW Killer v3.1 installed - no caching!');
+  self.skipWaiting();
+});

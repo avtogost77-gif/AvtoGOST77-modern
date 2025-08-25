@@ -15,7 +15,7 @@ This repository contains the static front-end for **Авто Гост** — тр
 ├── assets/
 │   ├── css/styles.css        # Base styles
 │   └── js/main.js            # JS for nav + form validation
-├── images/                   # Place your WebP/AVIF images here
+├── assets/img/               # WebP/AVIF images directory
 ├── robots.txt                # Robots rules for Yandex & co.
 └── sitemap.xml               # Sitemap linked from robots.txt
 ```

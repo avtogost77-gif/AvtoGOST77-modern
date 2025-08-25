@@ -8,25 +8,23 @@
   <meta name="description" content="Спот-заявки в логистике — что это? ✅ Как работают срочные перевозки ✅ Когда нужны спот-заявки ✅ Преимущества и недостатки ✅ Практические примеры использования" />
   <meta name="keywords" content="спот заявки логистика, что такое спот заявки, срочные перевозки, экстренная доставка, спот заказы транспорт" />
     <!-- ЕДИНАЯ СИСТЕМА СТИЛЕЙ АВТОГОСТ77 -->
-    <link rel="stylesheet" href="assets/css/master/master-styles.min.css?v=20250818">
-    
+    <link rel="stylesheet" href="assets/css/master/master-styles.min.css?v=20250825-clean">
+    <link rel="stylesheet" href="assets/css/unified-site-styles.css?v=20250825-clean">
     <!-- AOS АНИМАЦИИ -->
     <link rel="stylesheet" href="assets/css/vendor/aos.min.css">
-    
     <!-- VENDOR СТИЛИ -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- 🚀 Preload новых bundle'ов вместо отдельных файлов -->
+    <link rel="preload" href="assets/js/bundles/critical-bundle.min.js?v=20250821-bundle" as="script">
+    <link rel="preload" href="assets/js/bundles/performance-bundle.min.js?v=20250821-bundle" as="script">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="canonical" href="https://avtogost77.ru/blog-3-spot-orders.html">
+    <meta name="robots" content="index, follow">
     <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Organization",
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.8",
-      "reviewCount": "1250"
-    },
     "priceRange": "₽₽",
   "@id": "https://avtogost77.ru/#organization",
   "name": "АвтоГОСТ",
@@ -125,12 +123,13 @@
     <!-- Preload критического CSS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- 🚀 Preload новых bundle'ов вместо отдельных файлов -->
+    <link rel="preload" href="assets/js/bundles/critical-bundle.min.js?v=20250821-bundle" as="script">
+    <link rel="preload" href="assets/js/bundles/performance-bundle.min.js?v=20250821-bundle" as="script">
     <!-- Асинхронная загрузка стилей -->
-
     <!-- Preconnect for analytics -->
     <link rel="preconnect" href="https://www.googletagmanager.com">
     <link rel="preconnect" href="https://mc.yandex.ru">
-  
     <!-- Open Graph fallback -->
     <meta property="og:title" content="Спот-заявки в логистике: что это и как использовать в 2025">
     <meta property="og:description" content="Спот-заявки в логистике — что это? ✅ Как работают срочные перевозки ✅ Когда нужны спот-заявки ✅ Преимущества и недостатки ✅ Практические примеры использования">
@@ -602,7 +601,7 @@
             </div>
             <button class="calc-button" onclick="calculateSpotSavings()">Рассчитать экономию<span class="accordion-icon">+</span>
                 </div>
-            <div id="calc-results" class="calc-results" style="display: none;">
+            <div id="calc-results" class="calc-results" >
               <h4>Результаты расчета:</h4>
               <div class="result-item">
                 <span>Потенциальная экономия в месяц:</span>
@@ -761,7 +760,7 @@
             <div class="accordion">
               <h4>❓ Можно ли получить консультацию по теме статьи?</h4>
               <p>Конечно! Наши эксперты готовы ответить на любые вопросы. Звоните по телефону 
-              +7 (495) 268-06-81 или пишите в WhatsApp +7 (916) 272-09-32.</p>
+              +7 (495) 268-06-81 или пишите в WhatsApp +7 916 272‑09‑32.</p>
             </div>
             <div class="accordion">
               <h4>❓ Есть ли скидки для читателей блога?</h4>
@@ -843,129 +842,7 @@
     document.getElementById('calc-results').style.display = 'block';
   }
   </script>
-  <style>
-  .calculator-section {
-    background: #f5f7fa;
-    padding: 2rem;
-    border-radius: 8px;
-    margin: 2rem 0;
-  }
-  .calculator-form {
-    max-width: 600px;
-    margin: 0 auto;
-  }
-  .calc-input {
-    margin-bottom: 1.5rem;
-  }
-  .calc-input label {
-    display: block;
-    margin-bottom: 0.5rem;
-    font-weight: 600;
-  }
-  .calc-input input,
-  .calc-input select {
-    width: 100%;
-    padding: 0.75rem;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 1rem;
-  }
-  .calc-button {
-    background: #2c5aa0;
-    color: white;
-    padding: 1rem 2rem;
-    border: none;
-    border-radius: 4px;
-    font-size: 1.1rem;
-    cursor: pointer;
-    width: 100%;
-    margin-top: 1rem;
-  }
-  .calc-button:hover {
-    background: #1e3a6f;
-  }
-  .calc-results {
-    margin-top: 2rem;
-    padding: 1.5rem;
-    background: white;
-    border-radius: 4px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  }
-  .result-item {
-    display: flex;
-    justify-content: space-between;
-    padding: 0.75rem 0;
-    border-bottom: 1px solid #eee;
-  }
-  .result-item:last-child {
-    border-bottom: none;
-  }
-  .result-value {
-    font-weight: 700;
-    color: #2c5aa0;
-    font-size: 1.2rem;
-  }
-  .tip-card {
-    display: flex;
-    align-items: flex-start;
-    margin-bottom: 1.5rem;
-    padding: 1rem;
-    background: #f9f9f9;
-    border-radius: 8px;
-  }
-  .tip-number {
-    display: inline-block;
-    width: 32px;
-    height: 32px;
-    background: #2c5aa0;
-    color: white;
-    border-radius: 50%;
-    text-align: center;
-    line-height: 32px;
-    font-weight: 700;
-    margin-right: 1rem;
-    flex-shrink: 0;
-  }
-  .platform-card {
-    border: 1px solid #ddd;
-    padding: 1.5rem;
-    border-radius: 8px;
-    margin-bottom: 1rem;
-  }
-  .platform-stats {
-    display: flex;
-    gap: 1rem;
-    margin: 0.5rem 0;
-    font-size: 0.9rem;
-    color: #666;
-  }
-  .case-study {
-    background: #f0f4f8;
-    border-left: 4px solid #2c5aa0;
-    padding: 1.5rem;
-    margin: 2rem 0;
-  }
-  .case-header {
-    font-weight: 600;
-    margin-bottom: 1rem;
-  }
-  .results-table {
-    width: 100%;
-    margin: 1rem 0;
-  }
-  .results-table td {
-    padding: 0.5rem 0;
-  }
-  .results-table .value {
-    text-align: right;
-    font-weight: 700;
-    color: #2c5aa0;
-  }
-  .case-result {
-    margin-top: 1rem;
-    font-size: 1.1rem;
-  }
-  </style>
+    <!-- ✅ Inline стили удалены - используем unified-site-styles.css?v=20250825-clean -->
   <footer>
     <div class="container footer-grid">
       <div>
@@ -987,12 +864,12 @@
       </div>
     </div>
   </footer>
-  <section class="priority-cta" style="background: linear-gradient(135deg,#2D67F8,#1b47b3); color:#fff; padding: 1.5rem; border-radius: 8px; width: calc(100% - 2rem); margin: 1rem auto; max-width: 1200px;">
-    <h3 style="margin:.25rem 0;color:#fff;">Спот «прямо сейчас»: door‑to‑door без терминалов</h3>
-    <p style="margin:.25rem 0 .75rem 0;">Подача 15–120 минут, единое окно 24/7, без складских сборов. Сложно/нестандарт — не откладываем.</p>
-    <div style="display:flex;gap:.75rem;flex-wrap:wrap;">
-      <a href="tel:+79162720932" class="btn" style="background:#fff;color:#1b47b3;">Позвонить сейчас</a>
-      <a href="https://wa.me/79162720932?text=%23src%3Ablog-3-cta" class="btn" style="border:2px solid #fff;color:#fff;">Написать в WhatsApp</a>
+  <section class="priority-cta" >
+    <h3 >Спот «прямо сейчас»: door‑to‑door без терминалов</h3>
+    <p >Подача 15–120 минут, единое окно 24/7, без складских сборов. Сложно/нестандарт — не откладываем.</p>
+    <div >
+      <a href="tel:+79162720932" class="btn" >Позвонить сейчас</a>
+      <a href="https://wa.me/79162720932?text=%23src%3Ablog-3-cta" class="btn" >Написать в WhatsApp</a>
     </div>
   </section>
     <script src="assets/js/distance-api.js" defer></script>
@@ -1055,11 +932,21 @@ document.addEventListener('DOMContentLoaded', function() {
     <script src="assets/js/lazy-loading.min.js" defer></script>
     <script src="assets/js/cities-simple.js?v=107" defer></script>
     <script src="assets/js/ux-improvements.js" defer></script>
-
 <!-- Analytics Injection -->
 
+    <!-- 📱 MOBILE STICKY CTA -->
+    <div class="mobile-sticky-cta">
+        <div class="cta-buttons">
+            <a href="tel:+79162720932" class="btn btn-primary">
+                📞 Позвонить сейчас
+            </a>
+            <a href="https://wa.me/79162720932" class="btn btn-outline">
+                💬 WhatsApp
+            </a>
+        </div>
+    </div>
+</body>
 </html>
-    
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-EMQ3D0X8K7"></script>
     <script>
@@ -1067,12 +954,11 @@ document.addEventListener('DOMContentLoaded', function() {
       function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-EMQ3D0X8K7');
     </script>
     <!-- /Google Analytics -->
-    
     <!-- Yandex.Metrika -->
     <script type="text/javascript">
       (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0];k.async=1;k.src=r;a.parentNode.insertBefore(k,a)})
       (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
       ym(103413788, "init", {clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true});
     </script>
-    <noscript><div><img loading="lazy" src="https://mc.yandex.ru/watch/103413788" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <noscript><div><img loading="lazy" src="https://mc.yandex.ru/watch/103413788"  alt="" /></div></noscript>
     <!-- /Yandex.Metrika -->

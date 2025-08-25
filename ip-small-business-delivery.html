@@ -8,14 +8,16 @@
     <meta name="description" content="Специальные условия грузоперевозок для ИП и малого бизнеса. ✓ Отсрочка платежа ✓ Гибкие тарифы ✓ От 1 заказа. Работаем с самозанятыми.">
     <meta name="keywords" content="грузоперевозки для ИП, доставка для малого бизнеса, логистика для ИП, доставка для предпринимателей, грузоперевозки для ООО">
     <!-- ЕДИНАЯ СИСТЕМА СТИЛЕЙ АВТОГОСТ77 -->
-    <link rel="stylesheet" href="assets/css/master/master-styles.min.css?v=20250818">
-    
+    <link rel="stylesheet" href="assets/css/master/master-styles.min.css?v=20250825-clean">
+    <link rel="stylesheet" href="assets/css/unified-site-styles.css?v=20250825-clean">
     <!-- AOS АНИМАЦИИ -->
     <link rel="stylesheet" href="assets/css/vendor/aos.min.css">
-    
     <!-- VENDOR СТИЛИ -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- 🚀 Preload новых bundle'ов вместо отдельных файлов -->
+    <link rel="preload" href="assets/js/bundles/critical-bundle.min.js?v=20250821-bundle" as="script">
+    <link rel="preload" href="assets/js/bundles/performance-bundle.min.js?v=20250821-bundle" as="script">
     <!-- Мета-теги -->
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://avtogost77.ru/ip-small-business-delivery.html">
@@ -31,11 +33,6 @@
 {
   "@context": "https://schema.org",
   "@type": "Organization",
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.8",
-      "reviewCount": "1250"
-    },
     "priceRange": "₽₽",
   "@id": "https://avtogost77.ru/#organization",
   "name": "АвтоГОСТ",
@@ -88,26 +85,6 @@
   },
   "slogan": "Инфраструктура вашего бизнеса — пока вы занимаетесь бизнесом, мы решаем вопросы логистики",
   "foundingDate": "2015"
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "4.8",
-    "reviewCount": "2341",
-    "bestRating": "5",
-    "worstRating": "1"
-  }
-}
-</script>
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-            {
-                "@type": "ListItem",
-                "position": 1,
-                "name": "Главная",
-                "item": "https://avtogost77.ru/"
-            },
             {
                 "@type": "ListItem",
                 "position": 2,
@@ -124,12 +101,13 @@
     <!-- Preload критического CSS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- 🚀 Preload новых bundle'ов вместо отдельных файлов -->
+    <link rel="preload" href="assets/js/bundles/critical-bundle.min.js?v=20250821-bundle" as="script">
+    <link rel="preload" href="assets/js/bundles/performance-bundle.min.js?v=20250821-bundle" as="script">
     <!-- Асинхронная загрузка стилей -->
-
     <!-- Preconnect for analytics -->
     <link rel="preconnect" href="https://www.googletagmanager.com">
     <link rel="preconnect" href="https://mc.yandex.ru">
-  
 </head>
 <body>
     <!-- Хедер -->
@@ -885,324 +863,7 @@
         </div>
     </footer>
     <!-- Стили для страницы -->
-    <style>
-    .business-hero {
-        background: linear-gradient(135deg, #1e40af 0%, #3730a3 100%);
-        color: white;
-        padding: 6rem 0 4rem;
-    }
-    .hero-badge {
-        display: inline-block;
-        background: rgba(255,255,255,0.2);
-        padding: 0.5rem 1.5rem;
-        border-radius: 50px;
-        font-weight: 600;
-        margin-bottom: 1rem;
-    }
-    .hero-features {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 1rem;
-        margin: 2rem 0;
-        max-width: 800px;
-    }
-    .feature-item {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-    }
-    .feature-icon {
-        display: inline-block;
-        width: 24px;
-        height: 24px;
-        background: #22c55e;
-        color: white;
-        border-radius: 50%;
-        text-align: center;
-        line-height: 24px;
-        font-weight: 700;
-    }
-    .audience-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-        gap: 2rem;
-        margin-top: 3rem;
-    }
-    .audience-card {
-        background: white;
-        padding: 2rem;
-        border-radius: 12px;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    }
-    .audience-icon {
-        font-size: 3rem;
-        margin-bottom: 1rem;
-    }
-    .audience-card ul {
-        list-style: none;
-        padding: 0;
-        margin: 1rem 0;
-    }
-    .audience-card li {
-        padding: 0.5rem 0;
-        padding-left: 1.5rem;
-        position: relative;
-    }
-    .audience-card li::before {
-        content: "•";
-        position: absolute;
-        left: 0;
-        color: #3b82f6;
-    }
-    .audience-example {
-        margin-top: 1rem;
-        padding: 1rem;
-        background: #f0f9ff;
-        border-radius: 8px;
-        font-size: 0.9rem;
-    }
-    .benefits-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-        gap: 2rem;
-        margin-top: 3rem;
-    }
-    .benefit-card {
-        background: white;
-        padding: 2rem;
-        border-radius: 12px;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        transition: transform 0.3s ease;
-    }
-    .benefit-card:hover {
-        transform: translateY(-5px);
-    }
-    .benefit-card.highlight {
-        border: 2px solid #3b82f6;
-        position: relative;
-    }
-    .benefit-card.highlight::before {
-        content: "Популярно";
-        position: absolute;
-        top: -12px;
-        right: 20px;
-        background: #3b82f6;
-        color: white;
-        padding: 0.25rem 1rem;
-        border-radius: 20px;
-        font-size: 0.875rem;
-    }
-    .benefit-icon {
-        font-size: 3rem;
-        margin-bottom: 1rem;
-    }
-    .steps-timeline {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 2rem;
-        margin: 3rem 0;
-        position: relative;
-    }
-    .step-item {
-        text-align: center;
-        position: relative;
-    }
-    .step-number {
-        width: 60px;
-        height: 60px;
-        background: #3b82f6;
-        color: white;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.5rem;
-        font-weight: 700;
-        margin: 0 auto 1rem;
-    }
-    .documents-needed {
-        background: #f8fafc;
-        padding: 2rem;
-        border-radius: 12px;
-        margin-top: 3rem;
-    }
-    .docs-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 2rem;
-        margin-top: 1rem;
-    }
-    .doc-type h4 {
-        color: #1e40af;
-        margin-bottom: 0.5rem;
-    }
-    .pricing-cards {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 2rem;
-        margin: 3rem 0;
-    }
-    .pricing-card {
-        background: white;
-        padding: 2rem;
-        border-radius: 12px;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        position: relative;
-        transition: transform 0.3s ease;
-    }
-    .pricing-card:hover {
-        transform: translateY(-5px);
-    }
-    .pricing-card.popular {
-        border: 2px solid #3b82f6;
-        transform: scale(1.05);
-    }
-    .popular-badge {
-        position: absolute;
-        top: -12px;
-        left: 50%;
-        transform: translateX(-50%);
-        background: #3b82f6;
-        color: white;
-        padding: 0.25rem 1rem;
-        border-radius: 20px;
-        font-size: 0.875rem;
-    }
-    .price-label {
-        color: #6b7280;
-        margin-bottom: 1rem;
-    }
-    .price-features {
-        margin: 1.5rem 0;
-    }
-    .price-item {
-        display: flex;
-        justify-content: space-between;
-        padding: 0.75rem 0;
-        border-bottom: 1px solid #f3f4f6;
-    }
-    .price-example {
-        margin-top: 1.5rem;
-        padding: 1rem;
-        background: #f9fafb;
-        border-radius: 8px;
-        text-align: center;
-    }
-    .old-price {
-        text-decoration: line-through;
-        color: #9ca3af;
-    }
-    .new-price {
-        font-size: 1.5rem;
-        color: #059669;
-        font-weight: 700;
-    }
-    .bonuses-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 1.5rem;
-        margin-top: 1rem;
-    }
-    .bonus-item {
-        display: flex;
-        align-items: flex-start;
-        gap: 1rem;
-    }
-    .bonus-icon {
-        font-size: 2rem;
-    }
-    .testimonials-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-        gap: 2rem;
-        margin-top: 3rem;
-    }
-    .testimonial-card {
-        background: white;
-        padding: 2rem;
-        border-radius: 12px;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    }
-    .testimonial-header {
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 1rem;
-    }
-    .testimonial-author strong {
-        display: block;
-        margin-bottom: 0.25rem;
-    }
-    .testimonial-author span {
-        color: #6b7280;
-        font-size: 0.875rem;
-    }
-    .testimonial-stats {
-        display: flex;
-        gap: 1rem;
-        margin-top: 1rem;
-        font-size: 0.875rem;
-        color: #6b7280;
-    }
-    .business-form {
-        background: rgba(255,255,255,0.1);
-        padding: 2rem;
-        border-radius: 12px;
-        max-width: 600px;
-        margin: 0 auto;
-    }
-    .business-form h3 {
-        color: white;
-        margin-bottom: 1.5rem;
-    }
-    .form-row {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 1rem;
-        margin-bottom: 1rem;
-    }
-    .form-row input,
-    .form-row select,
-    .form-row textarea {
-        width: 100%;
-        padding: 0.75rem;
-        border: 1px solid rgba(255,255,255,0.3);
-        border-radius: 8px;
-        background: rgba(255,255,255,0.1);
-        color: white;
-        font-size: 1rem;
-    }
-    .form-row input::placeholder,
-    .form-row textarea::placeholder {
-        color: rgba(255,255,255,0.7);
-    }
-    .form-row textarea {
-        grid-column: 1 / -1;
-    }
-    .business-form button {
-        width: 100%;
-        margin-top: 1rem;
-    }
-    .form-note {
-        text-align: center;
-        margin-top: 1rem;
-        font-size: 0.9rem;
-        opacity: 0.9;
-    }
-    @media (max-width: 768px) {
-        .audience-grid,
-        .benefits-grid,
-        .pricing-cards,
-        .testimonials-grid {
-            grid-template-columns: 1fr;
-        }
-        .form-row {
-            grid-template-columns: 1fr;
-        }
-        .pricing-card.popular {
-            transform: none;
-        }
-    }
-    </style>
+    <!-- ✅ Inline стили удалены - используем unified-site-styles.css?v=20250825-clean -->
     <!-- Скрипты -->
     <script src="assets/js/main.min.js?v=20250813-new" defer></script>
     <script type="application/ld+json">
@@ -1312,10 +973,7 @@
         ]
     }
     </script>
-
 <!-- Analytics Injection -->
-
-    
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-EMQ3D0X8K7"></script>
     <script>
@@ -1323,12 +981,11 @@
       function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-EMQ3D0X8K7');
     </script>
     <!-- /Google Analytics -->
-    
     <!-- Yandex.Metrika -->
     <script type="text/javascript">
       (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0];k.async=1;k.src=r;a.parentNode.insertBefore(k,a)})
       (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
       ym(103413788, "init", {clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true});
     </script>
-    <noscript><div><img loading="lazy" src="https://mc.yandex.ru/watch/103413788" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <noscript><div><img loading="lazy" src="https://mc.yandex.ru/watch/103413788"  alt="" /></div></noscript>
     <!-- /Yandex.Metrika -->

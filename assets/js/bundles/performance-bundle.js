@@ -1,0 +1,894 @@
+/* ===== PERFORMANCE BUNDLE ДЛЯ AVTOGOST77 ===== */
+/* Включает: distances + api + testing + lazy loading */
+
+// === REAL DISTANCES ===
+// Статическая база реальных автомобильных расстояний между городами России
+// Источник: Яндекс.Карты, Google Maps, реальные замеры
+// РАСШИРЕННАЯ ВЕРСИЯ: 1000км от Москвы + маркетплейс-локации
+
+const REAL_DISTANCES = {
+  // Москва как центральный хаб (РАСШИРЕННАЯ ВЕРСИЯ)
+  "moskva": {
+    // ЦЕНТРАЛЬНЫЙ ФО (до 300км)
+    "tula": 180,          // М2 "Крым"
+    "kaluga": 165,        // А101
+    "ryazan": 196,        // М5 "Урал"
+    "vladimir": 184,      // М7 "Волга"  
+    "tver": 164,          // М10 "Россия"
+    "yaroslavl": 264,     // М8 "Холмогоры"
+    "kostroma": 344,      // М8 "Холмогоры"
+    "ivanovo": 318,       // М7 "Волга"
+    
+    // ОБЛАСТНЫЕ ЦЕНТРЫ (300-600км)
+    "voronezh": 463,      // М4 "Дон"
+    "belgorod": 695,      // М2 "Крым"
+    "kursk": 512,         // М2 "Крым"
+    "orel": 368,          // М2 "Крым"
+    "bryansk": 379,       // А141
+    "smolensk": 378,      // М1 "Беларусь"
+    "lipetsk": 444,       // М4 "Дон"
+    "tambov": 460,        // М5 "Урал"
+    
+    // КРУПНЫЕ ГОРОДА (600-1000км)
+    "spb": 635,           // М11 "Нева" - прямая скоростная
+    "nizhniy-novgorod": 411, // М7 "Волга"
+    "kazan": 719,         // М7 "Волга"  
+    "samara": 840,        // М5 "Урал"
+    "penza": 630,         // М5 "Урал"
+    "saransk": 641,       // М5 "Урал"
+    "cheboksary": 638,    // М7 "Волга"
+    "ulyanovsk": 719,     // М5 "Урал"
+    "saratov": 858,       // М5 "Урал"
+    
+    // СЕВЕРО-ЗАПАД (в пределах 1000км)
+    "novgorod": 552,      // М10 "Россия"
+    "pskov": 689,         // М9 "Балтия"
+    "petrozavodsk": 925,  // М8 "Холмогоры"
+    "vologda": 460,       // М8 "Холмогоры"
+    
+    // МАРКЕТПЛЕЙС-ЛОКАЦИИ И ФЦ
+    "koledinovo": 25,     // Коледино WB - пригород Москвы
+    "podolsk": 40,        // Подольск - южное направление
+    "belye-stolby": 50,   // Белые Столбы WB - М4 "Дон"
+    "elektrostal": 58,    // Электросталь - восточное направление
+    "tver-ozon": 164,     // Тверь Ozon = обычная Тверь
+    
+    // ПРОМЫШЛЕННЫЕ ЦЕНТРЫ
+    "tula-industrial": 180, // Тула промзона = обычная Тула
+    
+    // Существующие (сохраняем)
+    "ekaterinburg": 1416, // М5 "Урал" + Р242
+    "rostov": 1067,       // М4 "Дон" 
+    "chelyabinsk": 1496,  // М5 "Урал"
+    "ufa": 1166,          // М5 "Урал"
+    "astrakhan": 1411,    // М6 "Каспий"
+    "krasnodar": 1231,    // М4 "Дон"
+    "sochi": 1620,        // М4 "Дон" + А147
+    "stavropol": 1456,    // М4 "Дон"
+    "makhachkala": 1784,  // М4 "Дон" + Р217
+    "grozny": 1681,       // М4 "Дон" + Р217
+    "nalchik": 1538,      // М4 "Дон" + А158
+    "novosibirsk": 3303,  // М5 "Урал" + Р254
+    "omsk": 2676,         // М5 "Урал" + Р254
+    "krasnoyarsk": 3354,  // М5 "Урал" + Р255
+    "irkutsk": 5042,      // М5 "Урал" + Р255
+    "khabarovsk": 8533,   // М5 "Урал" + Р258
+    "vladivostok": 9074,  // М5 "Урал" + Р258
+    "tomsk": 3506,        // М5 "Урал" + Р255
+    "kemerovo": 3607,     // М5 "Урал" + А384
+    "novokuznetsk": 3665, // М5 "Урал" + А384
+    "barnaul": 3419,      // М5 "Урал" + Р256
+    "chita": 6074,        // М5 "Урал" + Р258
+    "yakutsk": 8468,      // М5 "Урал" + Р504
+    "magadan": 10726,     // М5 "Урал" + Р504
+    "petropavlovsk-kamchatsky": 11910, // М5 + авиа + автодороги
+    "yuzhno-sakhalinsk": 10417, // М5 + паром + автодороги
+    "tyumen": 1766,       // М5 "Урал"
+    "surgut": 2148,       // М5 "Урал" + Р404
+    "kurgan": 1943        // М5 "Урал"
+  },
+
+  // САНКТ-ПЕТЕРБУРГ как второй хаб
+  "spb": {
+    "moskva": 635,        // М11 "Нева"
+    "tver": 485,          // М10 "Россия"
+    "novgorod": 180,      // М10 "Россия"
+    "pskov": 280,         // А212
+    "petrozavodsk": 412,  // А121
+    "vologda": 662,       // А114
+    "yaroslavl": 897,     // М8 через Вологду
+    "smolensk": 664,      // М1 через Москву
+    "kaluga": 800,        // через Москву
+    "tula": 815          // через Москву
+  },
+
+  // ЦЕНТРАЛЬНЫЙ ФО - взаимные связи
+  "tula": {
+    "moskva": 180,
+    "kaluga": 150,        // Р132
+    "ryazan": 240,        // Р22
+    "orel": 180,          // М2 "Крым"
+    "lipetsk": 280,       // Р22
+    "voronezh": 350,      // через Липецк
+    "kursk": 330,         // М2 "Крым"
+    "bryansk": 280        // А141
+  },
+
+  "kaluga": {
+    "moskva": 165,
+    "tula": 150,
+    "bryansk": 220,       // А141
+    "smolensk": 280,      // Р101
+    "spb": 800,           // через Москву
+    "tver": 320          // через Москву
+  },
+
+  "ryazan": {
+    "moskva": 196,
+    "tula": 240,
+    "vladimir": 120,      // Р25
+    "tambov": 280,        // Р22
+    "voronezh": 370,      // через Тамбов
+    "lipetsk": 320,       // Р22
+    "nizhniy-novgorod": 320 // через Владимир
+  },
+
+  "vladimir": {
+    "moskva": 184,
+    "ryazan": 120,
+    "yaroslavl": 250,     // А113
+    "nizhniy-novgorod": 230, // М7 "Волга"
+    "kostroma": 280,      // через Ярославль
+    "ivanovo": 120,       // А113
+    "cheboksary": 380,    // через Н.Новгород
+    "elektrostal": 80     // близко к Москве
+  },
+
+  "tver": {
+    "moskva": 164,
+    "spb": 485,
+    "yaroslavl": 280,     // Р84
+    "smolensk": 320,      // А141
+    "novgorod": 350,      // М10
+    "pskov": 520,         // через Новгород
+    "vologda": 450,       // через Ярославль
+    "tver-ozon": 0        // это одно и то же место
+  },
+
+  "yaroslavl": {
+    "moskva": 264,
+    "vladimir": 250,
+    "kostroma": 85,       // А113
+    "ivanovo": 110,       // А113
+    "tver": 280,
+    "vologda": 220,       // Р104
+    "nizhniy-novgorod": 340, // через Кострому
+    "spb": 897           // через Вологду
+  },
+
+  // ПОВОЛЖЬЕ
+  "nizhniy-novgorod": {
+    "moskva": 411,
+    "vladimir": 230,
+    "kostroma": 260,
+    "kazan": 380,         // М7 "Волга"
+    "cheboksary": 230,    // М7 "Волга"
+    "saransk": 190,       // Р158
+    "ryazan": 320,
+    "yaroslavl": 340
+  },
+
+  "kazan": {
+    "moskva": 719,
+    "nizhniy-novgorod": 380,
+    "cheboksary": 150,    // М7 "Волга"
+    "ulyanovsk": 220,     // М7 "Волга"
+    "samara": 360,        // М7 "Волга"
+    "penza": 380,         // через Ульяновск
+    "ekaterinburg": 730,  // Р239
+    "ufa": 525           // Р239
+  },
+
+  "samara": {
+    "moskva": 840,
+    "kazan": 360,
+    "ulyanovsk": 160,     // М5 "Урал"
+    "saratov": 442,       // М5 "Урал"
+    "penza": 330,         // М5 "Урал"
+    "orenburg": 280,      // М5 "Урал"
+    "ufa": 300,          // М5 "Урал"
+    "volgograd": 648      // М6 "Каспий"
+  },
+
+  // ЧЕРНОЗЕМЬЕ
+  "voronezh": {
+    "moskva": 463,
+    "tula": 350,
+    "lipetsk": 120,       // М4 "Дон"
+    "tambov": 140,        // Р22
+    "kursk": 180,         // М2 "Крым"
+    "belgorod": 280,      // М2 "Крым"
+    "rostov": 580,        // М4 "Дон"
+    "saratov": 420       // через Тамбов
+  },
+
+  "belgorod": {
+    "moskva": 695,
+    "voronezh": 280,
+    "kursk": 150,         // М2 "Крым"
+    "rostov": 450,        // М4 "Дон"
+    "kharkov": 80        // международная трасса
+  },
+
+  // МАРКЕТПЛЕЙС-ЛОКАЦИИ (детально)
+  "koledinovo": {
+    "moskva": 25,         // пригород Москвы
+    "podolsk": 20,        // рядом
+    "belye-stolby": 30,   // соседние ФЦ
+    "tula": 160,          // близко к М2
+    "kaluga": 140,        // через Москву
+    "ryazan": 180        // через Москву
+  },
+
+  "podolsk": {
+    "moskva": 40,
+    "koledinovo": 20,
+    "belye-stolby": 15,   // очень близко
+    "tula": 140,          // прямо по М2
+    "kaluga": 120,        // через Москву
+    "elektrostal": 80     // через Москву
+  },
+
+  "belye-stolby": {
+    "moskva": 50,
+    "podolsk": 15,
+    "koledinovo": 30,
+    "tula": 130,          // прямо по М4
+    "voronezh": 420,      // прямо по М4
+    "rostov": 1020       // прямо по М4
+  },
+
+  "elektrostal": {
+    "moskva": 58,
+    "vladimir": 80,       // близко
+    "ryazan": 140,        // через Владимир
+    "yaroslavl": 200,     // через Москву
+    "ivanovo": 180       // через Владимир
+  },
+
+  // СЕВЕРО-ЗАПАД
+  "novgorod": {
+    "moskva": 552,
+    "spb": 180,
+    "tver": 350,
+    "pskov": 240,         // А116
+    "petrozavodsk": 580,  // через СПб
+    "vologda": 620       // через СПб
+  },
+
+  "pskov": {
+    "moskva": 689,
+    "spb": 280,
+    "novgorod": 240,
+    "smolensk": 380,      // А141
+    "tver": 520,         // через Новгород
+    "riga": 250          // международная
+  },
+
+  // ПРОМЫШЛЕННЫЕ ЦЕНТРЫ
+  "lipetsk": {
+    "moskva": 444,
+    "voronezh": 120,
+    "tula": 280,
+    "tambov": 180,        // Р22
+    "ryazan": 320,        // Р22
+    "kursk": 200,         // М4
+    "belgorod": 350      // М4
+  },
+
+  "tambov": {
+    "moskva": 460,
+    "voronezh": 140,
+    "lipetsk": 180,
+    "ryazan": 280,
+    "penza": 240,         // Р208
+    "saratov": 280,       // Р22
+    "samara": 500        // через Пензу
+  }
+};
+
+function getRealDistance(fromCityCode, toCityCode) {
+  // Прямое направление
+  const fromCity = REAL_DISTANCES[fromCityCode];
+  if (fromCity && fromCity[toCityCode]) {
+    return fromCity[toCityCode];
+  }
+  
+  // Обратное направление  
+  const toCity = REAL_DISTANCES[toCityCode];
+  if (toCity && toCity[fromCityCode]) {
+    return toCity[fromCityCode];
+  }
+  
+  return null;
+}
+
+// Экспортируем для использования в других скриптах
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = { getRealDistance, REAL_DISTANCES };
+}
+// === DISTANCE API ===
+// Система получения реальных расстояний через API
+// Поддерживает несколько источников с fallback
+
+class DistanceAPI {
+  constructor() {
+    // Приоритет источников данных
+    this.providers = [
+      'static',          // Статическая база - мгновенно
+      'osrm',            // OSRM - бесплатный, часто стабильнее в мобильных сетях
+      'openrouteservice',// OpenRouteService - 2000 запросов/день
+      'haversine'        // Формула по координатам - fallback
+    ];
+    
+    // Кэш для избежания повторных запросов
+    this.cache = new Map();
+    this.cacheKey = (from, to) => `${from}-${to}`;
+    
+    // Счетчики использования
+    this.usage = {
+      static: 0,
+      openrouteservice: 0,
+      osrm: 0,
+      haversine: 0
+    };
+  }
+
+  // Главная функция получения расстояния
+  async getDistance(fromCity, toCity) {
+    const cacheKey = this.cacheKey(fromCity, toCity);
+    
+    // Проверяем кэш
+    if (this.cache.has(cacheKey)) {
+      return this.cache.get(cacheKey);
+    }
+
+    let distance = null;
+    let usedProvider = null;
+    
+    // Пробуем разные источники
+    for (const provider of this.providers) {
+      try {
+        distance = await this.getFromProvider(provider, fromCity, toCity);
+        if (distance) {
+          usedProvider = provider;
+          this.usage[provider]++;
+          break;
+        }
+      } catch (error) {
+        continue;
+      }
+    }
+    
+    // Кэшируем результат
+    if (distance) {
+      this.cache.set(cacheKey, distance);
+    } else {
+    }
+    
+    return distance || 0;
+  }
+
+  // Получение от конкретного провайдера
+  async getFromProvider(provider, fromCity, toCity) {
+    switch (provider) {
+      case 'static':
+        return this.getFromStatic(fromCity, toCity);
+      case 'openrouteservice':
+        return await this.getFromOpenRouteService(fromCity, toCity);
+      case 'osrm':
+        return await this.getFromOSRM(fromCity, toCity);
+      case 'haversine':
+        return this.getFromHaversine(fromCity, toCity);
+      default:
+        return null;
+    }
+  }
+
+  // Статическая таблица (приоритет)
+  getFromStatic(fromCity, toCity) {
+    // Импортируем функцию динамически для Node.js
+    try {
+      if (typeof getRealDistance !== 'undefined') {
+        return getRealDistance(fromCity, toCity);
+      }
+      
+      // Для Node.js окружения
+      const { getRealDistance: getDistance } = require('./real-distances.js');
+      return getDistance(fromCity, toCity);
+    } catch (error) {
+      return null;
+    }
+  }
+
+  // OpenRouteService API (2000 запросов/день) - корректируем единицы измерения (метры → км)
+  async getFromOpenRouteService(fromCity, toCity) {
+    const coords = this.getCityCoords(fromCity, toCity);
+    if (!coords) return null;
+
+    // Правильный endpoint для легковых автомобилей
+    // Явно укажем единицы км через query, т.к. в POST body может игнорироваться
+    const url = 'https://api.openrouteservice.org/v2/directions/driving-car?units=km';
+    
+    // API ключ из переменной окружения или константы
+    const API_KEY = '28d87edc85fa4551b58d331d8d24f8e3';
+    
+    // Правильный формат тела запроса
+    const requestBody = {
+      coordinates: [
+        [coords.from.lng, coords.from.lat],
+        [coords.to.lng, coords.to.lat]
+      ],
+      format: "json",
+      units: "km"
+    };
+
+    try {
+      
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+          'Authorization': API_KEY,
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          'User-Agent': 'AvtoGOST77/1.0 (https://avtogost77.ru)'
+        },
+        body: JSON.stringify(requestBody)
+      });
+      
+      if (!response.ok) {
+        const errorText = await response.text();
+        throw new Error(`HTTP ${response.status}: ${errorText}`);
+      }
+      
+      const data = await response.json();
+      
+      // Структура ответа OpenRouteService
+      if (data && data.routes && data.routes[0] && data.routes[0].summary) {
+        const rawDistance = data.routes[0].summary.distance;
+        // ORS часто возвращает метры; если значение > 1000, считаем что это метры
+        const distanceKm = rawDistance > 1000 ? (rawDistance / 1000) : rawDistance;
+        return Math.round(distanceKm);
+      }
+      
+      throw new Error('Неожиданный формат ответа от OpenRouteService');
+      
+    } catch (error) {
+      return null;
+    }
+  }
+
+  // Open Source Routing Machine (бесплатный)
+  async getFromOSRM(fromCity, toCity) {
+    const coords = this.getCityCoords(fromCity, toCity);
+    if (!coords) return null;
+
+    const url = `https://router.project-osrm.org/route/v1/driving/` +
+      `${coords.from.lng},${coords.from.lat};${coords.to.lng},${coords.to.lat}` +
+      `?overview=false&alternatives=false&steps=false`;
+
+    try {
+      
+      const response = await fetch(url);
+      const data = await response.json();
+      
+      if (data.code === 'Ok' && data.routes && data.routes[0]) {
+        return Math.round(data.routes[0].distance / 1000);
+      }
+      
+      throw new Error(`OSRM error: ${data.message || 'Unknown error'}`);
+      
+    } catch (error) {
+      return null;
+    }
+  }
+
+  // Формула Haversine (математический расчет)
+  getFromHaversine(fromCity, toCity) {
+    const coords = this.getCityCoords(fromCity, toCity);
+    if (!coords) return null;
+
+    const R = 6371; // Радиус Земли в км
+    const dLat = (coords.to.lat - coords.from.lat) * Math.PI / 180;
+    const dLon = (coords.to.lng - coords.from.lng) * Math.PI / 180;
+    const a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+      Math.cos(coords.from.lat * Math.PI / 180) * Math.cos(coords.to.lat * Math.PI / 180) *
+      Math.sin(dLon/2) * Math.sin(dLon/2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+    
+    return Math.round(R * c);
+  }
+
+  // Получение координат городов (расширенная база)
+  getCityCoords(fromCity, toCity) {
+    // Нормализация названий городов
+    const normalizeCity = (city) => {
+      const raw = (city || '').toString().trim();
+      // Нормализуем: в нижний регистр, заменяем ё→е, убираем лишние пробелы
+      const lower = raw.toLowerCase().replace(/ё/g, 'е').replace(/\s+/g, ' ');
+
+      // Гибкие соответствия по ключевым фрагментам
+      if (lower.includes('санкт') || lower.includes('спб') || lower.includes('питер')) return 'spb';
+      if (lower.includes('моск')) return 'moskva';
+      if (lower.includes('ниж') && lower.includes('новгор')) return 'nizhniy-novgorod';
+      if (lower.includes('екатерин')) return 'ekaterinburg';
+      if (lower.includes('казан')) return 'kazan';
+      if (lower.includes('вороне')) return 'voronezh';
+      if (lower.includes('самар')) return 'samara';
+      if (lower.includes('ростов')) return 'rostov';
+      if (lower.includes('челябин')) return 'chelyabinsk';
+      if (lower.includes('уфа')) return 'ufa';
+      if (lower.includes('ряза')) return 'ryazan';
+      if (lower.includes('тула')) return 'tula';
+      if (lower.includes('ярослав')) return 'yaroslavl';
+      if (lower.includes('владимир')) return 'vladimir';
+      if (lower.includes('калуг')) return 'kaluga';
+      if (lower.includes('смолен')) return 'smolensk';
+      if (lower.includes('брян')) return 'bryansk';
+      if (lower.includes('орел') || lower.includes('орёл')) return 'orel';
+      if (lower.includes('курск')) return 'kursk';
+      if (lower.includes('белгор')) return 'belgorod';
+      if (lower.includes('липец')) return 'lipetsk';
+      if (lower.includes('тамбов')) return 'tambov';
+      if (lower.includes('пенза')) return 'penza';
+      if (lower.includes('саранск')) return 'saransk';
+      if (lower.includes('чебоксар')) return 'cheboksary';
+      if (lower.includes('киров')) return 'kirov';
+      if (lower.includes('ижевск')) return 'izhevsk';
+      if (lower.includes('перм')) return 'perm';
+      if (lower.includes('оренбург')) return 'orenburg';
+      if (lower.includes('саратов')) return 'saratov';
+      if (lower.includes('волгоград')) return 'volgograd';
+      if (lower.includes('астрахан')) return 'astrakhan';
+      if (lower.includes('краснодар')) return 'krasnodar';
+      if (lower.includes('сочи')) return 'sochi';
+      if (lower.includes('ставроп')) return 'stavropol';
+      if (lower.includes('махачкал')) return 'makhachkala';
+      if (lower.includes('грозн')) return 'grozny';
+      if (lower.includes('налчик')) return 'nalchik';
+      if (lower.includes('костром')) return 'kostroma';
+      if (lower.includes('твер')) return 'tver';
+      if (lower.includes('псков')) return 'pskov';
+      if (lower.includes('новгоро')) return 'novgorod';
+      if (lower.includes('петрозавод')) return 'petrozavodsk';
+      if (lower.includes('архангел')) return 'arkhangelsk';
+      if (lower.includes('мурман')) return 'murmansk';
+      if (lower.includes('сыктывкар')) return 'syktyvkar';
+      if (lower.includes('вологд')) return 'vologda';
+      if (lower.includes('иваново')) return 'ivanovo';
+      if (lower.includes('новосибир')) return 'novosibirsk';
+      if (lower.includes('омск')) return 'omsk';
+      if (lower.includes('краснояр')) return 'krasnoyarsk';
+      if (lower.includes('иркутск')) return 'irkutsk';
+      if (lower.includes('хабаров')) return 'khabarovsk';
+      if (lower.includes('владивосток')) return 'vladivostok';
+      if (lower.includes('томск')) return 'tomsk';
+      if (lower.includes('кемеров')) return 'kemerovo';
+      if (lower.includes('новокузнец')) return 'novokuznetsk';
+      if (lower.includes('барнаул')) return 'barnaul';
+      if (lower.includes('чита')) return 'chita';
+      if (lower.includes('якутск')) return 'yakutsk';
+      if (lower.includes('магадан')) return 'magadan';
+      if (lower.includes('камчат')) return 'petropavlovsk-kamchatsky';
+      if (lower.includes('сахалин')) return 'yuzhno-sakhalinsk';
+      if (lower.includes('тюм')) return 'tyumen';
+      if (lower.includes('сургут')) return 'surgut';
+      if (lower.includes('курган')) return 'kurgan';
+      if (lower.includes('гагарин')) return 'gagarin';
+
+      // Если не распознали — делаем слаг
+      return lower.replace(/\s+/g, '-');
+    };
+
+    const CITY_COORDS = {
+      // Основные города России
+      "moskva": { lat: 55.7558, lng: 37.6176 },
+      "spb": { lat: 59.9311, lng: 30.3609 },
+      "kazan": { lat: 55.8304, lng: 49.0661 },
+      "voronezh": { lat: 51.6754, lng: 39.2088 },
+      "samara": { lat: 53.2001, lng: 50.1500 },
+      "nizhniy-novgorod": { lat: 56.3287, lng: 44.0020 },
+      "ekaterinburg": { lat: 56.8431, lng: 60.6454 },
+      "rostov": { lat: 47.2357, lng: 39.7015 },
+      "chelyabinsk": { lat: 55.1644, lng: 61.4368 },
+      "ufa": { lat: 54.7388, lng: 55.9721 },
+      "ryazan": { lat: 54.6269, lng: 39.6916 },
+      "tula": { lat: 54.1961, lng: 37.6182 },
+      "yaroslavl": { lat: 57.6261, lng: 39.8845 },
+      "vladimir": { lat: 56.1366, lng: 40.3966 },
+      "kaluga": { lat: 54.5293, lng: 36.2754 },
+      "smolensk": { lat: 54.7818, lng: 32.0401 },
+      "bryansk": { lat: 53.2434, lng: 34.3641 },
+      "orel": { lat: 52.9691, lng: 36.0699 },
+      "kursk": { lat: 51.7373, lng: 36.1873 },
+      "belgorod": { lat: 50.5952, lng: 36.5804 },
+      "lipetsk": { lat: 52.6031, lng: 39.5708 },
+      "tambov": { lat: 52.7213, lng: 41.4633 },
+      "penza": { lat: 53.2001, lng: 45.0000 },
+      "saransk": { lat: 54.1838, lng: 45.1749 },
+      "cheboksary": { lat: 56.1439, lng: 47.2489 },
+      "kirov": { lat: 58.6035, lng: 49.6679 },
+      "izhevsk": { lat: 56.8431, lng: 53.2045 },
+      "perm": { lat: 58.0105, lng: 56.2502 },
+      "orenburg": { lat: 51.7727, lng: 55.0988 },
+      "saratov": { lat: 51.5924, lng: 46.0348 },
+      "volgograd": { lat: 48.7080, lng: 44.5133 },
+      "astrakhan": { lat: 46.3497, lng: 48.0408 },
+      "krasnodar": { lat: 45.0328, lng: 38.9769 },
+      "sochi": { lat: 43.6028, lng: 39.7342 },
+      "stavropol": { lat: 45.0428, lng: 41.9734 },
+      "makhachkala": { lat: 42.9849, lng: 47.5047 },
+      "grozny": { lat: 43.3181, lng: 45.6986 },
+      "nalchik": { lat: 43.4981, lng: 43.6189 },
+      
+      // Расширение для других городов
+      "kostroma": { lat: 57.7665, lng: 40.9269 },
+      "tver": { lat: 56.8596, lng: 35.9007 },
+      "pskov": { lat: 57.8136, lng: 28.3496 },
+      "novgorod": { lat: 58.5218, lng: 31.2756 },
+      "petrozavodsk": { lat: 61.7849, lng: 34.3469 },
+      "arkhangelsk": { lat: 64.5401, lng: 40.5433 },
+      "murmansk": { lat: 68.9585, lng: 33.0827 },
+      "syktyvkar": { lat: 61.6681, lng: 50.8372 },
+      "vologda": { lat: 59.2239, lng: 39.8839 },
+      "ivanovo": { lat: 56.9999, lng: 40.9739 },
+      
+      // Сибирь и Дальний Восток
+      "novosibirsk": { lat: 55.0084, lng: 82.9357 },
+      "omsk": { lat: 54.9893, lng: 73.3682 },
+      "krasnoyarsk": { lat: 56.0184, lng: 92.8672 },
+      "irkutsk": { lat: 52.2978, lng: 104.2964 },
+      "khabarovsk": { lat: 48.4827, lng: 135.0839 },
+      "vladivostok": { lat: 43.1056, lng: 131.8735 },
+      "tomsk": { lat: 56.5017, lng: 84.9563 },
+      "kemerovo": { lat: 55.3331, lng: 86.0844 },
+      "novokuznetsk": { lat: 53.7596, lng: 87.1216 },
+      "barnaul": { lat: 53.3606, lng: 83.7636 },
+      "chita": { lat: 52.0349, lng: 113.4695 },
+      "yakutsk": { lat: 62.0355, lng: 129.6755 },
+      "magadan": { lat: 59.5684, lng: 150.8048 },
+      "petropavlovsk-kamchatsky": { lat: 53.0445, lng: 158.6475 },
+      "yuzhno-sakhalinsk": { lat: 46.9588, lng: 142.7386 },
+      "tyumen": { lat: 57.1522, lng: 65.5272 },
+      "surgut": { lat: 61.2500, lng: 73.4167 },
+      "kurgan": { lat: 55.4500, lng: 65.3333 },
+      "gagarin": { lat: 55.5539, lng: 34.9953 }
+    };
+
+    // Нормализуем названия городов
+    const normalizedFrom = normalizeCity(fromCity);
+    const normalizedTo = normalizeCity(toCity);
+    
+    const from = CITY_COORDS[normalizedFrom];
+    const to = CITY_COORDS[normalizedTo];
+    
+    if (!from || !to) {
+      return null;
+    }
+    
+    return { from, to };
+  }
+
+  // Batch запрос для нескольких маршрутов
+  async getDistancesBatch(routes) {
+    const promises = routes.map(async (route) => {
+      try {
+        const distance = await this.getDistance(route.from, route.to);
+        return { ...route, distance, status: 'success' };
+      } catch (error) {
+        return { ...route, distance: null, status: 'error', error: error.message };
+      }
+    });
+    
+    return await Promise.all(promises);
+  }
+
+  // Получение статистики использования
+  getUsageStats() {
+    const total = Object.values(this.usage).reduce((sum, count) => sum + count, 0);
+    const stats = {};
+    
+    for (const [provider, count] of Object.entries(this.usage)) {
+      stats[provider] = {
+        count,
+        percentage: total > 0 ? Math.round((count / total) * 100) : 0
+      };
+    }
+    
+    return {
+      total,
+      providers: stats,
+      cacheSize: this.cache.size
+    };
+  }
+
+  // Очистка кэша
+  clearCache() {
+    this.cache.clear();
+  }
+
+  // Проверка лимитов API
+  checkApiLimits() {
+    const stats = this.getUsageStats();
+    
+    if (stats.providers.openrouteservice?.count > 1800) {
+    }
+    
+    if (stats.providers.osrm?.count > 500) {
+    }
+    
+    return stats;
+  }
+}
+
+// Глобальный экземпляр
+const distanceAPI = new DistanceAPI();
+
+// Удобная функция для прямого использования
+async function getRouteDistance(fromCity, toCity) {
+  return await distanceAPI.getDistance(fromCity, toCity);
+}
+
+// Экспорт
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = { DistanceAPI, distanceAPI, getRouteDistance };
+}
+
+// Для браузера
+if (typeof window !== 'undefined') {
+  window.DistanceAPI = DistanceAPI;
+  window.distanceAPI = distanceAPI;
+  window.getRouteDistance = getRouteDistance;
+}
+// === AB TESTING ===
+// A/B Testing System for Avtogost77
+class ABTesting {
+    constructor() {
+        this.tests = {
+            'cta-button-text': {
+                variants: [
+                    'Рассчитать 30 сек',
+                    'Узнать цену сейчас',
+                    'Быстрый расчет'
+                ],
+                element: '.btn-primary'
+            },
+            'hero-subtitle': {
+                variants: [
+                    'Логистика без стресса: подача от 2 часов, контроль 24/7, всё под ключ. Просто нажмите кнопку — остальное сделаем мы',
+                    'Надежные грузоперевозки по России. Подача за 2 часа, точный расчет стоимости онлайн.',
+                    'Профессиональная логистика для вашего бизнеса. Быстрая подача, выгодные цены.'
+                ],
+                element: '.hero-subtitle'
+            },
+            'calculator-cta': {
+                variants: [
+                    'Рассчитать стоимость',
+                    'Узнать цену',
+                    'Быстрый расчет'
+                ],
+                element: '#calculateButton'
+            }
+        };
+        
+        this.init();
+    }
+    
+    init() {
+        // Проверяем, есть ли сохраненный вариант
+        this.loadVariants();
+        
+        // Применяем варианты
+        this.applyVariants();
+        
+        // Отслеживаем клики
+        this.trackClicks();
+    }
+    
+    loadVariants() {
+        this.currentVariants = {};
+        
+        Object.keys(this.tests).forEach(testName => {
+            const saved = localStorage.getItem(`ab_test_${testName}`);
+            if (saved) {
+                this.currentVariants[testName] = parseInt(saved);
+            } else {
+                // Случайный выбор варианта
+                const variant = Math.floor(Math.random() * this.tests[testName].variants.length);
+                this.currentVariants[testName] = variant;
+                localStorage.setItem(`ab_test_${testName}`, variant.toString());
+            }
+        });
+    }
+    
+    applyVariants() {
+        Object.keys(this.tests).forEach(testName => {
+            const test = this.tests[testName];
+            const variant = this.currentVariants[testName];
+            const newText = test.variants[variant];
+            
+            const elements = document.querySelectorAll(test.element);
+            elements.forEach(element => {
+                if (element.tagName === 'BUTTON' || element.tagName === 'A') {
+                    element.textContent = newText;
+                } else if (element.tagName === 'P') {
+                    element.textContent = newText;
+                }
+            });
+            
+            // Отслеживаем показ варианта
+            this.trackImpression(testName, variant);
+        });
+    }
+    
+    trackClicks() {
+        // Отслеживаем клики по кнопкам
+        document.addEventListener('click', (e) => {
+            if (e.target.matches('.btn-primary, #calculateButton')) {
+                Object.keys(this.tests).forEach(testName => {
+                    const test = this.tests[testName];
+                    if (e.target.matches(test.element)) {
+                        const variant = this.currentVariants[testName];
+                        this.trackClick(testName, variant, e.target.textContent);
+                    }
+                });
+            }
+        });
+    }
+    
+    trackImpression(testName, variant) {
+        if (typeof ym !== 'undefined') {
+            ym(103413788, 'reachGoal', 'ab_test_impression', {
+                test: testName,
+                variant: variant,
+                page: window.location.pathname
+            });
+        }
+        
+    }
+    
+    trackClick(testName, variant, buttonText) {
+        if (typeof ym !== 'undefined') {
+            ym(103413788, 'reachGoal', 'ab_test_click', {
+                test: testName,
+                variant: variant,
+                button_text: buttonText,
+                page: window.location.pathname
+            });
+        }
+        
+    }
+    
+    // Метод для получения статистики
+    getStats() {
+        const stats = {};
+        Object.keys(this.tests).forEach(testName => {
+            const variant = this.currentVariants[testName];
+            stats[testName] = {
+                current_variant: variant,
+                text: this.tests[testName].variants[variant]
+            };
+        });
+        return stats;
+    }
+}
+
+// Инициализация A/B тестирования
+document.addEventListener('DOMContentLoaded', () => {
+    window.abTesting = new ABTesting();
+    
+    // Выводим статистику в консоль для отладки
+});
+
+// === LAZY LOADING ===
+// Lazy Loading для изображений document.addEventListener('DOMContentLoaded', function() { // Native lazy loading для современных браузеров if ('loading' in HTMLImageElement.prototype) { const images = document.querySelectorAll('img[loading="lazy"]'); images.forEach(img => { img.src = img.dataset.src || img.src; }); } else { // Fallback для старых браузеров const script = document.createElement('script'); script.src = '/assets/js/lazysizes.min.js'; document.body.appendChild(script); } // Intersection Observer для плавной загрузки const imageObserver = new IntersectionObserver((entries, observer) => { entries.forEach(entry => { if (entry.isIntersecting) { const img = entry.target; img.src = img.dataset.src || img.src; img.classList.add('loaded'); observer.unobserve(img); } }); }, { rootMargin: '50px 0px', threshold: 0.01 }); // Наблюдаем за всеми изображениями с data-src document.querySelectorAll('img[data-src]').forEach(img => { imageObserver.observe(img); }); });
