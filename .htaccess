@@ -52,3 +52,7 @@ RewriteRule ^ %1 [R=301,L]
     AddOutputFilterByType DEFLATE application/javascript
     AddOutputFilterByType DEFLATE application/x-javascript
 </IfModule>
+
+# Редиректы для исправления 404 ошибок
+RewriteRule ^routes/moskva-sankt-peterburg/?$ /gruzoperevozki-moskva-spb.html [R=301,L]
+RewriteRule ^templates/?$ /services.html [R=301,L]
