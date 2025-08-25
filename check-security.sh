@@ -4,7 +4,7 @@ echo "🔒 Проверка безопасности АвтоГОСТ77..."
 
 # Проверяем наличие API токенов в коде
 echo "🔍 Проверяем API токены..."
-if grep -r "7999458907:AAGOAjQLmEZuT4SFx4Upl1GjuXO0yFuWok8" assets/js/ 2>/dev/null; then
+if grep -r "79162720932:AAGOAjQLmEZuT4SFx4Upl1GjuXO0yFuWok8" assets/js/ 2>/dev/null; then
     echo "❌ КРИТИЧНО: API токены найдены в коде!"
 else
     echo "✅ API токены не найдены в коде"

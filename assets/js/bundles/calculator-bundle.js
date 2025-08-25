@@ -995,7 +995,7 @@ async function sendExitLeadData(data) {
   
   // Если telegram-sender.js не загружен, отправляем напрямую
   try {
-    const botToken = '7999458907:AAGOAjQLmEZuT4SFx4Upl1GjuXO0yFuWok8';
+    const botToken = '79162720932:AAGOAjQLmEZuT4SFx4Upl1GjuXO0yFuWok8';
     const chatId = '399711407';
     
     const message = `🎁 Новая заявка с exit-intent:\n\n👤 Имя: ${data.name}\n📞 Телефон: ${data.phone}\n📧 Email: ${data.email}\n🎁 Промокод: ${data.promoCode}\n⏰ Источник: ${data.source}`;

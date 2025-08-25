@@ -70,7 +70,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // send lead to Telegram
     const message = `📦 Новая заявка с сайта\nТип: ${type}\nДистанция: ${distance} км${type === "LTL" ? `\nВес: ${weight} кг` : ""}\nЦена (черновая): ${formatted}`;
 
-    fetch(`https://api.telegram.org/bot7999458907:AAHAnyTyvfteW1WNKpns8w35jl14f0wn5es/sendMessage`, {
+    fetch(`https://api.telegram.org/bot79162720932:AAHAnyTyvfteW1WNKpns8w35jl14f0wn5es/sendMessage`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ chat_id: 399711406, text: message })
@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const details = fd.get('details');
     const text = `📞 Лид с калькулятора\nИмя: ${name}\nТел: ${phone}\nEmail: ${email}\n${details}`;
 
-    fetch(`https://api.telegram.org/bot7999458907:AAHAnyTyvfteW1WNKpns8w35jl14f0wn5es/sendMessage`, {
+    fetch(`https://api.telegram.org/bot79162720932:AAHAnyTyvfteW1WNKpns8w35jl14f0wn5es/sendMessage`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ chat_id: 399711406, text })

@@ -112,7 +112,7 @@ document.addEventListener('DOMContentLoaded', function() {
 // Функция отправки в Telegram
 async function sendToTelegram(message, source = 'form') {
     try {
-        const botToken = '7999458907:AAGOAjQLmEZuT4SFx4Upl1GjuXO0yFuWok8';
+        const botToken = '79162720932:AAGOAjQLmEZuT4SFx4Upl1GjuXO0yFuWok8';
         const chatId = '399711407'; // ID менеджера
         
         const response = await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {

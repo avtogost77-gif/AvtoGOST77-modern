@@ -240,7 +240,7 @@ class StickyCTA {
 
   openWhatsApp() {
     const message = encodeURIComponent('Здравствуйте! Хочу рассчитать стоимость доставки.');
-    const url = `https://wa.me/79031234567?text=${message}`;
+    const url = `https://wa.me/79162720932?text=${message}`;
     window.open(url, '_blank');
     
     // Трекинг клика
@@ -250,7 +250,7 @@ class StickyCTA {
   }
 
   callPhone() {
-    window.location.href = 'tel:+79031234567';
+    window.location.href = 'tel:+79162720932';
     
     // Трекинг клика
     if (window.ym) {
