@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <link rel="canonical" href="https://avtogost77.ru/blog/">
+    <link rel="canonical" href="https://avtogost77.ru/">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Блог АвтоГОСТ - Экспертные статьи о грузоперевозках по России</title>
     <meta name="description" content="Экспертный блог о грузоперевозках: советы, тарифы, направления, типы транспорта. Практические рекомендации от профессионалов логистики.">
@@ -42,6 +42,14 @@
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Главная",
+                "item": "https://avtogost77.ru/"
+            },
             {
                 "@type": "ListItem",
                 "position": 2,
@@ -54,6 +62,18 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
+  "@type": "Organization",
+    "priceRange": "₽₽",
+  "name": "АвтоГОСТ",
+  "url": "https://avtogost77.ru",
+  "logo": "https://avtogost77.ru/assets/img/logo.svg",
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+7 916 272-09-32",
+    "contactType": "customer service",
+    "areaServed": "RU",
+    "availableLanguage": "Russian"
+  },
   "sameAs": [
     "https://t.me/avtogost77",
     "https://wa.me/79162720932"
@@ -63,6 +83,14 @@
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Главная",
+                "item": "https://avtogost77.ru/"
+            },
             {
                 "@type": "ListItem",
                 "position": 2,
@@ -75,6 +103,20 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
+  "@type": "Organization",
+    "priceRange": "₽₽",
+  "name": "АвтоГОСТ - Грузоперевозки",
+  "image": "https://avtogost77.ru/assets/img/logo.svg",
+  "@id": "https://avtogost77.ru",
+  "url": "https://avtogost77.ru",
+  "telephone": "+7 916 272-09-32",
+  "priceRange": "₽₽",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Москва",
+    "addressRegion": "Московская область",
+    "addressCountry": "RU"
+  },
   "openingHoursSpecification": {
     "@type": "OpeningHoursSpecification",
     "dayOfWeek": [
@@ -94,6 +136,14 @@
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Главная",
+                "item": "https://avtogost77.ru/"
+            },
             {
                 "@type": "ListItem",
                 "position": 2,
@@ -158,7 +208,7 @@
                     <div class="blog-card-content">
                         <div class="blog-meta">
                             <span class="blog-category">Направления</span>
-                            <span class="blog-date">25 августа 2025</span>
+                            <span class="blog-date">1 января 2025</span>
                         </div>
                         <h2><a href="../gruzoperevozki-spb.html">Грузоперевозки Москва - Санкт-Петербург: тарифы, сроки, особенности</a></h2>
                         <p>Полный гид по перевозкам между двумя столицами. Сравнение цен, оптимальные типы транспорта, сроки доставки + калькулятор стоимости.</p>
@@ -173,7 +223,7 @@
                     <div class="blog-card-content">
                         <div class="blog-meta">
                             <span class="blog-category">Транспорт</span>
-                            <span class="blog-date">25 августа 2025</span>
+                            <span class="blog-date">1 января 2025</span>
                         </div>
                         <h2><a href="../blog-7-how-to-order-gazelle.html">Грузоперевозки на Газели: когда выгодно, тарифы, особенности</a></h2>
                         <p>Все о перевозках на газели: оптимальный вес и объем груза, сравнение с другими типами транспорта, реальные цены по России.</p>
@@ -188,7 +238,7 @@
                     <div class="blog-card-content">
                         <div class="blog-meta">
                             <span class="blog-category">Услуги</span>
-                            <span class="blog-date">25 августа 2025</span>
+                            <span class="blog-date">1 января 2025</span>
                         </div>
                         <h2><a href="../sbornye-gruzy.html">Сборные грузы по России: ориентир экономии 10-25% при гибких датах, как это работает</a></h2>
                         <p>Подробно о сборных грузах: принципы работы, реальная экономия, ограничения, сроки доставки. Калькулятор сборных грузов.</p>
@@ -203,7 +253,7 @@
                     <div class="blog-card-content">
                         <div class="blog-meta">
                             <span class="blog-category">Транспорт</span>
-                            <span class="blog-date">25 августа 2025</span>
+                            <span class="blog-date">1 января 2025</span>
                         </div>
                         <h2><a href="../transportnaya-kompaniya.html">Перевозки фурами 20 тонн: когда нужны, тарифы, расчет стоимости</a></h2>
                         <p>Крупногабаритные грузы на фурах: максимальный вес и объем, особенности маршрутов, сравнение с меньшими машинами.</p>
@@ -218,7 +268,7 @@
                     <div class="blog-card-content">
                         <div class="blog-meta">
                             <span class="blog-category">Тарифы</span>
-                            <span class="blog-date">25 августа 2025</span>
+                            <span class="blog-date">1 января 2025</span>
                         </div>
                         <h2><a href="../blog-5-logistics-optimization.html">Тарифы на грузоперевозки 2025: актуальные цены по России</a></h2>
                         <p>Подробный обзор тарифов по типам транспорта и направлениям. Факторы влияющие на стоимость, сезонность, прогнозы.</p>
@@ -233,7 +283,7 @@
                     <div class="blog-card-content">
                         <div class="blog-meta">
                             <span class="blog-category">Направления</span>
-                            <span class="blog-date">25 августа 2025</span>
+                            <span class="blog-date">1 января 2025</span>
                         </div>
                         <h2><a href="../gruzoperevozki-iz-moskvy.html">Междугородние грузоперевозки: особенности, документы, тарифы</a></h2>
                         <p>Все о междугородних перевозках: отличия от местных, необходимые документы, система "плеч", оптимизация маршрутов.</p>
@@ -342,6 +392,14 @@
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Главная",
+                "item": "https://avtogost77.ru/"
+            },
             {
                 "@type": "ListItem",
                 "position": 2,
@@ -355,6 +413,14 @@
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Главная",
+                "item": "https://avtogost77.ru/"
+            },
             {
                 "@type": "ListItem",
                 "position": 2,
@@ -388,6 +454,16 @@
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "АвтоГОСТ",
+        "url": "https://avtogost77.ru",
+        "logo": "https://avtogost77.ru/assets/img/logo.png",
+        "description": "Инфраструктура вашего бизнеса. Перевозки по России: отдельные и сборные отправления.",
+        "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "RU",
+            "addressLocality": "Москва"
+        },
         "contactPoint": {
             "@type": "ContactPoint",
             "telephone": "+7-495-123-45-67",
