@@ -1,47 +1,30 @@
-# Авто Гост — статический сайт
+# Стратегия развития avtogost77.ru
 
-This repository contains the static front-end for **Авто Гост** — транспортно-логистического партнёра по России.
+## 📋 Содержание проекта
 
-## Structure
+1. **roadmap_avtogost77.md** - Полный роадмап развития на 6 месяцев
+2. **content_plan_30days.md** - Детальный контент-план на 30 дней
+3. **interactive_tools_specs.md** - Технические спецификации интерактивных инструментов
+4. **implementation_priorities.md** - План быстрых побед и приоритеты внедрения
 
-```
-├── index.html                # Homepage
-├── services.html             # Service overview with anchors
-├── about.html                # Company information
-├── news.html                 # Blog / News hub
-├── contact.html              # Contact form
-├── faq.html                  # Frequently asked questions
-├── privacy.html              # Privacy policy
-├── assets/
-│   ├── css/styles.css        # Base styles
-│   └── js/main.js            # JS for nav + form validation
-├── assets/img/               # WebP/AVIF images directory
-├── robots.txt                # Robots rules for Yandex & co.
-└── sitemap.xml               # Sitemap linked from robots.txt
-```
+## 🎯 Ключевые цели
 
-## Local preview
-Simply use any static server. Example with Python 3:
+- Увеличение органического трафика на 150%
+- Повышение конверсии в лиды до 5-7%
+- Позиционирование как эксперта в логистике
+- Внедрение интерактивных инструментов для лидогенерации
 
-```bash
-python -m http.server 8000
-```
+## 🚀 Quick Wins
 
-Then open `http://localhost:8000` in your browser.
+1. Оптимизация страницы про спот-заявки
+2. Установка онлайн-чата
+3. Создание лид-магнита
+4. Запуск email-автоматизации
 
-## Deployment
-Upload all files to your hosting’s `public_html` (or root) directory.
+## 💰 Бюджет
 
-## Git commands
-Initialise a local repo, commit and push to GitHub:
+Quick Wins: 70-95к руб с окупаемостью 1-2 месяца
 
-```bash
-git init
-git add .
-git commit -m "Initial commit of static site"
-git branch -M main
-git remote add origin https://github.com/YOUR_USERNAME/123.git
-git push -u origin main
-```
+---
 
-Replace `YOUR_USERNAME` with your GitHub login. A personal access token may be required for authentication.
+Создано для АВТОГОСТ77 - организатора грузоперевозок в РФ
