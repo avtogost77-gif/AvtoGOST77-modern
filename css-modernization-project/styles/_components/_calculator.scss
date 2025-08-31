@@ -1,176 +1,261 @@
-// ============================================
-// CALCULATOR КОМПОНЕНТ - AvtoGOST77 (МИГРИРОВАНО)
-// ============================================
-// Дата создания: 31 августа 2025
-// Автор: AI Assistant
-// Описание: Мигрировано из master-styles.css
-
-// ============================================
-// УМНЫЙ КАЛЬКУЛЯТОР (МИГРИРОВАНО)
-// ============================================
-
-.smart-calculator {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: var(--spacing-2xl);
-}
-
-.calculator-header {
-  text-align: center;
-  margin-bottom: var(--spacing-2xl);
-}
-
-.calculator-header h3 {
-  font-size: 2rem;
-  margin-bottom: var(--spacing-sm);
-}
+// ========================================================
+// 🧮 CALCULATOR - КАЛЬКУЛЯТОР СТОИМОСТИ
+// ========================================================
 
 .calculator-form {
   display: flex;
   flex-direction: column;
   gap: var(--spacing-xl);
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: var(--spacing-2xl);
+  
+  @media (max-width: 768px) {
+    padding: var(--spacing-xl) var(--spacing-md);
+  }
 }
 
-.form-section {
-  background: white;
-  padding: var(--spacing-lg);
-  border-radius: var(--border-radius-lg);
-  box-shadow: var(--shadow-card);
-  border: 1px solid var(--neutral-200);
-}
-
-.form-label {
-  display: block;
-  font-size: 1.125rem;
-  font-weight: 600;
-  color: var(--neutral-800);
-  margin-bottom: var(--spacing-md);
-}
-
-// ============================================
-// ПОЛЯ ВВОДА МАРШРУТА (МИГРИРОВАНО)
-// ============================================
-
-.route-inputs {
-  margin-bottom: var(--spacing-md);
-}
-
-.input-group {
+// Стрелочки для полей выбора городов
+.input-with-icon {
   position: relative;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 6px solid var(--neutral-400);
+    pointer-events: none;
+    transition: all var(--transition-normal);
+  }
+  
+  &:hover::after {
+    border-top-color: var(--primary-600);
+  }
+  
+  &:focus-within::after {
+    border-top-color: var(--primary-600);
+    transform: translateY(-50%) rotate(180deg);
+  }
 }
 
-.input-group input {
+// Улучшенные стили для полей ввода
+.form-control {
   width: 100%;
   padding: var(--spacing-md);
+  padding-right: 45px;
   border: 2px solid var(--neutral-200);
   border-radius: var(--border-radius);
   font-size: 1rem;
   transition: all var(--transition-normal);
-  background: white;
+  background-color: #fff;
+  cursor: pointer;
+  
+  &:hover {
+    border-color: var(--neutral-300);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  &:focus {
+    outline: none;
+    border-color: var(--primary-500);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+  }
+  
+  &::placeholder {
+    color: var(--neutral-400);
+  }
 }
 
-.input-group input:focus {
-  outline: none;
-  border-color: var(--primary-400);
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
-}
-
-// ============================================
-// АВТОДОПОЛНЕНИЕ ГОРОДОВ (МИГРИРОВАНО)
-// ============================================
-
-.input-suggestions {
+// Подсказки городов
+.address-suggestions {
   position: absolute;
   top: 100%;
   left: 0;
   right: 0;
-  background: white;
-  border: 1px solid var(--neutral-200);
-  border-radius: var(--border-radius);
-  box-shadow: var(--shadow-card);
-  z-index: 100;
-  display: none;
-  max-height: 200px;
-  overflow-y: auto;
-}
-
-.suggestion {
-  padding: var(--spacing-sm) var(--spacing-md);
-  cursor: pointer;
-  transition: background-color var(--transition-fast);
-}
-
-.suggestion:hover {
-  background: var(--primary-50);
-  color: var(--primary-600);
-}
-
-// ============================================
-// ОТОБРАЖЕНИЕ РАССТОЯНИЯ (МИГРИРОВАНО)
-// ============================================
-
-.distance-display {
-  text-align: center;
-  padding: var(--spacing-md);
-  background: var(--primary-50);
-  border-radius: var(--border-radius);
-  color: var(--primary-700);
-  font-weight: 500;
-}
-
-// ============================================
-// ТИПЫ ГРУЗОВ (МИГРИРОВАНО)
-// ============================================
-
-.cargo-types {
-  gap: var(--spacing-md);
-}
-
-.cargo-type-card {
-  position: relative;
-  cursor: pointer;
-  display: block;
-}
-
-.cargo-type-card input[type="radio"] {
-  position: absolute;
-  opacity: 0;
-  pointer-events: none;
-}
-
-.cargo-type-card .card-content {
-  padding: var(--spacing-lg);
+  background: #fff;
   border: 2px solid var(--neutral-200);
   border-radius: var(--border-radius);
-  background: white;
-  transition: all var(--transition-normal);
-  text-align: center;
-  min-height: 120px;
+  box-shadow: var(--shadow-lg);
+  z-index: 1000;
+  max-height: 200px;
+  overflow-y: auto;
+  display: none;
+  margin-top: 5px;
+  
+  &.show {
+    display: block;
+  }
+}
+
+.address-suggestion-item {
+  padding: var(--spacing-sm) var(--spacing-md);
+  cursor: pointer;
+  border-bottom: 1px solid var(--neutral-100);
+  transition: all var(--transition-fast);
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-sm);
+  
+  &:last-child {
+    border-bottom: none;
+  }
+  
+  &:hover {
+    background-color: var(--primary-50);
+    color: var(--primary-600);
+  }
+  
+  .city-name {
+    font-weight: 500;
+    color: var(--neutral-800);
+  }
+  
+  .region-name {
+    font-size: 0.875rem;
+    color: var(--neutral-500);
+  }
+  
+  &:hover .city-name {
+    color: var(--primary-600);
+  }
+  
+  &:hover .region-name {
+    color: var(--primary-500);
+  }
+}
+
+// Анимация появления подсказок
+.address-suggestions {
+  animation: slideDown 0.2s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Адаптивность
+@media (max-width: 768px) {
+  .input-with-icon::after {
+    right: 12px;
+    border-left-width: 5px;
+    border-right-width: 5px;
+    border-top-width: 5px;
+  }
+  
+  .form-control {
+    padding-right: 40px;
+    font-size: 16px; // Предотвращает зум на iOS
+  }
+  
+  .address-suggestions {
+    max-height: 150px;
+  }
+  
+  .address-suggestion-item {
+    padding: var(--spacing-sm) var(--spacing-md);
+  }
+}
+
+// Дополнительные стили калькулятора
+.route-inputs {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: var(--spacing-lg);
+  align-items: end;
+  margin-bottom: var(--spacing-xl);
+  
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+  }
+}
+
+.route-arrow {
+  display: flex;
+  align-items: center;
   justify-content: center;
+  font-size: 1.5rem;
+  color: var(--primary-500);
+  font-weight: bold;
+  
+  @media (max-width: 768px) {
+    transform: rotate(90deg);
+    margin: 0 auto;
+  }
 }
 
-.cargo-type-card input:checked + .card-content {
-  border-color: var(--primary-400);
-  background: var(--primary-50);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-card);
+.cargo-inputs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-xl);
+  
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
 }
 
-.type-name {
-  font-weight: 600;
-  color: var(--neutral-800);
-  margin-bottom: var(--spacing-xs);
+.consolidated-checkbox {
+  margin-bottom: var(--spacing-xl);
 }
 
-// ============================================
-// КНОПКА РАСЧЕТА (МИГРИРОВАНО)
-// ============================================
+.checkbox-wrapper {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-md);
+  background: var(--neutral-50);
+  border-radius: var(--border-radius);
+  border: 1px solid var(--neutral-200);
+  
+  input[type="checkbox"] {
+    margin-top: 2px;
+  }
+  
+  .checkbox-text {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    
+    small {
+      display: block;
+      margin-top: var(--spacing-xs);
+      color: var(--neutral-500);
+      font-style: italic;
+    }
+  }
+}
 
-.calculate-btn {
+.form-actions {
+  display: flex;
+  gap: var(--spacing-md);
+  justify-content: center;
+  flex-wrap: wrap;
+  
+  @media (max-width: 768px) {
+    flex-direction: column;
+    
+    .btn {
+      width: 100%;
+    }
+  }
+}
+
+.btn-calculate {
   background: var(--primary-600);
-  color: white;
+  color: #fff;
   border: none;
   padding: var(--spacing-md) var(--spacing-xl);
   border-radius: var(--border-radius);
@@ -178,6 +263,9 @@
   font-weight: 600;
   cursor: pointer;
   transition: all var(--transition-normal);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
   
   &:hover {
     background: var(--primary-700);
@@ -195,192 +283,9 @@
     transform: none;
     box-shadow: none;
   }
-}
-
-// ============================================
-// РЕЗУЛЬТАТЫ РАСЧЕТА (МИГРИРОВАНО)
-// ============================================
-
-.calculation-result {
-  background: var(--success-50);
-  border: 2px solid var(--success-200);
-  border-radius: var(--border-radius-lg);
-  padding: var(--spacing-xl);
-  text-align: center;
-  margin-top: var(--spacing-xl);
   
-  .result-title {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--success-800);
-    margin-bottom: var(--spacing-md);
-  }
-  
-  .result-price {
-    font-size: 2.5rem;
-    font-weight: 900;
-    color: var(--success-700);
-    margin-bottom: var(--spacing-sm);
-  }
-  
-  .result-details {
-    color: var(--success-600);
-    font-size: 1rem;
-    line-height: 1.6;
+  svg {
+    width: 16px;
+    height: 16px;
   }
 }
-
-// ============================================
-// АДАПТИВНОСТЬ (МИГРИРОВАНО)
-// ============================================
-
-@media (max-width: 768px) {
-  .smart-calculator {
-    padding: var(--spacing-xl) var(--spacing-md);
-  }
-  
-  .calculator-header h3 {
-    font-size: 1.75rem;
-  }
-  
-  .form-section {
-    padding: var(--spacing-md);
-  }
-  
-  .cargo-types {
-    grid-template-columns: 1fr;
-  }
-  
-  .calculate-btn {
-    width: 100%;
-    padding: var(--spacing-lg);
-  }
-}
-
-@media (max-width: 480px) {
-  .smart-calculator {
-    padding: var(--spacing-lg) var(--spacing-sm);
-  }
-  
-  .calculator-header h3 {
-    font-size: 1.5rem;
-  }
-  
-  .form-section {
-    padding: var(--spacing-sm);
-  }
-  
-  .input-group input {
-    padding: var(--spacing-sm);
-    font-size: 0.9rem;
-  }
-  
-  .calculate-btn {
-    font-size: 1rem;
-    padding: var(--spacing-md);
-  }
-}
-
-// ============================================
-// АНИМАЦИИ (МИГРИРОВАНО)
-// ============================================
-
-.cargo-type-card .card-content {
-  animation: fadeInUp 0.3s ease-out;
-}
-
-.calculation-result {
-  animation: fadeInScale 0.5s ease-out;
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes fadeInScale {
-  from {
-    opacity: 0;
-    transform: scale(0.9);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-// ============================================
-// FOCUS STATES (МИГРИРОВАНО)
-// ============================================
-
-.input-group input:focus-visible {
-  outline: 2px solid var(--primary-500);
-  outline-offset: 2px;
-}
-
-.calculate-btn:focus-visible {
-  outline: 2px solid var(--primary-500);
-  outline-offset: 2px;
-}
-
-.cargo-type-card:focus-visible .card-content {
-  outline: 2px solid var(--primary-500);
-  outline-offset: 2px;
-}
-
-// ============================================
-// REDUCED MOTION (МИГРИРОВАНО)
-// ============================================
-
-@media (prefers-reduced-motion: reduce) {
-  .cargo-type-card .card-content,
-  .calculation-result {
-    animation: none;
-  }
-  
-  .calculate-btn:hover {
-    transform: none;
-  }
-}
-
-// ============================================
-// PRINT СТИЛИ (МИГРИРОВАНО)
-// ============================================
-
-@media print {
-  .smart-calculator {
-    background: white !important;
-    box-shadow: none !important;
-  }
-  
-  .calculate-btn {
-    display: none;
-  }
-  
-  .input-suggestions {
-    display: none;
-  }
-}
-
-// ============================================
-// КОММЕНТАРИИ ПО РАЗРАБОТКЕ
-// ============================================
-/*
-СТАТУС РАЗРАБОТКИ:
-
-✅ ГОТОВО:
-- Calculator стили мигрированы из master-styles.css
-- Умный калькулятор с автодополнением
-- Типы грузов с интерактивными карточками
-- Адаптивность и анимации
-- Focus states и доступность
-
-🎯 ЦЕЛЬ ЭТАПА:
-Миграция существующих calculator стилей в SCSS структуру
-*/

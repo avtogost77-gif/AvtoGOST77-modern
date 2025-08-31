@@ -5,10 +5,9 @@ AVTOGOST77 CRM MVP - Pydantic схемы для заявок
 Описание: Схемы валидации данных для API заявок
 """
 
-from pydantic import BaseModel, Field, validator
-from typing import Optional
+from pydantic import BaseModel, Field
+from typing import Optional, List
 from datetime import date, time, datetime
-from decimal import Decimal
 
 class LeadBase(BaseModel):
     """Базовая схема заявки"""
@@ -21,8 +20,8 @@ class LeadBase(BaseModel):
     route_to: str = Field(..., min_length=2, max_length=100, description="Город назначения")
     
     cargo_name: Optional[str] = Field(None, max_length=200, description="Наименование груза")
-    cargo_weight: Optional[Decimal] = Field(None, ge=0, description="Вес груза в кг")
-    cargo_volume: Optional[Decimal] = Field(None, ge=0, description="Объем груза")
+    cargo_weight: Optional[float] = Field(None, ge=0, description="Вес груза в кг")
+    cargo_volume: Optional[float] = Field(None, ge=0, description="Объем груза")
     cargo_packaging: Optional[str] = Field(None, max_length=100, description="Упаковка груза")
     
     loading_date: Optional[date] = Field(None, description="Дата погрузки")
@@ -35,34 +34,10 @@ class LeadBase(BaseModel):
     loading_address: Optional[str] = Field(None, description="Адрес погрузки")
     unloading_address: Optional[str] = Field(None, description="Адрес выгрузки")
     
-    total_amount: Optional[Decimal] = Field(None, ge=0, description="Общая стоимость")
-    partner_cost: Optional[Decimal] = Field(None, ge=0, description="Стоимость партнера")
+    total_amount: Optional[float] = Field(None, ge=0, description="Общая стоимость")
+    partner_cost: Optional[float] = Field(None, ge=0, description="Стоимость партнера")
     
     notes: Optional[str] = Field(None, description="Дополнительные заметки")
-    
-    @validator('client_phone')
-    def validate_phone(cls, v):
-        """Валидация телефона"""
-        # Убираем все символы кроме цифр
-        digits = ''.join(filter(str.isdigit, v))
-        if len(digits) < 10:
-            raise ValueError('Телефон должен содержать минимум 10 цифр')
-        return v
-    
-    @validator('route_to')
-    def validate_route(cls, v, values):
-        """Валидация маршрута"""
-        if 'route_from' in values and v == values['route_from']:
-            raise ValueError('Город отправления и назначения не могут быть одинаковыми')
-        return v
-    
-    @validator('loading_time_to')
-    def validate_loading_time(cls, v, values):
-        """Валидация времени погрузки"""
-        if v and 'loading_time_from' in values and values['loading_time_from']:
-            if v <= values['loading_time_from']:
-                raise ValueError('Время окончания погрузки должно быть позже времени начала')
-        return v
 
 class LeadCreate(LeadBase):
     """Схема для создания заявки"""
@@ -81,8 +56,8 @@ class LeadUpdate(BaseModel):
     route_to: Optional[str] = Field(None, min_length=2, max_length=100)
     
     cargo_name: Optional[str] = Field(None, max_length=200)
-    cargo_weight: Optional[Decimal] = Field(None, ge=0)
-    cargo_volume: Optional[Decimal] = Field(None, ge=0)
+    cargo_weight: Optional[float] = Field(None, ge=0)
+    cargo_volume: Optional[float] = Field(None, ge=0)
     cargo_packaging: Optional[str] = Field(None, max_length=100)
     
     loading_date: Optional[date] = None
@@ -95,8 +70,8 @@ class LeadUpdate(BaseModel):
     loading_address: Optional[str] = None
     unloading_address: Optional[str] = None
     
-    total_amount: Optional[Decimal] = Field(None, ge=0)
-    partner_cost: Optional[Decimal] = Field(None, ge=0)
+    total_amount: Optional[float] = Field(None, ge=0)
+    partner_cost: Optional[float] = Field(None, ge=0)
     
     status: Optional[str] = None
     notes: Optional[str] = None
@@ -112,17 +87,11 @@ class LeadResponse(LeadBase):
     
     class Config:
         from_attributes = True
-        json_encoders = {
-            datetime: lambda v: v.isoformat(),
-            date: lambda v: v.isoformat(),
-            time: lambda v: v.isoformat(),
-            Decimal: lambda v: float(v)
-        }
 
 class LeadList(BaseModel):
     """Схема для списка заявок с пагинацией"""
     
-    leads: list[LeadResponse]
+    leads: List[LeadResponse]
     total: int
     skip: int
     limit: int

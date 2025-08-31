@@ -5,10 +5,9 @@ AVTOGOST77 CRM MVP - Pydantic схемы для партнеров
 Описание: Схемы валидации данных для API партнеров
 """
 
-from pydantic import BaseModel, Field, validator
+from pydantic import BaseModel, Field
 from typing import Optional, List
 from datetime import datetime
-from decimal import Decimal
 
 class PartnerBase(BaseModel):
     """Базовая схема партнера"""
@@ -25,31 +24,6 @@ class PartnerBase(BaseModel):
     email: Optional[str] = Field(None, max_length=100, description="Email")
     
     notes: Optional[str] = Field(None, description="Дополнительные заметки")
-    
-    @validator('inn')
-    def validate_inn(cls, v):
-        """Валидация ИНН"""
-        if v and not v.isdigit():
-            raise ValueError('ИНН должен содержать только цифры')
-        if v and len(v) not in [10, 12]:
-            raise ValueError('ИНН должен содержать 10 или 12 цифр')
-        return v
-    
-    @validator('kpp')
-    def validate_kpp(cls, v):
-        """Валидация КПП"""
-        if v and not v.isdigit():
-            raise ValueError('КПП должен содержать только цифры')
-        if v and len(v) != 9:
-            raise ValueError('КПП должен содержать 9 цифр')
-        return v
-    
-    @validator('email')
-    def validate_email(cls, v):
-        """Валидация email"""
-        if v and '@' not in v:
-            raise ValueError('Неверный формат email')
-        return v
 
 class PartnerCreate(PartnerBase):
     """Схема для создания партнера"""
@@ -77,17 +51,13 @@ class PartnerResponse(PartnerBase):
     """Схема для ответа с партнером"""
     
     id: int
-    rating: Optional[Decimal]
+    rating: Optional[float]
     status: str
     created_at: datetime
     updated_at: datetime
     
     class Config:
         from_attributes = True
-        json_encoders = {
-            datetime: lambda v: v.isoformat(),
-            Decimal: lambda v: float(v) if v else 0
-        }
 
 class PartnerLocationBase(BaseModel):
     """Базовая схема локации партнера"""
@@ -109,9 +79,6 @@ class PartnerLocationResponse(PartnerLocationBase):
     
     class Config:
         from_attributes = True
-        json_encoders = {
-            datetime: lambda v: v.isoformat()
-        }
 
 class PartnerWithLocations(PartnerResponse):
     """Схема партнера с локациями"""

@@ -1,0 +1,207 @@
+// ========================================================
+// 🎯 CONVERSION PATHS - КОНВЕРСИОННЫЕ ПУТИ
+// ========================================================
+
+.conversion-paths {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--spacing-xl);
+  margin: var(--spacing-2xl) 0;
+  
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+  }
+}
+
+.conversion-card {
+  background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+  border: 2px solid var(--neutral-200);
+  border-radius: 16px;
+  padding: var(--spacing-2xl) var(--spacing-xl);
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  position: relative;
+  overflow: hidden;
+  transition: all var(--transition-normal);
+  
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--primary-300);
+  }
+  
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(135deg, var(--primary-600) 0%, var(--success-500) 100%);
+  }
+  
+  .path-icon {
+    font-size: 3rem;
+    margin-bottom: var(--spacing-md);
+    display: block;
+    color: var(--primary-500);
+  }
+  
+  h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--neutral-800);
+    margin-bottom: var(--spacing-sm);
+  }
+  
+  .path-description {
+    color: var(--neutral-600);
+    margin-bottom: var(--spacing-lg);
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+  
+  .btn {
+    width: 100%;
+    margin-bottom: var(--spacing-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    font-weight: 600;
+    padding: var(--spacing-sm) var(--spacing-xl);
+    border-radius: 12px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: all var(--transition-normal);
+    
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+    
+    &.btn--phone {
+      background: linear-gradient(135deg, var(--warning-500) 0%, var(--warning-600) 100%);
+      color: #fff;
+    }
+    
+    &.btn--success {
+      background: linear-gradient(135deg, var(--success-500) 0%, var(--success-600) 100%);
+      color: #fff;
+    }
+    
+    &.btn--primary {
+      background: linear-gradient(135deg, var(--primary-600) 0%, var(--primary-700) 100%);
+      color: #fff;
+    }
+    
+    &.btn--outline {
+      background: #fff;
+      color: var(--accent-600);
+      border: 2px solid var(--accent-600);
+    }
+  }
+  
+  .path-proof {
+    font-size: 0.875rem;
+    color: var(--neutral-500);
+    font-style: italic;
+    
+    strong {
+      color: var(--neutral-700);
+      font-weight: 600;
+    }
+  }
+  
+  // Специфичные стили для разных путей
+  &.urgent-path {
+    .path-icon { color: var(--warning-500); }
+    &::before { background: linear-gradient(135deg, var(--warning-500) 0%, var(--warning-600) 100%); }
+  }
+  
+  &.economy-path {
+    .path-icon { color: var(--success-500); }
+    &::before { background: linear-gradient(135deg, var(--success-500) 0%, var(--success-600) 100%); }
+  }
+  
+  &.consultation-path {
+    .path-icon { color: var(--primary-500); }
+    &::before { background: linear-gradient(135deg, var(--primary-500) 0%, var(--primary-600) 100%); }
+  }
+  
+  &.comparison-path {
+    .path-icon { color: var(--accent-500); }
+    &::before { background: linear-gradient(135deg, var(--accent-500) 0%, var(--accent-600) 100%); }
+  }
+}
+
+// Дополнительные элементы
+.urgency-timer,
+.savings-display,
+.consultation-time,
+.comparison-benefit {
+  background: var(--neutral-50);
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: var(--border-radius);
+  margin-bottom: var(--spacing-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+  
+  .timer-label,
+  .savings-label,
+  .time-label,
+  .benefit-label {
+    font-size: 0.875rem;
+    color: var(--neutral-600);
+  }
+  
+  .slots-counter,
+  .savings-amount,
+  .next-slot,
+  .benefit-value {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--primary-600);
+  }
+}
+
+// Адаптивность
+@media (max-width: 768px) {
+  .conversion-paths {
+    margin: var(--spacing-xl) 0;
+  }
+  
+  .conversion-card {
+    padding: var(--spacing-lg);
+    
+    h3 {
+      font-size: 1.25rem;
+    }
+    
+    .path-icon {
+      font-size: 2.5rem;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .conversion-card {
+    padding: var(--spacing-md);
+    
+    h3 {
+      font-size: 1.125rem;
+    }
+    
+    .path-icon {
+      font-size: 2rem;
+    }
+    
+    .btn {
+      padding: var(--spacing-md) var(--spacing-lg);
+      font-size: 0.9rem;
+    }
+  }
+}

@@ -5,8 +5,8 @@ AVTOGOST77 CRM MVP - Pydantic схемы для рейтингов
 Описание: Схемы валидации данных для API рейтингов
 """
 
-from pydantic import BaseModel, Field, validator
-from typing import Optional
+from pydantic import BaseModel, Field
+from typing import Optional, Dict
 from datetime import datetime
 
 class RatingBase(BaseModel):
@@ -23,37 +23,6 @@ class RatingBase(BaseModel):
     
     comment_type: Optional[str] = Field(None, description="Тип комментария")
     custom_comment: Optional[str] = Field(None, description="Кастомный комментарий")
-    
-    @validator('comment_type')
-    def validate_comment_type(cls, v):
-        """Валидация типа комментария"""
-        if v:
-            valid_types = [
-                'good', 'average', 'conflict', 'fast', 'slow', 
-                'expensive', 'cheap', 'large_volumes', 'small_cargo', 
-                'intercity', 'local'
-            ]
-            if v not in valid_types:
-                raise ValueError(f'Неверный тип комментария. Допустимые: {", ".join(valid_types)}')
-        return v
-    
-    @validator('overall_rating')
-    def validate_overall_rating(cls, v, values):
-        """Валидация общего рейтинга"""
-        if v is None:
-            # Автоматически рассчитываем общий рейтинг
-            detailed_ratings = [
-                values.get('punctuality'),
-                values.get('quality'),
-                values.get('price'),
-                values.get('communication')
-            ]
-            valid_ratings = [r for r in detailed_ratings if r is not None]
-            
-            if valid_ratings:
-                return round(sum(valid_ratings) / len(valid_ratings))
-        
-        return v
 
 class RatingCreate(RatingBase):
     """Схема для создания рейтинга"""
@@ -67,9 +36,6 @@ class RatingResponse(RatingBase):
     
     class Config:
         from_attributes = True
-        json_encoders = {
-            datetime: lambda v: v.isoformat()
-        }
 
 class RatingSummary(BaseModel):
     """Схема для сводки по рейтингам"""
@@ -78,9 +44,9 @@ class RatingSummary(BaseModel):
     partner_name: str
     total_ratings: int
     average_rating: float
-    rating_distribution: dict
-    comment_types: dict
-    detailed_stats: dict
+    rating_distribution: Dict[str, int]
+    comment_types: Dict[str, int]
+    detailed_stats: Dict[str, float]
     
     class Config:
         from_attributes = True

@@ -51,7 +51,7 @@ app.include_router(ratings.router, prefix="/api/v1/ratings", tags=["Рейтин
 app.include_router(management.router, prefix="/api/v1/management", tags=["Управленческий учет"])
 
 # Статические файлы
-app.mount("/static", StaticFiles(directory="frontend"), name="static")
+app.mount("/static", StaticFiles(directory="../frontend"), name="static")
 
 # Корневой endpoint
 @app.get("/")
