@@ -1,0 +1,484 @@
+/* ============================================
+   HERO СТИЛИ ДЛЯ ВТОРИЧНЫХ СТРАНИЦ
+   ============================================ */
+
+/* Общие стили для hero вторичных страниц */
+.hero-secondary {
+    padding: 50px 0 !important;
+    min-height: 65vh !important;
+    position: relative !important;
+    overflow: hidden !important;
+    background-position: center !important;
+    background-size: cover !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    color: white !important;
+}
+
+.hero-secondary::before {
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    background: linear-gradient(135deg, rgba(0,0,0,.6) 0, rgba(0,0,0,.3) 100%) !important;
+    z-index: 1 !important;
+}
+
+.hero-secondary-content {
+    position: relative !important;
+    z-index: 2 !important;
+    max-width: 800px !important;
+    padding: 2rem !important;
+}
+
+.hero-secondary h1 {
+    font-size: 3rem !important;
+    margin-bottom: 1rem !important;
+    color: #fff !important;
+    text-shadow: 0 2px 10px rgba(0,0,0,.5) !important;
+    animation: fadeInUp .8s ease-out !important;
+    line-height: 1.2 !important;
+}
+
+.hero-secondary-subtitle {
+    font-size: 1.25rem !important;
+    margin-bottom: 2rem !important;
+    color: rgba(255,255,255,.95) !important;
+    text-shadow: 0 2px 8px rgba(0,0,0,.4) !important;
+    max-width: 700px !important;
+    line-height: 1.5 !important;
+    animation: fadeInUp .8s ease-out .2s both !important;
+}
+
+.hero-secondary-stats {
+    display: flex !important;
+    gap: 1.5rem !important;
+    margin-bottom: 2rem !important;
+    animation: fadeInUp .8s ease-out .4s both !important;
+    justify-content: center !important;
+    flex-wrap: wrap !important;
+}
+
+.hero-secondary-stat-item {
+    background: rgba(255,255,255,.15) !important;
+    backdrop-filter: blur(10px) !important;
+    border-radius: 12px !important;
+    padding: 1rem !important;
+    text-align: center !important;
+    flex: 1 !important;
+    transition: all .3s ease !important;
+    border: 1px solid rgba(255,255,255,.2) !important;
+    min-width: 150px !important;
+}
+
+.hero-secondary-stat-item:hover {
+    transform: translateY(-5px) !important;
+    background: rgba(255,255,255,.25) !important;
+    box-shadow: 0 10px 25px rgba(0,0,0,.2) !important;
+}
+
+.hero-secondary-stat-icon {
+    font-size: 1.75rem !important;
+    margin-bottom: .5rem !important;
+    display: inline-block !important;
+    filter: drop-shadow(0 2px 5px rgba(0, 0, 0, .2)) !important;
+}
+
+.hero-secondary-stat-number {
+    font-size: 2rem !important;
+    font-weight: 700 !important;
+    color: #fff !important;
+    margin-bottom: .25rem !important;
+    text-shadow: 0 2px 5px rgba(0,0,0,.3) !important;
+    position: relative !important;
+}
+
+.hero-secondary-stat-number::after {
+    content: '' !important;
+    position: absolute !important;
+    width: 100% !important;
+    height: 100% !important;
+    top: 0 !important;
+    left: 0 !important;
+    background: radial-gradient(circle, rgba(255,255,255,.5) 0, rgba(255,255,255,0) 70%) !important;
+    opacity: 0 !important;
+    animation: pulse 2s infinite !important;
+    pointer-events: none !important;
+    border-radius: 50% !important;
+    transform: scale(.8) !important;
+}
+
+.hero-secondary-stat-label {
+    font-size: .9rem !important;
+    color: rgba(255,255,255,.9) !important;
+    text-shadow: 0 1px 3px rgba(0,0,0,.3) !important;
+}
+
+.hero-secondary-actions {
+    display: flex !important;
+    gap: 1rem !important;
+    flex-wrap: wrap !important;
+    animation: fadeInUp .8s ease-out .6s both !important;
+    justify-content: center !important;
+}
+
+.hero-secondary-actions .btn-primary {
+    background: linear-gradient(135deg, #2563eb 0, #1d4ed8 100%) !important;
+    color: #fff !important;
+    padding: 1rem 2rem !important;
+    font-weight: 700 !important;
+    border-radius: 10px !important;
+    border: none !important;
+    box-shadow: 0 4px 15px rgba(37,99,235,.5) !important;
+    position: relative !important;
+    overflow: hidden !important;
+    transition: all .3s ease !important;
+    text-shadow: 0 1px 2px rgba(0,0,0,.2) !important;
+    text-decoration: none !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.hero-secondary-actions .btn-primary::before {
+    content: '' !important;
+    position: absolute !important;
+    top: -50% !important;
+    left: -50% !important;
+    width: 200% !important;
+    height: 200% !important;
+    background: radial-gradient(circle, rgba(255,255,255,.3) 0, rgba(255,255,255,0) 70%) !important;
+    opacity: 0 !important;
+    animation: pulse-light 3s infinite !important;
+    pointer-events: none !important;
+}
+
+.hero-secondary-actions .btn-primary:hover {
+    transform: translateY(-3px) !important;
+    box-shadow: 0 8px 25px rgba(37,99,235,.6) !important;
+}
+
+.hero-secondary-actions .btn-primary:active {
+    transform: translateY(0) !important;
+    box-shadow: 0 4px 15px rgba(37,99,235,.5) !important;
+}
+
+.hero-secondary-actions .btn-outline {
+    background: rgba(255,255,255,.15) !important;
+    backdrop-filter: blur(10px) !important;
+    color: #fff !important;
+    padding: 1rem 2rem !important;
+    font-weight: 600 !important;
+    border-radius: 10px !important;
+    border: 2px solid rgba(255,255,255,.3) !important;
+    box-shadow: 0 4px 15px rgba(0,0,0,.3) !important;
+    text-shadow: 0 1px 3px rgba(0,0,0,.4) !important;
+    transition: all .3s ease !important;
+    position: relative !important;
+    overflow: hidden !important;
+    text-decoration: none !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.hero-secondary-actions .btn-outline::after {
+    content: '' !important;
+    position: absolute !important;
+    width: 10px !important;
+    height: 10px !important;
+    background: #ef4444 !important;
+    border-radius: 50% !important;
+    top: 15px !important;
+    right: 15px !important;
+    box-shadow: 0 0 0 0 rgba(239,68,68,.7) !important;
+    animation: urgent-pulse 2s infinite !important;
+}
+
+.hero-secondary-actions .btn-outline:hover {
+    background: rgba(255,255,255,.25) !important;
+    transform: translateY(-3px) !important;
+    box-shadow: 0 8px 25px rgba(0,0,0,.4) !important;
+}
+
+.hero-secondary-actions .btn-outline:active {
+    transform: translateY(0) !important;
+    box-shadow: 0 4px 15px rgba(0,0,0,.3) !important;
+}
+
+/* Специфичные стили для разных типов страниц */
+
+/* HERO ДЛЯ 3-ТОННИКА */
+.hero-3ton {
+    background-image: url('../img/hero-logistics.webp') !important;
+    background-position: center 30% !important;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+}
+
+@media (min-width: 992px) {
+    .hero-3ton {
+        background-attachment: fixed !important;
+    }
+}
+
+.hero-3ton::after {
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    background: inherit !important;
+    background-size: cover !important;
+    background-position: center 30% !important;
+    z-index: 0 !important;
+    animation: subtle-zoom 30s infinite alternate !important;
+    opacity: .8 !important;
+}
+
+/* HERO ДЛЯ 5-ТОННИКА */
+.hero-5ton {
+    background-image: url('../img/hero-logistics.webp') !important;
+    background-position: center 30% !important;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+}
+
+@media (min-width: 992px) {
+    .hero-5ton {
+        background-attachment: fixed !important;
+    }
+}
+
+.hero-5ton::after {
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    background: inherit !important;
+    background-size: cover !important;
+    background-position: center 30% !important;
+    z-index: 0 !important;
+    animation: subtle-zoom 30s infinite alternate !important;
+    opacity: .8 !important;
+}
+
+/* HERO ДЛЯ ГАЗЕЛИ */
+.hero-gazel {
+    background-image: url('../img/hero-logistics.webp') !important;
+    background-position: center 30% !important;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+}
+
+@media (min-width: 992px) {
+    .hero-gazel {
+        background-attachment: fixed !important;
+    }
+}
+
+.hero-gazel::after {
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    background: inherit !important;
+    background-size: cover !important;
+    background-position: center 30% !important;
+    z-index: 0 !important;
+    animation: subtle-zoom 30s infinite alternate !important;
+    opacity: .8 !important;
+}
+
+/* HERO ДЛЯ ФУРЫ */
+.hero-fura {
+    background-image: url('../img/hero-logistics.webp') !important;
+    background-position: center 30% !important;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+}
+
+@media (min-width: 992px) {
+    .hero-fura {
+        background-attachment: fixed !important;
+    }
+}
+
+.hero-fura::after {
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    background: inherit !important;
+    background-size: cover !important;
+    background-position: center 30% !important;
+    z-index: 0 !important;
+    animation: subtle-zoom 30s infinite alternate !important;
+    opacity: .8 !important;
+}
+
+/* HERO ДЛЯ МАРШРУТОВ */
+.hero-route {
+    background-image: url('../img/hero-logistics.webp') !important;
+    background-position: center 30% !important;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+}
+
+@media (min-width: 992px) {
+    .hero-route {
+        background-attachment: fixed !important;
+    }
+}
+
+.hero-route::after {
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    background: inherit !important;
+    background-size: cover !important;
+    background-position: center 30% !important;
+    z-index: 0 !important;
+    animation: subtle-zoom 30s infinite alternate !important;
+    opacity: .8 !important;
+}
+
+/* Адаптивность */
+@media (max-width: 992px) {
+    .hero-secondary h1 {
+        font-size: 2.5rem !important;
+    }
+    
+    .hero-secondary-subtitle {
+        font-size: 1.1rem !important;
+    }
+    
+    .hero-secondary-stat-number {
+        font-size: 1.75rem !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-secondary {
+        padding: 40px 0 !important;
+        min-height: 60vh !important;
+    }
+    
+    .hero-secondary h1 {
+        font-size: 2rem !important;
+    }
+    
+    .hero-secondary-subtitle {
+        font-size: 1rem !important;
+        margin-bottom: 1.5rem !important;
+    }
+    
+    .hero-secondary-stats {
+        flex-direction: column !important;
+        gap: 1rem !important;
+    }
+    
+    .hero-secondary-stat-item {
+        padding: .75rem !important;
+    }
+    
+    .hero-secondary-actions {
+        flex-direction: column !important;
+        width: 100% !important;
+    }
+    
+    .hero-secondary-actions .btn-outline,
+    .hero-secondary-actions .btn-primary {
+        width: 100% !important;
+        text-align: center !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-secondary h1 {
+        font-size: 1.75rem !important;
+    }
+    
+    .hero-secondary-stat-number {
+        font-size: 1.5rem !important;
+    }
+    
+    .hero-secondary-stats {
+        gap: .75rem !important;
+    }
+}
+
+/* Анимации */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 0;
+        transform: scale(.8);
+    }
+    50% {
+        opacity: .5;
+    }
+    100% {
+        opacity: 0;
+        transform: scale(1.2);
+    }
+}
+
+@keyframes pulse-light {
+    0% {
+        opacity: 0;
+        transform: scale(.5);
+    }
+    50% {
+        opacity: .3;
+    }
+    100% {
+        opacity: 0;
+        transform: scale(1);
+    }
+}
+
+@keyframes urgent-pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(239,68,68,.7);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(239,68,68,0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(239,68,68,0);
+    }
+}
+
+@keyframes subtle-zoom {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(1.05);
+    }
+}

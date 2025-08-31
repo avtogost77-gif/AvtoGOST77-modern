@@ -1,0 +1,37 @@
+{
+  "name": "css-modernization-project",
+  "version": "1.0.0",
+  "description": "Проект модернизации CSS архитектуры AvtoGOST77",
+  "main": "index.js",
+  "dependencies": {
+    "braces": "^3.0.3",
+    "chokidar": "^4.0.3",
+    "detect-libc": "^1.0.3",
+    "fill-range": "^7.1.1",
+    "immutable": "^5.1.3",
+    "is-extglob": "^2.1.1",
+    "is-glob": "^4.0.3",
+    "is-number": "^7.0.0",
+    "micromatch": "^4.0.8",
+    "node-addon-api": "^7.1.1",
+    "picomatch": "^2.3.1",
+    "readdirp": "^4.1.2",
+    "sass": "^1.91.0",
+    "source-map-js": "^1.2.1",
+    "to-regex-range": "^5.0.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sass": "sass styles/main.scss:compiled/main.css --style=expanded",
+    "sass:min": "sass styles/main.scss:compiled/main.min.css --style=compressed",
+    "sass:critical": "sass styles/critical.scss:compiled/critical.css --style=expanded",
+    "sass:critical:min": "sass styles/critical.scss:compiled/critical.min.css --style=compressed",
+    "sass:watch": "sass --watch styles:compiled",
+    "sass:build": "npm run sass && npm run sass:min && npm run sass:critical && npm run sass:critical:min",
+    "compile": "./compile-scss.sh"
+  },
+  "keywords": ["css", "scss", "modernization", "avtogost77"],
+  "author": "AI Assistant",
+  "license": "ISC"
+}

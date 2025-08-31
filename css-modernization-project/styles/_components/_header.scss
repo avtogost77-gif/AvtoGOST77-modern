@@ -1,0 +1,326 @@
+// ============================================
+// HEADER КОМПОНЕНТ - AvtoGOST77 (МИГРИРОВАНО)
+// ============================================
+// Дата создания: 31 августа 2025
+// Автор: AI Assistant
+// Описание: Мигрировано из master-styles.css
+
+// ============================================
+// ОСНОВНОЙ HEADER (МИГРИРОВАНО)
+// ============================================
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--neutral-200);
+  z-index: 1000;
+  transition: all var(--transition-normal);
+}
+
+/* Отступ для компенсации fixed header */
+body {
+  padding-top: 80px;
+}
+
+// ============================================
+// ЛИПКАЯ ПАНЕЛЬ (МИГРИРОВАНО)
+// ============================================
+
+.sticky-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: var(--gradient-primary);
+  color: white;
+  padding: var(--spacing-xs) 0;
+  text-align: center;
+  font-size: 0.875rem;
+  font-weight: 500;
+  z-index: 999;
+  transform: translateY(-100%);
+  transition: transform var(--transition-normal);
+}
+
+.sticky-bar.visible {
+  transform: translateY(0);
+}
+
+.sticky-bar .btn {
+  margin-left: var(--spacing-md);
+  padding: var(--spacing-xs) var(--spacing-md);
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  font-size: 0.75rem;
+}
+
+// ============================================
+// HEADER ЛОГОТИП (МИГРИРОВАНО)
+// ============================================
+
+.header__logo {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  
+  img {
+    height: 40px;
+    width: auto;
+  }
+  
+  .logo-text {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-600);
+  }
+}
+
+// ============================================
+// HEADER НАВИГАЦИЯ (МИГРИРОВАНО)
+// ============================================
+
+.header__nav {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-lg);
+  
+  .nav-item {
+    color: var(--neutral-700);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color var(--transition-normal);
+    
+    &:hover {
+      color: var(--primary-600);
+    }
+    
+    &.active {
+      color: var(--primary-600);
+      font-weight: 600;
+    }
+  }
+}
+
+// ============================================
+// HEADER КОНТАКТЫ (МИГРИРОВАНО)
+// ============================================
+
+.header__contacts {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    color: var(--neutral-600);
+    font-size: 0.875rem;
+    
+    .contact-icon {
+      width: 16px;
+      height: 16px;
+      color: var(--primary-500);
+    }
+  }
+}
+
+// ============================================
+// HEADER КНОПКИ (МИГРИРОВАНО)
+// ============================================
+
+.header__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  
+  .btn {
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all var(--transition-normal);
+    
+    &.btn-primary {
+      background: var(--primary-600);
+      color: white;
+      border: none;
+      
+      &:hover {
+        background: var(--primary-700);
+        transform: translateY(-1px);
+      }
+    }
+    
+    &.btn-outline {
+      background: transparent;
+      color: var(--primary-600);
+      border: 2px solid var(--primary-600);
+      
+      &:hover {
+        background: var(--primary-600);
+        color: white;
+      }
+    }
+  }
+}
+
+// ============================================
+// МОБИЛЬНОЕ МЕНЮ (МИГРИРОВАНО)
+// ============================================
+
+.header__mobile-menu {
+  display: none;
+  
+  .mobile-menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    cursor: pointer;
+    
+    span {
+      width: 24px;
+      height: 2px;
+      background: var(--neutral-700);
+      transition: all var(--transition-normal);
+    }
+    
+    &.active {
+      span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+      }
+      
+      span:nth-child(2) {
+        opacity: 0;
+      }
+      
+      span:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -6px);
+      }
+    }
+  }
+}
+
+// ============================================
+// АДАПТИВНОСТЬ (МИГРИРОВАНО)
+// ============================================
+
+@media (max-width: 1024px) {
+  .header__nav {
+    gap: var(--spacing-md);
+  }
+  
+  .header__contacts {
+    gap: var(--spacing-sm);
+  }
+}
+
+@media (max-width: 768px) {
+  header {
+    height: 70px;
+  }
+  
+  body {
+    padding-top: 70px;
+  }
+  
+  .header__nav,
+  .header__contacts {
+    display: none;
+  }
+  
+  .header__mobile-menu {
+    display: block;
+    
+    .mobile-menu-toggle {
+      display: flex;
+    }
+  }
+  
+  .sticky-bar {
+    font-size: 0.75rem;
+    
+    .btn {
+      margin-left: var(--spacing-sm);
+      padding: var(--spacing-xs) var(--spacing-sm);
+      font-size: 0.7rem;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .header__logo {
+    .logo-text {
+      font-size: 1.25rem;
+    }
+  }
+  
+  .sticky-bar {
+    padding: var(--spacing-xs) var(--spacing-sm);
+    
+    .btn {
+      display: none;
+    }
+  }
+}
+
+// ============================================
+// АНИМАЦИИ И ПЕРЕХОДЫ (МИГРИРОВАНО)
+// ============================================
+
+.header__nav .nav-item {
+  position: relative;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--primary-600);
+    transition: width var(--transition-normal);
+  }
+  
+  &:hover::after,
+  &.active::after {
+    width: 100%;
+  }
+}
+
+// ============================================
+// FOCUS STATES (МИГРИРОВАНО)
+// ============================================
+
+.header__nav .nav-item:focus-visible {
+  outline: 2px solid var(--primary-500);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.header__actions .btn:focus-visible {
+  outline: 2px solid var(--primary-500);
+  outline-offset: 2px;
+}
+
+// ============================================
+// КОММЕНТАРИИ ПО РАЗРАБОТКЕ
+// ============================================
+/*
+СТАТУС РАЗРАБОТКИ:
+
+✅ ГОТОВО:
+- Header стили мигрированы из master-styles.css
+- Липкая панель
+- Адаптивность
+- Анимации и переходы
+- Focus states
+
+🎯 ЦЕЛЬ ЭТАПА:
+Миграция существующих header стилей в SCSS структуру
+*/

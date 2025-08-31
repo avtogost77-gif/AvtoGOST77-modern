@@ -1,0 +1,376 @@
+// ============================================
+// HERO КОМПОНЕНТ - AvtoGOST77 (МИГРИРОВАНО)
+// ============================================
+// Дата создания: 31 августа 2025
+// Автор: AI Assistant
+// Описание: Мигрировано из master-styles.css
+
+// ============================================
+// ОСНОВНАЯ HERO СЕКЦИЯ (МИГРИРОВАНО)
+// ============================================
+
+.hero {
+  background: 
+    var(--gradient-hero),
+    url('../../img/hero-logistics.webp') center/cover no-repeat;
+  color: white;
+  padding: 160px 0 var(--spacing-2xl);
+  position: relative;
+  overflow: hidden;
+  min-height: 80vh;
+  margin-top: 0;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+  opacity: 0.3;
+}
+
+// ============================================
+// HERO КОНТЕНТ (МИГРИРОВАНО)
+// ============================================
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.hero h1 {
+  color: white;
+  background: none;
+  -webkit-text-fill-color: white;
+}
+
+// ============================================
+// HERO СТАТИСТИКА (МИГРИРОВАНО)
+// ============================================
+
+.hero-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--spacing-lg);
+  margin-top: var(--spacing-2xl);
+}
+
+.hero-stat {
+  text-align: center;
+  padding: var(--spacing-lg);
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: var(--border-radius);
+  backdrop-filter: blur(10px);
+}
+
+.hero-stat-number {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: white;
+  display: block;
+}
+
+.hero-stat-label {
+  font-size: 0.875rem;
+  opacity: 0.9;
+}
+
+// ============================================
+// УМНЫЙ КАЛЬКУЛЯТОР (МИГРИРОВАНО)
+// ============================================
+
+.smart-calculator {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: var(--spacing-2xl);
+}
+
+.calculator-header {
+  text-align: center;
+  margin-bottom: var(--spacing-2xl);
+}
+
+.calculator-header h3 {
+  font-size: 2rem;
+  margin-bottom: var(--spacing-sm);
+}
+
+.calculator-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xl);
+}
+
+.form-section {
+  background: white;
+  padding: var(--spacing-lg);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--neutral-200);
+}
+
+.form-label {
+  display: block;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--neutral-800);
+  margin-bottom: var(--spacing-md);
+}
+
+// ============================================
+// ПОЛЯ ВВОДА МАРШРУТА (МИГРИРОВАНО)
+// ============================================
+
+.route-inputs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-lg);
+}
+
+.route-input {
+  position: relative;
+  
+  .input-field {
+    width: 100%;
+    padding: var(--spacing-md);
+    border: 2px solid var(--neutral-200);
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    transition: border-color var(--transition-normal);
+    
+    &:focus {
+      outline: none;
+      border-color: var(--primary-500);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    }
+    
+    &::placeholder {
+      color: var(--neutral-400);
+    }
+  }
+  
+  .input-icon {
+    position: absolute;
+    right: var(--spacing-md);
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--neutral-400);
+    pointer-events: none;
+  }
+}
+
+// ============================================
+// HERO КНОПКИ (МИГРИРОВАНО)
+// ============================================
+
+.hero__actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  align-items: center;
+  margin-top: var(--spacing-xl);
+  
+  @media (min-width: 576px) {
+    flex-direction: row;
+    justify-content: center;
+  }
+  
+  .btn {
+    min-width: 200px;
+    font-size: 1.1rem;
+    padding: var(--spacing-md) var(--spacing-xl);
+    
+    &.btn-outline {
+      background: rgba(0, 0, 0, 0);
+      border: 2px solid var(--color-white);
+      color: var(--color-white);
+      
+      &:hover {
+        background: var(--color-white);
+        color: var(--primary-600);
+      }
+    }
+  }
+}
+
+// ============================================
+// HERO ОСОБЕННОСТИ (МИГРИРОВАНО)
+// ============================================
+
+.hero__features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--spacing-lg);
+  margin-top: var(--spacing-xxl);
+  
+  .feature-item {
+    text-align: center;
+    padding: var(--spacing-lg);
+    background: hsla(0, 0%, 100%, 0.1);
+    border-radius: 16px;
+    backdrop-filter: blur(10px);
+    border: 1px solid hsla(0, 0%, 100%, 0.2);
+    
+    .feature-icon {
+      font-size: 3rem;
+      margin-bottom: var(--spacing-md);
+      opacity: 0.9;
+    }
+    
+    .feature-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: var(--spacing-sm);
+    }
+    
+    .feature-text {
+      font-size: 1rem;
+      opacity: 0.8;
+      line-height: 1.5;
+    }
+  }
+}
+
+// ============================================
+// АДАПТИВНОСТЬ (МИГРИРОВАНО)
+// ============================================
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 120px 0 var(--spacing-xl);
+    min-height: 70vh;
+  }
+  
+  .hero-content {
+    padding: 0 var(--spacing-md);
+  }
+  
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+  
+  .hero-stats {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+  }
+  
+  .smart-calculator {
+    padding: var(--spacing-xl) var(--spacing-md);
+  }
+  
+  .route-inputs {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    padding: 100px 0 var(--spacing-lg);
+  }
+  
+  .hero h1 {
+    font-size: 2rem;
+  }
+  
+  .hero-stats {
+    margin-top: var(--spacing-xl);
+  }
+  
+  .hero-stat {
+    padding: var(--spacing-md);
+  }
+  
+  .hero-stat-number {
+    font-size: 2rem;
+  }
+  
+  .smart-calculator {
+    padding: var(--spacing-lg) var(--spacing-sm);
+  }
+}
+
+// ============================================
+// АНИМАЦИИ (МИГРИРОВАНО)
+// ============================================
+
+.hero-content {
+  animation: fadeInUp 1s ease-out;
+}
+
+.hero__features .feature-item {
+  animation: fadeInUp 0.8s ease-out;
+  
+  &:nth-child(1) { animation-delay: 0.1s; }
+  &:nth-child(2) { animation-delay: 0.2s; }
+  &:nth-child(3) { animation-delay: 0.3s; }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// ============================================
+// FOCUS STATES (МИГРИРОВАНО)
+// ============================================
+
+.hero:focus-within {
+  outline: 2px solid var(--primary-500);
+  outline-offset: 2px;
+}
+
+// ============================================
+// REDUCED MOTION (МИГРИРОВАНО)
+// ============================================
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-content,
+  .hero__features .feature-item {
+    animation: none;
+  }
+}
+
+// ============================================
+// PRINT СТИЛИ (МИГРИРОВАНО)
+// ============================================
+
+@media print {
+  .hero {
+    background: #fff !important;
+    color: #000 !important;
+  }
+  
+  .hero::before {
+    display: none;
+  }
+}
+
+// ============================================
+// КОММЕНТАРИИ ПО РАЗРАБОТКЕ
+// ============================================
+/*
+СТАТУС РАЗРАБОТКИ:
+
+✅ ГОТОВО:
+- Hero стили мигрированы из master-styles.css
+- Умный калькулятор
+- Статистика
+- Адаптивность
+- Анимации
+
+🎯 ЦЕЛЬ ЭТАПА:
+Миграция существующих hero стилей в SCSS структуру
+*/

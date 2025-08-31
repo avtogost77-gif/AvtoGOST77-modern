@@ -1,0 +1,119 @@
+// ============================================
+// ЦВЕТОВАЯ СИСТЕМА - AvtoGOST77
+// ============================================
+// Дата создания: 31 августа 2025
+// Автор: AI Assistant
+// Описание: Основная цветовая палитра сайта
+
+:root {
+  // ============================================
+  // ОСНОВНЫЕ ЦВЕТА
+  // ============================================
+  --color-primary: #2D67F8;           // Основной синий
+  --color-primary-light: #5A85FA;     // Светлый синий
+  --color-primary-dark: #1E4BC7;      // Темный синий
+  
+  // ============================================
+  // СЕМАНТИЧЕСКИЕ ЦВЕТА
+  // ============================================
+  --color-success: #28A745;           // Успех (зеленый)
+  --color-warning: #FFC107;           // Предупреждение (желтый)
+  --color-error: #DC3545;             // Ошибка (красный)
+  --color-info: #17A2B8;              // Информация (голубой)
+  
+  // ============================================
+  // НЕЙТРАЛЬНЫЕ ЦВЕТА
+  // ============================================
+  --color-black: #1a1a1a;             // Черный
+  --color-gray-100: #f8f9fa;          // Очень светлый серый
+  --color-gray-200: #e9ecef;          // Светлый серый
+  --color-gray-300: #dee2e6;          // Серый
+  --color-gray-400: #ced4da;          // Средний серый
+  --color-gray-500: #adb5bd;          // Серый
+  --color-gray-600: #6c757d;          // Темный серый
+  --color-gray-700: #495057;          // Очень темный серый
+  --color-gray-800: #343a40;          // Почти черный
+  --color-gray-900: #212529;          // Максимально темный
+  --color-white: #ffffff;              // Белый
+  
+  // ============================================
+  // ГРАДИЕНТЫ
+  // ============================================
+  --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --gradient-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  --gradient-logistics: linear-gradient(135deg, #2D67F8 0%, #1E4BC7 100%);
+  
+  // ============================================
+  // СПЕЦИАЛЬНЫЕ ЦВЕТА
+  // ============================================
+  --color-accent: #FF6B35;            // Акцентный оранжевый
+  --color-accent-light: #FF8A65;      // Светлый оранжевый
+  --color-accent-dark: #E64A19;       // Темный оранжевый
+  
+  // ============================================
+  // ЦВЕТА ДЛЯ ТЕКСТА
+  // ============================================
+  --color-text-primary: var(--color-gray-900);    // Основной текст
+  --color-text-secondary: var(--color-gray-600);  // Вторичный текст
+  --color-text-muted: var(--color-gray-500);      // Приглушенный текст
+  --color-text-inverse: var(--color-white);       // Инвертированный текст
+  
+  // ============================================
+  // ЦВЕТА ДЛЯ ФОНОВ
+  // ============================================
+  --color-bg-primary: var(--color-white);        // Основной фон
+  --color-bg-secondary: var(--color-gray-100);   // Вторичный фон
+  --color-bg-dark: var(--color-gray-800);        // Темный фон
+  --color-bg-overlay: rgba(0, 0, 0, 0.5);       // Наложение
+  
+  // ============================================
+  // ЦВЕТА ДЛЯ ГРАНИЦ
+  // ============================================
+  --color-border-light: var(--color-gray-200);   // Светлая граница
+  --color-border-medium: var(--color-gray-300);  // Средняя граница
+  --color-border-dark: var(--color-gray-400);    // Темная граница
+  
+  // ============================================
+  // ЦВЕТА ДЛЯ СОСТОЯНИЙ
+  // ============================================
+  --color-hover: var(--color-primary-light);     // Цвет при наведении
+  --color-active: var(--color-primary-dark);     // Цвет при активации
+  --color-focus: var(--color-primary);           // Цвет при фокусе
+  --color-disabled: var(--color-gray-400);       // Цвет отключенного элемента
+}
+
+// ============================================
+// SCSS ПЕРЕМЕННЫЕ (для использования в миксинах)
+// ============================================
+$color-primary: #2D67F8;
+$color-primary-light: #5A85FA;
+$color-primary-dark: #1E4BC7;
+
+$color-success: #28A745;
+$color-warning: #FFC107;
+$color-error: #DC3545;
+$color-info: #17A2B8;
+
+$color-black: #1a1a1a;
+$color-white: #ffffff;
+
+// ============================================
+// ЦВЕТОВЫЕ КЛАССЫ-УТИЛИТЫ
+// ============================================
+.text-primary { color: var(--color-primary) !important; }
+.text-success { color: var(--color-success) !important; }
+.text-warning { color: var(--color-warning) !important; }
+.text-error { color: var(--color-error) !important; }
+.text-info { color: var(--color-info) !important; }
+
+.bg-primary { background-color: var(--color-primary) !important; }
+.bg-success { background-color: var(--color-success) !important; }
+.bg-warning { background-color: var(--color-warning) !important; }
+.bg-error { background-color: var(--color-error) !important; }
+.bg-info { background-color: var(--color-info) !important; }
+
+.border-primary { border-color: var(--color-primary) !important; }
+.border-success { border-color: var(--color-success) !important; }
+.border-warning { border-color: var(--color-warning) !important; }
+.border-error { border-color: var(--color-error) !important; }
+.border-info { border-color: var(--color-info) !important; }

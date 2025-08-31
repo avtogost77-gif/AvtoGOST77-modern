@@ -1,0 +1,149 @@
+// ============================================
+// СИСТЕМА ОТСТУПОВ - AvtoGOST77
+// ============================================
+// Дата создания: 31 августа 2025
+// Автор: AI Assistant
+// Описание: Система отступов для консистентного дизайна
+
+:root {
+  // ============================================
+  // БАЗОВЫЕ ОТСТУПЫ (8px система)
+  // ============================================
+  --spacing-xs: 0.25rem;    // 4px
+  --spacing-sm: 0.5rem;     // 8px
+  --spacing-md: 1rem;       // 16px
+  --spacing-lg: 1.5rem;     // 24px
+  --spacing-xl: 2rem;       // 32px
+  --spacing-2xl: 3rem;      // 48px
+  --spacing-3xl: 4rem;      // 64px
+  --spacing-4xl: 6rem;      // 96px
+  --spacing-5xl: 8rem;      // 128px
+  
+  // ============================================
+  // СПЕЦИАЛЬНЫЕ ОТСТУПЫ
+  // ============================================
+  --spacing-section: 5rem;   // Отступ между секциями
+  --spacing-container: 1.5rem; // Отступ контейнера
+  --spacing-card: 1.5rem;    // Отступ карточки
+  --spacing-form: 1rem;      // Отступ формы
+  
+  // ============================================
+  // ОТСТУПЫ ДЛЯ КОМПОНЕНТОВ
+  // ============================================
+  --spacing-header: 1rem;    // Отступ шапки
+  --spacing-footer: 3rem;    // Отступ подвала
+  --spacing-hero: 4rem;      // Отступ hero секции
+  --spacing-calculator: 2rem; // Отступ калькулятора
+  
+  // ============================================
+  // ОТСТУПЫ ДЛЯ ТЕКСТА
+  // ============================================
+  --spacing-text-xs: 0.25rem;   // Отступ текста очень маленький
+  --spacing-text-sm: 0.5rem;    // Отступ текста маленький
+  --spacing-text-md: 1rem;      // Отступ текста средний
+  --spacing-text-lg: 1.5rem;    // Отступ текста большой
+  --spacing-text-xl: 2rem;      // Отступ текста очень большой
+  
+  // ============================================
+  // ОТСТУПЫ ДЛЯ МОБИЛЬНЫХ
+  // ============================================
+  --spacing-mobile-xs: 0.5rem;  // Мобильный отступ очень маленький
+  --spacing-mobile-sm: 1rem;    // Мобильный отступ маленький
+  --spacing-mobile-md: 1.5rem;  // Мобильный отступ средний
+  --spacing-mobile-lg: 2rem;    // Мобильный отступ большой
+}
+
+// ============================================
+// SCSS ПЕРЕМЕННЫЕ
+// ============================================
+$spacing-xs: 0.25rem;
+$spacing-sm: 0.5rem;
+$spacing-md: 1rem;
+$spacing-lg: 1.5rem;
+$spacing-xl: 2rem;
+$spacing-2xl: 3rem;
+$spacing-3xl: 4rem;
+$spacing-4xl: 6rem;
+$spacing-5xl: 8rem;
+
+// ============================================
+// УТИЛИТАРНЫЕ КЛАССЫ ДЛЯ ОТСТУПОВ
+// ============================================
+
+// Margin утилиты
+.m-0 { margin: 0 !important; }
+.m-xs { margin: var(--spacing-xs) !important; }
+.m-sm { margin: var(--spacing-sm) !important; }
+.m-md { margin: var(--spacing-md) !important; }
+.m-lg { margin: var(--spacing-lg) !important; }
+.m-xl { margin: var(--spacing-xl) !important; }
+.m-2xl { margin: var(--spacing-2xl) !important; }
+.m-3xl { margin: var(--spacing-3xl) !important; }
+
+// Margin по осям
+.mx-0 { margin-left: 0 !important; margin-right: 0 !important; }
+.mx-xs { margin-left: var(--spacing-xs) !important; margin-right: var(--spacing-xs) !important; }
+.mx-sm { margin-left: var(--spacing-sm) !important; margin-right: var(--spacing-sm) !important; }
+.mx-md { margin-left: var(--spacing-md) !important; margin-right: var(--spacing-md) !important; }
+.mx-lg { margin-left: var(--spacing-lg) !important; margin-right: var(--spacing-lg) !important; }
+.mx-xl { margin-left: var(--spacing-xl) !important; margin-right: var(--spacing-xl) !important; }
+
+.my-0 { margin-top: 0 !important; margin-bottom: 0 !important; }
+.my-xs { margin-top: var(--spacing-xs) !important; margin-bottom: var(--spacing-xs) !important; }
+.my-sm { margin-top: var(--spacing-sm) !important; margin-bottom: var(--spacing-sm) !important; }
+.my-md { margin-top: var(--spacing-md) !important; margin-bottom: var(--spacing-md) !important; }
+.my-lg { margin-top: var(--spacing-lg) !important; margin-bottom: var(--spacing-lg) !important; }
+.my-xl { margin-top: var(--spacing-xl) !important; margin-bottom: var(--spacing-xl) !important; }
+
+// Padding утилиты
+.p-0 { padding: 0 !important; }
+.p-xs { padding: var(--spacing-xs) !important; }
+.p-sm { padding: var(--spacing-sm) !important; }
+.p-md { padding: var(--spacing-md) !important; }
+.p-lg { padding: var(--spacing-lg) !important; }
+.p-xl { padding: var(--spacing-xl) !important; }
+.p-2xl { padding: var(--spacing-2xl) !important; }
+.p-3xl { padding: var(--spacing-3xl) !important; }
+
+// Padding по осям
+.px-0 { padding-left: 0 !important; padding-right: 0 !important; }
+.px-xs { padding-left: var(--spacing-xs) !important; padding-right: var(--spacing-xs) !important; }
+.px-sm { padding-left: var(--spacing-sm) !important; padding-right: var(--spacing-sm) !important; }
+.px-md { padding-left: var(--spacing-md) !important; padding-right: var(--spacing-md) !important; }
+.px-lg { padding-left: var(--spacing-lg) !important; padding-right: var(--spacing-lg) !important; }
+.px-xl { padding-left: var(--spacing-xl) !important; padding-right: var(--spacing-xl) !important; }
+
+.py-0 { padding-top: 0 !important; padding-bottom: 0 !important; }
+.py-xs { padding-top: var(--spacing-xs) !important; padding-bottom: var(--spacing-xs) !important; }
+.py-sm { padding-top: var(--spacing-sm) !important; padding-bottom: var(--spacing-sm) !important; }
+.py-md { padding-top: var(--spacing-md) !important; padding-bottom: var(--spacing-md) !important; }
+.py-lg { padding-top: var(--spacing-lg) !important; padding-bottom: var(--spacing-lg) !important; }
+.py-xl { padding-top: var(--spacing-xl) !important; padding-bottom: var(--spacing-xl) !important; }
+
+// ============================================
+// СПЕЦИАЛЬНЫЕ КЛАССЫ ОТСТУПОВ
+// ============================================
+.section-spacing { padding: var(--spacing-section) 0 !important; }
+.container-spacing { padding: 0 var(--spacing-container) !important; }
+.card-spacing { padding: var(--spacing-card) !important; }
+.form-spacing { padding: var(--spacing-form) !important; }
+
+.hero-spacing { padding: var(--spacing-hero) 0 !important; }
+.calculator-spacing { padding: var(--spacing-calculator) !important; }
+.header-spacing { padding: var(--spacing-header) 0 !important; }
+.footer-spacing { padding: var(--spacing-footer) 0 !important; }
+
+// ============================================
+// АДАПТИВНЫЕ ОТСТУПЫ
+// ============================================
+@media (max-width: 768px) {
+  .section-spacing { padding: var(--spacing-mobile-lg) 0 !important; }
+  .hero-spacing { padding: var(--spacing-mobile-lg) 0 !important; }
+  .calculator-spacing { padding: var(--spacing-mobile-md) !important; }
+}
+
+@media (max-width: 480px) {
+  .section-spacing { padding: var(--spacing-mobile-md) 0 !important; }
+  .hero-spacing { padding: var(--spacing-mobile-md) 0 !important; }
+  .calculator-spacing { padding: var(--spacing-mobile-sm) !important; }
+}

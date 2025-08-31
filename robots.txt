@@ -1,108 +1,30 @@
 User-agent: *
 Allow: /
+Disallow: /admin/
+Disallow: /private/
+Disallow: /temp/
+Disallow: /cache/
+Disallow: /logs/
+Disallow: /backup/
 
-# Sitemap
-Sitemap: https://avtogost77.ru/sitemap.xml
-
-# Основные страницы для индексации
+User-agent: Yandex
 Allow: /
-Allow: /services.html
-Allow: /contact.html
-Allow: /about.html
-Allow: /help.html
-Allow: /faq.html
-Allow: /news.html
-Allow: /legal-minimum.html
-Allow: /privacy.html
-Allow: /terms.html
-
-# Страницы услуг
-Allow: /urgent-delivery.html
-Allow: /self-employed-delivery.html
-Allow: /ip-small-business-delivery.html
-Allow: /transportnaya-kompaniya.html
-Allow: /sbornye-gruzy.html
-Allow: /dostavka-na-marketpleysy.html
-Allow: /rc-dostavka.html
-Allow: /logistika-dlya-biznesa.html
-
-# Страницы по типам транспорта
-Allow: /gazel-gruzoperevozki.html
-Allow: /trehtonnik-gruzoperevozki.html
-Allow: /pyatitonnik-gruzoperevozki.html
-Allow: /desyatitonnik-gruzoperevozki.html
-Allow: /fura-20-tonn-gruzoperevozki.html
-
-# Страницы услуг
-Allow: /poputnyj-gruz.html
-Allow: /dogruz.html
-Allow: /pereezd-moskva.html
-Allow: /perevozka-mebeli.html
-Allow: /perevozka-medoborudovaniya.html
-
-# Страницы маршрутов
-Allow: /gruzoperevozki-*.html
-
-# Блог страницы
-Allow: /blog/
-Allow: /blog-*.html
-
-# Запрещенные страницы
-Disallow: /index.html
-Disallow: /404.html
-Disallow: /backups/
-Disallow: /mega-cleanup-backup-*/
-Disallow: /inline-styles-backup/
-Disallow: /test-deploy/
-Disallow: /assets/css/backup-*/
-Disallow: /assets/js/*.backup*
-Disallow: /assets/js/*.backup.*
-Disallow: /assets/js/smart-calculator-v2.js.backup*
-Disallow: /assets/js/calculator-ui.js.backup*
-Disallow: /assets/js/calculator-ui.min.js.backup*
-Disallow: /assets/js/smart-calculator-v2.min.js.backup*
-Disallow: /assets/js/benefit.js.backup*
-Disallow: /assets/js/calc-v2-enhanced.js.backup*
-Disallow: /assets/js/calc.js.backup*
-Disallow: /assets/js/calculator.js.backup*
-Disallow: /assets/js/cities-simple.js.backup*
-Disallow: /assets/js/distance-api.js.backup*
-Disallow: /assets/js/form-handler.js.backup*
-Disallow: /assets/js/lazy-loading.js.backup*
-Disallow: /assets/js/main.js.backup*
-Disallow: /assets/js/mobile-collapse.js.backup*
-Disallow: /assets/js/pdf-lead-magnet.js.backup*
-Disallow: /assets/js/real-distances.js.backup*
-Disallow: /assets/js/smart-calculator-v2.js.backup*
-Disallow: /assets/js/sticky-bar.js.backup*
-Disallow: /assets/js/sticky-cta.js.backup*
-Disallow: /assets/js/ticker.js.backup*
-Disallow: /assets/js/tldr-toc.js.backup*
-Disallow: /assets/js/ux-improvements.js.backup*
-Disallow: /assets/css/*.backup*
-Disallow: /assets/css/backup-*/
-Disallow: /assets/css/critical-optimized.css.backup*
-Disallow: /assets/css/unified-styles.min.css.backup*
-Disallow: /assets/css/styles-optimized.css.backup*
-Disallow: /assets/css/critical-unified.css.backup*
-Disallow: /assets/css/critical-unified.min.css.backup*
-Disallow: /assets/css/redesign-fixes.css.backup*
-Disallow: /assets/css/header-optimization.css.backup*
-Disallow: /assets/css/hero-optimization.css.backup*
-Disallow: /assets/css/calculator-optimization.css.backup*
-Disallow: /assets/css/benefits-optimization.css.backup*
-Disallow: /assets/css/form-optimization.css.backup*
-Disallow: /assets/css/visual-hierarchy.css.backup*
-Disallow: /assets/css/social-proof.css.backup*
-Disallow: /assets/css/footer-optimization.css.backup*
-Disallow: /assets/css/hero-fix.css.backup*
-Disallow: /assets/css/header-sticky.css.backup*
-Disallow: /assets/css/content-optimization.css.backup*
-Disallow: /assets/css/hero-fix-2.css.backup*
-Disallow: /assets/css/dist/optimizations.min.css.backup*
-Disallow: /fix-inline-styles.css.backup*
-Disallow: /test-calculator-production.html.backup*
-Disallow: /assets/css/block-alignment-fixes.css.backup*
-
-# Crawl-delay для уважительного отношения к серверу
+Disallow: /admin/
+Disallow: /private/
+Disallow: /temp/
+Disallow: /cache/
+Disallow: /logs/
+Disallow: /backup/
 Crawl-delay: 1
+
+User-agent: Googlebot
+Allow: /
+Disallow: /admin/
+Disallow: /private/
+Disallow: /temp/
+Disallow: /cache/
+Disallow: /logs/
+Disallow: /backup/
+Crawl-delay: 1
+
+Sitemap: https://avtogost77.ru/sitemap.xml

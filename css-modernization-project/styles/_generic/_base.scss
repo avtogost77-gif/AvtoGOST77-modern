@@ -1,0 +1,497 @@
+// ============================================
+// BASE СТИЛИ - AvtoGOST77 (МИГРИРОВАНО)
+// ============================================
+// Дата создания: 31 августа 2025
+// Автор: AI Assistant
+// Описание: Базовые стили для всех HTML элементов
+
+// ============================================
+// ОСНОВНЫЕ ЭЛЕМЕНТЫ
+// ============================================
+
+body {
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+  color: var(--text-color);
+  background-color: var(--bg-color);
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+// ============================================
+// ЗАГОЛОВКИ (H1-H6)
+// ============================================
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-family-headings);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  margin: 0 0 var(--spacing-md) 0;
+  color: var(--heading-color);
+  
+  &:first-child {
+    margin-top: 0;
+  }
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+h1 {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-black);
+  color: var(--primary-600);
+  
+  @media (max-width: 768px) {
+    font-size: var(--font-size-2xl);
+  }
+}
+
+h2 {
+  font-size: var(--font-size-2xl);
+  color: var(--neutral-800);
+  
+  @media (max-width: 768px) {
+    font-size: var(--font-size-xl);
+  }
+}
+
+h3 {
+  font-size: var(--font-size-xl);
+  color: var(--neutral-700);
+  
+  @media (max-width: 768px) {
+    font-size: var(--font-size-lg);
+  }
+}
+
+h4 {
+  font-size: var(--font-size-lg);
+  color: var(--neutral-700);
+}
+
+h5 {
+  font-size: var(--font-size-base);
+  color: var(--neutral-600);
+}
+
+h6 {
+  font-size: var(--font-size-sm);
+  color: var(--neutral-600);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+// ============================================
+// ПАРАГРАФЫ И ТЕКСТ
+// ============================================
+
+p {
+  margin: 0 0 var(--spacing-md) 0;
+  line-height: var(--line-height-relaxed);
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+  
+  &.lead {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-medium);
+    color: var(--neutral-700);
+    line-height: var(--line-height-relaxed);
+  }
+  
+  &.small {
+    font-size: var(--font-size-sm);
+    color: var(--neutral-600);
+  }
+  
+  &.large {
+    font-size: var(--font-size-lg);
+    line-height: var(--line-height-relaxed);
+  }
+}
+
+// ============================================
+// ССЫЛКИ
+// ============================================
+
+a {
+  color: var(--link-color);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+  
+  &:hover {
+    color: var(--link-hover-color);
+    text-decoration: underline;
+  }
+  
+  &:focus {
+    outline: 2px solid var(--primary-400);
+    outline-offset: 2px;
+  }
+  
+  &:active {
+    color: var(--link-active-color);
+  }
+  
+  &.button {
+    display: inline-block;
+    padding: var(--spacing-sm) var(--spacing-lg);
+    background: var(--primary-600);
+    color: white;
+    border-radius: var(--border-radius-md);
+    font-weight: var(--font-weight-medium);
+    text-align: center;
+    transition: all var(--transition-normal);
+    
+    &:hover {
+      background: var(--primary-700);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-md);
+      text-decoration: none;
+    }
+    
+    &:focus {
+      outline: 2px solid var(--primary-400);
+      outline-offset: 2px;
+    }
+    
+    &.secondary {
+      background: var(--neutral-200);
+      color: var(--neutral-800);
+      
+      &:hover {
+        background: var(--neutral-300);
+      }
+    }
+    
+    &.outline {
+      background: transparent;
+      color: var(--primary-600);
+      border: 2px solid var(--primary-600);
+      
+      &:hover {
+        background: var(--primary-600);
+        color: white;
+      }
+    }
+  }
+}
+
+// ============================================
+// СПИСКИ
+// ============================================
+
+ul, ol {
+  margin: 0 0 var(--spacing-md) 0;
+  padding-left: var(--spacing-lg);
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+  
+  li {
+    margin-bottom: var(--spacing-xs);
+    line-height: var(--line-height-relaxed);
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+ul {
+  list-style-type: disc;
+  
+  ul {
+    list-style-type: circle;
+    margin-top: var(--spacing-xs);
+    margin-bottom: var(--spacing-xs);
+  }
+}
+
+ol {
+  list-style-type: decimal;
+  
+  ol {
+    list-style-type: lower-alpha;
+    margin-top: var(--spacing-xs);
+    margin-bottom: var(--spacing-xs);
+  }
+}
+
+// ============================================
+// ТАБЛИЦЫ
+// ============================================
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0 0 var(--spacing-lg) 0;
+  font-size: var(--font-size-sm);
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+th, td {
+  padding: var(--spacing-sm) var(--spacing-md);
+  text-align: left;
+  border-bottom: 1px solid var(--neutral-200);
+}
+
+th {
+  background-color: var(--neutral-100);
+  font-weight: var(--font-weight-semibold);
+  color: var(--neutral-800);
+  text-transform: uppercase;
+  font-size: var(--font-size-xs);
+  letter-spacing: 0.05em;
+}
+
+tr:hover {
+  background-color: var(--neutral-50);
+}
+
+// ============================================
+// ИЗОБРАЖЕНИЯ
+// ============================================
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--border-radius-sm);
+  
+  &.rounded {
+    border-radius: var(--border-radius-lg);
+  }
+  
+  &.circle {
+    border-radius: 50%;
+  }
+  
+  &.shadow {
+    box-shadow: var(--shadow-md);
+  }
+}
+
+figure {
+  margin: 0 0 var(--spacing-lg) 0;
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+  
+  figcaption {
+    text-align: center;
+    font-size: var(--font-size-sm);
+    color: var(--neutral-600);
+    margin-top: var(--spacing-sm);
+    font-style: italic;
+  }
+}
+
+// ============================================
+// ФОРМЫ (БАЗОВЫЕ)
+// ============================================
+
+input, textarea, select {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+// ============================================
+// ЦИТАТЫ
+// ============================================
+
+blockquote {
+  margin: 0 0 var(--spacing-lg) 0;
+  padding: var(--spacing-lg);
+  border-left: 4px solid var(--primary-500);
+  background-color: var(--neutral-50);
+  font-style: italic;
+  color: var(--neutral-700);
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+  
+  p {
+    margin: 0;
+    
+    &:not(:last-child) {
+      margin-bottom: var(--spacing-sm);
+    }
+  }
+  
+  cite {
+    display: block;
+    margin-top: var(--spacing-sm);
+    font-size: var(--font-size-sm);
+    color: var(--neutral-600);
+    font-style: normal;
+    
+    &::before {
+      content: '— ';
+    }
+  }
+}
+
+// ============================================
+// КОД
+// ============================================
+
+code {
+  background-color: var(--neutral-100);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--border-radius-sm);
+  font-family: var(--font-family-mono);
+  font-size: 0.9em;
+  color: var(--neutral-800);
+}
+
+pre {
+  background-color: var(--neutral-900);
+  color: var(--neutral-100);
+  padding: var(--spacing-lg);
+  border-radius: var(--border-radius-md);
+  overflow-x: auto;
+  margin: 0 0 var(--spacing-lg) 0;
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+  
+  code {
+    background: none;
+    padding: 0;
+    color: inherit;
+  }
+}
+
+// ============================================
+// РАЗДЕЛИТЕЛИ
+// ============================================
+
+hr {
+  border: none;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--neutral-300), transparent);
+  margin: var(--spacing-xl) 0;
+}
+
+// ============================================
+// АДАПТИВНОСТЬ
+// ============================================
+
+@media (max-width: 768px) {
+  h1, h2, h3 {
+    line-height: var(--line-height-tight);
+  }
+  
+  p {
+    line-height: var(--line-height-relaxed);
+  }
+  
+  table {
+    font-size: var(--font-size-xs);
+    
+    th, td {
+      padding: var(--spacing-xs) var(--spacing-sm);
+    }
+  }
+  
+  blockquote {
+    padding: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    font-size: var(--font-size-sm);
+  }
+  
+  h1 {
+    font-size: var(--font-size-xl);
+  }
+  
+  h2 {
+    font-size: var(--font-size-lg);
+  }
+  
+  h3 {
+    font-size: var(--font-size-base);
+  }
+}
+
+// ============================================
+// ДОСТУПНОСТЬ
+// ============================================
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@media (prefers-contrast: high) {
+  body {
+    color: var(--neutral-900);
+    background-color: white;
+  }
+  
+  a {
+    color: var(--neutral-900);
+    text-decoration: underline;
+  }
+}
+
+// ============================================
+// ПЕЧАТЬ
+// ============================================
+
+@media print {
+  body {
+    font-size: 12pt;
+    line-height: 1.4;
+    color: black;
+    background: white;
+  }
+  
+  a {
+    color: black;
+    text-decoration: underline;
+    
+    &[href^="http"]:after {
+      content: " (" attr(href) ")";
+    }
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    page-break-after: avoid;
+    color: black;
+  }
+  
+  img {
+    max-width: 100% !important;
+    page-break-inside: avoid;
+  }
+  
+  table {
+    page-break-inside: avoid;
+  }
+}

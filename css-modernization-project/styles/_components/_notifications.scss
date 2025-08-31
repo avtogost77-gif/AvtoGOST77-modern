@@ -1,0 +1,184 @@
+// ========================================================
+// 🔔 NOTIFICATIONS - УВЕДОМЛЕНИЯ
+// ========================================================
+
+.notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 15px 20px;
+  border-radius: 8px;
+  color: white;
+  font-weight: 500;
+  z-index: 10000;
+  max-width: 300px;
+  word-wrap: break-word;
+  box-shadow: var(--shadow-lg);
+  animation: slideIn 0.3s ease-out;
+  
+  // Типы уведомлений
+  &.notification-success {
+    background: linear-gradient(135deg, var(--success-500) 0%, var(--success-600) 100%);
+    border-left: 4px solid var(--success-700);
+  }
+  
+  &.notification-error {
+    background: linear-gradient(135deg, var(--error-500) 0%, var(--error-600) 100%);
+    border-left: 4px solid var(--error-700);
+  }
+  
+  &.notification-warning {
+    background: linear-gradient(135deg, var(--warning-500) 0%, var(--warning-600) 100%);
+    border-left: 4px solid var(--warning-700);
+  }
+  
+  &.notification-info {
+    background: linear-gradient(135deg, var(--primary-500) 0%, var(--primary-600) 100%);
+    border-left: 4px solid var(--primary-700);
+  }
+  
+  // Анимации
+  &.slide-out {
+    animation: slideOut 0.3s ease-in;
+  }
+}
+
+// Анимации появления и исчезновения
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOut {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+// Адаптивность
+@media (max-width: 768px) {
+  .notification {
+    top: 10px;
+    right: 10px;
+    left: 10px;
+    max-width: none;
+    text-align: center;
+    
+    &.slide-out {
+      animation: slideOutMobile 0.3s ease-in;
+    }
+  }
+  
+  @keyframes slideOutMobile {
+    from {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    to {
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+  }
+}
+
+// Множественные уведомления
+.notification + .notification {
+  top: 80px;
+  
+  & + .notification {
+    top: 140px;
+  }
+  
+  & + .notification + .notification {
+    top: 200px;
+  }
+}
+
+@media (max-width: 768px) {
+  .notification + .notification {
+    top: 70px;
+    
+    & + .notification {
+      top: 130px;
+    }
+    
+    & + .notification + .notification {
+      top: 190px;
+    }
+  }
+}
+
+// Hover эффекты
+.notification {
+  transition: all var(--transition-normal);
+  
+  &:hover {
+    transform: translateX(-5px);
+    box-shadow: var(--shadow-xl);
+  }
+}
+
+// Автоматическое скрытие
+.notification.auto-hide {
+  animation: slideIn 0.3s ease-out, fadeOut 0.3s ease-in 2.7s forwards;
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+}
+
+// Темная тема
+@media (prefers-color-scheme: dark) {
+  .notification {
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    
+    &.notification-success {
+      background: linear-gradient(135deg, var(--success-600) 0%, var(--success-700) 100%);
+    }
+    
+    &.notification-error {
+      background: linear-gradient(135deg, var(--error-600) 0%, var(--error-700) 100%);
+    }
+    
+    &.notification-warning {
+      background: linear-gradient(135deg, var(--warning-600) 0%, var(--warning-700) 100%);
+    }
+    
+    &.notification-info {
+      background: linear-gradient(135deg, var(--primary-600) 0%, var(--primary-700) 100%);
+    }
+  }
+}
+
+// Reduced motion
+@media (prefers-reduced-motion: reduce) {
+  .notification {
+    animation: none;
+    
+    &.slide-out {
+      animation: none;
+    }
+    
+    &.auto-hide {
+      animation: none;
+    }
+  }
+  
+  .notification:hover {
+    transform: none;
+  }
+}

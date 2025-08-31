@@ -1,0 +1,350 @@
+// ============================================
+// КРИТИЧЕСКИЕ СТИЛИ - AvtoGOST77
+// ============================================
+// Дата создания: 31 августа 2025
+// Автор: AI Assistant
+// Описание: Критические стили для первого экрана
+
+// ============================================
+// ИМПОРТЫ КРИТИЧНЫХ НАСТРОЕК
+// ============================================
+@import '_settings/colors';
+@import '_settings/spacing';
+@import '_settings/breakpoints';
+
+// ============================================
+// КРИТИЧНЫЕ СТИЛИ ДЛЯ ПЕРВОГО ЭКРАНА
+// ============================================
+
+// ============================================
+// HERO СЕКЦИЯ (КРИТИЧНО!)
+// ============================================
+.hero {
+  position: relative;
+  min-height: 65vh;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--color-white);
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+  }
+  
+  > * {
+    position: relative;
+    z-index: 2;
+  }
+}
+
+// ============================================
+// КАЛЬКУЛЯТОР (КРИТИЧНО ДЛЯ БИЗНЕСА!)
+// ============================================
+.calculator {
+  background: var(--color-white);
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  padding: var(--spacing-lg);
+  margin: var(--spacing-xl) 0;
+  
+  &__step {
+    padding: var(--spacing-md);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    margin-bottom: var(--spacing-md);
+    
+    &--active {
+      background: var(--color-primary);
+      color: var(--color-white);
+      transform: scale(1.05);
+      box-shadow: 0 8px 25px rgba(45, 103, 248, 0.3);
+    }
+    
+    &--completed {
+      background: var(--color-success);
+      color: var(--color-white);
+      box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
+    }
+  }
+  
+  &__progress-bar {
+    height: 4px;
+    background: var(--color-gray-200);
+    border-radius: 2px;
+    margin: var(--spacing-md) 0;
+    
+    &__fill {
+      height: 100%;
+      background: var(--gradient-primary);
+      border-radius: 2px;
+      transition: width 0.3s ease;
+    }
+  }
+  
+  &__form {
+    &__field {
+      width: 100%;
+      padding: var(--spacing-sm);
+      border: 2px solid var(--color-border-medium);
+      border-radius: 8px;
+      font-size: 1rem;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      
+      &:focus {
+        outline: none;
+        border-color: var(--color-primary);
+        box-shadow: 0 0 0 3px rgba(45, 103, 248, 0.1);
+      }
+    }
+    
+    &__button {
+      display: inline-block;
+      padding: var(--spacing-sm) var(--spacing-md);
+      background-color: var(--color-primary);
+      color: var(--color-white);
+      border: none;
+      border-radius: 8px;
+      text-decoration: none;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      
+      &:hover {
+        background-color: var(--color-primary-dark);
+        transform: translateY(-2px);
+      }
+    }
+  }
+}
+
+// ============================================
+// HEADER (КРИТИЧНО ДЛЯ НАВИГАЦИИ)
+// ============================================
+.header {
+  background: var(--color-white);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  
+  &__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-container);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 70px;
+  }
+  
+  &__logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--color-primary);
+    text-decoration: none;
+  }
+  
+  &__nav {
+    display: flex;
+    gap: var(--spacing-md);
+    
+    &__link {
+      color: var(--color-text-primary);
+      text-decoration: none;
+      padding: var(--spacing-sm);
+      border-radius: 6px;
+      transition: all 0.2s ease;
+      
+      &:hover {
+        background: var(--color-gray-100);
+        color: var(--color-primary);
+      }
+    }
+  }
+}
+
+// ============================================
+// КОНТЕЙНЕРЫ И СЕТКА (КРИТИЧНО ДЛЯ LAYOUT)
+// ============================================
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-container);
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 calc(-1 * var(--spacing-sm));
+}
+
+.col {
+  flex: 1;
+  padding: 0 var(--spacing-sm);
+}
+
+// ============================================
+// ТИПОГРАФИКА (КРИТИЧНО ДЛЯ ЧИТАЕМОСТИ)
+// ============================================
+h1, h2, h3, h4, h5, h6 {
+  margin: 0 0 var(--spacing-md) 0;
+  color: var(--color-text-primary);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.75rem; }
+h4 { font-size: 1.5rem; }
+h5 { font-size: 1.25rem; }
+h6 { font-size: 1rem; }
+
+p {
+  margin: 0 0 var(--spacing-md) 0;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+
+// ============================================
+// КНОПКИ (КРИТИЧНО ДЛЯ CTA)
+// ============================================
+.btn {
+  display: inline-block;
+  padding: var(--spacing-sm) var(--spacing-md);
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  text-decoration: none;
+  border-radius: 8px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+  font-size: 1rem;
+  
+  &:hover {
+    background-color: var(--color-primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(45, 103, 248, 0.3);
+  }
+  
+  &--secondary {
+    background-color: transparent;
+    color: var(--color-primary);
+    border: 2px solid var(--color-primary);
+    
+    &:hover {
+      background-color: var(--color-primary);
+      color: var(--color-white);
+    }
+  }
+  
+  &--success {
+    background-color: var(--color-success);
+    
+    &:hover {
+      background-color: #1e7e34;
+    }
+  }
+}
+
+// ============================================
+// АДАПТИВНОСТЬ (КРИТИЧНО ДЛЯ МОБИЛЬНЫХ)
+// ============================================
+@media (max-width: 768px) {
+  .hero {
+    min-height: 50vh;
+    padding: var(--spacing-mobile-lg) 0;
+  }
+  
+  .calculator {
+    padding: var(--spacing-mobile-md);
+    margin: var(--spacing-mobile-lg) 0;
+  }
+  
+  .header {
+    &__container {
+      padding: 0 var(--spacing-mobile-container);
+      min-height: 60px;
+    }
+    
+    &__nav {
+      display: none; // Мобильное меню будет добавлено позже
+    }
+  }
+  
+  .container {
+    padding: 0 var(--spacing-mobile-container);
+  }
+  
+  h1 { font-size: 2rem; }
+  h2 { font-size: 1.75rem; }
+  h3 { font-size: 1.5rem; }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    min-height: 40vh;
+    padding: var(--spacing-mobile-md) 0;
+  }
+  
+  .calculator {
+    padding: var(--spacing-mobile-sm);
+    margin: var(--spacing-mobile-md) 0;
+  }
+  
+  h1 { font-size: 1.75rem; }
+  h2 { font-size: 1.5rem; }
+  h3 { font-size: 1.25rem; }
+}
+
+// ============================================
+// ПРОИЗВОДИТЕЛЬНОСТЬ (КРИТИЧНО ДЛЯ SPEED)
+// ============================================
+.hero,
+.calculator,
+.header {
+  will-change: transform;
+  contain: layout style paint;
+}
+
+// ============================================
+// ДОСТУПНОСТЬ (КРИТИЧНО ДЛЯ UX)
+// ============================================
+.btn:focus-visible,
+.calculator__form__field:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 2px;
+  transform: scale(1.05);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero,
+  .calculator,
+  .btn {
+    transition: none;
+    animation: none;
+  }
+}
+
+@media (prefers-contrast: high) {
+  .calculator {
+    border: 2px solid var(--color-black);
+  }
+  
+  .btn {
+    border: 2px solid var(--color-black);
+  }
+}

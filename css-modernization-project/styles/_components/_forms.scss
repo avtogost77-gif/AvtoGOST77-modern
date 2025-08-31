@@ -1,0 +1,731 @@
+// ============================================
+// FORMS КОМПОНЕНТ - AvtoGOST77 (МИГРИРОВАНО)
+// ============================================
+// Дата создания: 31 августа 2025
+// Автор: AI Assistant
+// Описание: Мигрировано из critical-fixes.css, mobile-fixes.css, modern-landing-styles.css
+
+// ============================================
+// ОСНОВНЫЕ ФОРМЫ
+// ============================================
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+  width: 100%;
+  
+  &--inline {
+    flex-direction: row;
+    align-items: flex-end;
+    gap: var(--spacing-md);
+    
+    @media (max-width: 768px) {
+      flex-direction: column;
+      align-items: stretch;
+    }
+  }
+  
+  &--horizontal {
+    .form-group {
+      flex-direction: row;
+      align-items: center;
+      gap: var(--spacing-md);
+      
+      @media (max-width: 768px) {
+        flex-direction: column;
+        align-items: stretch;
+      }
+    }
+  }
+}
+
+// ============================================
+// FORM ROW
+// ============================================
+.form-row {
+  display: flex;
+  gap: var(--spacing-lg);
+  align-items: flex-start;
+  
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: var(--spacing-md);
+  }
+  
+  &--centered {
+    justify-content: center;
+    align-items: center;
+  }
+  
+  &--space-between {
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  &--wrap {
+    flex-wrap: wrap;
+  }
+}
+
+// ============================================
+// FORM GROUP
+// ============================================
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-md);
+  
+  &--inline {
+    flex-direction: row;
+    align-items: center;
+    gap: var(--spacing-md);
+    
+    @media (max-width: 768px) {
+      flex-direction: column;
+      align-items: stretch;
+    }
+  }
+  
+  &--required {
+    .form-label::after {
+      content: ' *';
+      color: var(--error-500);
+      font-weight: 700;
+    }
+  }
+  
+  &--error {
+    .form-input,
+    .form-select,
+    .form-textarea {
+      border-color: var(--error-500);
+      box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+    }
+    
+    .form-error {
+      display: block;
+      color: var(--error-600);
+      font-size: 0.875rem;
+      margin-top: var(--spacing-xs);
+    }
+  }
+  
+  &--success {
+    .form-input,
+    .form-select,
+    .form-textarea {
+      border-color: var(--success-500);
+      box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.1);
+    }
+  }
+}
+
+// ============================================
+// FORM LABEL
+// ============================================
+.form-label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--neutral-700);
+  margin-bottom: var(--spacing-xs);
+  cursor: pointer;
+  transition: color var(--transition-normal);
+  
+  &:hover {
+    color: var(--neutral-800);
+  }
+  
+  &--large {
+    font-size: 1rem;
+    font-weight: 700;
+  }
+  
+  &--small {
+    font-size: 0.8rem;
+    font-weight: 500;
+  }
+  
+  &--required::after {
+    content: ' *';
+    color: var(--error-500);
+    font-weight: 700;
+  }
+}
+
+// ============================================
+// FORM INPUT
+// ============================================
+.form-input,
+.form-select,
+.form-textarea {
+  width: 100%;
+  padding: var(--spacing-md);
+  border: 2px solid var(--neutral-200);
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  font-family: inherit;
+  line-height: 1.5;
+  color: var(--neutral-900);
+  background: white;
+  transition: all var(--transition-normal);
+  
+  &::placeholder {
+    color: var(--neutral-400);
+    font-style: italic;
+  }
+  
+  &:hover {
+    border-color: var(--neutral-300);
+  }
+  
+  &:focus {
+    outline: none;
+    border-color: var(--primary-500);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    transform: translateY(-1px);
+  }
+  
+  &:disabled {
+    background: var(--neutral-100);
+    color: var(--neutral-500);
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+  
+  &--error {
+    border-color: var(--error-500);
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+  }
+  
+  &--success {
+    border-color: var(--success-500);
+    box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.1);
+  }
+  
+  &--large {
+    padding: var(--spacing-lg);
+    font-size: 1.125rem;
+  }
+  
+  &--small {
+    padding: var(--spacing-sm);
+    font-size: 0.875rem;
+  }
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 120px;
+  line-height: 1.6;
+  
+  &--fixed {
+    resize: none;
+  }
+  
+  &--large {
+    min-height: 200px;
+  }
+  
+  &--small {
+    min-height: 80px;
+  }
+}
+
+.form-select {
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right var(--spacing-sm) center;
+  background-repeat: no-repeat;
+  background-size: 1.5em 1.5em;
+  padding-right: calc(var(--spacing-md) + 1.5em);
+  
+  &:focus {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%233b82f6' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+  }
+}
+
+// ============================================
+// FORM CHECKBOX & RADIO
+// ============================================
+.form-checkbox,
+.form-radio {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  cursor: pointer;
+  user-select: none;
+  
+  input[type="checkbox"],
+  input[type="radio"] {
+    width: auto;
+    margin: 0;
+    cursor: pointer;
+  }
+  
+  .form-checkbox-label,
+  .form-radio-label {
+    margin: 0;
+    cursor: pointer;
+    font-weight: 500;
+    color: var(--neutral-700);
+  }
+  
+  &:hover {
+    .form-checkbox-label,
+    .form-radio-label {
+      color: var(--neutral-800);
+    }
+  }
+  
+  &:focus-within {
+    outline: 2px solid var(--primary-500);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+}
+
+.form-checkbox-group,
+.form-radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  
+  &--horizontal {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: var(--spacing-md);
+    
+    @media (max-width: 768px) {
+      flex-direction: column;
+      gap: var(--spacing-sm);
+    }
+  }
+}
+
+// ============================================
+// FORM VALIDATION
+// ============================================
+.form-error {
+  display: none;
+  color: var(--error-600);
+  font-size: 0.875rem;
+  margin-top: var(--spacing-xs);
+  font-weight: 500;
+  
+  &.visible {
+    display: block;
+    animation: fadeInUp 0.3s ease-out;
+  }
+}
+
+.form-success {
+  display: none;
+  color: var(--success-600);
+  font-size: 0.875rem;
+  margin-top: var(--spacing-xs);
+  font-weight: 500;
+  
+  &.visible {
+    display: block;
+    animation: fadeInUp 0.3s ease-out;
+  }
+}
+
+.form-help {
+  color: var(--neutral-500);
+  font-size: 0.875rem;
+  margin-top: var(--spacing-xs);
+  line-height: 1.4;
+}
+
+// ============================================
+// FORM BUTTONS
+// ============================================
+.form-submit {
+  background: var(--primary-600);
+  color: white;
+  border: none;
+  padding: var(--spacing-md) var(--spacing-xl);
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  
+  &:hover {
+    background: var(--primary-700);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+  }
+  
+  &:active {
+    transform: translateY(0);
+  }
+  
+  &:disabled {
+    background: var(--neutral-400);
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+  }
+  
+  &--large {
+    padding: var(--spacing-lg) var(--spacing-2xl);
+    font-size: 1.125rem;
+  }
+  
+  &--small {
+    padding: var(--spacing-sm) var(--spacing-lg);
+    font-size: 0.875rem;
+  }
+  
+  &--outline {
+    background: transparent;
+    color: var(--primary-600);
+    border: 2px solid var(--primary-600);
+    
+    &:hover {
+      background: var(--primary-600);
+      color: white;
+    }
+  }
+  
+  &--secondary {
+    background: var(--neutral-600);
+    
+    &:hover {
+      background: var(--neutral-700);
+    }
+  }
+}
+
+// ============================================
+// FORM LAYOUTS
+// ============================================
+.form-grid {
+  display: grid;
+  gap: var(--spacing-lg);
+  
+  &--2-cols {
+    grid-template-columns: repeat(2, 1fr);
+    
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  &--3-cols {
+    grid-template-columns: repeat(3, 1fr);
+    
+    @media (max-width: 992px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  &--4-cols {
+    grid-template-columns: repeat(4, 1fr);
+    
+    @media (max-width: 1200px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    
+    @media (max-width: 992px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+    }
+  }
+}
+
+// ============================================
+// SPECIAL FORMS
+// ============================================
+.search-form {
+  position: relative;
+  max-width: 500px;
+  
+  .form-input {
+    padding-right: calc(var(--spacing-md) + 40px);
+  }
+  
+  .search-button {
+    position: absolute;
+    right: var(--spacing-sm);
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--primary-600);
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all var(--transition-normal);
+    
+    &:hover {
+      background: var(--primary-700);
+      transform: translateY(-50%) scale(1.1);
+    }
+  }
+}
+
+.contact-form {
+  background: var(--neutral-50);
+  padding: var(--spacing-xl);
+  border-radius: var(--border-radius-lg);
+  border: 1px solid var(--neutral-200);
+  
+  .form-title {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+    color: var(--neutral-800);
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+  
+  .form-subtitle {
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+    color: var(--neutral-600);
+    font-size: 1rem;
+  }
+}
+
+.newsletter-form {
+  background: var(--primary-50);
+  padding: var(--spacing-lg);
+  border-radius: var(--border-radius);
+  border: 1px solid var(--primary-200);
+  
+  .form-title {
+    color: var(--primary-800);
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: var(--spacing-md);
+  }
+  
+  .form-subtitle {
+    color: var(--primary-700);
+    margin-bottom: var(--spacing-lg);
+    font-size: 0.9rem;
+  }
+  
+  .form-input {
+    border-color: var(--primary-300);
+    
+    &:focus {
+      border-color: var(--primary-500);
+    }
+  }
+}
+
+// ============================================
+// FORM PROGRESS
+// ============================================
+.form-progress {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-lg);
+  
+  .progress-step {
+    flex: 1;
+    height: 4px;
+    background: var(--neutral-200);
+    border-radius: 2px;
+    position: relative;
+    
+    &.active {
+      background: var(--primary-500);
+    }
+    
+    &.completed {
+      background: var(--success-500);
+    }
+  }
+  
+  .progress-label {
+    font-size: 0.875rem;
+    color: var(--neutral-600);
+    text-align: center;
+    margin-top: var(--spacing-sm);
+  }
+}
+
+// ============================================
+// FORM ANIMATIONS
+// ============================================
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.form-group {
+  animation: fadeInUp 0.3s ease-out;
+}
+
+.form-group:nth-child(1) { animation-delay: 0.1s; }
+.form-group:nth-child(2) { animation-delay: 0.2s; }
+.form-group:nth-child(3) { animation-delay: 0.3s; }
+.form-group:nth-child(4) { animation-delay: 0.4s; }
+
+// ============================================
+// АДАПТИВНОСТЬ
+// ============================================
+@media (max-width: 768px) {
+  .form {
+    gap: var(--spacing-md);
+  }
+  
+  .form-row {
+    flex-direction: column;
+    gap: var(--spacing-md);
+  }
+  
+  .form-group {
+    margin-bottom: var(--spacing-sm);
+  }
+  
+  .form-input,
+  .form-select,
+  .form-textarea {
+    padding: var(--spacing-sm);
+    font-size: 0.9rem;
+  }
+  
+  .form-submit {
+    width: 100%;
+    padding: var(--spacing-lg);
+  }
+  
+  .form-grid {
+    gap: var(--spacing-md);
+  }
+}
+
+@media (max-width: 480px) {
+  .form {
+    gap: var(--spacing-sm);
+  }
+  
+  .form-input,
+  .form-select,
+  .form-textarea {
+    padding: var(--spacing-sm);
+    font-size: 0.875rem;
+  }
+  
+  .form-submit {
+    padding: var(--spacing-md) var(--spacing-lg);
+    font-size: 0.9rem;
+  }
+}
+
+// ============================================
+// ДОСТУПНОСТЬ (A11Y)
+// ============================================
+@media (prefers-contrast: high) {
+  .form-input,
+  .form-select,
+  .form-textarea {
+    border-width: 3px;
+  }
+  
+  .form-submit {
+    border: 2px solid currentColor;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .form-group,
+  .form-input,
+  .form-select,
+  .form-textarea,
+  .form-submit {
+    transition: none;
+    animation: none;
+  }
+  
+  .form-submit:hover {
+    transform: none;
+  }
+}
+
+// ============================================
+// FOCUS STATES
+// ============================================
+.form-input:focus-visible,
+.form-select:focus-visible,
+.form-textarea:focus-visible {
+  outline: 2px solid var(--primary-500);
+  outline-offset: 2px;
+}
+
+.form-submit:focus-visible {
+  outline: 2px solid var(--primary-500);
+  outline-offset: 2px;
+}
+
+// ============================================
+// PRINT СТИЛИ
+// ============================================
+@media print {
+  .form {
+    background: white !important;
+    border: 1px solid black !important;
+  }
+  
+  .form-submit {
+    display: none;
+  }
+  
+  .form-input,
+  .form-select,
+  .form-textarea {
+    border: 1px solid black !important;
+    background: white !important;
+    color: black !important;
+  }
+}
+
+// ============================================
+// КОММЕНТАРИИ ПО РАЗРАБОТКЕ
+// ============================================
+/*
+СТАТУС РАЗРАБОТКИ:
+
+✅ МИГРИРОВАНО:
+- Основные формы (critical-fixes.css)
+- Mobile адаптивность (mobile-fixes.css)
+- Form layouts и grid системы
+- Валидация и состояния ошибок
+- Checkbox и radio кнопки
+- Специальные формы (search, contact, newsletter)
+- Form progress индикаторы
+- Анимации и переходы
+- A11y поддержка
+- Print стили
+
+🎯 ОСОБЕННОСТИ:
+- Адаптивная сетка форм
+- Валидация в реальном времени
+- Доступность для скринридеров
+- SEO-френдли структура
+- Mobile-first подход
+
+🚀 ГОТОВО К ИСПОЛЬЗОВАНИЮ!
+*/
