@@ -1,4 +1,1 @@
-User-agent: *
-Allow: /
-
 Sitemap: https://avtogost77.ru/sitemap.xml
