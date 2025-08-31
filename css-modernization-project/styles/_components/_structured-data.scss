@@ -1,0 +1,960 @@
+// ============================================
+// STRUCTURED DATA СТИЛИ - AvtoGOST77 (МИГРИРОВАНО)
+// ============================================
+// Дата создания: 31 августа 2025
+// Автор: AI Assistant
+// Описание: SEO-оптимизированные стили для структурированных данных Schema.org
+
+// ============================================
+// SCHEMA.ORG СТРУКТУРИРОВАННЫЕ ДАННЫЕ
+// ============================================
+
+// SEO: Основной контейнер для структурированных данных
+[itemscope] {
+  // Скрываем технические атрибуты от пользователей
+  &[itemtype] {
+    // Стили для различных типов Schema.org
+  }
+}
+
+// ============================================
+// ORGANIZATION SCHEMA
+// ============================================
+
+[itemtype*="Organization"] {
+  // SEO: Стили для организации
+  .organization-name {
+    font-weight: var(--font-weight-bold);
+    color: var(--primary-600);
+    font-size: var(--font-size-lg);
+  }
+  
+  .organization-description {
+    color: var(--neutral-700);
+    line-height: var(--line-height-relaxed);
+    margin-bottom: var(--spacing-md);
+  }
+  
+  .organization-contact {
+    background: var(--neutral-50);
+    padding: var(--spacing-md);
+    border-radius: var(--border-radius-md);
+    border-left: 4px solid var(--primary-500);
+    
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-sm);
+      margin-bottom: var(--spacing-sm);
+      
+      &:last-child {
+        margin-bottom: 0;
+      }
+      
+      .contact-icon {
+        width: 20px;
+        height: 20px;
+        background: var(--primary-500);
+        border-radius: 50%;
+        flex-shrink: 0;
+      }
+      
+      .contact-value {
+        color: var(--neutral-700);
+        font-weight: var(--font-weight-medium);
+      }
+    }
+  }
+  
+  .organization-address {
+    background: var(--neutral-50);
+    padding: var(--spacing-md);
+    border-radius: var(--border-radius-md);
+    border-left: 4px solid var(--secondary-500);
+    
+    .address-line {
+      margin-bottom: var(--spacing-xs);
+      color: var(--neutral-700);
+      
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+  
+  .organization-social {
+    display: flex;
+    gap: var(--spacing-sm);
+    margin-top: var(--spacing-md);
+    
+    .social-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: var(--primary-600);
+      color: white;
+      border-radius: 50%;
+      transition: all var(--transition-fast);
+      
+      &:hover {
+        background: var(--primary-700);
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-md);
+      }
+      
+      &.vk { background: #4C75A3; }
+      &.telegram { background: #0088CC; }
+      &.whatsapp { background: #25D366; }
+      &.viber { background: #7360F2; }
+    }
+  }
+}
+
+// ============================================
+// LOCAL BUSINESS SCHEMA
+// ============================================
+
+[itemtype*="LocalBusiness"] {
+  // SEO: Стили для локального бизнеса
+  
+  .business-hours {
+    background: var(--neutral-50);
+    padding: var(--spacing-md);
+    border-radius: var(--border-radius-md);
+    border-left: 4px solid var(--success-500);
+    
+    .hours-title {
+      font-weight: var(--font-weight-bold);
+      color: var(--neutral-800);
+      margin-bottom: var(--spacing-sm);
+    }
+    
+    .hours-item {
+      display: flex;
+      justify-content: space-between;
+      padding: var(--spacing-xs) 0;
+      border-bottom: 1px solid var(--neutral-200);
+      
+      &:last-child {
+        border-bottom: none;
+      }
+      
+      .day {
+        font-weight: var(--font-weight-medium);
+        color: var(--neutral-700);
+      }
+      
+      .time {
+        color: var(--neutral-600);
+      }
+      
+      &.today {
+        background: var(--success-50);
+        padding: var(--spacing-xs) var(--spacing-sm);
+        margin: 0 calc(-1 * var(--spacing-sm));
+        border-radius: var(--border-radius-sm);
+        
+        .day {
+          color: var(--success-700);
+        }
+        
+        .time {
+          color: var(--success-600);
+        }
+      }
+    }
+  }
+  
+  .business-services {
+    margin-top: var(--spacing-lg);
+    
+    .services-title {
+      font-weight: var(--font-weight-bold);
+      color: var(--neutral-800);
+      margin-bottom: var(--spacing-md);
+    }
+    
+    .service-item {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-sm);
+      padding: var(--spacing-sm);
+      background: var(--neutral-50);
+      border-radius: var(--border-radius-sm);
+      margin-bottom: var(--spacing-sm);
+      
+      &:last-child {
+        margin-bottom: 0;
+      }
+      
+      .service-icon {
+        width: 24px;
+        height: 24px;
+        background: var(--primary-500);
+        border-radius: 50%;
+        flex-shrink: 0;
+      }
+      
+      .service-name {
+        color: var(--neutral-700);
+        font-weight: var(--font-weight-medium);
+      }
+      
+      .service-price {
+        margin-left: auto;
+        color: var(--primary-600);
+        font-weight: var(--font-weight-bold);
+      }
+    }
+  }
+}
+
+// ============================================
+// SERVICE SCHEMA
+// ============================================
+
+[itemtype*="Service"] {
+  // SEO: Стили для услуг
+  
+  .service-header {
+    background: linear-gradient(135deg, var(--primary-600), var(--secondary-600));
+    color: white;
+    padding: var(--spacing-xl);
+    border-radius: var(--border-radius-lg);
+    margin-bottom: var(--spacing-lg);
+    
+    .service-name {
+      font-size: var(--font-size-2xl);
+      font-weight: var(--font-weight-bold);
+      margin-bottom: var(--spacing-sm);
+    }
+    
+    .service-description {
+      font-size: var(--font-size-lg);
+      opacity: 0.9;
+      line-height: var(--line-height-relaxed);
+    }
+  }
+  
+  .service-details {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
+    
+    .detail-card {
+      background: white;
+      padding: var(--spacing-lg);
+      border-radius: var(--border-radius-md);
+      border: 1px solid var(--neutral-200);
+      box-shadow: var(--shadow-sm);
+      
+      .detail-title {
+        font-weight: var(--font-weight-bold);
+        color: var(--neutral-800);
+        margin-bottom: var(--spacing-sm);
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-sm);
+        
+        &::before {
+          content: '';
+          width: 20px;
+          height: 20px;
+          background: var(--primary-500);
+          border-radius: 50%;
+        }
+      }
+      
+      .detail-content {
+        color: var(--neutral-700);
+        line-height: var(--line-height-relaxed);
+      }
+    }
+  }
+  
+  .service-features {
+    background: var(--neutral-50);
+    padding: var(--spacing-lg);
+    border-radius: var(--border-radius-md);
+    margin-bottom: var(--spacing-lg);
+    
+    .features-title {
+      font-weight: var(--font-weight-bold);
+      color: var(--neutral-800);
+      margin-bottom: var(--spacing-md);
+      text-align: center;
+    }
+    
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: var(--spacing-md);
+      
+      .feature-item {
+        display: flex;
+        align-items: flex-start;
+        gap: var(--spacing-sm);
+        
+        .feature-icon {
+          width: 24px;
+          height: 24px;
+          background: var(--success-500);
+          border-radius: 50%;
+          flex-shrink: 0;
+          margin-top: 2px;
+        }
+        
+        .feature-text {
+          color: var(--neutral-700);
+          font-weight: var(--font-weight-medium);
+        }
+      }
+    }
+  }
+}
+
+// ============================================
+// PRODUCT SCHEMA
+// ============================================
+
+[itemtype*="Product"] {
+  // SEO: Стили для продуктов
+  
+  .product-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-xl);
+    margin-bottom: var(--spacing-lg);
+    
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+      gap: var(--spacing-lg);
+    }
+    
+    .product-info {
+      .product-name {
+        font-size: var(--font-size-2xl);
+        font-weight: var(--font-weight-bold);
+        color: var(--neutral-800);
+        margin-bottom: var(--spacing-md);
+      }
+      
+      .product-description {
+        color: var(--neutral-700);
+        line-height: var(--line-height-relaxed);
+        margin-bottom: var(--spacing-md);
+      }
+      
+      .product-price {
+        font-size: var(--font-size-xl);
+        font-weight: var(--font-weight-bold);
+        color: var(--primary-600);
+        margin-bottom: var(--spacing-md);
+      }
+      
+      .product-availability {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--spacing-sm);
+        padding: var(--spacing-sm) var(--spacing-md);
+        background: var(--success-100);
+        color: var(--success-700);
+        border-radius: var(--border-radius-md);
+        font-weight: var(--font-weight-medium);
+        
+        &::before {
+          content: '';
+          width: 12px;
+          height: 12px;
+          background: var(--success-500);
+          border-radius: 50%;
+        }
+        
+        &.out-of-stock {
+          background: var(--danger-100);
+          color: var(--danger-700);
+          
+          &::before {
+            background: var(--danger-500);
+          }
+        }
+      }
+    }
+    
+    .product-image {
+      text-align: center;
+      
+      img {
+        max-width: 100%;
+        height: auto;
+        border-radius: var(--border-radius-lg);
+        box-shadow: var(--shadow-lg);
+      }
+    }
+  }
+  
+  .product-specifications {
+    background: var(--neutral-50);
+    padding: var(--spacing-lg);
+    border-radius: var(--border-radius-md);
+    margin-bottom: var(--spacing-lg);
+    
+    .specs-title {
+      font-weight: var(--font-weight-bold);
+      color: var(--neutral-800);
+      margin-bottom: var(--spacing-md);
+    }
+    
+    .specs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: var(--spacing-md);
+      
+      .spec-item {
+        .spec-label {
+          font-weight: var(--font-weight-medium);
+          color: var(--neutral-600);
+          margin-bottom: var(--spacing-xs);
+        }
+        
+        .spec-value {
+          color: var(--neutral-800);
+          font-weight: var(--font-weight-semibold);
+        }
+      }
+    }
+  }
+}
+
+// ============================================
+// REVIEW SCHEMA
+// ============================================
+
+[itemtype*="Review"] {
+  // SEO: Стили для отзывов
+  
+  .review-card {
+    background: white;
+    padding: var(--spacing-lg);
+    border-radius: var(--border-radius-md);
+    border: 1px solid var(--neutral-200);
+    box-shadow: var(--shadow-sm);
+    margin-bottom: var(--spacing-md);
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
+    
+    .review-header {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-md);
+      margin-bottom: var(--spacing-md);
+      
+      .reviewer-avatar {
+        width: 50px;
+        height: 50px;
+        background: var(--primary-500);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: var(--font-weight-bold);
+        font-size: var(--font-size-lg);
+      }
+      
+      .reviewer-info {
+        flex: 1;
+        
+        .reviewer-name {
+          font-weight: var(--font-weight-bold);
+          color: var(--neutral-800);
+          margin-bottom: var(--spacing-xs);
+        }
+        
+        .review-date {
+          color: var(--neutral-500);
+          font-size: var(--font-size-sm);
+        }
+      }
+      
+      .review-rating {
+        display: flex;
+        gap: var(--spacing-xs);
+        
+        .star {
+          width: 20px;
+          height: 20px;
+          background: var(--warning-400);
+          clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+          
+          &.filled {
+            background: var(--warning-500);
+          }
+        }
+      }
+    }
+    
+    .review-content {
+      color: var(--neutral-700);
+      line-height: var(--line-height-relaxed);
+      margin-bottom: var(--spacing-md);
+    }
+    
+    .review-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      
+      .review-helpful {
+        display: flex;
+        gap: var(--spacing-sm);
+        
+        .helpful-btn {
+          display: flex;
+          align-items: center;
+          gap: var(--spacing-xs);
+          padding: var(--spacing-xs) var(--spacing-sm);
+          background: var(--neutral-100);
+          color: var(--neutral-600);
+          border: none;
+          border-radius: var(--border-radius-sm);
+          cursor: pointer;
+          transition: all var(--transition-fast);
+          
+          &:hover {
+            background: var(--neutral-200);
+            color: var(--neutral-700);
+          }
+          
+          &.active {
+            background: var(--primary-100);
+            color: var(--primary-700);
+          }
+        }
+      }
+      
+      .review-verified {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-xs);
+        color: var(--success-600);
+        font-size: var(--font-size-sm);
+        font-weight: var(--font-weight-medium);
+        
+        &::before {
+          content: '✓';
+          font-weight: var(--font-weight-bold);
+        }
+      }
+    }
+  }
+}
+
+// ============================================
+// FAQ SCHEMA
+// ============================================
+
+[itemtype*="FAQPage"] {
+  // SEO: Стили для FAQ
+  
+  .faq-section {
+    margin-bottom: var(--spacing-xl);
+    
+    .faq-title {
+      font-size: var(--font-size-2xl);
+      font-weight: var(--font-weight-bold);
+      color: var(--neutral-800);
+      text-align: center;
+      margin-bottom: var(--spacing-lg);
+    }
+    
+    .faq-list {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .faq-item {
+      background: white;
+      border: 1px solid var(--neutral-200);
+      border-radius: var(--border-radius-md);
+      margin-bottom: var(--spacing-sm);
+      overflow: hidden;
+      
+      &:last-child {
+        margin-bottom: 0;
+      }
+      
+      .faq-question {
+        background: var(--neutral-50);
+        padding: var(--spacing-lg);
+        cursor: pointer;
+        transition: all var(--transition-fast);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        
+        &:hover {
+          background: var(--neutral-100);
+        }
+        
+        .question-text {
+          font-weight: var(--font-weight-semibold);
+          color: var(--neutral-800);
+          margin-right: var(--spacing-md);
+        }
+        
+        .question-icon {
+          width: 20px;
+          height: 20px;
+          background: var(--primary-500);
+          border-radius: 50%;
+          flex-shrink: 0;
+          transition: transform var(--transition-fast);
+          
+          &.expanded {
+            transform: rotate(45deg);
+          }
+        }
+      }
+      
+      .faq-answer {
+        padding: 0 var(--spacing-lg);
+        max-height: 0;
+        overflow: hidden;
+        transition: all var(--transition-normal);
+        
+        &.expanded {
+          padding: var(--spacing-lg);
+          max-height: 500px;
+        }
+        
+        .answer-text {
+          color: var(--neutral-700);
+          line-height: var(--line-height-relaxed);
+        }
+      }
+    }
+  }
+}
+
+// ============================================
+// BREADCRUMB SCHEMA
+// ============================================
+
+[itemtype*="BreadcrumbList"] {
+  // SEO: Стили для хлебных крошек
+  
+  .breadcrumb-nav {
+    background: var(--neutral-50);
+    padding: var(--spacing-md);
+    border-radius: var(--border-radius-md);
+    margin-bottom: var(--spacing-lg);
+    
+    .breadcrumb-list {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-sm);
+      flex-wrap: wrap;
+      
+      .breadcrumb-item {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-sm);
+        
+        &:not(:last-child)::after {
+          content: '>';
+          color: var(--neutral-400);
+          font-weight: var(--font-weight-bold);
+        }
+        
+        .breadcrumb-link {
+          color: var(--primary-600);
+          text-decoration: none;
+          font-weight: var(--font-weight-medium);
+          transition: color var(--transition-fast);
+          
+          &:hover {
+            color: var(--primary-700);
+            text-decoration: underline;
+          }
+        }
+        
+        .breadcrumb-text {
+          color: var(--neutral-600);
+          font-weight: var(--font-weight-medium);
+        }
+        
+        &.current {
+          .breadcrumb-text {
+            color: var(--neutral-800);
+            font-weight: var(--font-weight-bold);
+          }
+        }
+      }
+    }
+  }
+}
+
+// ============================================
+// АДАПТИВНОСТЬ
+// ============================================
+
+@media (max-width: 768px) {
+  [itemtype*="Organization"] {
+    .organization-contact,
+    .organization-address {
+      padding: var(--spacing-sm);
+    }
+    
+    .organization-social {
+      justify-content: center;
+      
+      .social-link {
+        width: 35px;
+        height: 35px;
+      }
+    }
+  }
+  
+  [itemtype*="LocalBusiness"] {
+    .business-hours {
+      padding: var(--spacing-sm);
+    }
+    
+    .business-services {
+      .service-item {
+        padding: var(--spacing-xs);
+        
+        .service-icon {
+          width: 20px;
+          height: 20px;
+        }
+      }
+    }
+  }
+  
+  [itemtype*="Service"] {
+    .service-header {
+      padding: var(--spacing-lg);
+      
+      .service-name {
+        font-size: var(--font-size-xl);
+      }
+      
+      .service-description {
+        font-size: var(--font-size-base);
+      }
+    }
+    
+    .service-details {
+      grid-template-columns: 1fr;
+      gap: var(--spacing-md);
+    }
+    
+    .service-features {
+      padding: var(--spacing-md);
+      
+      .features-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-sm);
+      }
+    }
+  }
+  
+  [itemtype*="Product"] {
+    .product-header {
+      grid-template-columns: 1fr;
+      gap: var(--spacing-lg);
+    }
+    
+    .product-specifications {
+      padding: var(--spacing-md);
+      
+      .specs-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-sm);
+      }
+    }
+  }
+  
+  [itemtype*="Review"] {
+    .review-card {
+      padding: var(--spacing-md);
+      
+      .review-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--spacing-sm);
+        
+        .reviewer-avatar {
+          width: 40px;
+          height: 40px;
+          font-size: var(--font-size-base);
+        }
+      }
+      
+      .review-footer {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--spacing-sm);
+      }
+    }
+  }
+  
+  [itemtype*="FAQPage"] {
+    .faq-section {
+      .faq-item {
+        .faq-question {
+          padding: var(--spacing-md);
+          
+          .question-text {
+            font-size: var(--font-size-sm);
+          }
+        }
+        
+        .faq-answer {
+          &.expanded {
+            padding: var(--spacing-md);
+          }
+        }
+      }
+    }
+  }
+  
+  [itemtype*="BreadcrumbList"] {
+    .breadcrumb-nav {
+      padding: var(--spacing-sm);
+      
+      .breadcrumb-list {
+        gap: var(--spacing-xs);
+        
+        .breadcrumb-item {
+          gap: var(--spacing-xs);
+          font-size: var(--font-size-sm);
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  [itemtype*="Organization"] {
+    .organization-name {
+      font-size: var(--font-size-base);
+    }
+    
+    .organization-description {
+      font-size: var(--font-size-sm);
+    }
+  }
+  
+  [itemtype*="Service"] {
+    .service-header {
+      padding: var(--spacing-md);
+      
+      .service-name {
+        font-size: var(--font-size-lg);
+      }
+      
+      .service-description {
+        font-size: var(--font-size-sm);
+      }
+    }
+  }
+  
+  [itemtype*="Product"] {
+    .product-header {
+      .product-info {
+        .product-name {
+          font-size: var(--font-size-lg);
+        }
+        
+        .product-description {
+          font-size: var(--font-size-sm);
+        }
+        
+        .product-price {
+          font-size: var(--font-size-lg);
+        }
+      }
+    }
+  }
+}
+
+// ============================================
+// ДОСТУПНОСТЬ
+// ============================================
+
+@media (prefers-reduced-motion: reduce) {
+  [itemtype] * {
+    transition: none;
+  }
+  
+  .review-card .review-footer .helpful-btn:hover,
+  .faq-item .faq-question:hover {
+    transform: none;
+  }
+}
+
+@media (prefers-contrast: high) {
+  [itemtype] {
+    .organization-contact,
+    .organization-address,
+    .business-hours,
+    .business-services .service-item,
+    .service-details .detail-card,
+    .service-features,
+    .product-specifications,
+    .review-card,
+    .faq-item,
+    .breadcrumb-nav {
+      border: 2px solid var(--neutral-900);
+    }
+    
+    .organization-social .social-link,
+    .business-services .service-item .service-icon,
+    .service-details .detail-card .detail-title::before,
+    .service-features .feature-item .feature-icon,
+    .review-card .review-header .reviewer-avatar,
+    .review-card .review-rating .star,
+    .faq-item .faq-question .question-icon {
+      border: 2px solid var(--neutral-900);
+    }
+  }
+}
+
+// ============================================
+// ПЕЧАТЬ
+// ============================================
+
+@media print {
+  [itemtype] {
+    .organization-social,
+    .business-services .service-item .service-price,
+    .review-card .review-footer .review-helpful,
+    .faq-item .faq-question .question-icon {
+      display: none;
+    }
+    
+    .organization-contact,
+    .organization-address,
+    .business-hours,
+    .business-services .service-item,
+    .service-details .detail-card,
+    .service-features,
+    .product-specifications,
+    .review-card,
+    .faq-item,
+    .breadcrumb-nav {
+      border: 1px solid black;
+      background: white;
+      color: black;
+      page-break-inside: avoid;
+    }
+  }
+}

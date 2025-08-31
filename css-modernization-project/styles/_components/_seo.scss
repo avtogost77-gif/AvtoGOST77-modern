@@ -1,0 +1,475 @@
+// ============================================
+// SEO КОМПОНЕНТЫ - AvtoGOST77
+// ============================================
+// Дата создания: 31 августа 2025
+// Автор: AI Assistant
+// Описание: SEO-оптимизированные компоненты
+
+// ============================================
+// BREADCRUMBS НАВИГАЦИЯ (SEO-СТРУКТУРА)
+// ============================================
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-lg);
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  
+  .breadcrumb-item {
+    display: flex;
+    align-items: center;
+    
+    &:not(:last-child)::after {
+      content: "›";
+      margin-left: var(--spacing-sm);
+      color: var(--color-border-medium);
+    }
+    
+    a {
+      color: var(--color-text-muted);
+      text-decoration: none;
+      transition: color var(--transition-normal);
+      
+      &:hover {
+        color: var(--color-primary);
+      }
+    }
+    
+    &.current {
+      color: var(--color-text-primary);
+      font-weight: 500;
+    }
+  }
+}
+
+// ============================================
+// СТРУКТУРИРОВАННЫЕ ДАННЫЕ (SCHEMA.ORG)
+// ============================================
+
+// Schema.org разметка для логистических услуг
+.schema-logistics {
+  display: none; // Скрыто для пользователей, видимо для поисковиков
+  
+  .schema-item {
+    // Organization schema
+    &[itemtype="https://schema.org/Organization"] {
+      .schema-name { font-weight: bold; }
+      .schema-description { font-style: italic; }
+      .schema-address { color: var(--color-text-muted); }
+    }
+    
+    // Service schema
+    &[itemtype="https://schema.org/Service"] {
+      .schema-service-name { font-weight: bold; }
+      .schema-service-description { line-height: 1.6; }
+      .schema-area-served { color: var(--color-primary); }
+    }
+    
+    // Review schema
+    &[itemtype="https://schema.org/Review"] {
+      .schema-rating { color: var(--color-warning); }
+      .schema-review-body { font-style: italic; }
+    }
+  }
+}
+
+// ============================================
+// МЕТА-ТЕГИ СТИЛИЗАЦИЯ (SEO-ОПТИМИЗАЦИЯ)
+// ============================================
+
+// Open Graph изображения
+.og-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: var(--shadow-md);
+  
+  &.featured {
+    border: 3px solid var(--color-primary);
+  }
+}
+
+// Twitter Card стили
+.twitter-card {
+  background: var(--color-bg-secondary);
+  border-radius: 12px;
+  padding: var(--spacing-lg);
+  border: 1px solid var(--color-border-light);
+  
+  .card-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+    
+    .avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--color-primary);
+    }
+    
+    .user-info {
+      .username {
+        font-weight: 600;
+        color: var(--color-text-primary);
+      }
+      
+      .handle {
+        color: var(--color-text-muted);
+        font-size: 0.875rem;
+      }
+    }
+  }
+  
+  .card-content {
+    color: var(--color-text-primary);
+    line-height: 1.6;
+    margin-bottom: var(--spacing-md);
+  }
+  
+  .card-footer {
+    display: flex;
+    justify-content: space-between;
+    color: var(--color-text-muted);
+    font-size: 0.875rem;
+  }
+}
+
+// ============================================
+// SEMANTIC РАЗМЕТКА (SEO-СТРУКТУРА)
+// ============================================
+
+// Основной контент
+main {
+  outline: none; // Убираем outline для main
+  
+  &:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+}
+
+// Статья
+article {
+  margin-bottom: var(--spacing-xl);
+  
+  .article-header {
+    margin-bottom: var(--spacing-lg);
+    
+    .article-meta {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-md);
+      margin-bottom: var(--spacing-md);
+      font-size: 0.875rem;
+      color: var(--color-text-muted);
+      
+      .meta-item {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-xs);
+        
+        .meta-icon {
+          width: 16px;
+          height: 16px;
+          color: var(--color-primary);
+        }
+      }
+    }
+  }
+  
+  .article-content {
+    line-height: 1.7;
+    
+    // Семантические секции
+    section {
+      margin-bottom: var(--spacing-xl);
+      
+      h2, h3, h4 {
+        scroll-margin-top: 100px; // Для якорных ссылок
+      }
+    }
+  }
+  
+  .article-footer {
+    margin-top: var(--spacing-xl);
+    padding-top: var(--spacing-lg);
+    border-top: 1px solid var(--color-border-light);
+    
+    .article-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--spacing-sm);
+      margin-bottom: var(--spacing-md);
+      
+      .tag {
+        background: var(--color-primary-50);
+        color: var(--color-primary-700);
+        padding: var(--spacing-xs) var(--spacing-sm);
+        border-radius: 20px;
+        font-size: 0.875rem;
+        text-decoration: none;
+        transition: all var(--transition-normal);
+        
+        &:hover {
+          background: var(--color-primary-100);
+          transform: translateY(-1px);
+        }
+      }
+    }
+  }
+}
+
+// ============================================
+// ALT-ТЕКСТЫ ДЛЯ ИЗОБРАЖЕНИЙ (SEO-ДОСТУПНОСТЬ)
+// ============================================
+
+// Изображения с alt-текстами
+img {
+  max-width: 100%;
+  height: auto;
+  
+  &[alt] {
+    // Стили для изображений с alt-текстами
+    border: 1px solid var(--color-border-light);
+  }
+  
+  &[alt=""] {
+    // Стили для декоративных изображений
+    border: none;
+  }
+  
+  // Ленивая загрузка
+  &[loading="lazy"] {
+    opacity: 0;
+    transition: opacity var(--transition-normal);
+    
+    &.loaded {
+      opacity: 1;
+    }
+  }
+}
+
+// ============================================
+// MICRODATA И MICROFORMATS (SEO-СТРУКТУРА)
+// ============================================
+
+// Микроразметка для контактов
+.contact-microdata {
+  .contact-item {
+    &[itemprop="telephone"] {
+      color: var(--color-primary);
+      font-weight: 600;
+    }
+    
+    &[itemprop="email"] {
+      color: var(--color-primary);
+      text-decoration: underline;
+    }
+    
+    &[itemprop="address"] {
+      font-style: italic;
+      color: var(--color-text-muted);
+    }
+  }
+}
+
+// Микроразметка для цен
+.price-microdata {
+  .price {
+    &[itemprop="price"] {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--color-success);
+    }
+    
+    &[itemprop="priceCurrency"] {
+      font-size: 0.875rem;
+      color: var(--color-text-muted);
+      margin-left: var(--spacing-xs);
+    }
+  }
+}
+
+// ============================================
+// SEO-ОПТИМИЗИРОВАННЫЕ ФОРМЫ
+// ============================================
+
+// Формы с семантической разметкой
+.seo-form {
+  .form-group {
+    margin-bottom: var(--spacing-lg);
+    
+    label {
+      display: block;
+      margin-bottom: var(--spacing-sm);
+      font-weight: 600;
+      color: var(--color-text-primary);
+      
+      // Обязательные поля
+      &.required::after {
+        content: " *";
+        color: var(--color-error);
+      }
+    }
+    
+    input, textarea, select {
+      width: 100%;
+      padding: var(--spacing-md);
+      border: 2px solid var(--color-border-light);
+      border-radius: var(--border-radius);
+      font-size: 1rem;
+      transition: all var(--transition-normal);
+      
+      &:focus {
+        outline: none;
+        border-color: var(--color-primary);
+        box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+      }
+      
+      // Валидация
+      &:invalid {
+        border-color: var(--color-error);
+      }
+      
+      &:valid {
+        border-color: var(--color-success);
+      }
+    }
+    
+    // Сообщения об ошибках
+    .error-message {
+      color: var(--color-error);
+      font-size: 0.875rem;
+      margin-top: var(--spacing-xs);
+      display: none;
+      
+      &.visible {
+        display: block;
+      }
+    }
+  }
+}
+
+// ============================================
+// АДАПТИВНОСТЬ (MOBILE-FIRST)
+// ============================================
+
+@media (max-width: 768px) {
+  .breadcrumbs {
+    font-size: 0.8rem;
+    gap: var(--spacing-xs);
+    
+    .breadcrumb-item::after {
+      margin-left: var(--spacing-xs);
+    }
+  }
+  
+  .twitter-card {
+    padding: var(--spacing-md);
+    
+    .card-header .avatar {
+      width: 40px;
+      height: 40px;
+    }
+  }
+  
+  .article-meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-sm);
+  }
+}
+
+@media (max-width: 480px) {
+  .breadcrumbs {
+    flex-wrap: wrap;
+    gap: var(--spacing-xs);
+  }
+  
+  .article-tags {
+    justify-content: center;
+  }
+  
+  .seo-form .form-group input,
+  .seo-form .form-group textarea,
+  .seo-form .form-group select {
+    padding: var(--spacing-sm);
+    font-size: 0.9rem;
+  }
+}
+
+// ============================================
+// ДОСТУПНОСТЬ (A11Y)
+// ============================================
+
+// Высокий контраст
+@media (prefers-contrast: high) {
+  .breadcrumbs .breadcrumb-item::after {
+    color: var(--color-text-primary);
+  }
+  
+  .twitter-card {
+    border: 2px solid var(--color-text-primary);
+  }
+}
+
+// Уменьшение движения
+@media (prefers-reduced-motion: reduce) {
+  .tag:hover {
+    transform: none;
+  }
+  
+  img[loading="lazy"] {
+    transition: none;
+  }
+}
+
+// ============================================
+// PRINT СТИЛИ
+// ============================================
+
+@media print {
+  .breadcrumbs {
+    display: none;
+  }
+  
+  .schema-logistics {
+    display: block;
+    font-size: 10pt;
+    color: #000;
+  }
+  
+  .twitter-card {
+    background: #fff;
+    border: 1px solid #000;
+    box-shadow: none;
+  }
+  
+  .article-tags .tag {
+    background: #fff;
+    color: #000;
+    border: 1px solid #000;
+  }
+}
+
+// ============================================
+// КОММЕНТАРИИ ПО РАЗРАБОТКЕ
+// ============================================
+/*
+СТАТУС РАЗРАБОТКИ:
+
+✅ ГОТОВО:
+- SEO-френдли компоненты
+- Breadcrumbs навигация
+- Структурированные данные (Schema.org)
+- Семантическая разметка
+- Микроразметка для контактов и цен
+- SEO-оптимизированные формы
+
+🎯 ЦЕЛЬ ЭТАПА:
+Создание SEO-оптимизированных компонентов для лучшего ранжирования
+*/

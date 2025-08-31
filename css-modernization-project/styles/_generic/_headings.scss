@@ -1,0 +1,517 @@
+// ============================================
+// HEADINGS СТИЛИ - AvtoGOST77 (МИГРИРОВАНО)
+// ============================================
+// Дата создания: 31 августа 2025
+// Автор: AI Assistant
+// Описание: SEO-оптимизированные стили заголовков H1-H6
+
+// ============================================
+// ОСНОВНЫЕ ЗАГОЛОВКИ
+// ============================================
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-family-headings);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  margin: 0 0 var(--spacing-md) 0;
+  color: var(--heading-color);
+  word-wrap: break-word;
+  hyphens: auto;
+  
+  &:first-child {
+    margin-top: 0;
+  }
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+  
+  // SEO: Улучшенная читаемость
+  text-rendering: optimizeLegibility;
+  -webkit-font-feature-settings: "kern" 1;
+  font-feature-settings: "kern" 1;
+  
+  // SEO: Правильная иерархия
+  &[id] {
+    scroll-margin-top: 100px; // Для якорных ссылок
+  }
+  
+  // SEO: Фокус для доступности
+  &:focus {
+    outline: 2px solid var(--primary-400);
+    outline-offset: 2px;
+  }
+}
+
+// ============================================
+// H1 - ГЛАВНЫЙ ЗАГОЛОВОК СТРАНИЦЫ
+// ============================================
+
+h1 {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-black);
+  color: var(--primary-600);
+  margin-bottom: var(--spacing-lg);
+  text-align: center;
+  
+  // SEO: Только один H1 на странице
+  &:not(:first-of-type) {
+    font-size: var(--font-size-2xl);
+    color: var(--neutral-800);
+    text-align: left;
+  }
+  
+  // SEO: Длинные заголовки
+  &.long-title {
+    font-size: var(--font-size-2xl);
+    line-height: var(--line-height-relaxed);
+    
+    @media (max-width: 768px) {
+      font-size: var(--font-size-xl);
+    }
+  }
+  
+  // SEO: Короткие заголовки
+  &.short-title {
+    font-size: var(--font-size-4xl);
+    
+    @media (max-width: 768px) {
+      font-size: var(--font-size-3xl);
+    }
+  }
+  
+  // SEO: Hero заголовки
+  &.hero-title {
+    font-size: var(--font-size-4xl);
+    background: linear-gradient(135deg, var(--primary-600), var(--secondary-600));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    
+    @media (max-width: 768px) {
+      font-size: var(--font-size-3xl);
+    }
+    
+    @media (max-width: 480px) {
+      font-size: var(--font-size-2xl);
+    }
+  }
+  
+  // SEO: Landing заголовки
+  &.landing-title {
+    font-size: var(--font-size-3xl);
+    color: var(--neutral-900);
+    text-align: left;
+    margin-bottom: var(--spacing-md);
+    
+    @media (max-width: 768px) {
+      font-size: var(--font-size-2xl);
+    }
+  }
+  
+  @media (max-width: 768px) {
+    font-size: var(--font-size-2xl);
+    margin-bottom: var(--spacing-md);
+  }
+  
+  @media (max-width: 480px) {
+    font-size: var(--font-size-xl);
+    margin-bottom: var(--spacing-sm);
+  }
+}
+
+// ============================================
+// H2 - ЗАГОЛОВКИ СЕКЦИЙ
+// ============================================
+
+h2 {
+  font-size: var(--font-size-2xl);
+  color: var(--neutral-800);
+  margin-bottom: var(--spacing-md);
+  position: relative;
+  
+  // SEO: Подчеркивание для выделения
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary-500), var(--secondary-500));
+    border-radius: 2px;
+  }
+  
+  // SEO: Центрированные заголовки
+  &.text-center::after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  // SEO: Правосторонние заголовки
+  &.text-right::after {
+    left: auto;
+    right: 0;
+  }
+  
+  // SEO: Без подчеркивания
+  &.no-underline::after {
+    display: none;
+  }
+  
+  // SEO: Длинные заголовки
+  &.long-title {
+    font-size: var(--font-size-xl);
+    line-height: var(--line-height-relaxed);
+  }
+  
+  // SEO: Короткие заголовки
+  &.short-title {
+    font-size: var(--font-size-2xl);
+  }
+  
+  // SEO: Секционные заголовки
+  &.section-title {
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+    
+    &::after {
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    font-size: var(--font-size-xl);
+    margin-bottom: var(--spacing-sm);
+    
+    &::after {
+      width: 50px;
+      bottom: -6px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    font-size: var(--font-size-lg);
+    
+    &::after {
+      width: 40px;
+      bottom: -4px;
+    }
+  }
+}
+
+// ============================================
+// H3 - ПОДЗАГОЛОВКИ
+// ============================================
+
+h3 {
+  font-size: var(--font-size-xl);
+  color: var(--neutral-700);
+  margin-bottom: var(--spacing-sm);
+  font-weight: var(--font-weight-semibold);
+  
+  // SEO: Подзаголовки с иконками
+  &.with-icon {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    
+    &::before {
+      content: '';
+      width: 20px;
+      height: 20px;
+      background: var(--primary-500);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+  }
+  
+  // SEO: Акцентные подзаголовки
+  &.accent {
+    color: var(--primary-600);
+    font-weight: var(--font-weight-bold);
+  }
+  
+  // SEO: Мягкие подзаголовки
+  &.soft {
+    color: var(--neutral-600);
+    font-weight: var(--font-weight-medium);
+  }
+  
+  @media (max-width: 768px) {
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--spacing-xs);
+  }
+  
+  @media (max-width: 480px) {
+    font-size: var(--font-size-base);
+  }
+}
+
+// ============================================
+// H4 - МЕЛКИЕ ЗАГОЛОВКИ
+// ============================================
+
+h4 {
+  font-size: var(--font-size-lg);
+  color: var(--neutral-700);
+  margin-bottom: var(--spacing-sm);
+  font-weight: var(--font-weight-semibold);
+  
+  // SEO: Заголовки карточек
+  &.card-title {
+    color: var(--neutral-800);
+    margin-bottom: var(--spacing-md);
+    font-size: var(--font-size-lg);
+  }
+  
+  // SEO: Заголовки форм
+  &.form-title {
+    color: var(--primary-600);
+    margin-bottom: var(--spacing-md);
+  }
+  
+  // SEO: Заголовки списков
+  &.list-title {
+    color: var(--neutral-700);
+    border-bottom: 1px solid var(--neutral-200);
+    padding-bottom: var(--spacing-xs);
+    margin-bottom: var(--spacing-md);
+  }
+  
+  @media (max-width: 768px) {
+    font-size: var(--font-size-base);
+    margin-bottom: var(--spacing-xs);
+  }
+}
+
+// ============================================
+// H5 - МИНИ ЗАГОЛОВКИ
+// ============================================
+
+h5 {
+  font-size: var(--font-size-base);
+  color: var(--neutral-600);
+  margin-bottom: var(--spacing-xs);
+  font-weight: var(--font-weight-medium);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  
+  // SEO: Заголовки меток
+  &.label-title {
+    color: var(--neutral-700);
+    font-weight: var(--font-weight-semibold);
+    text-transform: none;
+    letter-spacing: normal;
+  }
+  
+  // SEO: Заголовки категорий
+  &.category-title {
+    color: var(--secondary-600);
+    font-weight: var(--font-weight-bold);
+  }
+  
+  @media (max-width: 768px) {
+    font-size: var(--font-size-sm);
+  }
+}
+
+// ============================================
+// H6 - МИКРО ЗАГОЛОВКИ
+// ============================================
+
+h6 {
+  font-size: var(--font-size-sm);
+  color: var(--neutral-600);
+  margin-bottom: var(--spacing-xs);
+  font-weight: var(--font-weight-medium);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  
+  // SEO: Заголовки тегов
+  &.tag-title {
+    color: var(--neutral-500);
+    font-weight: var(--font-weight-normal);
+    text-transform: none;
+    letter-spacing: normal;
+  }
+  
+  // SEO: Заголовки статусов
+  &.status-title {
+    color: var(--success-600);
+    font-weight: var(--font-weight-semibold);
+  }
+  
+  @media (max-width: 768px) {
+    font-size: var(--font-size-xs);
+  }
+}
+
+// ============================================
+// ГРУППЫ ЗАГОЛОВКОВ
+// ============================================
+
+.heading-group {
+  margin-bottom: var(--spacing-xl);
+  
+  h1, h2, h3, h4, h5, h6 {
+    margin-bottom: var(--spacing-sm);
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  
+  .heading-subtitle {
+    font-size: var(--font-size-lg);
+    color: var(--neutral-600);
+    font-weight: var(--font-weight-normal);
+    line-height: var(--line-height-relaxed);
+    margin-top: var(--spacing-sm);
+  }
+  
+  .heading-description {
+    font-size: var(--font-size-base);
+    color: var(--neutral-500);
+    line-height: var(--line-height-relaxed);
+    margin-top: var(--spacing-md);
+  }
+}
+
+// ============================================
+// SEO ОПТИМИЗАЦИЯ
+// ============================================
+
+// SEO: Правильная иерархия заголовков
+.content-section {
+  h1 + h2 {
+    margin-top: var(--spacing-lg);
+  }
+  
+  h2 + h3 {
+    margin-top: var(--spacing-md);
+  }
+  
+  h3 + h4 {
+    margin-top: var(--spacing-sm);
+  }
+  
+  h4 + h5 {
+    margin-top: var(--spacing-xs);
+  }
+  
+  h5 + h6 {
+    margin-top: var(--spacing-xs);
+  }
+}
+
+// SEO: Заголовки в карточках
+.card {
+  h1, h2, h3, h4, h5, h6 {
+    margin-bottom: var(--spacing-sm);
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+// SEO: Заголовки в формах
+.form-section {
+  h1, h2, h3, h4, h5, h6 {
+    margin-bottom: var(--spacing-md);
+    color: var(--neutral-800);
+  }
+}
+
+// SEO: Заголовки в сайдбаре
+.sidebar {
+  h1, h2, h3, h4, h5, h6 {
+    font-size: 0.9em;
+    margin-bottom: var(--spacing-sm);
+  }
+}
+
+// ============================================
+// АДАПТИВНОСТЬ
+// ============================================
+
+@media (max-width: 768px) {
+  .heading-group {
+    margin-bottom: var(--spacing-lg);
+    
+    .heading-subtitle {
+      font-size: var(--font-size-base);
+    }
+    
+    .heading-description {
+      font-size: var(--font-size-sm);
+    }
+  }
+  
+  .content-section {
+    h1 + h2 {
+      margin-top: var(--spacing-md);
+    }
+    
+    h2 + h3 {
+      margin-top: var(--spacing-sm);
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .heading-group {
+    margin-bottom: var(--spacing-md);
+    
+    .heading-subtitle {
+      font-size: var(--font-size-sm);
+    }
+    
+    .heading-description {
+      font-size: var(--font-size-xs);
+    }
+  }
+}
+
+// ============================================
+// ДОСТУПНОСТЬ
+// ============================================
+
+@media (prefers-reduced-motion: reduce) {
+  h1, h2, h3, h4, h5, h6 {
+    transition: none;
+  }
+}
+
+@media (prefers-contrast: high) {
+  h1, h2, h3, h4, h5, h6 {
+    color: var(--neutral-900);
+    
+    &::after {
+      background: var(--neutral-900);
+    }
+  }
+}
+
+// ============================================
+// ПЕЧАТЬ
+// ============================================
+
+@media print {
+  h1, h2, h3, h4, h5, h6 {
+    color: black;
+    page-break-after: avoid;
+    
+    &::after {
+      display: none;
+    }
+  }
+  
+  .heading-group {
+    page-break-inside: avoid;
+  }
+}

@@ -1,0 +1,444 @@
+// ============================================
+// TYPOGRAPHY - AvtoGOST77 (SEO-ФРЕНДЛИ)
+// ============================================
+// Дата создания: 31 августа 2025
+// Автор: AI Assistant
+// Описание: SEO-оптимизированная типографика
+
+// ============================================
+// БАЗОВАЯ ТИПОГРАФИКА (SEO-ОПТИМИЗИРОВАНА)
+// ============================================
+
+// Основной текст
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--color-text-primary);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// ============================================
+// ЗАГОЛОВКИ H1-H6 (SEO-ИЕРАРХИЯ)
+// ============================================
+
+// H1 - Главный заголовок страницы (только один!)
+h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--color-heading);
+  margin-bottom: var(--spacing-lg);
+  
+  @media (min-width: 768px) {
+    font-size: 3rem;
+  }
+  
+  @media (min-width: 1024px) {
+    font-size: 3.5rem;
+  }
+}
+
+// H2 - Основные разделы
+h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--color-heading);
+  margin-bottom: var(--spacing-md);
+  
+  @media (min-width: 768px) {
+    font-size: 2.25rem;
+  }
+}
+
+// H3 - Подразделы
+h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--color-heading);
+  margin-bottom: var(--spacing-sm);
+  
+  @media (min-width: 768px) {
+    font-size: 1.75rem;
+  }
+}
+
+// H4 - Мелкие заголовки
+h4 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--color-heading);
+  margin-bottom: var(--spacing-sm);
+}
+
+// H5 - Подзаголовки
+h5 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--color-heading);
+  margin-bottom: var(--spacing-xs);
+}
+
+// H6 - Самые мелкие заголовки
+h6 {
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--color-heading);
+  margin-bottom: var(--spacing-xs);
+}
+
+// ============================================
+// ПАРАГРАФЫ И ТЕКСТ (SEO-ЧИТАЕМОСТЬ)
+// ============================================
+
+// Основной параграф
+p {
+  margin-bottom: var(--spacing-md);
+  line-height: 1.7;
+  color: var(--color-text-primary);
+  
+  // Большие параграфы для лучшей читаемости
+  &.lead {
+    font-size: 1.125rem;
+    line-height: 1.8;
+    color: var(--color-text-secondary);
+    margin-bottom: var(--spacing-lg);
+  }
+  
+  // Мелкие параграфы
+  &.small {
+    font-size: 0.875rem;
+    line-height: 1.6;
+    color: var(--color-text-muted);
+  }
+}
+
+// ============================================
+// СПИСКИ (SEO-СТРУКТУРИРОВАННОСТЬ)
+// ============================================
+
+// Маркированные списки
+ul {
+  margin-bottom: var(--spacing-md);
+  padding-left: var(--spacing-lg);
+  
+  li {
+    margin-bottom: var(--spacing-xs);
+    line-height: 1.6;
+    color: var(--color-text-primary);
+    
+    &::marker {
+      color: var(--color-primary);
+    }
+  }
+  
+  // Вложенные списки
+  ul {
+    margin-top: var(--spacing-xs);
+    margin-bottom: var(--spacing-xs);
+  }
+}
+
+// Нумерованные списки
+ol {
+  margin-bottom: var(--spacing-md);
+  padding-left: var(--spacing-lg);
+  
+  li {
+    margin-bottom: var(--spacing-xs);
+    line-height: 1.6;
+    color: var(--color-text-primary);
+    
+    &::marker {
+      color: var(--color-primary);
+      font-weight: 600;
+    }
+  }
+  
+  // Вложенные списки
+  ol {
+    margin-top: var(--spacing-xs);
+    margin-bottom: var(--spacing-xs);
+  }
+}
+
+// ============================================
+// ССЫЛКИ (SEO-ИНТЕРАКТИВНОСТЬ)
+// ============================================
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: all var(--transition-normal);
+  
+  &:hover {
+    color: var(--color-primary-dark);
+    text-decoration: underline;
+  }
+  
+  &:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+  
+  // Внешние ссылки
+  &[href^="http"]::after {
+    content: " ↗";
+    font-size: 0.8em;
+    opacity: 0.7;
+  }
+  
+  // Ссылки на файлы
+  &[href$=".pdf"]::after {
+    content: " 📄";
+    font-size: 0.8em;
+    opacity: 0.7;
+  }
+  
+  &[href$=".doc"]::after,
+  &[href$=".docx"]::after {
+    content: " 📝";
+    font-size: 0.8em;
+    opacity: 0.7;
+  }
+}
+
+// ============================================
+// ВЫДЕЛЕНИЯ И АКЦЕНТЫ (SEO-СЕМАНТИКА)
+// ============================================
+
+// Жирный текст
+strong, b {
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+
+// Курсив
+em, i {
+  font-style: italic;
+  color: var(--color-text-primary);
+}
+
+// Подчеркнутый
+u {
+  text-decoration: underline;
+  text-decoration-color: var(--color-primary);
+  text-underline-offset: 2px;
+}
+
+// Зачеркнутый
+s, del {
+  text-decoration: line-through;
+  color: var(--color-text-muted);
+}
+
+// Маркированный
+mark {
+  background-color: var(--color-warning-100);
+  color: var(--color-warning-800);
+  padding: 0.125rem 0.25rem;
+  border-radius: 4px;
+}
+
+// ============================================
+// ЦИТАТЫ (SEO-СТРУКТУРИРОВАННОСТЬ)
+// ============================================
+
+blockquote {
+  margin: var(--spacing-lg) 0;
+  padding: var(--spacing-lg);
+  background: var(--color-bg-secondary);
+  border-left: 4px solid var(--color-primary);
+  border-radius: 8px;
+  font-style: italic;
+  color: var(--color-text-secondary);
+  
+  p {
+    margin-bottom: var(--spacing-sm);
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  
+  cite {
+    display: block;
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    text-align: right;
+    
+    &::before {
+      content: "— ";
+    }
+  }
+}
+
+// ============================================
+// КОД И ТЕХНИЧЕСКИЕ ЭЛЕМЕНТЫ
+// ============================================
+
+// Встроенный код
+code {
+  background: var(--color-bg-secondary);
+  color: var(--color-error-700);
+  padding: 0.125rem 0.25rem;
+  border-radius: 4px;
+  font-family: 'Fira Code', 'Monaco', 'Consolas', monospace;
+  font-size: 0.875em;
+}
+
+// Блок кода
+pre {
+  background: var(--color-bg-dark);
+  color: var(--color-white);
+  padding: var(--spacing-lg);
+  border-radius: 8px;
+  overflow-x: auto;
+  margin: var(--spacing-lg) 0;
+  
+  code {
+    background: none;
+    color: inherit;
+    padding: 0;
+  }
+}
+
+// ============================================
+// ТАБЛИЦЫ (SEO-СТРУКТУРИРОВАННОСТЬ)
+// ============================================
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: var(--spacing-lg) 0;
+  
+  th, td {
+    padding: var(--spacing-sm) var(--spacing-md);
+    text-align: left;
+    border-bottom: 1px solid var(--color-border-light);
+  }
+  
+  th {
+    background: var(--color-bg-secondary);
+    font-weight: 600;
+    color: var(--color-heading);
+  }
+  
+  tr:hover {
+    background: var(--color-bg-secondary);
+  }
+}
+
+// ============================================
+// АДАПТИВНАЯ ТИПОГРАФИКА (MOBILE-FIRST)
+// ============================================
+
+@media (max-width: 768px) {
+  h1 { font-size: 2rem; }
+  h2 { font-size: 1.75rem; }
+  h3 { font-size: 1.5rem; }
+  h4 { font-size: 1.25rem; }
+  
+  p.lead {
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+  
+  blockquote {
+    padding: var(--spacing-md);
+    margin: var(--spacing-md) 0;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 { font-size: 1.75rem; }
+  h2 { font-size: 1.5rem; }
+  h3 { font-size: 1.25rem; }
+  
+  body {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+  
+  ul, ol {
+    padding-left: var(--spacing-md);
+  }
+}
+
+// ============================================
+// ДОСТУПНОСТЬ (A11Y)
+// ============================================
+
+// Увеличение текста для пользователей с плохим зрением
+@media (prefers-contrast: high) {
+  body {
+    color: var(--color-black);
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    color: var(--color-black);
+  }
+}
+
+// Уменьшение движения для пользователей с вестибулярными нарушениями
+@media (prefers-reduced-motion: reduce) {
+  a {
+    transition: none;
+  }
+}
+
+// ============================================
+// PRINT СТИЛИ
+// ============================================
+
+@media print {
+  body {
+    font-size: 12pt;
+    line-height: 1.4;
+    color: #000;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    color: #000;
+    page-break-after: avoid;
+  }
+  
+  a {
+    color: #000;
+    text-decoration: underline;
+    
+    &[href^="http"]::after {
+      content: " (" attr(href) ")";
+    }
+  }
+  
+  blockquote {
+    background: #fff;
+    border-left: 2px solid #000;
+  }
+}
+
+// ============================================
+// КОММЕНТАРИИ ПО РАЗРАБОТКЕ
+// ============================================
+/*
+СТАТУС РАЗРАБОТКИ:
+
+✅ ГОТОВО:
+- SEO-оптимизированная типографика
+- Правильная иерархия заголовков H1-H6
+- Адаптивная типографика (mobile-first)
+- Доступность (A11y)
+- Print стили
+
+🎯 ЦЕЛЬ ЭТАПА:
+Создание SEO-френдли типографики для лучшего ранжирования
+*/

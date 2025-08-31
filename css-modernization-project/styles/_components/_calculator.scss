@@ -1,518 +1,386 @@
 // ============================================
-// КАЛЬКУЛЯТОР - AvtoGOST77
+// CALCULATOR КОМПОНЕНТ - AvtoGOST77 (МИГРИРОВАНО)
 // ============================================
 // Дата создания: 31 августа 2025
 // Автор: AI Assistant
-// Описание: Стили для калькулятора (критично для бизнеса!)
+// Описание: Мигрировано из master-styles.css
 
 // ============================================
-// ОСНОВНОЙ КОНТЕЙНЕР КАЛЬКУЛЯТОРА
+// УМНЫЙ КАЛЬКУЛЯТОР (МИГРИРОВАНО)
 // ============================================
-.calculator {
-  background: var(--color-white);
-  border-radius: 12px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-  padding: var(--spacing-lg);
-  margin: var(--spacing-xl) 0;
-  border: 1px solid var(--color-border);
-  
-  @include responsive('sm') {
-    padding: var(--spacing-xl);
-  }
-  
-  @include responsive('lg') {
-    padding: calc(var(--spacing-xl) * 1.5);
-  }
-  
-  // Заголовок калькулятора
-  &__header {
-    text-align: center;
-    margin-bottom: var(--spacing-xl);
-    
-    h2 {
-      color: var(--color-heading);
-      margin-bottom: var(--spacing-sm);
-    }
-    
-    p {
-      color: var(--color-text-muted);
-      font-size: 1.1rem;
-    }
-  }
+
+.smart-calculator {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: var(--spacing-2xl);
 }
 
-// ============================================
-// ШАГИ КАЛЬКУЛЯТОРА
-// ============================================
-.calculator-steps {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-lg);
-  margin-bottom: var(--spacing-xl);
-  
-  @include responsive('md') {
-    flex-direction: row;
-    gap: var(--spacing-md);
-  }
-}
-
-.calculator-step {
-  @include calculator-step('default');
-  flex: 1;
+.calculator-header {
   text-align: center;
-  cursor: pointer;
-  user-select: none;
-  
-  // Активный шаг
-  &.active {
-    @include calculator-step('active');
-  }
-  
-  // Завершенный шаг
-  &.completed {
-    @include calculator-step('completed');
-  }
-  
-  // Иконка шага
-  &__icon {
-    font-size: 2rem;
-    margin-bottom: var(--spacing-sm);
-    display: block;
-  }
-  
-  // Заголовок шага
-  &__title {
-    font-weight: 600;
-    margin-bottom: var(--spacing-xs);
-    color: inherit;
-  }
-  
-  // Описание шага
-  &__description {
-    font-size: 0.9rem;
-    opacity: 0.8;
-    line-height: 1.4;
-  }
-  
-  // Номер шага
-  &__number {
-    position: absolute;
-    top: var(--spacing-sm);
-    right: var(--spacing-sm);
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
-    background: var(--color-primary);
-    color: var(--color-white);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.8rem;
-    font-weight: 600;
-  }
+  margin-bottom: var(--spacing-2xl);
 }
 
-// ============================================
-// ФОРМЫ КАЛЬКУЛЯТОРА
-// ============================================
+.calculator-header h3 {
+  font-size: 2rem;
+  margin-bottom: var(--spacing-sm);
+}
+
 .calculator-form {
-  margin-bottom: var(--spacing-xl);
-  
-  // Группа полей
-  &__group {
-    margin-bottom: var(--spacing-lg);
-    
-    &:last-child {
-      margin-bottom: 0;
-    }
-  }
-  
-  // Заголовок группы
-  &__group-title {
-    font-weight: 600;
-    margin-bottom: var(--spacing-md);
-    color: var(--color-heading);
-    font-size: 1.1rem;
-  }
-  
-  // Строка полей
-  &__row {
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-md);
-    
-    @include responsive('sm') {
-      flex-direction: row;
-      gap: var(--spacing-lg);
-    }
-    
-    .form-field {
-      flex: 1;
-    }
-  }
-}
-
-// ============================================
-// ПОЛЯ ФОРМЫ
-// ============================================
-.form-field {
-  position: relative;
-  
-  // Label
-  &__label {
-    display: block;
-    margin-bottom: var(--spacing-sm);
-    font-weight: 500;
-    color: var(--color-text);
-    
-    .required {
-      color: var(--color-danger);
-      margin-left: var(--spacing-xs);
-    }
-  }
-  
-  // Input
-  &__input {
-    @include form-field;
-    width: 100%;
-    
-    &:focus {
-      border-color: var(--color-primary);
-      box-shadow: 0 0 0 3px rgba(45, 103, 248, 0.1);
-    }
-    
-    &.error {
-      border-color: var(--color-danger);
-      box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.1);
-    }
-    
-    &.success {
-      border-color: var(--color-success);
-      box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.1);
-    }
-  }
-  
-  // Select
-  &__select {
-    @include form-field;
-    width: 100%;
-    cursor: pointer;
-    
-    &:focus {
-      border-color: var(--color-primary);
-      box-shadow: 0 0 0 3px rgba(45, 103, 248, 0.1);
-    }
-  }
-  
-  // Textarea
-  &__textarea {
-    @include form-field;
-    width: 100%;
-    min-height: 100px;
-    resize: vertical;
-    
-    &:focus {
-      border-color: var(--color-primary);
-      box-shadow: 0 0 0 3px rgba(45, 103, 248, 0.1);
-    }
-  }
-  
-  // Checkbox
-  &__checkbox {
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-sm);
-    cursor: pointer;
-    
-    input[type="checkbox"] {
-      width: 18px;
-      height: 18px;
-      accent-color: var(--color-primary);
-    }
-    
-    .checkbox-label {
-      font-size: 0.9rem;
-      color: var(--color-text);
-    }
-  }
-  
-  // Radio
-  &__radio {
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-sm);
-    cursor: pointer;
-    
-    input[type="radio"] {
-      width: 18px;
-      height: 18px;
-      accent-color: var(--color-primary);
-    }
-    
-    .radio-label {
-      font-size: 0.9rem;
-      color: var(--color-text);
-    }
-  }
-  
-  // Ошибка
-  &__error {
-    color: var(--color-danger);
-    font-size: 0.85rem;
-    margin-top: var(--spacing-xs);
-    display: none;
-    
-    &.visible {
-      display: block;
-    }
-  }
-  
-  // Подсказка
-  &__help {
-    color: var(--color-text-muted);
-    font-size: 0.85rem;
-    margin-top: var(--spacing-xs);
-  }
-}
-
-// ============================================
-// КНОПКИ КАЛЬКУЛЯТОРА
-// ============================================
-.calculator-actions {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-md);
-  
-  @include responsive('sm') {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  // Кнопка назад
-  &__back {
-    @include button(#6c757d);
-    order: 2;
-    
-    @include responsive('sm') {
-      order: 1;
-    }
-  }
-  
-  // Кнопка далее
-  &__next {
-    @include button(#2D67F8);
-    order: 1;
-    
-    @include responsive('sm') {
-      order: 2;
-    }
-  }
-  
-  // Кнопка расчета
-  &__calculate {
-    @include button(#28A745);
-    order: 1;
-    width: 100%;
-    
-    @include responsive('sm') {
-      order: 2;
-      width: auto;
-    }
-  }
+  gap: var(--spacing-xl);
 }
 
-// ============================================
-// РЕЗУЛЬТАТЫ КАЛЬКУЛЯТОРА
-// ============================================
-.calculator-results {
-  background: var(--color-background-light);
-  border-radius: 8px;
+.form-section {
+  background: white;
   padding: var(--spacing-lg);
-  margin-top: var(--spacing-xl);
-  border: 1px solid var(--color-border);
-  
-  // Заголовок результатов
-  &__header {
-    text-align: center;
-    margin-bottom: var(--spacing-lg);
-    
-    h3 {
-      color: var(--color-heading);
-      margin-bottom: var(--spacing-sm);
-    }
-  }
-  
-  // Таблица результатов
-  &__table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: var(--spacing-lg);
-    
-    th, td {
-      padding: var(--spacing-sm) var(--spacing-md);
-      text-align: left;
-      border-bottom: 1px solid var(--color-border);
-    }
-    
-    th {
-      background-color: var(--color-white);
-      font-weight: 600;
-      color: var(--color-heading);
-    }
-    
-    .result-value {
-      font-weight: 600;
-      color: var(--color-primary);
-    }
-    
-    .result-total {
-      font-weight: 700;
-      font-size: 1.1rem;
-      color: var(--color-success);
-    }
-  }
-  
-  // Действия с результатами
-  &__actions {
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-md);
-    
-    @include responsive('sm') {
-      flex-direction: row;
-      justify-content: center;
-    }
-  }
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--neutral-200);
+}
+
+.form-label {
+  display: block;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--neutral-800);
+  margin-bottom: var(--spacing-md);
 }
 
 // ============================================
-// АДАПТИВНОСТЬ
+// ПОЛЯ ВВОДА МАРШРУТА (МИГРИРОВАНО)
 // ============================================
-@include responsive('xs') {
-  .calculator {
-    padding: var(--spacing-md);
-    margin: var(--spacing-lg) 0;
-  }
-  
-  .calculator-step {
-    padding: var(--spacing-sm);
-    
-    &__icon {
-      font-size: 1.5rem;
-    }
-    
-    &__title {
-      font-size: 0.9rem;
-    }
-    
-    &__description {
-      font-size: 0.8rem;
-    }
-  }
+
+.route-inputs {
+  margin-bottom: var(--spacing-md);
+}
+
+.input-group {
+  position: relative;
+}
+
+.input-group input {
+  width: 100%;
+  padding: var(--spacing-md);
+  border: 2px solid var(--neutral-200);
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  transition: all var(--transition-normal);
+  background: white;
+}
+
+.input-group input:focus {
+  outline: none;
+  border-color: var(--primary-400);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
 }
 
 // ============================================
-// АНИМАЦИИ
+// АВТОДОПОЛНЕНИЕ ГОРОДОВ (МИГРИРОВАНО)
 // ============================================
-.calculator-step {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+.input-suggestions {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  border: 1px solid var(--neutral-200);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-card);
+  z-index: 100;
+  display: none;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.suggestion {
+  padding: var(--spacing-sm) var(--spacing-md);
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+}
+
+.suggestion:hover {
+  background: var(--primary-50);
+  color: var(--primary-600);
+}
+
+// ============================================
+// ОТОБРАЖЕНИЕ РАССТОЯНИЯ (МИГРИРОВАНО)
+// ============================================
+
+.distance-display {
+  text-align: center;
+  padding: var(--spacing-md);
+  background: var(--primary-50);
+  border-radius: var(--border-radius);
+  color: var(--primary-700);
+  font-weight: 500;
+}
+
+// ============================================
+// ТИПЫ ГРУЗОВ (МИГРИРОВАНО)
+// ============================================
+
+.cargo-types {
+  gap: var(--spacing-md);
+}
+
+.cargo-type-card {
+  position: relative;
+  cursor: pointer;
+  display: block;
+}
+
+.cargo-type-card input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.cargo-type-card .card-content {
+  padding: var(--spacing-lg);
+  border: 2px solid var(--neutral-200);
+  border-radius: var(--border-radius);
+  background: white;
+  transition: all var(--transition-normal);
+  text-align: center;
+  min-height: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.cargo-type-card input:checked + .card-content {
+  border-color: var(--primary-400);
+  background: var(--primary-50);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-card);
+}
+
+.type-name {
+  font-weight: 600;
+  color: var(--neutral-800);
+  margin-bottom: var(--spacing-xs);
+}
+
+// ============================================
+// КНОПКА РАСЧЕТА (МИГРИРОВАНО)
+// ============================================
+
+.calculate-btn {
+  background: var(--primary-600);
+  color: white;
+  border: none;
+  padding: var(--spacing-md) var(--spacing-xl);
+  border-radius: var(--border-radius);
+  font-size: 1.125rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-normal);
   
   &:hover {
+    background: var(--primary-700);
     transform: translateY(-2px);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    box-shadow: var(--shadow-lg);
   }
   
-  &.active {
-    animation: stepActive 0.3s ease-out;
-  }
-}
-
-@keyframes stepActive {
-  0% {
-    transform: scale(0.95);
-    opacity: 0.8;
-  }
-  100% {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-
-// ============================================
-// СОСТОЯНИЯ ЗАГРУЗКИ
-// ============================================
-.calculator {
-  &.loading {
-    position: relative;
-    
-    &::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: rgba(255, 255, 255, 0.8);
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.2rem;
-      color: var(--color-primary);
-    }
-    
-    &::before {
-      content: '⌛ Расчет...';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      z-index: 1;
-      font-weight: 600;
-      color: var(--color-primary);
-    }
-  }
-}
-
-// ============================================
-// ДОСТУПНОСТЬ
-// ============================================
-.calculator-step {
-  &:focus {
-    outline: 2px solid var(--color-primary);
-    outline-offset: 2px;
+  &:active {
+    transform: translateY(0);
   }
   
-  &:focus-visible {
-    outline: 2px solid var(--color-primary);
-    outline-offset: 2px;
-  }
-}
-
-.form-field__input,
-.form-field__select,
-.form-field__textarea {
-  &:focus-visible {
-    outline: 2px solid var(--color-primary);
-    outline-offset: 2px;
-  }
-}
-
-// ============================================
-// ПРИНТЕРНЫЕ СТИЛИ
-// ============================================
-@media print {
-  .calculator {
+  &:disabled {
+    background: var(--neutral-400);
+    cursor: not-allowed;
+    transform: none;
     box-shadow: none;
-    border: 1px solid #000;
-    
-    &__actions {
-      display: none;
-    }
-  }
-  
-  .calculator-step {
-    break-inside: avoid;
   }
 }
+
+// ============================================
+// РЕЗУЛЬТАТЫ РАСЧЕТА (МИГРИРОВАНО)
+// ============================================
+
+.calculation-result {
+  background: var(--success-50);
+  border: 2px solid var(--success-200);
+  border-radius: var(--border-radius-lg);
+  padding: var(--spacing-xl);
+  text-align: center;
+  margin-top: var(--spacing-xl);
+  
+  .result-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--success-800);
+    margin-bottom: var(--spacing-md);
+  }
+  
+  .result-price {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: var(--success-700);
+    margin-bottom: var(--spacing-sm);
+  }
+  
+  .result-details {
+    color: var(--success-600);
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+}
+
+// ============================================
+// АДАПТИВНОСТЬ (МИГРИРОВАНО)
+// ============================================
+
+@media (max-width: 768px) {
+  .smart-calculator {
+    padding: var(--spacing-xl) var(--spacing-md);
+  }
+  
+  .calculator-header h3 {
+    font-size: 1.75rem;
+  }
+  
+  .form-section {
+    padding: var(--spacing-md);
+  }
+  
+  .cargo-types {
+    grid-template-columns: 1fr;
+  }
+  
+  .calculate-btn {
+    width: 100%;
+    padding: var(--spacing-lg);
+  }
+}
+
+@media (max-width: 480px) {
+  .smart-calculator {
+    padding: var(--spacing-lg) var(--spacing-sm);
+  }
+  
+  .calculator-header h3 {
+    font-size: 1.5rem;
+  }
+  
+  .form-section {
+    padding: var(--spacing-sm);
+  }
+  
+  .input-group input {
+    padding: var(--spacing-sm);
+    font-size: 0.9rem;
+  }
+  
+  .calculate-btn {
+    font-size: 1rem;
+    padding: var(--spacing-md);
+  }
+}
+
+// ============================================
+// АНИМАЦИИ (МИГРИРОВАНО)
+// ============================================
+
+.cargo-type-card .card-content {
+  animation: fadeInUp 0.3s ease-out;
+}
+
+.calculation-result {
+  animation: fadeInScale 0.5s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+// ============================================
+// FOCUS STATES (МИГРИРОВАНО)
+// ============================================
+
+.input-group input:focus-visible {
+  outline: 2px solid var(--primary-500);
+  outline-offset: 2px;
+}
+
+.calculate-btn:focus-visible {
+  outline: 2px solid var(--primary-500);
+  outline-offset: 2px;
+}
+
+.cargo-type-card:focus-visible .card-content {
+  outline: 2px solid var(--primary-500);
+  outline-offset: 2px;
+}
+
+// ============================================
+// REDUCED MOTION (МИГРИРОВАНО)
+// ============================================
+
+@media (prefers-reduced-motion: reduce) {
+  .cargo-type-card .card-content,
+  .calculation-result {
+    animation: none;
+  }
+  
+  .calculate-btn:hover {
+    transform: none;
+  }
+}
+
+// ============================================
+// PRINT СТИЛИ (МИГРИРОВАНО)
+// ============================================
+
+@media print {
+  .smart-calculator {
+    background: white !important;
+    box-shadow: none !important;
+  }
+  
+  .calculate-btn {
+    display: none;
+  }
+  
+  .input-suggestions {
+    display: none;
+  }
+}
+
+// ============================================
+// КОММЕНТАРИИ ПО РАЗРАБОТКЕ
+// ============================================
+/*
+СТАТУС РАЗРАБОТКИ:
+
+✅ ГОТОВО:
+- Calculator стили мигрированы из master-styles.css
+- Умный калькулятор с автодополнением
+- Типы грузов с интерактивными карточками
+- Адаптивность и анимации
+- Focus states и доступность
+
+🎯 ЦЕЛЬ ЭТАПА:
+Миграция существующих calculator стилей в SCSS структуру
+*/

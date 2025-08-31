@@ -1,119 +1,281 @@
 // ============================================
-// ЦВЕТОВАЯ СИСТЕМА - AvtoGOST77
+// ЦВЕТОВАЯ СИСТЕМА - AvtoGOST77 (МИГРИРОВАНО)
 // ============================================
 // Дата создания: 31 августа 2025
 // Автор: AI Assistant
-// Описание: Основная цветовая палитра сайта
+// Описание: Мигрировано из master-styles.css
 
 :root {
   // ============================================
-  // ОСНОВНЫЕ ЦВЕТА
+  // ОСНОВНАЯ ЦВЕТОВАЯ ПАЛИТРА (МИГРИРОВАНО)
   // ============================================
-  --color-primary: #2D67F8;           // Основной синий
-  --color-primary-light: #5A85FA;     // Светлый синий
-  --color-primary-dark: #1E4BC7;      // Темный синий
+  
+  // Primary цвета (синие)
+  --primary-50: #eff6ff;
+  --primary-100: #dbeafe;
+  --primary-200: #bfdbfe;
+  --primary-300: #93c5fd;
+  --primary-400: #60a5fa;
+  --primary-500: #3b82f6;
+  --primary-600: #2563eb;
+  --primary-700: #1d4ed8;
+  --primary-800: #1e40af;
+  --primary-900: #1e3a8a;
+
+  // Neutral цвета (серые)
+  --neutral-50: #f8fafc;
+  --neutral-100: #f1f5f9;
+  --neutral-200: #e2e8f0;
+  --neutral-300: #cbd5e1;
+  --neutral-400: #94a3b8;
+  --neutral-500: #64748b;
+  --neutral-600: #475569;
+  --neutral-700: #334155;
+  --neutral-800: #1e293b;
+  --neutral-900: #0f172a;
+
+  // Accent цвета (оранжевые)
+  --accent-50: #fff7ed;
+  --accent-100: #ffedd5;
+  --accent-200: #fed7aa;
+  --accent-300: #fdba74;
+  --accent-400: #fb923c;
+  --accent-500: #f97316;
+  --accent-600: #ea580c;
+  --accent-700: #c2410c;
+  --accent-800: #9a3412;
+  --accent-900: #7c2d12;
+
+  // Success цвета (зеленые)
+  --success-50: #f0fdf4;
+  --success-100: #dcfce7;
+  --success-200: #bbf7d0;
+  --success-300: #86efac;
+  --success-400: #4ade80;
+  --success-500: #22c55e;
+  --success-600: #16a34a;
+  --success-700: #15803d;
+  --success-800: #166534;
+  --success-900: #14532d;
+
+  // Warning цвета (желтые)
+  --warning-50: #fffbeb;
+  --warning-100: #fef3c7;
+  --warning-200: #fde68a;
+  --warning-300: #fcd34d;
+  --warning-400: #fbbf24;
+  --warning-500: #f59e0b;
+  --warning-600: #d97706;
+  --warning-700: #b45309;
+  --warning-800: #92400e;
+  --warning-900: #78350f;
+
+  // Error цвета (красные)
+  --error-50: #fef2f2;
+  --error-100: #fee2e2;
+  --error-200: #fecaca;
+  --error-300: #fca5a5;
+  --error-400: #f87171;
+  --error-500: #ef4444;
+  --error-600: #dc2626;
+  --error-700: #b91c1c;
+  --error-800: #991b1b;
+  --error-900: #7f1d1d;
+
+  // Info цвета (голубые)
+  --info-50: #f0f9ff;
+  --info-100: #e0f2fe;
+  --info-200: #bae6fd;
+  --info-300: #7dd3fc;
+  --info-400: #38bdf8;
+  --info-500: #0ea5e9;
+  --info-600: #0284c7;
+  --info-700: #0369a1;
+  --info-800: #075985;
+  --info-900: #0c4a6e;
+
+  // ============================================
+  // СЕМАНТИЧЕСКИЕ ЦВЕТА (МИГРИРОВАНО)
+  // ============================================
+  
+  // Основные цвета для логистики
+  --color-primary: var(--primary-600);
+  --color-primary-light: var(--primary-400);
+  --color-primary-dark: var(--primary-800);
+  
+  // Семантические цвета
+  --color-success: var(--success-500);
+  --color-warning: var(--warning-500);
+  --color-error: var(--error-500);
+  --color-info: var(--info-500);
+  
+  // Нейтральные цвета
+  --color-black: var(--neutral-900);
+  --color-gray-100: var(--neutral-100);
+  --color-gray-200: var(--neutral-200);
+  --color-gray-300: var(--neutral-300);
+  --color-gray-400: var(--neutral-400);
+  --color-gray-500: var(--neutral-500);
+  --color-gray-600: var(--neutral-600);
+  --color-gray-700: var(--neutral-700);
+  --color-gray-800: var(--neutral-800);
+  --color-gray-900: var(--neutral-900);
+  --color-white: var(--neutral-50);
+
+  // ============================================
+  // ГРАДИЕНТЫ (МИГРИРОВАНО)
+  // ============================================
+  
+  // Hero градиент
+  --gradient-hero: linear-gradient(135deg, rgba(102, 126, 234, 0.45) 0%, rgba(118, 75, 162, 0.45) 100%);
+  
+  // Основные градиенты
+  --gradient-primary: linear-gradient(135deg, var(--primary-600) 0%, var(--primary-800) 100%);
+  --gradient-secondary: linear-gradient(135deg, var(--accent-500) 0%, var(--accent-700) 100%);
+  --gradient-logistics: linear-gradient(135deg, var(--primary-600) 0%, var(--primary-800) 100%);
+  
+  // Акцентные градиенты
+  --gradient-success: linear-gradient(135deg, var(--success-500) 0%, var(--success-700) 100%);
+  --gradient-warning: linear-gradient(135deg, var(--warning-500) 0%, var(--warning-700) 100%);
+  --gradient-error: linear-gradient(135deg, var(--error-500) 0%, var(--error-700) 100%);
+
+  // ============================================
+  // ТЕКСТОВЫЕ ЦВЕТА (МИГРИРОВАНО)
+  // ============================================
+  
+  --color-text-primary: var(--neutral-900);
+  --color-text-secondary: var(--neutral-600);
+  --color-text-muted: var(--neutral-500);
+  --color-text-inverse: var(--neutral-50);
   
   // ============================================
-  // СЕМАНТИЧЕСКИЕ ЦВЕТА
+  // ФОНОВЫЕ ЦВЕТА (МИГРИРОВАНО)
   // ============================================
-  --color-success: #28A745;           // Успех (зеленый)
-  --color-warning: #FFC107;           // Предупреждение (желтый)
-  --color-error: #DC3545;             // Ошибка (красный)
-  --color-info: #17A2B8;              // Информация (голубой)
+  
+  --color-bg-primary: var(--neutral-50);
+  --color-bg-secondary: var(--neutral-100);
+  --color-bg-dark: var(--neutral-800);
+  --color-bg-overlay: rgba(0, 0, 0, 0.5);
   
   // ============================================
-  // НЕЙТРАЛЬНЫЕ ЦВЕТА
+  // ГРАНИЦЫ И ТЕНИ (МИГРИРОВАНО)
   // ============================================
-  --color-black: #1a1a1a;             // Черный
-  --color-gray-100: #f8f9fa;          // Очень светлый серый
-  --color-gray-200: #e9ecef;          // Светлый серый
-  --color-gray-300: #dee2e6;          // Серый
-  --color-gray-400: #ced4da;          // Средний серый
-  --color-gray-500: #adb5bd;          // Серый
-  --color-gray-600: #6c757d;          // Темный серый
-  --color-gray-700: #495057;          // Очень темный серый
-  --color-gray-800: #343a40;          // Почти черный
-  --color-gray-900: #212529;          // Максимально темный
-  --color-white: #ffffff;              // Белый
+  
+  --color-border-light: var(--neutral-200);
+  --color-border-medium: var(--neutral-300);
+  --color-border-dark: var(--neutral-400);
   
   // ============================================
-  // ГРАДИЕНТЫ
+  // ИНТЕРАКТИВНЫЕ ЦВЕТА (МИГРИРОВАНО)
   // ============================================
-  --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  --gradient-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-  --gradient-logistics: linear-gradient(135deg, #2D67F8 0%, #1E4BC7 100%);
   
-  // ============================================
-  // СПЕЦИАЛЬНЫЕ ЦВЕТА
-  // ============================================
-  --color-accent: #FF6B35;            // Акцентный оранжевый
-  --color-accent-light: #FF8A65;      // Светлый оранжевый
-  --color-accent-dark: #E64A19;       // Темный оранжевый
-  
-  // ============================================
-  // ЦВЕТА ДЛЯ ТЕКСТА
-  // ============================================
-  --color-text-primary: var(--color-gray-900);    // Основной текст
-  --color-text-secondary: var(--color-gray-600);  // Вторичный текст
-  --color-text-muted: var(--color-gray-500);      // Приглушенный текст
-  --color-text-inverse: var(--color-white);       // Инвертированный текст
-  
-  // ============================================
-  // ЦВЕТА ДЛЯ ФОНОВ
-  // ============================================
-  --color-bg-primary: var(--color-white);        // Основной фон
-  --color-bg-secondary: var(--color-gray-100);   // Вторичный фон
-  --color-bg-dark: var(--color-gray-800);        // Темный фон
-  --color-bg-overlay: rgba(0, 0, 0, 0.5);       // Наложение
-  
-  // ============================================
-  // ЦВЕТА ДЛЯ ГРАНИЦ
-  // ============================================
-  --color-border-light: var(--color-gray-200);   // Светлая граница
-  --color-border-medium: var(--color-gray-300);  // Средняя граница
-  --color-border-dark: var(--color-gray-400);    // Темная граница
-  
-  // ============================================
-  // ЦВЕТА ДЛЯ СОСТОЯНИЙ
-  // ============================================
-  --color-hover: var(--color-primary-light);     // Цвет при наведении
-  --color-active: var(--color-primary-dark);     // Цвет при активации
-  --color-focus: var(--color-primary);           // Цвет при фокусе
-  --color-disabled: var(--color-gray-400);       // Цвет отключенного элемента
+  --color-hover: var(--primary-400);
+  --color-active: var(--primary-800);
+  --color-focus: var(--primary-600);
+  --color-disabled: var(--neutral-400);
 }
 
 // ============================================
-// SCSS ПЕРЕМЕННЫЕ (для использования в миксинах)
+// SCSS ПЕРЕМЕННЫЕ (ДЛЯ МИКСИНОВ)
 // ============================================
-$color-primary: #2D67F8;
-$color-primary-light: #5A85FA;
-$color-primary-dark: #1E4BC7;
 
-$color-success: #28A745;
-$color-warning: #FFC107;
-$color-error: #DC3545;
-$color-info: #17A2B8;
+// Primary цвета
+$primary-50: #eff6ff;
+$primary-100: #dbeafe;
+$primary-200: #bfdbfe;
+$primary-300: #93c5fd;
+$primary-400: #60a5fa;
+$primary-500: #3b82f6;
+$primary-600: #2563eb;
+$primary-700: #1d4ed8;
+$primary-800: #1e40af;
+$primary-900: #1e3a8a;
 
-$color-black: #1a1a1a;
-$color-white: #ffffff;
+// Neutral цвета
+$neutral-50: #f8fafc;
+$neutral-100: #f1f5f9;
+$neutral-200: #e2e8f0;
+$neutral-300: #cbd5e1;
+$neutral-400: #94a3b8;
+$neutral-500: #64748b;
+$neutral-600: #475569;
+$neutral-700: #334155;
+$neutral-800: #1e293b;
+$neutral-900: #0f172a;
+
+// Accent цвета
+$accent-50: #fff7ed;
+$accent-100: #ffedd5;
+$accent-200: #fed7aa;
+$accent-300: #fdba74;
+$accent-400: #fb923c;
+$accent-500: #f97316;
+$accent-600: #ea580c;
+$accent-700: #c2410c;
+$accent-800: #9a3412;
+$accent-900: #7c2d12;
+
+// Success цвета
+$success-50: #f0fdf4;
+$success-100: #dcfce7;
+$success-200: #bbf7d0;
+$success-300: #86efac;
+$success-400: #4ade80;
+$success-500: #22c55e;
+$success-600: #16a34a;
+$success-700: #15803d;
+$success-800: #166534;
+$success-900: #14532d;
+
+// Warning цвета
+$warning-50: #fffbeb;
+$warning-100: #fef3c7;
+$warning-200: #fde68a;
+$warning-300: #fcd34d;
+$warning-400: #fbbf24;
+$warning-500: #f59e0b;
+$warning-600: #d97706;
+$warning-700: #b45309;
+$warning-800: #92400e;
+$warning-900: #78350f;
+
+// Error цвета
+$error-50: #fef2f2;
+$error-100: #fee2e2;
+$error-200: #fecaca;
+$error-300: #fca5a5;
+$error-400: #f87171;
+$error-500: #ef4444;
+$error-600: #dc2626;
+$error-700: #b91c1c;
+$error-800: #991b1b;
+$error-900: #7f1d1d;
+
+// Info цвета
+$info-50: #f0f9ff;
+$info-100: #e0f2fe;
+$info-200: #bae6fd;
+$info-300: #7dd3fc;
+$info-400: #38bdf8;
+$info-500: #0ea5e9;
+$info-600: #0284c7;
+$info-700: #0369a1;
+$info-800: #075985;
+$info-900: #0c4a6e;
 
 // ============================================
-// ЦВЕТОВЫЕ КЛАССЫ-УТИЛИТЫ
+// КОММЕНТАРИИ ПО РАЗРАБОТКЕ
 // ============================================
-.text-primary { color: var(--color-primary) !important; }
-.text-success { color: var(--color-success) !important; }
-.text-warning { color: var(--color-warning) !important; }
-.text-error { color: var(--color-error) !important; }
-.text-info { color: var(--color-info) !important; }
+/*
+СТАТУС РАЗРАБОТКИ:
 
-.bg-primary { background-color: var(--color-primary) !important; }
-.bg-success { background-color: var(--color-success) !important; }
-.bg-warning { background-color: var(--color-warning) !important; }
-.bg-error { background-color: var(--color-error) !important; }
-.bg-info { background-color: var(--color-info) !important; }
+✅ ГОТОВО:
+- CSS переменные мигрированы из master-styles.css
+- Полная цветовая палитра (50-900 для каждого цвета)
+- Семантические цвета
+- Градиенты
+- SCSS переменные для миксинов
 
-.border-primary { border-color: var(--color-primary) !important; }
-.border-success { border-color: var(--color-success) !important; }
-.border-warning { border-color: var(--color-warning) !important; }
-.border-error { border-color: var(--color-error) !important; }
-.border-info { border-color: var(--color-info) !important; }
+🎯 ЦЕЛЬ ЭТАПА:
+Миграция существующих CSS переменных в SCSS структуру
+*/
