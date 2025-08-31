@@ -1,0 +1,621 @@
+// ============================================
+// МОДАЛЬНЫЕ ОКНА И ПОПАПЫ - AvtoGOST77
+// ============================================
+// Дата создания: 31 августа 2025
+// Автор: AI Assistant
+// Описание: Стили для модальных окон, попапов и оверлеев
+
+// ============================================
+// ОСНОВНОЙ МОДАЛ
+// ============================================
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  // Активное состояние
+  &.modal--active {
+    opacity: 1;
+    visibility: visible;
+    
+    .modal__content {
+      transform: translateY(0) scale(1);
+      opacity: 1;
+    }
+  }
+  
+  // Контент модала
+  &__content {
+    background: var(--color-white);
+    border-radius: 16px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    max-width: 90vw;
+    max-height: 90vh;
+    overflow: hidden;
+    transform: translateY(-20px) scale(0.95);
+    opacity: 0;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    
+    // Размеры модала
+    &.modal__content--sm {
+      width: 400px;
+    }
+    
+    &.modal__content--md {
+      width: 600px;
+    }
+    
+    &.modal__content--lg {
+      width: 800px;
+    }
+    
+    &.modal__content--xl {
+      width: 1000px;
+    }
+    
+    &.modal__content--full {
+      width: 95vw;
+      height: 95vh;
+    }
+  }
+  
+  // Заголовок модала
+  &__header {
+    padding: var(--spacing-lg);
+    border-bottom: 1px solid var(--color-border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+    .modal-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--color-heading);
+      margin: 0;
+    }
+    
+    .modal-close {
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: var(--color-text-muted);
+      cursor: pointer;
+      padding: var(--spacing-xs);
+      border-radius: 50%;
+      transition: all 0.3s ease;
+      
+      &:hover {
+        background: var(--color-background-light);
+        color: var(--color-text);
+        transform: rotate(90deg);
+      }
+      
+      &:focus-visible {
+        outline: 2px solid var(--color-primary);
+        outline-offset: 2px;
+      }
+    }
+  }
+  
+  // Тело модала
+  &__body {
+    padding: var(--spacing-lg);
+    overflow-y: auto;
+    max-height: calc(90vh - 140px);
+    
+    .modal-text {
+      color: var(--color-text);
+      line-height: 1.6;
+      margin-bottom: var(--spacing-lg);
+    }
+    
+    .modal-form {
+      .form-field {
+        margin-bottom: var(--spacing-md);
+      }
+    }
+  }
+  
+  // Footer модала
+  &__footer {
+    padding: var(--spacing-lg);
+    border-top: 1px solid var(--color-border);
+    display: flex;
+    gap: var(--spacing-md);
+    justify-content: flex-end;
+    
+    .btn {
+      min-width: 120px;
+    }
+    
+    // Центрирование кнопок
+    &.modal__footer--center {
+      justify-content: center;
+    }
+    
+    // Растягивание кнопок
+    &.modal__footer--stretch {
+      .btn {
+        flex: 1;
+      }
+    }
+  }
+}
+
+// ============================================
+// ВАРИАНТЫ МОДАЛОВ
+// ============================================
+.modal {
+  // Модал с изображением
+  &.modal--image {
+    .modal__content {
+      max-width: 80vw;
+      max-height: 80vh;
+    }
+    
+    .modal__body {
+      padding: 0;
+      
+      .modal-image {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+    }
+  }
+  
+  // Модал с видео
+  &.modal--video {
+    .modal__content {
+      max-width: 80vw;
+      max-height: 80vh;
+    }
+    
+    .modal__body {
+      padding: 0;
+      
+      .modal-video {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+    }
+  }
+  
+  // Модал с формой
+  &.modal--form {
+    .modal__body {
+      .modal-form {
+        .form-field {
+          margin-bottom: var(--spacing-lg);
+        }
+        
+        .form-actions {
+          display: flex;
+          gap: var(--spacing-md);
+          justify-content: flex-end;
+          margin-top: var(--spacing-xl);
+        }
+      }
+    }
+  }
+  
+  // Модал с подтверждением
+  &.modal--confirm {
+    .modal__content {
+      max-width: 500px;
+    }
+    
+    .modal__body {
+      text-align: center;
+      
+      .modal-icon {
+        font-size: 4rem;
+        color: var(--color-warning);
+        margin-bottom: var(--spacing-lg);
+      }
+      
+      .modal-title {
+        color: var(--color-danger);
+        margin-bottom: var(--spacing-md);
+      }
+      
+      .modal-text {
+        color: var(--color-text-muted);
+        font-size: 1.1rem;
+      }
+    }
+    
+    .modal__footer {
+      justify-content: center;
+      
+      .btn {
+        min-width: 140px;
+      }
+    }
+  }
+  
+  // Модал с загрузкой
+  &.modal--loading {
+    .modal__content {
+      max-width: 400px;
+      text-align: center;
+    }
+    
+    .modal__body {
+      padding: var(--spacing-xl);
+      
+      .loading-spinner {
+        width: 60px;
+        height: 60px;
+        border: 4px solid var(--color-border);
+        border-top: 4px solid var(--color-primary);
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        margin: 0 auto var(--spacing-lg);
+      }
+      
+      .loading-text {
+        color: var(--color-text-muted);
+        font-size: 1.1rem;
+      }
+    }
+  }
+}
+
+// ============================================
+// ПОПАПЫ И ТУЛТИПЫ
+// ============================================
+.popup {
+  position: absolute;
+  background: var(--color-dark);
+  color: var(--color-white);
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: 8px;
+  font-size: 0.875rem;
+  z-index: 100;
+  max-width: 300px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  
+  // Стрелка
+  &::before {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border: 6px solid transparent;
+  }
+  
+  // Позиционирование
+  &.popup--top {
+    bottom: 100%;
+    margin-bottom: var(--spacing-sm);
+    
+    &::before {
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      border-top-color: var(--color-dark);
+    }
+  }
+  
+  &.popup--bottom {
+    top: 100%;
+    margin-top: var(--spacing-sm);
+    
+    &::before {
+      bottom: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      border-bottom-color: var(--color-dark);
+    }
+  }
+  
+  &.popup--left {
+    right: 100%;
+    margin-right: var(--spacing-sm);
+    
+    &::before {
+      left: 100%;
+      top: 50%;
+      transform: translateY(-50%);
+      border-left-color: var(--color-dark);
+    }
+  }
+  
+  &.popup--right {
+    left: 100%;
+    margin-left: var(--spacing-sm);
+    
+    &::before {
+      right: 100%;
+      top: 50%;
+      transform: translateY(-50%);
+      border-right-color: var(--color-dark);
+    }
+  }
+}
+
+// ============================================
+// ОВЕРЛЕИ
+// ============================================
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  
+  &.overlay--active {
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  // Типы оверлеев
+  &.overlay--dark {
+    background: rgba(0, 0, 0, 0.8);
+  }
+  
+  &.overlay--light {
+    background: rgba(255, 255, 255, 0.9);
+  }
+  
+  &.overlay--blur {
+    backdrop-filter: blur(10px);
+    background: rgba(0, 0, 0, 0.3);
+  }
+}
+
+// ============================================
+// УВЕДОМЛЕНИЯ
+// ============================================
+.notification {
+  position: fixed;
+  top: var(--spacing-lg);
+  right: var(--spacing-lg);
+  background: var(--color-white);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  padding: var(--spacing-lg);
+  max-width: 400px;
+  z-index: 1001;
+  transform: translateX(100%);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  &.notification--active {
+    transform: translateX(0);
+  }
+  
+  // Заголовок уведомления
+  .notification-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--spacing-sm);
+    
+    .notification-title {
+      font-weight: 600;
+      color: var(--color-heading);
+      font-size: 1.1rem;
+    }
+    
+    .notification-close {
+      background: none;
+      border: none;
+      color: var(--color-text-muted);
+      cursor: pointer;
+      padding: var(--spacing-xs);
+      border-radius: 50%;
+      transition: all 0.3s ease;
+      
+      &:hover {
+        background: var(--color-background-light);
+        color: var(--color-text);
+      }
+    }
+  }
+  
+  // Содержимое уведомления
+  .notification-content {
+    color: var(--color-text);
+    line-height: 1.5;
+    margin-bottom: var(--spacing-md);
+  }
+  
+  // Действия уведомления
+  .notification-actions {
+    display: flex;
+    gap: var(--spacing-sm);
+    
+    .btn {
+      padding: var(--spacing-xs) var(--spacing-sm);
+      font-size: 0.875rem;
+    }
+  }
+  
+  // Типы уведомлений
+  &.notification--success {
+    border-left: 4px solid var(--color-success);
+    
+    .notification-title {
+      color: var(--color-success);
+    }
+  }
+  
+  &.notification--warning {
+    border-left: 4px solid var(--color-warning);
+    
+    .notification-title {
+      color: var(--color-warning);
+    }
+  }
+  
+  &.notification--error {
+    border-left: 4px solid var(--color-danger);
+    
+    .notification-title {
+      color: var(--color-danger);
+    }
+  }
+  
+  &.notification--info {
+    border-left: 4px solid var(--color-info);
+    
+    .notification-title {
+      color: var(--color-info);
+    }
+  }
+}
+
+// ============================================
+// АДАПТИВНОСТЬ
+// ============================================
+@include responsive('xs') {
+  .modal {
+    &__content {
+      margin: var(--spacing-md);
+      max-width: calc(100vw - 2rem);
+      max-height: calc(100vh - 2rem);
+      
+      &.modal__content--sm,
+      &.modal__content--md,
+      &.modal__content--lg,
+      &.modal__content--xl {
+        width: calc(100vw - 2rem);
+      }
+    }
+    
+    &__header,
+    &__body,
+    &__footer {
+      padding: var(--spacing-md);
+    }
+  }
+  
+  .notification {
+    top: var(--spacing-md);
+    right: var(--spacing-md);
+    left: var(--spacing-md);
+    max-width: none;
+    transform: translateY(-100%);
+    
+    &.notification--active {
+      transform: translateY(0);
+    }
+  }
+}
+
+// ============================================
+// АНИМАЦИИ
+// ============================================
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-50px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes modalSlideOut {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(50px) scale(0.9);
+  }
+}
+
+@keyframes notificationSlideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes notificationSlideOut {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+// ============================================
+// ДОСТУПНОСТЬ
+// ============================================
+.modal {
+  // Фокус на модале
+  &:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+  
+  // Trap focus внутри модала
+  &:focus-within {
+    outline: none;
+  }
+}
+
+// Уменьшение движения
+@media (prefers-reduced-motion: reduce) {
+  .modal,
+  .notification,
+  .popup {
+    transition: none;
+    
+    .modal__content,
+    .notification {
+      transition: none;
+    }
+  }
+}
+
+// Высокий контраст
+@media (prefers-contrast: high) {
+  .modal__content {
+    border: 2px solid var(--color-text);
+  }
+  
+  .popup {
+    border: 2px solid currentColor;
+  }
+}
+
+// ============================================
+// ПРИНТЕРНЫЕ СТИЛИ
+// ============================================
+@media print {
+  .modal,
+  .overlay,
+  .notification,
+  .popup {
+    display: none !important;
+  }
+}

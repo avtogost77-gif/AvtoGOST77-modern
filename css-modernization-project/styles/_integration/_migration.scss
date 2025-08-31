@@ -1,0 +1,498 @@
+// ============================================
+// МИГРАЦИЯ CSS - AvtoGOST77
+// ============================================
+// Дата создания: 31 августа 2025
+// Автор: AI Assistant
+// Описание: Система миграции для интеграции с существующими страницами
+
+// ============================================
+// ПЕРЕХОДНЫЕ СТИЛИ
+// ============================================
+.migration-wrapper {
+  // Плавный переход для существующих элементов
+  * {
+    transition: all 0.3s ease;
+  }
+  
+  // Сохранение существующих стилей
+  .legacy-element {
+    // Плавное обновление стилей
+    &.migrating {
+      opacity: 0.8;
+      transform: scale(0.98);
+    }
+    
+    &.migrated {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+}
+
+// ============================================
+// СОВМЕСТИМОСТЬ С СУЩЕСТВУЮЩИМИ СТИЛЯМИ
+// ============================================
+// Переопределение критичных стилей
+.legacy-override {
+  // Калькулятор
+  .calculator {
+    &.legacy {
+      // Сохранение существующей функциональности
+      .calculator-step {
+        &.active {
+          background: var(--color-primary);
+          color: var(--color-white);
+        }
+        
+        &.completed {
+          background: var(--color-success);
+          color: var(--color-white);
+        }
+      }
+      
+      .calculator-form {
+        .form-field {
+          &.error {
+            border-color: var(--color-danger);
+          }
+          
+          &.success {
+            border-color: var(--color-success);
+          }
+        }
+      }
+    }
+  }
+  
+  // Header
+  .header {
+    &.legacy {
+      // Сохранение существующей навигации
+      .navigation {
+        .nav-item {
+          &.active {
+            color: var(--color-primary);
+            font-weight: 600;
+          }
+        }
+      }
+    }
+  }
+  
+  // Hero секции
+  .hero {
+    &.legacy {
+      // Сохранение существующих фонов
+      background-size: cover;
+      background-position: center;
+      
+      // Плавный переход к новым стилям
+      &.migrating {
+        background-blend-mode: overlay;
+      }
+    }
+  }
+  
+  // Формы
+  .form {
+    &.legacy {
+      // Сохранение существующей валидации
+      .form-field {
+        &.error {
+          .error-message {
+            color: var(--color-danger);
+            font-size: 0.875rem;
+            margin-top: var(--spacing-xs);
+          }
+        }
+        
+        &.success {
+          .success-message {
+            color: var(--color-success);
+            font-size: 0.875rem;
+            margin-top: var(--spacing-xs);
+          }
+        }
+      }
+    }
+  }
+  
+  // Карточки
+  .card {
+    &.legacy {
+      // Сохранение существующих hover эффектов
+      &:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+      }
+    }
+  }
+}
+
+// ============================================
+// АДАПТАЦИЯ СУЩЕСТВУЮЩИХ КЛАССОВ
+// ============================================
+// Маппинг старых классов к новым
+.legacy-adapter {
+  // Кнопки
+  .btn-old {
+    @extend .btn;
+    
+    &.btn-primary {
+      @extend .btn-primary;
+    }
+    
+    &.btn-secondary {
+      @extend .btn-secondary;
+    }
+    
+    &.btn-success {
+      @extend .btn-success;
+    }
+    
+    &.btn-danger {
+      @extend .btn-danger;
+    }
+  }
+  
+  // Формы
+  .form-old {
+    @extend .form;
+    
+    .input-old {
+      @extend .form-field__input !optional;
+    }
+    
+    .label-old {
+      @extend .form-field__label !optional;
+    }
+    
+    .select-old {
+      @extend .form-field__select !optional;
+    }
+    
+    .textarea-old {
+      @extend .form-field__textarea !optional;
+    }
+  }
+  
+  // Сетки
+  .grid-old {
+    @extend .row !optional;
+    
+    .col-old {
+      @extend .col !optional;
+      
+      &.col-1 { @extend .col-1 !optional; }
+      &.col-2 { @extend .col-2 !optional; }
+      &.col-3 { @extend .col-3 !optional; }
+      &.col-4 { @extend .col-4 !optional; }
+      &.col-6 { @extend .col-6 !optional; }
+      &.col-8 { @extend .col-8 !optional; }
+      &.col-9 { @extend .col-9 !optional; }
+      &.col-12 { @extend .col-12 !optional; }
+    }
+  }
+  
+  // Утилиты
+  .text-old {
+    &.text-center { @extend .text--center !optional; }
+    &.text-left { @extend .text--left !optional; }
+    &.text-right { @extend .text--right !optional; }
+    &.text-bold { @extend .text--bold !optional; }
+    &.text-italic { @extend .text--normal !optional; }
+  }
+  
+  .margin-old {
+    &.m-0 { @extend .m-0 !optional; }
+    &.m-1 { @extend .m-1 !optional; }
+    &.m-2 { @extend .m-2 !optional; }
+    &.m-3 { @extend .m-3 !optional; }
+    &.m-4 { @extend .m-4 !optional; }
+    &.m-5 { @extend .m-5 !optional; }
+  }
+  
+  .padding-old {
+    &.p-0 { @extend .p-0 !optional; }
+    &.p-1 { @extend .p-1 !optional; }
+    &.p-2 { @extend .p-2 !optional; }
+    &.p-3 { @extend .p-3 !optional; }
+    &.p-4 { @extend .p-4 !optional; }
+    &.p-5 { @extend .p-5 !optional; }
+  }
+}
+
+// ============================================
+// ПРОГРЕССИВНОЕ УЛУЧШЕНИЕ
+// ============================================
+.progressive-enhancement {
+  // Базовые стили для всех браузеров
+  .base-styles {
+    // Минимальная функциональность
+    display: block;
+    visibility: visible;
+    opacity: 1;
+  }
+  
+  // Улучшения для современных браузеров
+  .enhanced-styles {
+    // CSS Grid
+    @supports (display: grid) {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: var(--spacing-lg);
+    }
+    
+    // CSS Custom Properties
+    @supports (--custom: property) {
+      background: var(--color-background);
+      color: var(--color-text);
+    }
+    
+    // CSS Flexbox
+    @supports (display: flex) {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    // CSS Transforms
+    @supports (transform: translateZ(0)) {
+      transform: translateZ(0);
+      will-change: transform;
+    }
+    
+    // CSS Animations
+    @supports (animation: name 1s) {
+      animation: fadeIn 0.5s ease-out;
+    }
+  }
+}
+
+// ============================================
+// МИГРАЦИЯ ПО СТРАНИЦАМ
+// ============================================
+.page-migration {
+  // Главная страница
+  &.page-home {
+    .hero-section {
+      &.migrating {
+        // Плавный переход к новым стилям
+        background: linear-gradient(135deg, 
+          rgba(45, 103, 248, 0.8) 0%, 
+          rgba(45, 103, 248, 0.9) 100%);
+        
+        .hero-content {
+          animation: slideInUp 0.8s ease-out;
+        }
+      }
+    }
+    
+    .services-section {
+      &.migrating {
+        .service-card {
+          transform: scale(0.95);
+          opacity: 0.9;
+        }
+      }
+    }
+  }
+  
+  // Страницы услуг
+  &.page-services {
+    .service-detail {
+      &.migrating {
+        .service-header {
+          background: linear-gradient(135deg, 
+            var(--color-primary) 0%, 
+            var(--color-primary-dark) 100%);
+          color: var(--color-white);
+        }
+      }
+    }
+  }
+  
+  // Страницы тонников
+  &.page-tonniks {
+    .tonnik-hero {
+      &.migrating {
+        background: linear-gradient(135deg, 
+          rgba(45, 103, 248, 0.9) 0%, 
+          rgba(45, 103, 248, 1) 100%);
+        
+        .hero-content {
+          animation: fadeInLeft 0.8s ease-out;
+        }
+      }
+    }
+  }
+  
+  // Страницы маршрутов
+  &.page-routes {
+    .route-hero {
+      &.migrating {
+        background: linear-gradient(135deg, 
+          rgba(45, 103, 248, 0.9) 0%, 
+          rgba(45, 103, 248, 1) 100%);
+        
+        .hero-content {
+          animation: fadeInRight 0.8s ease-out;
+        }
+      }
+    }
+  }
+}
+
+// ============================================
+// АНИМАЦИИ МИГРАЦИИ
+// ============================================
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+// ============================================
+// СОСТОЯНИЯ МИГРАЦИИ
+// ============================================
+.migration-state {
+  // Начальное состояние
+  &.initial {
+    opacity: 1;
+    transform: scale(1);
+  }
+  
+  // Процесс миграции
+  &.migrating {
+    opacity: 0.8;
+    transform: scale(0.98);
+    
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(45deg, 
+        transparent 30%, 
+        rgba(45, 103, 248, 0.1) 50%, 
+        transparent 70%);
+      animation: shimmer 1.5s infinite;
+    }
+  }
+  
+  // Завершенная миграция
+  &.completed {
+    opacity: 1;
+    transform: scale(1);
+    
+    &::after {
+      display: none;
+    }
+  }
+  
+  // Ошибка миграции
+  &.error {
+    opacity: 0.9;
+    transform: scale(0.99);
+    border: 2px solid var(--color-danger);
+    
+    &::before {
+      content: '⚠';
+      position: absolute;
+      top: var(--spacing-sm);
+      right: var(--spacing-sm);
+      color: var(--color-danger);
+      font-size: 1.2rem;
+      font-weight: 700;
+    }
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+// ============================================
+// АДАПТИВНОСТЬ МИГРАЦИИ
+// ============================================
+@include responsive('xs') {
+  .migration-wrapper {
+    .legacy-element {
+      &.migrating {
+        transform: scale(0.95);
+      }
+    }
+  }
+  
+  .page-migration {
+    .hero-section,
+    .tonnik-hero,
+    .route-hero {
+      &.migrating {
+        .hero-content {
+          animation: none;
+        }
+      }
+    }
+  }
+}
+
+// ============================================
+// ПРИНТЕРНЫЕ СТИЛИ
+// ============================================
+@media print {
+  .migration-wrapper,
+  .legacy-override,
+  .legacy-adapter,
+  .progressive-enhancement,
+  .page-migration,
+  .migration-state {
+    .migrating::after,
+    .migrating::before {
+      display: none;
+    }
+  }
+}

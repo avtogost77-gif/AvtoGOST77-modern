@@ -1,0 +1,596 @@
+// ============================================
+// ТЕСТИРОВАНИЕ КОМПОНЕНТОВ - AvtoGOST77
+// ============================================
+// Дата создания: 31 августа 2025
+// Автор: AI Assistant
+// Описание: Система тестирования для всех компонентов
+
+// ============================================
+// ТЕСТОВАЯ СТРАНИЦА
+// ============================================
+.test-page {
+  padding: var(--spacing-xl);
+  background: var(--color-background);
+  min-height: 100vh;
+  
+  // Заголовок тестовой страницы
+  &__header {
+    text-align: center;
+    margin-bottom: var(--spacing-xxl);
+    
+    .test-title {
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--color-heading);
+      margin-bottom: var(--spacing-md);
+    }
+    
+    .test-subtitle {
+      font-size: 1.25rem;
+      color: var(--color-text-muted);
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+  }
+  
+  // Навигация по тестам
+  &__navigation {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-md);
+    justify-content: center;
+    margin-bottom: var(--spacing-xxl);
+    
+    .test-nav-item {
+      padding: var(--spacing-sm) var(--spacing-md);
+      background: var(--color-white);
+      border: 2px solid var(--color-border);
+      border-radius: 8px;
+      color: var(--color-text);
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      
+      &:hover,
+      &.active {
+        background: var(--color-primary);
+        color: var(--color-white);
+        border-color: var(--color-primary);
+        transform: translateY(-2px);
+      }
+    }
+  }
+  
+  // Секции тестов
+  &__sections {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xxl);
+  }
+}
+
+// ============================================
+// ТЕСТ КОМПОНЕНТОВ
+// ============================================
+.test-section {
+  background: var(--color-white);
+  border-radius: 16px;
+  padding: var(--spacing-xl);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  
+  // Заголовок секции
+  &__header {
+    margin-bottom: var(--spacing-xl);
+    
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--color-heading);
+      margin-bottom: var(--spacing-sm);
+    }
+    
+    .section-description {
+      color: var(--color-text-muted);
+      line-height: 1.6;
+    }
+  }
+  
+  // Контент теста
+  &__content {
+    margin-bottom: var(--spacing-xl);
+  }
+  
+  // Результаты теста
+  &__results {
+    padding: var(--spacing-lg);
+    background: var(--color-background-light);
+    border-radius: 12px;
+    border-left: 4px solid var(--color-primary);
+    
+    .result-title {
+      font-weight: 600;
+      color: var(--color-heading);
+      margin-bottom: var(--spacing-sm);
+    }
+    
+    .result-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      
+      .result-item {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-sm);
+        margin-bottom: var(--spacing-sm);
+        
+        .result-icon {
+          width: 20px;
+          height: 20px;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 0.8rem;
+          font-weight: 700;
+          
+          &.success {
+            background: var(--color-success);
+            color: var(--color-white);
+          }
+          
+          &.warning {
+            background: var(--color-warning);
+            color: var(--color-dark);
+          }
+          
+          &.error {
+            background: var(--color-danger);
+            color: var(--color-white);
+          }
+        }
+        
+        .result-text {
+          color: var(--color-text);
+          font-size: 0.9rem;
+        }
+      }
+    }
+  }
+}
+
+// ============================================
+// ТЕСТ КАЛЬКУЛЯТОРА
+// ============================================
+.test-calculator {
+  // Тестовые данные
+  &__test-data {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+    
+    .test-input {
+      .input-label {
+        display: block;
+        font-weight: 600;
+        margin-bottom: var(--spacing-sm);
+        color: var(--color-heading);
+      }
+      
+      .input-field {
+        width: 100%;
+        padding: var(--spacing-sm);
+        border: 2px solid var(--color-border);
+        border-radius: 8px;
+        font-size: 1rem;
+        
+        &:focus {
+          border-color: var(--color-primary);
+          outline: none;
+        }
+      }
+    }
+  }
+  
+  // Тестовые сценарии
+  &__scenarios {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+    
+    .scenario-item {
+      padding: var(--spacing-lg);
+      border: 2px solid var(--color-border);
+      border-radius: 12px;
+      background: var(--color-background-light);
+      
+      .scenario-title {
+        font-weight: 600;
+        color: var(--color-heading);
+        margin-bottom: var(--spacing-sm);
+      }
+      
+      .scenario-description {
+        color: var(--color-text-muted);
+        font-size: 0.9rem;
+        margin-bottom: var(--spacing-md);
+        line-height: 1.5;
+      }
+      
+      .scenario-actions {
+        display: flex;
+        gap: var(--spacing-sm);
+        
+        .btn {
+          padding: var(--spacing-xs) var(--spacing-sm);
+          font-size: 0.875rem;
+        }
+      }
+    }
+  }
+  
+  // Результаты тестирования
+  &__test-results {
+    .test-metrics {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: var(--spacing-lg);
+      margin-bottom: var(--spacing-xl);
+      
+      .metric-item {
+        text-align: center;
+        padding: var(--spacing-lg);
+        background: var(--color-background-light);
+        border-radius: 12px;
+        
+        .metric-value {
+          font-size: 2rem;
+          font-weight: 700;
+          color: var(--color-primary);
+          margin-bottom: var(--spacing-xs);
+        }
+        
+        .metric-label {
+          color: var(--color-text-muted);
+          font-size: 0.9rem;
+        }
+      }
+    }
+  }
+}
+
+// ============================================
+// ТЕСТ ФОРМ
+// ============================================
+.test-forms {
+  // Тестовые формы
+  &__test-forms {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: var(--spacing-xl);
+    margin-bottom: var(--spacing-xl);
+    
+    .form-test {
+      padding: var(--spacing-lg);
+      border: 2px solid var(--color-border);
+      border-radius: 12px;
+      background: var(--color-background-light);
+      
+      .form-title {
+        font-weight: 600;
+        color: var(--color-heading);
+        margin-bottom: var(--spacing-md);
+      }
+      
+      .form-description {
+        color: var(--color-text-muted);
+        font-size: 0.9rem;
+        margin-bottom: var(--spacing-md);
+        line-height: 1.5;
+      }
+    }
+  }
+  
+  // Тестирование валидации
+  &__validation-tests {
+    .validation-scenarios {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: var(--spacing-lg);
+      margin-bottom: var(--spacing-xl);
+      
+      .validation-item {
+        padding: var(--spacing-lg);
+        border: 2px solid var(--color-border);
+        border-radius: 12px;
+        
+        .validation-title {
+          font-weight: 600;
+          color: var(--color-heading);
+          margin-bottom: var(--spacing-sm);
+        }
+        
+        .validation-description {
+          color: var(--color-text-muted);
+          font-size: 0.9rem;
+          margin-bottom: var(--spacing-md);
+          line-height: 1.5;
+        }
+        
+        .validation-status {
+          display: inline-block;
+          padding: var(--spacing-xs) var(--spacing-sm);
+          border-radius: 20px;
+          font-size: 0.8rem;
+          font-weight: 600;
+          
+          &.pending {
+            background: var(--color-warning);
+            color: var(--color-dark);
+          }
+          
+          &.success {
+            background: var(--color-success);
+            color: var(--color-white);
+          }
+          
+          &.error {
+            background: var(--color-danger);
+            color: var(--color-white);
+          }
+        }
+      }
+    }
+  }
+}
+
+// ============================================
+// ТЕСТ КАРТОЧЕК
+// ============================================
+.test-cards {
+  // Тестовые карточки
+  &__test-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+    
+    .card-test {
+      .card {
+        margin-bottom: var(--spacing-md);
+      }
+      
+      .card-info {
+        padding: var(--spacing-md);
+        background: var(--color-background-light);
+        border-radius: 8px;
+        
+        .card-title {
+          font-weight: 600;
+          color: var(--color-heading);
+          margin-bottom: var(--spacing-xs);
+        }
+        
+        .card-description {
+          color: var(--color-text-muted);
+          font-size: 0.9rem;
+          line-height: 1.5;
+        }
+      }
+    }
+  }
+  
+  // Тестирование сеток
+  &__grid-tests {
+    .grid-variants {
+      display: grid;
+      gap: var(--spacing-xl);
+      margin-bottom: var(--spacing-xl);
+      
+      .grid-test {
+        .grid-title {
+          font-weight: 600;
+          color: var(--color-heading);
+          margin-bottom: var(--spacing-md);
+        }
+        
+        .grid-description {
+          color: var(--color-text-muted);
+          font-size: 0.9rem;
+          margin-bottom: var(--spacing-md);
+          line-height: 1.5;
+        }
+      }
+    }
+  }
+}
+
+// ============================================
+// ТЕСТ МОДАЛЬНЫХ ОКОН
+// ============================================
+.test-modals {
+  // Тестовые модалы
+  &__test-modals {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+    
+    .modal-test {
+      text-align: center;
+      padding: var(--spacing-lg);
+      border: 2px solid var(--color-border);
+      border-radius: 12px;
+      background: var(--color-background-light);
+      
+      .modal-title {
+        font-weight: 600;
+        color: var(--color-heading);
+        margin-bottom: var(--spacing-sm);
+      }
+      
+      .modal-description {
+        color: var(--color-text-muted);
+        font-size: 0.9rem;
+        margin-bottom: var(--spacing-md);
+        line-height: 1.5;
+      }
+      
+      .modal-trigger {
+        .btn {
+          min-width: 150px;
+        }
+      }
+    }
+  }
+  
+  // Тестирование состояний
+  &__state-tests {
+    .state-scenarios {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: var(--spacing-lg);
+      margin-bottom: var(--spacing-xl);
+      
+      .state-item {
+        padding: var(--spacing-lg);
+        border: 2px solid var(--color-border);
+        border-radius: 12px;
+        
+        .state-title {
+          font-weight: 600;
+          color: var(--color-heading);
+          margin-bottom: var(--spacing-sm);
+        }
+        
+        .state-description {
+          color: var(--color-text-muted);
+          font-size: 0.9rem;
+          margin-bottom: var(--spacing-md);
+          line-height: 1.5;
+        }
+        
+        .state-trigger {
+          .btn {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}
+
+// ============================================
+// ТЕСТ УТИЛИТ
+// ============================================
+.test-utilities {
+  // Тестовые утилиты
+  &__test-utilities {
+    display: grid;
+    gap: var(--spacing-xl);
+    margin-bottom: var(--spacing-xl);
+    
+    .utility-group {
+      .group-title {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: var(--color-heading);
+        margin-bottom: var(--spacing-lg);
+        padding-bottom: var(--spacing-sm);
+        border-bottom: 2px solid var(--color-border);
+      }
+      
+      .utility-examples {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: var(--spacing-md);
+        
+        .utility-example {
+          padding: var(--spacing-md);
+          border: 1px solid var(--color-border);
+          border-radius: 8px;
+          text-align: center;
+          
+          .example-class {
+            font-family: monospace;
+            font-size: 0.8rem;
+            color: var(--color-primary);
+            margin-bottom: var(--spacing-xs);
+            word-break: break-all;
+          }
+          
+          .example-preview {
+            padding: var(--spacing-sm);
+            background: var(--color-background-light);
+            border-radius: 4px;
+            font-size: 0.9rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+// ============================================
+// АДАПТИВНОСТЬ
+// ============================================
+@include responsive('xs') {
+  .test-page {
+    padding: var(--spacing-md);
+    
+    &__header .test-title {
+      font-size: 2rem;
+    }
+    
+    &__header .test-subtitle {
+      font-size: 1.1rem;
+    }
+    
+    &__navigation {
+      flex-direction: column;
+      align-items: center;
+      
+      .test-nav-item {
+        width: 100%;
+        text-align: center;
+      }
+    }
+  }
+  
+  .test-section {
+    padding: var(--spacing-lg);
+    
+    &__header .section-title {
+      font-size: 1.5rem;
+    }
+  }
+  
+  .test-calculator__test-data,
+  .test-calculator__scenarios,
+  .test-forms__test-forms,
+  .test-forms__validation-tests,
+  .test-cards__test-cards,
+  .test-cards__grid-tests,
+  .test-modals__test-modals,
+  .test-modals__state-tests {
+    grid-template-columns: 1fr;
+  }
+}
+
+// ============================================
+// ПРИНТЕРНЫЕ СТИЛИ
+// ============================================
+@media print {
+  .test-page__navigation,
+  .test-section__results,
+  .test-calculator__test-data,
+  .test-forms__test-forms,
+  .test-cards__test-cards,
+  .test-modals__test-modals,
+  .test-utilities__test-utilities {
+    display: none;
+  }
+}

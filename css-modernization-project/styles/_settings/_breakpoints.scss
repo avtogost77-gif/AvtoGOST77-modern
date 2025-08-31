@@ -1,0 +1,197 @@
+// ============================================
+// BREAKPOINTS - AvtoGOST77
+// ============================================
+// Дата создания: 31 августа 2025
+// Автор: AI Assistant
+// Описание: Точки перелома для адаптивного дизайна
+
+// ============================================
+// SCSS ПЕРЕМЕННЫЕ BREAKPOINTS
+// ============================================
+$breakpoints: (
+  'xs': 0,        // Extra small devices (phones)
+  'sm': 576px,    // Small devices (landscape phones)
+  'md': 768px,    // Medium devices (tablets)
+  'lg': 992px,    // Large devices (desktops)
+  'xl': 1024px,   // Extra large devices (large desktops)
+  'xxl': 1200px   // Extra extra large devices (larger desktops)
+);
+
+// ============================================
+// CSS ПЕРЕМЕННЫЕ BREAKPOINTS
+// ============================================
+:root {
+  --breakpoint-xs: 0;
+  --breakpoint-sm: 576px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 992px;
+  --breakpoint-xl: 1024px;
+  --breakpoint-xxl: 1200px;
+}
+
+// ============================================
+// МИКСИН RESPONSIVE
+// ============================================
+@mixin responsive($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media (min-width: map-get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  } @else {
+    @warn "Неизвестный breakpoint: #{$breakpoint}";
+  }
+}
+
+// ============================================
+// МИКСИН RESPONSIVE MAX-WIDTH
+// ============================================
+@mixin responsive-max($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media (max-width: map-get($breakpoints, $breakpoint) - 1px) {
+      @content;
+    }
+  } @else {
+    @warn "Неизвестный breakpoint: #{$breakpoint}";
+  }
+}
+
+// ============================================
+// МИКСИН RESPONSIVE BETWEEN
+// ============================================
+@mixin responsive-between($min, $max) {
+  @if map-has-key($breakpoints, $min) and map-has-key($breakpoints, $max) {
+    @media (min-width: map-get($breakpoints, $min)) and (max-width: map-get($breakpoints, $max) - 1px) {
+      @content;
+    }
+  } @else {
+    @warn "Неизвестный breakpoint: #{$min} или #{$max}";
+  }
+}
+
+// ============================================
+// МИКСИН MOBILE-FIRST
+// ============================================
+@mixin mobile-first {
+  // Базовые стили для мобильных
+  @content;
+  
+  // Планшет
+  @include responsive('md') {
+    @content;
+  }
+  
+  // Десктоп
+  @include responsive('lg') {
+    @content;
+  }
+  
+  // Большой десктоп
+  @include responsive('xl') {
+    @content;
+  }
+}
+
+// ============================================
+// МИКСИН DESKTOP-FIRST
+// ============================================
+@mixin desktop-first {
+  // Базовые стили для десктопа
+  @content;
+  
+  // Планшет
+  @include responsive-max('lg') {
+    @content;
+  }
+  
+  // Мобильный
+  @include responsive-max('md') {
+    @content;
+  }
+  
+  // Маленький мобильный
+  @include responsive-max('sm') {
+    @content;
+  }
+}
+
+// ============================================
+// УТИЛИТАРНЫЕ КЛАССЫ ДЛЯ BREAKPOINTS
+// ============================================
+
+// Скрытие/показ по breakpoints
+.hide-xs { display: none !important; }
+.hide-sm { @include responsive('sm') { display: none !important; } }
+.hide-md { @include responsive('md') { display: none !important; } }
+.hide-lg { @include responsive('lg') { display: none !important; } }
+.hide-xl { @include responsive('xl') { display: none !important; } }
+
+.show-xs { display: block !important; }
+.show-sm { @include responsive('sm') { display: block !important; } }
+.show-md { @include responsive('md') { display: block !important; } }
+.show-lg { @include responsive('lg') { display: block !important; } }
+.show-xl { @include responsive('xl') { display: block !important; } }
+
+// ============================================
+// ПРИМЕРЫ ИСПОЛЬЗОВАНИЯ
+// ============================================
+
+// Пример компонента с mobile-first подходом
+.example-component {
+  @include mobile-first {
+    padding: var(--spacing-sm);
+    font-size: 1rem;
+    
+    @include responsive('md') {
+      padding: var(--spacing-md);
+      font-size: 1.1rem;
+    }
+    
+    @include responsive('lg') {
+      padding: var(--spacing-lg);
+      font-size: 1.2rem;
+    }
+  }
+}
+
+// Пример с desktop-first подходом
+.example-desktop-component {
+  @include desktop-first {
+    padding: var(--spacing-lg);
+    font-size: 1.2rem;
+    
+    @include responsive-max('lg') {
+      padding: var(--spacing-md);
+      font-size: 1.1rem;
+    }
+    
+    @include responsive-max('md') {
+      padding: var(--spacing-sm);
+      font-size: 1rem;
+    }
+  }
+}
+
+// ============================================
+// СПЕЦИАЛЬНЫЕ BREAKPOINTS ДЛЯ ЛОГИСТИКИ
+// ============================================
+
+// Breakpoint для калькулятора
+@mixin calculator-breakpoint {
+  @media (min-width: 768px) and (max-width: 1023px) {
+    @content;
+  }
+}
+
+// Breakpoint для hero секций
+@mixin hero-breakpoint {
+  @media (min-width: 480px) and (max-width: 767px) {
+    @content;
+  }
+}
+
+// Breakpoint для мобильных форм
+@mixin mobile-form-breakpoint {
+  @media (max-width: 575px) {
+    @content;
+  }
+}

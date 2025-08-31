@@ -1,0 +1,49 @@
+{
+  "name": "avtogost77-css-modernization",
+  "version": "1.0.0",
+  "description": "CSS modernization project for AvtoGOST77 - ITCSS + BEM architecture",
+  "main": "styles/main.scss",
+  "scripts": {
+    "sass": "sass styles/main.scss:dist/main.css --style=compressed --source-map",
+    "sass:watch": "sass styles/main.scss:dist/main.css --watch --style=compressed --source-map",
+    "sass:critical": "sass styles/critical.scss:dist/critical.css --style=compressed --source-map",
+    "postcss": "postcss dist/main.css -o dist/main.min.css",
+    "postcss:critical": "postcss dist/critical.css -o dist/critical.min.css",
+    "build": "npm run sass && npm run sass:critical && npm run postcss && npm run postcss:critical",
+    "build:watch": "npm run sass:watch",
+    "optimize": "npm run build && npm run analyze",
+    "analyze": "npx cssnano-cli dist/main.css --output dist/main.analyzed.css --report",
+    "test": "npm run build && echo '✅ Build successful!'",
+    "clean": "rm -rf dist/*",
+    "deploy": "npm run build && echo '🚀 Ready for deployment!'"
+  },
+  "keywords": [
+    "scss",
+    "itcss",
+    "bem",
+    "css",
+    "performance",
+    "optimization"
+  ],
+  "author": "AI Assistant",
+  "license": "MIT",
+  "devDependencies": {
+    "sass": "^1.69.0",
+    "postcss": "^8.4.31",
+    "postcss-cli": "^10.1.0",
+    "autoprefixer": "^10.4.16",
+    "cssnano": "^6.0.1",
+    "cssnano-cli": "^1.0.0",
+    "postcss-preset-env": "^9.3.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead",
+    "not ie 11"
+  ],
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=8.0.0"
+  }
+}

@@ -1,0 +1,590 @@
+// ============================================
+// HERO СЕКЦИИ - AvtoGOST77
+// ============================================
+// Дата создания: 31 августа 2025
+// Автор: AI Assistant
+// Описание: Стили для Hero секций (критично - уже восстановлены!)
+
+// ============================================
+// ОСНОВНАЯ HERO СЕКЦИЯ
+// ============================================
+.hero {
+  position: relative;
+  min-height: 65vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  
+  @include responsive('sm') {
+    min-height: 70vh;
+  }
+  
+  @include responsive('lg') {
+    min-height: 80vh;
+  }
+  
+  // Фоновое изображение
+  &__background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+    
+    // WebP изображения (уже восстановлены!)
+    &.webp {
+      img {
+        // Поддержка WebP с fallback
+        &.webp-image {
+          display: block;
+        }
+        
+        &.fallback-image {
+          display: none;
+        }
+      }
+      
+      // Fallback для браузеров без WebP
+      .no-webp & {
+        img.webp-image {
+          display: none;
+        }
+        
+        img.fallback-image {
+          display: block;
+        }
+      }
+    }
+    
+    // Градиентный оверлей
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(
+        135deg,
+        rgba(0, 0, 0, 0.4) 0%,
+        rgba(0, 0, 0, 0.2) 50%,
+        rgba(0, 0, 0, 0.1) 100%
+      );
+      z-index: 2;
+    }
+  }
+  
+  // Контейнер контента
+  &__container {
+    @extend .container;
+    position: relative;
+    z-index: 3;
+    text-align: center;
+    color: var(--color-white);
+    
+    @include responsive('lg') {
+      text-align: left;
+    }
+  }
+  
+  // Основной контент
+  &__content {
+    max-width: 600px;
+    margin: 0 auto;
+    
+    @include responsive('lg') {
+      margin: 0;
+    }
+  }
+  
+  // Заголовок
+  &__title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: var(--spacing-md);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    
+    @include responsive('sm') {
+      font-size: 3rem;
+    }
+    
+    @include responsive('lg') {
+      font-size: 3.5rem;
+    }
+    
+    @include responsive('xl') {
+      font-size: 4rem;
+    }
+    
+    // Цветовые варианты
+    &.primary {
+      color: var(--color-primary);
+    }
+    
+    &.secondary {
+      color: var(--color-secondary);
+    }
+    
+    &.accent {
+      color: var(--color-accent);
+    }
+  }
+  
+  // Подзаголовок
+  &__subtitle {
+    font-size: 1.25rem;
+    line-height: 1.6;
+    margin-bottom: var(--spacing-lg);
+    opacity: 0.95;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    
+    @include responsive('sm') {
+      font-size: 1.5rem;
+    }
+    
+    @include responsive('lg') {
+      font-size: 1.75rem;
+    }
+  }
+  
+  // Описание
+  &__description {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-bottom: var(--spacing-xl);
+    opacity: 0.9;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    
+    @include responsive('lg') {
+      margin-left: 0;
+      margin-right: 0;
+    }
+  }
+  
+  // Кнопки действий
+  &__actions {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    align-items: center;
+    
+    @include responsive('sm') {
+      flex-direction: row;
+      justify-content: center;
+    }
+    
+    @include responsive('lg') {
+      justify-content: flex-start;
+    }
+    
+    .btn {
+      min-width: 200px;
+      
+      @include responsive('sm') {
+        min-width: 180px;
+      }
+    }
+  }
+  
+  // Дополнительные элементы
+  &__features {
+    margin-top: var(--spacing-xl);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-lg);
+    
+    @include responsive('lg') {
+      grid-template-columns: repeat(3, 1fr);
+      max-width: 600px;
+      margin-left: 0;
+    }
+    
+    .feature-item {
+      text-align: center;
+      padding: var(--spacing-md);
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      
+      .feature-icon {
+        font-size: 2rem;
+        margin-bottom: var(--spacing-sm);
+        color: var(--color-primary);
+      }
+      
+      .feature-title {
+        font-weight: 600;
+        margin-bottom: var(--spacing-xs);
+        font-size: 1.1rem;
+      }
+      
+      .feature-text {
+        font-size: 0.9rem;
+        opacity: 0.9;
+        line-height: 1.5;
+      }
+    }
+  }
+}
+
+// ============================================
+// ВАРИАНТЫ HERO СЕКЦИЙ
+// ============================================
+.hero {
+  // Hero с видео фоном
+  &.hero-video {
+    .hero__background {
+      video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+      }
+    }
+  }
+  
+  // Hero с параллаксом
+  &.hero-parallax {
+    .hero__background {
+      transform: translateZ(0);
+      will-change: transform;
+    }
+  }
+  
+  // Hero с анимацией
+  &.hero-animated {
+    .hero__title {
+      animation: fadeInUp 1s ease-out 0.3s both;
+    }
+    
+    .hero__subtitle {
+      animation: fadeInUp 1s ease-out 0.6s both;
+    }
+    
+    .hero__description {
+      animation: fadeInUp 1s ease-out 0.9s both;
+    }
+    
+    .hero__actions {
+      animation: fadeInUp 1s ease-out 1.2s both;
+    }
+  }
+  
+  // Hero для тонников (критично!)
+  &.hero-tonnik {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+    
+    .hero__background {
+      &::after {
+        background: linear-gradient(
+          135deg,
+          rgba(45, 103, 248, 0.8) 0%,
+          rgba(30, 75, 199, 0.6) 100%
+        );
+      }
+    }
+    
+    .hero__title {
+      color: var(--color-white);
+    }
+    
+    .hero__subtitle {
+      color: rgba(255, 255, 255, 0.9);
+    }
+    
+    .hero__description {
+      color: rgba(255, 255, 255, 0.8);
+    }
+  }
+  
+  // Hero для маршрутов
+  &.hero-routes {
+    background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-secondary-dark) 100%);
+    
+    .hero__background {
+      &::after {
+        background: linear-gradient(
+          135deg,
+          rgba(108, 117, 125, 0.8) 0%,
+          rgba(73, 80, 87, 0.6) 100%
+        );
+      }
+    }
+  }
+  
+  // Hero для услуг
+  &.hero-services {
+    background: linear-gradient(135deg, var(--color-success) 0%, var(--color-success-dark) 100%);
+    
+    .hero__background {
+      &::after {
+        background: linear-gradient(
+          135deg,
+          rgba(40, 167, 69, 0.8) 0%,
+          rgba(30, 126, 52, 0.6) 100%
+        );
+      }
+    }
+  }
+}
+
+// ============================================
+// АНИМАЦИИ
+// ============================================
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+// ============================================
+// АДАПТИВНОСТЬ
+// ============================================
+@include responsive('xs') {
+  .hero {
+    min-height: 60vh;
+    
+    &__title {
+      font-size: 2rem;
+    }
+    
+    &__subtitle {
+      font-size: 1.1rem;
+    }
+    
+    &__description {
+      font-size: 1rem;
+    }
+    
+    &__actions {
+      .btn {
+        min-width: 160px;
+        font-size: 0.9rem;
+        padding: var(--spacing-sm) var(--spacing-md);
+      }
+    }
+    
+    &__features {
+      grid-template-columns: 1fr;
+      gap: var(--spacing-md);
+      
+      .feature-item {
+        padding: var(--spacing-sm);
+        
+        .feature-icon {
+          font-size: 1.5rem;
+        }
+        
+        .feature-title {
+          font-size: 1rem;
+        }
+        
+        .feature-text {
+          font-size: 0.8rem;
+        }
+      }
+    }
+  }
+}
+
+// ============================================
+// СОСТОЯНИЯ ЗАГРУЗКИ
+// ============================================
+.hero {
+  &.loading {
+    .hero__background {
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+        background-size: 200% 100%;
+        animation: loading 1.5s infinite;
+        z-index: 3;
+      }
+    }
+    
+    .hero__content {
+      opacity: 0.3;
+    }
+  }
+}
+
+@keyframes loading {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+// ============================================
+// ДОСТУПНОСТЬ
+// ============================================
+.hero {
+  // Уменьшение движения для пользователей с reduced-motion
+  @media (prefers-reduced-motion: reduce) {
+    &.hero-animated {
+      .hero__title,
+      .hero__subtitle,
+      .hero__description,
+      .hero__actions {
+        animation: none;
+      }
+    }
+    
+    &.hero-parallax {
+      .hero__background {
+        transform: none;
+      }
+    }
+  }
+  
+  // Высокий контраст
+  @media (prefers-contrast: high) {
+    .hero__background::after {
+      background: rgba(0, 0, 0, 0.7);
+    }
+    
+    .hero__title,
+    .hero__subtitle,
+    .hero__description {
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    }
+  }
+}
+
+// ============================================
+// ПРИНТЕРНЫЕ СТИЛИ
+// ============================================
+@media print {
+  .hero {
+    min-height: auto;
+    page-break-inside: avoid;
+    
+    &__background {
+      display: none;
+    }
+    
+    &__content {
+      color: #000;
+      text-align: left;
+    }
+    
+    &__actions {
+      display: none;
+    }
+    
+    &__features {
+      display: none;
+    }
+  }
+}
+
+// ============================================
+// УТИЛИТАРНЫЕ КЛАССЫ ДЛЯ HERO
+// ============================================
+.hero-overlay {
+  &--light {
+    .hero__background::after {
+      background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.1) 0%,
+        rgba(255, 255, 255, 0.05) 100%
+      );
+    }
+  }
+  
+  &--dark {
+    .hero__background::after {
+      background: linear-gradient(
+        135deg,
+        rgba(0, 0, 0, 0.6) 0%,
+        rgba(0, 0, 0, 0.3) 100%
+      );
+    }
+  }
+  
+  &--gradient {
+    .hero__background::after {
+      background: linear-gradient(
+        135deg,
+        rgba(45, 103, 248, 0.8) 0%,
+        rgba(108, 117, 125, 0.6) 50%,
+        rgba(40, 167, 69, 0.4) 100%
+      );
+    }
+  }
+}
+
+.hero-text {
+  &--left {
+    text-align: left;
+  }
+  
+  &--center {
+    text-align: center;
+  }
+  
+  &--right {
+    text-align: right;
+  }
+  
+  &--white {
+    color: var(--color-white);
+  }
+  
+  &--dark {
+    color: var(--color-heading);
+  }
+}

@@ -1,0 +1,169 @@
+// ============================================
+// CSS RESET - AvtoGOST77
+// ============================================
+// Дата создания: 31 августа 2025
+// Автор: AI Assistant
+// Описание: Сброс стандартных стилей браузера
+
+// ============================================
+// БАЗОВЫЙ СБРОС
+// ============================================
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  line-height: 1.15;
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--color-text);
+  background-color: var(--color-background);
+}
+
+// ============================================
+// СБРОС ТЕКСТОВЫХ ЭЛЕМЕНТОВ
+// ============================================
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+p {
+  margin: 0 0 var(--spacing-md) 0;
+}
+
+a {
+  background-color: transparent;
+  text-decoration: none;
+  color: inherit;
+}
+
+// ============================================
+// СБРОС СПИСКОВ
+// ============================================
+ul, ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+// ============================================
+// СБРОС ФОРМ
+// ============================================
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit;
+  font-size: 100%;
+  line-height: 1.15;
+  margin: 0;
+}
+
+button,
+input {
+  overflow: visible;
+}
+
+button,
+select {
+  text-transform: none;
+}
+
+button,
+[type="button"],
+[type="reset"],
+[type="submit"] {
+  -webkit-appearance: button;
+}
+
+// ============================================
+// СБРОС ТАБЛИЦ
+// ============================================
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+// ============================================
+// СБРОС ИЗОБРАЖЕНИЙ
+// ============================================
+img {
+  border-style: none;
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+// ============================================
+// СБРОС МЕДИА
+// ============================================
+audio,
+video {
+  display: inline-block;
+}
+
+// ============================================
+// СБРОС КОДА
+// ============================================
+code,
+kbd,
+pre,
+samp {
+  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+  font-size: 1em;
+}
+
+// ============================================
+// СБРОС ДЕТАЛЕЙ
+// ============================================
+details {
+  display: block;
+}
+
+summary {
+  display: list-item;
+}
+
+// ============================================
+// СБРОС СКРЫТЫХ ЭЛЕМЕНТОВ
+// ============================================
+[hidden] {
+  display: none !important;
+}
+
+// ============================================
+// СБРОС ФОКУСА
+// ============================================
+:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+// ============================================
+// СБРОС ВЫДЕЛЕНИЯ
+// ============================================
+::selection {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+::-moz-selection {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
