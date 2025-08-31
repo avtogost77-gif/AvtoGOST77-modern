@@ -2,10 +2,10 @@
 AVTOGOST77 CRM MVP - Модель заявки
 Дата создания: 31 августа 2025
 Автор: AI Assistant
-Описание: SQLAlchemy модель для таблицы заявок
+Описание: SQLAlchemy модель для заявок клиентов
 """
 
-from sqlalchemy import Column, Integer, String, Text, Date, Time, Numeric, DateTime, ForeignKey
+from sqlalchemy import Column, Integer, String, Text, DateTime, Boolean, ForeignKey, Float, JSON
 from sqlalchemy.orm import relationship
 from sqlalchemy.sql import func
 from datetime import datetime
@@ -13,59 +13,66 @@ from datetime import datetime
 from ..database import Base
 
 class Lead(Base):
-    """Модель заявки"""
-    
+    """Модель заявки клиента"""
     __tablename__ = "leads"
     
-    # Основные поля
     id = Column(Integer, primary_key=True, index=True)
-    client_name = Column(String(200), nullable=False, index=True)
-    client_phone = Column(String(20), nullable=False)
-    client_email = Column(String(100))
+    
+    # Информация о клиенте
+    client_name = Column(String(200), nullable=False, comment="Имя клиента")
+    client_phone = Column(String(20), nullable=False, comment="Телефон клиента")
+    client_email = Column(String(100), nullable=True, comment="Email клиента")
     
     # Маршрут
-    route_from = Column(String(100), nullable=False, index=True)
-    route_to = Column(String(100), nullable=False, index=True)
+    route_from = Column(String(100), nullable=False, comment="Город отправления")
+    route_to = Column(String(100), nullable=False, comment="Город назначения")
     
-    # Груз
-    cargo_name = Column(String(200))
-    cargo_weight = Column(Numeric(10, 2))
-    cargo_volume = Column(Numeric(10, 2))
-    cargo_packaging = Column(String(100))
+    # Информация о грузе
+    cargo_name = Column(String(200), nullable=True, comment="Наименование груза")
+    cargo_weight = Column(Float, nullable=True, comment="Вес груза в кг")
+    cargo_volume = Column(Float, nullable=True, comment="Объем груза")
+    cargo_packaging = Column(String(100), nullable=True, comment="Упаковка груза")
     
-    # Время погрузки
-    loading_date = Column(Date)
-    loading_time_from = Column(Time)
-    loading_time_to = Column(Time)
+    # Даты и время
+    loading_date = Column(DateTime, nullable=True, comment="Дата погрузки")
+    loading_time_from = Column(DateTime, nullable=True, comment="Время начала погрузки")
+    loading_time_to = Column(DateTime, nullable=True, comment="Время окончания погрузки")
     
-    # Время выгрузки
-    unloading_date = Column(Date)
-    unloading_time = Column(Time)
+    unloading_date = Column(DateTime, nullable=True, comment="Дата выгрузки")
+    unloading_time = Column(DateTime, nullable=True, comment="Время выгрузки")
     
     # Адреса
-    loading_address = Column(Text)
-    unloading_address = Column(Text)
-    
-    # Статус и источник
-    status = Column(String(50), default="new", index=True)
-    source = Column(String(50), default="website")
+    loading_address = Column(Text, nullable=True, comment="Адрес погрузки")
+    unloading_address = Column(Text, nullable=True, comment="Адрес выгрузки")
     
     # Финансы
-    total_amount = Column(Numeric(10, 2))
-    partner_cost = Column(Numeric(10, 2))
+    total_amount = Column(Float, nullable=True, comment="Общая стоимость")
+    partner_cost = Column(Float, nullable=True, comment="Стоимость партнера")
     
-    # Дополнительно
-    notes = Column(Text)
+    # Статус и источник
+    status = Column(String(50), default="new", comment="Статус заявки")
+    source = Column(String(50), default="website", comment="Источник заявки")
     
-    # Временные метки
-    created_at = Column(DateTime(timezone=True), server_default=func.now(), index=True)
-    updated_at = Column(DateTime(timezone=True), server_default=func.now(), onupdate=func.now())
+    # Дополнительная информация
+    notes = Column(Text, nullable=True, comment="Дополнительные заметки")
+    tags = Column(JSON, nullable=True, comment="Теги для поиска")
+    
+    # Системные поля
+    created_at = Column(DateTime(timezone=True), server_default=func.now())
+    updated_at = Column(DateTime(timezone=True), onupdate=func.now())
     
     # Связи
+    documents = relationship("Document", back_populates="lead")
+    contracts = relationship("Contract", back_populates="lead")
     ratings = relationship("PartnerRating", back_populates="lead")
     
     def __repr__(self):
-        return f"<Lead(id={self.id}, client='{self.client_name}', route='{self.route_from}-{self.route_to}', status='{self.status}')>"
+        return f"<Lead(id={self.id}, client='{self.client_name}', route='{self.route_from}→{self.route_to}')>"
+    
+    @property
+    def is_active(self):
+        """Проверка активности заявки"""
+        return self.status not in ["completed", "cancelled"]
     
     @property
     def route_display(self):
@@ -73,25 +80,46 @@ class Lead(Base):
         return f"{self.route_from} → {self.route_to}"
     
     @property
-    def loading_datetime(self):
-        """Полная дата и время погрузки"""
-        if self.loading_date and self.loading_time_from:
-            return datetime.combine(self.loading_date, self.loading_time_from)
-        return None
+    def cargo_info(self):
+        """Информация о грузе"""
+        info = []
+        if self.cargo_name:
+            info.append(self.cargo_name)
+        if self.cargo_weight:
+            info.append(f"{self.cargo_weight} кг")
+        if self.cargo_volume:
+            info.append(f"{self.cargo_volume} м³")
+        return " | ".join(info) if info else "Груз не указан"
     
     @property
-    def unloading_datetime(self):
-        """Полная дата и время выгрузки"""
-        if self.unloading_date and self.unloading_time:
-            return datetime.combine(self.unloading_date, self.unloading_time)
-        return None
+    def loading_info(self):
+        """Информация о погрузке"""
+        if self.loading_date:
+            date_str = self.loading_date.strftime("%d.%m.%Y")
+            if self.loading_time_from and self.loading_time_to:
+                time_from = self.loading_time_from.strftime("%H:%M")
+                time_to = self.loading_time_to.strftime("%H:%M")
+                return f"{date_str} {time_from}-{time_to}"
+            return date_str
+        return "Дата не указана"
     
     @property
-    def is_completed(self):
-        """Проверка завершения заявки"""
-        return self.status in ["completed", "cancelled"]
+    def unloading_info(self):
+        """Информация о выгрузке"""
+        if self.unloading_date:
+            date_str = self.unloading_date.strftime("%d.%m.%Y")
+            if self.unloading_time:
+                time_str = self.unloading_time.strftime("%H:%M")
+                return f"{date_str} {time_str}"
+            return date_str
+        return "Дата не указана"
     
     @property
-    def is_active(self):
-        """Проверка активности заявки"""
-        return self.status not in ["completed", "cancelled"]
+    def financial_info(self):
+        """Финансовая информация"""
+        info = []
+        if self.total_amount:
+            info.append(f"Сумма: {self.total_amount} ₽")
+        if self.partner_cost:
+            info.append(f"Партнер: {self.partner_cost} ₽")
+        return " | ".join(info) if info else "Финансы не указаны"

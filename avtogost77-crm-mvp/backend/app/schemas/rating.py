@@ -6,7 +6,7 @@ AVTOGOST77 CRM MVP - Pydantic схемы для рейтингов
 """
 
 from pydantic import BaseModel, Field
-from typing import Optional, Dict
+from typing import Optional, Dict, List
 from datetime import datetime
 
 class RatingBase(BaseModel):
@@ -27,6 +27,30 @@ class RatingBase(BaseModel):
 class RatingCreate(RatingBase):
     """Схема для создания рейтинга"""
     pass
+
+class PartnerRatingCreate(RatingBase):
+    """Схема для создания рейтинга партнера"""
+    pass
+
+class PartnerRatingUpdate(BaseModel):
+    """Схема для обновления рейтинга партнера"""
+    
+    punctuality: Optional[int] = Field(None, ge=1, le=5)
+    quality: Optional[int] = Field(None, ge=1, le=5)
+    price: Optional[int] = Field(None, ge=1, le=5)
+    communication: Optional[int] = Field(None, ge=1, le=5)
+    overall_rating: Optional[int] = Field(None, ge=1, le=5)
+    comment_type: Optional[str] = None
+    custom_comment: Optional[str] = None
+
+class PartnerRatingResponse(RatingBase):
+    """Схема для ответа с рейтингом партнера"""
+    
+    id: int
+    created_at: datetime
+    
+    class Config:
+        from_attributes = True
 
 class RatingResponse(RatingBase):
     """Схема для ответа с рейтингом"""
@@ -50,3 +74,12 @@ class RatingSummary(BaseModel):
     
     class Config:
         from_attributes = True
+
+class PartnerRatingList(BaseModel):
+    """Схема для списка рейтингов"""
+    
+    ratings: List[PartnerRatingResponse]
+    total: int
+    page: int
+    per_page: int
+    total_pages: int

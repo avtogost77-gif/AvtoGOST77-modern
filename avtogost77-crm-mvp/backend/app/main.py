@@ -1,41 +1,55 @@
 """
-AVTOGOST77 CRM MVP - Основное FastAPI приложение
+AVTOGOST77 CRM MVP - Главное приложение FastAPI
 Дата создания: 31 августа 2025
 Автор: AI Assistant
-Описание: Главный файл FastAPI приложения для CRM системы
+Описание: Основное приложение CRM с API роутерами
 """
 
-from fastapi import FastAPI, HTTPException, Depends
+from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from contextlib import asynccontextmanager
-from loguru import logger
-import uvicorn
+import os
 
-from .database import engine, Base, get_db
-from .models import lead, partner, partner_rating, partner_location, management_record
-from .api import leads, partners, ratings, management
+from .database import engine, Base
+from .api import (
+    leads_router, partners_router, ratings_router, management_router,
+    documents_router, contracts_router, legal_router
+)
 
-# Создание таблиц базы данных
+# ============================================
+# ЖИЗНЕННЫЙ ЦИКЛ ПРИЛОЖЕНИЯ
+# ============================================
+
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    # Создание таблиц при запуске
+    """Управление жизненным циклом приложения"""
+    
+    # Создаем таблицы при запуске
+    print("🔄 Создание таблиц базы данных...")
     Base.metadata.create_all(bind=engine)
-    logger.info("База данных инициализирована")
+    print("✅ Таблицы созданы успешно!")
     
     yield
     
-    logger.info("Приложение завершает работу")
+    # Очистка при завершении
+    print("🔄 Завершение работы приложения...")
 
-# Создание FastAPI приложения
+# ============================================
+# СОЗДАНИЕ ПРИЛОЖЕНИЯ
+# ============================================
+
 app = FastAPI(
     title="AVTOGOST77 CRM MVP",
-    description="MVP версия CRM системы для логистической компании АвтоГОСТ77",
-    version="1.0.0",
+    description="CRM система для транспортной компании AVTOGOST77",
+    version="2.0.0",
     lifespan=lifespan
 )
 
-# Настройка CORS
+# ============================================
+# НАСТРОЙКА CORS
+# ============================================
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],  # В продакшене ограничить конкретными доменами
@@ -44,59 +58,74 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Подключение API роутеров
-app.include_router(leads.router, prefix="/api/v1/leads", tags=["Заявки"])
-app.include_router(partners.router, prefix="/api/v1/partners", tags=["Партнеры"])
-app.include_router(ratings.router, prefix="/api/v1/ratings", tags=["Рейтинги"])
-app.include_router(management.router, prefix="/api/v1/management", tags=["Управленческий учет"])
+# ============================================
+# ПОДКЛЮЧЕНИЕ API РОУТЕРОВ
+# ============================================
 
-# Статические файлы
-app.mount("/static", StaticFiles(directory="../frontend"), name="static")
+# Основные роутеры MVP
+app.include_router(leads_router, prefix="/api/v1")
+app.include_router(partners_router, prefix="/api/v1")
+app.include_router(ratings_router, prefix="/api/v1")
+app.include_router(management_router, prefix="/api/v1")
 
-# Корневой endpoint
+# Новые роутеры для расширенной версии
+app.include_router(documents_router, prefix="/api/v1")
+app.include_router(contracts_router, prefix="/api/v1")
+app.include_router(legal_router, prefix="/api/v1")
+
+# ============================================
+# СТАТИЧЕСКИЕ ФАЙЛЫ
+# ============================================
+
+# Подключаем статические файлы фронтенда
+frontend_path = os.path.join(os.path.dirname(__file__), "..", "..", "frontend")
+if os.path.exists(frontend_path):
+    app.mount("/", StaticFiles(directory=frontend_path, html=True), name="frontend")
+    print(f"✅ Фронтенд подключен: {frontend_path}")
+else:
+    print(f"⚠️  Фронтенд не найден: {frontend_path}")
+
+# ============================================
+# КОРНЕВЫЕ ЭНДПОИНТЫ
+# ============================================
+
 @app.get("/")
 async def root():
-    """Корневой endpoint для проверки работы API"""
+    """Корневой эндпоинт"""
     return {
-        "message": "AVTOGOST77 CRM MVP API",
-        "version": "1.0.0",
+        "message": "AVTOGOST77 CRM MVP v2.0.0",
         "status": "running",
-        "docs": "/docs",
+        "api_docs": "/docs",
         "redoc": "/redoc"
     }
 
-# Health check endpoint
 @app.get("/health")
 async def health_check():
-    """Проверка состояния системы"""
+    """Проверка состояния приложения"""
     return {
         "status": "healthy",
-        "database": "connected",
-        "timestamp": "2025-08-31T10:00:00Z"
+        "version": "2.0.0",
+        "timestamp": "2025-08-31T00:00:00Z"
     }
 
-# API информация
 @app.get("/api/info")
 async def api_info():
     """Информация об API"""
     return {
         "name": "AVTOGOST77 CRM MVP API",
-        "version": "1.0.0",
-        "description": "MVP версия CRM системы для логистики",
+        "version": "2.0.0",
+        "description": "API для управления заявками, партнерами, документами и правовой базой",
         "endpoints": {
             "leads": "/api/v1/leads",
             "partners": "/api/v1/partners",
             "ratings": "/api/v1/ratings",
-            "management": "/api/v1/management"
-        },
-        "documentation": "/docs"
+            "management": "/api/v1/management",
+            "documents": "/api/v1/documents",
+            "contracts": "/api/v1/contracts",
+            "legal": "/api/v1/legal"
+        }
     }
 
 if __name__ == "__main__":
-    uvicorn.run(
-        "app.main:app",
-        host="0.0.0.0",
-        port=8000,
-        reload=True,
-        log_level="info"
-    )
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8000)

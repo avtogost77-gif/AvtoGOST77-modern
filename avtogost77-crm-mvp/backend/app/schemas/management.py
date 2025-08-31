@@ -9,6 +9,73 @@ from pydantic import BaseModel, Field
 from typing import Optional, List, Dict, Any
 from datetime import date, datetime
 
+class ManagementRecordCreate(BaseModel):
+    """Схема для создания записи управленческого учета"""
+    
+    date: date
+    route_from: Optional[str] = None
+    route_to: Optional[str] = None
+    client_name: Optional[str] = None
+    partner_name: Optional[str] = None
+    incoming_amount: float
+    partner_cost: float
+    volume_weight: Optional[float] = None
+    volume_units: Optional[str] = None
+    status: str = "completed"
+    notes: Optional[str] = None
+    tax_rate: float = 7.0
+
+class ManagementRecordUpdate(BaseModel):
+    """Схема для обновления записи управленческого учета"""
+    
+    date: Optional[date] = None
+    route_from: Optional[str] = None
+    route_to: Optional[str] = None
+    client_name: Optional[str] = None
+    partner_name: Optional[str] = None
+    incoming_amount: Optional[float] = None
+    partner_cost: Optional[float] = None
+    volume_weight: Optional[float] = None
+    volume_units: Optional[str] = None
+    status: Optional[str] = None
+    notes: Optional[str] = None
+    tax_rate: Optional[float] = None
+
+class ManagementRecordResponse(BaseModel):
+    """Схема для ответа с записью управленческого учета"""
+    
+    id: int
+    date: date
+    route_from: Optional[str] = None
+    route_to: Optional[str] = None
+    client_name: Optional[str] = None
+    partner_name: Optional[str] = None
+    incoming_amount: float
+    partner_cost: float
+    volume_weight: Optional[float] = None
+    volume_units: Optional[str] = None
+    status: str
+    notes: Optional[str] = None
+    ebitda: Optional[float] = None
+    tax_rate: Optional[float] = None
+    tax_amount: Optional[float] = None
+    net_profit: Optional[float] = None
+    margin_percent: Optional[float] = None
+    created_at: datetime
+    updated_at: datetime
+    
+    class Config:
+        from_attributes = True
+
+class ManagementRecordList(BaseModel):
+    """Схема для списка записей управленческого учета"""
+    
+    records: List[ManagementRecordResponse]
+    total: int
+    page: int
+    per_page: int
+    total_pages: int
+
 class ManagementCreate(BaseModel):
     """Схема для создания записи управленческого учета"""
     

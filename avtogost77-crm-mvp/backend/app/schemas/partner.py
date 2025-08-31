@@ -70,6 +70,13 @@ class PartnerLocationCreate(PartnerLocationBase):
     """Схема для создания локации партнера"""
     pass
 
+class PartnerLocationUpdate(BaseModel):
+    """Схема для обновления локации партнера"""
+    
+    city: Optional[str] = Field(None, min_length=2, max_length=100)
+    region: Optional[str] = Field(None, max_length=100)
+    is_main: Optional[bool] = None
+
 class PartnerLocationResponse(PartnerLocationBase):
     """Схема для ответа с локацией партнера"""
     
@@ -87,3 +94,12 @@ class PartnerWithLocations(PartnerResponse):
     
     class Config:
         from_attributes = True
+
+class PartnerList(BaseModel):
+    """Схема для списка партнеров"""
+    
+    partners: List[PartnerResponse]
+    total: int
+    page: int
+    per_page: int
+    total_pages: int

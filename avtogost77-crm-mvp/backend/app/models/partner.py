@@ -46,6 +46,9 @@ class Partner(Base):
     # Связи
     locations = relationship("PartnerLocation", back_populates="partner", cascade="all, delete-orphan")
     ratings = relationship("PartnerRating", back_populates="partner", cascade="all, delete-orphan")
+    documents = relationship("Document", back_populates="partner")
+    client_contracts = relationship("Contract", foreign_keys="Contract.client_id", back_populates="client")
+    partner_contracts = relationship("Contract", foreign_keys="Contract.partner_id", back_populates="partner")
     
     def __repr__(self):
         return f"<Partner(id={self.id}, company='{self.company_name}', rating={self.rating}, status='{self.status}')>"
