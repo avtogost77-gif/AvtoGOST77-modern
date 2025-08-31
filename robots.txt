@@ -48,6 +48,7 @@ Allow: /blog/
 Allow: /blog-*.html
 
 # Запрещенные страницы
+Disallow: /index.html
 Disallow: /404.html
 Disallow: /backups/
 Disallow: /mega-cleanup-backup-*/

@@ -1,0 +1,32 @@
+/* ИСПРАВЛЕНИЯ ДИЗАЙНА - ВЕРСИЯ 3 - СУПЕР СПЕЦИФИЧНЫЙ */
+body .clients-logos .client-logo img,
+body .client-logos .client-logo img,
+body .client-logo img,
+html body .clients-logos .client-logo img,
+html body .client-logos .client-logo img,
+html body .client-logo img {
+    filter: grayscale(0%) !important;
+    opacity: 1 !important;
+    transition: transform 0.3s ease !important;
+}
+
+body .clients-logos .client-logo:hover img,
+body .client-logos .client-logo:hover img,
+body .client-logo:hover img,
+html body .clients-logos .client-logo:hover img,
+html body .client-logos .client-logo:hover img,
+html body .client-logo:hover img {
+    transform: scale(1.1) !important;
+    filter: grayscale(0%) !important;
+    opacity: 1 !important;
+}
+
+/* ПРИНУДИТЕЛЬНО ПЕРЕОПРЕДЕЛЯЕМ */
+.clients-logos .client-logo img[src*="ozon"],
+.clients-logos .client-logo img[src*="wildberries"],
+.clients-logos .client-logo img[src*="yandex"],
+.clients-logos .client-logo img[src*="sber"],
+.clients-logos .client-logo img[src*="ikea"] {
+    filter: grayscale(0%) !important;
+    opacity: 1 !important;
+}

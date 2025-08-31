@@ -1,124 +1,111 @@
 #!/bin/bash
+# Скрипт для деплоя всех исправлений
 
-echo "🚀 ФИНАЛЬНЫЙ ДЕПЛОЙ - ВСЕ ИСПРАВЛЕНИЯ НА VPS!"
-echo "=============================================="
-echo "✨ Загружаем: техническую оптимизацию + унифицированные стили"
+echo "🚀 ДЕПЛОЙ ВСЕХ ИСПРАВЛЕНИЙ..."
 
-VPS_HOST="root@193.160.208.183"
-VPS_PATH="/www/wwwroot/avtogost77.ru"
-SSH_KEY="$HOME/.ssh/id_ed25519"
+# Массив HTML файлов для деплоя (исключаем backup директории)
+html_files=($(find . -maxdepth 1 -name "*.html" -not -path "./backup*" -not -path "./mega-cleanup-backup*" -not -path "./inline-styles-backup*" -not -path "./canonical-fix-backup*" -not -path "./schema-fix-backup*" -not -path "./seo-fix-backup*" -not -path "./blog-fix-backup*" -not -path "./mobile-cleanup-backup*"))
 
-if [ ! -f "$SSH_KEY" ]; then
-    echo "❌ Ошибка: SSH ключ не найден: $SSH_KEY"
-    exit 1
-fi
-echo "✅ SSH ключ найден: $SSH_KEY"
-
-# Создаем резервную копию на VPS
-echo "📦 Создание полной резервной копии на VPS..."
-ssh -i $SSH_KEY $VPS_HOST "cd $VPS_PATH && tar -czf backup-before-final-fixes-\$(date +%Y%m%d-%H%M%S).tar.gz *.html assets/css/ 2>/dev/null || true"
-
-# Загружаем новый CSS файл
-echo "🎨 Загружаем унифицированные стили..."
-scp -i $SSH_KEY assets/css/unified-site-styles.css $VPS_HOST:$VPS_PATH/assets/css/
-
-# Загружаем все исправленные HTML файлы
-echo "📄 Загружаем все обновленные HTML страницы..."
-
-# Основные страницы
-MAIN_PAGES=(
-    "index.html"
-    "contact.html"
-    "about.html"
-    "services.html"
-    "faq.html"
-    "privacy.html"
-    "track.html"
-    "404.html"
+# CSS файлы для деплоя
+css_files=(
+    "assets/css/master/master-styles.min.css"
+    "assets/css/unified-site-styles.css"
+    "assets/css/mobile-optimized.css"
+    "assets/css/critical-fixes.css"
 )
 
-for page in "${MAIN_PAGES[@]}"; do
-    if [[ -f "$page" ]]; then
-        echo "  📄 Загружаем: $page"
-        scp -i $SSH_KEY "$page" $VPS_HOST:$VPS_PATH/
+# JS файлы для деплоя
+js_files=(
+    "assets/js/form-handler.js"
+    "assets/js/form-handler.min.js"
+)
+
+echo ""
+echo "📄 HTML файлы для деплоя (${#html_files[@]} шт.):"
+for file in "${html_files[@]}"; do
+    echo "   - $file"
+done
+
+echo ""
+echo "🎨 CSS файлы для деплоя:"
+for file in "${css_files[@]}"; do
+    echo "   - $file"
+done
+
+echo ""
+echo "📜 JS файлы для деплоя:"
+for file in "${js_files[@]}"; do
+    echo "   - $file"
+done
+
+echo ""
+echo "🚀 Начинаем деплой..."
+
+echo ""
+echo "📄 Загружаем HTML файлы..."
+for file in "${html_files[@]}"; do
+    echo "   📤 $file"
+    scp -i ~/.ssh/id_ed25519 "$file" root@193.160.208.183:/www/wwwroot/avtogost77.ru/
+done
+
+echo ""
+echo "🎨 Загружаем CSS файлы..."
+for file in "${css_files[@]}"; do
+    if [ -f "$file" ]; then
+        echo "   📤 $file"
+        scp -i ~/.ssh/id_ed25519 "$file" root@193.160.208.183:/www/wwwroot/avtogost77.ru/assets/css/
+    else
+        echo "   ⚠️  Файл не найден: $file"
     fi
 done
 
-# Грузоперевозки страницы
-echo "🚛 Загружаем региональные страницы..."
-scp -i $SSH_KEY gruzoperevozki-*.html $VPS_HOST:$VPS_PATH/
-
-# Blog страницы
-echo "📝 Загружаем blog страницы..."
-scp -i $SSH_KEY blog-*.html $VPS_HOST:$VPS_PATH/
-scp -i $SSH_KEY blog/index.html $VPS_HOST:$VPS_PATH/blog/
-
-# Специальные страницы
-echo "📋 Загружаем специальные страницы..."
-SPECIAL_PAGES=(
-    "moscow-spb-delivery.html"
-    "sbornye-gruzy.html"
-    "transportnaya-kompaniya.html"
-    "urgent-delivery.html"
-    "dogruz.html"
-    "poputnyj-gruz.html"
-)
-
-for page in "${SPECIAL_PAGES[@]}"; do
-    if [[ -f "$page" ]]; then
-        echo "  📋 Загружаем: $page"
-        scp -i $SSH_KEY "$page" $VPS_HOST:$VPS_PATH/
+echo ""
+echo "📜 Загружаем JS файлы..."
+for file in "${js_files[@]}"; do
+    if [ -f "$file" ]; then
+        echo "   📤 $file"
+        scp -i ~/.ssh/id_ed25519 "$file" root@193.160.208.183:/www/wwwroot/avtogost77.ru/assets/js/
+    else
+        echo "   ⚠️  Файл не найден: $file"
     fi
 done
 
-# Загружаем отчеты (для истории)
-echo "📊 Загружаем отчеты об оптимизации..."
-scp -i $SSH_KEY CRITICAL-FIXES-REPORT.md $VPS_HOST:$VPS_PATH/ 2>/dev/null || true
-scp -i $SSH_KEY SENIOR-TECHNICAL-AUDIT-DETAILED.md $VPS_HOST:$VPS_PATH/ 2>/dev/null || true
+echo ""
+echo "📄 Загружаем посадочную страницу блога..."
+scp -i ~/.ssh/id_ed25519 blog/index.html root@193.160.208.183:/www/wwwroot/avtogost77.ru/blog/
 
-# Устанавливаем права доступа
-echo "🔒 Устанавливаем права доступа..."
-ssh -i $SSH_KEY $VPS_HOST "chown -R www-data:www-data $VPS_PATH/*.html"
-ssh -i $SSH_KEY $VPS_HOST "chown www-data:www-data $VPS_PATH/assets/css/unified-site-styles.css"
-ssh -i $SSH_KEY $VPS_HOST "chmod 644 $VPS_PATH/*.html"
-ssh -i $SSH_KEY $VPS_HOST "chmod 644 $VPS_PATH/assets/css/unified-site-styles.css"
-
-# Перезапускаем nginx
+echo ""
 echo "🔄 Перезапуск nginx..."
-ssh -i $SSH_KEY $VPS_HOST "systemctl restart nginx"
+ssh -i ~/.ssh/id_ed25519 root@193.160.208.183 "systemctl reload nginx"
 
-# Проверяем статус
-echo "✅ Проверка статуса..."
-ssh -i $SSH_KEY $VPS_HOST "systemctl status nginx --no-pager | head -5"
+echo ""
+echo "🧹 Очистка кэша на сервере..."
+ssh -i ~/.ssh/id_ed25519 root@193.160.208.183 "rm -rf /var/cache/nginx/*"
 
-# Проверяем доступность нового CSS
-echo "🔍 Проверяем новый CSS файл..."
-ssh -i $SSH_KEY $VPS_HOST "ls -la $VPS_PATH/assets/css/unified-site-styles.css"
-
-# Показываем статистику
 echo ""
-echo "🎉 ФИНАЛЬНЫЙ ДЕПЛОЙ ЗАВЕРШЕН!"
-echo "=============================="
+echo "✅ Деплой завершен!"
+echo "📊 Статистика:"
+echo "   - Загружено HTML файлов: ${#html_files[@]}"
+echo "   - Загружено CSS файлов: ${#css_files[@]}"
+echo "   - Загружено JS файлов: ${#js_files[@]}"
+echo "   - Обновлена посадочная страница блога"
 echo ""
-echo "🔧 ТЕХНИЧЕСКИЕ ИСПРАВЛЕНИЯ:"
-echo "  ✅ 182 технических проблемы исправлены"
-echo "  🤖 Robots meta добавлены на все страницы"
-echo "  🐛 Console.log убраны из продакшена"
-echo "  🖼️ Alt тексты проверены и исправлены"
+echo "🎯 Проверьте сайт:"
+echo "   🌐 Главная страница: https://avtogost77.ru/"
+echo "   📞 Контакты: https://avtogost77.ru/contact.html"
+echo "   📝 Услуги: https://avtogost77.ru/services.html"
+echo "   ❓ FAQ: https://avtogost77.ru/faq.html"
 echo ""
-echo "🎨 УНИФИКАЦИЯ СТИЛЕЙ:"
-echo "  ✅ 55 страниц объединены единым стилем"
-echo "  🎨 Инлайн стили заменены на CSS классы"
-echo "  💎 Создан unified-site-styles.css"
+echo "💡 Что исправлено:"
+echo "   ✅ CSS стили обновлены во всех страницах"
+echo "   ✅ Добавлен critical-fixes.css"
+echo "   ✅ Форма для сбора лидов на главной странице"
+echo "   ✅ Телефоны исправлены на +7 916 272-09-32"
+echo "   ✅ Формы настроены для отправки в Telegram"
 echo ""
-echo "📊 РЕЗУЛЬТАТ:"
-echo "  🚀 Производительность: +25%"
-echo "  ♿ Доступность: 100%"
-echo "  🔍 SEO готовность: 100%"
-echo "  🎨 Единый дизайн: 100%"
-echo "  🧹 Чистота кода: 100%"
-echo ""
-echo "🌐 Сайт: https://avtogost77.ru"
-echo "🏆 SENIOR-LEVEL КАЧЕСТВО ДОСТИГНУТО!"
+echo "🔧 Если проблемы остаются:"
+echo "   1. Очистите кэш браузера (Ctrl+F5)"
+echo "   2. Проверьте в режиме инкогнито"
+echo "   3. Проверьте на разных устройствах"
 
 

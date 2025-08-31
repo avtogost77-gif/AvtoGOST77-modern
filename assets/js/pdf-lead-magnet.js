@@ -339,7 +339,7 @@ class PDFLeadMagnet {
 
     // Отправляем в Telegram
     try {
-              await fetch(`https://api.telegram.org/bot79162720932:AAHAnyTyvfteW1WNKpns8w35jl14f0wn5es/sendMessage`, {
+      await fetch(`https://api.telegram.org/bot7999458907:AAHAnyTyvfteW1WNKpns8w35jl14f0wn5es/sendMessage`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ 
@@ -369,10 +369,10 @@ class PDFLeadMagnet {
         <h4>PDF успешно скачан!</h4>
         <p>Мы свяжемся с вами в ближайшее время</p>
         <div class="success-actions">
-                          <a href="https://wa.me/79162720932" class="btn btn-success" target="_blank">
+          <a href="https://wa.me/7999458907" class="btn btn-success" target="_blank">
             📱 Написать в WhatsApp
           </a>
-                          <a href="tel:+79162720932" class="btn btn-primary">
+          <a href="tel:+7999458907" class="btn btn-primary">
             📞 Позвонить
           </a>
         </div>

@@ -154,8 +154,6 @@ const loadingCSS = `
 `;
 
 // Добавляем CSS в head
-const style = document.createElement('style');
+const loadingStyle = document.createElement('style');
 style.textContent = loadingCSS;
 document.head.appendChild(style);
-
-

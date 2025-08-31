@@ -1,0 +1,16 @@
+/* ИСПРАВЛЕНИЯ ДИЗАЙНА - ВЕРСИЯ 2 */
+.clients-logos .client-logo img,
+.client-logos .client-logo img,
+.client-logo img {
+    filter: grayscale(0%) !important;
+    opacity: 1 !important;
+    transition: transform 0.3s ease !important;
+}
+
+.clients-logos .client-logo:hover img,
+.client-logos .client-logo:hover img,
+.client-logo:hover img {
+    transform: scale(1.1) !important;
+    filter: grayscale(0%) !important;
+    opacity: 1 !important;
+}

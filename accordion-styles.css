@@ -1,0 +1,246 @@
+/* СТИЛИ ДЛЯ АККОРДЕОНОВ И ДИАГРАММ */
+/* ====================================== */
+
+/* Аккордеон */
+.accordion {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.accordion-item {
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    margin-bottom: 16px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
+
+.accordion-item:hover {
+    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+    transform: translateY(-2px);
+}
+
+.accordion-header {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    cursor: pointer;
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    border: none;
+    width: 100%;
+    text-align: left;
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.accordion-header:hover {
+    background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 100%);
+}
+
+.accordion-icon {
+    font-size: 1.5rem;
+    margin-right: 12px;
+    width: 30px;
+    text-align: center;
+}
+
+.accordion-toggle {
+    margin-left: auto;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #64748b;
+    transition: transform 0.3s ease;
+}
+
+.accordion-item[open] .accordion-toggle {
+    transform: rotate(45deg);
+    color: #3b82f6;
+}
+
+.accordion-content {
+    padding: 0 20px 20px;
+    background: white;
+}
+
+.accordion-content p {
+    margin-bottom: 16px;
+    color: #475569;
+    line-height: 1.6;
+}
+
+.advantage-details {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 12px;
+    margin-top: 16px;
+}
+
+.detail-item {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    background: #f8fafc;
+    border-radius: 8px;
+    border-left: 4px solid #3b82f6;
+}
+
+.detail-icon {
+    font-size: 1.2rem;
+    margin-right: 8px;
+}
+
+/* Диаграмма путей взаимодействия */
+.interaction-flow {
+    background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+    padding: 60px 0;
+}
+
+.flow-diagram {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+    margin: 40px 0;
+    position: relative;
+}
+
+.flow-step {
+    background: white;
+    padding: 24px 16px;
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.flow-step:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 35px rgba(0,0,0,0.15);
+}
+
+.flow-icon {
+    font-size: 2.5rem;
+    margin-bottom: 12px;
+    display: block;
+}
+
+.flow-step h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #1e293b;
+}
+
+.flow-step p {
+    font-size: 0.9rem;
+    color: #64748b;
+    margin: 0;
+}
+
+.flow-arrow {
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.5rem;
+    color: #3b82f6;
+    font-weight: bold;
+    z-index: 2;
+}
+
+.flow-step:last-child .flow-arrow {
+    display: none;
+}
+
+.flow-features {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 40px;
+    flex-wrap: wrap;
+}
+
+.flow-feature {
+    display: flex;
+    align-items: center;
+    background: white;
+    padding: 12px 20px;
+    border-radius: 25px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    font-weight: 500;
+    color: #374151;
+}
+
+.flow-feature .feature-icon {
+    margin-right: 8px;
+    font-size: 1.2rem;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .flow-diagram {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .flow-arrow {
+        display: none;
+    }
+    
+    .flow-features {
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+    }
+    
+    .advantage-details {
+        grid-template-columns: 1fr;
+    }
+    
+    .accordion-header {
+        padding: 16px;
+        font-size: 1rem;
+    }
+    
+    .accordion-content {
+        padding: 0 16px 16px;
+    }
+}
+
+/* Анимации */
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.accordion-content {
+    animation: slideDown 0.3s ease-out;
+}
+
+/* Стили для мобильных устройств */
+@media (max-width: 480px) {
+    .flow-step {
+        padding: 20px 12px;
+    }
+    
+    .flow-icon {
+        font-size: 2rem;
+    }
+    
+    .flow-step h3 {
+        font-size: 1rem;
+    }
+    
+    .flow-step p {
+        font-size: 0.8rem;
+    }
+}

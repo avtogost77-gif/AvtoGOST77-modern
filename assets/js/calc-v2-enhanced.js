@@ -395,7 +395,7 @@ class CalculatorV2Enhanced {
     const message = this.formatWhatsAppMessage(result);
     const encodedMessage = encodeURIComponent(message);
     
-            whatsappBtn.href = `https://wa.me/79162720932?text=${encodedMessage}`;
+    whatsappBtn.href = `https://wa.me/7999458907?text=${encodedMessage}`;
     whatsappBtn.target = '_blank';
     whatsappBtn.style.display = 'inline-block';
 
@@ -536,7 +536,7 @@ class CalculatorV2Enhanced {
 
   callManager() {
     // Звоним менеджеру
-            window.location.href = 'tel:+79162720932';
+    window.location.href = 'tel:+7999458907';
   }
 
   showLeadForm() {

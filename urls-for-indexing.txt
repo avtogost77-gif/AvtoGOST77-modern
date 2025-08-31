@@ -1,0 +1,43 @@
+# URL для запроса индексации в Google Search Console и Yandex Webmaster
+# Добавлять по 10 URL в день в Google Search Console
+
+## Приоритет 1 (высокий) - основные страницы услуг:
+https://avtogost77.ru/gazel-gruzoperevozki.html
+https://avtogost77.ru/trehtonnik-gruzoperevozki.html
+https://avtogost77.ru/pyatitonnik-gruzoperevozki.html
+https://avtogost77.ru/desyatitonnik-gruzoperevozki.html
+https://avtogost77.ru/fura-20-tonn-gruzoperevozki.html
+
+## Приоритет 2 (средний) - страницы услуг:
+https://avtogost77.ru/dogruz.html
+https://avtogost77.ru/pereezd-moskva.html
+https://avtogost77.ru/perevozka-mebeli.html
+https://avtogost77.ru/perevozka-medoborudovaniya.html
+https://avtogost77.ru/poputnyj-gruz.html
+
+## Приоритет 3 (низкий) - информационные страницы:
+https://avtogost77.ru/help.html
+https://avtogost77.ru/news.html
+https://avtogost77.ru/privacy.html
+https://avtogost77.ru/services.html
+
+## Инструкция для Google Search Console:
+1. Зайти в https://search.google.com/search-console
+2. Выбрать сайт avtogost77.ru
+3. Перейти в "URL Inspection Tool" (слева в меню)
+4. Вводить по одному URL из списка выше
+5. Нажимать "Request Indexing"
+6. Повторять до 10 URL в день
+
+## Инструкция для Yandex Webmaster:
+1. Зайти в https://webmaster.yandex.ru
+2. Выбрать сайт avtogost77.ru
+3. Перейти в "Индексация" → "Переобход страниц"
+4. Добавлять URL из списка выше
+5. Нажимать "Переобойти"
+
+## Примечание:
+- Google: максимум 10 URL в день
+- Yandex: без ограничений
+- Проверять статус через 2-3 дня
+- Повторять запросы через неделю, если страницы не проиндексировались

@@ -1,0 +1,242 @@
+/* ============================================
+   ИСПРАВЛЕНИЯ ДИЗАЙНА - ВСЕ ПРОБЛЕМЫ
+   ============================================ */
+
+/* 1. ИКОНКИ БРЕНДОВ - ЦВЕТНЫЕ ВСЕГДА */
+.clients-logos .client-logo img,
+.client-logos .client-logo img,
+.client-logo img {
+    filter: grayscale(0%) !important;
+    opacity: 1 !important;
+    transition: transform 0.3s ease !important;
+}
+
+.clients-logos .client-logo:hover img,
+.client-logos .client-logo:hover img,
+.client-logo:hover img {
+    transform: scale(1.1) !important;
+    filter: grayscale(0%) !important;
+    opacity: 1 !important;
+}
+
+/* 2. БЛОК "ДОКУМЕНТЫ ДЛЯ РАБОТЫ" - ОТСТУПЫ */
+.documents-section,
+section[class*="documents"],
+div[class*="documents"] {
+    padding: 0 2rem !important;
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+}
+
+.documents-section h3,
+.documents-section p,
+section[class*="documents"] h3,
+section[class*="documents"] p,
+div[class*="documents"] h3,
+div[class*="documents"] p {
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+}
+
+/* 3. ИКОНКИ СЕТЕЙ - ГОРИЗОНТАЛЬНО И КОМПАКТНО */
+.networks-section,
+section[class*="networks"],
+div[class*="networks"] {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 2rem !important;
+    padding: 2rem !important;
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+}
+
+.network-item,
+div[class*="network"] {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    flex: 1 !important;
+    max-width: 200px !important;
+}
+
+.network-icon,
+div[class*="network-icon"] {
+    width: 60px !important;
+    height: 60px !important;
+    margin-bottom: 1rem !important;
+    border-radius: 50% !important;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    color: white !important;
+    font-size: 1.5rem !important;
+}
+
+.network-name,
+div[class*="network-name"] {
+    font-weight: 600 !important;
+    margin-bottom: 0.5rem !important;
+    color: #1a1a1a !important;
+}
+
+.network-desc,
+div[class*="network-desc"] {
+    font-size: 0.875rem !important;
+    color: #666 !important;
+    line-height: 1.4 !important;
+}
+
+/* 4. БЛОК "ПЕРСОНАЛЬНОЕ КП" - КОМПАКТНО И ПРАВИЛЬНО */
+.personal-kp-section,
+section[class*="personal"],
+div[class*="personal-kp"] {
+    max-width: 800px !important;
+    margin: 2rem auto !important;
+    padding: 2rem !important;
+    background: white !important;
+    border-radius: 16px !important;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1) !important;
+}
+
+.personal-kp-header,
+div[class*="kp-header"] {
+    text-align: center !important;
+    margin-bottom: 2rem !important;
+}
+
+.personal-kp-features,
+div[class*="kp-features"] {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)) !important;
+    gap: 1.5rem !important;
+    margin-bottom: 2rem !important;
+}
+
+.kp-feature,
+div[class*="kp-feature"] {
+    display: flex !important;
+    align-items: center !important;
+    gap: 1rem !important;
+    padding: 1rem !important;
+    background: #f8f9fa !important;
+    border-radius: 8px !important;
+}
+
+.kp-feature-icon,
+div[class*="kp-feature-icon"] {
+    width: 40px !important;
+    height: 40px !important;
+    border-radius: 50% !important;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    color: white !important;
+    font-size: 1.25rem !important;
+    flex-shrink: 0 !important;
+}
+
+.kp-feature-content h4,
+div[class*="kp-feature-content"] h4 {
+    margin: 0 0 0.25rem 0 !important;
+    font-size: 1rem !important;
+    font-weight: 600 !important;
+    color: #1a1a1a !important;
+}
+
+.kp-feature-content p,
+div[class*="kp-feature-content"] p {
+    margin: 0 !important;
+    font-size: 0.875rem !important;
+    color: #666 !important;
+    line-height: 1.4 !important;
+}
+
+.personal-kp-form,
+form[class*="kp-form"] {
+    max-width: 600px !important;
+    margin: 0 auto !important;
+}
+
+.personal-kp-form .form-row,
+form[class*="kp-form"] .form-row {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 1rem !important;
+    margin-bottom: 1rem !important;
+}
+
+.personal-kp-form .form-group,
+form[class*="kp-form"] .form-group {
+    margin-bottom: 1rem !important;
+}
+
+.personal-kp-form .form-control,
+form[class*="kp-form"] .form-control {
+    width: 100% !important;
+    padding: 0.75rem 1rem !important;
+    border: 2px solid #e0e0e0 !important;
+    border-radius: 8px !important;
+    font-size: 1rem !important;
+    transition: border-color 0.3s !important;
+}
+
+.personal-kp-form .form-control:focus,
+form[class*="kp-form"] .form-control:focus {
+    outline: none !important;
+    border-color: #2D67F8 !important;
+}
+
+.personal-kp-form .btn,
+form[class*="kp-form"] .btn {
+    width: 100% !important;
+    padding: 1rem !important;
+    background: #2D67F8 !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 8px !important;
+    font-size: 1rem !important;
+    font-weight: 600 !important;
+    cursor: pointer !important;
+    transition: background 0.3s !important;
+}
+
+.personal-kp-form .btn:hover,
+form[class*="kp-form"] .btn:hover {
+    background: #1e4fd8 !important;
+}
+
+/* МОБИЛЬНЫЕ ИСПРАВЛЕНИЯ */
+@media (max-width: 768px) {
+    .networks-section,
+    section[class*="networks"],
+    div[class*="networks"] {
+        flex-direction: column !important;
+        gap: 1.5rem !important;
+        padding: 1rem !important;
+    }
+    
+    .network-item,
+    div[class*="network"] {
+        max-width: none !important;
+    }
+    
+    .personal-kp-form .form-row,
+    form[class*="kp-form"] .form-row {
+        grid-template-columns: 1fr !important;
+    }
+    
+    .personal-kp-features,
+    div[class*="kp-features"] {
+        grid-template-columns: 1fr !important;
+    }
+    
+    .documents-section,
+    section[class*="documents"],
+    div[class*="documents"] {
+        padding: 0 1rem !important;
+    }
+}

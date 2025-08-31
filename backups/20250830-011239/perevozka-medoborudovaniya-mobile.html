@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <!-- 📱 Мобильный редирект -->
+    <script>
+    (function() {
+        if (navigator.userAgent.match(/Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i) || window.innerWidth < 768) {
+            if (!window.location.href.includes("-mobile.html")) {
+                window.location.href = window.location.href.replace(".html", "-mobile.html");
+            }
+        }
+    })();
+    </script>
+    <!-- 📱 PWA метатеги -->
+    <meta name="theme-color" content="#2D67F8">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    
+    <!-- 🔍 SEO метатеги -->
+    <link rel="canonical" href="https://avtogost77.ru/perevozka-medoborudovaniya.html">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="googlebot" content="noindex, nofollow">
+    <meta name="yandex" content="noindex, nofollow">
+    <meta charset="UTF-8">
+    <link rel="canonical" href="https://avtogost77.ru/perevozka-medoborudovaniya.html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Перевозка медицинского оборудования | Специализированный транспорт | АвтоГОСТ</title>
+    <meta name="description" content="Перевозка медицинского оборудования по Москве и России. Специализированный транспорт с температурным режимом, страхование груза, сопровождение. Подача от 2 часов.">
+    <meta name="keywords" content="перевозка медицинского оборудования, перевозка медоборудования, доставка медоборудования, транспортировка медтехники, перевозка медтехники, специализированный транспорт">
+    
+    <!-- ЕДИНАЯ СИСТЕМА СТИЛЕЙ АВТОГОСТ77 -->
+    <link rel="stylesheet" href="assets/css/master/master-styles.min.css?v=20250831-final-restore-urgent-bypass-urgent-bypass-urgent-bypass-urgent-bypass-urgent-bypass-urgent-bypass-urgent-urgent">
+    <link rel="stylesheet" href="assets/css/unified-site-styles.css?v=20250831-final-restore-urgent-bypass-urgent-bypass-urgent-bypass-urgent-bypass-urgent-bypass-urgent-bypass-urgent-urgent">
+    <link rel="stylesheet" href="assets/css/mobile-optimized.css?v=20250831-final-restore-urgent-bypass-urgent-bypass-urgent-bypass-urgent-bypass-urgent-bypass-urgent-bypass-urgent-clean">
+    <link rel="stylesheet" href="assets/css/vendor/aos.min.css">
+    <link rel="stylesheet" href="modern-landing-styles.css">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Перевозка медицинского оборудования | Специализированный транспорт | АвтоГОСТ">
+    <meta property="og:description" content="Перевозка медицинского оборудования по Москве и России. Специализированный транспорт с температурным режимом, страхование груза.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://avtogost77.ru/perevozka-medoborudovaniya.html">
+    <meta property="og:image" content="https://avtogost77.ru/assets/img/hero-logistics.webp">
+    
+    <!-- Schema.org -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Перевозка медицинского оборудования",
+        "provider": {
+            "@type": "Organization",
+            "name": "АвтоГОСТ",
+            "url": "https://avtogost77.ru"
+        },
+        "description": "Перевозка медицинского оборудования по Москве и России. Специализированный транспорт с температурным режимом.",
+        "serviceType": "Перевозка медицинского оборудования",
+        "areaServed": {
+            "@type": "Country",
+            "name": "Россия"
+        }
+    }
+    </script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <a href="/">
+                        <img src="assets/img/logo.svg" alt="АвтоГОСТ" width="200" height="60">
+                    </a>
+                </div>
+                <nav class="nav">
+                    <ul class="nav-list">
+                        <li><a href="/">Главная</a></li>
+                        <li><a href="/services.html">Услуги</a></li>
+                        <li><a href="/contact.html">Контакты</a></li>
+                    </ul>
+                </nav>
+                <div class="header-phone">
+                    <a href="tel:+79162720932">+7 916 272-09-32</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero hero-medical">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title" data-aos="fade-up">
+                    Перевозка медицинского оборудования
+                </h1>
+                <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="100">
+                    Специализированный транспорт с температурным режимом и полным страхованием груза
+                </p>
+                <div class="hero-features" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature">
+                        <span class="feature-icon">🚚</span>
+                        <span>Подача от 2 часов</span>
+                    </div>
+                    <div class="feature">
+                        <span class="feature-icon">🌡️</span>
+                        <span>Температурный режим</span>
+                    </div>
+                    <div class="feature">
+                        <span class="feature-icon">🛡️</span>
+                        <span>Страхование груза</span>
+                    </div>
+                </div>
+                <div class="hero-cta" data-aos="fade-up" data-aos-delay="300">
+                    <button class="btn btn-primary" onclick="openCalculator()">
+                        Рассчитать стоимость
+                    </button>
+                    <button class="btn btn-secondary" onclick="openContactForm()">
+                        Получить консультацию
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Calculator -->
+    <section class="calculator-section">
+        <div class="container">
+            <div class="calculator-card" data-aos="fade-up">
+                <h2>Быстрый расчет стоимости</h2>
+                <form class="calculator-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Откуда</label>
+                            <input type="text" placeholder="Москва" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Куда</label>
+                            <input type="text" placeholder="Санкт-Петербург" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Вес груза (кг)</label>
+                            <input type="number" placeholder="1000" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Объем (м³)</label>
+                            <input type="number" placeholder="5" required>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Рассчитать</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Grid -->
+    <section class="services-grid">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Наши услуги по перевозке медоборудования</h2>
+            <div class="services-cards">
+                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card-icon">🏥</div>
+                    <h3>Диагностическое оборудование</h3>
+                    <p>МРТ, КТ, УЗИ, рентген аппараты с особой осторожностью</p>
+                    <ul>
+                        <li>Специальная упаковка</li>
+                        <li>Фиксация груза</li>
+                        <li>Сопровождение</li>
+                    </ul>
+                </div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card-icon">💊</div>
+                    <h3>Лабораторное оборудование</h3>
+                    <p>Анализаторы, микроскопы, центрифуги с температурным контролем</p>
+                    <ul>
+                        <li>Температурный режим</li>
+                        <li>Влажность контроль</li>
+                        <li>Вибрация защита</li>
+                    </ul>
+                </div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card-icon">🩺</div>
+                    <h3>Хирургическое оборудование</h3>
+                    <p>Операционные столы, лапароскопы, эндоскопы</p>
+                    <ul>
+                        <li>Стерильная упаковка</li>
+                        <li>Ударозащита</li>
+                        <li>Спецтранспорт</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Flow -->
+    <section class="process-section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Как мы работаем</h2>
+            <div class="process-flow">
+                <div class="process-step" data-aos="fade-up" data-aos-delay="100">
+                    <div class="step-number">1</div>
+                    <h3>Заявка</h3>
+                    <p>Оставляете заявку на сайте или по телефону</p>
+                </div>
+                <div class="process-step" data-aos="fade-up" data-aos-delay="200">
+                    <div class="step-number">2</div>
+                    <h3>Расчет</h3>
+                    <p>Рассчитываем стоимость и подбираем транспорт</p>
+                </div>
+                <div class="process-step" data-aos="fade-up" data-aos-delay="300">
+                    <div class="step-number">3</div>
+                    <h3>Подача</h3>
+                    <p>Подаем специализированный транспорт</p>
+                </div>
+                <div class="process-step" data-aos="fade-up" data-aos-delay="400">
+                    <div class="step-number">4</div>
+                    <h3>Доставка</h3>
+                    <p>Доставляем с полным контролем процесса</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Accordion -->
+    <section class="faq-section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Часто задаваемые вопросы</h2>
+            <div class="faq-accordion">
+                <details class="faq-item" data-aos="fade-up">
+                    <summary class="faq-question">
+                        Какие документы нужны для перевозки медоборудования?
+                        <span class="faq-icon">+</span>
+                    </summary>
+                    <div class="faq-answer">
+                        <p>Для перевозки медицинского оборудования потребуются:</p>
+                        <ul>
+                            <li>Паспорт оборудования</li>
+                            <li>Сертификат соответствия</li>
+                            <li>Инструкция по транспортировке</li>
+                            <li>Документы на упаковку</li>
+                        </ul>
+                    </div>
+                </details>
+                
+                <details class="faq-item" data-aos="fade-up">
+                    <summary class="faq-question">
+                        Как обеспечивается безопасность груза?
+                        <span class="faq-icon">+</span>
+                    </summary>
+                    <div class="faq-answer">
+                        <p>Безопасность обеспечивается комплексно:</p>
+                        <ul>
+                            <li>Специальная упаковка и фиксация</li>
+                            <li>Страхование груза на полную стоимость</li>
+                            <li>GPS-мониторинг транспорта</li>
+                            <li>Сопровождение специалистом при необходимости</li>
+                        </ul>
+                    </div>
+                </details>
+                
+                <details class="faq-item" data-aos="fade-up">
+                    <summary class="faq-question">
+                        Какие гарантии вы предоставляете?
+                        <span class="faq-icon">+</span>
+                    </summary>
+                    <div class="faq-answer">
+                        <p>Мы предоставляем полные гарантии:</p>
+                        <ul>
+                            <li>Страхование груза на полную стоимость</li>
+                            <li>Гарантия сохранности оборудования</li>
+                            <li>Компенсация за нарушение сроков</li>
+                            <li>Бесплатная консультация по упаковке</li>
+                        </ul>
+                    </div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content" data-aos="fade-up">
+                <h2>Готовы заказать перевозку медоборудования?</h2>
+                <p>Получите бесплатную консультацию и расчет стоимости</p>
+                <div class="cta-buttons">
+                    <button class="btn btn-primary" onclick="openContactForm()">
+                        Заказать перевозку
+                    </button>
+                    <button class="btn btn-secondary" onclick="openCalculator()">
+                        Рассчитать стоимость
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>АвтоГОСТ</h3>
+                    <p>Инфраструктура вашего бизнеса</p>
+                    <div class="footer-contacts">
+                        <a href="tel:+79162720932">+7 916 272-09-32</a>
+                        <a href="mailto:avtogost77@gmail.com">avtogost77@gmail.com</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Услуги</h3>
+                    <ul>
+                        <li><a href="/gazel-gruzoperevozki.html">Газель</a></li>
+                        <li><a href="/trehtonnik-gruzoperevozki.html">3 тонны</a></li>
+                        <li><a href="/pyatitonnik-gruzoperevozki.html">5 тонн</a></li>
+                        <li><a href="/fura-20-tonn-gruzoperevozki.html">Фура</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Информация</h3>
+                    <ul>
+                        <li><a href="/help.html">Помощь</a></li>
+                        <li><a href="/privacy.html">Конфиденциальность</a></li>
+                        <li><a href="/terms.html">Условия</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Contact Modal -->
+    <div id="contactModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Заказать перевозку медоборудования</h2>
+            <form class="contact-form">
+                <div class="form-group">
+                    <label>Ваше имя *</label>
+                    <input type="text" required>
+                </div>
+                <div class="form-group">
+                    <label>Телефон *</label>
+                    <input type="tel" required>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email">
+                </div>
+                <div class="form-group">
+                    <label>Описание груза</label>
+                    <textarea placeholder="Опишите, какое медицинское оборудование нужно перевезти"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Отправить заявку</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/vendor/aos.min.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+
+        // Modal functionality
+        function openContactForm() {
+            document.getElementById('contactModal').style.display = 'block';
+        }
+
+        function openCalculator() {
+            // Scroll to calculator section
+            document.querySelector('.calculator-section').scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+
+        // Close modal
+        document.querySelector('.close').onclick = function() {
+            document.getElementById('contactModal').style.display = 'none';
+        }
+
+        // FAQ accordion
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', function() {
+                const icon = this.querySelector('.faq-icon');
+                if (this.parentElement.open) {
+                    icon.textContent = '+';
+                } else {
+                    icon.textContent = '−';
+                }
+            });
+        });
+
+        // Form submission
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Спасибо! Мы свяжемся с вами в ближайшее время.');
+            document.getElementById('contactModal').style.display = 'none';
+        });
+    </script>
+</body>
+</html>

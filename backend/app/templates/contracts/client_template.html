@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Договор на перевозку груза автомобильным транспортом №</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', serif;
+            font-size: 12pt;
+            line-height: 1.5;
+            margin: 2cm;
+            color: #000;
+        }
+        .header {
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .contract-title {
+            font-size: 16pt;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+        }
+        .contract-number {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .date {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .parties {
+            margin-bottom: 30px;
+        }
+        .party {
+            margin-bottom: 15px;
+        }
+        .party-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .indent {
+            text-indent: 2em;
+        }
+        .clause {
+            margin-bottom: 15px;
+        }
+        .clause-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .signature-block {
+            margin-top: 50px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .signature {
+            width: 45%;
+        }
+        .signature-line {
+            border-bottom: 1px solid #000;
+            margin-top: 30px;
+            margin-bottom: 5px;
+        }
+        .signature-text {
+            font-size: 10pt;
+            text-align: center;
+        }
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        .table th, .table td {
+            border: 1px solid #000;
+            padding: 8px;
+            text-align: left;
+        }
+        .table th {
+            background-color: #f0f0f0;
+            font-weight: bold;
+        }
+        .total {
+            font-weight: bold;
+            text-align: right;
+            margin-top: 15px;
+        }
+        .additional-conditions {
+            margin-top: 30px;
+            font-size: 10pt;
+            border-top: 1px solid #000;
+            padding-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        ИП Павлова Ирина Юрьевна<br>
+        АвтоГОСТ77
+    </div>
+
+    <div class="contract-title">
+        ДОГОВОР НА ПЕРЕВОЗКУ ГРУЗА АВТОМОБИЛЬНЫМ ТРАНСПОРТОМ
+    </div>
+
+    <div class="contract-number">
+        № {{ contract_number }}
+    </div>
+
+    <div class="date">
+        {{ contract_date }}
+    </div>
+
+    <div class="parties">
+        <div class="party">
+            <div class="party-title">ИСПОЛНИТЕЛЬ:</div>
+            <div class="indent">
+                Индивидуальный предприниматель Павлова Ирина Юрьевна<br>
+                ИНН: 310258927700<br>
+                ОГРНИП: 322508100253801<br>
+                Юридический адрес: 142133, РОССИЯ, МОСКОВСКАЯ ОБЛ,<br>
+                Г ПОДОЛЬСК, МКР КУЗНЕЧИКИ, УЛ Ак. Доллежаля 36-137<br>
+                Телефон: +7 (916) 272-09-32<br>
+                Email: avtogost77@gmail.com<br>
+                Расчетный счет: 40802810700003277968<br>
+                в АО "ТИНЬКОФФ БАНК"<br>
+                ИНН банка: 7710140679<br>
+                БИК: 044525974
+            </div>
+        </div>
+
+        <div class="party">
+            <div class="party-title">ЗАКАЗЧИК:</div>
+            <div class="indent">
+                {{ client_name }}<br>
+                {% if client_inn %}
+                ИНН: {{ client_inn }}<br>
+                {% endif %}
+                {% if client_address %}
+                Адрес: {{ client_address }}<br>
+                {% endif %}
+                Телефон: {{ client_phone }}<br>
+                {% if client_email %}
+                Email: {{ client_email }}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <div class="clause">
+        <div class="clause-title">1. ПРЕДМЕТ ДОГОВОРА</div>
+        <div class="indent">
+            Исполнитель обязуется оказать Заказчику транспортные услуги по перевозке груза автомобильным транспортом, а Заказчик обязуется оплатить эти услуги в размере и порядке, установленных настоящим договором.
+        </div>
+    </div>
+
+    <div class="clause">
+        <div class="clause-title">2. УСЛОВИЯ ОКАЗАНИЯ УСЛУГ</div>
+        <div class="indent">
+            <strong>Маршрут:</strong> {{ route_from }} → {{ route_to }}<br>
+            <strong>Характеристики груза:</strong> {{ cargo_description }}<br>
+            <strong>Вес груза:</strong> {{ cargo_weight }} кг<br>
+            {% if cargo_volume %}
+            <strong>Объем груза:</strong> {{ cargo_volume }} м³<br>
+            {% endif %}
+            <strong>Срок доставки:</strong> {{ delivery_time }}<br>
+            {% if is_urgent %}
+            <strong>Срочная доставка:</strong> Да<br>
+            {% endif %}
+            {% if is_consolidated %}
+            <strong>Сборный груз:</strong> Да<br>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="clause">
+        <div class="clause-title">3. СТОИМОСТЬ УСЛУГ И ПОРЯДОК РАСЧЕТОВ</div>
+        <div class="indent">
+            Стоимость услуг составляет: <strong>{{ total_amount }} рублей</strong> ({{ amount_in_words }}).<br><br>
+            
+            Оплата производится в следующем порядке:<br>
+            - 100% предоплата до начала оказания услуг<br>
+            - Способ оплаты: банковский перевод на расчетный счет Исполнителя
+        </div>
+    </div>
+
+    <div class="clause">
+        <div class="clause-title">4. ОБЯЗАННОСТИ СТОРОН</div>
+        <div class="indent">
+            <strong>Исполнитель обязуется:</strong><br>
+            - Обеспечить своевременную и безопасную доставку груза<br>
+            - Соблюдать требования по перевозке груза<br>
+            - Предоставить документы о доставке<br><br>
+            
+            <strong>Заказчик обязуется:</strong><br>
+            - Оплатить услуги в установленные сроки<br>
+            - Предоставить достоверную информацию о грузе<br>
+            - Обеспечить доступ к грузу для погрузки/выгрузки
+        </div>
+    </div>
+
+    <div class="clause">
+        <div class="clause-title">5. ОТВЕТСТВЕННОСТЬ СТОРОН</div>
+        <div class="indent">
+            За неисполнение или ненадлежащее исполнение обязательств по договору стороны несут ответственность в соответствии с действующим законодательством РФ.
+        </div>
+    </div>
+
+    <div class="clause">
+        <div class="clause-title">6. СРОК ДЕЙСТВИЯ ДОГОВОРА</div>
+        <div class="indent">
+            Договор вступает в силу с момента подписания и действует до полного исполнения сторонами своих обязательств.
+        </div>
+    </div>
+
+    <div class="clause">
+        <div class="clause-title">7. РАЗРЕШЕНИЕ СПОРОВ</div>
+        <div class="indent">
+            Все споры и разногласия разрешаются путем переговоров. В случае невозможности достижения соглашения споры разрешаются в Арбитражном суде г. Москвы.
+        </div>
+    </div>
+
+    <div class="clause">
+        <div class="clause-title">8. ЗАКЛЮЧИТЕЛЬНЫЕ ПОЛОЖЕНИЯ</div>
+        <div class="indent">
+            Договор составлен в двух экземплярах, имеющих равную юридическую силу, по одному для каждой из сторон.<br><br>
+            
+            Во всем остальном, что не предусмотрено настоящим договором, стороны руководствуются действующим законодательством РФ.
+        </div>
+    </div>
+
+    <div class="signature-block">
+        <div class="signature">
+            <div class="signature-line"></div>
+            <div class="signature-text">ИСПОЛНИТЕЛЬ<br>ИП Павлова И.Ю.</div>
+        </div>
+        <div class="signature">
+            <div class="signature-line"></div>
+            <div class="signature-text">ЗАКАЗЧИК<br>{{ client_name }}</div>
+        </div>
+    </div>
+
+    <div style="margin-top: 30px; font-size: 10pt; text-align: center;">
+        Печать: _________________<br>
+        Дата: {{ contract_date }}
+    </div>
+
+    <div class="additional-conditions">
+        <strong>Дополнительные условия:</strong><br>
+        Данная заявка имеет силу договора на разовую перевозку груза автомобильным транспортом. Настоящая заявка, полученная по сети интернет, признается Сторонами равнозначной заявке на бумажном носителе и имеет полную юридическую силу.<br><br>
+        
+        Стороны в спорных ситуациях руководствуются действующим законодательством РФ (УАТ, ГК РФ и другими НПА).<br><br>
+        
+        Отказ от пользования ТС 20% от суммы фрахта.
+    </div>
+</body>
+</html>

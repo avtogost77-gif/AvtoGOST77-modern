@@ -254,6 +254,19 @@
     padding: 0 20px !important;
 }
 
+/* Новая секция путей конверсии */
+.conversion-section {
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%) !important;
+    padding: 60px 0 !important;
+    margin: 40px 0 !important;
+}
+
+.conversion-section .container {
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+    padding: 0 20px !important;
+}
+
 /* Отраслевая экспертиза - центрирование */
 .industry-cards {
     display: grid !important;
@@ -734,4 +747,216 @@ select,
 .result-actions {
     margin-left: initial !important;
     margin-right: initial !important;
+}
+
+/* КРИТИЧНЫЕ ИСПРАВЛЕНИЯ ДЛЯ САЙТА */
+
+/* Скрытие мобильного меню на десктопе */
+@media (min-width: 769px) {
+    .mobile-menu {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+    }
+    
+    .mobile-menu-toggle {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+    }
+    
+    .mobile-sticky-cta {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+    }
+}
+
+/* Исправление hero секции - центрирование текста */
+.hero-content {
+    text-align: center !important;
+    max-width: 800px !important;
+    margin: 0 auto !important;
+    padding: 0 20px !important;
+}
+
+.hero-content h1 {
+    text-align: center !important;
+    margin: 0 auto 24px auto !important;
+}
+
+.hero-content p {
+    text-align: center !important;
+    margin: 0 auto 32px auto !important;
+}
+
+.hero-buttons {
+    text-align: center !important;
+    justify-content: center !important;
+    display: flex !important;
+    gap: 16px !important;
+    flex-wrap: wrap !important;
+}
+
+/* Показ мобильного меню только на мобильных устройствах */
+@media (max-width: 768px) {
+    .mobile-menu {
+        display: block;
+    }
+    
+    .mobile-menu-toggle {
+        display: flex;
+    }
+    
+    .mobile-sticky-cta {
+        display: block;
+    }
+}
+
+/* Стили для мобильного меню */
+.mobile-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.mobile-menu.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.mobile-menu-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 80%;
+    max-width: 320px;
+    height: 100%;
+    background: white;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.mobile-menu.active .mobile-menu-content {
+    transform: translateX(0);
+}
+
+.mobile-menu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.mobile-logo {
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--primary);
+}
+
+.mobile-menu-close {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #666;
+    padding: 5px;
+}
+
+.mobile-nav {
+    margin-bottom: 30px;
+}
+
+.mobile-menu-link {
+    display: block;
+    padding: 15px 0;
+    color: #333;
+    text-decoration: none;
+    font-size: 16px;
+    border-bottom: 1px solid #f0f0f0;
+    transition: color 0.3s ease;
+}
+
+.mobile-menu-link:hover,
+.mobile-menu-link.active {
+    color: var(--primary);
+}
+
+.mobile-menu-actions {
+    margin-top: auto;
+}
+
+.mobile-phone-btn {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    background: var(--primary);
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.mobile-social {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.mobile-social a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: #f0f0f0;
+    border-radius: 50%;
+    text-decoration: none;
+    font-size: 18px;
+    transition: background 0.3s ease;
+}
+
+.mobile-social a:hover {
+    background: var(--primary);
+    color: white;
+}
+
+/* Стили для мобильного sticky CTA */
+.mobile-sticky-cta {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: white;
+    padding: 15px;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 999;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.cta-buttons .btn {
+    flex: 1;
+    padding: 12px;
+    font-size: 14px;
+    text-align: center;
 }

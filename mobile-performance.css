@@ -1,0 +1,155 @@
+/* 🚀 МОБИЛЬНАЯ ОПТИМИЗАЦИЯ ПРОИЗВОДИТЕЛЬНОСТИ */
+/* Применяется только на экранах < 768px */
+
+@media (max-width: 767px) {
+    /* 🎯 УБИРАЕМ ТЯЖЕЛЫЕ ЭФФЕКТЫ */
+    
+    /* Убираем градиентные фоны */
+    .hero::before,
+    .hero::after,
+    .calculator-section::before,
+    .calculator-section::after {
+        display: none !important;
+    }
+    
+    /* Упрощаем градиенты */
+    .hero {
+        background: #667eea !important;
+        background-image: none !important;
+    }
+    
+    .calculator-section {
+        background: #f8f9fa !important;
+        background-image: none !important;
+    }
+    
+    /* 🎯 ОТКЛЮЧАЕМ АНИМАЦИИ */
+    * {
+        animation: none !important;
+        animation-duration: 0s !important;
+        animation-delay: 0s !important;
+        transition: none !important;
+        transform: none !important;
+    }
+    
+    /* 🎯 УПРОЩАЕМ ТЕНИ */
+    .calculator-wrapper,
+    .card,
+    .benefit-card {
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
+    }
+    
+    /* 🎯 УБИРАЕМ BACKDROP-FILTER */
+    .modal-backdrop,
+    .floating-actions {
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+    }
+    
+    /* 🎯 УПРОЩАЕМ КНОПКИ */
+    .btn {
+        transform: none !important;
+        transition: none !important;
+    }
+    
+    .btn:hover {
+        transform: none !important;
+    }
+    
+    /* 🎯 УБИРАЕМ ПУЛЬСАЦИЮ */
+    .pulse,
+    .floating-whatsapp {
+        animation: none !important;
+    }
+    
+    /* 🎯 УПРОЩАЕМ НАВИГАЦИЮ */
+    .nav-link {
+        transition: none !important;
+    }
+    
+    .nav-link:hover {
+        transform: none !important;
+    }
+    
+    /* 🎯 ОТКЛЮЧАЕМ AOS АНИМАЦИИ */
+    [data-aos] {
+        opacity: 1 !important;
+        transform: none !important;
+        animation: none !important;
+    }
+    
+    /* 🎯 УПРОЩАЕМ ФОРМЫ */
+    .form-control:focus {
+        transform: none !important;
+        box-shadow: 0 0 0 2px #2D67F8 !important;
+    }
+    
+    /* 🎯 УБИРАЕМ СЛОЖНЫЕ ЭФФЕКТЫ */
+    .floating-actions {
+        filter: none !important;
+    }
+    
+    /* 🎯 ОПТИМИЗИРУЕМ ИЗОБРАЖЕНИЯ */
+    img {
+        will-change: auto !important;
+    }
+    
+    /* 🎯 УПРОЩАЕМ СЧЕТЧИКИ */
+    .counter-animation {
+        animation: none !important;
+    }
+    
+    /* 🎯 УБИРАЕМ ПАРАЛЛАКС */
+    .parallax,
+    .parallax-bg {
+        transform: none !important;
+        background-attachment: scroll !important;
+    }
+    
+    /* 🎯 ОТКЛЮЧАЕМ HOVER ЭФФЕКТЫ */
+    *:hover {
+        transform: none !important;
+        box-shadow: none !important;
+    }
+    
+    /* 🎯 УПРОЩАЕМ МОДАЛЬНЫЕ ОКНА */
+    .modal-content {
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+    }
+    
+    /* 🎯 ОТКЛЮЧАЕМ СЛОЖНЫЕ ПЕРЕХОДЫ */
+    .fade-in,
+    .slide-up,
+    .zoom-in {
+        opacity: 1 !important;
+        transform: none !important;
+        animation: none !important;
+    }
+}
+
+/* 🚀 ДОПОЛНИТЕЛЬНАЯ ОПТИМИЗАЦИЯ ДЛЯ ОЧЕНЬ МЕДЛЕННЫХ УСТРОЙСТВ */
+@media (max-width: 480px) {
+    /* Еще больше упрощений для старых телефонов */
+    .hero {
+        padding: 2rem 0 !important;
+    }
+    
+    .hero-title {
+        font-size: 1.8rem !important;
+    }
+    
+    .calculator-wrapper {
+        padding: 1.5rem !important;
+    }
+    
+    /* Убираем все тени */
+    * {
+        box-shadow: none !important;
+    }
+    
+    /* Упрощаем цвета */
+    .hero {
+        background: #2D67F8 !important;
+    }
+}

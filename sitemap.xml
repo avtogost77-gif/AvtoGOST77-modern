@@ -2,392 +2,416 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
         <loc>https://avtogost77.ru/</loc>
-        <lastmod>2025-08-25</lastmod>
+        <lastmod>2025-08-28</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
-        <loc>https://avtogost77.ru/services.html</loc>
-        <lastmod>2025-08-25</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.9</priority>
-    </url>
-    <url>
-        <loc>https://avtogost77.ru/contact.html</loc>
-        <lastmod>2025-08-25</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
         <loc>https://avtogost77.ru/about.html</loc>
-        <lastmod>2025-08-25</lastmod>
+        <lastmod>2025-08-28</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://avtogost77.ru/help.html</loc>
-        <lastmod>2025-08-25</lastmod>
+        <loc>https://avtogost77.ru/legal-minimum.html</loc>
+        <lastmod>2025-08-28</lastmod>
         <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
+        <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://avtogost77.ru/faq.html</loc>
-        <lastmod>2025-08-25</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-    </url>
-    <url>
-        <loc>https://avtogost77.ru/privacy.html</loc>
-        <lastmod>2025-08-25</lastmod>
-        <changefreq>yearly</changefreq>
-        <priority>0.5</priority>
-    </url>
-    <url>
-        <loc>https://avtogost77.ru/terms.html</loc>
-        <lastmod>2025-08-25</lastmod>
-        <changefreq>yearly</changefreq>
-        <priority>0.5</priority>
-    </url>
-    <url>
-        <loc>https://avtogost77.ru/track.html</loc>
-        <lastmod>2025-08-25</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-    </url>
-    <url>
-        <loc>https://avtogost77.ru/urgent-delivery.html</loc>
-        <lastmod>2025-08-25</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.9</priority>
-    </url>
-    <url>
-        <loc>https://avtogost77.ru/self-employed-delivery.html</loc>
-        <lastmod>2025-08-25</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.9</priority>
-    </url>
-    <url>
-        <loc>https://avtogost77.ru/ip-small-business-delivery.html</loc>
-        <lastmod>2025-08-25</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.9</priority>
-    </url>
-    <url>
-        <loc>https://avtogost77.ru/transportnaya-kompaniya.html</loc>
-        <lastmod>2025-08-25</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.9</priority>
-    </url>
-    <url>
-        <loc>https://avtogost77.ru/sbornye-gruzy.html</loc>
-        <lastmod>2025-08-25</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.9</priority>
-    </url>
-    <url>
-        <loc>https://avtogost77.ru/dostavka-na-marketpleysy.html</loc>
-        <lastmod>2025-08-25</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.9</priority>
-    </url>
-    <url>
-        <loc>https://avtogost77.ru/rc-dostavka.html</loc>
-        <lastmod>2025-08-25</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.9</priority>
-    </url>
-    <url>
-        <loc>https://avtogost77.ru/gruzoperevozki-spb.html</loc>
-        <lastmod>2025-08-25</lastmod>
+        <loc>https://avtogost77.ru/moscow-spb-delivery.html</loc>
+        <lastmod>2025-08-28</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
         <loc>https://avtogost77.ru/gruzoperevozki-ekaterinburg.html</loc>
-        <lastmod>2025-08-25</lastmod>
+        <lastmod>2025-08-28</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
-        <loc>https://avtogost77.ru/logistika-dlya-biznesa.html</loc>
-        <lastmod>2025-08-25</lastmod>
+        <loc>https://avtogost77.ru/gruzoperevozki-moskva-omsk.html</loc>
+        <lastmod>2025-08-28</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
-        <loc>https://avtogost77.ru/gruzoperevozki-po-moskve.html</loc>
-        <lastmod>2025-08-25</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.9</priority>
-    </url>
-    <url>
-        <loc>https://avtogost77.ru/gruzoperevozki-iz-moskvy.html</loc>
-        <lastmod>2025-08-25</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.9</priority>
-    </url>
-    <url>
-        <loc>https://avtogost77.ru/gruzoperevozki-moskva-voronezh.html</loc>
-        <lastmod>2025-08-25</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.9</priority>
-    </url>
-    <url>
-        <loc>https://avtogost77.ru/gruzoperevozki-moskva-spb.html</loc>
-        <lastmod>2025-08-25</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.9</priority>
-    </url>
-    <url>
-        <loc>https://avtogost77.ru/gruzoperevozki-moskva-kursk.html</loc>
-        <lastmod>2025-08-25</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.9</priority>
-    </url>
-    <url>
-        <loc>https://avtogost77.ru/gruzoperevozki-moskva-lipetsk.html</loc>
-        <lastmod>2025-08-25</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.9</priority>
-    </url>
-    <url>
-        <loc>https://avtogost77.ru/gruzoperevozki-moskva-tambov.html</loc>
-        <lastmod>2025-08-25</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.9</priority>
-    </url>
-    <url>
-        <loc>https://avtogost77.ru/gruzoperevozki-moskva-orel.html</loc>
-        <lastmod>2025-08-25</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.9</priority>
-    </url>
-    <url>
-        <loc>https://avtogost77.ru/gruzoperevozki-moskva-tula.html</loc>
-        <lastmod>2025-08-25</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.9</priority>
-    </url>
-    <url>
-        <loc>https://avtogost77.ru/gruzoperevozki-moskva-belgorod.html</loc>
-        <lastmod>2025-08-25</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.9</priority>
-    </url>
-    <url>
-        <loc>https://avtogost77.ru/gazel-gruzoperevozki.html</loc>
-        <lastmod>2025-08-25</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.9</priority>
-    </url>
-    <url>
-        <loc>https://avtogost77.ru/trehtonnik-gruzoperevozki.html</loc>
-        <lastmod>2025-08-25</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.9</priority>
-    </url>
-    <url>
-        <loc>https://avtogost77.ru/pyatitonnik-gruzoperevozki.html</loc>
-        <lastmod>2025-08-25</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.9</priority>
-    </url>
-    <url>
-        <loc>https://avtogost77.ru/desyatitonnik-gruzoperevozki.html</loc>
-        <lastmod>2025-08-25</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.9</priority>
-    </url>
-    <url>
-        <loc>https://avtogost77.ru/fura-20-tonn-gruzoperevozki.html</loc>
-        <lastmod>2025-08-25</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.9</priority>
-    </url>
-    <url>
-        <loc>https://avtogost77.ru/poputnyj-gruz.html</loc>
-        <lastmod>2025-08-25</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.9</priority>
-    </url>
-    <url>
-        <loc>https://avtogost77.ru/dogruz.html</loc>
-        <lastmod>2025-08-25</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.9</priority>
-    </url>
-    <url>
-        <loc>https://avtogost77.ru/pereezd-moskva.html</loc>
-        <lastmod>2025-08-25</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.9</priority>
-    </url>
-    <url>
-        <loc>https://avtogost77.ru/perevozka-mebeli.html</loc>
-        <lastmod>2025-08-25</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.9</priority>
-    </url>
-    <url>
-        <loc>https://avtogost77.ru/perevozka-medoborudovaniya.html</loc>
-        <lastmod>2025-08-25</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.9</priority>
-    </url>
-    <url>
-        <loc>https://avtogost77.ru/gruzoperevozki-из-moskvy.html</loc>
-        <lastmod>2025-08-25</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.9</priority>
-    </url>
-    <url>
-        <loc>https://avtogost77.ru/blog/</loc>
-        <lastmod>2025-08-25</lastmod>
-        <changefreq>weekly</changefreq>
+        <loc>https://avtogost77.ru/blog-3-spot-orders.html</loc>
+        <lastmod>2025-08-28</lastmod>
+        <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://avtogost77.ru/blog-1-carrier-failed.html</loc>
-        <lastmod>2025-08-25</lastmod>
+        <lastmod>2025-08-28</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://avtogost77.ru/blog-2-wildberries-delivery.html</loc>
-        <lastmod>2025-08-25</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-    </url>
-    <url>
-        <loc>https://avtogost77.ru/blog-3-spot-orders.html</loc>
-        <lastmod>2025-08-25</lastmod>
+        <lastmod>2025-08-28</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://avtogost77.ru/blog-4-remote-logistics.html</loc>
-        <lastmod>2025-08-25</lastmod>
+        <lastmod>2025-08-28</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://avtogost77.ru/blog-5-logistics-optimization.html</loc>
-        <lastmod>2025-08-25</lastmod>
+        <lastmod>2025-08-28</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://avtogost77.ru/blog-6-marketplace-insider.html</loc>
-        <lastmod>2025-08-25</lastmod>
+        <lastmod>2025-08-28</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://avtogost77.ru/blog-7-how-to-order-gazelle.html</loc>
-        <lastmod>2025-08-25</lastmod>
+        <lastmod>2025-08-28</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://avtogost77.ru/blog-8-cargo-insurance.html</loc>
-        <lastmod>2025-08-25</lastmod>
+        <lastmod>2025-08-28</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://avtogost77.ru/blog-9-dangerous-goods.html</loc>
-        <lastmod>2025-08-25</lastmod>
+        <lastmod>2025-08-28</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://avtogost77.ru/blog-10-self-employed-logistics.html</loc>
-        <lastmod>2025-08-25</lastmod>
+        <lastmod>2025-08-28</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://avtogost77.ru/blog/</loc>
+        <lastmod>2025-08-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://avtogost77.ru/services.html</loc>
+        <lastmod>2025-08-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://avtogost77.ru/contact.html</loc>
+        <lastmod>2025-08-28</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://avtogost77.ru/transportnaya-kompaniya.html</loc>
+        <lastmod>2025-08-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://avtogost77.ru/help.html</loc>
+        <lastmod>2025-08-28</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://avtogost77.ru/faq.html</loc>
+        <lastmod>2025-08-28</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://avtogost77.ru/privacy.html</loc>
+        <lastmod>2025-08-28</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://avtogost77.ru/terms.html</loc>
+        <lastmod>2025-08-28</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://avtogost77.ru/track.html</loc>
+        <lastmod>2025-08-28</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://avtogost77.ru/urgent-delivery.html</loc>
+        <lastmod>2025-08-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://avtogost77.ru/self-employed-delivery.html</loc>
+        <lastmod>2025-08-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://avtogost77.ru/ip-small-business-delivery.html</loc>
+        <lastmod>2025-08-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://avtogost77.ru/sbornye-gruzy.html</loc>
+        <lastmod>2025-08-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://avtogost77.ru/dostavka-na-marketpleysy.html</loc>
+        <lastmod>2025-08-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://avtogost77.ru/rc-dostavka.html</loc>
+        <lastmod>2025-08-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://avtogost77.ru/gruzoperevozki-spb.html</loc>
+        <lastmod>2025-08-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://avtogost77.ru/gruzoperevozki-moskva-nizhny-novgorod.html</loc>
+        <lastmod>2025-08-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://avtogost77.ru/gruzoperevozki-moskva-ekaterinburg.html</loc>
+        <lastmod>2025-08-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://avtogost77.ru/gruzoperevozki-moskva-novosibirsk.html</loc>
+        <lastmod>2025-08-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://avtogost77.ru/gruzoperevozki-moskva-kazan.html</loc>
+        <lastmod>2025-08-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://avtogost77.ru/gruzoperevozki-moskva-rostov.html</loc>
+        <lastmod>2025-08-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://avtogost77.ru/gruzoperevozki-moskva-chelyabinsk.html</loc>
+        <lastmod>2025-08-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://avtogost77.ru/gruzoperevozki-moskva-samara.html</loc>
+        <lastmod>2025-08-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://avtogost77.ru/gruzoperevozki-moskva-ufa.html</loc>
+        <lastmod>2025-08-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://avtogost77.ru/gruzoperevozki-moskva-perm.html</loc>
+        <lastmod>2025-08-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://avtogost77.ru/gruzoperevozki-moskva-voronezh.html</loc>
+        <lastmod>2025-08-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://avtogost77.ru/gruzoperevozki-moskva-kursk.html</loc>
+        <lastmod>2025-08-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://avtogost77.ru/gruzoperevozki-moskva-lipetsk.html</loc>
+        <lastmod>2025-08-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://avtogost77.ru/gruzoperevozki-moskva-tambov.html</loc>
+        <lastmod>2025-08-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://avtogost77.ru/gruzoperevozki-moskva-orel.html</loc>
+        <lastmod>2025-08-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://avtogost77.ru/gruzoperevozki-moskva-tula.html</loc>
+        <lastmod>2025-08-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://avtogost77.ru/gruzoperevozki-moskva-belgorod.html</loc>
+        <lastmod>2025-08-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://avtogost77.ru/gruzoperevozki-moskva-krasnodar.html</loc>
+        <lastmod>2025-08-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://avtogost77.ru/gazel-gruzoperevozki.html</loc>
+        <lastmod>2025-08-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://avtogost77.ru/trehtonnik-gruzoperevozki.html</loc>
+        <lastmod>2025-08-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://avtogost77.ru/pyatitonnik-gruzoperevozki.html</loc>
+        <lastmod>2025-08-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://avtogost77.ru/desyatitonnik-gruzoperevozki.html</loc>
+        <lastmod>2025-08-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://avtogost77.ru/fura-20-tonn-gruzoperevozki.html</loc>
+        <lastmod>2025-08-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://avtogost77.ru/dogruz.html</loc>
+        <lastmod>2025-08-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://avtogost77.ru/pereezd-moskva.html</loc>
+        <lastmod>2025-08-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://avtogost77.ru/perevozka-mebeli.html</loc>
+        <lastmod>2025-08-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://avtogost77.ru/perevozka-medoborudovaniya.html</loc>
+        <lastmod>2025-08-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://avtogost77.ru/poputnyj-gruz.html</loc>
+        <lastmod>2025-08-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://avtogost77.ru/dostavka-gruzov.html</loc>
+        <lastmod>2025-08-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://avtogost77.ru/gruzovoe-taksi.html</loc>
+        <lastmod>2025-08-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://avtogost77.ru/sluzhba-dostavki.html</loc>
+        <lastmod>2025-08-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://avtogost77.ru/logisticheskaya-kompaniya.html</loc>
+        <lastmod>2025-08-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://avtogost77.ru/gruzoperevozki-iz-moskvy.html</loc>
+        <lastmod>2025-08-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://avtogost77.ru/gruzoperevozki-po-moskve.html</loc>
+        <lastmod>2025-08-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://avtogost77.ru/logistika-dlya-biznesa.html</loc>
+        <lastmod>2025-08-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://avtogost77.ru/legal-minimum.html</loc>
+        <lastmod>2025-08-28</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://avtogost77.ru/news.html</loc>
-        <lastmod>2025-08-25</lastmod>
+        <lastmod>2025-08-28</lastmod>
         <changefreq>weekly</changefreq>
-        <priority>0.7</priority>
+        <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://avtogost77.ru/legal-minimum.html</loc>
-        <lastmod>2025-08-25</lastmod>
+        <loc>https://avtogost77.ru/ftl-ltl-perevozki.html</loc>
+        <lastmod>2025-08-30</lastmod>
         <changefreq>monthly</changefreq>
-        <priority>0.6</priority>
+        <priority>0.8</priority>
     </url>
-    <url>
-        <loc>https://avtogost77.ru/404.html</loc>
-        <lastmod>2025-08-25</lastmod>
-        <changefreq>yearly</changefreq>
-        <priority>0.1</priority>
-    </url>
-  <url>
-    <loc>https://avtogost77.ru/gruzoperevozki-moskva-kazan.html</loc>
-    <lastmod>2025-08-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://avtogost77.ru/gruzoperevozki-moskva-nizhny-novgorod.html</loc>
-    <lastmod>2025-08-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://avtogost77.ru/gruzoperevozki-moskva-rostov.html</loc>
-    <lastmod>2025-08-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://avtogost77.ru/gruzoperevozki-moskva-samara.html</loc>
-    <lastmod>2025-08-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://avtogost77.ru/gruzoperevozki-moskva-ufa.html</loc>
-    <lastmod>2025-08-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://avtogost77.ru/gruzoperevozki-moskva-ekaterinburg.html</loc>
-    <lastmod>2025-08-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://avtogost77.ru/gruzoperevozki-moskva-novosibirsk.html</loc>
-    <lastmod>2025-08-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://avtogost77.ru/gruzoperevozki-moskva-krasnodar.html</loc>
-    <lastmod>2025-08-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://avtogost77.ru/gruzoperevozki-moskva-chelyabinsk.html</loc>
-    <lastmod>2025-08-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://avtogost77.ru/gruzoperevozki-moskva-omsk.html</loc>
-    <lastmod>2025-08-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://avtogost77.ru/gruzoperevozki-moskva-perm.html</loc>
-    <lastmod>2025-08-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
 </urlset>

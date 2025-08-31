@@ -1,27 +1,20 @@
-const CACHE_NAME = 'avtogost77-v4.0-seo-optimized';
+const CACHE_NAME = 'avtogost77-v4.4-full-restore';
 const urlsToCache = [
     '/',
     '/index.html',
-    '/services.html',
-    '/contact.html',
-    '/about.html',
     '/assets/css/master/master-styles.min.css',
     '/assets/css/unified-site-styles.css',
     '/assets/css/critical-fixes.css',
-    '/assets/js/smart-calculator-v2.js',
-    '/assets/js/distance-api.js',
-    '/assets/js/preview-calculator.js',
-    '/favicon.svg',
-    '/manifest.json'
+    '/assets/js/interactive-infographic.js'
 ];
 
 // Установка Service Worker
 self.addEventListener('install', event => {
-    console.log('🚀 SW v4.0 SEO Optimized: установка...');
+    console.log('🚀 SW v4.4 Full Restore: установка...');
     event.waitUntil(
         caches.open(CACHE_NAME)
             .then(cache => {
-                console.log('✅ Кеш открыт');
+                console.log('📦 Кеширование файлов...');
                 return cache.addAll(urlsToCache);
             })
     );
@@ -29,7 +22,7 @@ self.addEventListener('install', event => {
 
 // Активация Service Worker
 self.addEventListener('activate', event => {
-    console.log('🔄 SW v4.0 SEO Optimized: активация...');
+    console.log('🔄 SW v4.4 Full Restore: активация...');
     event.waitUntil(
         caches.keys().then(cacheNames => {
             return Promise.all(
@@ -48,23 +41,6 @@ self.addEventListener('activate', event => {
 self.addEventListener('fetch', event => {
     const url = new URL(event.request.url);
     
-    // Пропускаем все запросы к поисковым роботам
-    if (event.request.headers.get('user-agent') && 
-        (event.request.headers.get('user-agent').includes('bot') ||
-         event.request.headers.get('user-agent').includes('crawler') ||
-         event.request.headers.get('user-agent').includes('spider'))) {
-        console.log('🤖 Пропускаем запрос от поискового робота:', url.pathname);
-        event.respondWith(fetch(event.request));
-        return;
-    }
-    
-    // Пропускаем запросы к sitemap и robots.txt
-    if (url.pathname === '/sitemap.xml' || url.pathname === '/robots.txt') {
-        console.log('📋 Пропускаем SEO файл:', url.pathname);
-        event.respondWith(fetch(event.request));
-        return;
-    }
-    
     // Пропускаем запросы к аналитике
     if (url.hostname.includes('google-analytics') || 
         url.hostname.includes('googletagmanager') ||
@@ -80,7 +56,6 @@ self.addEventListener('fetch', event => {
         event.respondWith(
             fetch(event.request)
                 .then(response => {
-                    // Кешируем только успешные ответы
                     if (response.status === 200) {
                         const responseClone = response.clone();
                         caches.open(CACHE_NAME)
@@ -88,10 +63,7 @@ self.addEventListener('fetch', event => {
                     }
                     return response;
                 })
-                .catch(() => {
-                    // Если сеть недоступна, возвращаем из кеша
-                    return caches.match(event.request);
-                })
+                .catch(() => caches.match(event.request))
         );
         return;
     }
@@ -101,9 +73,7 @@ self.addEventListener('fetch', event => {
         event.respondWith(
             caches.match(event.request)
                 .then(response => {
-                    if (response) {
-                        return response;
-                    }
+                    if (response) return response;
                     return fetch(event.request)
                         .then(response => {
                             if (response.status === 200) {
@@ -122,20 +92,5 @@ self.addEventListener('fetch', event => {
     event.respondWith(
         fetch(event.request)
             .catch(() => caches.match(event.request))
-    );
-});
-
-// Обработка push уведомлений (если понадобится в будущем)
-self.addEventListener('push', event => {
-    console.log('📱 Push уведомление получено');
-    // Здесь можно добавить логику push уведомлений
-});
-
-// Обработка кликов по уведомлениям
-self.addEventListener('notificationclick', event => {
-    console.log('👆 Клик по уведомлению');
-    event.notification.close();
-    event.waitUntil(
-        clients.openWindow('/')
     );
 });

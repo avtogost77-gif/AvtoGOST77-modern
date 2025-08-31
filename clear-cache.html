@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Очистка кэша</title>
+</head>
+<body>
+    <h1>Очистка кэша Service Worker</h1>
+    <button onclick="clearCache()">Очистить кэш</button>
+    <div id="status"></div>
+    
+    <script>
+    async function clearCache() {
+        const status = document.getElementById('status');
+        status.innerHTML = 'Очищаем кэш...';
+        
+        try {
+            // Очищаем все кэши
+            const cacheNames = await caches.keys();
+            for (const cacheName of cacheNames) {
+                await caches.delete(cacheName);
+                console.log('Удален кэш:', cacheName);
+            }
+            
+            // Отключаем Service Worker
+            if ('serviceWorker' in navigator) {
+                const registrations = await navigator.serviceWorker.getRegistrations();
+                for (const registration of registrations) {
+                    await registration.unregister();
+                    console.log('Отключен SW:', registration);
+                }
+            }
+            
+            status.innerHTML = 'Кэш очищен! Обновите страницу.';
+            
+            // Перезагружаем через 2 секунды
+            setTimeout(() => {
+                window.location.reload(true);
+            }, 2000);
+            
+        } catch (error) {
+            status.innerHTML = 'Ошибка: ' + error.message;
+            console.error('Ошибка очистки:', error);
+        }
+    }
+    
+    // Автоматически очищаем при загрузке
+    window.onload = clearCache;
+    </script>
+    <!-- Скрипт компактного меню -->
+    <script src="assets/js/menu-compact.js"></script>
+</body>
+</html>
