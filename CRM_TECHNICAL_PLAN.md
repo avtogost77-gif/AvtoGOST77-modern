@@ -870,6 +870,223 @@ class BusinessMetrics {
 
 ---
 
+## 📚 **7. ПРАВОВАЯ БАЗА (НА ПОТОМ)**
+
+### **Функционал:**
+- 🔄 Локальная база законов и нормативных актов
+- 🔄 Полнотекстовый поиск по документам
+- 🔄 Интеграция с договорами и подсказки
+- 🔄 Проверка соответствия законодательству
+
+### **Сложность реализации: СРЕДНЯЯ** ⚠️
+- **Frontend:** Просто (поиск, фильтры, отображение)
+- **Backend:** Средне (индексация, поиск по тексту)
+- **База данных:** Средне (хранение больших текстов, поиск)
+
+### **Структура базы данных:**
+```sql
+-- Правовые документы
+CREATE TABLE legal_documents (
+    id SERIAL PRIMARY KEY,
+    title VARCHAR(500) NOT NULL,
+    short_title VARCHAR(200),
+    document_type VARCHAR(100), -- 'code', 'law', 'regulation', 'order'
+    category VARCHAR(100), -- 'transport', 'contracts', 'cargo', 'liability'
+    version VARCHAR(50),
+    effective_date DATE,
+    is_active BOOLEAN DEFAULT true,
+    file_path TEXT,
+    content_text TEXT,
+    created_at TIMESTAMP DEFAULT NOW()
+);
+
+-- Статьи/разделы документов
+CREATE TABLE legal_articles (
+    id SERIAL PRIMARY KEY,
+    document_id INTEGER REFERENCES legal_documents(id),
+    article_number VARCHAR(50),
+    title VARCHAR(500),
+    content TEXT,
+    keywords TEXT[], -- для быстрого поиска
+    relevance_score INTEGER DEFAULT 0,
+    created_at TIMESTAMP DEFAULT NOW()
+);
+
+-- Поисковый индекс
+CREATE TABLE legal_search_index (
+    id SERIAL PRIMARY KEY,
+    article_id INTEGER REFERENCES legal_articles(id),
+    word VARCHAR(100),
+    frequency INTEGER DEFAULT 1,
+    positions INTEGER[], -- позиции слова в тексте
+    created_at TIMESTAMP DEFAULT NOW()
+);
+```
+
+### **Что можно загрузить вручную:**
+
+#### **Основные документы:**
+1. **ГК РФ (часть 2)** - Глава 40 "Перевозка"
+2. **Устав автомобильного транспорта** - ФЗ-259
+3. **Правила перевозок грузов** - Постановление Правительства
+4. **КоАП РФ** - статьи по транспорту
+5. **Правила дорожного движения**
+6. **Технический регламент о безопасности колесных ТС**
+7. **Правила перевозки опасных грузов**
+8. **Правила перевозки скоропортящихся грузов**
+9. **Правила перевозки крупногабаритных грузов**
+10. **Классификатор ООН по ADR** - Европейское соглашение о международной дорожной перевозке опасных грузов
+
+### **Функции правовой базы:**
+
+#### **1. Поиск и навигация:**
+- 🔄 Полнотекстовый поиск
+- 🔄 Фильтрация по категориям
+- 🔄 Поиск по номерам статей
+- 🔄 Поиск по датам вступления в силу
+
+#### **2. Интеграция с CRM:**
+- 🔄 Автоподсказки при создании договоров
+- 🔄 Проверка договоров на соответствие закону
+- 🔄 Ссылки на правовые основания в документах
+- 🔄 Уведомления об изменениях в законодательстве
+
+#### **3. Аналитика:**
+- 🔄 Популярные запросы
+- 🔄 Часто используемые статьи
+- 🔄 История поиска пользователей
+- 🔄 Избранные документы
+
+### **Техническая реализация:**
+
+#### **Простой вариант (начальный):**
+```python
+# Простой поиск по тексту
+@app.get("/api/v1/legal/search")
+async def search_legal(q: str, law: str = None):
+    query = """
+        SELECT la.*, ld.title as document_title 
+        FROM legal_articles la
+        JOIN legal_documents ld ON la.document_id = ld.id
+        WHERE la.content ILIKE %s
+    """
+    
+    if law:
+        query += " AND ld.short_title ILIKE %s"
+        params = [f"%{q}%", f"%{law}%"]
+    else:
+        params = [f"%{q}%"]
+    
+    # Выполнение поиска
+    results = await database.fetch_all(query, params)
+    return results
+```
+
+#### **Продвинутый вариант (после MVP):**
+```python
+# Полнотекстовый поиск с PostgreSQL
+@app.post("/api/v1/legal/advanced-search")
+async def advanced_legal_search(search_request: LegalSearchRequest):
+    # Использование PostgreSQL full-text search
+    query = """
+        SELECT 
+            la.*,
+            ld.title as document_title,
+            ts_rank(la.content_tsv, plainto_tsquery('russian', %s)) as relevance
+        FROM legal_articles la
+        JOIN legal_documents ld ON la.document_id = ld.id
+        WHERE la.content_tsv @@ plainto_tsquery('russian', %s)
+        ORDER BY relevance DESC
+    """
+    
+    results = await database.fetch_all(query, [search_request.query, search_request.query])
+    return results
+```
+
+### **Интерфейс правовой базы:**
+```html
+<!-- pages/legal/database.html -->
+<div class="legal-database">
+  <div class="search-section">
+    <h2>Правовая база</h2>
+    
+    <div class="search-form">
+      <input type="text" id="legal-search" placeholder="Поиск по правовой базе...">
+      <button onclick="searchLegal()">Найти</button>
+    </div>
+    
+    <div class="quick-filters">
+      <button class="filter-btn active" data-category="all">Все документы</button>
+      <button class="filter-btn" data-category="transport">Транспорт</button>
+      <button class="filter-btn" data-category="contracts">Договоры</button>
+      <button class="filter-btn" data-category="cargo">Грузы</button>
+      <button class="filter-btn" data-category="liability">Ответственность</button>
+    </div>
+  </div>
+  
+  <div class="search-results" id="legal-results">
+    <!-- Результаты поиска -->
+  </div>
+</div>
+```
+
+### **Интеграция с договорами:**
+```javascript
+// Автоматические подсказки при создании договоров
+class LegalAssistant {
+  async suggestContractClauses(contractType, route, cargo) {
+    const suggestions = [];
+    
+    // Поиск релевантных статей
+    const relevantArticles = await this.searchByContext(
+      `${contractType} ${route} ${cargo}`,
+      'contracts'
+    );
+    
+    // Формирование подсказок
+    relevantArticles.forEach(article => {
+      suggestions.push({
+        type: 'clause',
+        title: article.title,
+        content: article.content,
+        source: article.document_title,
+        relevance: article.relevance_score
+      });
+    });
+    
+    return suggestions;
+  }
+  
+  // Проверка договора на соответствие законодательству
+  async validateContract(contractText) {
+    const issues = [];
+    
+    // Поиск потенциальных проблем
+    const keywords = ['ответственность', 'штраф', 'срок', 'оплата'];
+    
+    for (const keyword of keywords) {
+      const legalRequirements = await this.searchByContext(keyword, 'all');
+      
+      // Анализ соответствия
+      legalRequirements.forEach(req => {
+        if (!this.checkCompliance(contractText, req)) {
+          issues.push({
+            type: 'warning',
+            message: `Проверьте соответствие требованиям: ${req.title}`,
+            source: req.document_title,
+            article: req.article_number
+          });
+        }
+      });
+    }
+    
+    return issues;
+  }
+}
+```
+
+---
+
 ## 🚀 **ПЛАН РЕАЛИЗАЦИИ**
 
 ### **Этап 1: MVP (2-3 недели)**
