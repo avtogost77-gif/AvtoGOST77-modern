@@ -59,10 +59,16 @@
 32. gruzoperevozki-moskva-omsk.html - Москва → Омск
 33. gruzoperevozki-ekaterinburg.html - Екатеринбург
 
-### Общие направления (3):
-34. gruzoperevozki-iz-moskvy.html - Из Москвы
+### Региональные страницы (7):
+34. gruzoperevozki-iz-moskvy.html - Из Москвы (общая)
 35. gruzoperevozki-po-moskve.html - По Москве
-36. moscow-spb-delivery.html - Москва-СПб доставка
+36. severo-zapad.html - Северо-Запад (СПб, Новгород, Псков, Мурманск)
+37. tsfo.html - ЦФО (Воронеж, Тула, Курск, Белгород, Липецк)
+38. yug-rossii.html - Юг России (Краснодар, Ростов, Сочи, Волгоград)
+39. povolzhye.html - Поволжье (Казань, Самара, Уфа, Саратов)
+40. ural.html - Урал (Екатеринбург, Челябинск, Пермь, Тюмень)
+41. sibir.html - Сибирь (Новосибирск, Омск, Красноярск)
+42. dalny-vostok.html - Дальний Восток (Владивосток, Хабаровск)
 
 ### Услуги (15):
 37. urgent-delivery.html - Срочная доставка
