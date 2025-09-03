@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="ru" x-data="{ darkMode: false }">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <title>АвтоГост77 — Срочные грузоперевозки | Спот-заявки, сборные грузы, газель — фура 20 тонн по России</title>
+    <meta name="description" content="Срочные грузоперевозки по всей России. Спот-заявки, сборные грузы, отдельные машины, межрегиональные перевозки, газель, фура 20 тонн, пятитонник, трехтонник, десятитонник. Профессиональная логистика с калькулятором стоимости.">
+    <meta name="keywords" content="срочные грузоперевозки, спот заявки, сборные грузы, отдельные машины, межрегиональные перевозки, газель, фура 20 тонн, пятитонник, трехтонник, десятитонник, логистика, доставка грузов по России, автогост77, грузоперевозки Москва">
+    
+    <link rel="canonical" href="https://avtogost77.ru/">
+    
+    <meta property="og:title" content="АвтоГост77 — Срочные грузоперевозки">
+    <meta property="og:description" content="Спот-заявки, сборные грузы, отдельные машины, межрегиональные перевозки, газель — фура 20 тонн. Профессиональная логистика по всей России.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://avtogost77.ru/">
+    <meta property="og:image" content="https://avtogost77.ru/assets/img/hero-logistics-tablet.webp">
+    
+    <script src="https://unpkg.com/htmx.org@1.9.10" defer></script>
+    <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <script src="js/smart-calculator-alpine.js" defer></script>
+    
+    <link rel="stylesheet" href="css/main.css">
+    
+    <style>
+        /* Inline критические стили + мега-меню */
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #f59e0b;
+            --success: #10b981;
+            --danger: #ef4444;
+            --white: #ffffff;
+            --gray-50: #f9fafb;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-300: #d1d5db;
+            --gray-400: #9ca3af;
+            --gray-500: #6b7280;
+            --gray-600: #4b5563;
+            --gray-700: #374151;
+            --gray-800: #1f2937;
+            --gray-900: #111827;
+            
+            --text-sm: 0.875rem;
+            --text-base: 1rem;
+            --text-lg: 1.125rem;
+            --text-xl: 1.25rem;
+            --text-2xl: 1.5rem;
+            --text-3xl: 1.875rem;
+            --text-4xl: 2.25rem;
+            --text-5xl: 3rem;
+            --text-6xl: 3.75rem;
+            
+            --space-1: 0.25rem;
+            --space-2: 0.5rem;
+            --space-3: 0.75rem;
+            --space-4: 1rem;
+            --space-6: 1.5rem;
+            --space-8: 2rem;
+            --space-12: 3rem;
+            --space-16: 4rem;
+            --space-20: 5rem;
+            
+            --radius-lg: 0.5rem;
+            --radius-xl: 0.75rem;
+            --radius-2xl: 1rem;
+            --radius-full: 9999px;
+            
+            --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+            --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+            --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { 
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; 
+            line-height: 1.6; 
+            color: var(--gray-800); 
+            background: var(--white);
+        }
+        
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 1rem; }
+        .section { padding: var(--space-16) 0; }
+        
+        /* Header с мега-меню */
+        .header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: var(--white);
+            border-bottom: 1px solid var(--gray-200);
+            transition: all 0.3s ease;
+        }
+        
+        .header.scrolled { box-shadow: var(--shadow); }
+        
+        .header__content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: var(--space-4) 0;
+        }
+        
+        .header__logo {
+            font-size: var(--text-2xl);
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+        
+        .header__nav {
+            display: none;
+            gap: var(--space-6);
+            align-items: center;
+        }
+        
+        @media (min-width: 1024px) {
+            .header__nav { display: flex; }
+        }
+        
+        .nav-item {
+            position: relative;
+        }
+        
+        .nav-link {
+            color: var(--gray-700);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s ease;
+            padding: var(--space-2) var(--space-3);
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            gap: var(--space-1);
+        }
+        
+        .nav-link:hover { 
+            color: var(--primary); 
+            background: var(--gray-50);
+        }
+        
+        .nav-arrow {
+            font-size: var(--text-sm);
+            transition: transform 0.2s ease;
+        }
+        
+        .nav-item:hover .nav-arrow {
+            transform: rotate(180deg);
+        }
+        
+        /* Мега-меню */
+        .mega-menu {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--white);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-2xl);
+            border: 1px solid var(--gray-200);
+            padding: var(--space-6);
+            min-width: 600px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-6);
+            margin-top: var(--space-2);
+        }
+        
+        .mega-menu__section h4 {
+            font-size: var(--text-sm);
+            font-weight: 600;
+            color: var(--gray-900);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: var(--space-3);
+            padding-bottom: var(--space-2);
+            border-bottom: 2px solid var(--primary);
+        }
+        
+        .mega-menu__section a {
+            display: block;
+            padding: var(--space-2) var(--space-3);
+            color: var(--gray-600);
+            text-decoration: none;
+            border-radius: var(--radius-lg);
+            transition: all 0.2s ease;
+            font-size: var(--text-sm);
+            margin-bottom: var(--space-1);
+        }
+        
+        .mega-menu__section a:hover {
+            background: var(--gray-50);
+            color: var(--primary);
+            transform: translateX(4px);
+        }
+        
+        .header__cta { display: none; }
+        @media (min-width: 640px) {
+            .header__cta { display: block; }
+        }
+        
+        .header__mobile-toggle {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            background: none;
+            border: none;
+            padding: var(--space-2);
+            cursor: pointer;
+        }
+        
+        @media (min-width: 1024px) {
+            .header__mobile-toggle { display: none; }
+        }
+        
+        .header__mobile-toggle span {
+            width: 24px;
+            height: 2px;
+            background: var(--gray-700);
+            transition: all 0.3s ease;
+        }
+        
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, rgba(37,99,235,0.35) 0%, rgba(29,78,216,0.15) 100%), url('assets/img/hero-logistics-tablet.webp') center/cover no-repeat;
+        }
+        
+        .hero__content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+        }
+        
+        .hero__title {
+            font-size: var(--text-4xl);
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: var(--space-6);
+            color: var(--white);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        @media (min-width: 768px) {
+            .hero__title { font-size: var(--text-5xl); }
+        }
+        
+        @media (min-width: 1024px) {
+            .hero__title { font-size: var(--text-6xl); }
+        }
+        
+        .hero__subtitle {
+            font-size: var(--text-xl);
+            opacity: 1;
+            margin-bottom: var(--space-8);
+            line-height: 1.6;
+            color: var(--white);
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+            font-weight: 500;
+        }
+        
+        .hero__cta {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-4);
+        }
+        
+        .hero .btn {
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Hero features для SEO */
+        .hero__features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-4);
+            margin-bottom: var(--space-8);
+            justify-content: center;
+        }
+        
+        .hero__feature {
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+            background: rgba(255, 255, 255, 0.15);
+            padding: var(--space-3) var(--space-4);
+            border-radius: var(--radius-full);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            font-size: var(--text-sm);
+            font-weight: 500;
+            color: var(--white);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .hero__feature:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-2px);
+        }
+        
+        .feature-icon {
+            font-size: var(--text-lg);
+        }
+        
+        @media (max-width: 768px) {
+            .hero__features {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .hero__feature {
+                width: 100%;
+                justify-content: center;
+                text-align: center;
+            }
+        }
+        
+        @media (min-width: 640px) {
+            .hero__cta { flex-direction: row; }
+        }
+        
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-2);
+            padding: var(--space-3) var(--space-6);
+            font-size: var(--text-base);
+            font-weight: 500;
+            border-radius: var(--radius-lg);
+            border: 1px solid transparent;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            text-decoration: none;
+            user-select: none;
+            white-space: nowrap;
+        }
+        
+        .btn--primary {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+        
+        .btn--primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .btn--secondary {
+            background-color: var(--secondary);
+            color: var(--white);
+        }
+        
+        .btn--outline {
+            background-color: transparent;
+            color: var(--primary);
+            border-color: var(--primary);
+        }
+        
+        .btn--outline:hover {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+        
+        .btn--xl {
+            padding: var(--space-4) var(--space-8);
+            font-size: var(--text-xl);
+        }
+        
+        .text-secondary { color: var(--secondary); }
+        .text-center { text-align: center; }
+        .mb-12 { margin-bottom: var(--space-12); }
+        .mb-16 { margin-bottom: var(--space-16); }
+        .max-w-4xl { max-width: 56rem; }
+        .mx-auto { margin-left: auto; margin-right: auto; }
+        
+        /* Grid */
+        .grid { display: grid; gap: var(--space-8); }
+        
+        @media (min-width: 768px) {
+            .md\\:grid-cols-2 { grid-template-columns: repeat(2, 1fr); }
+            .md\\:grid-cols-3 { grid-template-columns: repeat(3, 1fr); }
+        }
+        
+        @media (min-width: 1024px) {
+            .lg\\:grid-cols-3 { grid-template-columns: repeat(3, 1fr); }
+            .lg\\:grid-cols-4 { grid-template-columns: repeat(4, 1fr); }
+        }
+        
+        /* Backgrounds */
+        .bg-gray-50 { background-color: var(--gray-50); }
+        .bg-primary { background-color: var(--primary); }
+        .text-white { color: var(--white); }
+        .text-gray-600 { color: var(--gray-600); }
+        
+        /* Hidden/Responsive */
+        [x-cloak] { display: none !important; }
+        
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: var(--white);
+            z-index: 2000;
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .mobile-menu.open { transform: translateX(0); }
+        
+        .mobile-menu__header {
+            padding: var(--space-4);
+            border-bottom: 1px solid var(--gray-200);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .mobile-menu__nav { padding: var(--space-4); }
+        
+        .mobile-menu__nav a {
+            display: block;
+            padding: var(--space-4);
+            color: var(--gray-700);
+            text-decoration: none;
+            border-bottom: 1px solid var(--gray-100);
+        }
+        
+        .mobile-menu__nav a:hover {
+            color: var(--primary);
+            background: var(--gray-50);
+        }
+    </style>
+    
+    <!-- JSON-LD Schema для SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "АвтоГост77",
+        "url": "https://avtogost77.ru",
+        "description": "Срочные грузоперевозки. Спот-заявки, сборные грузы, отдельные машины по всей России.",
+        "serviceType": "Грузоперевозки и логистика",
+        "areaServed": "Россия",
+        "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Логистические услуги",
+            "itemListElement": [
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Срочные грузоперевозки",
+                        "description": "Спот-заявки и экстренная доставка грузов"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Сборные грузы",
+                        "description": "Экономичные перевозки сборных грузов"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Отдельные машины",
+                        "description": "Выделенный транспорт для срочных перевозок"
+                    }
+                }
+            ]
+        }
+    }
+    </script>
+    
+    <script>
+        function mainApp() {
+            return {
+                mobileMenuOpen: false,
+                headerScrolled: false,
+                
+                init() {
+                    this.watchScroll();
+                },
+                
+                toggleMobileMenu() {
+                    this.mobileMenuOpen = !this.mobileMenuOpen;
+                    document.body.style.overflow = this.mobileMenuOpen ? 'hidden' : '';
+                },
+                
+                closeMobileMenu() {
+                    this.mobileMenuOpen = false;
+                    document.body.style.overflow = '';
+                },
+                
+                watchScroll() {
+                    window.addEventListener('scroll', () => {
+                        this.headerScrolled = window.scrollY > 10;
+                    });
+                },
+                
+                scrollToSection(id) {
+                    const element = document.getElementById(id);
+                    if (element) {
+                        element.scrollIntoView({ behavior: 'smooth' });
+                        this.closeMobileMenu();
+                    }
+                }
+            }
+        }
+        
+        // Смарт-калькулятор подключается из внешнего файла js/smart-calculator-alpine.js
+        function smartCalculator() { return window.smartCalculator ? window.smartCalculator() : {}; }
+    </script>
+</head>
+<body x-data="mainApp()" x-cloak>
+    <!-- Header с мега-меню -->
+    <header class="header" :class="{ 'scrolled': headerScrolled }">
+        <div class="container">
+            <div class="header__content">
+                <a href="/" class="header__logo">🚛 АвтоГОСТ</a>
+                
+                <nav class="header__nav">
+                    <div class="nav-item" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
+                        <a href="#" class="nav-link">Транспорт <span class="nav-arrow">▾</span></a>
+                        <div class="mega-menu" x-show="open" x-transition>
+                            <div class="mega-menu__section">
+                                <h4>Легкий транспорт</h4>
+                                <a href="gazel-gruzoperevozki.html">🚐 Газель (до 1.5т)</a>
+                                <a href="trehtonnik-gruzoperevozki.html">🚛 Трехтонник (до 3т)</a>
+                            </div>
+                            <div class="mega-menu__section">
+                                <h4>Средний транспорт</h4>
+                                <a href="pyatitonnik-gruzoperevozki.html">🚛 Пятитонник (до 5т)</a>
+                                <a href="desyatitonnik-gruzoperevozki.html">🚚 Десятитонник (до 10т)</a>
+                            </div>
+                            <div class="mega-menu__section">
+                                <h4>Тяжелый транспорт</h4>
+                                <a href="fura-20-tonn-gruzoperevozki.html">🚛 Фура 20 тонн</a>
+                                <a href="dogruz.html">📦 Догруз</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="nav-item" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
+                        <a href="#" class="nav-link">Маршруты <span class="nav-arrow">▾</span></a>
+                        <div class="mega-menu" x-show="open" x-transition>
+                            <div class="mega-menu__section">
+                                <h4>Популярные</h4>
+                                <a href="gruzoperevozki-spb.html">Москва → СПб</a>
+                                <a href="gruzoperevozki-moskva-kazan.html">Москва → Казань</a>
+                                <a href="gruzoperevozki-moskva-ekaterinburg.html">Москва → Екатеринбург</a>
+                                <a href="gruzoperevozki-moskva-novosibirsk.html">Москва → Новосибирск</a>
+                            </div>
+                            <div class="mega-menu__section">
+                                <h4>Центр России</h4>
+                                <a href="gruzoperevozki-moskva-voronezh.html">Москва → Воронеж</a>
+                                <a href="gruzoperevozki-moskva-tula.html">Москва → Тула</a>
+                                <a href="gruzoperevozki-moskva-kursk.html">Москва → Курск</a>
+                                <a href="gruzoperevozki-po-moskve.html">По Москве</a>
+                            </div>
+                            <div class="mega-menu__section">
+                                <h4>Юг России</h4>
+                                <a href="gruzoperevozki-moskva-krasnodar.html">Москва → Краснодар</a>
+                                <a href="gruzoperevozki-moskva-rostov.html">Москва → Ростов</a>
+                                <a href="gruzoperevozki-iz-moskvy.html">Все направления</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="nav-item" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
+                        <a href="#" class="nav-link">Услуги <span class="nav-arrow">▾</span></a>
+                        <div class="mega-menu" x-show="open" x-transition>
+                            <div class="mega-menu__section">
+                                <h4>Основные</h4>
+                                <a href="sbornye-gruzy.html">📦 Сборные грузы</a>
+                                <a href="urgent-delivery.html">⚡ Срочная доставка</a>
+                                <a href="dostavka-gruzov.html">🚛 Доставка грузов</a>
+                                <a href="gruzovoe-taksi.html">🚕 Грузовое такси</a>
+                            </div>
+                            <div class="mega-menu__section">
+                                <h4>Специализированные</h4>
+                                <a href="perevozka-mebeli.html">🪑 Перевозка мебели</a>
+                                <a href="perevozka-medoborudovaniya.html">🏥 Медоборудование</a>
+                                <a href="pereezd-moskva.html">📦 Переезды</a>
+                                <a href="services.html">Все услуги</a>
+                            </div>
+                            <div class="mega-menu__section">
+                                <h4>Для бизнеса</h4>
+                                <a href="dostavka-na-marketpleysy.html">🛒 Доставка на маркетплейсы</a>
+                                <a href="logistika-dlya-biznesa.html">💼 Логистика для бизнеса</a>
+                                <a href="rc-dostavka.html">📋 РЦ доставка</a>
+                                <a href="self-employed-delivery.html">👨‍💼 Для самозанятых</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="nav-item" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
+                        <a href="#" class="nav-link">Блог <span class="nav-arrow">▾</span></a>
+                        <div class="mega-menu" x-show="open" x-transition>
+                            <div class="mega-menu__section">
+                                <h4>Популярные статьи</h4>
+                                <a href="blog-3-spot-orders.html">📋 Что такое спот-заявки?</a>
+                                <a href="blog-7-how-to-order-gazelle.html">🚐 Как заказать газель?</a>
+                                <a href="blog-5-logistics-optimization.html">⚡ Оптимизация логистики</a>
+                                <a href="ftl-ltl-perevozki.html">🚛 FTL vs LTL перевозки</a>
+                            </div>
+                            <div class="mega-menu__section">
+                                <h4>Для бизнеса</h4>
+                                <a href="blog-2-wildberries-delivery.html">🛒 Доставка Wildberries</a>
+                                <a href="blog-6-marketplace-insider.html">📊 Инсайды маркетплейсов</a>
+                                <a href="blog-10-self-employed-logistics.html">👨‍💼 Логистика для ИП</a>
+                                <a href="blog-4-remote-logistics.html">🌐 Удаленная логистика</a>
+                            </div>
+                            <div class="mega-menu__section">
+                                <h4>Полезное</h4>
+                                <a href="blog-1-carrier-failed.html">⚠️ Что если перевозчик подвел?</a>
+                                <a href="blog-8-cargo-insurance.html">🛡️ Страхование грузов</a>
+                                <a href="blog-9-dangerous-goods.html">⚠️ Опасные грузы</a>
+                                <a href="blog/">Все статьи</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="contact.html" class="nav-link">Контакты</a>
+                </nav>
+                
+                <div class="header__cta">
+                    <a href="tel:+79162720932" class="btn btn--primary">📞 Позвонить</a>
+                </div>
+                
+                <button 
+                    class="header__mobile-toggle"
+                    @click="toggleMobileMenu()"
+                >
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" :class="{ 'open': mobileMenuOpen }" x-show="mobileMenuOpen">
+        <div class="mobile-menu__header">
+            <span class="header__logo">🚛 АвтоГОСТ</span>
+            <button @click="closeMobileMenu()">✕</button>
+        </div>
+        <nav class="mobile-menu__nav">
+            <a href="/" @click="closeMobileMenu()">Главная</a>
+            <a href="services.html" @click="closeMobileMenu()">Услуги</a>
+            <a href="contact.html" @click="closeMobileMenu()">Контакты</a>
+            <a href="tel:+79162720932" class="btn btn--primary" @click="closeMobileMenu()">📞 Позвонить</a>
+        </nav>
+    </div>
+    
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section с умной перелинковкой -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero__content">
+                    <h1 class="hero__title">
+                        Срочные грузоперевозки <span class="text-secondary">по всей России</span> — спот-заявки, сборные грузы
+                    </h1>
+                    <p class="hero__subtitle">
+                        Профессиональная логистика с человечным подходом. Отдельные машины, 
+                        межрегиональные перевозки, <a href="gazel-gruzoperevozki.html" style="color: var(--secondary); text-decoration: underline;">газель</a> — <a href="fura-20-tonn-gruzoperevozki.html" style="color: var(--secondary); text-decoration: underline;">фура 20 тонн</a>. <button @click="scrollToSection('calculator')" style="background: none; border: none; color: var(--secondary); text-decoration: underline; font-weight: 600; cursor: pointer; font-size: inherit;">Калькулятор стоимости</button>.
+                    </p>
+                    
+                    <!-- SEO: Дополнительные ключевые слова для hero с перелинковкой -->
+                    <div class="hero__features">
+                        <a href="blog-3-spot-orders.html" class="hero__feature">
+                            <span class="feature-icon">⚡</span>
+                            <span>Спот-заявки 24/7</span>
+                        </a>
+                        <a href="sbornye-gruzy.html" class="hero__feature">
+                            <span class="feature-icon">💰</span>
+                            <span>Сборные грузы — экономия до 40%</span>
+                        </a>
+                        <div class="hero__feature">
+                            <span class="feature-icon">🚛</span>
+                            <span><a href="trehtonnik-gruzoperevozki.html" style="color: inherit;">Трехтонник</a>, <a href="pyatitonnik-gruzoperevozki.html" style="color: inherit;">пятитонник</a>, фура</span>
+                        </div>
+                    </div>
+                    
+                    <div class="hero__cta">
+                        <button @click="scrollToSection('calculator')" class="btn btn--secondary btn--xl">
+                            🧮 Рассчитать стоимость
+                        </button>
+                        <a href="tel:+79162720932" class="btn btn--outline btn--xl">
+                            📞 Заказать сейчас
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Calculator Section -->
+        <section id="calculator" class="section">
+            <div class="container">
+                <div class="text-center mb-12">
+                    <h2>Калькулятор стоимости доставки</h2>
+                    <p class="text-xl text-gray-600">Узнайте точную стоимость за 30 секунд</p>
+                </div>
+                
+                <div class="max-w-4xl mx-auto">
+                    <div style="background: white; border-radius: var(--radius-2xl); box-shadow: var(--shadow-2xl); padding: var(--space-8);" x-data="smartCalculator()">
+                        <!-- Calculator будет здесь -->
+                        <div style="text-align: center; padding: var(--space-8);">
+                            <p>Калькулятор загружается...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Services -->
+        <section class="section bg-gray-50">
+            <div class="container">
+                <div class="text-center mb-16">
+                    <h2>Наши услуги</h2>
+                    <p class="text-xl text-gray-600">Полный спектр логистических решений</p>
+                </div>
+                
+                <div class="grid md:grid-cols-3">
+                    <div style="background: white; border-radius: var(--radius-xl); box-shadow: var(--shadow); padding: var(--space-6); transition: all 0.3s ease;">
+                        <div style="background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; width: 60px; height: 60px; border-radius: var(--radius-xl); display: flex; align-items: center; justify-content: center; font-size: var(--text-2xl); margin-bottom: var(--space-4);">🚐</div>
+                        <h3 style="font-size: var(--text-xl); font-weight: 600; margin-bottom: var(--space-3);">Газель</h3>
+                        <p style="color: var(--gray-600); margin-bottom: var(--space-4);">Быстрая доставка небольших грузов по городу и области. Подача от 2 часов.</p>
+                        <div style="font-size: var(--text-lg); font-weight: 600; color: var(--primary); margin-bottom: var(--space-4);">от 5,000 ₽</div>
+                        <a href="gazel-gruzoperevozki.html" class="btn btn--primary" style="font-size: var(--text-sm);">Подробнее</a>
+                    </div>
+                    
+                    <div style="background: white; border-radius: var(--radius-xl); box-shadow: var(--shadow); padding: var(--space-6); transition: all 0.3s ease;">
+                        <div style="background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; width: 60px; height: 60px; border-radius: var(--radius-xl); display: flex; align-items: center; justify-content: center; font-size: var(--text-2xl); margin-bottom: var(--space-4);">📦</div>
+                        <h3 style="font-size: var(--text-xl); font-weight: 600; margin-bottom: var(--space-3);">Сборные грузы</h3>
+                        <p style="color: var(--gray-600); margin-bottom: var(--space-4);">Экономьте до 35% на доставке. Консолидация грузов по популярным направлениям.</p>
+                        <div style="font-size: var(--text-lg); font-weight: 600; color: var(--primary); margin-bottom: var(--space-4);">от 2,500 ₽</div>
+                        <a href="sbornye-gruzy.html" class="btn btn--primary" style="font-size: var(--text-sm);">Подробнее</a>
+                    </div>
+                    
+                    <div style="background: white; border-radius: var(--radius-xl); box-shadow: var(--shadow); padding: var(--space-6); transition: all 0.3s ease;">
+                        <div style="background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; width: 60px; height: 60px; border-radius: var(--radius-xl); display: flex; align-items: center; justify-content: center; font-size: var(--text-2xl); margin-bottom: var(--space-4);">⚡</div>
+                        <h3 style="font-size: var(--text-xl); font-weight: 600; margin-bottom: var(--space-3);">Срочная доставка</h3>
+                        <p style="color: var(--gray-600); margin-bottom: var(--space-4);">Экспресс-доставка в любую точку России. Максимальная скорость и надежность.</p>
+                        <div style="font-size: var(--text-lg); font-weight: 600; color: var(--primary); margin-bottom: var(--space-4);">от 15,000 ₽</div>
+                        <a href="urgent-delivery.html" class="btn btn--primary" style="font-size: var(--text-sm);">Подробнее</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- CTA Section -->
+        <section class="section bg-primary text-white">
+            <div class="container text-center">
+                <h2 style="margin-bottom: var(--space-6);">Готовы начать сотрудничество?</h2>
+                <p style="font-size: var(--text-xl); opacity: 0.9; margin-bottom: var(--space-8);">
+                    Рассчитайте стоимость доставки прямо сейчас или свяжитесь с нами для консультации
+                </p>
+                <div style="display: flex; flex-direction: column; gap: var(--space-4); align-items: center;">
+                    <button @click="scrollToSection('calculator')" class="btn btn--secondary btn--xl">
+                        🧮 Рассчитать стоимость
+                    </button>
+                    <a href="tel:+79162720932" class="btn btn--outline btn--xl">
+                        📞 Позвонить сейчас
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Footer -->
+    <footer class="section bg-gray-50">
+        <div class="container">
+            <div class="grid md:grid-cols-4">
+                <div>
+                    <h3 style="font-weight: 600; margin-bottom: var(--space-4);">АвтоГОСТ</h3>
+                    <p style="color: var(--gray-600); margin-bottom: var(--space-4);">Современная логистическая компания. Используем передовые технологии для эффективных грузоперевозок.</p>
+                    <div style="display: flex; flex-direction: column; gap: var(--space-2);">
+                        <a href="tel:+79162720932" style="color: var(--primary);">📞 +7 916 272-09-32</a>
+                        <a href="mailto:avtogost77@gmail.com" style="color: var(--primary);">✉️ avtogost77@gmail.com</a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 style="font-weight: 600; margin-bottom: var(--space-4);">Транспорт</h3>
+                    <div style="display: flex; flex-direction: column; gap: var(--space-2);">
+                        <a href="gazel-gruzoperevozki.html" style="color: var(--gray-600);">Газель</a>
+                        <a href="trehtonnik-gruzoperevozki.html" style="color: var(--gray-600);">Трехтонник</a>
+                        <a href="pyatitonnik-gruzoperevozki.html" style="color: var(--gray-600);">Пятитонник</a>
+                        <a href="fura-20-tonn-gruzoperevozki.html" style="color: var(--gray-600);">Фура 20 тонн</a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 style="font-weight: 600; margin-bottom: var(--space-4);">Услуги</h3>
+                    <div style="display: flex; flex-direction: column; gap: var(--space-2);">
+                        <a href="sbornye-gruzy.html" style="color: var(--gray-600);">Сборные грузы</a>
+                        <a href="urgent-delivery.html" style="color: var(--gray-600);">Срочная доставка</a>
+                        <a href="dostavka-gruzov.html" style="color: var(--gray-600);">Доставка грузов</a>
+                        <a href="services.html" style="color: var(--gray-600);">Все услуги</a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 style="font-weight: 600; margin-bottom: var(--space-4);">Информация</h3>
+                    <div style="display: flex; flex-direction: column; gap: var(--space-2);">
+                        <a href="contact.html" style="color: var(--gray-600);">О компании</a>
+                        <a href="blog/" style="color: var(--gray-600);">Блог</a>
+                        <a href="contact.html" style="color: var(--gray-600);">Контакты</a>
+                        <a href="ftl-ltl-perevozki.html" style="color: var(--gray-600);">FTL/LTL перевозки</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="border-top: 1px solid var(--gray-200); margin-top: var(--space-8); padding-top: var(--space-8); text-align: center;">
+                <p style="color: var(--gray-500);">&copy; 2025 АвтоГОСТ. Современные логистические решения.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <style>
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        @media (max-width: 640px) {
+            .hero__cta { flex-direction: column; }
+            .grid { grid-template-columns: 1fr !important; }
+        }
+    </style>
+</body>
+</html>
